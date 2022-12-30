@@ -1,0 +1,149 @@
+<?php
+
+namespace App\Models;
+
+use App\Models\Team;
+use App\Models\Holiday;
+use App\Models\Employee;
+use Illuminate\Support\Str;
+use App\Models\Organization;
+use Illuminate\Support\Facades\DB;
+use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+
+class User extends Authenticatable
+{
+    use HasFactory, Notifiable, HasRoles;
+
+    public const ROLE_EMPLOYEE = 'employee';
+    public const ROLE_OWNER = 'owner';
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $guarded = [];
+
+    protected $appends = ['avatar_url'];
+
+    /**
+     * The attributes that should be hidden for serialization.
+     *
+     * @var array<int, string>
+     */
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
+
+     /**
+     * Interact with the user's username.
+     *
+     * @param  string  $value
+     * @return \Illuminate\Database\Eloquent\Casts\Attribute
+     */
+    public function setNameAttribute(string $value): void
+    {
+        $username = Str::slug($value);
+        $is_exists = User::whereUsername($username)->exists();
+        $is_exists ? $username = $username.'-'.time():$username;
+
+        User::whereUsername($username)->exists();
+        $this->attributes['name'] = $value;
+        $this->attributes['username'] = $username;
+    }
+
+    public function getAvatarAttribute($avatar)
+    {
+        if (!$avatar) {
+            return asset('admin/img/default-user.png');
+        }
+
+        return asset($avatar);
+    }
+
+    public function getAvatarUrlAttribute(){
+        if (!$this->avatar) {
+            return asset('admin/img/default-user.png');
+        }
+
+        return asset($this->avatar);
+    }
+
+    public static function getPermissionGroup()
+    {
+        $permission_group = DB::table('permissions')
+            ->select('group_name as name')
+            ->groupBy('group_name')
+            ->get();
+        return $permission_group;
+    }
+
+    public static function getpermissionsByGroupName($group_name)
+    {
+        $permissions = DB::table('permissions')
+            ->select('name', 'id')
+            ->where('group_name', $group_name)
+            ->get();
+        return $permissions;
+    }
+
+    public static function roleHasPermission($role, $permissions)
+    {
+        $hasPermission = true;
+        foreach ($permissions as $permission) {
+            if (!$role->hasPermissionTo($permission->name)) {
+                $hasPermission = false;
+                return $hasPermission;
+            }
+        }
+        return $hasPermission;
+    }
+
+    public function scopeRoleAdmin()
+    {
+        return $this->where('role', 'admin');
+    }
+
+    public function scopeRoleOwner()
+    {
+        return $this->where('role', 'owner');
+    }
+
+    public function scopeRoleEmployee()
+    {
+        return $this->where('role', 'employee');
+    }
+
+    public function companies()
+    {
+        return $this->hasMany(Organization::class, 'user_id');
+    }
+
+    public function employee()
+    {
+        return $this->hasOne(Employee::class, 'user_id');
+    }
+
+    public function teams()
+    {
+        return $this->hasManyThrough(Team::class, Organization::class);
+    }
+
+    public function holidays()
+    {
+        return $this->hasManyThrough(Holiday::class, Organization::class);
+    }
+}

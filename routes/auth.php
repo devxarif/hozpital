@@ -1,0 +1,33 @@
+<?php
+
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Auth\SocialLoginController;
+use App\Http\Controllers\Auth\ForgetPasswordController;
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::controller(AuthController::class)->group(function () {
+    Route::get('/login', 'showLoginForm')->name('login');
+    Route::post('/login', 'login');
+    Route::post('/logout', 'logout');
+});
+
+Route::middleware('auth')->group(function(){
+    Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
+});
+
+Route::controller(SocialLoginController::class)->group(function(){
+    Route::get('/auth/{provider}/callback', 'callback')->where('provider', 'google|facebook|github|twitter|linkedin');
+    Route::get('/auth/{provider}/redirect', 'redirect')->where('provider', 'google|facebook|github|twitter|linkedin')->name('social.login');
+});
+
+Route::controller(ForgetPasswordController::class)->group(function () {
+    Route::get('/request/email', 'passwordEmail')->name('password.email');
+    Route::post('/email/send/code', 'sendCode')->name('password.email.send.code');
+    Route::get('/password/reset/{email}', 'passwordResetForm')->name('password.reset.form');
+    Route::post('/password/reset', 'passwordReset')->name('password.reset');
+});
