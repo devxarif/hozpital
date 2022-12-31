@@ -14,14 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('avatar')->nullable();
             $table->string('username')->after('email');
-            $table->enum('role', ['admin', 'owner', 'employee'])->default('owner');
-            $table->unsignedBigInteger('current_organization_id')->nullable();
-            $table->boolean('is_opening_setup_complete')->default(0);
-            $table->unsignedInteger('opening_setup_steps')->default(1);
+            $table->enum('role', ['admin','patient','doctor','nurse','receptionist','accountant','laboratorist','pharmacist','customer'])->default('patient');
             $table->boolean('status')->default(true);
-            $table->integer('code')->nullable();
         });
     }
 

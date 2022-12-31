@@ -1,7 +1,6 @@
 <?php
 
-use App\Models\Employee;
-use App\Models\Organization;
+use App\Models\MedicineCategory;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,12 +14,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('departments', function (Blueprint $table) {
+        Schema::create('medicines', function (Blueprint $table) {
             $table->id();
+            $table->foreignIdFor(MedicineCategory::class)->constrained()->cascadeOnDelete();
             $table->string('name');
             $table->string('slug');
             $table->text('description')->nullable();
-            $table->string('image')->nullable();
+            $table->float('price');
+            $table->string('manufacturing_company');
             $table->timestamps();
         });
     }
@@ -32,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('departments');
+        Schema::dropIfExists('medicines');
     }
 };
