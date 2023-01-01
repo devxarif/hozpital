@@ -17,8 +17,8 @@ class CreateLeaveBalancesTable extends Migration
     {
         Schema::create('leave_balances', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Employee::class)->constrained()->cascadeOnDelete();
-            $table->foreignIdFor(LeaveType::class)->constrained()->cascadeOnDelete();
+            // $table->foreignIdFor(Employee::class)->constrained()->cascadeOnDelete();
+            // $table->foreignIdFor(LeaveType::class)->constrained()->cascadeOnDelete();
             $table->unsignedInteger('total_days')->default(0);
             $table->unsignedInteger('used_days')->default(0);
             $table->timestamps();

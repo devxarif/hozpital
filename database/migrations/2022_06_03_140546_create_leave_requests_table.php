@@ -18,9 +18,9 @@ class CreateLeaveRequestsTable extends Migration
     {
         Schema::create('leave_requests', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Organization::class)->constrained()->cascadeOnDelete();
-            $table->foreignIdFor(Employee::class)->constrained()->cascadeOnDelete();
-            $table->foreignIdFor(LeaveType::class)->constrained()->cascadeOnDelete();
+            // $table->foreignIdFor(Organization::class)->constrained()->cascadeOnDelete();
+            // $table->foreignIdFor(Employee::class)->constrained()->cascadeOnDelete();
+            // $table->foreignIdFor(LeaveType::class)->constrained()->cascadeOnDelete();
             $table->date('start');
             $table->date('end');
             $table->integer('days');

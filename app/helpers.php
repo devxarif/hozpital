@@ -24,6 +24,19 @@ use App\Mail\Organization\InviteSendMail;
 use Stichoza\GoogleTranslate\GoogleTranslate;
 use sirajcse\UniqueIdGenerator\UniqueIdGenerator;
 
+/**
+ * Conversation route name to url
+ *
+ * @param string $route
+ * @param string $parameter
+ * @return string
+ */
+if (!function_exists('routeToUrl')) {
+    function routeToUrl(string $route, $parameter = null){
+        return route($route, $parameter, false);
+    }
+}
+
 if (!function_exists('uploadFileToPublic')) {
     function uploadFileToPublic(string $path, $file)
     {

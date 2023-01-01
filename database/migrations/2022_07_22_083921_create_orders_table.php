@@ -25,8 +25,8 @@ class CreateOrdersTable extends Migration
             $table->string('usd_amount')->default('0');
             $table->enum('payment_status', ['paid', 'unpaid'])->default('unpaid');
             $table->string('expired_date')->nullable();
-            $table->foreignIdFor(Plan::class)->constrained()->cascadeOnDelete();
-            $table->foreignIdFor(Organization::class)->constrained()->cascadeOnDelete();
+            // $table->foreignIdFor(Plan::class)->constrained()->cascadeOnDelete();
+            // $table->foreignIdFor(Organization::class)->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }

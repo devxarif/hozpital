@@ -21,7 +21,6 @@ return new class extends Migration
             $table->foreignIdFor(Manufacture::class)->constrained()->cascadeOnDelete();
             $table->string('name');
             $table->string('slug');
-            $table->text('description')->nullable();
             $table->float('buying_price')->default(0);
             $table->float('selling_price')->default(0);
             $table->unsignedInteger('quantity')->default(0);
