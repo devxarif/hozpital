@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\BedType;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -14,14 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('beds', function (Blueprint $table) {
+        Schema::create('notice_boards', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(BedType::class)->constrained()->cascadeOnDelete();
-            $table->string('number');
-            $table->float('charge');
-            $table->string('floor');
-            $table->enum('status', ['alloted','unalloted']);
-            $table->text('description')->nullable();
+            $table->string('name');
+            $table->string('description')->nullable();
             $table->timestamps();
         });
     }
@@ -33,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('beds');
+        Schema::dropIfExists('notice_boards');
     }
 };

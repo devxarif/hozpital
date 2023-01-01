@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Bed;
+use App\Models\Doctor;
 use App\Models\Patient;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -19,8 +20,10 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(Bed::class)->constrained()->cascadeOnDelete();
             $table->foreignIdFor(Patient::class)->constrained()->cascadeOnDelete();
-            $table->date('allotment_date');
-            $table->date('discharge_date');
+            $table->foreignIdFor(Doctor::class)->constrained()->cascadeOnDelete();
+            $table->timestamp('allotment_time');
+            $table->timestamp('discharge_time');
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }
