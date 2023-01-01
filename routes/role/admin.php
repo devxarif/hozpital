@@ -3,19 +3,24 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\BlogController;
-use App\Http\Controllers\Admin\DoctorController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\OrderController;
+use App\Http\Controllers\Admin\DoctorController;
 use App\Http\Controllers\Admin\GlobalController;
 use App\Http\Controllers\Admin\HolidayController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\LanguageController;
+use App\Http\Controllers\Admin\DepartmentController;
 use App\Http\Controllers\Admin\TestimonialController;
 use App\Http\Controllers\Admin\OrganizationController;
 
 // Route::middleware(['auth', 'check.admin.role'])->prefix('admin')->group(function () {
-Route::middleware(['auth'])->prefix('admin')->group(function () {
+Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function () {
+    // Department Routes
+    // Route::resource('department', DepartmentController::class);
+    Route::resource('department', DepartmentController::class)->withoutMiddleware('auth');
+
     // Doctor Routes
     Route::resource('doctor', DoctorController::class);
 

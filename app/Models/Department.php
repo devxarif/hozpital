@@ -12,6 +12,21 @@ class Department extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    /**
+    * The mutator that should be set department slug
+    *
+    * @param string $value
+    *
+    * @return void
+    */
+    public function setNameAttribute($value)
+    {
+        $this->attributes['name'] = $value;
+        $this->attributes['slug'] = strSlug($value);
+    }
+
+
     // protected $fillable = ['organization_id','name','employee_id'];
 
     /**

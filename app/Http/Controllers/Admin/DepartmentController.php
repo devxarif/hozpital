@@ -2,11 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\DoctorCreateRequest;
+use App\Models\Department;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\DepartmentCreateRequest;
+use App\Http\Requests\Admin\DepartmentUpdateRequest;
+use App\Services\Admin\Department\CreateDepartmentService;
+use App\Services\Admin\Department\DeleteDepartmentService;
+use App\Services\Admin\Department\UpdateDepartmentService;
 
-class DoctorController extends Controller
+class DepartmentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,12 +36,14 @@ class DoctorController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  DoctorCreateRequest  $request
+     * @param  DepartmentCreateRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(DoctorCreateRequest $request)
+    public function store(DepartmentCreateRequest $request)
     {
+        return (new CreateDepartmentService())->execute($request);
 
+        return back();
     }
 
     /**
@@ -64,13 +71,15 @@ class DoctorController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param DepartmentUpdateRequest  $request
+     * @param Department  $department
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Department $department)
     {
-        //
+        (new UpdateDepartmentService())->execute($request,$department);
+
+        return back();
     }
 
     /**
@@ -79,8 +88,10 @@ class DoctorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Department $department)
     {
-        //
+        (new DeleteDepartmentService())->execute($department);
+
+        return back();
     }
 }

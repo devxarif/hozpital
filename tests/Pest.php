@@ -1,5 +1,11 @@
 <?php
 
+use App\Models\Admin;
+use Tests\TestCase;
+use App\Models\User;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+
+
 /*
 |--------------------------------------------------------------------------
 | Test Case
@@ -11,7 +17,7 @@
 |
 */
 
-uses(Tests\TestCase::class)->in('Feature');
+uses(Tests\TestCase::class, RefreshDatabase::class)->in('Feature');
 
 /*
 |--------------------------------------------------------------------------
@@ -39,7 +45,14 @@ expect()->extend('toBeOne', function () {
 |
 */
 
-function something()
+function createUser(string $role = 'admin'):User
 {
-    // ..
+    return User::factory()->create([
+        'role' => $role
+    ]);
+}
+
+function createAdmin(): Admin
+{
+    return Admin::factory()->create();
 }
