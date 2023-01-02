@@ -14,7 +14,7 @@ class CreateDepartmentService
         ]);
 
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
-            $url = uploadFileToPublic('image', $request->image);
+            $url = uploadFileToPublic('department/image', $request->image);
             $department->update(['image' => $url]);
         }
 

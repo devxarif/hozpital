@@ -26,7 +26,7 @@ class DepartmentUpdateRequest extends FormRequest
         return [
             'name' => "required|max:255|unique:departments,name,{$this->department->id}",
             'description' => 'nullable',
-            'image' => 'sometimes|image|mimes:png,jpg,jpeg,svg',
+            'image' => 'sometimes|image|mimes:png,jpg,jpeg|max:5120',
         ];
     }
 }

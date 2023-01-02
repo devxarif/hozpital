@@ -41,7 +41,7 @@ class DepartmentController extends Controller
      */
     public function store(DepartmentCreateRequest $request)
     {
-        return (new CreateDepartmentService())->execute($request);
+        (new CreateDepartmentService())->execute($request);
 
         return back();
     }

@@ -18,11 +18,10 @@ use App\Http\Controllers\Admin\OrganizationController;
 // Route::middleware(['auth', 'check.admin.role'])->prefix('admin')->group(function () {
 Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function () {
     // Department Routes
-    // Route::resource('department', DepartmentController::class);
-    Route::resource('department', DepartmentController::class)->withoutMiddleware('auth');
+    Route::resource('department', DepartmentController::class);
 
     // Doctor Routes
-    Route::resource('doctor', DoctorController::class);
+    Route::resource('doctor', DoctorController::class)->withoutMiddleware('auth');
 
 
 

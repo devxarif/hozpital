@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
@@ -127,19 +128,34 @@ class User extends Authenticatable
         return $this->where('role', 'employee');
     }
 
-    public function companies()
+    public function doctor(): HasOne
     {
-        return $this->hasMany(Organization::class, 'user_id');
+        return $this->hasOne(Doctor::class);
     }
 
-    public function employee()
+    public function patient(): HasOne
     {
-        return $this->hasOne(Employee::class, 'user_id');
+        return $this->hasOne(Patient::class);
     }
 
-    public function teams()
+    public function nurse(): HasOne
     {
-        return $this->hasManyThrough(Team::class, Organization::class);
+        return $this->hasOne(Nurse::class);
+    }
+
+    public function receptionist(): HasOne
+    {
+        return $this->hasOne(Receptionist::class);
+    }
+
+    public function laboratorist(): HasOne
+    {
+        return $this->hasOne(Laboratorist::class);
+    }
+
+    public function accountant(): HasOne
+    {
+        return $this->hasOne(accountant::class);
     }
 
     public function holidays()

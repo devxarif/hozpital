@@ -15,7 +15,7 @@ class UpdateDepartmentService
 
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
             deleteImage($department->image);
-            $url = uploadFileToPublic('image', $request->image);
+            $url = uploadFileToPublic('department/image', $request->image);
             $department->update(['image' => $url]);
         }
 

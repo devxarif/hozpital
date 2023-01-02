@@ -2,9 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Doctor;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\DoctorCreateRequest;
-use Illuminate\Http\Request;
+use App\Http\Requests\Admin\DoctorUpdateRequest;
+use App\Services\Admin\Doctor\CreateDoctorService;
+use App\Services\Admin\Doctor\DeleteDoctorService;
+use App\Services\Admin\Doctor\UpdateDoctorService;
 
 class DoctorController extends Controller
 {
@@ -36,7 +41,9 @@ class DoctorController extends Controller
      */
     public function store(DoctorCreateRequest $request)
     {
+        return (new CreateDoctorService())->execute($request);
 
+        return back();
     }
 
     /**
@@ -64,13 +71,15 @@ class DoctorController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  DoctorUpdateRequest  $request
+     * @param  Doctor  $doctor
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(DoctorUpdateRequest $request, Doctor $doctor)
     {
-        //
+        return (new UpdateDoctorService())->execute($request,$doctor);
+
+        return back();
     }
 
     /**
@@ -79,8 +88,10 @@ class DoctorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Doctor $doctor)
     {
-        //
+        (new DeleteDoctorService())->execute($doctor);
+
+        return back();
     }
 }

@@ -13,7 +13,7 @@ class DoctorUpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,11 @@ class DoctorUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required|max:255',
+            'email' => "required|email|max:255|unique:users,email,{$this->doctor->user->id}",
+            'password' => 'sometimes|min:4',
+            'avatar' => 'sometimes|image|mimes:png,jpg,jpeg|max:5120',
+            'department' => 'required|exists:departments,id'
         ];
     }
 }

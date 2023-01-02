@@ -25,8 +25,10 @@ class DoctorCreateRequest extends FormRequest
     {
         return [
             'name' => 'required|max:255',
-            'email' => 'required|email|max:255',
+            'email' => 'required|email|max:255|unique:users,email',
             'password' => 'required|min:4',
+            'avatar' => 'sometimes|image|mimes:png,jpg,jpeg|max:5120',
+            'department' => 'required|exists:departments,id'
         ];
     }
 }
