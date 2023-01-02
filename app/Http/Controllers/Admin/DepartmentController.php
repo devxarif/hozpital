@@ -75,7 +75,7 @@ class DepartmentController extends Controller
      * @param Department  $department
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Department $department)
+    public function update(DepartmentUpdateRequest $request, Department $department)
     {
         (new UpdateDepartmentService())->execute($request,$department);
 
