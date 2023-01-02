@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Manufacture;
+use App\Models\MedicineCategory;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +19,14 @@ class MedicineFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'medicine_category_id' => MedicineCategory::inRandomOrder()->value('id'),
+            'manufacture_id' => Manufacture::inRandomOrder()->value('id'),
+            'name' => fake()->name,
+            'buying_price' => rand(100, 200),
+            'selling_price' => rand(200, 400),
+            'quantity' => rand(200,500),
+            'description' => fake()->sentence,
+            'expire_date' => $this->faker->dateTimeBetween('','+2 years'),
         ];
     }
 }

@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\BloodDonation;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -14,6 +15,6 @@ class BloodDonationSeeder extends Seeder
      */
     public function run()
     {
-        //
+        BloodDonation::factory(50)->create();
     }
 }

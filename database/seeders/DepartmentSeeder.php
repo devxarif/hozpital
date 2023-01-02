@@ -16,16 +16,18 @@ class DepartmentSeeder extends Seeder
      */
     public function run()
     {
-        $organizations = Organization::all();
-        $departments = ['Marketing',' Information Technology','Services','Sales','Product','HR'];
+        Department::factory(10)->create();
 
-        foreach ($organizations as $organization) {
-            foreach ($departments as $department) {
-                Department::create([
-                    'organization_id' => $organization->id,
-                    'name' => $department,
-                ]);
-            }
-        }
+        // $organizations = Organization::all();
+        // $departments = ['Marketing',' Information Technology','Services','Sales','Product','HR'];
+
+        // foreach ($organizations as $organization) {
+        //     foreach ($departments as $department) {
+        //         Department::create([
+        //             'organization_id' => $organization->id,
+        //             'name' => $department,
+        //         ]);
+        //     }
+        // }
     }
 }

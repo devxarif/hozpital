@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\DiagnosticReportType;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -14,6 +15,6 @@ class DiagnosticReportTypeSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DiagnosticReportType::factory(5)->create();
     }
 }

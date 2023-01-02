@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\BloodDonor;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,8 @@ class BloodDonationFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'blood_donor_id' => BloodDonor::inRandomOrder()->value('id'),
+            'bags' => rand(1,10),
         ];
     }
 }

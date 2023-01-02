@@ -17,7 +17,8 @@ class ExpenseCategoryFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => fake()->name,
+            'description' => fake()->sentence(),
         ];
     }
 }

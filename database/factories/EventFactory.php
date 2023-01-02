@@ -17,7 +17,9 @@ class EventFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => fake()->name,
+            'start_date' => fake()->date('Y-m-d'),
+            'end_date' => fake()->date('Y-m-d')
         ];
     }
 }

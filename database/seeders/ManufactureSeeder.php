@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Manufacture;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -14,6 +15,6 @@ class ManufactureSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Manufacture::factory(20)->create();
     }
 }

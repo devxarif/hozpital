@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\IncomeCategory;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -14,6 +15,7 @@ class IncomeCategorySeeder extends Seeder
      */
     public function run()
     {
-        //
+        IncomeCategory::factory(5)->create();
+
     }
 }

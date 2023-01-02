@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\ExpenseCategory;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -14,6 +15,6 @@ class ExpenseCategorySeeder extends Seeder
      */
     public function run()
     {
-        //
+        ExpenseCategory::factory(5)->create();
     }
 }

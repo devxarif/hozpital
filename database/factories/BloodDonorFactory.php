@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use Illuminate\Support\Arr;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,13 @@ class BloodDonorFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => fake()->name,
+            'blood_group' => Arr::random(['A+', 'B+','AB+','O+','A-', 'B-','AB-','O-']),
+            'phone' => fake()->phoneNumber,
+            'gender' => Arr::random(['male','female']),
+            'email' => fake()->email,
+            'address' => fake()->address,
+            'age' => rand(20,30),
         ];
     }
 }

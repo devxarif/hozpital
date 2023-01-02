@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class BloodBank extends Model
 {
     use HasFactory;
+
+    protected $guarded = [];
 }

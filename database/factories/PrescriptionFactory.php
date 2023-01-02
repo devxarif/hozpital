@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Doctor;
+use App\Models\Patient;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +19,11 @@ class PrescriptionFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'doctor_id' => Doctor::inRandomOrder()->value('id'),
+            'patient_id' => Patient::inRandomOrder()->value('id'),
+            'case_history' => fake()->paragraph,
+            'medication' => fake()->paragraph,
+            'note' => fake()->paragraph,
         ];
     }
 }

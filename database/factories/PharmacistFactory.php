@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,8 +17,16 @@ class PharmacistFactory extends Factory
      */
     public function definition()
     {
+        $user = User::create([
+            'name' => fake()->name(),
+            'email' => fake()->unique()->safeEmail,
+            'password' => bcrypt('password'),
+            'role' => 'laboratorist',
+        ]);
+
         return [
-            //
+            'user_id' => $user->id,
+            'avatar' => asset('admin/img/default-user.png')
         ];
     }
 }

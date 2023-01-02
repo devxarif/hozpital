@@ -17,7 +17,11 @@ class ManufactureFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => fake()->name,
+            'email' => fake()->email,
+            'phone' => fake()->phoneNumber,
+            'address' => fake()->streetAddress,
+            'note' => fake()->sentence,
         ];
     }
 }

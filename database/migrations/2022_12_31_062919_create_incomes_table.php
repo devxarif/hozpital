@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Invoice;
 use App\Models\IncomeCategory;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
@@ -17,6 +18,7 @@ return new class extends Migration
         Schema::create('incomes', function (Blueprint $table) {
             $table->id();
             $table->string('invoice_number')->nullable();
+            $table->foreignIdFor(Invoice::class)->nullable()->constrained()->cascadeOnDelete();
             $table->string('payment_method')->nullable();
             $table->foreignIdFor(IncomeCategory::class)->constrained()->cascadeOnDelete();
             $table->float('amount')->default(0);
