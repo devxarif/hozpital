@@ -21,7 +21,8 @@ Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function () 
     Route::resource('department', DepartmentController::class);
 
     // Doctor Routes
-    Route::resource('doctor', DoctorController::class)->withoutMiddleware('auth');
+    Route::resource('doctor', DoctorController::class);
+    // Route::resource('doctor', DoctorController::class)->withoutMiddleware('auth');
 
 
 

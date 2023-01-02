@@ -31,7 +31,7 @@ it('admin can create a department', function () {
 
     $this->actingAs($this->user)
     ->post(routeToUrl('admin.department.store'), $department)
-    ->assertStatus(201);
+    ->assertStatus(302);
 
     $this->assertDatabaseHas('departments', $department);
 
