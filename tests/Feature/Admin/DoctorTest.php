@@ -9,8 +9,8 @@ beforeEach(function(){
 });
 
 test('doctor create validation redirect back to form', function(){
-    $this->actingAs($this->user)
-    ->post(routeToUrl('admin.doctor.store'), [
+    actingAs($this->user)
+    ->post(route('admin.doctor.store'), [
         'name' => '',
         'email' => '',
         'password' => '',
@@ -27,20 +27,20 @@ test('doctor create unique validation redirect back to form', function(){
     Doctor::factory()->create(['user_id' => $user->id, 'department_id' => $department->id]);
 
 
-    $this->actingAs($this->user)
-    ->post(routeToUrl('admin.department.store'), [
+   actingAs($this->user)
+    ->post(route('admin.department.store'), [
         'email' => 'doctor@mail.com',
     ])
     ->assertStatus(302);
 });
 
-it('admin can create a doctor', function () {
+test('admin can create a doctor', function () {
     $department = Department::factory()->create();
     $doctor  = ['name' => 'Doctor', 'email' => 'doctor@mail.com', 'password' => 'password','department' => $department->id];
 
-    $this->actingAs($this->user)
-    ->post(routeToUrl('admin.doctor.store'), $doctor)
-    ->assertStatus(201);
+   actingAs($this->user)
+    ->post(route('admin.doctor.store'), $doctor)
+    ->assertStatus(302);
 
     $this->assertDatabaseHas('users', ['name' => 'Doctor', 'email' => 'doctor@mail.com']);
     $this->assertDatabaseHas('doctors', ['department_id' => $department->id]);
@@ -55,8 +55,8 @@ test('doctor update validation redirect back to form', function(){
     Department::factory()->create();
     $doctor  = Doctor::factory()->create();
 
-    $this->actingAs($this->user)
-    ->put(routeToUrl('admin.doctor.update', $doctor->id),[
+   actingAs($this->user)
+    ->put(route('admin.doctor.update', $doctor->id),[
         'name' => '',
         'email' => '',
         'password' => '',
@@ -73,8 +73,8 @@ test('doctor update unique validation redirect back to form', function(){
     $doctor = Doctor::factory()->create();
 
 
-    $this->actingAs($this->user)
-    ->put(routeToUrl('admin.doctor.update', $doctor->id), [
+   actingAs($this->user)
+    ->put(route('admin.doctor.update', $doctor->id), [
         'name' => 'Doctor',
         'email' => 'doctor@mail.com',
         'department' => 1,
@@ -82,24 +82,24 @@ test('doctor update unique validation redirect back to form', function(){
     ->assertStatus(302);
 });
 
-it('admin can update a doctor', function () {
+test('admin can update a doctor', function () {
     Department::factory()->create();
     $doctor  = Doctor::factory()->create();
 
-    $this->actingAs($this->user)
-    ->put(routeToUrl('admin.doctor.update', $doctor->id), [
+   actingAs($this->user)
+    ->put(route('admin.doctor.update', $doctor->id), [
         'name' => 'Doctor',
         'email' => 'doctor@mail.com',
     ])
     ->assertStatus(302);
 });
 
-it('admin can delete a doctor', function () {
+test('admin can delete a doctor', function () {
     Department::factory()->create();
     $doctor  = Doctor::factory()->create();
 
-    $this->actingAs($this->user)
-    ->delete(routeToUrl('admin.doctor.destroy', $doctor->id))
+   actingAs($this->user)
+    ->delete(route('admin.doctor.destroy', $doctor->id))
     ->assertStatus(302);
 
     $this->assertDatabaseMissing('doctors', $doctor->toArray());

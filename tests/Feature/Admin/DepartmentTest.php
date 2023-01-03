@@ -7,8 +7,8 @@ beforeEach(function(){
 });
 
 test('department create validation redirect back to form', function(){
-    $this->actingAs($this->user)
-    ->post(routeToUrl('admin.department.store'), [
+    actingAs($this->user)
+    ->post(route('admin.department.store'), [
         'name' => '',
     ])
     ->assertStatus(302)
@@ -19,18 +19,18 @@ test('department create validation redirect back to form', function(){
 test('department create unique validation redirect back to form', function(){
     Department::factory()->create(['name' => 'Department']);
 
-    $this->actingAs($this->user)
-    ->post(routeToUrl('admin.department.store'), [
+    actingAs($this->user)
+    ->post(route('admin.department.store'), [
         'name' => 'Department',
     ])
     ->assertStatus(302);
 });
 
-it('admin can create a department', function () {
+test('admin can create a department', function () {
     $department = ['name' => 'Test Department', 'description' => 'any description'];
 
-    $this->actingAs($this->user)
-    ->post(routeToUrl('admin.department.store'), $department)
+    actingAs($this->user)
+    ->post(route('admin.department.store'), $department)
     ->assertStatus(302);
 
     $this->assertDatabaseHas('departments', $department);
@@ -43,7 +43,7 @@ it('admin can create a department', function () {
 test('department update validation redirect back to form', function(){
     $department = Department::factory()->create();
 
-    $this->actingAs($this->user)
+    actingAs($this->user)
     ->put("/admin/department/".$department->id, [
         'name' => '',
     ])
@@ -56,18 +56,18 @@ test('department update unique validation redirect back to form', function(){
     $department = Department::factory()->create(['name' => 'Department']);
     Department::factory()->create(['name' => 'Department 2']);
 
-    $this->actingAs($this->user)
+    actingAs($this->user)
     ->put("/admin/department/".$department->id, [
         'name' => 'Department 2',
     ])
     ->assertStatus(302);
 });
 
-it('admin can update a department', function () {
+test('admin can update a department', function () {
     $data = ['name' => 'Test Department', 'description' => 'any description'];
     $department = Department::create($data );
 
-    $this->actingAs($this->user)
+    actingAs($this->user)
     ->put("/admin/department/".$department->id, [
         'name' => 'New Name',
         'description' => 'New Description',
@@ -75,11 +75,11 @@ it('admin can update a department', function () {
     ->assertStatus(302);
 });
 
-it('admin can delete a department', function () {
+test('admin can delete a department', function () {
     $department = Department::factory()->create();
 
-    $this->actingAs($this->user)
-    ->delete(routeToUrl('admin.department.destroy', $department->id))
+    actingAs($this->user)
+    ->delete(route('admin.department.destroy', $department->id))
     ->assertStatus(302);
 
     $this->assertDatabaseMissing('departments', $department->toArray());

@@ -2,16 +2,15 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Doctor;
-use Illuminate\Http\Request;
+use App\Models\Accountant;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\DoctorCreateRequest;
-use App\Http\Requests\Admin\DoctorUpdateRequest;
-use App\Services\Admin\Doctor\CreateDoctorService;
-use App\Services\Admin\Doctor\DeleteDoctorService;
-use App\Services\Admin\Doctor\UpdateDoctorService;
+use App\Http\Requests\Admin\AccountantCreateRequest;
+use App\Http\Requests\Admin\AccountantUpdateRequest;
+use App\Services\Admin\Accountant\CreateAccountantService;
+use App\Services\Admin\Accountant\DeleteAccountantService;
+use App\Services\Admin\Accountant\UpdateAccountantService;
 
-class DoctorController extends Controller
+class AccountantController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -33,15 +32,15 @@ class DoctorController extends Controller
         //
     }
 
-    /**
+        /**
      * Store a newly created resource in storage.
      *
-     * @param  DoctorCreateRequest  $request
+     * @param  AccountantCreateRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(DoctorCreateRequest $request)
+    public function store(AccountantCreateRequest $request)
     {
-        (new CreateDoctorService())->execute($request);
+        (new CreateAccountantService())->execute($request);
 
         return back();
     }
@@ -71,13 +70,13 @@ class DoctorController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  DoctorUpdateRequest  $request
-     * @param  Doctor  $doctor
+     * @param  AccountantUpdateRequest  $request
+     * @param  Accountant $accountant
      * @return \Illuminate\Http\Response
      */
-    public function update(DoctorUpdateRequest $request, Doctor $doctor)
+    public function update(AccountantUpdateRequest $request, Accountant $accountant)
     {
-        (new UpdateDoctorService())->execute($request,$doctor);
+        (new UpdateAccountantService())->execute($request,$accountant);
 
         return back();
     }
@@ -85,12 +84,12 @@ class DoctorController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  Accountant $accountant
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Doctor $doctor)
+    public function destroy(Accountant $accountant)
     {
-        (new DeleteDoctorService())->execute($doctor);
+        (new DeleteAccountantService())->execute($accountant);
 
         return back();
     }

@@ -2,12 +2,15 @@
 
 namespace App\Models;
 
+use App\Http\Traits\HasUser;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Receptionist extends Model
 {
-    use HasFactory;
+    use HasFactory, HasUser;
 
     protected $guarded = [];
+
+    protected $tables = 'receptionists';
 }

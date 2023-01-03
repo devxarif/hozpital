@@ -2,16 +2,15 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Doctor;
-use Illuminate\Http\Request;
+use App\Models\Pharmacist;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\DoctorCreateRequest;
-use App\Http\Requests\Admin\DoctorUpdateRequest;
-use App\Services\Admin\Doctor\CreateDoctorService;
-use App\Services\Admin\Doctor\DeleteDoctorService;
-use App\Services\Admin\Doctor\UpdateDoctorService;
+use App\Http\Requests\Admin\PharmacistCreateRequest;
+use App\Http\Requests\Admin\PharmacistUpdateRequest;
+use App\Services\Admin\Pharmacist\CreatePharmacistService;
+use App\Services\Admin\Pharmacist\DeletePharmacistService;
+use App\Services\Admin\Pharmacist\UpdatePharmacistService;
 
-class DoctorController extends Controller
+class PharmacistController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -33,15 +32,15 @@ class DoctorController extends Controller
         //
     }
 
-    /**
+        /**
      * Store a newly created resource in storage.
      *
-     * @param  DoctorCreateRequest  $request
+     * @param  PharmacistCreateRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(DoctorCreateRequest $request)
+    public function store(PharmacistCreateRequest $request)
     {
-        (new CreateDoctorService())->execute($request);
+        (new CreatePharmacistService())->execute($request);
 
         return back();
     }
@@ -71,13 +70,13 @@ class DoctorController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  DoctorUpdateRequest  $request
-     * @param  Doctor  $doctor
+     * @param  Pharmacist  $request
+     * @param  Pharmacist  $pharmacist
      * @return \Illuminate\Http\Response
      */
-    public function update(DoctorUpdateRequest $request, Doctor $doctor)
+    public function update(PharmacistUpdateRequest $request, Pharmacist $pharmacist)
     {
-        (new UpdateDoctorService())->execute($request,$doctor);
+        (new UpdatePharmacistService())->execute($request,$pharmacist);
 
         return back();
     }
@@ -88,9 +87,9 @@ class DoctorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Doctor $doctor)
+    public function destroy(Pharmacist $pharmacist)
     {
-        (new DeleteDoctorService())->execute($doctor);
+        (new DeletePharmacistService())->execute($pharmacist);
 
         return back();
     }

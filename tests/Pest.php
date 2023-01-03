@@ -1,8 +1,9 @@
 <?php
 
-use App\Models\Admin;
 use Tests\TestCase;
 use App\Models\User;
+use App\Models\Admin;
+use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 
@@ -55,4 +56,14 @@ function createUser(string $role = 'admin'):User
 function createAdmin(): Admin
 {
     return Admin::factory()->create();
+}
+
+/**
+ * Set the currently logged in user for the application.
+ *
+ * @return TestCase
+ */
+function actingAs(Authenticatable $user, string $driver = null)
+{
+    return test()->actingAs($user, $driver);
 }

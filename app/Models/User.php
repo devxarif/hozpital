@@ -158,6 +158,11 @@ class User extends Authenticatable
         return $this->hasOne(accountant::class);
     }
 
+    public function pharmacist(): HasOne
+    {
+        return $this->hasOne(Pharmacist::class);
+    }
+
     public function holidays()
     {
         return $this->hasManyThrough(Holiday::class, Organization::class);

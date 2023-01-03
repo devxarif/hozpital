@@ -2,16 +2,15 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Doctor;
-use Illuminate\Http\Request;
+use App\Models\Nurse;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\DoctorCreateRequest;
-use App\Http\Requests\Admin\DoctorUpdateRequest;
-use App\Services\Admin\Doctor\CreateDoctorService;
-use App\Services\Admin\Doctor\DeleteDoctorService;
-use App\Services\Admin\Doctor\UpdateDoctorService;
+use App\Http\Requests\Admin\NurseCreateRequest;
+use App\Http\Requests\Admin\NurseUpdateRequest;
+use App\Services\Admin\Nurse\CreateNurseService;
+use App\Services\Admin\Nurse\DeleteNurseService;
+use App\Services\Admin\Nurse\UpdateNurseService;
 
-class DoctorController extends Controller
+class NurseController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -33,15 +32,15 @@ class DoctorController extends Controller
         //
     }
 
-    /**
+        /**
      * Store a newly created resource in storage.
      *
-     * @param  DoctorCreateRequest  $request
+     * @param  NurseCreateRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(DoctorCreateRequest $request)
+    public function store(NurseCreateRequest $request)
     {
-        (new CreateDoctorService())->execute($request);
+        return (new CreateNurseService())->execute($request);
 
         return back();
     }
@@ -71,13 +70,13 @@ class DoctorController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  DoctorUpdateRequest  $request
+     * @param  NurseUpdateRequest  $request
      * @param  Doctor  $doctor
      * @return \Illuminate\Http\Response
      */
-    public function update(DoctorUpdateRequest $request, Doctor $doctor)
+    public function update(NurseUpdateRequest $request, Nurse $nurse)
     {
-        (new UpdateDoctorService())->execute($request,$doctor);
+        (new UpdateNurseService())->execute($request,$nurse);
 
         return back();
     }
@@ -85,12 +84,12 @@ class DoctorController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  Nurse  $doctor
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Doctor $doctor)
+    public function destroy(Nurse $nurse)
     {
-        (new DeleteDoctorService())->execute($doctor);
+        (new DeleteNurseService())->execute($nurse);
 
         return back();
     }

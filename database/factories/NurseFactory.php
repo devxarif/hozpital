@@ -21,7 +21,7 @@ class NurseFactory extends Factory
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail,
             'password' => bcrypt('password'),
-            'role' => 'laboratorist',
+            'role' => 'nurse',
         ]);
 
         return [
