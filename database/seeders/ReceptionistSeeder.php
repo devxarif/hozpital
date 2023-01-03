@@ -2,9 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use App\Models\Receptionist;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class ReceptionistSeeder extends Seeder
 {
@@ -15,6 +16,17 @@ class ReceptionistSeeder extends Seeder
      */
     public function run()
     {
+        $user = User::create([
+            'name' => 'Receptionist',
+            'email' => 'receptionist@mail.com',
+            'password' => bcrypt('password'),
+            'role' => 'receptionist',
+        ]);
+
+        $user->receptionist()->create([
+            'avatar' => null,
+        ]);
+
         Receptionist::factory(20)->create();
     }
 }

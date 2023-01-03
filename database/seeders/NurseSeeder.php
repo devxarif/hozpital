@@ -2,9 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use App\Models\Nurse;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class NurseSeeder extends Seeder
 {
@@ -15,6 +16,17 @@ class NurseSeeder extends Seeder
      */
     public function run()
     {
+        $user = User::create([
+            'name' => 'Nurse',
+            'email' => 'nurse@mail.com',
+            'password' => bcrypt('password'),
+            'role' => 'nurse',
+        ]);
+
+        $user->nurse()->create([
+            'avatar' => null,
+        ]);
+
         Nurse::factory(20)->create();
     }
 }

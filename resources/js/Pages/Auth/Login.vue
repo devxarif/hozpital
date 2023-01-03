@@ -144,10 +144,22 @@
                     <div class="flex items-center gap-3">
                         <button @click="roleLogin('admin','password')" type="button" class="block px-4 py-2 mt-4 text-sm font-medium leading-5 text-center text-white transition-colors duration-150 bg-gray-600 border border-transparent rounded-lg hover:bg-gray-700 focus:outline-none focus:shadow-outline-gray"><small>Log in Via Admin</small>
                         </button>
-                        <button @click="roleLogin('owner@mail.com', 'password')"  type="button" class="block px-4 py-2 mt-4 text-sm font-medium leading-5 text-center text-white transition-colors duration-150 bg-gray-600 border border-transparent rounded-lg hover:bg-gray-700 focus:outline-none focus:shadow-outline-gray"><small>Log in Via Owner</small>
+                        <button @click="roleLogin('doctor@mail.com', 'password')" type="button" class="block px-4 py-2 mt-4 text-sm font-medium leading-5 text-center text-white transition-colors duration-150 bg-gray-600 border border-transparent rounded-lg  hover:bg-gray-700 focus:outline-none focus:shadow-outline-gray"><small>Log in Via Doctor</small>
+                        </button>
+                        <button @click="roleLogin('patient@mail.com', 'password')" type="button" class="block px-4 py-2 mt-4 text-sm font-medium leading-5 text-center text-white transition-colors duration-150 bg-gray-600 border border-transparent rounded-lg  hover:bg-gray-700 focus:outline-none focus:shadow-outline-gray"><small>Log in Via Patient</small>
+                        </button>
+                        <button @click="roleLogin('nurse@mail.com', 'password')" type="button" class="block px-4 py-2 mt-4 text-sm font-medium leading-5 text-center text-white transition-colors duration-150 bg-gray-600 border border-transparent rounded-lg  hover:bg-gray-700 focus:outline-none focus:shadow-outline-gray"><small>Log in Via Nurse</small>
+                        </button>
+                        <button @click="roleLogin('accountant@mail.com', 'password')" type="button" class="block px-4 py-2 mt-4 text-sm font-medium leading-5 text-center text-white transition-colors duration-150 bg-gray-600 border border-transparent rounded-lg  hover:bg-gray-700 focus:outline-none focus:shadow-outline-gray"><small>Log in Via Accountant</small>
+                        </button>
+                        <button @click="roleLogin('receptionist@mail.com', 'password')" type="button" class="block px-4 py-2 mt-4 text-sm font-medium leading-5 text-center text-white transition-colors duration-150 bg-gray-600 border border-transparent rounded-lg  hover:bg-gray-700 focus:outline-none focus:shadow-outline-gray"><small>Log in Via Recetionist</small>
+                        </button>
+                        <button @click="roleLogin('pharmacist@mail.com', 'password')" type="button" class="block px-4 py-2 mt-4 text-sm font-medium leading-5 text-center text-white transition-colors duration-150 bg-gray-600 border border-transparent rounded-lg  hover:bg-gray-700 focus:outline-none focus:shadow-outline-gray"><small>Log in Via Pharmacist</small>
+                        </button>
+                        <!-- <button @click="roleLogin('owner@mail.com', 'password')"  type="button" class="block px-4 py-2 mt-4 text-sm font-medium leading-5 text-center text-white transition-colors duration-150 bg-gray-600 border border-transparent rounded-lg hover:bg-gray-700 focus:outline-none focus:shadow-outline-gray"><small>Log in Via Owner</small>
                         </button>
                         <button @click="roleLogin('employee@mail.com', 'password')" type="button" class="block px-4 py-2 mt-4 text-sm font-medium leading-5 text-center text-white transition-colors duration-150 bg-gray-600 border border-transparent rounded-lg  hover:bg-gray-700 focus:outline-none focus:shadow-outline-gray"><small>Log in Via Employee</small>
-                        </button>
+                        </button> -->
                     </div>
                 </div>
         </div>

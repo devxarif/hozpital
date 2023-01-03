@@ -5,13 +5,14 @@ namespace App\Models;
 use App\Models\Team;
 use App\Models\Holiday;
 use App\Models\Employee;
+use App\Models\Accountant;
 use Illuminate\Support\Str;
 use App\Models\Organization;
 use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
@@ -155,7 +156,7 @@ class User extends Authenticatable
 
     public function accountant(): HasOne
     {
-        return $this->hasOne(accountant::class);
+        return $this->hasOne(Accountant::class);
     }
 
     public function pharmacist(): HasOne

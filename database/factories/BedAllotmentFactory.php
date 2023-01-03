@@ -19,12 +19,15 @@ class BedAllotmentFactory extends Factory
      */
     public function definition()
     {
+        $start = fake()->dateTimeBetween('next Monday', 'next Monday +7 days');
+        $end = fake()->dateTimeBetween($start, $start->format('Y-m-d') . ' +2 days');
+
         return [
             'bed_id' => Bed::inRandomOrder()->value('id'),
             'patient_id' => Patient::inRandomOrder()->value('id'),
             'doctor_id' => Doctor::inRandomOrder()->value('id'),
-            'allotment_time' => fake()->date(),
-            'discharge_time' => fake()->date(),
+            'allotment_time' => $start,
+            'discharge_time' => $end,
             'description' => fake()->sentence(),
         ];
     }

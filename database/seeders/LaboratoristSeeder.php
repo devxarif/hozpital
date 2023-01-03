@@ -2,9 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use App\Models\Laboratorist;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class LaboratoristSeeder extends Seeder
 {
@@ -15,6 +16,17 @@ class LaboratoristSeeder extends Seeder
      */
     public function run()
     {
+        $user = User::create([
+            'name' => 'Laboratorist',
+            'email' => 'laboratorist@mail.com',
+            'password' => bcrypt('password'),
+            'role' => 'laboratorist',
+        ]);
+
+        $user->laboratorist()->create([
+            'avatar' => null,
+        ]);
+
         Laboratorist::factory(20)->create();
     }
 }

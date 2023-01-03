@@ -2,9 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use App\Models\Accountant;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class AccountantSeeder extends Seeder
 {
@@ -15,6 +16,17 @@ class AccountantSeeder extends Seeder
      */
     public function run()
     {
+        $user = User::create([
+            'name' => 'Accountant',
+            'email' => 'accountant@mail.com',
+            'password' => bcrypt('password'),
+            'role' => 'accountant',
+        ]);
+
+        $user->accountant()->create([
+            'avatar' => null,
+        ]);
+
         Accountant::factory(20)->create();
     }
 }

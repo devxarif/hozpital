@@ -2,9 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use App\Models\Patient;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class PatientSeeder extends Seeder
 {
@@ -15,6 +16,17 @@ class PatientSeeder extends Seeder
      */
     public function run()
     {
+        $user = User::create([
+            'name' => 'Patient',
+            'email' => 'patient@mail.com',
+            'password' => bcrypt('password'),
+            'role' => 'patient',
+        ]);
+
+        $user->patient()->create([
+            'avatar' => null,
+        ]);
+
         Patient::factory(20)->create();
     }
 }
