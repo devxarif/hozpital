@@ -47,7 +47,7 @@
                         <font-awesome-icon icon="fa-solid fa-home" class="mr-3 flex-shrink-0 h-5 w-5"/>
                     </template>
                 </NavItem>
-                <DropdownMenu title="Dropdown">
+                <!-- <DropdownMenu title="Dropdown">
                     <template v-slot:icon>
                         <font-awesome-icon icon="fa-solid fa-home" class="mr-3 flex-shrink-0 h-5 w-5"/>
                     </template>
@@ -55,13 +55,13 @@
                     <DropdownMenuItem title="Members"/>
                     <DropdownMenuItem title="Calendar"/>
                     <DropdownMenuItem title="Settings"/>
-                </DropdownMenu>
+                </DropdownMenu> -->
 
 
                 <!-- Users  -->
                 <br>
                 <h3 class="px-3 text-sm font-medium text-gray-500" id="projects-headline">Users</h3>
-                <NavItem title="Department" :href="route('admin.department.index')" :active="false">
+                <NavItem title="Department" :href="route('admin.department.index')" :active="route().current('admin.department.index')">
                     <template v-slot:icon>
                         <font-awesome-icon icon="fa-solid fa-home" class="mr-3 flex-shrink-0 h-5 w-5"/>
                     </template>
