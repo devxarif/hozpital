@@ -26,7 +26,6 @@ class PharmacistFactory extends Factory
 
         return [
             'user_id' => $user->id,
-            'avatar' => asset('admin/img/default-user.png')
         ];
     }
 }

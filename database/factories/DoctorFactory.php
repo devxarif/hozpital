@@ -28,7 +28,6 @@ class DoctorFactory extends Factory
         return [
             'user_id' => $user->id,
             'department_id' => Department::inRandomOrder()->value('id'),
-            'avatar' => asset('admin/img/default-user.png')
         ];
     }
 }
