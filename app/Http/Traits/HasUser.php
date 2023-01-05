@@ -11,4 +11,16 @@ trait HasUser
     {
         return $this->belongsTo(User::class);
     }
+
+    /**
+    * The accessors that should be return avatar full path
+    *
+    * @param string $avatar
+    *
+    * @return array
+    */
+    public function getAvatarAttribute($avatar)
+    {
+        return $avatar ? asset($avatar) : asset('admin/img/default-user.png');
+    }
 }
