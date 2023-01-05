@@ -333,7 +333,7 @@
     </template>
 
     <script>
-    import NavItem from "@/Shared/Partials/NavItem.vue"
+    import NavItem from "@/Shared/Partials/Sidebar/NavItem.vue"
 
     export default {
         components: {

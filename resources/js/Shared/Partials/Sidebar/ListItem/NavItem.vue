@@ -1,4 +1,11 @@
 <template>
+    <a href="#" :class="['group flex items-center px-2 py-2 text-sm font-medium rounded-sm', active ? 'bg-slate-50 text-gray-900 hover:bg-gray-50 hover:text-gray-900':'text-gray-300 hover:bg-gray-700 hover:text-white']">
+        <slot name="icon"/>
+        {{ title }}
+    </a>
+
+
+
     <!-- group flex items-center px-3 py-2 text-sm font-medium rounded-md text-slate-300 hover:bg-slate-700 hover:text-white -->
     <!-- <li class="relative px-6 py-2 hover:bg-blue-100 rounded-xl">
         <span v-if="active" class="absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg px-6"></span>
@@ -28,16 +35,11 @@
     </Link> -->
 
     <!-- active ? 'bg-blue-500':'' -->
-    <Link :href="href" :class="['hover:text-white group p-3 rounded-md flex flex-col items-center font-medium', active ? 'bg-blue-500 text-white text-sm':'text-slate-400 text-xs']">
-        <!-- <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-        stroke="currentColor" aria-hidden="true" class="text-indigo-200 group-hover:text-white h-6 w-6">
-            <path stroke-linecap="round" stroke-linejoin="round"
-                d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25">
-            </path>
-        </svg> -->
+    <!-- <Link :href="href" :class="['hover:text-white group p-3 rounded-md flex flex-col items-center font-medium', active ? 'bg-blue-500 text-white text-sm':'text-slate-400 text-xs']">
+
         <slot name="icon"/>
         <span class="mt-2">{{ title }}</span>
-    </Link>
+    </Link> -->
 
 
 
