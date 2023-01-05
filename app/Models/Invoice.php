@@ -9,5 +9,5 @@ class Invoice extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+
 }

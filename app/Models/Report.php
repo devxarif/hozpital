@@ -9,5 +9,5 @@ class Report extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+
 }

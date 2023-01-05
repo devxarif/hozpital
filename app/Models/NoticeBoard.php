@@ -9,5 +9,5 @@ class NoticeBoard extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+
 }

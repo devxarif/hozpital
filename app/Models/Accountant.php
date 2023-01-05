@@ -10,6 +10,6 @@ class Accountant extends Model
 {
     use HasFactory, HasUser;
 
-    protected $guarded = [];
+
 
 }

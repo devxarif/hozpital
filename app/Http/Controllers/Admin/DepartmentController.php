@@ -20,7 +20,9 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        //
+        $departments = Department::latest()->paginate(12);
+
+        return inertia('Admin/Department/Index',compact('departments'));
     }
 
     /**
@@ -30,7 +32,7 @@ class DepartmentController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -43,6 +45,7 @@ class DepartmentController extends Controller
     {
         (new CreateDepartmentService())->execute($request);
 
+        $this->flashSuccess('Department created successfully');
         return back();
     }
 
@@ -92,6 +95,7 @@ class DepartmentController extends Controller
     {
         (new DeleteDepartmentService())->execute($department);
 
+        $this->flashSuccess('Department deleted successfully');
         return back();
     }
 }

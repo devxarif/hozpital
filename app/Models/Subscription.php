@@ -10,7 +10,7 @@ class Subscription extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+
 
     protected $appends = ['remaining_days', 'plan_expired'];
 

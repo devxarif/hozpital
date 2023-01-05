@@ -9,5 +9,5 @@ class Seo extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+
 }

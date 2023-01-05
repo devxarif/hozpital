@@ -11,6 +11,6 @@ class Doctor extends Model
 {
     use HasFactory, HasUser;
 
-    protected $guarded = [];
+
 
 }

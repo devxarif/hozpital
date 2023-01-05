@@ -11,8 +11,6 @@ class Department extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
-
     /**
     * The mutator that should be set department slug
     *
@@ -43,6 +41,18 @@ class Department extends Model
         }
 
         return $query->where('organization_id',$organization_id);
+    }
+
+    /**
+    * The accessors that should be return image full path
+    *
+    * @param string $image
+    *
+    * @return array
+    */
+    public function getImageAttribute($image)
+    {
+        return $image ? asset($image) : asset('admin/img/default.png');
     }
 
     /**

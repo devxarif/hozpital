@@ -10,7 +10,7 @@ class Receptionist extends Model
 {
     use HasFactory, HasUser;
 
-    protected $guarded = [];
+
 
     protected $tables = 'receptionists';
 }

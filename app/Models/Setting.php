@@ -9,7 +9,7 @@ class Setting extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+
 
     protected $appends = ['app_name','app_default_language','app_timezone','app_currency','app_currency_symbol','app_currency_symbol_position'];
 

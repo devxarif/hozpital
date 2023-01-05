@@ -9,6 +9,6 @@ class DiagnosticReport extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+
 
 }

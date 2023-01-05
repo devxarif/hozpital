@@ -9,5 +9,5 @@ class BloodDonor extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+
 }

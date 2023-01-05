@@ -10,5 +10,5 @@ class Pharmacist extends Model
 {
     use HasFactory, HasUser;
 
-    protected $guarded = [];
+
 }

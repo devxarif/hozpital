@@ -6,6 +6,7 @@ use App\Models\Cms;
 use App\Models\Setting;
 use App\Models\Language;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -27,6 +28,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Model::unguard();
+        Model::preventLazyLoading(! app()->isProduction());
+
         Paginator::useBootstrap();
 
         if (!app()->runningInConsole()) {

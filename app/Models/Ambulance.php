@@ -9,6 +9,6 @@ class Ambulance extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+
 
 }

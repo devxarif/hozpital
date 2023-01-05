@@ -10,6 +10,6 @@ class Admin extends Model
 {
     use HasFactory, HasUser;
 
-    protected $guarded = [];
+
 
 }

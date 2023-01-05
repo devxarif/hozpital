@@ -24,7 +24,7 @@ class Organization extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+
 
     protected $appends = ['organization_logo_url'];
 

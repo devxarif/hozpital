@@ -9,7 +9,7 @@ class Manufacture extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+
 
     /**
     * The mutator that should be set slug

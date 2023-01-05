@@ -9,5 +9,5 @@ class BedAllotment extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+
 }

@@ -9,7 +9,7 @@ class Cms extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+
 
     public function getAboutImageAttribute($value)
     {

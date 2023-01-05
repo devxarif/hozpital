@@ -61,6 +61,11 @@
                 <!-- Users  -->
                 <br>
                 <h3 class="px-3 text-sm font-medium text-gray-500" id="projects-headline">Users</h3>
+                <NavItem title="Department" :href="route('admin.department.index')" :active="false">
+                    <template v-slot:icon>
+                        <font-awesome-icon icon="fa-solid fa-home" class="mr-3 flex-shrink-0 h-5 w-5"/>
+                    </template>
+                </NavItem>
                 <NavItem title="Doctor" :href="route('dashboard')" :active="false">
                     <template v-slot:icon>
                         <font-awesome-icon icon="fa-solid fa-home" class="mr-3 flex-shrink-0 h-5 w-5"/>

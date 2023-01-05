@@ -74,13 +74,12 @@
         <Sidebar/>
         <div class="flex flex-1 flex-col lg:pl-64">
             <Header />
-            <main class="flex-1 p-8 dark:bg-gray-800 dark:text-white">
+            <main class="p-8 dark:bg-gray-800 dark:text-white bg-gray-100 h-screen">
                 <!-- Page header -->
-                <div class="bg-white shadow">
+                <!-- <div class="bg-white shadow">
                     <div class="px-4 sm:px-6 lg:mx-auto">
                         <div class="py-6 md:flex md:items-center md:justify-between lg:border-t lg:border-gray-200">
                             <div class="min-w-0 flex-1">
-                                <!-- Profile -->
                                 <div class="flex items-center">
                                     <img class="hidden h-16 w-16 rounded-full sm:block"
                                         src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.6&w=256&h=256&q=80"
@@ -98,7 +97,6 @@
                                             <dt class="sr-only">Company</dt>
                                             <dd
                                                 class="flex items-center text-sm font-medium capitalize text-gray-500 sm:mr-6">
-                                                <!-- Heroicon name: mini/building-office -->
                                                 <svg class="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400"
                                                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
                                                     fill="currentColor" aria-hidden="true">
@@ -111,7 +109,6 @@
                                             <dt class="sr-only">Account status</dt>
                                             <dd
                                                 class="mt-3 flex items-center text-sm font-medium capitalize text-gray-500 sm:mr-6 sm:mt-0">
-                                                <!-- Heroicon name: mini/check-circle -->
                                                 <svg class="mr-1.5 h-5 w-5 flex-shrink-0 text-green-400"
                                                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
                                                     fill="currentColor" aria-hidden="true">
@@ -135,7 +132,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
                 <slot />
             </main>

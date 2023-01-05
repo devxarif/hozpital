@@ -27,7 +27,7 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $guarded = [];
+
 
     protected $appends = ['avatar_url'];
 

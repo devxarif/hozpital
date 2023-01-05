@@ -28,6 +28,11 @@ import Toaster from "@meforma/vue-toaster";
 import vClickOutside from "click-outside-vue3"
 import { InertiaProgress } from '@inertiajs/progress';
 import Popper from "vue3-popper";
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faPenToSquare, faEye, faTrashCan, faPlus, faChevronRight } from '@fortawesome/free-solid-svg-icons'
+library.add(faPenToSquare, faEye, faTrashCan, faPlus, faChevronRight)
+
 // import dayjs from 'dayjs';
 // import RelativeTime from 'dayjs/plugin/relativeTime';
 
@@ -96,6 +101,7 @@ createInertiaApp({
                 LoadingIcon,
                 HomeIcon,
                 Popper,
+                FontAwesomeIcon
             },
             methods:{
                 route: window.route,

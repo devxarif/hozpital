@@ -9,5 +9,5 @@ class WorkingDay extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+
 }
