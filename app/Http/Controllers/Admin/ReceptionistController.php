@@ -20,7 +20,9 @@ class ReceptionistController extends Controller
      */
     public function index()
     {
-        //
+        $receptionists = Receptionist::with('user:id,name,email')->latest()->paginate(12);
+
+        return inertia('Admin/Receptionist/Index',compact('receptionists'));
     }
 
     /**
@@ -43,6 +45,7 @@ class ReceptionistController extends Controller
     {
         (new CreateReceptionistService())->execute($request);
 
+        $this->flashSuccess('Receptionist created successfully');
         return back();
     }
 
@@ -79,6 +82,7 @@ class ReceptionistController extends Controller
     {
         (new UpdateReceptionistService())->execute($request,$receptionist);
 
+         $this->flashSuccess('Receptionist updated successfully');
         return back();
     }
 
@@ -92,6 +96,7 @@ class ReceptionistController extends Controller
     {
         (new DeleteReceptionistService())->execute($receptionist);
 
+         $this->flashSuccess('Receptionist deleted successfully');
         return back();
     }
 }

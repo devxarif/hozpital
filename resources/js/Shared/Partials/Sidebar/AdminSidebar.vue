@@ -86,7 +86,7 @@
                         <font-awesome-icon icon="fa-solid fa-home" class="mr-3 flex-shrink-0 h-5 w-5"/>
                     </template>
                 </NavItem>
-                <NavItem title="Receptionist" :href="route('admin.pharmacist.index')" :active="route().current('admin.pharmacist.index')">
+                <NavItem title="Receptionist" :href="route('admin.receptionist.index')" :active="route().current('admin.receptionist.index')">
                     <template v-slot:icon>
                         <font-awesome-icon icon="fa-solid fa-home" class="mr-3 flex-shrink-0 h-5 w-5"/>
                     </template>

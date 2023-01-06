@@ -19,7 +19,9 @@ class LaboratoristController extends Controller
      */
     public function index()
     {
-        //
+        $laboratorists = Laboratorist::with('user:id,name,email')->latest()->paginate(12);
+
+        return inertia('Admin/Laboratorist/Index',compact('laboratorists'));
     }
 
     /**
@@ -42,6 +44,7 @@ class LaboratoristController extends Controller
     {
         (new CreateLaboratoristService())->execute($request);
 
+        $this->flashSuccess('Laboratorist created successfully');
         return back();
     }
 
@@ -78,6 +81,7 @@ class LaboratoristController extends Controller
     {
         (new UpdateLaboratoristService())->execute($request,$laboratorist);
 
+        $this->flashSuccess('Laboratorist updated successfully');
         return back();
     }
 
@@ -91,6 +95,7 @@ class LaboratoristController extends Controller
     {
         (new DeleteLaboratoristService())->execute($laboratorist);
 
+        $this->flashSuccess('Laboratorist deleted successfully');
         return back();
     }
 }

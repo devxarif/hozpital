@@ -19,7 +19,9 @@ class AccountantController extends Controller
      */
     public function index()
     {
-        //
+        $accountants = Accountant::with('user:id,name,email')->latest()->paginate(12);
+
+        return inertia('Admin/Accountant/Index',compact('accountants'));
     }
 
     /**
@@ -42,6 +44,7 @@ class AccountantController extends Controller
     {
         (new CreateAccountantService())->execute($request);
 
+        $this->flashSuccess('Accountant created successfully');
         return back();
     }
 
@@ -78,6 +81,7 @@ class AccountantController extends Controller
     {
         (new UpdateAccountantService())->execute($request,$accountant);
 
+        $this->flashSuccess('Accountant updated successfully');
         return back();
     }
 
@@ -91,6 +95,7 @@ class AccountantController extends Controller
     {
         (new DeleteAccountantService())->execute($accountant);
 
+        $this->flashSuccess('Accountant deleted successfully');
         return back();
     }
 }

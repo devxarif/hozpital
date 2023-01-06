@@ -19,7 +19,9 @@ class PharmacistController extends Controller
      */
     public function index()
     {
-        //
+        $pharmacists = Pharmacist::with('user:id,name,email')->latest()->paginate(12);
+
+        return inertia('Admin/Pharmacist/Index',compact('pharmacists'));
     }
 
     /**
@@ -42,6 +44,7 @@ class PharmacistController extends Controller
     {
         (new CreatePharmacistService())->execute($request);
 
+        $this->flashSuccess('Pharmacist created successfully');
         return back();
     }
 
@@ -78,6 +81,7 @@ class PharmacistController extends Controller
     {
         (new UpdatePharmacistService())->execute($request,$pharmacist);
 
+        $this->flashSuccess('Pharmacist updated successfully');
         return back();
     }
 
@@ -91,6 +95,7 @@ class PharmacistController extends Controller
     {
         (new DeletePharmacistService())->execute($pharmacist);
 
+        $this->flashSuccess('Pharmacist deleted successfully');
         return back();
     }
 }
