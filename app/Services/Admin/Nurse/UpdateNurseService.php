@@ -6,7 +6,6 @@ use App\Models\Nurse;
 
 class UpdateNurseService
 {
-
     public function execute(object $request,  object $nurse): Nurse
     {
         $this->UpdateUser($request, $nurse);
