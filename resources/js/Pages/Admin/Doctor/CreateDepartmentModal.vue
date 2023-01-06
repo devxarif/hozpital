@@ -8,7 +8,7 @@
             </button>
             <div class="px-6 py-6 lg:px-8">
                 <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Department Create</h3>
-                <form class="mb-4" @submit.prevent="createData">
+                <form class="mb-4" @submit.prevent="saveData">
                     <div class="mb-4">
                         <Label :name="__('Name')" id="department_name" :hasError="form.errors.name"/>
                         <BaseInput v-model="form.name" placeholder="Name" id="department_name" :hasError="form.errors.name"/>
@@ -81,7 +81,7 @@
                 this.previewDepartmentImage = null;
                 this.form.image = null
             },
-            createData() {
+            saveData() {
                 this.form.post(route("admin.department.store"), {
                     onSuccess: () => {
                         this.form.reset(),

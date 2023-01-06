@@ -23,7 +23,7 @@
                                     </button>
                                 </div>
                             </div>
-                            <form class="mb-4" @submit.prevent="createData">
+                            <form class="mb-4" @submit.prevent="saveData">
                                 <div class="grid grid-cols-2 gap-2">
                                     <div class="mb-4">
                                         <Label :name="__('Name')" id="doctor_name" :hasError="form.errors.name"/>
@@ -151,7 +151,7 @@ export default {
             this.previewImage = null;
             this.form.avatar = null
         },
-        createData() {
+        saveData() {
             this.form.post(route("admin.doctor.store"), {
                 onSuccess: () => {
                     this.form.reset(),

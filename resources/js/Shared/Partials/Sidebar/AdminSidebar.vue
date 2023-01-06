@@ -71,32 +71,32 @@
                         <font-awesome-icon icon="fa-solid fa-home" class="mr-3 flex-shrink-0 h-5 w-5"/>
                     </template>
                 </NavItem>
-                <NavItem title="Patient" :href="route('dashboard')" :active="false">
+                <NavItem title="Patient" :href="route('admin.nurse.index')" :active="route().current('admin.nurse.index')">
                     <template v-slot:icon>
                         <font-awesome-icon icon="fa-solid fa-home" class="mr-3 flex-shrink-0 h-5 w-5"/>
                     </template>
                 </NavItem>
-                <NavItem title="Nurse" :href="route('dashboard')" :active="false">
+                <NavItem title="Nurse" :href="route('admin.nurse.index')" :active="route().current('admin.nurse.index')">
                     <template v-slot:icon>
                         <font-awesome-icon icon="fa-solid fa-home" class="mr-3 flex-shrink-0 h-5 w-5"/>
                     </template>
                 </NavItem>
-                <NavItem title="Accountant" :href="route('dashboard')" :active="false">
+                <NavItem title="Accountant" :href="route('admin.accountant.index')" :active="route().current('admin.accountant.index')">
                     <template v-slot:icon>
                         <font-awesome-icon icon="fa-solid fa-home" class="mr-3 flex-shrink-0 h-5 w-5"/>
                     </template>
                 </NavItem>
-                <NavItem title="Receptionist" :href="route('dashboard')" :active="false">
+                <NavItem title="Receptionist" :href="route('admin.pharmacist.index')" :active="route().current('admin.pharmacist.index')">
                     <template v-slot:icon>
                         <font-awesome-icon icon="fa-solid fa-home" class="mr-3 flex-shrink-0 h-5 w-5"/>
                     </template>
                 </NavItem>
-                <NavItem title="Laboratorist" :href="route('dashboard')" :active="false">
+                <NavItem title="Laboratorist" :href="route('admin.laboratorist.index')" :active="route().current('admin.laboratorist.index')">
                     <template v-slot:icon>
                         <font-awesome-icon icon="fa-solid fa-home" class="mr-3 flex-shrink-0 h-5 w-5"/>
                     </template>
                 </NavItem>
-                <NavItem title="Pharmacist" :href="route('dashboard')" :active="false">
+                <NavItem title="Pharmacist" :href="route('admin.pharmacist.index')" :active="route().current('admin.pharmacist.index')">
                     <template v-slot:icon>
                         <font-awesome-icon icon="fa-solid fa-home" class="mr-3 flex-shrink-0 h-5 w-5"/>
                     </template>

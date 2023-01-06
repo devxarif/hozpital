@@ -19,7 +19,9 @@ class NurseController extends Controller
      */
     public function index()
     {
-        //
+        $nurses = Nurse::with('user:id,name,email')->latest()->paginate(12);
+
+        return inertia('Admin/Nurse/Index',compact('nurses'));
     }
 
     /**
@@ -40,8 +42,9 @@ class NurseController extends Controller
      */
     public function store(NurseCreateRequest $request)
     {
-        return (new CreateNurseService())->execute($request);
+        (new CreateNurseService())->execute($request);
 
+        $this->flashSuccess('Nurse created successfully');
         return back();
     }
 
@@ -78,6 +81,7 @@ class NurseController extends Controller
     {
         (new UpdateNurseService())->execute($request,$nurse);
 
+        $this->flashSuccess('Nurse updated successfully');
         return back();
     }
 
@@ -91,6 +95,7 @@ class NurseController extends Controller
     {
         (new DeleteNurseService())->execute($nurse);
 
+        $this->flashSuccess('Nurse deleted successfully');
         return back();
     }
 }

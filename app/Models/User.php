@@ -23,15 +23,6 @@ class User extends Authenticatable
     public const ROLE_OWNER = 'owner';
 
     /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
-
-
-    protected $appends = ['avatar_url'];
-
-    /**
      * The attributes that should be hidden for serialization.
      *
      * @var array<int, string>
@@ -76,13 +67,6 @@ class User extends Authenticatable
         return asset($avatar);
     }
 
-    public function getAvatarUrlAttribute(){
-        if (!$this->avatar) {
-            return asset('admin/img/default-user.png');
-        }
-
-        return asset($this->avatar);
-    }
 
     public static function getPermissionGroup()
     {

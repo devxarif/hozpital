@@ -3,14 +3,13 @@
     <div class="fixed inset-0 overflow-hidden z-50" v-if="show">
         <div class="absolute inset-0 overflow-hidden transition-opacity">
             <div class="absolute inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
-            <div class="pointer-events-none absolute right-0 inset-y-0 flex max-w-full ltr:pl-10 rtl:pr-10"
-                v-click-outside="()=> $emit('close-drawer')">
-                <div class="pointer-events-auto w-screen max-w-xs lg:max-w-2xl">
+            <div class="pointer-events-none absolute right-0 inset-y-0 flex max-w-2xl ltr:pl-10 rtl:pr-10" v-click-outside="()=> $emit('close-drawer')">
+                <div class="pointer-events-auto w-screen max-w-md lg:max-w-2xl">
                     <div class="flex h-full flex-col bg-white shadow-xl">
                         <div class="flex-1 overflow-y-auto py-6 px-4 sm:px-6">
                             <div class="flex items-start justify-between rtl:flex-row-reverse mb-5">
                                 <h2 class="text-2xl tracking-wide font-bold text-gray-900">
-                                    {{ __('Department Create') }}
+                                    {{ __('Nurse Create') }}
                                 </h2>
                                 <div class="ml-3 flex h-7 items-center">
                                     <button type="button" class="-m-2 p-2 text-gray-400 hover:text-gray-500 focus:outline-none"
@@ -25,16 +24,34 @@
                                 </div>
                             </div>
                             <form class="mb-4" @submit.prevent="saveData">
-                                <div class="mb-4">
-                                    <Label :name="__('Name')" id="department_name" :hasError="form.errors.name"/>
-                                    <BaseInput v-model="form.name" placeholder="Name" id="department_name" :hasError="form.errors.name"/>
+                                <div class="grid grid-cols-2 gap-2">
+                                    <div class="mb-4">
+                                        <Label :name="__('Name')" id="nurse_name" :hasError="form.errors.name"/>
+                                        <BaseInput v-model="form.name" placeholder="Name" id="nurse_name" :hasError="form.errors.name"/>
+                                    </div>
+                                    <div class="mb-4">
+                                        <Label :name="__('Email')" id="nurse_email" :hasError="form.errors.email"/>
+                                        <BaseInput v-model="form.email" placeholder="Email Address" id="nurse_email" :hasError="form.errors.email"/>
+                                    </div>
                                 </div>
                                 <div class="mb-4">
-                                    <Label :name="__('Description')" id="department_description" :hasError="form.errors.description" :required="false"/>
-                                    <BaseTextarea v-model="form.description" placeholder="Description" id="department_description" :hasError="form.errors.description"/>
+                                    <label for="nurse_password">
+                                        <div class="flex justify-between ">
+                                            <span class="text-md font-medium" :class="['block mb-2 text-md font-medium', form.errors.password ? 'text-red-600 dark:text-red-600':'text-gray-900 dark:text-gray-300']">{{ __('Password') }}</span>
+                                            <button type="button" class="underline focus:outline-none text-xs" @click.prevent="generatePassword()">Generate random password</button>
+                                        </div>
+                                    </label>
+                                    <div class="relative">
+                                        <BaseInput v-model="form.password" placeholder="Password" id="nurse_password" :hasError="form.errors.password" :type="passwordFieldType"/>
+                                        <span class="absolute inset-y-0 right-0 pr-2 flex items-center cursor-pointer"
+                                            @click="switchVisibility" v-if="form.password">
+                                            <EyeShowIcon v-if="passwordFieldType == 'text'"/>
+                                            <EyeHideIcon v-else/>
+                                        </span>
+                                    </div>
                                 </div>
                                 <div class="mb-4">
-                                    <Label :name="__('Image')" id="department_image" :hasError="form.errors.image" :required="false"/>
+                                    <Label :name="__('Image')" id="nurse_create_image" :hasError="form.errors.image" :required="false"/>
                                     <div class="flex justify-center items-center w-full" v-if="!previewImage">
                                         <label for="dropzone-file" class="flex flex-col justify-center items-center w-full h-60 bg-gray-50 rounded-lg border-2 border-gray-300 border-dashed cursor-pointer dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
                                             <div class="flex flex-col justify-center items-center pt-5 pb-6">
@@ -72,52 +89,81 @@
 </template>
 
 <script>
-    export default {
-        props: {
-            show: {
-                type: Boolean,
-                default: false
+import EyeHideIcon from '@/Shared/Icons/EyeHideIcon.vue';
+import EyeShowIcon from '@/Shared/Icons/EyeShowIcon.vue';
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faHome } from '@fortawesome/free-solid-svg-icons'
+
+export default {
+    components:{
+        EyeHideIcon,
+        EyeShowIcon,
+        library,
+        faHome,
+    },
+    props: {
+        show: {
+            type: Boolean,
+            default: false
+        }
+    },
+    data() {
+        return {
+            form: this.$inertia.form({
+                name: '',
+                email: "",
+                password: "",
+                avatar: '',
+            }),
+
+            previewImage: null,
+            passwordFieldType: 'password',
+        };
+    },
+    methods: {
+        onFileChange(e) {
+            const file = e.target.files[0];
+            this.form.avatar = file
+            this.previewImage = URL.createObjectURL(file);
+        },
+        removeImage(){
+            this.previewImage = null;
+            this.form.avatar = null
+        },
+        saveData() {
+            this.form.post(route("admin.nurse.store"), {
+                onSuccess: () => {
+                    this.form.reset(),
+                    this.removeImage()
+                    this.$emit('close-drawer')
+                },
+            });
+        },
+        switchVisibility() {
+            this.passwordFieldType = this.passwordFieldType === "password" ? "text" : "password";
+        },
+        generatePassword(){
+            this.form.password = null
+            var chars = "0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            var passwordLength = 12;
+
+            for (var i = 0; i <= passwordLength; i++) {
+                var randomNumber = Math.floor(Math.random() * chars.length);
+                this.form.password += chars.substring(randomNumber, randomNumber +1);
             }
         },
-        data() {
-            return {
-                form: this.$inertia.form({
-                    name: '',
-                    description: "",
-                    image: '',
-                }),
+        generateEmail(){
+            var text = "";
+            var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
-                previewImage: null,
-            };
-        },
-        methods: {
-            onFileChange(e) {
-                const file = e.target.files[0];
-                this.form.image = file
-                this.previewImage = URL.createObjectURL(file);
-            },
-            removeImage(){
-                this.previewImage = null;
-                this.form.image = null
-            },
-            saveData() {
-                this.form.post(route("admin.department.store"), {
-                    onSuccess: () => {
-                        this.form.reset(),
-                        this.removeImage()
-                        this.$emit('close-drawer')
-                    },
-                });
-            },
-            statusChange(event) {
-                this.form.status = event.target.checked;
-            },
-            customLookStatusChange(event) {
-                this.form.custom_theme_lookup = event.target.checked;
-            },
-        },
-        mounted() {
-            this.checkPagePermission('admin')
+            for( var i=0; i < 15; i++ )
+                text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+            return text + '@mail.com';
         }
-    };
+    },
+    mounted() {
+        this.checkPagePermission('admin')
+    }
+};
 </script>

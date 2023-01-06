@@ -25,7 +25,7 @@
                                         </button>
                                     </div>
                                 </div>
-                                <form class="mb-4" @submit.prevent="createData">
+                                <form class="mb-4" @submit.prevent="saveData">
                                 <div class="mb-4">
                                     <Label :name="__('Name')" id="department_name" :hasError="form.errors.name"/>
                                     <BaseInput v-model="form.name" placeholder="Name" id="department_name" :hasError="form.errors.name"/>
@@ -124,7 +124,7 @@ export default {
             this.previewImage = null;
             this.form.image = null
         },
-        createData() {
+        saveData() {
             this.form.post(route("admin.department.update", this.department.id), {
                 onSuccess: () => {
                     this.form.reset(),
