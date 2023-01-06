@@ -69,7 +69,7 @@
                 <h2 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ patient.user?.name ?? '-' }}</h2>
                 <h6 class="my-1 text-sm font-bold tracking-tight text-gray-900 dark:text-white">{{ patient.user.email ?? '-' }}</h6>
                 <h6 class="my-1 text-sm font-bold tracking-tight text-gray-900 dark:text-white" v-if="patient.phone">{{ patient.phone ?? '-' }}</h6>
-                <span class="text-xs font-semibold mr-2 px-2.5 py-0.5 rounded bg-green-100 text-green-800 dark:bg-green-200 dark:text-green-900" v-if="patient.gender">
+                <span class="text-xs font-semibold mr-2 px-2.5 py-0.5 rounded bg-green-100 text-green-800 dark:bg-green-200 dark:text-green-900 capitalize" v-if="patient.gender">
                     {{ patient.gender ?? '-' }}
                 </span>
             </span>

@@ -3,8 +3,8 @@
     <div class="fixed inset-0 overflow-hidden z-50" v-if="show">
         <div class="absolute inset-0 overflow-hidden transition-opacity">
             <div class="absolute inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
-            <div class="pointer-events-none absolute right-0 inset-y-0 flex max-w-2xl ltr:pl-10 rtl:pr-10" v-click-outside="()=> $emit('close-drawer')">
-                <div class="pointer-events-auto w-screen max-w-md lg:max-w-2xl">
+            <div class="pointer-events-none absolute right-0 inset-y-0 flex max-w-6xl ltr:pl-10 rtl:pr-10" v-click-outside="()=> $emit('close-drawer')">
+                <div class="pointer-events-auto max-w-5xl">
                     <div class="flex h-full flex-col bg-white shadow-xl">
                         <div class="flex-1 overflow-y-auto py-6 px-4 sm:px-6">
                             <div class="flex items-start justify-between rtl:flex-row-reverse mb-5">
@@ -56,8 +56,8 @@
                                 </div>
                                 <div class="grid grid-cols-2 gap-2">
                                     <div class="mb-4">
-                                        <Label :name="__('Phone')" id="patient_phone" :hasError="form.errors.name" :required="false"/>
-                                        <BaseInput v-model="form.name" placeholder="Name" id="patient_phone" :hasError="form.errors.name"/>
+                                        <Label :name="__('Phone')" id="patient_phone" :hasError="form.errors.phone" :required="false"/>
+                                        <BaseInput v-model="form.phone" placeholder="Phone Number" id="patient_phone" :hasError="form.errors.phone"/>
                                     </div>
                                     <div class="mb-4">
                                         <Label :name="__('Gender')" :hasError="form.errors.email" :required="false"/>
@@ -73,23 +73,31 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="grid grid-cols-2 gap-2">
+                                <div class="grid grid-cols-3 gap-2">
+                                    <div class="mb-4">
+                                        <Label :name="__('Birth Date')" id="patient_age" :hasError="form.errors.age" :required="false"/>
+                                        <!-- <BaseInput v-model="form.age" placeholder="Age" id="patient_age" :hasError="form.errors.age"/> -->
+                                        <Datepicker v-model="form.birth_date" :enableTimePicker="false" class="bg-gray-50 border text-md rounded-lg block w-full p-1 dark:bg-gray-700 dark:placeholder-gray-400 dark:text-white"
+                                            @update:modelValue="handleCustomDate" :class="{'is-invalid': form.errors.birth_date}" :placeholder="__('Select Date')" :default-value="new Date()"
+      :disabled-date="disabledAfterToday" />
+                                        <!-- <span v-if="errors.birth_date" class="invalid-feedback">{{ errors.birth_date && errors.birth_date[0] }}</span> -->
+                                    </div>
                                     <div class="mb-4">
                                         <Label :name="__('Age')" id="patient_age" :hasError="form.errors.age" :required="false"/>
                                         <BaseInput v-model="form.age" placeholder="Age" id="patient_age" :hasError="form.errors.age"/>
                                     </div>
                                     <div class="mb-4">
-                                        <Label :name="__('Blood Group')" id="patient_blood_group" :hasError="form.errors.email" :required="false"/>
+                                        <Label :name="__('Blood Group')" id="patient_blood_group" :hasError="form.errors.blood_group" :required="false"/>
                                         <BaseSelect v-model:value="form.blood_group" :hasError="form.errors.blood_group" class="w-3/2" id="patient_blood_group" :showMessage="false">
                                             <option value="" hidden>{{ __('Select Blood Group') }}</option>
-                                            <option value="A+">A+</option>
-                                            <option value="B+">B+</option>
-                                            <option value="AB+">AB+</option>
-                                            <option value="O+">O+</option>
-                                            <option value="A-">A-</option>
-                                            <option value="B-">B-</option>
-                                            <option value="AB-">AB-</option>
-                                            <option value="O-">O-</option>
+                                            <option :selected="form.blood_group == 'A+'" value="A+">A+</option>
+                                            <option :selected="form.blood_group == 'A-'" value="A-">A-</option>
+                                            <option :selected="form.blood_group == 'B+'" value="B+">B+</option>
+                                            <option :selected="form.blood_group == 'B-'" value="B-">B-</option>
+                                            <option :selected="form.blood_group == 'AB+'" value="AB+">AB+</option>
+                                            <option :selected="form.blood_group == 'AB+'" value="AB-">AB-</option>
+                                            <option :selected="form.blood_group == 'O+'" value="O+">O+</option>
+                                            <option :selected="form.blood_group == 'O-'" value="O-">O-</option>
                                         </BaseSelect>
                                     </div>
                                 </div>
@@ -141,6 +149,9 @@ import EyeHideIcon from '@/Shared/Icons/EyeHideIcon.vue';
 import EyeShowIcon from '@/Shared/Icons/EyeShowIcon.vue';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faHome } from '@fortawesome/free-solid-svg-icons'
+import Datepicker from "@vuepic/vue-datepicker";
+import "@vuepic/vue-datepicker/dist/main.css";
+import dayjs from "dayjs";
 
 export default {
     components:{
@@ -148,6 +159,8 @@ export default {
         EyeShowIcon,
         library,
         faHome,
+        dayjs,
+        Datepicker
     },
     props: {
         show: {
@@ -164,8 +177,14 @@ export default {
             handler() {
                 this.form.name = this.patient.user?.name ?? ''
                 this.form.email = this.patient.user?.email ?? ''
+                this.form.address = this.patient?.address ?? ''
+                this.form.gender = this.patient?.gender ?? 'male'
+                this.form.birth_date = this.patient?.birth_date ?? '',
+                this.form.age = this.patient?.age ?? '',
+                this.form.blood_group = this.patient?.blood_group ?? '',
                 this.previewImage = this.patient.avatar
             },
+
             deep: true,
         },
     },
@@ -176,6 +195,11 @@ export default {
                 email: this.patient.user?.email ?? '',
                 password: "",
                 avatar: '',
+                address: this.patient?.address ?? '',
+                gender: this.patient?.gender ?? 'male',
+                birth_date: this.patient?.birth_date ?? '',
+                age: this.patient?.age ?? '',
+                blood_group: this.patient?.blood_group ?? '',
                 _method: 'PUT'
             }),
 
@@ -223,7 +247,17 @@ export default {
                 text += possible.charAt(Math.floor(Math.random() * possible.length));
 
             return text + '@mail.com';
-        }
+        },
+        handleCustomDate(date) {
+            const formatTime = dayjs(date).format("YYYY-MM-DD");
+            this.form.birth_date = formatTime;
+        },
+        disabledAfterToday(date) {
+            console.log(date)
+            const today = new Date();
+            // today.setHours(0, 0, 0, 0);
+            return date > today
+        },
     },
     mounted() {
         this.checkPagePermission('admin')

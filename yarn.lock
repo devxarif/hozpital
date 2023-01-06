@@ -493,12 +493,13 @@
   resolved "https://registry.yarnpkg.com/@vue/shared/-/shared-3.2.41.tgz#fbc95422df654ea64e8428eced96ba6ad555d2bb"
   integrity sha512-W9mfWLHmJhkfAmV+7gDjcHeAWALQtgGT3JErxULl0oz6R6+3ug91I7IErs93eCFhPCZPHBs4QJS7YWEV7A3sxw==
 
-"@vuepic/vue-datepicker@^3.2.1":
-  version "3.5.2"
-  resolved "https://registry.yarnpkg.com/@vuepic/vue-datepicker/-/vue-datepicker-3.5.2.tgz#4c440ddd4e002d7ab97349625e32157922e4869f"
-  integrity sha512-kaMqs6Bf3xXeIwHY/NLTTJ2WznROdkFEbKj5eYq7u6AkZhg9l/+U7aF+JhfncLIpPAIil3+V4nej2gxPewKiiQ==
+"@vuepic/vue-datepicker@^3.6.4":
+  version "3.6.4"
+  resolved "https://registry.yarnpkg.com/@vuepic/vue-datepicker/-/vue-datepicker-3.6.4.tgz#ce7addfac6e51b2ac844aa9e070af645d236f780"
+  integrity sha512-A13K+UNf29H2kQK4RYbFwqgkAFnWxArqW3AD3inhtIDmhI5n3QsUIvSTWJBszYcuhx2k2f2mD6dEPncOtsZi3A==
   dependencies:
     date-fns "^2.29.3"
+    date-fns-tz "^1.3.7"
 
 "@vueup/vue-quill@^1.0.0-beta.9":
   version "1.0.0-beta.10"
@@ -1032,6 +1033,11 @@ dargs@^7.0.0:
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/dargs/-/dargs-7.0.0.tgz#04015c41de0bcb69ec84050f3d9be0caf8d6d5cc"
   integrity sha512-2iy1EkLdlBzQGvbweYRFxmFath8+K7+AKB0TlhHWkNuH+TmovaMH/Wp7V7R4u7f4SnX3OgLsU9t1NI9ioDnUpg==
+
+date-fns-tz@^1.3.7:
+  version "1.3.7"
+  resolved "https://registry.yarnpkg.com/date-fns-tz/-/date-fns-tz-1.3.7.tgz#e8e9d2aaceba5f1cc0e677631563081fdcb0e69a"
+  integrity sha512-1t1b8zyJo+UI8aR+g3iqr5fkUHWpd58VBx8J/ZSQ+w7YrGlw80Ag4sA86qkfCXRBLmMc4I2US+aPMd4uKvwj5g==
 
 date-fns@^2.29.3:
   version "2.29.3"

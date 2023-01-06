@@ -32,7 +32,6 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faPenToSquare, faEye, faTrashCan, faPlus, faChevronRight } from '@fortawesome/free-solid-svg-icons'
 library.add(faPenToSquare, faEye, faTrashCan, faPlus, faChevronRight)
-
 // import dayjs from 'dayjs';
 // import RelativeTime from 'dayjs/plugin/relativeTime';
 
