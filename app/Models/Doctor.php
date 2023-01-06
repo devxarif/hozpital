@@ -10,4 +10,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Doctor extends Model
 {
     use HasFactory, HasUser;
+
+    public function department(): BelongsTo
+    {
+        return $this->belongsTo(Department::class);
+    }
 }

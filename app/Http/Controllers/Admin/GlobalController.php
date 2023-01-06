@@ -14,7 +14,7 @@ use App\Models\LeaveType;
 class GlobalController extends Controller
 {
     public function fetchDepartments(){
-        return Department::select('id','name')->get();
+        return Department::select('id','name')->latest()->get();
     }
 
 

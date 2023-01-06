@@ -26,7 +26,7 @@ class NurseUpdateRequest extends FormRequest
         return [
             'name' => 'required|max:255',
             'email' => "required|email|max:255|unique:users,email,{$this->nurse->user->id}",
-            'password' => 'sometimes|min:4',
+            'password' => 'nullable|min:4',
             'avatar' => 'nullable|image|mimes:png,jpg,jpeg,svg|max:5120',
         ];
     }

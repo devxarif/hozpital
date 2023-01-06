@@ -3,17 +3,17 @@
     <div class="fixed inset-0 overflow-hidden z-50" v-if="show">
         <div class="absolute inset-0 overflow-hidden transition-opacity">
             <div class="absolute inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
-            <div class="pointer-events-none absolute right-0 inset-y-0 flex max-w-2xl ltr:pl-10 rtl:pr-10" v-click-outside="()=> $emit('close-drawer', freezeDrawer)">
+            <div class="pointer-events-none absolute right-0 inset-y-0 flex max-w-2xl ltr:pl-10 rtl:pr-10" v-click-outside="()=> $emit('close-drawer', freezeEditDrawer)">
                 <div class="pointer-events-auto w-screen max-w-md lg:max-w-2xl">
                     <div class="flex h-full flex-col bg-white shadow-xl">
                         <div class="flex-1 overflow-y-auto py-6 px-4 sm:px-6">
                             <div class="flex items-start justify-between rtl:flex-row-reverse mb-5">
                                 <h2 class="text-2xl tracking-wide font-bold text-gray-900">
-                                    {{ __('Doctor Create') }}
+                                    {{ __('Doctor Update') }}
                                 </h2>
                                 <div class="ml-3 flex h-7 items-center">
                                     <button type="button" class="-m-2 p-2 text-gray-400 hover:text-gray-500 focus:outline-none"
-                                        @click="$emit('close-drawer', freezeDrawer)">
+                                        @click="$emit('close-drawer', freezeEditDrawer)">
                                         <svg class="h-6 w-6"
                                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                             stroke="currentColor" aria-hidden="true">
@@ -23,7 +23,7 @@
                                     </button>
                                 </div>
                             </div>
-                            <form class="mb-4" @submit.prevent="createData">
+                            <form class="mb-4" @submit.prevent="saveData">
                                 <div class="grid grid-cols-2 gap-2">
                                     <div class="mb-4">
                                         <Label :name="__('Name')" id="doctor_name" :hasError="form.errors.name"/>
@@ -37,7 +37,7 @@
                                 <div class="mb-4">
                                     <label for="doctor_password">
                                         <div class="flex justify-between ">
-                                            <span class="text-md font-medium" :class="['block mb-2 text-md font-medium', form.errors.password ? 'text-red-600 dark:text-red-600':'text-gray-900 dark:text-gray-300']">{{ __('Password') }}</span>
+                                            <span class="text-md font-medium" :class="['block mb-2 text-md font-medium', form.errors.password ? 'text-red-600 dark:text-red-600':'text-gray-900 dark:text-gray-300']">{{ __('Change Password') }}</span>
                                             <button type="button" class="underline focus:outline-none text-xs" @click.prevent="generatePassword()">Generate random password</button>
                                         </div>
                                     </label>
@@ -64,7 +64,7 @@
                                     <ErrorMessage :name="form.errors.department"/>
                                 </div>
                                 <div class="mb-4">
-                                    <Label :name="__('Image')" id="doctor_create_image" :hasError="form.errors.image" :required="false"/>
+                                    <Label :name="__('Image')" id="department_image" :hasError="form.errors.image" :required="false"/>
                                     <div class="flex justify-center items-center w-full" v-if="!previewImage">
                                         <label for="dropzone-file" class="flex flex-col justify-center items-center w-full h-60 bg-gray-50 rounded-lg border-2 border-gray-300 border-dashed cursor-pointer dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
                                             <div class="flex flex-col justify-center items-center pt-5 pb-6">
@@ -122,22 +122,38 @@ export default {
         show: {
             type: Boolean,
             default: false
+        },
+        doctor:{
+            type: Object,
+            required: true,
         }
+    },
+    watch: {
+        doctor: {
+            handler() {
+                this.form.name = this.doctor.user?.name ?? ''
+                this.form.email = this.doctor.user?.email ?? ''
+                this.form.department = this.doctor.department_id ?? ''
+                this.previewImage = this.doctor.avatar
+            },
+            deep: true,
+        },
     },
     data() {
         return {
             form: this.$inertia.form({
-                name: '',
-                email: "",
+                name: this.doctor.user?.name ?? '',
+                email: this.doctor.user?.email ?? '',
                 password: "",
-                department: "",
+                department: this.doctor.department_id ?? '',
                 avatar: '',
+                _method: 'PUT'
             }),
 
-            previewImage: null,
+            previewImage: this.doctor.avatar,
             passwordFieldType: 'password',
             showCreateDepartmentModal: false,
-            freezeDrawer: false,
+            freezeEditDrawer: false,
             departments: [],
         };
     },
@@ -151,8 +167,8 @@ export default {
             this.previewImage = null;
             this.form.avatar = null
         },
-        createData() {
-            this.form.post(route("admin.doctor.store"), {
+        saveData() {
+            this.form.post(route("admin.doctor.update", this.doctor.id), {
                 onSuccess: () => {
                     this.form.reset(),
                     this.removeImage()
@@ -164,7 +180,7 @@ export default {
             this.passwordFieldType = this.passwordFieldType === "password" ? "text" : "password";
         },
         showDepartmentModal() {
-            this.freezeDrawer = true;
+            this.freezeEditDrawer = true;
             this.showCreateDepartmentModal = true
         },
         async closeDepartmentModal(fetched = false) {
@@ -176,7 +192,7 @@ export default {
             this.showCreateDepartmentModal = false
 
             setTimeout(() => {
-                this.freezeDrawer = false
+                this.freezeEditDrawer = false
             }, 500);
         },
         generatePassword(){

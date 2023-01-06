@@ -19,7 +19,7 @@ class DoctorController extends Controller
      */
     public function index()
     {
-        $doctors = Doctor::with('user:id,name')->latest()->paginate(12);
+        $doctors = Doctor::with('user:id,name,email','department:id,name')->latest()->paginate(12);
 
         return inertia('Admin/Doctor/Index',compact('doctors'));
     }
@@ -44,6 +44,7 @@ class DoctorController extends Controller
     {
         (new CreateDoctorService())->execute($request);
 
+        $this->flashSuccess('Doctor created successfully');
         return back();
     }
 
@@ -80,6 +81,7 @@ class DoctorController extends Controller
     {
         (new UpdateDoctorService())->execute($request,$doctor);
 
+        $this->flashSuccess('Doctor updated successfully');
         return back();
     }
 
@@ -93,6 +95,7 @@ class DoctorController extends Controller
     {
         (new DeleteDoctorService())->execute($doctor);
 
+        $this->flashSuccess('Doctor deleted successfully');
         return back();
     }
 }

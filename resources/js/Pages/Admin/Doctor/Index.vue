@@ -66,24 +66,24 @@
                     </div>
 
                 </div>
-                <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ doctor.name }}</h2>
-                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                    <!-- {{ doctors.description }} -->ads
-                </p>
+                <h2 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ doctor.user?.name ?? '-' }}</h2>
+                <h6 class="my-1 text-sm font-bold tracking-tight text-gray-900 dark:text-white">{{ doctor.user.email ?? '-' }}</h6>
+                <span class="text-xs font-semibold mr-2 px-2.5 py-0.5 rounded bg-green-100 text-green-800 dark:bg-green-200 dark:text-green-900">
+                    {{ doctor.department.name ?? '-' }}
+                </span>
             </span>
         </div>
 
         <Pagination :data="doctors" v-if="doctors && doctors.data.length" class="mt-5"/>
 
-        <CreateDoctor :show="showCreateDrawer" @close-drawer="showCreateDrawer = false"/>
-        <!-- <EditDepartment :show="showEditDepartment" @close-drawer="showEditDepartment = false" :department="editDepartment"/> -->
-
+        <CreateDoctor :show="showCreateDrawer" @close-drawer="closeCreateDrawer"/>
+        <EditDoctor :show="showEditDoctor" @close-drawer="closeEditDrawer" :doctor="editDoctor"/>
     </AppLayout>
 </template>
 
 <script>
     import CreateDoctor from "./Create.vue";
-    // import EditDepartment from "./Edit.vue";
+    import EditDoctor from "./Edit.vue";
     import Pagination from "@/Shared/Pagination.vue";
 
     import { library } from '@fortawesome/fontawesome-svg-core'
@@ -94,7 +94,7 @@
         components: {
             Pagination,
             CreateDoctor,
-            // EditDepartment,
+            EditDoctor,
             library
         },
         props: {
@@ -106,8 +106,8 @@
         data() {
             return {
                 showCreateDrawer: false,
-                showEditDepartment: false,
-                editDepartment: '',
+                showEditDoctor: false,
+                editDoctor: '',
             }
         },
         methods: {
@@ -122,16 +122,27 @@
                     confirmButtonText: "Yes, delete it!",
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        this.$inertia.delete(route("admin.department.destroy", id));
+                        this.$inertia.delete(route("admin.doctor.destroy", id));
                     }
                 });
             },
-            editData(department){
-                this.showEditDepartment = true
-                this.editDepartment = department
+            editData(data){
+                this.showEditDoctor = true
+                this.editDoctor = data
             },
-            loadDepartment(){
-
+            closeCreateDrawer(freeze){
+                if(!freeze){
+                    this.showCreateDrawer = false
+                }else{
+                    this.showCreateDrawer = true
+                }
+            },
+            closeEditDrawer(freeze){
+                if(!freeze){
+                    this.showEditDoctor = false
+                }else{
+                    this.showEditDoctor = true
+                }
             }
         },
         mounted() {
