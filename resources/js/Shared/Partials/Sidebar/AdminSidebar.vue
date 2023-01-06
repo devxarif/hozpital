@@ -71,7 +71,7 @@
                         <font-awesome-icon icon="fa-solid fa-home" class="mr-3 flex-shrink-0 h-5 w-5"/>
                     </template>
                 </NavItem>
-                <NavItem title="Patient" :href="route('admin.nurse.index')" :active="route().current('admin.nurse.index')">
+                <NavItem title="Patient" :href="route('admin.patient.index')" :active="route().current('admin.patient.index')">
                     <template v-slot:icon>
                         <font-awesome-icon icon="fa-solid fa-home" class="mr-3 flex-shrink-0 h-5 w-5"/>
                     </template>

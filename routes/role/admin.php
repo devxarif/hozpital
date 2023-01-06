@@ -30,7 +30,7 @@ Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function () 
     Route::resource('doctor', DoctorController::class);
 
     // Patient Routes
-    Route::resource('patient', PatientController::class)''
+    Route::resource('patient', PatientController::class);
     // ->withoutMiddleware('auth');
 
     // Nurse Routes
