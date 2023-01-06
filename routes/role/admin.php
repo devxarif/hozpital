@@ -177,6 +177,10 @@ Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function () 
     // });
 });
 
+Route::controller(GlobalController::class)->group(function(){
+    Route::get('fetch/departments', 'fetchDepartments')->name('fetch.departments');
+});
+
 // Profile & Settings
 // Route::controller(UserController::class)->middleware('auth')->group(function () {
 //     Route::get('/profile', 'profile')->name('user.profile');

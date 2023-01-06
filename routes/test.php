@@ -6,17 +6,20 @@ use App\Models\Setting;
 use App\Models\Employee;
 use App\Models\Language;
 use App\Models\LeaveType;
+use App\Models\Department;
 use Illuminate\Support\Str;
+use App\Models\ContactMessage;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Benchmark;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\Admin\UpgradeController;
-use App\Models\ContactMessage;
 use sirajcse\UniqueIdGenerator\UniqueIdGenerator;
 
 Route::get('/', function () {
+
+    return Department::select('id','name')->get();
 
     return inertia('Layout');
 

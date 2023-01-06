@@ -2,6 +2,7 @@
     <select :id="name" :class="[className, hasError ? errorClass:defaultClass]" @change="$emit('update:value', $event.target.value)">
         <slot/>
     </select>
+    <ErrorMessage :name="hasError" v-if="showMessage"/>
 </template>
 
 <script>
@@ -14,6 +15,14 @@
             className: {
                 type: String,
                 default: "bg-gray-50 border text-md rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:placeholder-gray-400 dark:text-white",
+            },
+            hasError: {
+                type: String,
+                default: false
+            },
+            showMessage: {
+                type: Boolean,
+                default: true
             }
         },
         data(){

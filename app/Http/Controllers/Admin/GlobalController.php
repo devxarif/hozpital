@@ -8,10 +8,32 @@ use App\Models\Organization;
 use Illuminate\Http\Request;
 use App\Models\ContactMessage;
 use App\Http\Controllers\Controller;
+use App\Models\Department;
 use App\Models\LeaveType;
 
 class GlobalController extends Controller
 {
+    public function fetchDepartments(){
+        return Department::select('id','name')->get();
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     public function diffBetweenDays(Request $request)
     {
         $organization_id = $request->organization_id;

@@ -1,6 +1,6 @@
 <template>
 
-    <Head :title="__('Department')" />
+    <Head :title="__('Doctor')" />
     <AppLayout>
 
         <!-- Header Part  -->
@@ -16,20 +16,20 @@
                     <div class="flex items-center">
                         <font-awesome-icon icon="fa-solid fa-chevron-right" class="w-3 h-3 text-gray-400" />
                         <a href="#"
-                            class="text-gray-700 hover:text-gray-900 ml-1 md:ml-2 text-sm font-medium">Department</a>
+                            class="text-gray-700 hover:text-gray-900 ml-1 md:ml-2 text-sm font-medium">Doctor</a>
                     </div>
                 </li>
             </ol>
         </nav>
         <div class="mb-4 flex justify-between">
             <h2 class="text-3xl font-semibold leading-7 text-gray-900 dark:text-gray-200 sm:text-3xl sm:truncate">
-                {{ __('Department') }}
+                {{ __('Doctor') }}
             </h2>
 
             <div class="flex items-center space-x-2 sm:space-x-3 ml-auto">
                 <button @click="showCreateDrawer = true" type="button" class="w-1/2 text-white bg-blue-600 hover:bg-blue-700 font-medium inline-flex items-center justify-center rounded-full text-sm px-3 py-2 text-center sm:w-auto focus:outline-none">
                     <font-awesome-icon icon="fa-solid fa-plus" class="h-4 w-4 mr-2"/>
-                   {{ __('Add Department') }}
+                   {{ __('Add Doctor') }}
                 </button>
                 <a href="#"
                     class="w-1/2 text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 font-medium inline-flex items-center justify-center rounded-lg text-sm px-3 py-2 text-center sm:w-auto focus:outline-none">
@@ -46,43 +46,44 @@
 
         <!-- Body Part  -->
         <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-            <span v-for="department in departments.data" :key="department.id" class="block p-6 bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+            <span v-for="doctor in doctors.data" :key="doctor.id" class="block p-6 bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
                 <div class="flex flex-wrap justify-between items-start">
                     <div class="relative mb-5">
                         <span>
-                            <img class="w-16 h-16 rounded object-cover" alt="Figma logo" :src="department.image">
+                            <img class="w-16 h-16 rounded object-cover" alt="Figma logo" :src="doctor.avatar">
                         </span>
                     </div>
                     <div class="flex gap-2">
-                        <button type="button" class="focus:outline-none" @click.prevent="editData(department)">
+                        <button type="button" class="focus:outline-none" @click.prevent="editData(doctor)">
                             <font-awesome-icon icon="fa-solid fa-pen-to-square" class="h-5 w-5 text-blue-500"/>
                         </button>
                         <button type="button" class="focus:outline-none">
                             <font-awesome-icon icon="fa-solid fa-eye" class=" h-5 w-5 text-pink-500"/>
                         </button>
-                        <button type="button" class="focus:outline-none" @click.prevent="deleteData(department.id)">
+                        <button type="button" class="focus:outline-none" @click.prevent="deleteData(doctor.id)">
                             <font-awesome-icon icon="fa-solid fa-trash-can" class=" h-5 w-5 text-red-500"/>
                         </button>
                     </div>
 
                 </div>
-                <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ department.name }}</h2>
+                <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ doctor.name }}</h2>
                 <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                    {{ department.description }}
+                    <!-- {{ doctors.description }} -->ads
                 </p>
             </span>
         </div>
 
-        <Pagination :data="departments" v-if="departments && departments.data.length" class="mt-5"/>
+        <Pagination :data="doctors" v-if="doctors && doctors.data.length" class="mt-5"/>
 
-        <CreateDepartment :show="showCreateDrawer" @close-drawer="showCreateDrawer = false"/>
-        <EditDepartment :show="showEditDepartment" @close-drawer="showEditDepartment = false" :department="editDepartment"/>
+        <CreateDoctor :show="showCreateDrawer" @close-drawer="showCreateDrawer = false"/>
+        <!-- <EditDepartment :show="showEditDepartment" @close-drawer="showEditDepartment = false" :department="editDepartment"/> -->
+
     </AppLayout>
 </template>
 
 <script>
-    import CreateDepartment from "./Create.vue";
-    import EditDepartment from "./Edit.vue";
+    import CreateDoctor from "./Create.vue";
+    // import EditDepartment from "./Edit.vue";
     import Pagination from "@/Shared/Pagination.vue";
 
     import { library } from '@fortawesome/fontawesome-svg-core'
@@ -92,12 +93,12 @@
     export default {
         components: {
             Pagination,
-            CreateDepartment,
-            EditDepartment,
+            CreateDoctor,
+            // EditDepartment,
             library
         },
         props: {
-            departments:{
+            doctors:{
                 type: Array,
                 default: () => []
             }
@@ -128,6 +129,9 @@
             editData(department){
                 this.showEditDepartment = true
                 this.editDepartment = department
+            },
+            loadDepartment(){
+
             }
         },
         mounted() {

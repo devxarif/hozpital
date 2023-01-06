@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Doctor;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\DoctorCreateRequest;
 use App\Http\Requests\Admin\DoctorUpdateRequest;
@@ -20,7 +19,9 @@ class DoctorController extends Controller
      */
     public function index()
     {
-        //
+        $doctors = Doctor::with('user:id,name')->latest()->paginate(12);
+
+        return inertia('Admin/Doctor/Index',compact('doctors'));
     }
 
     /**
