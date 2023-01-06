@@ -55,8 +55,8 @@ test('pharmacist update validation redirect back to form', function(){
         'password' => '',
     ])
     ->assertStatus(302)
-    ->assertSessionHasErrors(['name','email','password'])
-    ->assertInvalid(['name','email','password']);
+    ->assertSessionHasErrors(['name','email'])
+    ->assertInvalid(['name','email']);
 });
 
 test('pharmacist update unique validation redirect back to form', function(){

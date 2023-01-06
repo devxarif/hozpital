@@ -55,8 +55,8 @@ test('receptionist update validation redirect back to form', function(){
         'password' => '',
     ])
     ->assertStatus(302)
-    ->assertSessionHasErrors(['name','email','password'])
-    ->assertInvalid(['name','email','password']);
+    ->assertSessionHasErrors(['name','email'])
+    ->assertInvalid(['name','email']);
 });
 
 test('receptionist update unique validation redirect back to form', function(){

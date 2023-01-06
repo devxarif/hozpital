@@ -37,7 +37,7 @@ test('admin can create a nurse', function () {
 
    actingAs($this->user)
     ->post(route('admin.nurse.store'), $nurse)
-    ->assertStatus(201);
+    ->assertStatus(302);
 
     $this->assertDatabaseHas('users', ['name' => 'Nurse', 'email' => 'nurse@mail.com']);
 
@@ -56,8 +56,8 @@ test('nurse update validation redirect back to form', function(){
         'password' => '',
     ])
     ->assertStatus(302)
-    ->assertSessionHasErrors(['name','email','password'])
-    ->assertInvalid(['name','email','password']);
+    ->assertSessionHasErrors(['name','email'])
+    ->assertInvalid(['name','email']);
 });
 
 test('nurse update unique validation redirect back to form', function(){

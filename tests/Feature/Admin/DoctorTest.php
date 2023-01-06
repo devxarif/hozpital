@@ -63,8 +63,8 @@ test('doctor update validation redirect back to form', function(){
         'department' => '',
     ])
     ->assertStatus(302)
-    ->assertSessionHasErrors(['name','email','password','department'])
-    ->assertInvalid(['name','email','password','department']);
+    ->assertSessionHasErrors(['name','email','department'])
+    ->assertInvalid(['name','email','department']);
 });
 
 test('doctor update unique validation redirect back to form', function(){

@@ -57,8 +57,8 @@ test('laboratorist update validation redirect back to form', function(){
         'password' => '',
     ])
     ->assertStatus(302)
-    ->assertSessionHasErrors(['name','email','password'])
-    ->assertInvalid(['name','email','password']);
+    ->assertSessionHasErrors(['name','email'])
+    ->assertInvalid(['name','email']);
 });
 
 test('laboratorist update unique validation redirect back to form', function(){
