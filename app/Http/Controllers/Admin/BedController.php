@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Models\Bed;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Services\Admin\Bed\CreateBedService;
+use App\Services\Admin\Bed\UpdateBedService;
+use App\Http\Requests\Admin\Bed\BedCreateRequest;
+use App\Http\Requests\Admin\Bed\BedUpdateRequest;
 
 class BedController extends Controller
 {
@@ -27,15 +32,18 @@ class BedController extends Controller
         //
     }
 
-    /**
+     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  BedCreateRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(BedCreateRequest $request)
     {
-        //
+        (new CreateBedService())->execute($request);
+
+        $this->flashSuccess('Bed created successfully');
+        return back();
     }
 
     /**
@@ -44,7 +52,7 @@ class BedController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Bed $bed)
     {
         //
     }
@@ -55,7 +63,7 @@ class BedController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Bed $bed)
     {
         //
     }
@@ -63,23 +71,29 @@ class BedController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  BedUpdateRequest $request
+     * @param  Bed $bed
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(BedUpdateRequest $request, Bed $bed)
     {
-        //
+        (new UpdateBedService())->execute($request, $bed);
+
+        $this->flashSuccess('Bed updated successfully');
+        return back();
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  Bed $bed
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Bed $bed)
     {
-        //
+        $bed->delete();
+
+        $this->flashSuccess('Bed deleted successfully');
+        return back();
     }
 }

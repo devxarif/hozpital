@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\BedAllotment;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Requests\Admin\Bed\BedCreateRequest;
+use App\Http\Requests\Admin\Bed\BedUpdateRequest;
+use App\Services\Admin\BedAllotment\CreateBedAllotmentService;
+use App\Services\Admin\BedAllotment\UpdateBedAllotmentService;
 
 class BedAllotmentController extends Controller
 {
@@ -27,15 +31,18 @@ class BedAllotmentController extends Controller
         //
     }
 
-    /**
+     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  BedCreateRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(BedCreateRequest $request)
     {
-        //
+        (new CreateBedAllotmentService())->execute($request);
+
+        $this->flashSuccess('Bed allotment created successfully');
+        return back();
     }
 
     /**
@@ -44,7 +51,7 @@ class BedAllotmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(BedAllotment $bedAllotment)
     {
         //
     }
@@ -55,7 +62,7 @@ class BedAllotmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(BedAllotment $bedAllotment)
     {
         //
     }
@@ -63,23 +70,29 @@ class BedAllotmentController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  BedUpdateRequest $request
+     * @param  BedAllotment $bedAllotment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(BedUpdateRequest $request, BedAllotment $bedAllotment)
     {
-        //
+        (new UpdateBedAllotmentService())->execute($request, $bedAllotment);
+
+        $this->flashSuccess('Bed allotment updated successfully');
+        return back();
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  BedAllotment $bedAllotment
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(BedAllotment $bedAllotment)
     {
-        //
+        $bedAllotment->delete();
+
+        $this->flashSuccess('Bed allotment deleted successfully');
+        return back();
     }
 }

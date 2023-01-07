@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Models\BloodDonor;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Services\Admin\BloodDonor\CreateBloodDonorService;
+use App\Services\Admin\BloodDonor\UpdateBloodDonorService;
+use App\Http\Requests\Admin\BloodBank\BloodDonorCreateRequest;
+use App\Http\Requests\Admin\BloodBank\BloodDonorUpdateRequest;
 
 class BloodDonorController extends Controller
 {
@@ -27,15 +32,18 @@ class BloodDonorController extends Controller
         //
     }
 
-    /**
+       /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  BloodDonorCreateRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(BloodDonorCreateRequest $request)
     {
-        //
+        (new CreateBloodDonorService())->execute($request);
+
+        $this->flashSuccess('Blood donor created successfully');
+        return back();
     }
 
     /**
@@ -44,7 +52,7 @@ class BloodDonorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(BloodDonor $bloodDonor)
     {
         //
     }
@@ -55,7 +63,7 @@ class BloodDonorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(BloodDonor $bloodDonor)
     {
         //
     }
@@ -63,23 +71,29 @@ class BloodDonorController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  BloodDonorUpdateRequest $request
+     * @param  BloodDonor $bloodDonor
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(BloodDonorUpdateRequest $request, BloodDonor $bloodDonor)
     {
-        //
+        (new UpdateBloodDonorService())->execute($request, $bloodDonor);
+
+        $this->flashSuccess('Blood donor updated successfully');
+        return back();
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  BloodDonor $bloodDonor
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(BloodDonor $bloodDonor)
     {
-        //
+        $bloodDonor->delete();
+
+        $this->flashSuccess('Blood donor deleted successfully');
+        return back();
     }
 }
