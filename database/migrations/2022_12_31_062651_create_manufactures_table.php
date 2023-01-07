@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('manufactures', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('slug');
             $table->string('email');
             $table->string('phone');
             $table->text('address')->nullable();
