@@ -2,27 +2,15 @@
 
 namespace App\Models;
 
+use App\Http\Traits\Sluggable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Department extends Model
 {
-    use HasFactory;
-
-    /**
-    * The mutator that should be set department slug
-    *
-    * @param string $value
-    *
-    * @return void
-    */
-    public function setNameAttribute($value)
-    {
-        $this->attributes['name'] = $value;
-        $this->attributes['slug'] = strSlug($value);
-    }
+    use HasFactory, Sluggable;
 
 
     // protected $fillable = ['organization_id','name','employee_id'];

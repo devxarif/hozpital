@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Plan extends Model
 {
-    use HasFactory;
+    use HasFactory, Sluggable;
 
     protected $fillable = [
         'name',
@@ -19,12 +19,6 @@ class Plan extends Model
         'status',
         'default',
     ];
-
-    public function setNameAttribute($name)
-    {
-        $this->attributes['name'] = $name;
-        $this->attributes['slug'] = strSlug($name);
-    }
 
     public function planFeatures()
     {

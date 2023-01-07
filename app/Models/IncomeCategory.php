@@ -2,25 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Http\Traits\Sluggable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class IncomeCategory extends Model
 {
-    use HasFactory;
-
-
-
-     /**
-    * The mutator that should be set slug
-    *
-    * @param string $value
-    *
-    * @return void
-    */
-    public function setNameAttribute($value)
-    {
-        $this->attributes['name'] = $value;
-        $this->attributes['slug'] = strSlug($value);
-    }
+    use HasFactory, Sluggable;
 }
