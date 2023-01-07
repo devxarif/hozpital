@@ -22,7 +22,7 @@ return new class extends Migration
             $table->foreignIdFor(Patient::class)->constrained()->cascadeOnDelete();
             $table->foreignIdFor(Doctor::class)->constrained()->cascadeOnDelete();
             $table->timestamp('allotment_time');
-            $table->timestamp('discharge_time');
+            $table->timestamp('discharge_time')->nullable();
             $table->text('description')->nullable();
             $table->timestamps();
         });

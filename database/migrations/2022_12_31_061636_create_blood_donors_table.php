@@ -17,9 +17,9 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('blood_group', 10);
-            $table->enum('gender', ['male','female']);
-            $table->string('phone')->nullable();
-            $table->string('email')->nullable();
+            $table->enum('gender', ['male','female'])->default('male');
+            $table->string('phone');
+            $table->string('email');
             $table->string('address')->nullable();
             $table->integer('age')->nullable();
             $table->date('last_donation_date')->nullable();
