@@ -13,13 +13,16 @@ use App\Http\Controllers\Admin\HolidayController;
 use App\Http\Controllers\Admin\PatientController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\LanguageController;
+use App\Http\Controllers\Admin\MedicineController;
 use App\Http\Controllers\Admin\AccountantController;
 use App\Http\Controllers\Admin\DepartmentController;
 use App\Http\Controllers\Admin\PharmacistController;
+use App\Http\Controllers\Admin\ManufactureController;
 use App\Http\Controllers\Admin\TestimonialController;
 use App\Http\Controllers\Admin\LaboratoristController;
 use App\Http\Controllers\Admin\OrganizationController;
 use App\Http\Controllers\Admin\ReceptionistController;
+use App\Http\Controllers\Admin\MedicineCategoryController;
 
 // Route::middleware(['auth', 'check.admin.role'])->prefix('admin')->group(function () {
 Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function () {
@@ -45,8 +48,13 @@ Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function () 
     // Laboratorist Routes
     Route::resource('laboratorist', LaboratoristController::class);
 
-    // accountant Routes
+    // Accountant Routes
     Route::resource('accountant', AccountantController::class);
+
+    // Medicine
+    Route::resource('medicine', MedicineController::class);
+    Route::resource('medicineCategory', MedicineCategoryController::class);
+    Route::resource('manufacture', ManufactureController::class);
 
     // Route::resource('doctor', DoctorController::class)->withoutMiddleware('auth');
 
