@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Admin\Bed;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class PasswordUpdateRequest extends FormRequest
+class BedCreateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -19,12 +19,16 @@ class PasswordUpdateRequest extends FormRequest
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array
+     * @return array<string, mixed>
      */
     public function rules()
     {
         return [
-            //
+            'bed_type' => "required|exists:bed_types,id",
+            'number' => 'required',
+            'charge' => 'nullable',
+            'floor' => 'required',
+            'description' => 'nullable',
         ];
     }
 }
