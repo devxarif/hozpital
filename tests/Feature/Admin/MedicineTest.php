@@ -110,13 +110,6 @@ test('admin can update a manufacture', function () {
     $medicine_categoty = MedicineCategory::factory()->create();
     $Manufacture = Manufacture::factory()->create();
     $medicine = Medicine::factory()->create();
-    // $medicine = Medicine::create([
-    //     'medicine_category' => $medicine_categoty->id,
-    //     'manufacture' => $Manufacture->id,
-    //     'name' => 'Maxpro',
-    //     'selling_price' => '20',
-    //     'quantity' => '1',
-    // ]);
 
     actingAs($this->user)
     ->put(route('admin.medicine.update', $medicine->id), [
