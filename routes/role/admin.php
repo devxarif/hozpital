@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\BedController;
 use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\RoleController;
@@ -9,6 +10,7 @@ use App\Http\Controllers\Admin\NurseController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\DoctorController;
 use App\Http\Controllers\Admin\GlobalController;
+use App\Http\Controllers\Admin\BedTypeController;
 use App\Http\Controllers\Admin\HolidayController;
 use App\Http\Controllers\Admin\PatientController;
 use App\Http\Controllers\Admin\SettingController;
@@ -19,6 +21,7 @@ use App\Http\Controllers\Admin\DepartmentController;
 use App\Http\Controllers\Admin\PharmacistController;
 use App\Http\Controllers\Admin\ManufactureController;
 use App\Http\Controllers\Admin\TestimonialController;
+use App\Http\Controllers\Admin\BedAllotmentController;
 use App\Http\Controllers\Admin\LaboratoristController;
 use App\Http\Controllers\Admin\OrganizationController;
 use App\Http\Controllers\Admin\ReceptionistController;
@@ -55,6 +58,11 @@ Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function () 
     Route::resource('medicine', MedicineController::class);
     Route::resource('medicineCategory', MedicineCategoryController::class);
     Route::resource('manufacture', ManufactureController::class);
+
+    // Bed
+    Route::resource('bed', BedController::class);
+    Route::resource('bedType', BedTypeController::class);
+    Route::resource('bedAllotment', BedAllotmentController::class);
 
     // Route::resource('doctor', DoctorController::class)->withoutMiddleware('auth');
 

@@ -47,7 +47,7 @@
                         <font-awesome-icon icon="fa-solid fa-home" class="mr-3 flex-shrink-0 h-5 w-5"/>
                     </template>
                 </NavItem>
-                <!-- <DropdownMenu title="Dropdown">
+                <DropdownMenu title="Dropdown">
                     <template v-slot:icon>
                         <font-awesome-icon icon="fa-solid fa-home" class="mr-3 flex-shrink-0 h-5 w-5"/>
                     </template>
@@ -55,7 +55,7 @@
                     <DropdownMenuItem title="Members"/>
                     <DropdownMenuItem title="Calendar"/>
                     <DropdownMenuItem title="Settings"/>
-                </DropdownMenu> -->
+                </DropdownMenu>
 
 
                 <!-- Users  -->
@@ -120,6 +120,11 @@
                 <br>
                 <h3 class="mt-5 px-3 text-sm font-medium text-gray-500" id="projects-headline">Bed</h3>
                 <NavItem title="Bed" :href="route('dashboard')" :active="false">
+                    <template v-slot:icon>
+                        <font-awesome-icon icon="fa-solid fa-home" class="mr-3 flex-shrink-0 h-5 w-5"/>
+                    </template>
+                </NavItem>
+                <NavItem title="Bed Type" :href="route('admin.bedType.index')" :active="false">
                     <template v-slot:icon>
                         <font-awesome-icon icon="fa-solid fa-home" class="mr-3 flex-shrink-0 h-5 w-5"/>
                     </template>

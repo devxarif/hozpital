@@ -14,12 +14,9 @@ const pinia = createPinia()
 // app.use(pinia)
 // app.mount('#app')
 
-
-
+// Plugins
 import 'flowbite/dist/flowbite.js'
 import '@themesberg/flowbite'
-
-// 3rd party plugins
 import FloatingVue from 'floating-vue'
 import 'floating-vue/dist/style.css'
 import VueSweetalert2 from 'vue-sweetalert2';
@@ -30,11 +27,11 @@ import { InertiaProgress } from '@inertiajs/progress';
 import Popper from "vue3-popper";
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faPenToSquare, faEye, faTrashCan, faPlus, faChevronRight } from '@fortawesome/free-solid-svg-icons'
-library.add(faPenToSquare, faEye, faTrashCan, faPlus, faChevronRight)
-// import dayjs from 'dayjs';
-// import RelativeTime from 'dayjs/plugin/relativeTime';
+import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
+import { faPenToSquare, faEye, faTrashCan, faPlus, faChevronRight, faEllipsisVertical } from '@fortawesome/free-solid-svg-icons'
+library.add(faPenToSquare, faEye, faTrashCan, faPlus, faChevronRight, faEllipsisVertical)
 
+// Progress bar
 InertiaProgress.init({
     color: 'blue',
     delay: 500,
@@ -57,11 +54,6 @@ import CheckIcon from "@/Shared/Icons/CheckIcon.vue";
 import LoadingIcon from "@/Shared/Icons/LoadingIcon.vue";
 import HomeIcon from "@/Shared/Icons/HomeIcon.vue";
 
-localStorage.removeItem('permissions')
-localStorage.setItem('permissions', 'user.create,user.delete')
-
-
-
 createInertiaApp({
   resolve: (name) => resolvePageComponent(`./Pages/${name}.vue`, import.meta.glob('./Pages/**/*.vue')),
   setup({ el, App, props, plugin }) {
@@ -74,15 +66,6 @@ createInertiaApp({
         .use(Toaster, {
             position: 'top-right',
             duration: 5000,
-        })
-        .directive('can', (el, binding) => {
-            console.log(binding.value)
-            let permissions = localStorage.getItem('permissions');
-
-            if (!permissions.includes(binding.value)) {
-                el.parentNode.removeChild(el)
-                // el.style.display = 'none';
-            }
         })
         .mixin({
             components: {
@@ -100,7 +83,11 @@ createInertiaApp({
                 LoadingIcon,
                 HomeIcon,
                 Popper,
-                FontAwesomeIcon
+                FontAwesomeIcon,
+                Menu,
+                MenuButton,
+                MenuItem,
+                MenuItems,
             },
             methods:{
                 route: window.route,

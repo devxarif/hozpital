@@ -53,18 +53,39 @@
                             <img class="w-16 h-16 rounded object-cover" alt="Figma logo" :src="department.image">
                         </span>
                     </div>
-                    <div class="flex gap-2">
-                        <button type="button" class="focus:outline-none" @click.prevent="editData(department)">
-                            <font-awesome-icon icon="fa-solid fa-pen-to-square" class="h-5 w-5 text-blue-500"/>
-                        </button>
-                        <button type="button" class="focus:outline-none">
-                            <font-awesome-icon icon="fa-solid fa-eye" class=" h-5 w-5 text-pink-500"/>
-                        </button>
-                        <button type="button" class="focus:outline-none" @click.prevent="deleteData(department.id)">
-                            <font-awesome-icon icon="fa-solid fa-trash-can" class=" h-5 w-5 text-red-500"/>
-                        </button>
-                    </div>
+                    <Menu as="div" class="relative inline-block text-left">
+                        <div>
+                            <MenuButton class="flex items-center rounded-full text-gray-400 hover:text-gray-600 focus:outline-none">
+                                <span class="sr-only">Open options</span>
+                                <font-awesome-icon icon="fa-solid fa-ellipsis-vertical" class="h-6 w-6"/>
+                            </MenuButton>
+                        </div>
 
+                        <transition enter-active-class="transition ease-out duration-100" enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100" leave-active-class="transition ease-in duration-75" leave-from-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
+                            <MenuItems class="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                                <div class="py-1 text-sm">
+                                <MenuItem v-slot="{ active }">
+                                    <a href="javascript:void(0)" @click.prevent="editData(department)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
+                                        <font-awesome-icon icon="fa-solid fa-pen-to-square" class="mr-3 h-5 w-5 text-blue-500 group-hover:text-blue-500"/>
+                                        Edit
+                                    </a>
+                                </MenuItem>
+                                <MenuItem v-slot="{ active }">
+                                    <a href="javascript:void(0)" @click.prevent="editData(department)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
+                                        <font-awesome-icon icon="fa-solid fa-eye" class="mr-3 h-5 w-5 text-sky-500 group-hover:text-sky-500"/>
+                                        Details
+                                    </a>
+                                </MenuItem>
+                                <MenuItem v-slot="{ active }">
+                                    <a href="javascript:void(0)" @click.prevent="deleteData(department.id)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
+                                        <font-awesome-icon icon="fa-solid fa-trash-can" class="mr-3 h-5 w-5 text-red-500 group-hover:text-red-500"/>
+                                        Delete
+                                    </a>
+                                </MenuItem>
+                                </div>
+                            </MenuItems>
+                        </transition>
+                    </Menu>
                 </div>
                 <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ department.name }}</h2>
                 <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
@@ -81,56 +102,55 @@
 </template>
 
 <script>
-    import CreateDepartment from "./Create.vue";
-    import EditDepartment from "./Edit.vue";
-    import Pagination from "@/Shared/Pagination.vue";
+import CreateDepartment from "./Create.vue";
+import EditDepartment from "./Edit.vue";
+import Pagination from "@/Shared/Pagination.vue";
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faHome} from '@fortawesome/free-solid-svg-icons'
+library.add(faHome)
 
-    import { library } from '@fortawesome/fontawesome-svg-core'
-    import { faHome, } from '@fortawesome/free-solid-svg-icons'
-    library.add(faHome)
-
-    export default {
-        components: {
-            Pagination,
-            CreateDepartment,
-            EditDepartment,
-            library
+export default {
+    components: {
+        Pagination,
+        CreateDepartment,
+        EditDepartment,
+        library
+    },
+    props: {
+        departments:{
+            type: Array,
+            default: () => []
+        }
+    },
+    data() {
+        return {
+            showCreateDrawer: false,
+            showEditDepartment: false,
+            editDepartment: '',
+        }
+    },
+    methods: {
+        deleteData(id) {
+            this.$swal({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!",
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    this.$inertia.delete(route("admin.department.destroy", id));
+                }
+            });
         },
-        props: {
-            departments:{
-                type: Array,
-                default: () => []
-            }
-        },
-        data() {
-            return {
-                showCreateDrawer: false,
-                showEditDepartment: false,
-                editDepartment: '',
-            }
-        },
-        methods: {
-            deleteData(id) {
-                this.$swal({
-                    title: "Are you sure?",
-                    text: "You won't be able to revert this!",
-                    icon: "warning",
-                    showCancelButton: true,
-                    confirmButtonColor: "#3085d6",
-                    cancelButtonColor: "#d33",
-                    confirmButtonText: "Yes, delete it!",
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        this.$inertia.delete(route("admin.department.destroy", id));
-                    }
-                });
-            },
-            editData(department){
-                this.showEditDepartment = true
-                this.editDepartment = department
-            }
-        },
-        mounted() {
-        },
-    };
+        editData(department){
+            this.showEditDepartment = true
+            this.editDepartment = department
+        }
+    },
+    mounted() {
+    },
+};
 </script>

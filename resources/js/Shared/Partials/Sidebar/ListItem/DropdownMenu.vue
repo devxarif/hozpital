@@ -7,18 +7,9 @@
                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24" class="iconify iconify--heroicons-outline" :class="{ 'rotate-90': open, '': !(open) }"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 5l7 7l-7 7"></path></svg>
             </span></div>
         </button>
-        <transition
-            enter-active-class="transition ease-out duration-5000"
-            enter-class="transform opacity-0 scale-95"
-            enter-to-class="transform opacity-100 scale-100"
-
-            leave-active-class="transition ease-in duration-75"
-            leave-class="transform opacity-100 scale-100"
-            leave-to-class="transform opacity-0 scale-95"
-        >
+        <transition enter-active-class="transition ease-out duration-100" enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100" leave-active-class="transition ease-in duration-75" leave-from-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
             <div class="space-y-1" v-show="open">
                 <slot/>
-
             </div>
         </transition>
     </div>
