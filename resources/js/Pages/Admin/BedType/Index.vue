@@ -1,6 +1,6 @@
 <template>
 
-    <Head :title="__('Department')" />
+    <Head :title="__('Bed Type')" />
     <AppLayout>
 
         <!-- Header Part  -->
@@ -48,50 +48,40 @@
         <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
             <span v-for="bed_type in bed_types.data" :key="bed_type.id" class="block p-6 bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
                 <div class="flex flex-wrap justify-between items-start">
-                    <!-- <div class="relative mb-5">
-                        <span>
-                            <img class="w-16 h-16 rounded object-cover" alt="Figma logo" :src="bed_type.image">
-                        </span>
-                    </div> -->
-                    <!-- <div class="flex gap-2">
-                        <button type="button" class="focus:outline-none" @click.prevent="editData(bed_type)">
-                            <font-awesome-icon icon="fa-solid fa-pen-to-square" class="h-5 w-5 text-blue-500"/>
-                        </button>
-                        <button type="button" class="focus:outline-none">
-                            <font-awesome-icon icon="fa-solid fa-eye" class=" h-5 w-5 text-pink-500"/>
-                        </button>
-                        <button type="button" class="focus:outline-none" @click.prevent="deleteData(bed_type.id)">
-                            <font-awesome-icon icon="fa-solid fa-trash-can" class=" h-5 w-5 text-red-500"/>
-                        </button>
-                    </div> -->
                     <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ bed_type.name }}</h2>
-                    <!-- <Menu as="div" class="relative inline-block text-left">
+                    <Menu as="div" class="relative inline-block text-left">
                         <div>
                             <MenuButton class="flex items-center rounded-full text-gray-400 hover:text-gray-600 focus:outline-none">
-                            <span class="sr-only">Open options</span>
-                            <EllipsisVerticalIcon class="h-6 w-6" aria-hidden="true" />
-                        </MenuButton>
+                                <span class="sr-only">Open options</span>
+                                <font-awesome-icon icon="fa-solid fa-ellipsis-vertical" class="h-6 w-6"/>
+                            </MenuButton>
                         </div>
 
                         <transition enter-active-class="transition ease-out duration-100" enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100" leave-active-class="transition ease-in duration-75" leave-from-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
-                        <MenuItems class="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                            <div class="py-1">
-                            <MenuItem v-slot="{ active }">
-                                <a href="#" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2 text-sm']">
-                                <font-awesome-icon icon="fa-solid fa-pen-to-square" class="mr-3 h-5 w-5 text-blue-500 group-hover:text-blue-500"/>
-                                Edit
-                                </a>
-                            </MenuItem>
-                            <MenuItem v-slot="{ active }">
-                                <a href="#" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2 text-sm']">
-                                <font-awesome-icon icon="fa-solid fa-trash-can" class="mr-3 h-5 w-5 text-red-500 group-hover:text-red-500"/>
-                                Delete
-                                </a>
-                            </MenuItem>
-                            </div>
-                        </MenuItems>
+                            <MenuItems class="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                                <div class="py-1 text-sm">
+                                <MenuItem v-slot="{ active }">
+                                    <a href="javascript:void(0)" @click.prevent="editData(bed_type)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
+                                        <font-awesome-icon icon="fa-solid fa-pen-to-square" class="mr-3 h-5 w-5 text-blue-500 group-hover:text-blue-500"/>
+                                        Edit
+                                    </a>
+                                </MenuItem>
+                                <MenuItem v-slot="{ active }">
+                                    <a href="javascript:void(0)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
+                                        <font-awesome-icon icon="fa-solid fa-eye" class="mr-3 h-5 w-5 text-sky-500 group-hover:text-sky-500"/>
+                                        Details
+                                    </a>
+                                </MenuItem>
+                                <MenuItem v-slot="{ active }">
+                                    <a href="javascript:void(0)" @click.prevent="deleteData(bed_type.id)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
+                                        <font-awesome-icon icon="fa-solid fa-trash-can" class="mr-3 h-5 w-5 text-red-500 group-hover:text-red-500"/>
+                                        Delete
+                                    </a>
+                                </MenuItem>
+                                </div>
+                            </MenuItems>
                         </transition>
-                    </Menu> -->
+                    </Menu>
                 </div>
                 <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
                     {{ bed_type.description }}
@@ -101,14 +91,14 @@
 
         <Pagination :data="bed_types" v-if="bed_types && bed_types.data.length" class="mt-5"/>
 
-        <!-- <CreateDepartment :show="showCreateDrawer" @close-drawer="showCreateDrawer = false"/>
-        <EditDepartment :show="showEditDepartment" @close-drawer="showEditDepartment = false" :type="editDepartment"/> -->
+        <CreateBedType :show="showCreateDrawer" @close-drawer="showCreateDrawer = false"/>
+        <EditBedType :show="showEditBedType" @close-drawer="showEditBedType = false" :type="editBedType"/>
     </AppLayout>
 </template>
 
 <script>
-    // import CreateDepartment from "./Create.vue";
-    // import EditDepartment from "./Edit.vue";
+    import CreateBedType from "./Create.vue";
+    import EditBedType from "./Edit.vue";
     import Pagination from "@/Shared/Pagination.vue";
 
     import { library } from '@fortawesome/fontawesome-svg-core'
@@ -118,8 +108,8 @@
     export default {
         components: {
             Pagination,
-            // CreateDepartment,
-            // EditDepartment,
+            CreateBedType,
+            EditBedType,
             library
         },
         props: {
@@ -131,8 +121,8 @@
         data() {
             return {
                 showCreateDrawer: false,
-                showEditDepartment: false,
-                editDepartment: '',
+                showEditBedType: false,
+                editBedType: '',
             }
         },
         methods: {
@@ -147,13 +137,13 @@
                     confirmButtonText: "Yes, delete it!",
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        this.$inertia.delete(route("admin.department.destroy", id));
+                        this.$inertia.delete(route("admin.bedType.destroy", id));
                     }
                 });
             },
-            editData(department){
-                this.showEditDepartment = true
-                this.editDepartment = department
+            editData(bed){
+                this.showEditBedType = true
+                this.editBedType = bed
             }
         },
         mounted() {
