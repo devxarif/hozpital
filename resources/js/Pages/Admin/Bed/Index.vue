@@ -85,11 +85,8 @@
         <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-4 mt-5">
             <span v-for="bed in beds.data" :key="bed.id" class="block p-6 bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
                 <div class="flex flex-wrap justify-between items-start">
-                    <div class="relative mb-5">
-                        <span>
-                            <img class="w-16 h-16 rounded object-cover" alt="Figma logo" :src="bed.image">
-                        </span>
-                    </div>
+                    <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ bed.bed_type?.name ?? 'aa' }}</h2>
+
                     <Menu as="div" class="relative inline-block text-left">
                         <div>
                             <MenuButton class="flex items-center rounded-full text-gray-400 hover:text-gray-600 focus:outline-none">
@@ -124,8 +121,12 @@
                         </transition>
                     </Menu>
                 </div>
-                <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ bed.name }}</h2>
-                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                <h2 class="my-1 font-bold text-lg tracking-tight text-gray-900 dark:text-white">Bed Number: {{ bed.number }}</h2>
+                <h6 class="my-1 font-bold tracking-tight text-gray-900 dark:text-white"><span class="text-sm">Charge</span>: $ {{ bed.charge }}</h6>
+                <span class="text-xs font-semibold px-2 py-1 rounded bg-green-100 text-green-800 dark:bg-green-200 dark:text-green-900 capitalize">
+                    {{ bed.status }}
+                </span>
+                <p class="my-3 font-normal text-gray-700 dark:text-gray-400">
                     {{ bed.description }}
                 </p>
             </span>
