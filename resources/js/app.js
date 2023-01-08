@@ -28,8 +28,8 @@ import Popper from "vue3-popper";
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
-import { faPenToSquare, faEye, faTrashCan, faPlus, faChevronRight, faEllipsisVertical } from '@fortawesome/free-solid-svg-icons'
-library.add(faPenToSquare, faEye, faTrashCan, faPlus, faChevronRight, faEllipsisVertical)
+import { faHome, faPenToSquare, faEye, faTrashCan, faPlus, faChevronRight, faEllipsisVertical } from '@fortawesome/free-solid-svg-icons'
+library.add(faHome, faPenToSquare, faEye, faTrashCan, faPlus, faChevronRight, faEllipsisVertical)
 
 // Progress bar
 InertiaProgress.init({

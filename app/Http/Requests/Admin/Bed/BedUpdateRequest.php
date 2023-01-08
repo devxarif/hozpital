@@ -24,7 +24,7 @@ class BedUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'bed_type' => "required|exists:bed_types,id,{$this->bed->id}",
+            'bed_type' => "required|exists:bed_types,id",
             'number' => 'required',
             'charge' => 'nullable',
             'floor' => 'required',

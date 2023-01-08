@@ -91,6 +91,7 @@
 
         <Pagination :data="bed_types" v-if="bed_types && bed_types.data.length" class="mt-5"/>
 
+
         <CreateBedType :show="showCreateDrawer" @close-drawer="showCreateDrawer = false"/>
         <EditBedType :show="showEditBedType" @close-drawer="showEditBedType = false" :type="editBedType"/>
     </AppLayout>

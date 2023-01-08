@@ -9,6 +9,7 @@ use App\Services\Admin\Bed\CreateBedService;
 use App\Services\Admin\Bed\UpdateBedService;
 use App\Http\Requests\Admin\Bed\BedCreateRequest;
 use App\Http\Requests\Admin\Bed\BedUpdateRequest;
+use App\Models\BedType;
 
 class BedController extends Controller
 {
@@ -19,7 +20,11 @@ class BedController extends Controller
      */
     public function index()
     {
-        //
+        $data['beds'] = Bed::latest()->paginate(12);
+        $data['bed_types'] = BedType::withCount('beds')->latest()->get(['id','name','slug']);
+        $data['floors'] = Bed::Floor;
+
+        return inertia('Admin/Bed/Index',$data);
     }
 
     /**
@@ -95,5 +100,22 @@ class BedController extends Controller
 
         $this->flashSuccess('Bed deleted successfully');
         return back();
+    }
+
+     /**
+     * Fetch bedtype wise beds collection
+     *
+     * @param  string $slug
+     * @return \Illuminate\Http\Response
+     */
+    public function bedTypeWiseBeds(Request $request){
+        if ($request->type && $request->type != 'all') {
+            $type = BedType::whereSlug($request->type)->firstOrFail();
+            $beds = $type->beds()->latest()->paginate(12);
+        } else {
+            $beds = Bed::latest()->paginate(12);
+        }
+
+        return $beds;
     }
 }

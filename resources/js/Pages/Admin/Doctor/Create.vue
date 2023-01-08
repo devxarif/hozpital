@@ -204,8 +204,6 @@ export default {
             console.log(response.data)
             this.departments = response.data;
         }
-
-
     },
     mounted() {
         this.checkPagePermission('admin')

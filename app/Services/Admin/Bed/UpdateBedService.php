@@ -8,7 +8,7 @@ class UpdateBedService
 {
     public function execute(object $request, $bed): Bed
     {
-        return $bed->update([
+        $bed->update([
             'bed_type_id' => $request->bed_type,
             'number' => $request->number,
             'charge' => $request->charge,
@@ -16,5 +16,7 @@ class UpdateBedService
             'status' => $request->status,
             'description' => $request->description,
         ]);
+
+        return $bed;
     }
 }

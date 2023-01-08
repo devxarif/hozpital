@@ -8,6 +8,7 @@ use App\Models\Organization;
 use Illuminate\Http\Request;
 use App\Models\ContactMessage;
 use App\Http\Controllers\Controller;
+use App\Models\BedType;
 use App\Models\Department;
 use App\Models\LeaveType;
 
@@ -15,6 +16,10 @@ class GlobalController extends Controller
 {
     public function fetchDepartments(){
         return Department::select('id','name')->latest()->get();
+    }
+
+    public function fetchBedTypes(){
+        return BedType::withCount('beds')->latest()->get(['id','name']);
     }
 
 

@@ -60,9 +60,11 @@ Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function () 
     Route::resource('manufacture', ManufactureController::class);
 
     // Bed
+    Route::get('bedType/beds', [BedController::class, 'bedTypeWiseBeds'])->name('bedtype.bed');
     Route::resource('bed', BedController::class);
     Route::resource('bedType', BedTypeController::class);
     Route::resource('bedAllotment', BedAllotmentController::class);
+
 
     // Route::resource('doctor', DoctorController::class)->withoutMiddleware('auth');
 
@@ -200,6 +202,7 @@ Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function () 
 
 Route::controller(GlobalController::class)->group(function(){
     Route::get('fetch/departments', 'fetchDepartments')->name('fetch.departments');
+    Route::get('fetch/bedTypes', 'fetchBedTypes')->name('fetch.bedTypes');
 });
 
 // Profile & Settings
