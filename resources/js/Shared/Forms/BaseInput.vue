@@ -1,6 +1,6 @@
 <template>
     <input :type="type" :id="id" class="bg-gray-50 border text-md rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:placeholder-gray-400 dark:text-white" :class="[className, hasError ? errorClass:defaultClass]"
-    :placeholder="placeholder ? __(placeholder) : ''" @input="$emit('update:modelValue', $event.target.value)" :value="modelValue">
+    :placeholder="placeholder ? __(placeholder) : ''" @input="$emit('update:modelValue', $event.target.value)" :value="modelValue" :disabled="disabled">
     <ErrorMessage :name="hasError"/>
 </template>
 
@@ -30,6 +30,10 @@
             modelValue: {
                 type: String,
                 required: false
+            },
+            disabled: {
+                type: Boolean,
+                default: false
             }
         },
         data(){

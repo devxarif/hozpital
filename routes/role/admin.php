@@ -16,7 +16,9 @@ use App\Http\Controllers\Admin\PatientController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\LanguageController;
 use App\Http\Controllers\Admin\MedicineController;
+use App\Http\Controllers\Admin\BloodBankController;
 use App\Http\Controllers\Admin\AccountantController;
+use App\Http\Controllers\Admin\BloodDonorController;
 use App\Http\Controllers\Admin\DepartmentController;
 use App\Http\Controllers\Admin\PharmacistController;
 use App\Http\Controllers\Admin\ManufactureController;
@@ -64,6 +66,12 @@ Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function () 
     Route::resource('bed', BedController::class);
     Route::resource('bedType', BedTypeController::class);
     Route::resource('bedAllotment', BedAllotmentController::class);
+
+    // Blood
+    // Route::get('bedType/beds', [BedController::class, 'bedTypeWiseBeds'])->name('bedtype.bed');
+    Route::resource('bloodBank', BloodBankController::class);
+    Route::resource('bloodDonor', BloodDonorController::class);
+    // Route::resource('bedAllotment', BedAllotmentController::class);
 
 
     // Route::resource('doctor', DoctorController::class)->withoutMiddleware('auth');

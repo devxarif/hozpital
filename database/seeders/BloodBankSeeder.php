@@ -20,7 +20,7 @@ class BloodBankSeeder extends Seeder
         foreach ($blood_groups as $blood_group) {
             BloodBank::create([
                 'blood_group' => $blood_group,
-                'bags' =>  rand(10,50)
+                'bags' =>  rand(10,50).' bags'
             ]);
         }
     }

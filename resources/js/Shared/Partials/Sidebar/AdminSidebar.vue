@@ -47,7 +47,7 @@
                         <font-awesome-icon icon="fa-solid fa-home" class="mr-3 flex-shrink-0 h-5 w-5"/>
                     </template>
                 </NavItem>
-                <DropdownMenu title="Dropdown">
+                <!-- <DropdownMenu title="Dropdown">
                     <template v-slot:icon>
                         <font-awesome-icon icon="fa-solid fa-home" class="mr-3 flex-shrink-0 h-5 w-5"/>
                     </template>
@@ -55,7 +55,7 @@
                     <DropdownMenuItem title="Members"/>
                     <DropdownMenuItem title="Calendar"/>
                     <DropdownMenuItem title="Settings"/>
-                </DropdownMenu>
+                </DropdownMenu> -->
 
 
                 <!-- Users  -->
@@ -119,12 +119,12 @@
                 <!-- Bed  -->
                 <br>
                 <h3 class="mt-5 px-3 text-sm font-medium text-gray-500" id="projects-headline">Bed</h3>
-                <NavItem title="Bed" :href="route('admin.bed.index')" :active="false">
+                <NavItem title="Bed" :href="route('admin.bed.index')" :active="route().current('admin.bed.index')">
                     <template v-slot:icon>
                         <font-awesome-icon icon="fa-solid fa-home" class="mr-3 flex-shrink-0 h-5 w-5"/>
                     </template>
                 </NavItem>
-                <NavItem title="Bed Type" :href="route('admin.bedType.index')" :active="false">
+                <NavItem title="Bed Type" :href="route('admin.bedType.index')" :active="route().current('admin.bedType.index')">
                     <template v-slot:icon>
                         <font-awesome-icon icon="fa-solid fa-home" class="mr-3 flex-shrink-0 h-5 w-5"/>
                     </template>
@@ -162,7 +162,7 @@
                 <!-- Blood  -->
                 <br>
                 <h3 class="mt-5 px-3 text-sm font-medium text-gray-500" id="projects-headline">Blood</h3>
-                <NavItem title="Blood Bank" :href="route('dashboard')" :active="false">
+                <NavItem title="Blood Bank" :href="route('admin.bloodBank.index')" :active="route().current('admin.bloodBank.index')">
                     <template v-slot:icon>
                         <font-awesome-icon icon="fa-solid fa-home" class="mr-3 flex-shrink-0 h-5 w-5"/>
                     </template>
