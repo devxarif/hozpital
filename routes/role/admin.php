@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\DoctorController;
 use App\Http\Controllers\Admin\GlobalController;
 use App\Http\Controllers\Admin\BedTypeController;
 use App\Http\Controllers\Admin\PatientController;
+use App\Http\Controllers\Admin\BedFloorController;
 use App\Http\Controllers\Admin\MedicineController;
 use App\Http\Controllers\Admin\BloodBankController;
 use App\Http\Controllers\Admin\AccountantController;
@@ -54,6 +55,7 @@ Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function () 
     // Bed
     Route::get('bedType/beds', [BedController::class, 'bedTypeWiseBeds'])->name('bedtype.bed');
     Route::resource('bed', BedController::class);
+    Route::resource('bedFloor', BedFloorController::class);
     Route::resource('bedType', BedTypeController::class);
     Route::resource('bedAllotment', BedAllotmentController::class);
 

@@ -100,7 +100,7 @@ export default {
         department: {
             handler() {
                 this.form.name = this.department.name
-                this.form.description = this.department.type
+                this.form.description = this.department.description
                 this.previewImage = this.department.image
             },
             deep: true,

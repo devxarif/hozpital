@@ -21,6 +21,7 @@ use Database\Seeders\ExpenseSeeder;
 use Database\Seeders\FeatureSeeder;
 use Database\Seeders\InvoiceSeeder;
 use Database\Seeders\SettingSeeder;
+use Database\Seeders\BedFloorSeeder;
 use Database\Seeders\CalendarSeeder;
 use Database\Seeders\CurrencySeeder;
 use Database\Seeders\EmployeeSeeder;
@@ -99,6 +100,7 @@ class DatabaseSeeder extends Seeder
             PatientSeeder::class,
 
             // Bed
+            BedFloorSeeder::class,
             BedTypeSeeder::class,
             BedSeeder::class,
             BedAllotmentSeeder::class,

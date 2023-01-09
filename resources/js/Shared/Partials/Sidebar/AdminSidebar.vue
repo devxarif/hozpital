@@ -124,6 +124,11 @@
                         <font-awesome-icon icon="fa-solid fa-home" class="mr-3 flex-shrink-0 h-5 w-5"/>
                     </template>
                 </NavItem>
+                <NavItem title="Bed Floor" :href="route('admin.bedFloor.index')" :active="route().current('admin.bedFloor.index')">
+                    <template v-slot:icon>
+                        <font-awesome-icon icon="fa-solid fa-home" class="mr-3 flex-shrink-0 h-5 w-5"/>
+                    </template>
+                </NavItem>
                 <NavItem title="Bed Type" :href="route('admin.bedType.index')" :active="route().current('admin.bedType.index')">
                     <template v-slot:icon>
                         <font-awesome-icon icon="fa-solid fa-home" class="mr-3 flex-shrink-0 h-5 w-5"/>
