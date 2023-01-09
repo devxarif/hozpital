@@ -20,9 +20,8 @@ return new class extends Migration
             $table->enum('gender', ['male','female'])->default('male');
             $table->string('phone');
             $table->string('email');
-            $table->string('address')->nullable();
+            $table->text('address')->nullable();
             $table->integer('age')->nullable();
-            $table->date('last_donation_date')->nullable();
             $table->timestamps();
         });
     }

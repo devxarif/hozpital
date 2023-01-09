@@ -2,13 +2,13 @@
 
 namespace App\Services\Admin\BloodDonor;
 
-use App\Models\BloodDonation;
+use App\Models\BloodDonor;
 
 class UpdateBloodDonorService
 {
-    public function execute(object $request, $bloodDonation): BloodDonation
+    public function execute(object $request, $bloodDonation): BloodDonor
     {
-        return $bloodDonation->update([
+        $bloodDonation->update([
             'name' => $request->name,
             'blood_group' => $request->blood_group,
             'gender' => $request->gender,
@@ -16,7 +16,8 @@ class UpdateBloodDonorService
             'email' => $request->email,
             'address' => $request->address,
             'age' => $request->age,
-            'last_donation_date' => $request->last_donation_date,
         ]);
+
+        return $bloodDonation;
     }
 }

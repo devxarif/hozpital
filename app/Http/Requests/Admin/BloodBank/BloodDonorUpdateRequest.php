@@ -31,7 +31,6 @@ class BloodDonorUpdateRequest extends FormRequest
             'email' => "required|email|unique:blood_donors,email,{$this->bloodDonor->id}",
             'address' => 'nullable',
             'age' => 'nullable',
-            'last_donation_date' => 'nullable',
         ];
     }
 }

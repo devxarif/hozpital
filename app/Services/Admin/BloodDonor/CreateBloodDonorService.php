@@ -16,7 +16,6 @@ class CreateBloodDonorService
             'email' => $request->email,
             'address' => $request->address,
             'age' => $request->age,
-            'last_donation_date' => $request->last_donation_date,
         ]);
     }
 }

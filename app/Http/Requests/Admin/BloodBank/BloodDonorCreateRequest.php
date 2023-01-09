@@ -31,7 +31,6 @@ class BloodDonorCreateRequest extends FormRequest
             'email' => "required|email|unique:blood_donors,email",
             'address' => 'nullable',
             'age' => 'nullable',
-            'last_donation_date' => 'nullable',
         ];
     }
 }
