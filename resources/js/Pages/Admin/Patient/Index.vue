@@ -96,7 +96,7 @@
             </span>
         </div>
 
-        <Pagination :data="patients" v-if="patients && patients.data.length" class="mt-5"/>
+        <Pagination :data="patients" v-if="patients && patients.data.length && patients.data.length > 20" class="mt-5"/>
 
         <CreatePatient v-show="showCreateDrawer" :show="showCreateDrawer" @close-drawer="showCreateDrawer = false"/>
         <EditPatient v-show="showEditDrawer && editPatient" :show="showEditDrawer" @close-drawer="showEditDrawer = false" :patient="editPatient"/>

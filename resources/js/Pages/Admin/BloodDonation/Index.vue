@@ -89,7 +89,7 @@
             </span>
         </div>
 
-        <Pagination :data="blood_donations" v-if="blood_donations && blood_donations.data.length" class="mt-5"/>
+        <Pagination :data="blood_donations" v-if="blood_donations && blood_donations.data.length && blood_donations.data.length > 20" class="mt-5"/>
 
         <CreateBloodDonation :show="showCreateDrawer" @close-drawer="showCreateDrawer = false"/>
         <EditBloodDonation :show="showEditDrawer" @close-drawer="showEditDrawer = false" :blood_donation="editBloodDonation"/>

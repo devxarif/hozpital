@@ -92,7 +92,7 @@
             </span>
         </div>
 
-        <Pagination :data="receptionists" v-if="receptionists && receptionists.data.length" class="mt-5"/>
+        <Pagination :data="receptionists" v-if="receptionists && receptionists.data.length && receptionists.data.length > 20" class="mt-5"/>
 
         <CreateReceptionist v-show="showCreateDrawer" :show="showCreateDrawer" @close-drawer="showCreateDrawer = false"/>
         <EditReceptionist v-show="showEditDrawer" :show="showEditDrawer" @close-drawer="showEditDrawer = false" :receptionist="editPharmacist"/>

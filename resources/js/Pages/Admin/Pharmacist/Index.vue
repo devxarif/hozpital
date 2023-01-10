@@ -92,7 +92,7 @@
             </span>
         </div>
 
-        <Pagination :data="pharmacists" v-if="pharmacists && pharmacists.data.length" class="mt-5"/>
+        <Pagination :data="pharmacists" v-if="pharmacists && pharmacists.data.length && pharmacists.data.length > 20" class="mt-5"/>
 
         <CreatePharmacist v-show="showCreateDrawer" :show="showCreateDrawer" @close-drawer="showCreateDrawer = false"/>
         <EditPharmacist v-show="showEditDrawer" :show="showEditDrawer" @close-drawer="showEditDrawer = false" :pharmacist="editPharmacist"/>

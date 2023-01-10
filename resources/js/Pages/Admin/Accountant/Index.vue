@@ -91,7 +91,7 @@
             </span>
         </div>
 
-        <Pagination :data="accountants" v-if="accountants && accountants.data.length" class="mt-5"/>
+        <Pagination :data="accountants" v-if="accountants && accountants.data.length && accountants.data.length > 20" class="mt-5"/>
 
         <CreateAccountant v-show="showCreateDrawer" :show="showCreateDrawer" @close-drawer="showCreateDrawer = false"/>
         <EditAccountant v-show="showEditAccountant" :show="showEditAccountant" @close-drawer="showEditAccountant = false" :accountant="editAccountant"/>

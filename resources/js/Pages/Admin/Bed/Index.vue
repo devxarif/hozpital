@@ -133,7 +133,7 @@
             </span>
         </div>
 
-        <Pagination :data="beds" v-if="beds && beds.data.length" class="mt-5"/>
+        <Pagination :data="beds" v-if="beds && beds.data.length && beds.data.length > 20" class="mt-5"/>
 
         <CreateBed :show="showCreateDrawer" @close-drawer="showCreateDrawer = false" :floors="floors"/>
         <EditBed :show="showEditBed" @close-drawer="showEditBed = false" :bed="editBed" :floors="floors"/>

@@ -92,7 +92,7 @@
             </span>
         </div>
 
-        <Pagination :data="laboratorists" v-if="laboratorists && laboratorists.data.length" class="mt-5"/>
+        <Pagination :data="laboratorists" v-if="laboratorists && laboratorists.data.length && laboratorists.data.length > 20" class="mt-5"/>
 
         <CreateLaboratorist v-show="showCreateDrawer" :show="showCreateDrawer" @close-drawer="showCreateDrawer = false"/>
         <EditLaboratorist v-show="showEditDrawer && editLaboratorist" :show="showEditDrawer" @close-drawer="showEditDrawer = false" :laboratorist="editLaboratorist"/>

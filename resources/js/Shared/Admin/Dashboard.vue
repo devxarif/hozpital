@@ -1005,7 +1005,7 @@
             };
         },
         async mounted() {
-            let response = await axios.get(route("admin.dashboard"));
+            let response = await axios.get(route("dashboard"));
             this.summary = response.data.summary;
             this.expense_per_company = response.data.expense_per_company;
             this.companies_per_country = response.data.companies_per_country;

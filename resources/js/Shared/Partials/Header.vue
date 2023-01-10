@@ -38,44 +38,12 @@
                 </div>
             </div> -->
               <div class="ml-2 flex items-center space-x-4 sm:ml-6 sm:space-x-6">
-                <ul class="flex items-center flex-shrink-0 space-x-10">
-                    <li class="relative">
-                        <button @click="toggleOrganization = !toggleOrganization" id="dropdownDefault" data-dropdown-toggle="dropdown" class="text-gray-900 focus:outline-none font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center" type="button">Kodebazar's Organization <svg class="ml-2 w-4 h-4" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
 
-                        <ul v-if="toggleOrganization" v-click-outside="()=> toggleOrganization =false" class="absolute right-0 w-56 p-2 mt-2 space-y-2 text-gray-600 bg-white border border-gray-100 rounded-md shadow-md dark:border-gray-700 dark:text-gray-300 dark:bg-gray-700"
-                                aria-label="submenu">
-                            <li class="flex">
-                                <a class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200"
-                                    href="#">
-                                    <div class="py-3 px-4 text-sm text-gray-900 dark:text-white">
-                                        <div>{{ $page.props.authenticatedUser.name }}</div>
-                                        <div class="font-medium truncate">{{ $page.props.authenticatedUser.email }}</div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="flex">
-                                <a class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200"
-                                    href="#">
-                                    <img class="object-cover w-6 h-6 mr-2" src="http://offday.test/admin/img/default-user.png" alt="" aria-hidden="true">
-                                    <span class="text-md">Profile</span>
-                                </a>
-                            </li>
-                            <li class="flex">
-                                <a class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200"
-                                    href="#">
-                                    <svg class="w-4 h-4 mr-3" aria-hidden="true" fill="none" stroke-linecap="round"
-                                        stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"
-                                        stroke="currentColor">
-                                        <path
-                                            d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z">
-                                        </path>
-                                        <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                                    </svg>
-                                    <span>Manage Organization</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
+
+
+
+                  <SupportPopover/>
+                  <ul class="flex items-center flex-shrink-0 space-x-5">
                     <li class="relative">
                         <button class="relative align-middle rounded-md focus:outline-none focus:shadow-outline-blue"
                             @click="toggleThemeMode">
@@ -87,43 +55,32 @@
                         </button>
                     </li>
 
-                    <li class="relative">
-                        <button class="relative align-middle rounded-md focus:outline-none focus:shadow-outline-blue"
-                            @click="toggleHelpMenu = !toggleHelpMenu">
+                    <Menu as="div" class="relative inline-block text-left">
+                        <div>
+                        <MenuButton class="inline-flex w-full justify-center rounded-md px-4 py-2 text-sm font-medium text-gray-700 focus:outline-none">
                             <svg class="w-7 h-7" xmlns="http://www.w3.org/2000/svg" fill="#4B5563" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><circle cx="128" cy="128" r="96" fill="none" stroke="#4B5563" stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></circle><polyline points="120 124 128 124 128 176 136 176" fill="none" stroke="#4B5563" stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></polyline><circle cx="126" cy="84" r="16"></circle></svg>
-                        </button>
+                        </MenuButton>
+                        </div>
 
-                        <template v-if="toggleHelpMenu">
-                            <ul v-click-outside="()=> toggleHelpMenu =false" class="absolute right-0 w-56 p-2 mt-2 space-y-2 text-gray-600 bg-white border border-gray-100 rounded-md shadow-md dark:border-gray-700 dark:text-gray-300 dark:bg-gray-700"
-                                aria-label="submenu">
-
-                                <li class="flex hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200">
-                                    <a class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md"
-                                        href="#">
-                                        <span>Help</span>
-                                    </a>
-                                </li>
-                                <li class="flex hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200">
-                                    <a class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md"
-                                        href="#">
-                                        <span>Documentation</span>
-                                    </a>
-                                </li>
-                                <li class="flex hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200">
-                                    <a class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md"
-                                        href="#">
-                                        <span>FAQ</span>
-                                    </a>
-                                </li>
-                                <li class="flex hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200">
-                                    <a class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md"
-                                        href="#">
-                                        <span>Contact Support</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </template>
-                    </li>
+                        <transition enter-active-class="transition ease-out duration-100" enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100" leave-active-class="transition ease-in duration-75" leave-from-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
+                        <MenuItems class="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                            <div class="py-1">
+                                <MenuItem v-slot="{ active }">
+                                    <a href="#" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm']">Help</a>
+                                </MenuItem>
+                                <MenuItem v-slot="{ active }">
+                                    <a href="#" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm']">Documentation</a>
+                                </MenuItem>
+                                <MenuItem v-slot="{ active }">
+                                    <a href="#" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm']">FAQ</a>
+                                </MenuItem>
+                                <MenuItem v-slot="{ active }">
+                                    <a href="#" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm']">Contact Support</a>
+                                </MenuItem>
+                            </div>
+                        </MenuItems>
+                        </transition>
+                    </Menu>
 
                     <li class="relative">
                         <button class="relative align-middle rounded-md focus:outline-none focus:shadow-outline-blue"
@@ -234,46 +191,36 @@
                         </Transition>
                     </li>
 
-
-                    <li class="relative">
-                        <button class="align-middle rounded-full focus:shadow-outline-blue focus:outline-none"
-                            @click="toggleProfileMenu = !toggleProfileMenu">
+                    <!-- Profile  -->
+                    <Menu as="div" class="relative inline-block text-left">
+                        <div>
+                        <MenuButton class="inline-flex w-full justify-center rounded-md px-4 py-2 text-sm font-medium text-gray-700 focus:outline-none">
                             <img class="object-cover w-10 h-10 rounded-full" :src="role == 'owner' ? currentOrganization.organization_logo: $page.props.authenticatedUser.avatar_url" alt="" aria-hidden="true" />
-                        </button>
-                        <template v-if="toggleProfileMenu">
-                            <ul v-click-outside="()=> toggleProfileMenu =false" class="absolute right-0 w-60 p-2 mt-2 space-y-2 text-gray-600 bg-white border border-gray-100 rounded-md shadow-md dark:border-gray-700 dark:text-gray-300 dark:bg-gray-700"
-                                aria-label="submenu">
-                                <li class="flex hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200 dark:hover:text-gray-200">
-                                    <span class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md" href="#">
-                                        <div class="py-3 px-4 text-md font-bold text-gray-900 dark:text-white">
-                                            <div>{{ $page.props.authenticatedUser.name }}</div>
-                                            <div class="font-medium truncate">{{ $page.props.authenticatedUser.email }}</div>
-                                        </div>
-                                    </span>
-                                </li>
-                                <li class="flex hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200">
-                                    <a class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md"
-                                        href="#">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mr-3" fill="#4b5563" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><circle cx="128" cy="96" r="64" fill="none" stroke="#4b5563" stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></circle><path d="M31,216a112,112,0,0,1,194,0" fill="none" stroke="#4b5563" stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></path></svg>
-                                        <span class="text-md font-bold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">Profile</span>
-                                    </a>
-                                </li>
-                                <li class="flex hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200">
-                                    <a class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md"
-                                        href="#">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mr-3" fill="#4b5563" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><circle cx="128" cy="128" r="44" fill="none" stroke="#4b5563" stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></circle><path d="M183.7,65.1q3.8,3.5,7.2,7.2l27.3,3.9a103.2,103.2,0,0,1,10.2,24.6l-16.6,22.1s.3,6.8,0,10.2l16.6,22.1a102.2,102.2,0,0,1-10.2,24.6l-27.3,3.9s-4.7,4.9-7.2,7.2l-3.9,27.3a103.2,103.2,0,0,1-24.6,10.2l-22.1-16.6a57.9,57.9,0,0,1-10.2,0l-22.1,16.6a102.2,102.2,0,0,1-24.6-10.2l-3.9-27.3q-3.7-3.5-7.2-7.2l-27.3-3.9a103.2,103.2,0,0,1-10.2-24.6l16.6-22.1s-.2-6.8,0-10.2L27.6,100.8A102.2,102.2,0,0,1,37.8,76.2l27.3-3.9q3.5-3.7,7.2-7.2l3.9-27.3a103.2,103.2,0,0,1,24.6-10.2l22.1,16.6a57.9,57.9,0,0,1,10.2,0l22.1-16.6a102.2,102.2,0,0,1,24.6,10.2Z" fill="none" stroke="#4b5563" stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></path></svg>
-                                        <span class="text-md font-bold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">Settings</span>
-                                    </a>
-                                </li>
-                                <li class="flex hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200">
-                                    <Link href="/logout" method="post" class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md">
-                                        <svg class="w-6 h-6 mr-3" xmlns="http://www.w3.org/2000/svg" width="192" height="192" fill="#4b5563" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><polyline points="174 86 216 128 174 170" fill="none" stroke="#4b5563" stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></polyline><line x1="104" y1="128" x2="216" y2="128" fill="none" stroke="#4b5563" stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></line><path d="M104,216H48a8,8,0,0,1-8-8V48a8,8,0,0,1,8-8h56" fill="none" stroke="#4b5563" stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></path></svg>
-                                        <span class="text-md font-bold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">Logout</span>
-                                    </Link>
-                                </li>
-                            </ul>
-                        </template>
-                    </li>
+                        </MenuButton>
+                        </div>
+
+                        <transition enter-active-class="transition ease-out duration-100" enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100" leave-active-class="transition ease-in duration-75" leave-from-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
+                        <MenuItems class="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                            <div class="px-4 py-3">
+                            <p class="text-sm">{{ $page.props.authenticatedUser.name }}</p>
+                            <p class="truncate text-sm font-medium text-gray-900">{{ $page.props.authenticatedUser.email }}</p>
+                            </div>
+                            <div class="py-1">
+                            <MenuItem v-slot="{ active }">
+                                <a href="#" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm']">Profile</a>
+                            </MenuItem>
+                            <MenuItem v-slot="{ active }">
+                                <a href="#" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm']">Settings</a>
+                            </MenuItem>
+                            </div>
+                            <div class="py-1">
+                                <MenuItem v-slot="{ active }">
+                                <Link href="/logout" method="post" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block w-full px-4 py-2 text-left text-sm']">Sign out</Link>
+                                </MenuItem>
+                            </div>
+                        </MenuItems>
+                        </transition>
+                    </Menu>
                 </ul>
 
               </div>
@@ -285,6 +232,7 @@
 <script>
     import { Bars3BottomLeftIcon } from '@heroicons/vue/24/outline'
     import { MagnifyingGlassIcon } from '@heroicons/vue/20/solid'
+    import SupportPopover from './HeaderItems/Support.vue'
 
     export default {
         props: {
@@ -294,11 +242,11 @@
         },
         components:{
             Bars3BottomLeftIcon,
-            MagnifyingGlassIcon
+            MagnifyingGlassIcon,
+            SupportPopover
         },
         data() {
             return {
-                toggleProfileMenu: false,
                 toggleNotificationsMenu: false,
                 toggleHelpMenu: false,
                 toggleOrganization: false,

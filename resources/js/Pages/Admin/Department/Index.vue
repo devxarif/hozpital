@@ -94,7 +94,7 @@
             </span>
         </div>
 
-        <Pagination :data="departments" v-if="departments && departments.data.length" class="mt-5"/>
+        <Pagination :data="departments" v-if="departments && departments.data.length && departments.data.length > 20" class="mt-5"/>
 
         <CreateDepartment :show="showCreateDrawer" @close-drawer="showCreateDrawer = false"/>
         <EditDepartment :show="showEditDrawer" @close-drawer="showEditDrawer = false" :department="editDepartment"/>
