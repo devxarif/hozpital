@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Models\ContactMessage;
 use App\Http\Controllers\Controller;
 use App\Models\BedType;
+use App\Models\BloodDonor;
 use App\Models\Department;
 use App\Models\LeaveType;
 
@@ -20,6 +21,11 @@ class GlobalController extends Controller
 
     public function fetchBedTypes(){
         return BedType::withCount('beds')->latest()->get(['id','name']);
+    }
+
+    public function bloodDonors(){
+        return BloodDonor::latest()->get(['id','name','blood_group','email']);
+        // return BedType::withCount('beds')->latest()->get(['id','name']);
     }
 
 

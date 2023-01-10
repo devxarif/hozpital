@@ -19,7 +19,7 @@ class NurseController extends Controller
      */
     public function index()
     {
-        $nurses = Nurse::with('user:id,name,email')->latest()->paginate(12);
+        $nurses = Nurse::with('user:id,name,email')->latest()->paginate(20);
 
         return inertia('Admin/Nurse/Index',compact('nurses'));
     }

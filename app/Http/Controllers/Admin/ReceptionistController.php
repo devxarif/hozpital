@@ -20,7 +20,7 @@ class ReceptionistController extends Controller
      */
     public function index()
     {
-        $receptionists = Receptionist::with('user:id,name,email')->latest()->paginate(12);
+        $receptionists = Receptionist::with('user:id,name,email')->latest()->paginate(20);
 
         return inertia('Admin/Receptionist/Index',compact('receptionists'));
     }

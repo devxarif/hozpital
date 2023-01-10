@@ -19,7 +19,7 @@ class AccountantController extends Controller
      */
     public function index()
     {
-        $accountants = Accountant::with('user:id,name,email')->latest()->paginate(12);
+        $accountants = Accountant::with('user:id,name,email')->latest()->paginate(20);
 
         return inertia('Admin/Accountant/Index',compact('accountants'));
     }

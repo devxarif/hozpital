@@ -20,7 +20,7 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        $departments = Department::latest()->paginate(12);
+        $departments = Department::latest()->paginate(20);
 
         return inertia('Admin/Department/Index',compact('departments'));
     }

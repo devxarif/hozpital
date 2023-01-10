@@ -19,7 +19,7 @@ class PatientController extends Controller
      */
     public function index()
     {
-        $patients = Patient::with('user:id,name,email')->latest()->paginate(12);
+        $patients = Patient::with('user:id,name,email')->latest()->paginate(20);
 
         return inertia('Admin/Patient/Index',compact('patients'));
     }

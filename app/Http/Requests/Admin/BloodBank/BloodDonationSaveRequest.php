@@ -25,7 +25,7 @@ class BloodDonationSaveRequest extends FormRequest
     {
         return [
             'blood_donor' =>'required|exists:blood_donors,id',
-            'bags' => 'required'
+            'bags' => 'required|numeric'
         ];
     }
 }

@@ -19,7 +19,7 @@ class BloodDonorController extends Controller
      */
     public function index()
     {
-        $blood_donors = BloodDonor::latest()->paginate(12);
+        $blood_donors = BloodDonor::latest()->paginate(20);
 
         return inertia('Admin/BloodDonor/Index',compact('blood_donors'));
     }

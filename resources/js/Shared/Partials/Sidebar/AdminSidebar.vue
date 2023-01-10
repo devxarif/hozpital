@@ -177,6 +177,11 @@
                         <font-awesome-icon icon="fa-solid fa-home" class="mr-3 flex-shrink-0 h-5 w-5"/>
                     </template>
                 </NavItem>
+                <NavItem title="Blood Donation" :href="route('admin.bloodDonation.index')" :active="route().current('admin.bloodDonation.index')">
+                    <template v-slot:icon>
+                        <font-awesome-icon icon="fa-solid fa-home" class="mr-3 flex-shrink-0 h-5 w-5"/>
+                    </template>
+                </NavItem>
 
                 <!-- Payments  -->
                 <br>

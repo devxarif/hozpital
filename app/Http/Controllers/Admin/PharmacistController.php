@@ -19,7 +19,7 @@ class PharmacistController extends Controller
      */
     public function index()
     {
-        $pharmacists = Pharmacist::with('user:id,name,email')->latest()->paginate(12);
+        $pharmacists = Pharmacist::with('user:id,name,email')->latest()->paginate(20);
 
         return inertia('Admin/Pharmacist/Index',compact('pharmacists'));
     }

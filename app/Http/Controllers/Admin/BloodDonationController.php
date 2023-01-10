@@ -18,9 +18,9 @@ class BloodDonationController extends Controller
      */
     public function index()
     {
-        $bed_types = BedType::latest()->paginate(12);
+        $blood_donations = BloodDonation::with('bloodDonor')->latest()->paginate(20);
 
-        return inertia('Admin/BedType/Index',compact('bed_types'));
+        return inertia('Admin/BloodDonation/Index',compact('blood_donations'));
     }
 
     /**

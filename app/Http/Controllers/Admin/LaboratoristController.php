@@ -19,7 +19,7 @@ class LaboratoristController extends Controller
      */
     public function index()
     {
-        $laboratorists = Laboratorist::with('user:id,name,email')->latest()->paginate(12);
+        $laboratorists = Laboratorist::with('user:id,name,email')->latest()->paginate(20);
 
         return inertia('Admin/Laboratorist/Index',compact('laboratorists'));
     }

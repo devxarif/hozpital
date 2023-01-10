@@ -18,6 +18,7 @@ use App\Http\Controllers\Admin\ManufactureController;
 use App\Http\Controllers\Admin\BedAllotmentController;
 use App\Http\Controllers\Admin\LaboratoristController;
 use App\Http\Controllers\Admin\ReceptionistController;
+use App\Http\Controllers\Admin\BloodDonationController;
 use App\Http\Controllers\Admin\MedicineCategoryController;
 
 // Route::middleware(['auth', 'check.admin.role'])->prefix('admin')->group(function () {
@@ -63,6 +64,7 @@ Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function () 
     // Route::get('bedType/beds', [BedController::class, 'bedTypeWiseBeds'])->name('bedtype.bed');
     Route::resource('bloodBank', BloodBankController::class)->only(['index','update']);
     Route::resource('bloodDonor', BloodDonorController::class);
+    Route::resource('bloodDonation', BloodDonationController::class);
     // Route::resource('bedAllotment', BedAllotmentController::class);
 
 
@@ -203,6 +205,7 @@ Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function () 
 Route::controller(GlobalController::class)->group(function(){
     Route::get('fetch/departments', 'fetchDepartments')->name('fetch.departments');
     Route::get('fetch/bedTypes', 'fetchBedTypes')->name('fetch.bedTypes');
+    Route::get('fetch/bloodDonors', 'bloodDonors')->name('fetch.bloodDonors');
 });
 
 // Profile & Settings

@@ -107,14 +107,6 @@ export default {
         },
     },
     methods: {
-        updateData() {
-            this.form.put(route("plans.update", this.plan.id), {
-                onSuccess: () => {
-                    this.form.reset(),
-                    this.$emit('close-drawer')
-                }
-            });
-        },
         onFileChange(e) {
             const file = e.target.files[0];
             this.form.image = file

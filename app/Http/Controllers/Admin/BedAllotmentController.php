@@ -18,7 +18,7 @@ class BedAllotmentController extends Controller
      */
     public function index()
     {
-        $bed_types = BedType::latest()->paginate(12);
+        $bed_types = BedType::latest()->paginate(20);
 
         return inertia('Admin/BedType/Index',compact('bed_types'));
     }
