@@ -122,7 +122,8 @@
                     </Menu>
                 </div>
                 <h2 class="my-1 font-bold text-lg tracking-tight text-gray-900 dark:text-white">Bed Number: {{ bed.number }}</h2>
-                <h6 class="my-1 font-bold tracking-tight text-gray-900 dark:text-white"><span class="text-sm">Charge</span>: $ {{ bed.charge }}</h6>
+                <h6 class="my-1 font-bold tracking-tight text-gray-900 dark:text-white" v-if="bed.floor">{{ bed.floor?.name ?? '' }}</h6>
+                <h6 class="my-1 font-bold tracking-tight text-gray-900 dark:text-white" v-if="bed.charge"><span class="text-sm">Charge</span>: $ {{ bed.charge }}</h6>
                 <span class="text-xs font-semibold px-2 py-1 rounded bg-green-100 text-green-800 dark:bg-green-200 dark:text-green-900 capitalize">
                     {{ bed.status }}
                 </span>

@@ -10,9 +10,9 @@ class UpdateBedService
     {
         $bed->update([
             'bed_type_id' => $request->bed_type,
+            'bed_floor_id' => $request->floor,
             'number' => $request->number,
             'charge' => $request->charge,
-            'floor' => $request->floor,
             'status' => $request->status,
             'description' => $request->description,
         ]);

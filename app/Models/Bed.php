@@ -10,21 +10,13 @@ class Bed extends Model
 {
     use HasFactory;
 
-    public const Floor = [
-        '1st Floor',
-        '2nd Floor',
-        '3rd Floor',
-        '4th Floor',
-        '5th Floor',
-        '6th Floor',
-        '7th Floor',
-        '8th Floor',
-        '9th Floor',
-        '10th Floor'
-    ];
-
     public function bedType(): BelongsTo
     {
-        return $this->belongsTo(BedType::class, 'bed_type_id');
+        return $this->belongsTo(BedType::class, );
+    }
+
+    public function floor(): BelongsTo
+    {
+        return $this->belongsTo(BedFloor::class, 'bed_floor_id');
     }
 }

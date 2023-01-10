@@ -9,6 +9,7 @@ use App\Services\Admin\Bed\CreateBedService;
 use App\Services\Admin\Bed\UpdateBedService;
 use App\Http\Requests\Admin\Bed\BedCreateRequest;
 use App\Http\Requests\Admin\Bed\BedUpdateRequest;
+use App\Models\BedFloor;
 use App\Models\BedType;
 
 class BedController extends Controller
@@ -20,9 +21,9 @@ class BedController extends Controller
      */
     public function index()
     {
-        $data['beds'] = Bed::with('bedType:id,name')->latest()->paginate(12);
+        $data['beds'] = Bed::with('bedType:id,name','floor:id,name')->latest()->paginate(12);
         $data['bed_types'] = BedType::withCount('beds')->latest()->get(['id','name','slug']);
-        $data['floors'] = Bed::Floor;
+        $data['floors'] = BedFloor::get(['id','name']);
 
         return inertia('Admin/Bed/Index',$data);
     }

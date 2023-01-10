@@ -26,8 +26,6 @@
                                     </div>
                                 </div>
 
-                                <!-- {{ bed }} -->
-                                {{ form }}
                                 <form class="mb-4" @submit.prevent="saveData">
                                     <div class="mb-4">
                                         <Label :name="__('Select Bed Type')" id="bed_type" :hasError="form.errors.bed_type"/>
@@ -49,7 +47,7 @@
                                             <Label :name="__('Floor')" id="bed_floor" :hasError="form.errors.floor"/>
                                             <BaseSelect v-model:value="form.floor" :hasError="form.errors.floor" class="w-3/2" :showMessage="false">
                                                 <option value="" hidden>{{ __('Select Bed Floor') }}</option>
-                                                <option :value="floor" v-for="floor in floors" :key="floor" :selected="floor == form.floor">{{ floor }}</option>
+                                                <option :value="floor.id" v-for="floor in floors" :key="floor.id" :selected="floor == form.floor">{{ floor.name }}</option>
                                             </BaseSelect>
                                             <ErrorMessage :name="form.errors.floor"/>
                                         </div>

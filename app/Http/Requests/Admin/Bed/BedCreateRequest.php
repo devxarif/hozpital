@@ -25,6 +25,7 @@ class BedCreateRequest extends FormRequest
     {
         return [
             'bed_type' => "required|exists:bed_types,id",
+            'floor' => "required|exists:bed_floors,id",
             'number' => 'required',
             'charge' => 'nullable',
             'floor' => 'required',
