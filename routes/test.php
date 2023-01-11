@@ -19,6 +19,9 @@ use sirajcse\UniqueIdGenerator\UniqueIdGenerator;
 
 Route::get('/', function () {
 
+    return inertia('Test/Chat/1');
+    return inertia('Test/Setting/1');
+
     return Department::select('id','name')->get();
 
     return inertia('Layout');
