@@ -27,9 +27,6 @@ import { InertiaProgress } from '@inertiajs/progress';
 import Popper from "vue3-popper";
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
-import { faHome, faPenToSquare, faEye, faTrashCan, faPlus, faChevronRight, faEllipsisVertical, faSearch } from '@fortawesome/free-solid-svg-icons'
-library.add(faHome, faPenToSquare, faEye, faTrashCan, faPlus, faChevronRight, faEllipsisVertical, faSearch)
 
 // Progress bar
 InertiaProgress.init({
@@ -39,20 +36,25 @@ InertiaProgress.init({
     showSpinner: true
 })
 
-// Layouts
+// Layouts, Pages & Components
 import AppLayout from "@/Shared/Layout/App.vue";
 import ErrorMessage from "@/Shared/Forms/ErrorMessage.vue";
 import Loading from "@/Shared/Loading.vue";
-import NoDataFound from "@/Shared/NoDataFound.vue";
 import Label from "@/Shared/Forms/Label.vue";
 import BaseInput from "@/Shared/Forms/BaseInput.vue";
 import BaseSelect from "@/Shared/Forms/BaseSelect.vue";
 import BaseTextarea from "@/Shared/Forms/BaseTextarea.vue";
+import BaseButton from "@/Shared/Forms/BaseButton.vue";
+import NothingFound from "@/Shared/NothingFound.vue";
 
 // Icons
 import CheckIcon from "@/Shared/Icons/CheckIcon.vue";
 import LoadingIcon from "@/Shared/Icons/LoadingIcon.vue";
 import HomeIcon from "@/Shared/Icons/HomeIcon.vue";
+import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
+import { faHome, faPenToSquare, faEye, faTrashCan, faPlus, faChevronRight, faEllipsisVertical, faSearch } from '@fortawesome/free-solid-svg-icons'
+library.add(faHome, faPenToSquare, faEye, faTrashCan, faPlus, faChevronRight, faEllipsisVertical, faSearch)
+
 
 createInertiaApp({
   resolve: (name) => resolvePageComponent(`./Pages/${name}.vue`, import.meta.glob('./Pages/**/*.vue')),
@@ -74,11 +76,12 @@ createInertiaApp({
                 AppLayout,
                 ErrorMessage,
                 Loading,
-                NoDataFound,
+                NothingFound,
                 Label,
                 BaseInput,
                 BaseSelect,
                 BaseTextarea,
+                BaseButton,
                 CheckIcon,
                 LoadingIcon,
                 HomeIcon,

@@ -25,10 +25,6 @@ module.exports = {
                 sans: ['Nunito', ...defaultTheme.fontFamily.sans],
             },
             borderWidth: ['hover'],
-        },
-    },
-    variants: {
-        extend: {
             display: ["group-hover"],
         },
     },
