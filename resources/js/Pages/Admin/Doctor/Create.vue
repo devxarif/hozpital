@@ -57,7 +57,7 @@
                                             <option value="" hidden>{{ __('Select Department') }}</option>
                                             <option :value="department.id" v-for="department in departments" :key="department.id" :selected="department.id == form.department">{{ department.name }}</option>
                                         </BaseSelect>
-                                        <button @click="showDepartmentModal()" type="button" class="ml-1 flex items-center justify-center rounded-full relative hover:bg-gray-500/5 focus:outline-none disabled:opacity-70 disabled:cursor-not-allowed disabled:pointer-events-none text-primary-500 focus:bg-primary-500/10 dark:hover:bg-gray-300/5 w-10 h-10 -my-2" wire:click="mountFormComponentAction('data.shop_customer_id', 'createOption')">
+                                        <button @click="showDepartmentModal()" type="button" class="inline-flex items-center rounded-full border border-transparent bg-blue-600 p-1 text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ml-2">
                                             <font-awesome-icon icon="fa-solid fa-plus" class="h-5 w-5"/>
                                         </button>
                                     </div>

@@ -18,24 +18,23 @@ class DepartmentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $departments = Department::latest()->paginate(20);
+        $query = Department::query();
 
-        return inertia('Admin/Department/Index',compact('departments'));
+        if($request->has('keyword') && $request->filled('keyword')){
+            $query->whereLike('name', $request->keyword);
+        }
+
+        $departments = $query->latest()->paginate(20)->withQueryString();
+
+        return inertia('Admin/Department/Index',[
+            'departments' => $departments,
+            'filter' => $request
+        ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-
-    }
-
-    /**
+     /**
      * Store a newly created resource in storage.
      *
      * @param  DepartmentCreateRequest  $request
@@ -56,17 +55,6 @@ class DepartmentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
     {
         //
     }

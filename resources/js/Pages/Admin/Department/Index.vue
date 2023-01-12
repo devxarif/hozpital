@@ -27,49 +27,27 @@
             </h2>
 
             <div class="flex items-center space-x-2 sm:space-x-3 ml-auto">
-
-                <div class="flex items-center space-x-2">
-                    <label class="relative hidden sm:flex">
-                        <input class="form-input peer h-9 w-full rounded-full border border-gray-300 bg-transparent px-3 py-2 pl-9 text-xs+ placeholder:text-gray-400/70 hover:border-gray-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" placeholder="Search users..." type="text">
-                        <span class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-gray-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-colors duration-200" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M3.316 13.781l.73-.171-.73.171zm0-5.457l.73.171-.73-.171zm15.473 0l.73-.171-.73.171zm0 5.457l.73.171-.73-.171zm-5.008 5.008l-.171-.73.171.73zm-5.457 0l-.171.73.171-.73zm0-15.473l-.171-.73.171.73zm5.457 0l.171-.73-.171.73zM20.47 21.53a.75.75 0 101.06-1.06l-1.06 1.06zM4.046 13.61a11.198 11.198 0 010-5.115l-1.46-.342a12.698 12.698 0 000 5.8l1.46-.343zm14.013-5.115a11.196 11.196 0 010 5.115l1.46.342a12.698 12.698 0 000-5.8l-1.46.343zm-4.45 9.564a11.196 11.196 0 01-5.114 0l-.342 1.46c1.907.448 3.892.448 5.8 0l-.343-1.46zM8.496 4.046a11.198 11.198 0 015.115 0l.342-1.46a12.698 12.698 0 00-5.8 0l.343 1.46zm0 14.013a5.97 5.97 0 01-4.45-4.45l-1.46.343a7.47 7.47 0 005.568 5.568l.342-1.46zm5.457 1.46a7.47 7.47 0 005.568-5.567l-1.46-.342a5.97 5.97 0 01-4.45 4.45l.342 1.46zM13.61 4.046a5.97 5.97 0 014.45 4.45l1.46-.343a7.47 7.47 0 00-5.568-5.567l-.342 1.46zm-5.457-1.46a7.47 7.47 0 00-5.567 5.567l1.46.342a5.97 5.97 0 014.45-4.45l-.343-1.46zm8.652 15.28l3.665 3.664 1.06-1.06-3.665-3.665-1.06 1.06z"></path>
-                            </svg>
-                        </span>
-                    </label>
-                </div>
-
-                <a href="#"
-                    class="w-1/2 text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 font-medium inline-flex items-center justify-center rounded-lg text-sm px-3 py-2 text-center sm:w-auto focus:outline-none">
-                    <svg class="-ml-1 mr-2 h-6 w-6" fill="currentColor" viewBox="0 0 20 20"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd"
-                            d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V7.414A2 2 0 0015.414 6L12 2.586A2 2 0 0010.586 2H6zm5 6a1 1 0 10-2 0v3.586l-1.293-1.293a1 1 0 10-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 11.586V8z"
-                            clip-rule="evenodd"></path>
+                <Link :href="route('admin.department.index')" v-if="filter.keyword && filter.keyword.length" type="button" class="w-1/2 text-white bg-red-600 hover:bg-red-700 font-medium inline-flex items-center justify-center rounded-lg text-sm px-3 py-2 text-center sm:w-auto focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                     </svg>
-                    Filter
-                </a>
-                <a href="#"
-                    class="w-1/2 text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 font-medium inline-flex items-center justify-center rounded-lg text-sm px-3 py-2 text-center sm:w-auto focus:outline-none">
-                    <svg class="-ml-1 mr-2 h-6 w-6" fill="currentColor" viewBox="0 0 20 20"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd"
-                            d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V7.414A2 2 0 0015.414 6L12 2.586A2 2 0 0010.586 2H6zm5 6a1 1 0 10-2 0v3.586l-1.293-1.293a1 1 0 10-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 11.586V8z"
-                            clip-rule="evenodd"></path>
-                    </svg>
-                    Export
-                </a>
-
-
-                <button @click="showCreateDrawer = true" type="button" class="w-1/2 text-white bg-blue-600 hover:bg-blue-700 font-medium inline-flex items-center justify-center rounded-full text-sm px-3 py-2 text-center sm:w-auto focus:outline-none">
-                    <font-awesome-icon icon="fa-solid fa-plus" class="h-4 w-4 mr-2"/>
-                   {{ __('Add Department') }}
+                    Clear Filter
+                </Link>
+                <button @click="toggleFilter" type="button" class="w-1/2 text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 font-medium inline-flex items-center justify-center rounded-lg text-sm px-3 py-2 text-center sm:w-auto focus:outline-none">
+                    <svg class="mr-2 h-6 w-6" stroke="currentColor" fill="none" stroke-width="0" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"></path></svg>
+                    {{ showFilter ? 'Hide Filter':'Filter' }}
                 </button>
+
                 <Menu as="div" class="relative inline-block text-left">
                     <div>
-                        <MenuButton class="flex items-center rounded-full text-gray-400 hover:text-gray-600 focus:outline-none">
+                        <MenuButton class="flex items-center rounded-lg text-gray-400 hover:text-gray-600 focus:outline-none">
                             <span class="sr-only">Open options</span>
-                            <font-awesome-icon icon="fa-solid fa-ellipsis-vertical" class="h-6 w-6"/>
+                            <a href="#" class="w-1/2 text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 font-medium inline-flex items-center justify-center rounded-lg text-sm px-3 py-2 text-center sm:w-auto focus:outline-none">
+                                <svg class="mr-2 h-6 w-6" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                                Export
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24" class="iconify iconify--heroicons-outline rotate-90 ml-2" ><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 5l7 7l-7 7"></path></svg>
+                            </a>
                         </MenuButton>
                     </div>
 
@@ -92,60 +70,103 @@
                         </MenuItems>
                     </transition>
                 </Menu>
+
+
+
+
+                <button @click="showCreateDrawer = true" type="button" class="w-1/2 text-white bg-blue-600 hover:bg-blue-700 font-medium inline-flex items-center justify-center rounded-lg text-sm px-3 py-2 text-center sm:w-auto focus:outline-none">
+                    <font-awesome-icon icon="fa-solid fa-plus" class="h-4 w-4 mr-2"/>
+                   {{ __('Add Department') }}
+                </button>
             </div>
         </div>
 
-        <!-- Body Part  -->
-        <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-            <span v-for="department in departments.data" :key="department.id" class="block p-6 bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-                <div class="flex flex-wrap justify-between items-start">
-                    <div class="relative mb-5">
-                        <span>
-                            <img class="w-16 h-16 rounded object-cover" alt="Figma logo" :src="department.image">
-                        </span>
-                    </div>
-                    <Menu as="div" class="relative inline-block text-left">
-                        <div>
-                            <MenuButton class="flex items-center rounded-full text-gray-400 hover:text-gray-600 focus:outline-none">
-                                <span class="sr-only">Open options</span>
-                                <font-awesome-icon icon="fa-solid fa-ellipsis-vertical" class="h-6 w-6"/>
-                            </MenuButton>
-                        </div>
-
-                        <transition enter-active-class="transition ease-out duration-100" enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100" leave-active-class="transition ease-in duration-75" leave-from-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
-                            <MenuItems class="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                                <div class="py-1 text-sm">
-                                <MenuItem v-slot="{ active }">
-                                    <a href="javascript:void(0)" @click.prevent="editData(department)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
-                                        <font-awesome-icon icon="fa-solid fa-pen-to-square" class="mr-3 h-5 w-5 text-blue-500 group-hover:text-blue-500"/>
-                                        Edit
-                                    </a>
-                                </MenuItem>
-                                <MenuItem v-slot="{ active }">
-                                    <a href="javascript:void(0)" @click.prevent="editData(department)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
-                                        <font-awesome-icon icon="fa-solid fa-eye" class="mr-3 h-5 w-5 text-sky-500 group-hover:text-sky-500"/>
-                                        Details
-                                    </a>
-                                </MenuItem>
-                                <MenuItem v-slot="{ active }">
-                                    <a href="javascript:void(0)" @click.prevent="deleteData(department.id)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
-                                        <font-awesome-icon icon="fa-solid fa-trash-can" class="mr-3 h-5 w-5 text-red-500 group-hover:text-red-500"/>
-                                        Delete
-                                    </a>
-                                </MenuItem>
-                                </div>
-                            </MenuItems>
-                        </transition>
-                    </Menu>
+        <transition enter-active-class="transition ease-out duration-100" enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100" leave-active-class="transition ease-in duration-100" leave-from-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
+            <div v-if="showFilter" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 xl:grid-cols-6 gap-5 mb-4 bg-white rounded-lg shadow-xs dark:bg-gray-800 items-center p-4">
+                <div class="relative h-15">
+                    <input v-model="filterForm.keyword" type="text" class="peer rounded-lg dark:bg-swapInput dark:text-swapText dark:border-swapBorderPrimary dark:focus:border-primary pt-[21px] px-3 pb-[6px] w-full border text-dark placeholder-transparent focus:outline-none      border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 dark:border-gray-600  dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="Search: Department Name">
+                    <label for="itmName"
+                        class="absolute left-3 top-1 dark:text-swapText opacity-100 text-xs transition-all peer-placeholder-shown:text-base peer-placeholder-shown:opacity-[0.4] peer-placeholder-shown:top-3 peer-focus:top-1 peer-focus:opacity-100 peer-focus:text-xs  text-gray-900 dark:text-gray-300">Search</label>
                 </div>
-                <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ department.name }}</h2>
-                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                    {{ department.description }}
-                </p>
-            </span>
+                <div>
+                    <button @click="filterData" type="button" class="text-white bg-blue-600 hover:bg-blue-700 font-medium inline-flex items-center justify-center rounded-lg text-sm px-6 py-4 text-center sm:w-auto focus:outline-none">
+                        <font-awesome-icon icon="fa-solid fa-search" class="h-4 w-4 mr-2"/>
+                       {{ __('Search') }}
+                    </button>
+                </div>
+            </div>
+        </transition>
+
+        <!-- Body Part  -->
+       <CardSkeleton :show="loading" v-if="loading"/>
+
+       <template v-else-if="!loading && departments && departments.data.length">
+           <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+               <span v-for="department in departments.data" :key="department.id" class="block p-6 bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                   <div class="flex flex-wrap justify-between items-start">
+                       <div class="relative mb-5">
+                           <span>
+                               <img class="w-16 h-16 rounded object-cover" alt="Figma logo" :src="department.image">
+                           </span>
+                       </div>
+                       <Menu as="div" class="relative inline-block text-left">
+                           <div>
+                               <MenuButton class="flex items-center rounded-full text-gray-400 hover:text-gray-600 focus:outline-none">
+                                   <span class="sr-only">Open options</span>
+                                   <font-awesome-icon icon="fa-solid fa-ellipsis-vertical" class="h-6 w-6"/>
+                               </MenuButton>
+                           </div>
+
+                           <transition enter-active-class="transition ease-out duration-100" enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100" leave-active-class="transition ease-in duration-75" leave-from-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
+                               <MenuItems class="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                                   <div class="py-1 text-sm">
+                                   <MenuItem v-slot="{ active }">
+                                       <a href="javascript:void(0)" @click.prevent="editData(department)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
+                                           <font-awesome-icon icon="fa-solid fa-pen-to-square" class="mr-3 h-5 w-5 text-blue-500 group-hover:text-blue-500"/>
+                                           Edit
+                                       </a>
+                                   </MenuItem>
+                                   <MenuItem v-slot="{ active }">
+                                       <a href="javascript:void(0)" @click.prevent="editData(department)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
+                                           <font-awesome-icon icon="fa-solid fa-eye" class="mr-3 h-5 w-5 text-sky-500 group-hover:text-sky-500"/>
+                                           Details
+                                       </a>
+                                   </MenuItem>
+                                   <MenuItem v-slot="{ active }">
+                                       <a href="javascript:void(0)" @click.prevent="deleteData(department.id)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
+                                           <font-awesome-icon icon="fa-solid fa-trash-can" class="mr-3 h-5 w-5 text-red-500 group-hover:text-red-500"/>
+                                           Delete
+                                       </a>
+                                   </MenuItem>
+                                   </div>
+                               </MenuItems>
+                           </transition>
+                       </Menu>
+                   </div>
+                   <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ department.name }}</h2>
+                   <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                       {{ department.description }}
+                   </p>
+               </span>
+           </div>
+           <Pagination :data="departments" v-if="departments && departments.data.length && departments.data.length > 20" class="mt-5"/>
+       </template>
+
+       <div class="text-center my-40" v-else>
+            <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                <path vector-effect="non-scaling-stroke" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m-3-3v6m-9 1V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+            </svg>
+            <h2 class="mt-2 text-lg font-medium text-gray-900">Nothing Found</h2>
+            <p class="mt-1 text-sm text-gray-500">Get started by creating a new one.</p>
+            <div class="mt-6">
+                <button @click="showCreateDrawer = true" type="button" class="w-1/2 text-white bg-blue-600 hover:bg-blue-700 font-medium inline-flex items-center justify-center rounded-lg text-sm px-4 py-2 text-center sm:w-auto focus:outline-none">
+                    <font-awesome-icon icon="fa-solid fa-plus" class="h-4 w-4 mr-2"/>
+                   {{ __('Add Department') }}
+                </button>
+            </div>
         </div>
 
-        <Pagination :data="departments" v-if="departments && departments.data.length && departments.data.length > 20" class="mt-5"/>
 
         <CreateDepartment :show="showCreateDrawer" @close-drawer="showCreateDrawer = false"/>
         <EditDepartment :show="showEditDrawer" @close-drawer="showEditDrawer = false" :department="editDepartment"/>
@@ -156,24 +177,36 @@
 import CreateDepartment from "./Create.vue";
 import EditDepartment from "./Edit.vue";
 import Pagination from "@/Shared/Pagination.vue";
+import CardSkeleton from "@/Shared/Skeleton/CardSkeleton.vue";
 
 export default {
     components: {
         Pagination,
         CreateDepartment,
         EditDepartment,
+        CardSkeleton,
     },
     props: {
         departments:{
             type: Array,
             default: () => []
-        }
+        },
+        filter:{
+            type: Array,
+            default: () => []
+        },
     },
     data() {
         return {
             showCreateDrawer: false,
             showEditDrawer: false,
             editDepartment: '',
+            showFilter: false,
+            loading: false,
+
+            filterForm: this.$inertia.form({
+                keyword: this.filter.keyword,
+            }),
         }
     },
     methods: {
@@ -195,9 +228,26 @@ export default {
         editData(department){
             this.showEditDrawer = true
             this.editDepartment = department
-        }
+        },
+        filterData(){
+            this.loading = true
+            this.filterForm.get(route('admin.department.index'), {
+                onSuccess: () => {
+                    this.loading = false
+                },
+                onError: () => {
+                    this.loading = false
+                    alert('Something went wrong')
+                },
+            })
+        },
+        toggleFilter() {
+            this.showFilter = !this.showFilter;
+            localStorage.setItem("adminDepartment", this.showFilter);
+        },
     },
-    mounted() {
+    created() {
+        this.showFilter = localStorage.getItem("adminDepartment") == "true" ? true: false;
     },
 };
 </script>
