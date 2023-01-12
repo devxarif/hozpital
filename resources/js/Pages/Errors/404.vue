@@ -6,7 +6,7 @@
         </div>
         <div class="mx-auto max-w-xl py-16 sm:py-24">
           <div class="text-center">
-            <p class="text-base font-semibold text-indigo-600">404</p>
+            <p class="text-base font-semibold text-blue-600">404</p>
             <h1 class="mt-2 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">This page does not exist.</h1>
             <p class="mt-2 text-lg text-gray-500">The page you are looking for could not be found.</p>
           </div>
@@ -36,7 +36,7 @@
               </li>
             </ul>
             <div class="mt-8">
-              <a href="#" class="text-base font-medium text-indigo-600 hover:text-indigo-500">
+              <a href="#" class="text-base font-medium text-blue-600 hover:text-indigo-500">
                 Or go back home
                 <span aria-hidden="true"> &rarr;</span>
               </a>

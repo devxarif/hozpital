@@ -1,8 +1,12 @@
 <template>
-    <Link :href="href" :class="['group flex items-center px-2 py-2 text-sm font-medium rounded-sm', active ? 'bg-slate-50 text-gray-900 hover:bg-gray-50 hover:text-gray-900':'text-gray-300 hover:bg-gray-700 hover:text-white']">
+    <Link :href="href" :class="['group flex items-center px-3 py-2.5 text-sm font-medium rounded-lg', active ? 'bg-blue-500 text-white hover:bg-blue-500':'text-gray-300 hover:bg-gray-700 hover:text-white']">
         <slot name="icon"/>
         {{ title }}
     </Link>
+    <!-- <Link :href="href" :class="['group flex items-center px-2 py-2 text-sm font-medium rounded-sm', active ? 'bg-slate-50 text-gray-900 hover:bg-gray-50 hover:text-gray-900':'text-gray-300 hover:bg-gray-700 hover:text-white']">
+        <slot name="icon"/>
+        {{ title }}
+    </Link> -->
 </template>
 
 <script>

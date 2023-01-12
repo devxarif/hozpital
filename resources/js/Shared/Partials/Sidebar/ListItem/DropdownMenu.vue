@@ -1,6 +1,7 @@
 <template>
     <div class="space-y-1">
-        <button type="button" class="bg-slate-50 text-gray-900 group w-full flex items-center pl-2 pr-1 py-2 text-left text-sm font-medium focus:outline-none" @click="open = !open">
+        <button type="button" :class="['group w-full flex items-center px-3 py-2.5 text-left text-sm font-medium focus:outline-none rounded-lg', active ? 'bg-blue-500 text-white':'text-gray-300 hover:bg-gray-700 hover:text-white']"
+         @click="open = !open">
             <slot name="icon"/>
             <span class="flex-1">{{ title }}</span>
             <div class="menu-arrow transform transition-all duration-300 rtl:rotate-180"><span>
@@ -20,20 +21,24 @@ export default {
     props: {
         title: {
             type: String,
-            required: true,
+            default: 'Title',
         },
         href: {
             type: String,
-            required: true,
+            default: '/',
         },
         active:{
             type: Boolean,
-            required: true,
-        }
+            default: false,
+        },
+        open:{
+            type: Boolean,
+            required: false,
+        },
     },
     data(){
         return {
-            open: false
+            open: this.active ?? false,
         }
     },
 }

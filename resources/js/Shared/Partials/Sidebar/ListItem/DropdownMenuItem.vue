@@ -1,27 +1,30 @@
 <template>
-<a href="#" class="group flex w-full items-center rounded-md py-2 pl-5 pr-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">
-    <font-awesome-icon icon="fa-solid fa-circle" class="text-gray-300 mr-2 h-2 w-2"/>
+<Link :href="href" :class="['group flex w-full items-center rounded-md py-2 pl-5 pr-2 text-sm font-medium', active ? 'text-blue-500 hover:text-blue-500':'text-gray-300 hover:bg-gray-700 hover:text-white']">
+    <font-awesome-icon icon="fa-solid fa-minus" class="mr-2 h-2 w-2" :class="active ? 'text-blue-500':'text-gray-300'" />
     {{ title }}
-</a>
+</Link>
 </template>
 
 <script>
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faCircle } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { faMinus } from '@fortawesome/free-solid-svg-icons'
 
-library.add(faCircle)
+library.add(faMinus)
 
 export default {
     props: {
         title: {
             type: String,
             required: true
+        },
+        href: {
+            type: String,
+            required: true,
+        },
+        active:{
+            type: Boolean,
+            required: true,
         }
-    },
-    components: {
-        FontAwesomeIcon,
-        faCircle
     }
 }
 </script>

@@ -51,11 +51,11 @@
                                             <Label :name="__('Gender')" :hasError="form.errors.gender"/>
                                             <div class="flex gap-2">
                                                 <label for="donor_male" class="w-full rounded-lg flex items-center pl-4 border border-gray-200 dark:border-gray-700   py-3 ml-2 text-sm font-medium text-gray-700 gap-2">
-                                                    <input id="donor_male" value="male" v-model="form.gender" name="gender" type="radio" class="h-4 w-4 border-gray-300 text-indigo-600 focus:outline-none">
+                                                    <input id="donor_male" value="male" v-model="form.gender" name="gender" type="radio" class="h-4 w-4 border-gray-300 text-blue-600 focus:outline-none">
                                                     <span>{{ __('Male') }}</span>
                                                 </label>
                                                 <label for="donor_female" class="w-full rounded-lg flex items-center pl-4 border border-gray-200 dark:border-gray-700 py-3 ml-2 text-sm font-medium text-gray-700 gap-2">
-                                                    <input id="donor_female" value="female" v-model="form.gender" name="gender" type="radio" class="h-4 w-4 border-gray-300 text-indigo-600 focus:outline-none">
+                                                    <input id="donor_female" value="female" v-model="form.gender" name="gender" type="radio" class="h-4 w-4 border-gray-300 text-blue-600 focus:outline-none">
                                                     <span>{{ __('Female') }}</span>
                                                 </label>
                                             </div>

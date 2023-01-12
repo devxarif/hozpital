@@ -61,21 +61,19 @@
                 <!-- Users  -->
                 <br>
                 <h3 class="px-3 text-sm font-medium text-gray-500" id="projects-headline">Users</h3>
-                <NavItem title="Department" :href="route('admin.department.index')" :active="route().current('admin.department.index')">
-                    <template v-slot:icon>
-                        <font-awesome-icon icon="fa-solid fa-home" class="mr-3 flex-shrink-0 h-5 w-5"/>
-                    </template>
-                </NavItem>
-                <NavItem title="Doctor" :href="route('admin.doctor.index')" :active="route().current('admin.doctor.index')">
-                    <template v-slot:icon>
-                        <font-awesome-icon icon="fa-solid fa-home" class="mr-3 flex-shrink-0 h-5 w-5"/>
-                    </template>
-                </NavItem>
                 <NavItem title="Patient" :href="route('admin.patient.index')" :active="route().current('admin.patient.index')">
                     <template v-slot:icon>
                         <font-awesome-icon icon="fa-solid fa-home" class="mr-3 flex-shrink-0 h-5 w-5"/>
                     </template>
                 </NavItem>
+                 <DropdownMenu title="Doctor" :active="route().current('admin.department.index') || route().current('admin.doctor.index')">
+                    <template v-slot:icon>
+                        <font-awesome-icon icon="fa-solid fa-home" class="mr-3 flex-shrink-0 h-5 w-5"/>
+                    </template>
+                    <DropdownMenuItem title="Department List" :href="route('admin.department.index')" :active="route().current('admin.department.index')"/>
+                    <DropdownMenuItem title="Doctor List" :href="route('admin.doctor.index')" :active="route().current('admin.doctor.index')"/>
+                </DropdownMenu>
+
                 <NavItem title="Nurse" :href="route('admin.nurse.index')" :active="route().current('admin.nurse.index')">
                     <template v-slot:icon>
                         <font-awesome-icon icon="fa-solid fa-home" class="mr-3 flex-shrink-0 h-5 w-5"/>
