@@ -17,11 +17,14 @@ class BloodDonorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $blood_donors = BloodDonor::latest()->paginate(20);
+        $blood_donors = BloodDonor::latest()->paginate(20)->withQueryString();
 
-        return inertia('Admin/BloodDonor/Index',compact('blood_donors'));
+        return inertia('Admin/BloodDonor/Index',[
+            'blood_donors' => $blood_donors,
+            'filter' => $request
+        ]);
     }
 
     /**

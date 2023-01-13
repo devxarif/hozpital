@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\BedType;
 use App\Models\BedAllotment;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Bed\BedCreateRequest;
 use App\Http\Requests\Admin\Bed\BedUpdateRequest;
@@ -16,11 +18,14 @@ class BedAllotmentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $bed_types = BedType::latest()->paginate(20);
+        $bed_types = BedType::latest()->paginate(20)->withQueryString();
 
-        return inertia('Admin/BedType/Index',compact('bed_types'));
+        return inertia('Admin/BedType/Index',[
+            'bed_types' => $bed_types,
+            'filter' => $request
+        ]);
     }
 
     /**

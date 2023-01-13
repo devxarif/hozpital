@@ -19,9 +19,9 @@ class BedController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data['beds'] = Bed::with('bedType:id,name','floor:id,name')->latest()->paginate(20);
+        $data['beds'] = Bed::with('bedType:id,name','floor:id,name')->latest()->paginate(20)->withQueryString();
         $data['bed_types'] = BedType::withCount('beds')->latest()->get(['id','name','slug']);
         $data['floors'] = BedFloor::get(['id','name']);
 
@@ -112,9 +112,9 @@ class BedController extends Controller
     public function bedTypeWiseBeds(Request $request){
         if ($request->type && $request->type != 'all') {
             $type = BedType::whereSlug($request->type)->firstOrFail();
-            $beds = $type->beds()->with('bedType:id,name')->latest()->paginate(20);
+            $beds = $type->beds()->with('bedType:id,name')->latest()->paginate(20)->withQueryString();
         } else {
-            $beds = Bed::with('bedType:id,name')->latest()->paginate(20);
+            $beds = Bed::with('bedType:id,name')->latest()->paginate(20)->withQueryString();
         }
 
         return $beds;

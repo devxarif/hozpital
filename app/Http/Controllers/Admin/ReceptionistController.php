@@ -18,11 +18,14 @@ class ReceptionistController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $receptionists = Receptionist::with('user:id,name,email')->latest()->paginate(20);
+        $receptionists = Receptionist::with('user:id,name,email')->latest()->paginate(20)->withQueryString();
 
-        return inertia('Admin/Receptionist/Index',compact('receptionists'));
+        return inertia('Admin/Receptionist/Index',[
+            'receptionists' => $receptionists,
+            'filter' => $request
+        ]);
     }
 
     /**

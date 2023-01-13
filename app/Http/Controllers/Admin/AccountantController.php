@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Accountant;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\AccountantCreateRequest;
 use App\Http\Requests\Admin\AccountantUpdateRequest;
@@ -17,11 +18,14 @@ class AccountantController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $accountants = Accountant::with('user:id,name,email')->latest()->paginate(20);
+        $accountants = Accountant::with('user:id,name,email')->latest()->paginate(20)->withQueryString();
 
-        return inertia('Admin/Accountant/Index',compact('accountants'));
+        return inertia('Admin/Accountant/Index',[
+            'accountants' => $accountants,
+            'filter' => $request
+        ]);
     }
 
     /**

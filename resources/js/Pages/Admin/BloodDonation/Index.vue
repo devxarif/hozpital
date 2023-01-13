@@ -229,7 +229,7 @@ export default {
         },
         filterData(){
             this.loading = true
-            this.filterForm.get(route('admin.department.index'), {
+            this.filterForm.get(route('admin.bloodDonation.index'), {
                 onSuccess: () => {
                     this.loading = false
                 },

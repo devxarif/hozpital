@@ -17,11 +17,14 @@ class BedTypeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $bed_types = BedType::latest()->paginate(20);
+        $bed_types = BedType::latest()->paginate(20)->withQueryString();
 
-        return inertia('Admin/BedType/Index',compact('bed_types'));
+        return inertia('Admin/BedType/Index',[
+            'bed_types' => $bed_types,
+            'filter' => $request
+        ]);
     }
 
     /**

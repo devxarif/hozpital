@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Patient;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\PatientCreateRequest;
 use App\Http\Requests\Admin\PatientUpdateRequest;
@@ -17,11 +18,14 @@ class PatientController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $patients = Patient::with('user:id,name,email')->latest()->paginate(20);
+        $patients = Patient::with('user:id,name,email')->latest()->paginate(20)->withQueryString();
 
-        return inertia('Admin/Patient/Index',compact('patients'));
+        return inertia('Admin/Patient/Index',[
+            'patients' => $patients,
+            'filter' => $request
+        ]);
     }
 
     /**

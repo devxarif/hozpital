@@ -9,6 +9,7 @@ use App\Http\Requests\Admin\DoctorUpdateRequest;
 use App\Services\Admin\Doctor\CreateDoctorService;
 use App\Services\Admin\Doctor\DeleteDoctorService;
 use App\Services\Admin\Doctor\UpdateDoctorService;
+use Illuminate\Http\Request;
 
 class DoctorController extends Controller
 {
@@ -17,11 +18,22 @@ class DoctorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $doctors = Doctor::with('user:id,name,email','department:id,name')->latest()->paginate(20);
+        $query = Doctor::query();
 
-        return inertia('Admin/Doctor/Index',compact('doctors'));
+        if($request->has('keyword') && $request->filled('keyword')){
+            $query->whereLike(['user.name', 'user.email'],  $request->keyword);
+        }
+
+        $doctors = $query->with('user:id,name,email','department:id,name')->latest()->paginate(20)->withQueryString();
+        // $doctors = Doctor::with('user:id,name,email','department:id,name')->latest()->paginate(20)->withQueryString();
+
+        return $doctors;
+        return inertia('Admin/Doctor/Index',[
+            'doctors' => $doctors,
+            'filter' => $request
+        ]);
     }
 
     /**

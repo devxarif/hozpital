@@ -232,7 +232,7 @@ export default {
         },
         filterData(){
             this.loading = true
-            this.filterForm.get(route('admin.department.index'), {
+            this.filterForm.get(route('admin.bloodDonor.index'), {
                 onSuccess: () => {
                     this.loading = false
                 },

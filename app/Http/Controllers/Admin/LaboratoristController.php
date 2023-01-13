@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Laboratorist;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\LaboratoristCreateRequest;
 use App\Http\Requests\Admin\LaboratoristUpdateRequest;
@@ -17,11 +18,14 @@ class LaboratoristController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $laboratorists = Laboratorist::with('user:id,name,email')->latest()->paginate(20);
+        $laboratorists = Laboratorist::with('user:id,name,email')->latest()->paginate(20)->withQueryString();
 
-        return inertia('Admin/Laboratorist/Index',compact('laboratorists'));
+        return inertia('Admin/Laboratorist/Index',[
+            'laboratorists' => $laboratorists,
+            'filter' => $request
+        ]);
     }
 
     /**

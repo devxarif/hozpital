@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Nurse;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\NurseCreateRequest;
 use App\Http\Requests\Admin\NurseUpdateRequest;
@@ -17,11 +18,14 @@ class NurseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $nurses = Nurse::with('user:id,name,email')->latest()->paginate(20);
+        $nurses = Nurse::with('user:id,name,email')->latest()->paginate(20)->withQueryString();
 
-        return inertia('Admin/Nurse/Index',compact('nurses'));
+        return inertia('Admin/Nurse/Index',[
+            'nurses' => $nurses,
+            'filter' => $request
+        ]);
     }
 
     /**

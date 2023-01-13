@@ -85,7 +85,7 @@ class WebsiteController extends Controller
 
         $posts = Post::select('id', 'title', 'slug', 'thumbnail', 'short_description')
             ->latest()
-            ->paginate(20);
+            ->paginate(20)->withQueryString();
 
         return view('website.blog', compact('posts'));
     }

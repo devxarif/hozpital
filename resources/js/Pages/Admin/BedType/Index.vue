@@ -149,7 +149,7 @@
             },
             filterData(){
                 this.loading = true
-                this.filterForm.get(route('admin.department.index'), {
+                this.filterForm.get(route('admin.bedType.index'), {
                     onSuccess: () => {
                         this.loading = false
                     },
@@ -161,11 +161,11 @@
             },
             toggleFilter() {
                 this.showFilter = !this.showFilter;
-                localStorage.setItem("adminDepartment", this.showFilter);
+                localStorage.setItem("adminBedType", this.showFilter);
             },
         },
         created() {
-            this.showFilter = localStorage.getItem("adminDepartment") == "true" ? true: false;
+            this.showFilter = localStorage.getItem("adminBedType") == "true" ? true: false;
         },
     };
 </script>

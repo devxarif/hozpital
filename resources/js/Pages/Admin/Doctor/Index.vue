@@ -225,7 +225,7 @@
             },
             filterData(){
                 this.loading = true
-                this.filterForm.get(route('admin.department.index'), {
+                this.filterForm.get(route('admin.doctor.index'), {
                     onSuccess: () => {
                         this.loading = false
                     },
@@ -237,10 +237,11 @@
             },
             toggleFilter() {
                 this.showFilter = !this.showFilter;
-                localStorage.setItem("adminDepartment", this.showFilter);
+                localStorage.setItem("adminDoctor", this.showFilter);
             },
         },
-        mounted() {
+        created() {
+            this.showFilter = localStorage.getItem("adminDoctor") == "true" ? true: false;
         },
     };
 </script>

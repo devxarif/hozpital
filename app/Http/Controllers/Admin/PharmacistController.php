@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Pharmacist;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\PharmacistCreateRequest;
 use App\Http\Requests\Admin\PharmacistUpdateRequest;
@@ -17,11 +18,14 @@ class PharmacistController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $pharmacists = Pharmacist::with('user:id,name,email')->latest()->paginate(20);
+        $pharmacists = Pharmacist::with('user:id,name,email')->latest()->paginate(20)->withQueryString();
 
-        return inertia('Admin/Pharmacist/Index',compact('pharmacists'));
+        return inertia('Admin/Pharmacist/Index',[
+            'pharmacists' => $pharmacists,
+            'filter' => $request
+        ]);
     }
 
     /**
