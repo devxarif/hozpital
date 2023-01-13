@@ -162,22 +162,31 @@
 
     export default {
         components: {
-            Pagination,
             CreateDoctor,
             EditDoctor,
-            library
         },
         props: {
             doctors:{
                 type: Array,
                 default: () => []
-            }
+            },
+            filter:{
+                type: Array,
+                default: () => []
+            },
         },
         data() {
             return {
                 showCreateDrawer: false,
                 showEditDoctor: false,
                 editDoctor: '',
+
+                showFilter: false,
+                loading: false,
+
+                filterForm: this.$inertia.form({
+                    keyword: this.filter.keyword,
+                }),
             }
         },
         methods: {
@@ -213,7 +222,23 @@
                 }else{
                     this.showEditDoctor = true
                 }
-            }
+            },
+            filterData(){
+                this.loading = true
+                this.filterForm.get(route('admin.department.index'), {
+                    onSuccess: () => {
+                        this.loading = false
+                    },
+                    onError: () => {
+                        this.loading = false
+                        alert('Something went wrong')
+                    },
+                })
+            },
+            toggleFilter() {
+                this.showFilter = !this.showFilter;
+                localStorage.setItem("adminDepartment", this.showFilter);
+            },
         },
         mounted() {
         },

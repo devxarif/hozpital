@@ -176,7 +176,6 @@
 
 
 <script>
-    import Pagination from "../../../Shared/Pagination.vue";
     import CreateDepartment from "./Create.vue";
     import EditLeaveType from "./Edit.vue";
 
@@ -185,7 +184,6 @@
             departments: Array,
         },
         components: {
-            Pagination,
             CreateDepartment,
             EditLeaveType,
         },

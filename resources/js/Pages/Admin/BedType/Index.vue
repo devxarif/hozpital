@@ -101,27 +101,30 @@
     import CreateBedType from "./Create.vue";
     import EditBedType from "./Edit.vue";
 
-    import { library } from '@fortawesome/fontawesome-svg-core'
-    import { faHome, } from '@fortawesome/free-solid-svg-icons'
-    library.add(faHome)
-
     export default {
         components: {
             CreateBedType,
             EditBedType,
-            library
         },
         props: {
             bed_types:{
                 type: Array,
                 default: () => []
-            }
+            },
+            filter:{
+                type: Array,
+                default: () => []
+            },
         },
         data() {
             return {
                 showCreateDrawer: false,
                 showEditBedType: false,
                 editBedType: '',
+
+                filterForm: this.$inertia.form({
+                    keyword: this.filter.keyword,
+                }),
             }
         },
         methods: {
@@ -143,9 +146,26 @@
             editData(bed){
                 this.showEditBedType = true
                 this.editBedType = bed
-            }
+            },
+            filterData(){
+                this.loading = true
+                this.filterForm.get(route('admin.department.index'), {
+                    onSuccess: () => {
+                        this.loading = false
+                    },
+                    onError: () => {
+                        this.loading = false
+                        alert('Something went wrong')
+                    },
+                })
+            },
+            toggleFilter() {
+                this.showFilter = !this.showFilter;
+                localStorage.setItem("adminDepartment", this.showFilter);
+            },
         },
-        mounted() {
+        created() {
+            this.showFilter = localStorage.getItem("adminDepartment") == "true" ? true: false;
         },
     };
 </script>

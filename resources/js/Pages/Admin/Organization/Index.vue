@@ -221,7 +221,6 @@
 
 
 <script>
-    import Pagination from "../../../Shared/Pagination.vue";
     import debounce from "lodash/debounce";
     import {
         Inertia
@@ -234,7 +233,6 @@
             filters: Object || Array,
         },
         components: {
-            Pagination,
             Inertia,
         },
         data() {

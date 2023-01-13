@@ -168,7 +168,6 @@
 
 
 <script>
-    import Pagination from "../../../Shared/Pagination.vue";
     import CreateLeaveType from "./Create.vue";
     import EditLeaveType from "./Edit.vue";
 
@@ -177,7 +176,6 @@
             leave_types: Array,
         },
         components: {
-            Pagination,
             CreateLeaveType,
             EditLeaveType,
         },
