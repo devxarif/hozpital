@@ -120,16 +120,12 @@
 
 
 <script>
-    import Pagination from "@/Shared/Pagination.vue";
     import {
         pickBy,
         throttle
     } from 'lodash';
 
     export default {
-        components: {
-            Pagination,
-        },
         props: {
             contacts: Object,
             filters: Object,

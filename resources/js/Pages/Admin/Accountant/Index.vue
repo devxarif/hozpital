@@ -101,7 +101,6 @@
 <script>
     import CreateAccountant from "./Create.vue";
     import EditAccountant from "./Edit.vue";
-    import Pagination from "@/Shared/Pagination.vue";
 
     import { library } from '@fortawesome/fontawesome-svg-core'
     import { faHome, } from '@fortawesome/free-solid-svg-icons'
@@ -109,7 +108,6 @@
 
     export default {
         components: {
-            Pagination,
             CreateAccountant,
             EditAccountant,
             library

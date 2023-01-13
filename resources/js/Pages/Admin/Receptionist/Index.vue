@@ -102,7 +102,6 @@
 <script>
     import CreateReceptionist from "./Create.vue";
     import EditReceptionist from "./Edit.vue";
-    import Pagination from "@/Shared/Pagination.vue";
 
     import { library } from '@fortawesome/fontawesome-svg-core'
     import { faHome, } from '@fortawesome/free-solid-svg-icons'
@@ -110,7 +109,6 @@
 
     export default {
         components: {
-            Pagination,
             CreateReceptionist,
             EditReceptionist,
             library

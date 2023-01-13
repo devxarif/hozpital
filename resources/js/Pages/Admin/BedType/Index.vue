@@ -100,7 +100,6 @@
 <script>
     import CreateBedType from "./Create.vue";
     import EditBedType from "./Edit.vue";
-    import Pagination from "@/Shared/Pagination.vue";
 
     import { library } from '@fortawesome/fontawesome-svg-core'
     import { faHome, } from '@fortawesome/free-solid-svg-icons'
@@ -108,7 +107,6 @@
 
     export default {
         components: {
-            Pagination,
             CreateBedType,
             EditBedType,
             library

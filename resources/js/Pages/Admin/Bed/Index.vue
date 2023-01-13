@@ -143,11 +143,9 @@
 <script>
 import CreateBed from "./Create.vue";
 import EditBed from "./Edit.vue";
-import Pagination from "@/Shared/Pagination.vue";
 
 export default {
     components: {
-        Pagination,
         CreateBed,
         EditBed,
     },

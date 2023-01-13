@@ -335,7 +335,6 @@
 
 
 <script>
-import Pagination from "@/Shared/Pagination.vue";
 import Actions from "@/Shared/Organization/LeaveRequest/Status.vue";
 import dayjs from "dayjs";
 import CreateLeaveRequest from "./Create.vue";
@@ -348,7 +347,6 @@ export default {
         filters: Object,
     },
     components: {
-        Pagination,
         Actions,
         CreateLeaveRequest,
         EditLeaveRequest,

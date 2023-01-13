@@ -99,11 +99,9 @@
 <script>
 import CreateBloodDonation from "./Create.vue";
 import EditBloodDonation from "./Edit.vue";
-import Pagination from "@/Shared/Pagination.vue";
 
 export default {
     components: {
-        Pagination,
         CreateBloodDonation,
         EditBloodDonation,
     },

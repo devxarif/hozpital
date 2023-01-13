@@ -55,13 +55,19 @@
                             <MenuItem v-slot="{ active }">
                                 <a href="javascript:void(0)" @click.prevent="editData(department)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
                                     <font-awesome-icon icon="fa-solid fa-plus" class="h-4 w-4 mr-2"/>
-                                    Bulk Create
+                                    As PDF
                                 </a>
                             </MenuItem>
                             <MenuItem v-slot="{ active }">
                                 <a href="javascript:void(0)" @click.prevent="editData(department)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
                                     <font-awesome-icon icon="fa-solid fa-trash-can" class="h-4 w-4 mr-2 "/>
-                                    Bulk Delete
+                                    As Excel
+                                </a>
+                            </MenuItem>
+                            <MenuItem v-slot="{ active }">
+                                <a href="javascript:void(0)" @click.prevent="editData(department)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
+                                    <font-awesome-icon icon="fa-solid fa-trash-can" class="h-4 w-4 mr-2 "/>
+                                    As CSV
                                 </a>
                             </MenuItem>
                             </div>
@@ -162,12 +168,10 @@
 <script>
 import CreateDepartment from "./Create.vue";
 import EditDepartment from "./Edit.vue";
-import Pagination from "@/Shared/Pagination.vue";
 import CardSkeleton from "@/Shared/Skeleton/CardSkeleton.vue";
 
 export default {
     components: {
-        Pagination,
         CreateDepartment,
         EditDepartment,
         CardSkeleton,
@@ -187,6 +191,7 @@ export default {
             showCreateDrawer: false,
             showEditDrawer: false,
             editDepartment: '',
+
             showFilter: false,
             loading: false,
 

@@ -376,7 +376,6 @@
 
 
 <script>
-    import Pagination from "@/Shared/Pagination.vue";
     import Feature from "@/Shared/Admin/Plan/Feature.vue";
     import debounce from "lodash/debounce";
     import {
@@ -391,7 +390,6 @@
             filters: Object || Array,
         },
         components: {
-            Pagination,
             Feature,
             Inertia,
         },

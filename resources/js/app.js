@@ -46,6 +46,7 @@ import BaseSelect from "@/Shared/Forms/BaseSelect.vue";
 import BaseTextarea from "@/Shared/Forms/BaseTextarea.vue";
 import BaseButton from "@/Shared/Forms/BaseButton.vue";
 import NothingFound from "@/Shared/NothingFound.vue";
+import Pagination from "@/Shared/Pagination.vue";
 
 // Icons
 import CheckIcon from "@/Shared/Icons/CheckIcon.vue";
@@ -82,6 +83,7 @@ createInertiaApp({
                 BaseSelect,
                 BaseTextarea,
                 BaseButton,
+                Pagination,
                 CheckIcon,
                 LoadingIcon,
                 HomeIcon,
