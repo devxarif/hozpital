@@ -20,7 +20,13 @@ class AccountantController extends Controller
      */
     public function index(Request $request)
     {
-        $accountants = Accountant::with('user:id,name,email')->latest()->paginate(20)->withQueryString();
+        $query = Accountant::query();
+
+        if($request->has('keyword') && $request->filled('keyword')){
+            $query->whereLike(['user.name', 'user.email'],  $request->keyword);
+        }
+
+        $accountants = $query->with('user:id,name,email')->latest()->paginate(20)->withQueryString();
 
         return inertia('Admin/Accountant/Index',[
             'accountants' => $accountants,

@@ -20,7 +20,13 @@ class ReceptionistController extends Controller
      */
     public function index(Request $request)
     {
-        $receptionists = Receptionist::with('user:id,name,email')->latest()->paginate(20)->withQueryString();
+        $query = Receptionist::query();
+
+        if($request->has('keyword') && $request->filled('keyword')){
+            $query->whereLike(['user.name', 'user.email'],  $request->keyword);
+        }
+
+        $receptionists = $query->with('user:id,name,email')->latest()->paginate(20)->withQueryString();
 
         return inertia('Admin/Receptionist/Index',[
             'receptionists' => $receptionists,

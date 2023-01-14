@@ -20,7 +20,13 @@ class LaboratoristController extends Controller
      */
     public function index(Request $request)
     {
-        $laboratorists = Laboratorist::with('user:id,name,email')->latest()->paginate(20)->withQueryString();
+        $query = Laboratorist::query();
+
+        if($request->has('keyword') && $request->filled('keyword')){
+            $query->whereLike(['user.name', 'user.email'],  $request->keyword);
+        }
+
+        $laboratorists = $query->with('user:id,name,email')->latest()->paginate(20)->withQueryString();
 
         return inertia('Admin/Laboratorist/Index',[
             'laboratorists' => $laboratorists,

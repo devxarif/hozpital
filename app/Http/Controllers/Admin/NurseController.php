@@ -20,7 +20,13 @@ class NurseController extends Controller
      */
     public function index(Request $request)
     {
-        $nurses = Nurse::with('user:id,name,email')->latest()->paginate(20)->withQueryString();
+        $query = Nurse::query();
+
+        if($request->has('keyword') && $request->filled('keyword')){
+            $query->whereLike(['user.name', 'user.email'],  $request->keyword);
+        }
+
+        $nurses = $query->with('user:id,name,email')->latest()->paginate(20)->withQueryString();
 
         return inertia('Admin/Nurse/Index',[
             'nurses' => $nurses,

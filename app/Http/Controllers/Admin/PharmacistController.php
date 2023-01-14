@@ -20,7 +20,13 @@ class PharmacistController extends Controller
      */
     public function index(Request $request)
     {
-        $pharmacists = Pharmacist::with('user:id,name,email')->latest()->paginate(20)->withQueryString();
+        $query = Pharmacist::query();
+
+        if($request->has('keyword') && $request->filled('keyword')){
+            $query->whereLike(['user.name', 'user.email'],  $request->keyword);
+        }
+
+        $pharmacists = $query->with('user:id,name,email')->latest()->paginate(20)->withQueryString();
 
         return inertia('Admin/Pharmacist/Index',[
             'pharmacists' => $pharmacists,
