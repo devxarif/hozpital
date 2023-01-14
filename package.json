@@ -51,6 +51,7 @@
         "vue-color-kit": "^1.0.5",
         "vue-loader": "^17.0.0",
         "vue-select": "^4.0.0-beta.6",
+        "@vueform/multiselect": "^2.5.7",
         "vue-sweetalert2": "^5.0.5",
         "vue-tel-input": "^6.0.3",
         "vue3-apexcharts": "^1.4.1",

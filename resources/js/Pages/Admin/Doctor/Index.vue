@@ -76,21 +76,31 @@
                 </Menu>
                 <BaseButton @click="showCreateDrawer = true" class="text-white bg-blue-600 hover:bg-blue-700 px-4 py-2.5">
                     <font-awesome-icon icon="fa-solid fa-plus" class="h-4 w-4 mr-2"/>
-                   {{ __('Add Department') }}
+                   {{ __('Add Doctor') }}
                 </BaseButton>
             </div>
         </div>
 
         <transition enter-active-class="transition ease-out duration-100" enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100" leave-active-class="transition ease-in duration-100" leave-from-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
             <div v-if="showFilter" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 xl:grid-cols-6 gap-5 mb-4 bg-white rounded-lg shadow-xs dark:bg-gray-800 items-center p-4">
-                <div class="relative h-15">
-                    <input v-model="filterForm.keyword" type="text" class="peer rounded-lg dark:bg-swapInput dark:text-swapText dark:border-swapBorderPrimary dark:focus:border-primary pt-[21px] px-3 pb-[6px] w-full border text-dark placeholder-transparent focus:outline-none      border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 dark:border-gray-600  dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        placeholder="Search: Department Name">
-                    <label for="itmName"
-                        class="absolute left-3 top-1 dark:text-swapText opacity-100 text-xs transition-all peer-placeholder-shown:text-base peer-placeholder-shown:opacity-[0.4] peer-placeholder-shown:top-3 peer-focus:top-1 peer-focus:opacity-100 peer-focus:text-xs  text-gray-900 dark:text-gray-300">Search</label>
+                <div>
+                    <label for="keyword" class="block text-sm font-medium text-gray-700">{{ __('Search') }}</label>
+                    <div class="mt-1">
+                        <input v-model="filterForm.keyword" type="text" id="keyword" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm py-2.5" placeholder="Doctor name, email">
+                    </div>
                 </div>
                 <div>
-                    <button @click="filterData" type="button" class="text-white bg-blue-600 hover:bg-blue-700 font-medium inline-flex items-center justify-center rounded-lg text-sm px-6 py-4 text-center sm:w-auto focus:outline-none">
+                    <label for="email" class="block text-sm font-medium text-gray-700">{{ __('Department') }}</label>
+                    <div class="mt-1">
+                        <Multiselect id="currency" :close-on-select="true" :can-clear="false"
+                            :searchable="true" v-model="filterForm.department" :create-option="false"
+                            placeholder="Department" :options="departments.map(item => ({
+                                value: item.id, label: item.name
+                            }))"  />
+                    </div>
+                </div>
+                <div>
+                    <button @click="filterData" :disabled="loading" type="button" class="text-white bg-blue-600 hover:bg-blue-700 font-medium inline-flex items-center justify-center rounded-lg text-sm px-6 py-2.5 mt-6 text-center sm:w-auto focus:outline-none">
                         <font-awesome-icon icon="fa-solid fa-search" class="h-4 w-4 mr-2"/>
                        {{ __('Search') }}
                     </button>
@@ -99,57 +109,67 @@
         </transition>
 
         <!-- Body Part  -->
-        <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-            <span v-for="doctor in doctors.data" :key="doctor.id" class="block p-6 bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-                <div class="flex flex-wrap justify-between items-start">
-                    <div class="relative mb-5">
-                        <span>
-                            <img class="w-16 h-16 rounded object-cover" alt="Figma logo" :src="doctor.avatar">
-                        </span>
-                    </div>
-                    <Menu as="div" class="relative inline-block text-left">
-                        <div>
-                            <MenuButton class="flex items-center rounded-full text-gray-400 hover:text-gray-600 focus:outline-none">
-                                <span class="sr-only">Open options</span>
-                                <font-awesome-icon icon="fa-solid fa-ellipsis-vertical" class="h-6 w-6"/>
-                            </MenuButton>
+        <CardSkeleton :show="loading" v-if="loading"/>
+
+       <template v-else-if="!loading && doctors && doctors.data.length">
+            <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+                <span v-for="doctor in doctors.data" :key="doctor.id" class="block p-6 bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                    <div class="flex flex-wrap justify-between items-start">
+                        <div class="relative mb-5">
+                            <span>
+                                <img class="w-16 h-16 rounded object-cover" alt="Figma logo" :src="doctor.avatar">
+                            </span>
                         </div>
+                        <Menu as="div" class="relative inline-block text-left">
+                            <div>
+                                <MenuButton class="flex items-center rounded-full text-gray-400 hover:text-gray-600 focus:outline-none">
+                                    <span class="sr-only">Open options</span>
+                                    <font-awesome-icon icon="fa-solid fa-ellipsis-vertical" class="h-6 w-6"/>
+                                </MenuButton>
+                            </div>
 
-                        <transition enter-active-class="transition ease-out duration-100" enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100" leave-active-class="transition ease-in duration-75" leave-from-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
-                            <MenuItems class="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                                <div class="py-1 text-sm">
-                                <MenuItem v-slot="{ active }">
-                                    <a href="javascript:void(0)" @click.prevent="editData(doctor)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
-                                        <font-awesome-icon icon="fa-solid fa-pen-to-square" class="mr-3 h-5 w-5 text-blue-500 group-hover:text-blue-500"/>
-                                        Edit
-                                    </a>
-                                </MenuItem>
-                                <MenuItem v-slot="{ active }">
-                                    <a href="javascript:void(0)" @click.prevent="editData(doctor)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
-                                        <font-awesome-icon icon="fa-solid fa-eye" class="mr-3 h-5 w-5 text-sky-500 group-hover:text-sky-500"/>
-                                        Details
-                                    </a>
-                                </MenuItem>
-                                <MenuItem v-slot="{ active }">
-                                    <a href="javascript:void(0)" @click.prevent="deleteData(doctor.id)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
-                                        <font-awesome-icon icon="fa-solid fa-trash-can" class="mr-3 h-5 w-5 text-red-500 group-hover:text-red-500"/>
-                                        Delete
-                                    </a>
-                                </MenuItem>
-                                </div>
-                            </MenuItems>
-                        </transition>
-                    </Menu>
-                </div>
-                <h2 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ doctor.user?.name ?? '-' }}</h2>
-                <h6 class="my-1 text-sm font-bold tracking-tight text-gray-900 dark:text-white">{{ doctor.user.email ?? '-' }}</h6>
-                <span class="text-xs font-semibold mr-2 px-2.5 py-0.5 rounded bg-green-100 text-green-800 dark:bg-green-200 dark:text-green-900">
-                    {{ doctor.department.name ?? '-' }}
+                            <transition enter-active-class="transition ease-out duration-100" enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100" leave-active-class="transition ease-in duration-75" leave-from-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
+                                <MenuItems class="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                                    <div class="py-1 text-sm">
+                                    <MenuItem v-slot="{ active }">
+                                        <a href="javascript:void(0)" @click.prevent="editData(doctor)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
+                                            <font-awesome-icon icon="fa-solid fa-pen-to-square" class="mr-3 h-5 w-5 text-blue-500 group-hover:text-blue-500"/>
+                                            Edit
+                                        </a>
+                                    </MenuItem>
+                                    <MenuItem v-slot="{ active }">
+                                        <a href="javascript:void(0)" @click.prevent="editData(doctor)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
+                                            <font-awesome-icon icon="fa-solid fa-eye" class="mr-3 h-5 w-5 text-sky-500 group-hover:text-sky-500"/>
+                                            Details
+                                        </a>
+                                    </MenuItem>
+                                    <MenuItem v-slot="{ active }">
+                                        <a href="javascript:void(0)" @click.prevent="deleteData(doctor.id)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
+                                            <font-awesome-icon icon="fa-solid fa-trash-can" class="mr-3 h-5 w-5 text-red-500 group-hover:text-red-500"/>
+                                            Delete
+                                        </a>
+                                    </MenuItem>
+                                    </div>
+                                </MenuItems>
+                            </transition>
+                        </Menu>
+                    </div>
+                    <h2 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ doctor.user?.name ?? '-' }}</h2>
+                    <h6 class="my-1 text-sm font-bold tracking-tight text-gray-900 dark:text-white">{{ doctor.user.email ?? '-' }}</h6>
+                    <span class="text-xs font-semibold mr-2 px-2.5 py-0.5 rounded bg-green-100 text-green-800 dark:bg-green-200 dark:text-green-900">
+                        {{ doctor.department.name ?? '-' }}
+                    </span>
                 </span>
-            </span>
-        </div>
+            </div>
+            <Pagination :data="doctors" v-if="doctors && doctors.data.length && doctors.data.length > 20" class="mt-5"/>
+       </template>
 
-        <Pagination :data="doctors" v-if="doctors && doctors.data.length && doctors.data.length > 20" class="mt-5"/>
+        <NothingFound v-else>
+            <BaseButton @click="showCreateDrawer = true" class="text-white bg-blue-600 hover:bg-blue-700 px-4 py-2">
+                <font-awesome-icon icon="fa-solid fa-plus" class="h-4 w-4 mr-2"/>
+                {{ __('Add Doctor') }}
+            </BaseButton>
+       </NothingFound>
 
         <CreateDoctor :show="showCreateDrawer" @close-drawer="closeCreateDrawer"/>
         <EditDoctor :show="showEditDoctor" @close-drawer="closeEditDrawer" :doctor="editDoctor"/>
@@ -159,14 +179,28 @@
 <script>
     import CreateDoctor from "./Create.vue";
     import EditDoctor from "./Edit.vue";
+    import vSelect from 'vue-select'
+    import 'vue-select/dist/vue-select.css';
+
+    import Multiselect from '@vueform/multiselect'
+    import '@vueform/multiselect/themes/default.css';
+
+    import CardSkeleton from "@/Shared/Skeleton/CardSkeleton.vue";
 
     export default {
         components: {
             CreateDoctor,
             EditDoctor,
+            'v-select':vSelect,
+            Multiselect,
+            CardSkeleton,
         },
         props: {
             doctors:{
+                type: Array,
+                default: () => []
+            },
+            departments:{
                 type: Array,
                 default: () => []
             },
@@ -181,15 +215,21 @@
                 showEditDoctor: false,
                 editDoctor: '',
 
+                employee_id: '',
+
                 showFilter: false,
                 loading: false,
 
                 filterForm: this.$inertia.form({
-                    keyword: this.filter.keyword,
+                    keyword: this.filter.keyword ?? '',
+                    department:  this.filter.department ?? '',
                 }),
             }
         },
         methods: {
+            setEmployee(){
+                alert()
+            },
             deleteData(id) {
                 this.$swal({
                     title: "Are you sure?",
@@ -245,3 +285,7 @@
         },
     };
 </script>
+
+<!-- <style scoped>
+@import 'path/to/node_modules/@vueform/multiselect/themes/tailwind.css'
+</style> -->

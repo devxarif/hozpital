@@ -24,7 +24,7 @@
 
         <div class="mb-4 flex justify-between">
             <h2 class="text-3xl font-semibold leading-7 text-gray-900 dark:text-gray-200 sm:text-3xl sm:truncate">
-                {{ __('Department') }}
+                {{ __('Blood Donor') }}
             </h2>
 
             <div class="flex items-center space-x-2 sm:space-x-3 ml-auto">
@@ -77,14 +77,14 @@
                 </Menu>
                 <BaseButton @click="showCreateDrawer = true" class="text-white bg-blue-600 hover:bg-blue-700 px-4 py-2.5">
                     <font-awesome-icon icon="fa-solid fa-plus" class="h-4 w-4 mr-2"/>
-                   {{ __('Add Department') }}
+                   {{ __('Add Blood Donor') }}
                 </BaseButton>
             </div>
         </div>
 
         <div class="mb-4 flex justify-between">
             <h2 class="text-3xl font-semibold leading-7 text-gray-900 dark:text-gray-200 sm:text-3xl sm:truncate">
-                {{ __('Blood Donor') }}
+                {{ __('') }}
             </h2>
 
             <div class="flex items-center space-x-2 sm:space-x-3 ml-auto">
@@ -123,54 +123,64 @@
         </transition>
 
         <!-- Body Part  -->
-        <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-            <span v-for="blood_donor in blood_donors.data" :key="blood_donor.id" class="block p-6 bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-                <div class="flex flex-wrap justify-between items-start">
-                    <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ blood_donor.name }}</h2>
+        <CardSkeleton :show="loading" v-if="loading"/>
 
-                    <Menu as="div" class="relative inline-block text-left">
-                        <div>
-                            <MenuButton class="flex items-center rounded-full text-gray-400 hover:text-gray-600 focus:outline-none">
-                                <span class="sr-only">Open options</span>
-                                <font-awesome-icon icon="fa-solid fa-ellipsis-vertical" class="h-6 w-6"/>
-                            </MenuButton>
-                        </div>
+       <template v-else-if="!loading && blood_donors && blood_donors.data.length">
+            <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+                <span v-for="blood_donor in blood_donors.data" :key="blood_donor.id" class="block p-6 bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                    <div class="flex flex-wrap justify-between items-start">
+                        <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ blood_donor.name }}</h2>
 
-                        <transition enter-active-class="transition ease-out duration-100" enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100" leave-active-class="transition ease-in duration-75" leave-from-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
-                            <MenuItems class="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                                <div class="py-1 text-sm">
-                                <MenuItem v-slot="{ active }">
-                                    <a href="javascript:void(0)" @click.prevent="editData(blood_donor)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
-                                        <font-awesome-icon icon="fa-solid fa-pen-to-square" class="mr-3 h-5 w-5 text-blue-500 group-hover:text-blue-500"/>
-                                        Edit
-                                    </a>
-                                </MenuItem>
-                                <MenuItem v-slot="{ active }">
-                                    <a href="javascript:void(0)" @click.prevent="editData(blood_donor)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
-                                        <font-awesome-icon icon="fa-solid fa-eye" class="mr-3 h-5 w-5 text-sky-500 group-hover:text-sky-500"/>
-                                        Details
-                                    </a>
-                                </MenuItem>
-                                <MenuItem v-slot="{ active }">
-                                    <a href="javascript:void(0)" @click.prevent="deleteData(blood_donor.id)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
-                                        <font-awesome-icon icon="fa-solid fa-trash-can" class="mr-3 h-5 w-5 text-red-500 group-hover:text-red-500"/>
-                                        Delete
-                                    </a>
-                                </MenuItem>
-                                </div>
-                            </MenuItems>
-                        </transition>
-                    </Menu>
-                </div>
-                <h2 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">{{ blood_donor.blood_group }}</h2>
-                <div class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                    <p>Gender: <span class="capitalize">{{ blood_donor.gender }}</span></p>
-                    <p>Age: {{ blood_donor.age }} Years old</p>
-                </div>
-            </span>
-        </div>
+                        <Menu as="div" class="relative inline-block text-left">
+                            <div>
+                                <MenuButton class="flex items-center rounded-full text-gray-400 hover:text-gray-600 focus:outline-none">
+                                    <span class="sr-only">Open options</span>
+                                    <font-awesome-icon icon="fa-solid fa-ellipsis-vertical" class="h-6 w-6"/>
+                                </MenuButton>
+                            </div>
 
-        <Pagination :data="blood_donors" v-if="blood_donors && blood_donors.data.length && blood_donors.data.length > 20" class="mt-5"/>
+                            <transition enter-active-class="transition ease-out duration-100" enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100" leave-active-class="transition ease-in duration-75" leave-from-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
+                                <MenuItems class="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                                    <div class="py-1 text-sm">
+                                    <MenuItem v-slot="{ active }">
+                                        <a href="javascript:void(0)" @click.prevent="editData(blood_donor)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
+                                            <font-awesome-icon icon="fa-solid fa-pen-to-square" class="mr-3 h-5 w-5 text-blue-500 group-hover:text-blue-500"/>
+                                            Edit
+                                        </a>
+                                    </MenuItem>
+                                    <MenuItem v-slot="{ active }">
+                                        <a href="javascript:void(0)" @click.prevent="editData(blood_donor)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
+                                            <font-awesome-icon icon="fa-solid fa-eye" class="mr-3 h-5 w-5 text-sky-500 group-hover:text-sky-500"/>
+                                            Details
+                                        </a>
+                                    </MenuItem>
+                                    <MenuItem v-slot="{ active }">
+                                        <a href="javascript:void(0)" @click.prevent="deleteData(blood_donor.id)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
+                                            <font-awesome-icon icon="fa-solid fa-trash-can" class="mr-3 h-5 w-5 text-red-500 group-hover:text-red-500"/>
+                                            Delete
+                                        </a>
+                                    </MenuItem>
+                                    </div>
+                                </MenuItems>
+                            </transition>
+                        </Menu>
+                    </div>
+                    <h2 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">{{ blood_donor.blood_group }}</h2>
+                    <div class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                        <p>Gender: <span class="capitalize">{{ blood_donor.gender }}</span></p>
+                        <p>Age: {{ blood_donor.age }} Years old</p>
+                    </div>
+                </span>
+            </div>
+            <Pagination :data="blood_donors" v-if="blood_donors && blood_donors.data.length && blood_donors.data.length > 20" class="mt-5"/>
+       </template>
+
+        <NothingFound v-else>
+            <BaseButton @click="showCreateDrawer = true" class="text-white bg-blue-600 hover:bg-blue-700 px-4 py-2">
+                <font-awesome-icon icon="fa-solid fa-plus" class="h-4 w-4 mr-2"/>
+                {{ __('Add Blood Donor') }}
+            </BaseButton>
+       </NothingFound>
 
         <CreateBloodDonor :show="showCreateDrawer" @close-drawer="showCreateDrawer = false"/>
         <EditBloodDonor :show="showEditDrawer" @close-drawer="showEditDrawer = false" :blood_donor="editBloodDonor"/>
@@ -178,77 +188,79 @@
 </template>
 
 <script>
-import CreateBloodDonor from "./Create.vue";
-import EditBloodDonor from "./Edit.vue";
+    import CreateBloodDonor from "./Create.vue";
+    import EditBloodDonor from "./Edit.vue";
+    import CardSkeleton from "@/Shared/Skeleton/CardSkeleton.vue";
 
-export default {
-    components: {
-        CreateBloodDonor,
-        EditBloodDonor,
-    },
-    props: {
-        blood_donors:{
-            type: Array,
-            default: () => []
+    export default {
+        components: {
+            CreateBloodDonor,
+            EditBloodDonor,
+            CardSkeleton,
         },
-        filter:{
-            type: Array,
-            default: () => []
+        props: {
+            blood_donors:{
+                type: Array,
+                default: () => []
+            },
+            filter:{
+                type: Array,
+                default: () => []
+            },
         },
-    },
-    data() {
-        return {
-            showCreateDrawer: false,
-            showEditDrawer: false,
-            editBloodDonor: '',
+        data() {
+            return {
+                showCreateDrawer: false,
+                showEditDrawer: false,
+                editBloodDonor: '',
 
-            showFilter: false,
-            loading: false,
+                showFilter: false,
+                loading: false,
 
-            filterForm: this.$inertia.form({
-                keyword: this.filter.keyword,
-            }),
-        }
-    },
-    methods: {
-        deleteData(id) {
-            this.$swal({
-                title: "Are you sure?",
-                text: "You won't be able to revert this!",
-                icon: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#3085d6",
-                cancelButtonColor: "#d33",
-                confirmButtonText: "Yes, delete it!",
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    this.$inertia.delete(route("admin.bloodDonor.destroy", id));
-                }
-            });
+                filterForm: this.$inertia.form({
+                    keyword: this.filter.keyword,
+                }),
+            }
         },
-        editData(blood_donor){
-            this.showEditDrawer = true
-            this.editBloodDonor = blood_donor
+        methods: {
+            deleteData(id) {
+                this.$swal({
+                    title: "Are you sure?",
+                    text: "You won't be able to revert this!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Yes, delete it!",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        this.$inertia.delete(route("admin.bloodDonor.destroy", id));
+                    }
+                });
+            },
+            editData(blood_donor){
+                this.showEditDrawer = true
+                this.editBloodDonor = blood_donor
+            },
+            filterData(){
+                this.loading = true
+                this.filterForm.get(route('admin.bloodDonor.index'), {
+                    onSuccess: () => {
+                        this.loading = false
+                    },
+                    onError: () => {
+                        this.loading = false
+                        alert('Something went wrong')
+                    },
+                })
+            },
+            toggleFilter() {
+                this.showFilter = !this.showFilter;
+                localStorage.setItem("adminBloodDonor", this.showFilter);
+            },
         },
-        filterData(){
-            this.loading = true
-            this.filterForm.get(route('admin.bloodDonor.index'), {
-                onSuccess: () => {
-                    this.loading = false
-                },
-                onError: () => {
-                    this.loading = false
-                    alert('Something went wrong')
-                },
-            })
+        created() {
+            this.showFilter = localStorage.getItem("adminBloodDonor") == "true" ? true: false;
         },
-        toggleFilter() {
-            this.showFilter = !this.showFilter;
-            localStorage.setItem("adminBloodDonor", this.showFilter);
-        },
-    },
-    created() {
-        this.showFilter = localStorage.getItem("adminBloodDonor") == "true" ? true: false;
-    },
-};
+    };
 </script>

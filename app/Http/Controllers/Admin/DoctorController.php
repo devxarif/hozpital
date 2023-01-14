@@ -6,6 +6,7 @@ use App\Models\Doctor;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\DoctorCreateRequest;
 use App\Http\Requests\Admin\DoctorUpdateRequest;
+use App\Models\Department;
 use App\Services\Admin\Doctor\CreateDoctorService;
 use App\Services\Admin\Doctor\DeleteDoctorService;
 use App\Services\Admin\Doctor\UpdateDoctorService;
@@ -25,6 +26,11 @@ class DoctorController extends Controller
         if($request->has('keyword') && $request->filled('keyword')){
             $query->whereLike(['user.name', 'user.email'],  $request->keyword);
         }
+        if($request->has('department') && $request->filled('department')){
+            $query->whereHas('department', function($q) use ($request){
+                $q->where('id', $request->department);
+            });
+        }
 
         $doctors = $query->with('user:id,name,email','department:id,name')->latest()->paginate(20)->withQueryString();
         // $doctors = Doctor::with('user:id,name,email','department:id,name')->latest()->paginate(20)->withQueryString();
@@ -32,6 +38,7 @@ class DoctorController extends Controller
         // return $doctors;
         return inertia('Admin/Doctor/Index',[
             'doctors' => $doctors,
+            'departments' => Department::select('id','name')->get(),
             'filter' => $request
         ]);
     }
