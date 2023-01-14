@@ -107,14 +107,14 @@
 
         <transition enter-active-class="transition ease-out duration-100" enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100" leave-active-class="transition ease-in duration-100" leave-from-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
             <div v-if="showFilter" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 xl:grid-cols-6 gap-5 mb-4 bg-white rounded-lg shadow-xs dark:bg-gray-800 items-center p-4">
-                <div class="relative h-15">
-                    <input v-model="filterForm.keyword" type="text" class="peer rounded-lg dark:bg-swapInput dark:text-swapText dark:border-swapBorderPrimary dark:focus:border-primary pt-[21px] px-3 pb-[6px] w-full border text-dark placeholder-transparent focus:outline-none      border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 dark:border-gray-600  dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        placeholder="Search: Department Name">
-                    <label for="itmName"
-                        class="absolute left-3 top-1 dark:text-swapText opacity-100 text-xs transition-all peer-placeholder-shown:text-base peer-placeholder-shown:opacity-[0.4] peer-placeholder-shown:top-3 peer-focus:top-1 peer-focus:opacity-100 peer-focus:text-xs  text-gray-900 dark:text-gray-300">Search</label>
+                <div>
+                    <label for="keyword" class="block text-sm font-medium text-gray-700">{{ __('Search') }}</label>
+                    <div class="mt-1">
+                        <input v-model="filterForm.keyword" type="text" id="keyword" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm py-2.5" placeholder="Doctor name, email">
+                    </div>
                 </div>
                 <div>
-                    <button @click="filterData" type="button" class="text-white bg-blue-600 hover:bg-blue-700 font-medium inline-flex items-center justify-center rounded-lg text-sm px-6 py-4 text-center sm:w-auto focus:outline-none">
+                    <button @click="filterData" :disabled="loading" type="button" class="text-white bg-blue-600 hover:bg-blue-700 font-medium inline-flex items-center justify-center rounded-lg text-sm px-6 py-2.5 mt-6 text-center sm:w-auto focus:outline-none">
                         <font-awesome-icon icon="fa-solid fa-search" class="h-4 w-4 mr-2"/>
                        {{ __('Search') }}
                     </button>
