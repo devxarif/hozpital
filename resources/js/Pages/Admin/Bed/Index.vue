@@ -28,7 +28,7 @@
             </h2>
 
             <div class="flex items-center space-x-2 sm:space-x-3 ml-auto">
-                <BaseButton v-if="filter.keyword && filter.keyword.length" as="link" :href="route('admin.bed.index')" class="text-white bg-red-600 hover:bg-red-700 px-3 py-2">
+                <BaseButton v-if="filter.keyword || filter.bed_type || filter.bed_floor || filter.status" as="link" :href="route('admin.bed.index')" class="text-white bg-red-600 hover:bg-red-700 px-3 py-2">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                     </svg>
@@ -87,7 +87,35 @@
                 <div>
                     <label for="keyword" class="block text-sm font-medium text-gray-700">{{ __('Search') }}</label>
                     <div class="mt-1">
-                        <input v-model="filterForm.keyword" type="text" id="keyword" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm py-2.5" placeholder="Bed name">
+                        <input v-model="filterForm.keyword" type="text" id="keyword" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm py-2.5" placeholder="Bed number, charge">
+                    </div>
+                </div>
+                <div>
+                    <label for="admin_bed_type" class="block text-sm font-medium text-gray-700">{{ __('Bed Type') }}</label>
+                    <div class="mt-1">
+                        <Multiselect id="admin_bed_type" :close-on-select="true" :can-clear="true"
+                            :searchable="true" v-model="filterForm.bed_type" :create-option="false"
+                            placeholder="Bed Type" :options="bed_types.map(item => ({
+                                value: item.id, label: item.name
+                            }))"  />
+                    </div>
+                </div>
+                <div>
+                    <label for="admin_bed_floor" class="block text-sm font-medium text-gray-700">{{ __('Floor') }}</label>
+                    <div class="mt-1">
+                        <Multiselect id="admin_bed_floor" :close-on-select="true" :can-clear="true"
+                            :searchable="true" v-model="filterForm.bed_floor" :create-option="false"
+                            placeholder="Floor" :options="floors.map(item => ({
+                                value: item.id, label: item.name
+                            }))"  />
+                    </div>
+                </div>
+                <div>
+                    <label for="admin_bed_status" class="block text-sm font-medium text-gray-700">{{ __('Status') }}</label>
+                    <div class="mt-1">
+                        <Multiselect id="admin_bed_status" :close-on-select="true" :can-clear="true"
+                            :searchable="false" v-model="filterForm.status" :create-option="false"
+                            placeholder="Status" :options="[{ value: 'alloted', label: 'Alloted' },{ value: 'unalloted', label: 'Unalloted' },]"  />
                     </div>
                 </div>
                 <div>
@@ -209,12 +237,15 @@
     import CreateBed from "./Create.vue";
     import EditBed from "./Edit.vue";
     import CardSkeleton from "@/Shared/Skeleton/CardSkeleton.vue";
+    import Multiselect from '@vueform/multiselect'
+    import '@vueform/multiselect/themes/default.css';
 
     export default {
         components: {
             CreateBed,
             EditBed,
             CardSkeleton,
+            Multiselect,
         },
         props: {
             beds:{
@@ -247,7 +278,10 @@
                 loading: false,
 
                 filterForm: this.$inertia.form({
-                    keyword: this.filter.keyword,
+                    keyword: this.filter.keyword ?? '',
+                    bed_type: this.filter.bed_type ?? '',
+                    bed_floor: this.filter.bed_floor ?? '',
+                    status: this.filter.status ?? '',
                 }),
             }
         },

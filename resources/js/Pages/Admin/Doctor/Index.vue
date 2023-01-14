@@ -90,6 +90,16 @@
                     </div>
                 </div>
                 <div>
+                    <label for="admin_doctor_department" class="block text-sm font-medium text-gray-700">{{ __('Department') }}</label>
+                    <div class="mt-1">
+                        <Multiselect id="admin_doctor_department" :close-on-select="true" :can-clear="false"
+                            :searchable="true" v-model="filterForm.department" :create-option="false"
+                            placeholder="Department" :options="departments.map(item => ({
+                                value: item.id, label: item.name
+                            }))"  />
+                    </div>
+                </div>
+                <div>
                     <button @click="filterData" :disabled="loading" type="button" class="text-white bg-blue-600 hover:bg-blue-700 font-medium inline-flex items-center justify-center rounded-lg text-sm px-6 py-2.5 mt-6 text-center sm:w-auto focus:outline-none">
                         <font-awesome-icon icon="fa-solid fa-search" class="h-4 w-4 mr-2"/>
                        {{ __('Search') }}
@@ -275,7 +285,3 @@
         },
     };
 </script>
-
-<!-- <style scoped>
-@import 'path/to/node_modules/@vueform/multiselect/themes/tailwind.css'
-</style> -->

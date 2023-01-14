@@ -21,9 +21,31 @@ class BedController extends Controller
      */
     public function index(Request $request)
     {
-        $data['beds'] = Bed::with('bedType:id,name','floor:id,name')->latest()->paginate(20)->withQueryString();
+        $query = Bed::query();
+
+        if($request->has('keyword') && $request->filled('keyword')){
+            $query->whereLike(['number', 'charge'],  $request->keyword);
+        }
+
+        if($request->has('status') && $request->filled('status')){
+            $query->whereLike(['status'],  $request->status);
+        }
+
+        if($request->has('bed_type') && $request->filled('bed_type')){
+            $query->whereHas('bedType', function($q) use ($request){
+                $q->where('id', $request->bed_type);
+            });
+        }
+
+        if($request->has('bed_floor') && $request->filled('bed_floor')){
+            $query->whereHas('floor', function($q) use ($request){
+                $q->where('id', $request->bed_floor);
+            });
+        }
+
+        $data['beds'] = $query->with('bedType:id,name','floor:id,name')->latest()->paginate(20)->withQueryString();
         $data['bed_types'] = BedType::withCount('beds')->latest()->get(['id','name','slug']);
-        $data['floors'] = BedFloor::get(['id','name']);
+        $data['filter'] =  $request;
 
         return inertia('Admin/Bed/Index',$data);
     }
