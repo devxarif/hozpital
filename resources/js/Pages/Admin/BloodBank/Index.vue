@@ -26,78 +26,7 @@
             <h2 class="text-3xl font-semibold leading-7 text-gray-900 dark:text-gray-200 sm:text-3xl sm:truncate">
                 {{ __('Blood Bank') }}
             </h2>
-
-            <div class="flex items-center space-x-2 sm:space-x-3 ml-auto">
-                <BaseButton v-if="filter.keyword && filter.keyword.length" as="link" :href="route('admin.bloodBank.index')" class="text-white bg-red-600 hover:bg-red-700 px-3 py-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                    Clear Filter
-                </BaseButton>
-
-                <BaseButton @click="toggleFilter" class="text-whittext-gray-900 bg-white border border-gray-300 hover:bg-gray-100 px-3 py-2">
-                    <svg class="mr-2 h-6 w-6" stroke="currentColor" fill="none" stroke-width="0" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"></path></svg>
-                    {{ showFilter ? 'Hide Filter':'Filter' }}
-                </BaseButton>
-                <Menu as="div" class="relative inline-block text-left">
-                    <div>
-                        <MenuButton class="flex items-center rounded-lg text-gray-400 hover:text-gray-600 focus:outline-none">
-                            <span class="sr-only">Open options</span>
-                            <button href="#" class="w-1/2 text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 font-medium inline-flex items-center justify-center rounded-lg text-sm px-3 py-2 text-center sm:w-auto focus:outline-none">
-                                <svg class="mr-2 h-6 w-6" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-                                Export
-                            </button>
-                        </MenuButton>
-                    </div>
-
-                    <transition enter-active-class="transition ease-out duration-100" enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100" leave-active-class="transition ease-in duration-75" leave-from-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
-                        <MenuItems class="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                            <div class="py-1 text-sm">
-                            <MenuItem v-slot="{ active }">
-                                <a href="javascript:void(0)" @click.prevent="editData(department)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
-                                    <font-awesome-icon icon="fa-solid fa-plus" class="h-4 w-4 mr-2"/>
-                                    As PDF
-                                </a>
-                            </MenuItem>
-                            <MenuItem v-slot="{ active }">
-                                <a href="javascript:void(0)" @click.prevent="editData(department)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
-                                    <font-awesome-icon icon="fa-solid fa-trash-can" class="h-4 w-4 mr-2 "/>
-                                    As Excel
-                                </a>
-                            </MenuItem>
-                            <MenuItem v-slot="{ active }">
-                                <a href="javascript:void(0)" @click.prevent="editData(department)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
-                                    <font-awesome-icon icon="fa-solid fa-trash-can" class="h-4 w-4 mr-2 "/>
-                                    As CSV
-                                </a>
-                            </MenuItem>
-                            </div>
-                        </MenuItems>
-                    </transition>
-                </Menu>
-                <BaseButton @click="showCreateDrawer = true" class="text-white bg-blue-600 hover:bg-blue-700 px-4 py-2.5">
-                    <font-awesome-icon icon="fa-solid fa-plus" class="h-4 w-4 mr-2"/>
-                   {{ __('Add Blood Bank') }}
-                </BaseButton>
-            </div>
         </div>
-
-        <transition enter-active-class="transition ease-out duration-100" enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100" leave-active-class="transition ease-in duration-100" leave-from-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
-            <div v-if="showFilter" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 xl:grid-cols-6 gap-5 mb-4 bg-white rounded-lg shadow-xs dark:bg-gray-800 items-center p-4">
-                <div>
-                    <label for="keyword" class="block text-sm font-medium text-gray-700">{{ __('Search') }}</label>
-                    <div class="mt-1">
-                        <input v-model="filterForm.keyword" type="text" id="keyword" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm py-2.5" placeholder="Blood bank">
-                    </div>
-                </div>
-                <div>
-                    <button @click="filterData" :disabled="loading" type="button" class="text-white bg-blue-600 hover:bg-blue-700 font-medium inline-flex items-center justify-center rounded-lg text-sm px-6 py-2.5 mt-6 text-center sm:w-auto focus:outline-none">
-                        <font-awesome-icon icon="fa-solid fa-search" class="h-4 w-4 mr-2"/>
-                       {{ __('Search') }}
-                    </button>
-                </div>
-            </div>
-        </transition>
 
         <!-- Body Part  -->
         <template v-if="blood_banks && blood_banks.length">
@@ -139,7 +68,6 @@
             </div>
         </template>
 
-
         <NothingFound v-else>
             <BaseButton @click="showCreateDrawer = true" class="text-white bg-blue-600 hover:bg-blue-700 px-4 py-2">
                 <font-awesome-icon icon="fa-solid fa-plus" class="h-4 w-4 mr-2"/>
@@ -174,39 +102,13 @@ export default {
         return {
             showEditDrawer: false,
             editBloodBank: '',
-
-            showFilter: false,
-            loading: false,
-
-            filterForm: this.$inertia.form({
-                keyword: this.filter.keyword,
-            }),
         }
     },
     methods: {
         editData(blood_bank){
             this.showEditDrawer = true
             this.editBloodBank = blood_bank
-        },
-        filterData(){
-            this.loading = true
-            this.filterForm.get(route('admin.bloodBank.index'), {
-                onSuccess: () => {
-                    this.loading = false
-                },
-                onError: () => {
-                    this.loading = false
-                    alert('Something went wrong')
-                },
-            })
-        },
-        toggleFilter() {
-            this.showFilter = !this.showFilter;
-            localStorage.setItem("adminBloodBank", this.showFilter);
-        },
-    },
-    created() {
-        this.showFilter = localStorage.getItem("adminBloodBank") == "true" ? true: false;
-    },
+        }
+    }
 };
 </script>

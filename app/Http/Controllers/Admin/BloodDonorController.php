@@ -19,12 +19,25 @@ class BloodDonorController extends Controller
      */
     public function index(Request $request)
     {
-        $blood_donors = BloodDonor::latest()->paginate(20)->withQueryString();
+        $query = BloodDonor::query();
+
+        if($request->has('keyword') && $request->filled('keyword')){
+            $query->whereLike(['name', 'phone','email','age'],  $request->keyword);
+        }
+        if($request->has('gender') && $request->filled('gender')){
+            $query->whereLike(['gender'],  $request->gender);
+        }
+        if($request->has('blood_group') && $request->filled('blood_group')){
+            $query->whereLike(['blood_group'],  $request->blood_group);
+        }
+
+        $blood_donors = $query->latest()->paginate(20)->withQueryString();
 
         return inertia('Admin/BloodDonor/Index',[
             'blood_donors' => $blood_donors,
             'filter' => $request
         ]);
+
     }
 
     /**

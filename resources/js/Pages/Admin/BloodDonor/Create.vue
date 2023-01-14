@@ -68,7 +68,7 @@
                                             <option :selected="form.blood_group == 'B+'" value="B+">B+</option>
                                             <option :selected="form.blood_group == 'B-'" value="B-">B-</option>
                                             <option :selected="form.blood_group == 'AB+'" value="AB+">AB+</option>
-                                            <option :selected="form.blood_group == 'AB+'" value="AB-">AB-</option>
+                                            <option :selected="form.blood_group == 'AB-'" value="AB-">AB-</option>
                                             <option :selected="form.blood_group == 'O+'" value="O+">O+</option>
                                             <option :selected="form.blood_group == 'O-'" value="O-">O-</option>
                                         </BaseSelect>

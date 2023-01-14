@@ -28,7 +28,7 @@
             </h2>
 
             <div class="flex items-center space-x-2 sm:space-x-3 ml-auto">
-                <BaseButton v-if="filter.keyword && filter.keyword.length" as="link" :href="route('admin.bloodDonor.index')" class="text-white bg-red-600 hover:bg-red-700 px-3 py-2">
+                <BaseButton v-if="filter.keyword || filter.gender || filter.blood_group" as="link" :href="route('admin.bloodDonor.index')" class="text-white bg-red-600 hover:bg-red-700 px-3 py-2">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                     </svg>
@@ -82,35 +82,29 @@
             </div>
         </div>
 
-        <div class="mb-4 flex justify-between">
-            <h2 class="text-3xl font-semibold leading-7 text-gray-900 dark:text-gray-200 sm:text-3xl sm:truncate">
-                {{ __('') }}
-            </h2>
-
-            <div class="flex items-center space-x-2 sm:space-x-3 ml-auto">
-                <button @click="showCreateDrawer = true" type="button" class="w-1/2 text-white bg-blue-600 hover:bg-blue-700 font-medium inline-flex items-center justify-center rounded-lg text-sm px-3 py-2 text-center sm:w-auto focus:outline-none">
-                    <font-awesome-icon icon="fa-solid fa-plus" class="h-4 w-4 mr-2"/>
-                   {{ __('Add Blood Donor') }}
-                </button>
-                <a href="#"
-                    class="w-1/2 text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 font-medium inline-flex items-center justify-center rounded-lg text-sm px-3 py-2 text-center sm:w-auto focus:outline-none">
-                    <svg class="-ml-1 mr-2 h-6 w-6" fill="currentColor" viewBox="0 0 20 20"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd"
-                            d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V7.414A2 2 0 0015.414 6L12 2.586A2 2 0 0010.586 2H6zm5 6a1 1 0 10-2 0v3.586l-1.293-1.293a1 1 0 10-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 11.586V8z"
-                            clip-rule="evenodd"></path>
-                    </svg>
-                    Export
-                </a>
-            </div>
-        </div>
 
         <transition enter-active-class="transition ease-out duration-100" enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100" leave-active-class="transition ease-in duration-100" leave-from-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
             <div v-if="showFilter" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 xl:grid-cols-6 gap-5 mb-4 bg-white rounded-lg shadow-xs dark:bg-gray-800 items-center p-4">
                 <div>
                     <label for="keyword" class="block text-sm font-medium text-gray-700">{{ __('Search') }}</label>
                     <div class="mt-1">
-                        <input v-model="filterForm.keyword" type="text" id="keyword" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm py-2.5" placeholder="Blood donor name, email">
+                        <input v-model="filterForm.keyword" type="text" id="keyword" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm py-2.5" placeholder="Donor name, email, phone, age">
+                    </div>
+                </div>
+                <div>
+                    <label for="admin_blood_group" class="block text-sm font-medium text-gray-700">{{ __('Blood Group') }}</label>
+                    <div class="mt-1">
+                        <Multiselect id="admin_blood_group" :close-on-select="true" :can-clear="true"
+                            :searchable="true" v-model="filterForm.blood_group" :create-option="false"
+                            placeholder="Blood Group" :options="bloodGroups"  />
+                    </div>
+                </div>
+                <div>
+                    <label for="admin_blood_donor_gender" class="block text-sm font-medium text-gray-700">{{ __('Gender') }}</label>
+                    <div class="mt-1">
+                        <Multiselect id="admin_blood_donor_gender" :close-on-select="true" :can-clear="true"
+                            :searchable="false" v-model="filterForm.gender" :create-option="false"
+                            placeholder="Gender" :options="[{ value: 'male', label: 'Male' },{ value: 'female', label: 'Female' }]"  />
                     </div>
                 </div>
                 <div>
@@ -191,12 +185,15 @@
     import CreateBloodDonor from "./Create.vue";
     import EditBloodDonor from "./Edit.vue";
     import CardSkeleton from "@/Shared/Skeleton/CardSkeleton.vue";
+    import Multiselect from '@vueform/multiselect'
+    import '@vueform/multiselect/themes/default.css';
 
     export default {
         components: {
             CreateBloodDonor,
             EditBloodDonor,
             CardSkeleton,
+            Multiselect,
         },
         props: {
             blood_donors:{
@@ -217,8 +214,21 @@
                 showFilter: false,
                 loading: false,
 
+                bloodGroups: [
+                    { value: 'A+', label: 'A+' },
+                    { value: 'A-', label: 'A-' },
+                    { value: 'B+', label: 'B+' },
+                    { value: 'B-', label: 'B-' },
+                    { value: 'AB+', label: 'AB+' },
+                    { value: 'AB-', label: 'AB-' },
+                    { value: 'O+', label: 'O+' },
+                    { value: 'O-', label: 'O-' }
+                ],
+
                 filterForm: this.$inertia.form({
-                    keyword: this.filter.keyword,
+                    keyword: this.filter.keyword ?? '',
+                    blood_group: this.filter.blood_group ?? '',
+                    gender: this.filter.gender ?? '',
                 }),
             }
         },

@@ -1,6 +1,6 @@
 <template>
 
-    <Head :title="__('Department')" />
+    <Head :title="__('Bed Floor')" />
     <AppLayout>
 
         <!-- Header Part  -->
@@ -28,17 +28,7 @@
             </h2>
 
             <div class="flex items-center space-x-2 sm:space-x-3 ml-auto">
-                <BaseButton v-if="filter.keyword && filter.keyword.length" as="link" :href="route('admin.bedFloor.index')" class="text-white bg-red-600 hover:bg-red-700 px-3 py-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                    Clear Filter
-                </BaseButton>
 
-                <BaseButton @click="toggleFilter" class="text-whittext-gray-900 bg-white border border-gray-300 hover:bg-gray-100 px-3 py-2">
-                    <svg class="mr-2 h-6 w-6" stroke="currentColor" fill="none" stroke-width="0" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"></path></svg>
-                    {{ showFilter ? 'Hide Filter':'Filter' }}
-                </BaseButton>
                 <Menu as="div" class="relative inline-block text-left">
                     <div>
                         <MenuButton class="flex items-center rounded-lg text-gray-400 hover:text-gray-600 focus:outline-none">
@@ -82,27 +72,9 @@
             </div>
         </div>
 
-        <transition enter-active-class="transition ease-out duration-100" enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100" leave-active-class="transition ease-in duration-100" leave-from-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
-            <div v-if="showFilter" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 xl:grid-cols-6 gap-5 mb-4 bg-white rounded-lg shadow-xs dark:bg-gray-800 items-center p-4">
-                <div>
-                    <label for="keyword" class="block text-sm font-medium text-gray-700">{{ __('Search') }}</label>
-                    <div class="mt-1">
-                        <input v-model="filterForm.keyword" type="text" id="keyword" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm py-2.5" placeholder="Bed floor">
-                    </div>
-                </div>
-                <div>
-                    <button @click="filterData" :disabled="loading" type="button" class="text-white bg-blue-600 hover:bg-blue-700 font-medium inline-flex items-center justify-center rounded-lg text-sm px-6 py-2.5 mt-6 text-center sm:w-auto focus:outline-none">
-                        <font-awesome-icon icon="fa-solid fa-search" class="h-4 w-4 mr-2"/>
-                       {{ __('Search') }}
-                    </button>
-                </div>
-            </div>
-        </transition>
 
         <!-- Body Part  -->
-        <CardSkeleton :show="loading" v-if="loading"/>
-
-       <template v-else-if="!loading && bed_floors && bed_floors.data.length">
+       <template v-if="bed_floors && bed_floors.length">
             <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
                 <span v-for="bed_floor in bed_floors" :key="bed_floor.id" class="block p-6 bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
                     <div class="flex flex-wrap justify-between items-start">
@@ -149,7 +121,6 @@
             </div>
         </template>
 
-
         <NothingFound v-else>
             <BaseButton @click="showCreateDrawer = true" class="text-white bg-blue-600 hover:bg-blue-700 px-4 py-2">
                 <font-awesome-icon icon="fa-solid fa-plus" class="h-4 w-4 mr-2"/>
@@ -177,24 +148,13 @@
             bed_floors:{
                 type: Array,
                 default: () => []
-            },
-            filter:{
-                type: Array,
-                default: () => []
-            },
+            }
         },
         data() {
             return {
                 showCreateDrawer: false,
                 showEditDrawer: false,
                 editFloor: '',
-
-                showFilter: false,
-                loading: false,
-
-                filterForm: this.$inertia.form({
-                    keyword: this.filter.keyword,
-                }),
             }
         },
         methods: {
@@ -216,26 +176,7 @@
             editData(floor){
                 this.showEditDrawer = true
                 this.editFloor = floor
-            },
-            filterData(){
-                this.loading = true
-                this.filterForm.get(route('admin.bedFloor.index'), {
-                    onSuccess: () => {
-                        this.loading = false
-                    },
-                    onError: () => {
-                        this.loading = false
-                        alert('Something went wrong')
-                    },
-                })
-            },
-            toggleFilter() {
-                this.showFilter = !this.showFilter;
-                localStorage.setItem("adminBedFloor", this.showFilter);
-            },
-        },
-        created() {
-            this.showFilter = localStorage.getItem("adminBedFloor") == "true" ? true: false;
-        },
+            }
+        }
     };
 </script>

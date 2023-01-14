@@ -45,7 +45,8 @@
         </div>
 
         <!-- Body Part  -->
-        <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+        <template v-if="bed_types && bed_types.data.length">
+            <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
             <span v-for="bed_type in bed_types.data" :key="bed_type.id" class="block p-6 bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
                 <div class="flex flex-wrap justify-between items-start">
                     <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ bed_type.name }}</h2>
@@ -87,10 +88,16 @@
                     {{ bed_type.description }}
                 </p>
             </span>
-        </div>
+            </div>
+            <Pagination :data="bed_types" v-if="bed_types && bed_types.data.length && bed_types.data.length > 20" class="mt-5"/>
+        </template>
 
-        <Pagination :data="bed_types" v-if="bed_types && bed_types.data.length && bed_types.data.length > 20" class="mt-5"/>
-
+        <NothingFound v-else>
+            <BaseButton @click="showCreateDrawer = true" class="text-white bg-blue-600 hover:bg-blue-700 px-4 py-2">
+                <font-awesome-icon icon="fa-solid fa-plus" class="h-4 w-4 mr-2"/>
+                {{ __('Add Bed Type') }}
+            </BaseButton>
+       </NothingFound>
 
         <CreateBedType :show="showCreateDrawer" @close-drawer="showCreateDrawer = false"/>
         <EditBedType :show="showEditBedType" @close-drawer="showEditBedType = false" :type="editBedType"/>
