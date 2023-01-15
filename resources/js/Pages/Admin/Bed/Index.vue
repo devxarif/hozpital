@@ -228,8 +228,8 @@
             </BaseButton>
        </NothingFound>
 
-        <CreateBed :show="showCreateDrawer" @close-drawer="showCreateDrawer = false" :floors="floors"/>
-        <EditBed :show="showEditBed" @close-drawer="showEditBed = false" :bed="editBed" :floors="floors"/>
+        <CreateBed :show="showCreateDrawer" @close-drawer="showCreateDrawer = false"/>
+        <EditBed :show="showEditBed" @close-drawer="showEditBed = false" :bed="editBed"/>
     </AppLayout>
 </template>
 

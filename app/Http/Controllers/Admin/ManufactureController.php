@@ -21,7 +21,7 @@ class ManufactureController extends Controller
         $query = Manufacture::query();
 
         if($request->has('keyword') && $request->filled('keyword')){
-            $query->whereLike(['name', 'phone','email','age'],  $request->keyword);
+            $query->whereLike(['name', 'phone','email'],  $request->keyword);
         }
 
         $manufactures = $query->latest()->paginate(20)->withQueryString();

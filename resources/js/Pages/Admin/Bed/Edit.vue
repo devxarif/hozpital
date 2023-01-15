@@ -45,10 +45,11 @@
                                     <div class="grid grid-cols-2 gap-2">
                                         <div class="mb-4">
                                             <Label :name="__('Floor')" id="bed_floor" :hasError="form.errors.floor"/>
-                                            <BaseSelect v-model:value="form.floor" :hasError="form.errors.floor" class="w-3/2" :showMessage="false">
-                                                <option value="" hidden>{{ __('Select Bed Floor') }}</option>
-                                                <option :value="floor.id" v-for="floor in floors" :key="floor.id" :selected="floor == form.floor">{{ floor.name }}</option>
-                                            </BaseSelect>
+                                            <Multiselect id="bed_floor" :close-on-select="true" :can-clear="true"
+                                        :searchable="true" v-model="form.floor" :create-option="false"
+                                        placeholder="Select Floor" :options="floors.map(item => ({
+                                            value: item.id, label: item.name
+                                        }))"  />
                                             <ErrorMessage :name="form.errors.floor"/>
                                         </div>
                                         <div class="mb-4">
@@ -98,7 +99,13 @@
 </template>
 
 <script>
+import Multiselect from '@vueform/multiselect'
+import '@vueform/multiselect/themes/default.css';
+
 export default {
+    components:{
+        Multiselect
+    },
     props: {
         bed: {
             type: Object,
@@ -107,10 +114,6 @@ export default {
         show: {
             type: Boolean,
             default: false
-        },
-        floors: {
-            type: Array,
-            default: () => []
         }
     },
     data() {
@@ -118,13 +121,14 @@ export default {
             form: this.$inertia.form({
                 bed_type: this.bed.bed_type_id,
                 description:  this.bed.description,
-                floor: this.bed.floor,
+                floor: this.bed.bed_floor_id,
                 number: this.bed.number,
                 charge: this.bed.charge,
                 status: this.bed.status,
             }),
 
-            bed_types: []
+            bed_types: [],
+            floors: []
         };
     },
     watch: {
@@ -132,7 +136,7 @@ export default {
             handler() {
                 this.form.bed_type = this.bed.bed_type_id
                 this.form.description = this.bed.description
-                this.form.floor = this.bed.floor
+                this.form.floor = this.bed.bed_floor_id
                 this.form.number = this.bed.number
                 this.form.charge = this.bed.charge
                 this.form.status = this.bed.status
@@ -152,15 +156,19 @@ export default {
                 },
             });
         },
-        async loadBedTypes(){
-            let response = await axios.get(route("fetch.bedTypes"));
+        async loadData(){
+            // Fetches bed types
+            let bed_type_response = await axios.get(route("fetch.bedTypes"));
+            this.bed_types = bed_type_response.data;
 
-            this.bed_types = response.data;
+            // Fetches bed floors
+            let bed_floor = await axios.get(route("fetch.bedFloors"));
+            this.floors = bed_floor.data;
         },
     },
-    mounted(){
+    created(){
         this.checkPagePermission('admin')
-        this.loadBedTypes()
+        this.loadData()
     }
 };
 </script>

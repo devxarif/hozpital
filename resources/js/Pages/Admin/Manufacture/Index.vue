@@ -28,7 +28,7 @@
             </h2>
 
             <div class="flex items-center space-x-2 sm:space-x-3 ml-auto">
-                <BaseButton v-if="filter.keyword" as="link" :href="route('admin.bloodDonor.index')" class="text-white bg-red-600 hover:bg-red-700 px-3 py-2">
+                <BaseButton v-if="filter.keyword" as="link" :href="route('admin.manufacture.index')" class="text-white bg-red-600 hover:bg-red-700 px-3 py-2">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                     </svg>
@@ -88,7 +88,7 @@
                 <div>
                     <label for="keyword" class="block text-sm font-medium text-gray-700">{{ __('Search') }}</label>
                     <div class="mt-1">
-                        <input v-model="filterForm.keyword" type="text" id="keyword" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm py-2.5" placeholder="Donor name, email, phone, age">
+                        <input v-model="filterForm.keyword" type="text" id="keyword" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm py-2.5" placeholder="Manufacture name, email, phone">
                     </div>
                 </div>
                 <div>
@@ -145,8 +145,8 @@
                     </div>
                     <h2 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">{{ manufacture.blood_group }}</h2>
                     <div class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                        <p>Gender: <span class="capitalize">{{ manufacture.gender }}</span></p>
-                        <p>Age: {{ manufacture.age }} Years old</p>
+                        <p>Email: <span class="capitalize">{{ manufacture.email }}</span></p>
+                        <p>Phone: {{ manufacture.phone }}</p>
                     </div>
                 </span>
             </div>

@@ -27,7 +27,7 @@
                             <form class="mb-4" @submit.prevent="saveData">
                                 <div class="mb-4">
                                     <Label :name="__('Select Bed Type')" id="bed_name" :hasError="form.errors.bed_type"/>
-                                    <div class="grid grid-cols-3 gap-3 mx-auto">
+                                    <div class="grid grid-cols-4 gap-2 mx-auto">
                                         <div class="relative" v-for="bed_type in bed_types" :key="bed_type.id">
                                             <input @change="bedTypeChange" class="sr-only peer" type="radio" :value="bed_type.id" :id="bed_type.slug" v-model="form.bed_type">
                                             <label class="flex p-2 bg-white border border-gray-300 rounded-lg cursor-pointer focus:outline-none hover:bg-gray-50 peer-checked:ring-blue-500 peer-checked:ring-2 peer-checked:border-transparent flex-col peer-checked:shadow-xl" :for="bed_type.slug">
@@ -42,16 +42,17 @@
                                 </div>
                                 <div class="grid grid-cols-2 gap-2">
                                     <div class="mb-4">
-                                        <Label :name="__('Floor')" id="bed_floor" :hasError="form.errors.floor"/>
-                                        <BaseSelect v-model:value="form.floor" :hasError="form.errors.floor" class="w-3/2" :showMessage="false">
-                                            <option value="" hidden>{{ __('Select Bed Floor') }}</option>
-                                            <option :value="floor.id" v-for="floor in floors" :key="floor.id" :selected="floor.id == form.floor">{{ floor.name }}</option>
-                                        </BaseSelect>
-                                        <ErrorMessage :name="form.errors.floor"/>
-                                    </div>
-                                    <div class="mb-4">
                                         <Label :name="__('Bed Number')" id="bed_number" :hasError="form.errors.number"/>
                                         <BaseInput v-model="form.number" placeholder="Number" id="bed_number" :hasError="form.errors.number"/>
+                                    </div>
+                                    <div class="mb-4">
+                                        <Label :name="__('Floor')" id="bed_floor" :hasError="form.errors.floor"/>
+                                        <Multiselect id="bed_floor" :close-on-select="true" :can-clear="true"
+                                        :searchable="true" v-model="form.floor" :create-option="false"
+                                        placeholder="Select Floor" :options="floors.map(item => ({
+                                            value: item.id, label: item.name
+                                        }))"  />
+                                        <ErrorMessage :name="form.errors.floor"/>
                                     </div>
                                 </div>
                                 <div class="grid grid-cols-2 gap-2">
@@ -96,15 +97,17 @@
 </template>
 
 <script>
+    import Multiselect from '@vueform/multiselect'
+    import '@vueform/multiselect/themes/default.css';
+
     export default {
+        components:{
+            Multiselect
+        },
         props: {
             show: {
                 type: Boolean,
                 default: false
-            },
-            floors: {
-                type: Array,
-                default: () => []
             }
         },
         data() {
@@ -118,7 +121,8 @@
                     bed_type: ""
                 }),
 
-                bed_types: []
+                bed_types: [],
+                floors: []
             };
         },
         methods: {
@@ -130,10 +134,14 @@
                     },
                 });
             },
-            async loadBedTypes(){
-                let response = await axios.get(route("fetch.bedTypes"));
+            async loadData(){
+                // Fetches bed types
+                let bed_type_response = await axios.get(route("fetch.bedTypes"));
+                this.bed_types = bed_type_response.data;
 
-                this.bed_types = response.data;
+                // Fetches bed floors
+                let bed_floor = await axios.get(route("fetch.bedFloors"));
+                this.floors = bed_floor.data;
             },
             bedTypeChange(event) {
                 this.form.bed_type = event.target.value;
@@ -145,7 +153,7 @@
         },
         mounted() {
             this.checkPagePermission('admin')
-            this.loadBedTypes()
+            this.loadData()
         }
     };
 </script>

@@ -53,10 +53,11 @@
                                 <div class="mb-4">
                                     <Label :name="__('Department')" id="doctor_name" :hasError="form.errors.department"/>
                                     <div class="flex items-center">
-                                        <BaseSelect v-model:value="form.department" :hasError="form.errors.department" class="w-3/2" :showMessage="false">
-                                            <option value="" hidden>{{ __('Select Department') }}</option>
-                                            <option :value="department.id" v-for="department in departments" :key="department.id" :selected="department.id == form.department">{{ department.name }}</option>
-                                        </BaseSelect>
+                                        <Multiselect id="admin_doctor_department" :close-on-select="true" :can-clear="true"
+                                        :searchable="true" v-model="form.department" :create-option="false"
+                                        placeholder="Select Department" :options="departments.map(item => ({
+                                            value: item.id, label: item.name
+                                        }))"  />
                                         <button @click="showDepartmentModal()" type="button" class="inline-flex items-center rounded-full border border-transparent bg-blue-600 p-1 text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ml-2">
                                             <font-awesome-icon icon="fa-solid fa-plus" class="h-5 w-5"/>
                                         </button>
@@ -106,9 +107,11 @@
 <script>
 import EyeHideIcon from '@/Shared/Icons/EyeHideIcon.vue';
 import EyeShowIcon from '@/Shared/Icons/EyeShowIcon.vue';
+import CreateDepartmentModal from './CreateDepartmentModal.vue'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faHome } from '@fortawesome/free-solid-svg-icons'
-import CreateDepartmentModal from './CreateDepartmentModal.vue'
+import Multiselect from '@vueform/multiselect'
+import '@vueform/multiselect/themes/default.css';
 
 export default {
     components:{
@@ -116,7 +119,8 @@ export default {
         EyeShowIcon,
         library,
         faHome,
-        CreateDepartmentModal
+        CreateDepartmentModal,
+        Multiselect
     },
     props: {
         show: {

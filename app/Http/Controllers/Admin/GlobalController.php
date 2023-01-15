@@ -8,6 +8,7 @@ use App\Models\Organization;
 use Illuminate\Http\Request;
 use App\Models\ContactMessage;
 use App\Http\Controllers\Controller;
+use App\Models\BedFloor;
 use App\Models\BedType;
 use App\Models\BloodDonor;
 use App\Models\Department;
@@ -21,6 +22,10 @@ class GlobalController extends Controller
 
     public function fetchBedTypes(){
         return BedType::withCount('beds')->latest()->get(['id','name']);
+    }
+
+    public function fetchBedFloors(){
+        return BedFloor::latest()->get(['id','name']);
     }
 
     public function bloodDonors(){
