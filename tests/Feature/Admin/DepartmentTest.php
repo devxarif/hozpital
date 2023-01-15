@@ -44,7 +44,7 @@ test('department update validation redirect back to form', function(){
     $department = Department::factory()->create();
 
     actingAs($this->user)
-    ->put("/admin/department/".$department->id, [
+    ->put(route('admin.department.update', $department->id), [
         'name' => '',
     ])
     ->assertStatus(302)
@@ -57,7 +57,7 @@ test('department update unique validation redirect back to form', function(){
     Department::factory()->create(['name' => 'Department 2']);
 
     actingAs($this->user)
-    ->put("/admin/department/".$department->id, [
+    ->put(route('admin.department.update', $department->id), [
         'name' => 'Department 2',
     ])
     ->assertStatus(302);
@@ -68,7 +68,7 @@ test('admin can update a department', function () {
     $department = Department::create($data );
 
     actingAs($this->user)
-    ->put("/admin/department/".$department->id, [
+    ->put(route('admin.department.update', $department->id), [
         'name' => 'New Name',
         'description' => 'New Description',
     ])
