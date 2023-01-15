@@ -37,7 +37,6 @@ class BloodDonorController extends Controller
             'blood_donors' => $blood_donors,
             'filter' => $request
         ]);
-
     }
 
     /**

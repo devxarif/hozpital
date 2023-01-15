@@ -16,19 +16,20 @@ class ManufactureController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
-    }
+        $query = Manufacture::query();
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        if($request->has('keyword') && $request->filled('keyword')){
+            $query->whereLike(['name', 'phone','email','age'],  $request->keyword);
+        }
+
+        $manufactures = $query->latest()->paginate(20)->withQueryString();
+
+        return inertia('Admin/Manufacture/Index',[
+            'manufactures' => $manufactures,
+            'filter' => $request
+        ]);
     }
 
     /**
