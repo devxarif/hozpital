@@ -28,7 +28,6 @@ class BedCreateRequest extends FormRequest
             'floor' => "required|exists:bed_floors,id",
             'number' => 'required',
             'charge' => 'nullable',
-            'floor' => 'required',
             'description' => 'nullable',
         ];
     }

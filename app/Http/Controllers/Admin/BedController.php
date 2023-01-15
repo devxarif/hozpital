@@ -50,16 +50,6 @@ class BedController extends Controller
         return inertia('Admin/Bed/Index',$data);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
      /**
      * Store a newly created resource in storage.
      *
@@ -81,17 +71,6 @@ class BedController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Bed $bed)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Bed $bed)
     {
         //
     }
