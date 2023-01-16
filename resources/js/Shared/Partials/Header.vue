@@ -13,31 +13,33 @@
                         <svg v-else @click="toggleSidebarMenu('show')" class="h-6 w-6 text-gray-700" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 24"><title>bars-staggered</title><g fill="none"><g clip-path="url(#1668093471782-6019237_clip0_2_182362)"><path d="M.5 4.5A1.5 1.5 0 0 1 2 3h18a1.5 1.5 0 1 1 0 3H2A1.5 1.5 0 0 1 .5 4.5zm3 7.5c0-.83.672-1.5 1.5-1.5h18c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5H5A1.5 1.5 0 0 1 3.5 12zM20 21H2a1.5 1.5 0 1 1 0-3h18c.83 0 1.5.67 1.5 1.5S20.83 21 20 21z" fill="#000"></path></g><defs><clipPath id="1668093471782-6019237_clip0_2_182362"><path fill="#fff" transform="translate(.5)" d="M0 0h24v24H0z"></path></clipPath></defs></g></svg>
                     </a>
                </div>
-              <div class="flex flex-1">
-                <form class="flex w-full md:ml-0" action="#" method="GET">
-                  <label for="search-field" class="sr-only">Search all files</label>
-                  <div class="relative w-full text-gray-400 focus-within:text-gray-600">
-                    <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center">
-                      <MagnifyingGlassIcon class="h-5 w-5 flex-shrink-0" aria-hidden="true" />
-                    </div>
-                    <input name="search-field" id="search-field" class="h-full w-full border-transparent py-2 pl-8 pr-3 text-base text-gray-900 placeholder-gray-500 focus:border-transparent focus:placeholder-gray-400 focus:outline-none focus:ring-0" placeholder="Search" type="search" />
-                  </div>
-                </form>
-              </div>
-              <!-- <div class="flex items-center px-6 py-4 md:mx-auto md:max-w-3xl lg:mx-0 lg:max-w-none xl:px-0">
-                <div class="w-full">
-                    <label for="search" class="sr-only">Search</label>
-                    <div class="relative">
-                        <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-                        <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                            <path fill-rule="evenodd" d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z" clip-rule="evenodd" />
-                        </svg>
+
+                <div class="flex flex-1">
+                    <form class="flex w-full md:ml-0" action="#" method="GET">
+                    <label for="search-field" class="sr-only">Search all files</label>
+                    <div class="relative w-full text-gray-400 focus-within:text-gray-600">
+                        <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center">
+                        <MagnifyingGlassIcon class="h-5 w-5 flex-shrink-0" aria-hidden="true" />
                         </div>
-                        <input id="search" name="search" class="block w-60 rounded-md border border-gray-300 bg-white py-2 pl-10 pr-3 text-sm placeholder-gray-500 focus:border-indigo-500 focus:text-gray-900 focus:placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm" placeholder="Search" type="search">
+                        <input name="search-field" id="search-field" class="h-full w-full border-transparent py-2 pl-8 pr-3 text-base text-gray-900 placeholder-gray-500 focus:border-transparent focus:placeholder-gray-400 focus:outline-none focus:ring-0" placeholder="Search" type="search" />
+                    </div>
+                    </form>
+                </div>
+
+                <div class="flex items-center px-6 py-4 md:mx-auto md:max-w-3xl lg:mx-0 lg:max-w-none xl:px-0">
+                    <div class="w-full">
+                        <label for="search" class="sr-only">Search</label>
+                        <div class="relative">
+                            <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                            <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                <path fill-rule="evenodd" d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z" clip-rule="evenodd" />
+                            </svg>
+                            </div>
+                            <input id="search" name="search" class="block w-60 rounded-md border border-gray-300 bg-white py-2 pl-10 pr-3 text-sm placeholder-gray-500 focus:border-indigo-500 focus:text-gray-900 focus:placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm" placeholder="Search" type="search">
+                        </div>
                     </div>
                 </div>
-            </div> -->
-              <div class="ml-2 flex items-center space-x-4 sm:ml-6 sm:space-x-6">
+                <div class="ml-2 flex items-center space-x-4 sm:ml-6 sm:space-x-6">
 
 
 

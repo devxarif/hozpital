@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\DoctorController;
 use App\Http\Controllers\Admin\GlobalController;
 use App\Http\Controllers\Admin\BedTypeController;
 use App\Http\Controllers\Admin\PatientController;
+use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\BedFloorController;
 use App\Http\Controllers\Admin\MedicineController;
 use App\Http\Controllers\Admin\BloodBankController;
@@ -20,6 +21,7 @@ use App\Http\Controllers\Admin\LaboratoristController;
 use App\Http\Controllers\Admin\ReceptionistController;
 use App\Http\Controllers\Admin\BloodDonationController;
 use App\Http\Controllers\Admin\MedicineCategoryController;
+use App\Http\Controllers\Admin\LeaveTypeController;
 
 // Route::middleware(['auth', 'check.admin.role'])->prefix('admin')->group(function () {
 Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function () {
@@ -31,7 +33,6 @@ Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function () 
 
     // Patient Routes
     Route::resource('patient', PatientController::class);
-    // ->withoutMiddleware('auth');
 
     // Nurse Routes
     Route::resource('nurse', NurseController::class);
@@ -61,11 +62,12 @@ Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function () 
     Route::resource('bedAllotment', BedAllotmentController::class);
 
     // Blood
-    // Route::get('bedType/beds', [BedController::class, 'bedTypeWiseBeds'])->name('bedtype.bed');
     Route::resource('bloodBank', BloodBankController::class)->only(['index','update']);
     Route::resource('bloodDonor', BloodDonorController::class);
     Route::resource('bloodDonation', BloodDonationController::class);
-    // Route::resource('bedAllotment', BedAllotmentController::class);
+
+    // Leave
+    Route::resource('leaveType', LeaveTypeController::class);
 
 
     // Route::resource('doctor', DoctorController::class)->withoutMiddleware('auth');
@@ -164,42 +166,42 @@ Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function () 
     // });
 
     // Configurations & Settings
-    // Route::controller(SettingController::class)->prefix('settings')->group(function () {
-    //     Route::get('/general', 'general')->name('settings.general');
-    //     Route::post('/general/setting/update', 'generalSettingUpdate')->name('settings.general.update');
+    Route::controller(SettingController::class)->prefix('settings')->group(function () {
+        Route::get('/general', 'general')->name('settings.general');
+        Route::post('/general/setting/update', 'generalSettingUpdate')->name('settings.general.update');
 
-    //     // cms routes
-    //     Route::get('/cms', 'cms')->name('settings.cms');
-    //     Route::put('/cms/update', 'cmsUpdate')->name('settings.cms.update');
+        // cms routes
+        Route::get('/cms', 'cms')->name('settings.cms');
+        Route::put('/cms/update', 'cmsUpdate')->name('settings.cms.update');
 
-    //     // Payment Routes
-    //     Route::get('/payment', 'payment')->name('settings.payment');
-    //     Route::get('/payment/data', 'paymentData')->name('settings.payment.data');
-    //     Route::put('/payment/update', 'paymentDataUpdate')->name('settings.payment.update');
+        // Payment Routes
+        Route::get('/payment', 'payment')->name('settings.payment');
+        Route::get('/payment/data', 'paymentData')->name('settings.payment.data');
+        Route::put('/payment/update', 'paymentDataUpdate')->name('settings.payment.update');
 
-    //     // Seo route
-    //     Route::get('/seo', 'seo')->name('settings.seo');
-    //     Route::put('/seo/update/{seo}', 'seoUpdate')->name('settings.seo.update');
+        // Seo route
+        Route::get('/seo', 'seo')->name('settings.seo');
+        Route::put('/seo/update/{seo}', 'seoUpdate')->name('settings.seo.update');
 
-    //     // SMTP Routes
-    //     Route::get('/smtp', 'smtp')->name('settings.smtp');
-    //     Route::put('/smtp/update', 'smtpUpdate')->name('settings.smtp.update');
-    //     Route::post('/send/test-email', 'testEmailSend')->name('settings.send.test.email');
+        // SMTP Routes
+        Route::get('/smtp', 'smtp')->name('settings.smtp');
+        Route::put('/smtp/update', 'smtpUpdate')->name('settings.smtp.update');
+        Route::post('/send/test-email', 'testEmailSend')->name('settings.send.test.email');
 
-    //     // Upgrade application
-    //     Route::get('/upgrade', 'upgrade')->name('settings.upgrade');
-    //     Route::post('/upgrade/system', 'upgradeSystem')->name('settings.upgrade.system');
+        // Upgrade application
+        Route::get('/upgrade', 'upgrade')->name('settings.upgrade');
+        Route::post('/upgrade/system', 'upgradeSystem')->name('settings.upgrade.system');
 
-    //     // Currency Routes
-    //     Route::prefix('currency')->prefix('currency')->name('settings.')->group(function () {
-    //         Route::get('/', 'currency')->name('currency');
-    //         Route::post('/', 'storeCurrency')->name('currency.store');
-    //         Route::delete('{currency}', 'deleteCurrency')->name('currency.destroy');
-    //         Route::put('{currency}', 'updateCurrency')->name('currency.update');
-    //         Route::put('{currency}', 'statusUpdateCurrency')->name('currency.status.update');
-    //         Route::put('{currency}', 'defaultCurrency')->name('currency.set.default');
-    //     });
-    // });
+        // Currency Routes
+        Route::prefix('currency')->prefix('currency')->name('settings.')->group(function () {
+            Route::get('/', 'currency')->name('currency');
+            Route::post('/', 'storeCurrency')->name('currency.store');
+            Route::delete('{currency}', 'deleteCurrency')->name('currency.destroy');
+            Route::put('{currency}', 'updateCurrency')->name('currency.update');
+            Route::put('{currency}', 'statusUpdateCurrency')->name('currency.status.update');
+            Route::put('{currency}', 'defaultCurrency')->name('currency.set.default');
+        });
+    });
 });
 
 Route::controller(GlobalController::class)->group(function(){

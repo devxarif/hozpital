@@ -16,7 +16,6 @@ class CreateLeaveTypesTable extends Migration
     {
         Schema::create('leave_types', function (Blueprint $table) {
             $table->id();
-            // $table->foreignIdFor(Organization::class)->constrained()->cascadeOnDelete();
             $table->string('name');
             $table->string('slug')->nullable();
             $table->string('color')->default('#ABB8C3');

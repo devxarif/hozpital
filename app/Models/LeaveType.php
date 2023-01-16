@@ -12,16 +12,6 @@ class LeaveType extends Model
 {
     use HasFactory, Sluggable;
 
-    protected $fillable = [
-        'organization_id',
-        'name',
-        'slug',
-        'color',
-        'auto_approve',
-        'balance',
-        'status',
-    ];
-
     public function organization()
     {
         return $this->belongsTo(Organization::class);
