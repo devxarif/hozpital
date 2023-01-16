@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Organization;
+namespace App\Http\Requests\Admin\Leave;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -25,7 +25,7 @@ class LeaveRequestSaveRequest extends FormRequest
     {
         return [
             'leave_type_id' => 'required|exists:leave_types,id',
-            'employee_id' => 'required|exists:employees,id',
+            'user_id' => 'required|exists:users,id',
             'start' => 'required|date',
             'end' => 'required|date',
             'reason' => 'required',
@@ -37,7 +37,7 @@ class LeaveRequestSaveRequest extends FormRequest
     {
         return [
             'leave_type_id' => 'The leave type field is required.',
-            'employee_id' => 'The employee field is required.',
+            'user_id' => 'The user field is required.',
             'start' => 'The start date field is required.',
             'end' => 'The end date field is required.',
         ];

@@ -22,12 +22,19 @@ class LeaveTypeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $leave_types = LeaveType::where('organization_id', currentOrganization()->id)->latest()->paginate(10);
+        $query = LeaveType::query();
+
+        if($request->has('keyword') && $request->filled('keyword')){
+            $query->whereLike(['name'],  $request->keyword);
+        }
+
+        $leave_types = $query->latest()->paginate(16)->withQueryString();
 
         return inertia('Admin/LeaveType/Index', [
             'leave_types' => $leave_types,
+            'filter' => $request
         ]);
     }
 

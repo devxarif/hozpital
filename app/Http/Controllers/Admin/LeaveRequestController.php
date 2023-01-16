@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Organization;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\Team;
 use App\Models\Employee;
@@ -12,7 +12,7 @@ use App\Http\Controllers\Controller;
 use App\Notifications\Employee\PendingLeaveRequest;
 use App\Notifications\Employee\ApprovedLeaveRequest;
 use App\Notifications\Employee\RejectedLeaveRequest;
-use App\Http\Requests\Organization\LeaveRequestSaveRequest;
+use App\Http\Requests\Admin\Leave\LeaveRequestSaveRequest;
 
 class LeaveRequestController extends Controller
 {
@@ -85,8 +85,7 @@ class LeaveRequestController extends Controller
         $final_days_count = sumFinalDays($organization->id, $request->start, $request->end) ?? diffBetweenDays($request->start, $request->end);
 
         $leave_request = LeaveRequest::create([
-            'organization_id' => $organization->id,
-            'employee_id' => $request->employee_id,
+            'user_id' => $request->user_id,
             'leave_type_id' => $request->leave_type_id,
             'start' => $request->start,
             'end' => $request->end,
@@ -122,7 +121,7 @@ class LeaveRequestController extends Controller
         // sendSms('twilio', $to, $message);
         // sendSms('vonage', $to, $message);
 
-        session()->flash('success', 'Leave request created successfully!');
+        $this->flashError('Leave request created successfully!');
         return redirect_to('organization.leaveRequests.index');
     }
 

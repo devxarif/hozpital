@@ -37,22 +37,6 @@ class LeaveTypeSeeder extends Seeder
         ];
 
         foreach ($types as $type) {
-            $type['organization_id'] = 1;
-            LeaveType::create($type);
-        }
-
-        foreach ($types as $type) {
-            $type['organization_id'] = 2;
-            LeaveType::create($type);
-        }
-
-        foreach ($types as $type) {
-            $type['organization_id'] = 3;
-            LeaveType::create($type);
-        }
-
-        foreach ($types as $type) {
-            $type['organization_id'] = 4;
             LeaveType::create($type);
         }
     }

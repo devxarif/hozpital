@@ -1,8 +1,7 @@
 <?php
 
-use App\Models\Employee;
 use App\Models\LeaveType;
-use App\Models\Organization;
+use App\Models\User;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -18,9 +17,8 @@ class CreateLeaveRequestsTable extends Migration
     {
         Schema::create('leave_requests', function (Blueprint $table) {
             $table->id();
-            // $table->foreignIdFor(Organization::class)->constrained()->cascadeOnDelete();
-            // $table->foreignIdFor(Employee::class)->constrained()->cascadeOnDelete();
-            // $table->foreignIdFor(LeaveType::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(LeaveType::class)->constrained()->cascadeOnDelete();
             $table->date('start');
             $table->date('end');
             $table->integer('days');

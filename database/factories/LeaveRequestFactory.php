@@ -2,9 +2,8 @@
 
 namespace Database\Factories;
 
-use App\Models\Employee;
 use App\Models\LeaveType;
-use App\Models\Organization;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -23,8 +22,7 @@ class LeaveRequestFactory extends Factory
         $end_date = fake()->dateTimeBetween($start_date, '+1 week')->format('Y-m-d');
 
         return [
-            'organization_id' => Organization::inRandomOrder()->value('id'),
-            'employee_id' => Employee::inRandomOrder()->value('id'),
+            'user_id' => User::inRandomOrder()->value('id'),
             'leave_type_id' => LeaveType::inRandomOrder()->value('id'),
             'start' => $start_date,
             'end' => $end_date,

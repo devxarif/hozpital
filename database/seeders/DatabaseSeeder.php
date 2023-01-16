@@ -127,6 +127,9 @@ class DatabaseSeeder extends Seeder
             MedicineCategorySeeder::class,
             MedicineSeeder::class,
 
+            // Leave & Holidays
+            LeaveTypeSeeder::class,
+
             // Settings
             LanguageSeeder::class,
             CurrencySeeder::class,
@@ -162,7 +165,7 @@ class DatabaseSeeder extends Seeder
 
 
         //     CalendarSeeder::class,
-        //     LeaveRequestSeeder::class,
+            // LeaveRequestSeeder::class,
         //     HolidayRequestSeeder::class,
         //     FaqSeeder::class,
         //     FeatureSeeder::class,

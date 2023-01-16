@@ -68,6 +68,7 @@ Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function () 
 
     // Leave
     Route::resource('leaveType', LeaveTypeController::class);
+    Route::resource('leaveRequest', LeaveTypeController::class);
 
 
     // Route::resource('doctor', DoctorController::class)->withoutMiddleware('auth');
