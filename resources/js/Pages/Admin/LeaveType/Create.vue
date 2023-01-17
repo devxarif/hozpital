@@ -162,8 +162,6 @@
 
             changeColor(color) {
                 this.form.color = color.hex
-                // const { r, g, b, a } = color.rgba
-                // this.color = `rgba(${r}, ${g}, ${b}, ${a})`
             },
         },
         watch: {

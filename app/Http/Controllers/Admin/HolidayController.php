@@ -2,29 +2,69 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Carbon\Carbon;
+use App\Models\User;
+use App\Models\Holiday;
+use App\Models\Organization;
+use Illuminate\Http\Request;
+use App\Models\HolidayRequest;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\HolidaySaveRequest;
-use App\Models\Organization;
-use App\Models\Holiday;
-use App\Models\HolidayRequest;
-use App\Models\User;
-use Illuminate\Http\Request;
 
 class HolidayController extends Controller
 {
     public function index()
     {
-        $users = User::roleOwner()->with('organization.country')->withCount('holidays')->latest()->paginate(10);
+        // $holidays = Holiday::all();
+        $holidays = Holiday::oldest('start')->get()->transform(function ($date) {
+            $date->format_start_date = formatTime($date->start, 'D d M');
+            $date->format_end_date = formatTime($date->end, 'D d M');
+            return $date;
+        });
+
+        // $holidays = Holiday::oldest('id')->get()->groupBy(function($d) {
+        //     return Carbon::parse($d->start)->format('m');
+        // });
+
+        // return $months = Holiday::groupby(\DB::raw('MONTH(start) as month'))->get();
+
+        // return $holidays = Holiday::get()
+        //  ->groupBy(function($d) {
+        //     return Carbon::parse($d->start)->format('m');
+        // })
+        // ->map(function($d){
+        //     return $d->sort();
+        // });
+
+        // return $holidays->sortBy(function($object, $key){
+        //     return $key;
+        // });
+
+        // ->map(function($groupItems){
+        //     return $groupItems->sort(...);
+        // })->toArray()
+
+
+//         $my_objects= MyObject::with('category')
+//                                   ->get();
+
+// $my_objects = $my_objects->groupBy(function ($item, $key) {
+//                         if ($item->category) {
+//                             return $item->category->name;
+//                         }
+//                     });
+// $my_objects = $my_objects->sortBy(function ($object, $key) {
+//     return $key;
+// });
 
         return inertia('Admin/Holiday/Index', [
-            'users' => $users,
+            'holidays' => $holidays,
         ]);
     }
 
     public function store(HolidaySaveRequest $request)
     {
         Holiday::create([
-            'organization_id' => $request->organization_id,
             'title' => $request->title,
             'start' => $request->start,
             'end' => $request->end,
@@ -32,7 +72,7 @@ class HolidayController extends Controller
             'color' => "#ff0000",
         ]);
 
-        session()->flash('success', 'Official holiday created successfully!');
+        $this->flashSuccess('success', 'Holiday created successfully!');
         return back();
     }
 
@@ -63,7 +103,7 @@ class HolidayController extends Controller
             'color' => "#ff0000",
         ]);
 
-        session()->flash('success', 'Official holiday updated successfully!');
+        $this->flashSuccess('success', 'Holiday updated successfully!');
         return back();
     }
 
@@ -71,47 +111,7 @@ class HolidayController extends Controller
     {
         $holiday->delete();
 
-        session()->flash('success', 'Holiday deleted successfully!');
-        return back();
-    }
-
-    public function requestedHolidays(Organization $organization)
-    {
-        $holidays = HolidayRequest::where('organization_id', $organization->id)
-            ->with('employee.user')
-            ->latest()
-            ->paginate(10);
-
-        return inertia('Admin/Holiday/HolidayRequest', [
-            'holidays' => $holidays,
-            'organization' => $organization->load('country:id,name'),
-            'user' => $organization->user,
-        ]);
-    }
-
-    public function requestedHolidaysAccept(Request $request)
-    {
-        $request_holiday = HolidayRequest::findOrFail($request->id);
-        Holiday::create([
-            'organization_id' => $request_holiday->organization_id,
-            'title' => $request_holiday->title,
-            'start' => $request_holiday->start,
-            'end' => $request_holiday->end,
-            'days' => diffBetweenDays($request_holiday->start, $request_holiday->end),
-            'color' =>  "#ff0000",
-        ]);
-
-        $request_holiday->delete();
-
-        session()->flash('success', 'Holiday request accepted successfully!');
-        return back();
-    }
-
-    public function requestedHolidaysReject(HolidayRequest $holiday)
-    {
-        $holiday->delete();
-
-        session()->flash('success', 'Holiday request rejected successfully!');
+        $this->flashSuccess('success', 'Holiday deleted successfully!');
         return back();
     }
 }

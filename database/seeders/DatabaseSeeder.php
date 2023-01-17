@@ -19,6 +19,7 @@ use Database\Seeders\BedTypeSeeder;
 use Database\Seeders\CountrySeeder;
 use Database\Seeders\ExpenseSeeder;
 use Database\Seeders\FeatureSeeder;
+use Database\Seeders\HolidaySeeder;
 use Database\Seeders\InvoiceSeeder;
 use Database\Seeders\SettingSeeder;
 use Database\Seeders\BedFloorSeeder;
@@ -128,7 +129,9 @@ class DatabaseSeeder extends Seeder
             MedicineSeeder::class,
 
             // Leave & Holidays
+            CountrySeeder::class,
             LeaveTypeSeeder::class,
+            HolidaySeeder::class,
 
             // Settings
             LanguageSeeder::class,

@@ -16,7 +16,6 @@ class CreateHolidaysTable extends Migration
     {
         Schema::create('holidays', function (Blueprint $table) {
             $table->id();
-            // $table->foreignIdFor(Organization::class)->constrained()->cascadeOnDelete();
             $table->string('title');
             $table->date('start');
             $table->date('end');
