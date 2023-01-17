@@ -69,7 +69,7 @@ class HolidayController extends Controller
             'start' => $request->start,
             'end' => $request->end,
             'days' => diffBetweenDays($request->start, $request->end),
-            'color' => "#ff0000",
+            'color' => $request->color,
         ]);
 
         $this->flashSuccess('success', 'Holiday created successfully!');
@@ -96,15 +96,17 @@ class HolidayController extends Controller
     public function update(HolidaySaveRequest $request, Holiday $holiday)
     {
         $holiday->update([
-            'title' => $request->title,
-            'start' => $request->start,
-            'end' => $request->end,
-            'days' => diffBetweenDays($request->start, $request->end),
-            'color' => "#ff0000",
+            'title' => $request->title ?? $holiday->title,
+            'start' => $request->start ?? $holiday->start,
+            'end' => $request->end ?? $holiday->end,
+            'days' => diffBetweenDays($request->start ?? $holiday->start, $request->end ?? $holiday->end),
+            'color' => $request->color ?? $holiday->color,
         ]);
 
-        $this->flashSuccess('success', 'Holiday updated successfully!');
-        return back();
+        if ($request->type != 'api') {
+            $this->flashSuccess('success', 'Holiday updated successfully!');
+            return back();
+        }
     }
 
     public function destroy(Holiday $holiday)

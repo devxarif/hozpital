@@ -1,6 +1,6 @@
 <template>
 
-    <Head :title="__('Department')" />
+    <Head :title="__('Holiday')" />
     <AppLayout>
 
         <!-- Header Part  -->
@@ -27,53 +27,19 @@
             </h2>
 
             <div class="flex items-center space-x-2 sm:space-x-3 ml-auto">
-                <BaseButton v-if="filter.keyword && filter.keyword.length" as="link" :href="route('admin.department.index')" class="text-white bg-red-600 hover:bg-red-700 px-3 py-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                    Clear Filter
+                <BaseButton  class="text-whittext-gray-900 bg-white border border-gray-300 hover:bg-gray-100 px-3 py-2">
+                    <svg class="mr-2 h-6 w-6" stroke="currentColor" fill="none" stroke-width="0" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"></path></svg>
+                    {{ showFilter ? 'Hide Filter':'Filter' }}
                 </BaseButton>
-
                 <BaseButton @click="toggleFilter" class="text-whittext-gray-900 bg-white border border-gray-300 hover:bg-gray-100 px-3 py-2">
                     <svg class="mr-2 h-6 w-6" stroke="currentColor" fill="none" stroke-width="0" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"></path></svg>
                     {{ showFilter ? 'Hide Filter':'Filter' }}
                 </BaseButton>
-                <Menu as="div" class="relative inline-block text-left">
-                    <div>
-                        <MenuButton class="flex items-center rounded-lg text-gray-400 hover:text-gray-600 focus:outline-none">
-                            <span class="sr-only">Open options</span>
-                            <button href="#" class="w-1/2 text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 font-medium inline-flex items-center justify-center rounded-lg text-sm px-3 py-2 text-center sm:w-auto focus:outline-none">
-                                <svg class="mr-2 h-6 w-6" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-                                Export
-                            </button>
-                        </MenuButton>
-                    </div>
 
-                    <transition enter-active-class="transition ease-out duration-100" enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100" leave-active-class="transition ease-in duration-75" leave-from-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
-                        <MenuItems class="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                            <div class="py-1 text-sm">
-                            <MenuItem v-slot="{ active }">
-                                <a href="javascript:void(0)" @click.prevent="editData(department)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
-                                    <font-awesome-icon icon="fa-solid fa-plus" class="h-4 w-4 mr-2"/>
-                                    As PDF
-                                </a>
-                            </MenuItem>
-                            <MenuItem v-slot="{ active }">
-                                <a href="javascript:void(0)" @click.prevent="editData(department)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
-                                    <font-awesome-icon icon="fa-solid fa-trash-can" class="h-4 w-4 mr-2 "/>
-                                    As Excel
-                                </a>
-                            </MenuItem>
-                            <MenuItem v-slot="{ active }">
-                                <a href="javascript:void(0)" @click.prevent="editData(department)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
-                                    <font-awesome-icon icon="fa-solid fa-trash-can" class="h-4 w-4 mr-2 "/>
-                                    As CSV
-                                </a>
-                            </MenuItem>
-                            </div>
-                        </MenuItems>
-                    </transition>
-                </Menu>
+                <BaseButton @click="changeViewType" class="text-whittext-gray-900 bg-white border border-gray-300 hover:bg-gray-100 px-3 py-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="ionicon  mr-3 flex-shrink-0 h-6 w-6" viewBox="0 0 512 512"><title>Calendar Number</title><rect x="48" y="80" width="416" height="384" rx="48" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="32"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M128 48v32M384 48v32M464 160H48M304 260l43.42-32H352v168M191.87 306.63c9.11 0 25.79-4.28 36.72-15.47a37.9 37.9 0 0011.13-27.26c0-26.12-22.59-39.9-47.89-39.9-21.4 0-33.52 11.61-37.85 18.93M149 374.16c4.88 8.27 19.71 25.84 43.88 25.84 28.59 0 52.12-15.94 52.12-43.82 0-12.62-3.66-24-11.58-32.07-12.36-12.64-31.25-17.48-41.55-17.48"/></svg>
+                    Calendar View
+                </BaseButton>
                 <BaseButton @click="showCreateDrawer = true" class="text-white bg-blue-600 hover:bg-blue-700 px-4 py-2.5">
                     <font-awesome-icon icon="fa-solid fa-plus" class="h-4 w-4 mr-2"/>
                    {{ __('Add Holiday') }}
@@ -101,7 +67,7 @@
         <!-- Body Part  -->
        <CardSkeleton :show="loading" v-if="loading"/>
 
-       <template v-else-if="!loading && holidays && holidays.length">
+       <template v-else-if="!loading && holidays && holidays.length && viewType == 'card'">
            <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
                <span v-for="holiday in holidays" :key="holiday.id" class="block p-6 bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
                    <div class="flex flex-wrap justify-between items-start">
@@ -148,6 +114,16 @@
                </span>
            </div>
        </template>
+       <template v-else-if="!loading && holidays && holidays.length && viewType == 'calendar'">
+
+        <div class="mb-4 bg-white rounded-lg shadow-xs dark:bg-gray-800 items-center p-4">
+            <FullCalendar :options="calendarOptions" />
+            </div>
+
+            <!-- <div class="block p-6 bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+               <FullCalendar :options="calendarOptions" />
+           </div> -->
+       </template>
 
        <NothingFound v-else>
             <BaseButton @click="showCreateDrawer = true" class="text-white bg-blue-600 hover:bg-blue-700 px-4 py-2">
@@ -166,11 +142,20 @@ import CreateHoliday from "./Create.vue";
 import EditHoliday from "./Edit.vue";
 import CardSkeleton from "@/Shared/Skeleton/CardSkeleton.vue";
 
+import dayjs from "dayjs";
+
+import FullCalendar from '@fullcalendar/vue3'
+import dayGridPlugin from '@fullcalendar/daygrid'
+import listPlugin from '@fullcalendar/list'
+import interactionPlugin from '@fullcalendar/interaction'
+import '@fullcalendar/core/vdom'
+
 export default {
     components: {
         CreateHoliday,
         EditHoliday,
         CardSkeleton,
+        FullCalendar
     },
     props: {
         holidays:{
@@ -191,8 +176,45 @@ export default {
             showFilter: false,
             loading: false,
 
+            viewType: 'calendar',
+
+            calendarOptions: {
+                plugins: [dayGridPlugin, interactionPlugin, listPlugin],
+                initialView: "dayGridMonth",
+                height: 800,
+                headerToolbar: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'dayGridMonth,dayGridWeek,listMonth'
+                },
+                events: this.holidays,
+                selectable: true,
+                editable: true,
+                select: (arg) => {
+                    console.log(arg)
+                    // this.setDate(arg.startStr, arg.endStr);
+                },
+                dateClick(arg){
+                    console.log(arg)
+                    console.log('dateClick')
+                },
+                eventClick: (arg) => {
+                    console.log(arg)
+                    // this.edit(arg.event._def.publicId);
+                },
+                eventDrop: this.eventDropped,
+                eventResize: this.eventResized,
+            },
+
             filterForm: this.$inertia.form({
                 keyword: this.filter.keyword,
+            }),
+
+            form: this.$inertia.form({
+                id: '',
+                start: '',
+                end: '',
+                type: 'api',
             }),
         }
     },
@@ -232,6 +254,35 @@ export default {
             this.showFilter = !this.showFilter;
             localStorage.setItem("adminDepartment", this.showFilter);
         },
+        changeViewType() {
+            if (this.viewType == 'card') {
+                this.viewType = 'calendar'
+            }else{
+                this.viewType = 'card'
+            }
+        },
+        eventDropped(arg){
+            let event = arg.event
+
+            this.form.id = event.id
+            this.form.title = event.title
+            this.form.start = event.startStr
+            this.form.end = event.endStr || event.startStr
+            this.updateData()
+        },
+        eventResized(arg){
+            let event = arg.event
+
+            this.form.id = event.id
+            this.form.title = event.title
+            this.form.start = event.startStr
+            this.form.end = event.endStr || event.startStr
+            this.updateData()
+        },
+        async updateData(){
+            let response = await axios.put(route('admin.holiday.update', this.form.id), this.form)
+            console.log(response)
+        }
     },
     created() {
         this.showFilter = localStorage.getItem("adminDepartment") == "true" ? true: false;
