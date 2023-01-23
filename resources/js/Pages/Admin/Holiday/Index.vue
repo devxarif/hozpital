@@ -27,18 +27,15 @@
             </h2>
 
             <div class="flex items-center space-x-2 sm:space-x-3 ml-auto">
-                <BaseButton  class="text-whittext-gray-900 bg-white border border-gray-300 hover:bg-gray-100 px-3 py-2">
-                    <svg class="mr-2 h-6 w-6" stroke="currentColor" fill="none" stroke-width="0" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"></path></svg>
-                    {{ showFilter ? 'Hide Filter':'Filter' }}
-                </BaseButton>
-                <BaseButton @click="toggleFilter" class="text-whittext-gray-900 bg-white border border-gray-300 hover:bg-gray-100 px-3 py-2">
-                    <svg class="mr-2 h-6 w-6" stroke="currentColor" fill="none" stroke-width="0" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"></path></svg>
-                    {{ showFilter ? 'Hide Filter':'Filter' }}
-                </BaseButton>
-
                 <BaseButton @click="changeViewType" class="text-whittext-gray-900 bg-white border border-gray-300 hover:bg-gray-100 px-3 py-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="ionicon  mr-3 flex-shrink-0 h-6 w-6" viewBox="0 0 512 512"><title>Calendar Number</title><rect x="48" y="80" width="416" height="384" rx="48" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="32"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M128 48v32M384 48v32M464 160H48M304 260l43.42-32H352v168M191.87 306.63c9.11 0 25.79-4.28 36.72-15.47a37.9 37.9 0 0011.13-27.26c0-26.12-22.59-39.9-47.89-39.9-21.4 0-33.52 11.61-37.85 18.93M149 374.16c4.88 8.27 19.71 25.84 43.88 25.84 28.59 0 52.12-15.94 52.12-43.82 0-12.62-3.66-24-11.58-32.07-12.36-12.64-31.25-17.48-41.55-17.48"/></svg>
-                    Calendar View
+                    <template v-if="viewType == 'card'">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="ionicon mr-2 flex-shrink-0 h-6 w-6" viewBox="0 0 512 512"><title>Calendar Number</title><rect x="48" y="80" width="416" height="384" rx="48" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="32"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M128 48v32M384 48v32M464 160H48M304 260l43.42-32H352v168M191.87 306.63c9.11 0 25.79-4.28 36.72-15.47a37.9 37.9 0 0011.13-27.26c0-26.12-22.59-39.9-47.89-39.9-21.4 0-33.52 11.61-37.85 18.93M149 374.16c4.88 8.27 19.71 25.84 43.88 25.84 28.59 0 52.12-15.94 52.12-43.82 0-12.62-3.66-24-11.58-32.07-12.36-12.64-31.25-17.48-41.55-17.48"/></svg>
+                        Calendar View
+                    </template>
+                    <template v-else>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="ionicon mr-2 flex-shrink-0 h-6 w-6" viewBox="0 0 512 512"><title>Albums</title><rect x="64" y="176" width="384" height="256" rx="28.87" ry="28.87" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="32"/><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32" d="M144 80h224M112 128h288"/></svg>
+                        Card View
+                    </template>
                 </BaseButton>
                 <BaseButton @click="showCreateDrawer = true" class="text-white bg-blue-600 hover:bg-blue-700 px-4 py-2.5">
                     <font-awesome-icon icon="fa-solid fa-plus" class="h-4 w-4 mr-2"/>
@@ -46,23 +43,6 @@
                 </BaseButton>
             </div>
         </div>
-
-        <transition enter-active-class="transition ease-out duration-100" enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100" leave-active-class="transition ease-in duration-100" leave-from-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
-            <div v-if="showFilter" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 xl:grid-cols-6 gap-5 mb-4 bg-white rounded-lg shadow-xs dark:bg-gray-800 items-center p-4">
-                <div>
-                    <label for="keyword" class="block text-sm font-medium text-gray-700">{{ __('Search') }}</label>
-                    <div class="mt-1">
-                        <input v-model="filterForm.keyword" type="text" id="keyword" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm py-2.5" placeholder="Department name">
-                    </div>
-                </div>
-                <div>
-                    <button @click="filterData" :disabled="loading" type="button" class="text-white bg-blue-600 hover:bg-blue-700 font-medium inline-flex items-center justify-center rounded-lg text-sm px-6 py-2.5 mt-6 text-center sm:w-auto focus:outline-none">
-                        <font-awesome-icon icon="fa-solid fa-search" class="h-4 w-4 mr-2"/>
-                       {{ __('Search') }}
-                    </button>
-                </div>
-            </div>
-        </transition>
 
         <!-- Body Part  -->
        <CardSkeleton :show="loading" v-if="loading"/>
@@ -116,8 +96,8 @@
        </template>
        <template v-else-if="!loading && holidays && holidays.length && viewType == 'calendar'">
 
-        <div class="mb-4 bg-white rounded-lg shadow-xs dark:bg-gray-800 items-center p-4">
-            <FullCalendar :options="calendarOptions" />
+            <div class="mb-4 bg-white rounded-lg shadow-xs dark:bg-gray-800 items-center p-4">
+                <FullCalendar :options="calendarOptions" />
             </div>
 
             <!-- <div class="block p-6 bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
@@ -132,7 +112,8 @@
             </BaseButton>
        </NothingFound>
 
-       <CreateHoliday :show="showCreateDrawer" @close-drawer="showCreateDrawer = false"/>
+
+       <CreateHoliday :show="showCreateDrawer" @close-drawer="showCreateDrawer = false, calendar.start = null, calendar.end = null" :calendar="calendar"/>
        <EditHoliday :show="showEditDrawer" @close-drawer="showEditDrawer = false" :holiday="editHoliday"/>
     </AppLayout>
 </template>
@@ -173,7 +154,6 @@ export default {
             showEditDrawer: false,
             editHoliday: '',
 
-            showFilter: false,
             loading: false,
 
             viewType: 'calendar',
@@ -190,19 +170,9 @@ export default {
                 events: this.holidays,
                 selectable: true,
                 editable: true,
-                select: (arg) => {
-                    console.log(arg)
-                    // this.setDate(arg.startStr, arg.endStr);
-                },
-                dateClick(arg){
-                    console.log(arg)
-                    console.log('dateClick')
-                },
-                eventClick: (arg) => {
-                    console.log(arg)
-                    // this.edit(arg.event._def.publicId);
-                },
-                eventDrop: this.eventDropped,
+                eventClick: this.eventClick,
+                select: this.selectCalendar,
+                eventResize: this.eventResized,
                 eventResize: this.eventResized,
             },
 
@@ -215,6 +185,11 @@ export default {
                 start: '',
                 end: '',
                 type: 'api',
+            }),
+
+            calendar: this.$inertia.form({
+                start: '',
+                end: '',
             }),
         }
     },
@@ -235,6 +210,7 @@ export default {
             });
         },
         editData(holiday){
+            console.log(holiday);
             this.showEditDrawer = true
             this.editHoliday = holiday
         },
@@ -249,10 +225,6 @@ export default {
                     alert('Something went wrong')
                 },
             })
-        },
-        toggleFilter() {
-            this.showFilter = !this.showFilter;
-            localStorage.setItem("adminDepartment", this.showFilter);
         },
         changeViewType() {
             if (this.viewType == 'card') {
@@ -279,13 +251,28 @@ export default {
             this.form.end = event.endStr || event.startStr
             this.updateData()
         },
+        selectCalendar(arg){
+            this.calendar.start = arg.startStr
+            this.calendar.end = arg.endStr
+            this.showCreateDrawer = true
+        },
+        eventClick(arg){
+            let event = arg.event
+
+            this.editHoliday = {
+                id: event.id,
+                title: event.title,
+                start: event.startStr,
+                end: event.endStr,
+                color: event.color,
+            }
+
+            this.showEditDrawer = true
+        },
         async updateData(){
             let response = await axios.put(route('admin.holiday.update', this.form.id), this.form)
             console.log(response)
         }
-    },
-    created() {
-        this.showFilter = localStorage.getItem("adminDepartment") == "true" ? true: false;
-    },
+    }
 };
 </script>

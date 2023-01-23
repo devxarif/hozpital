@@ -2,6 +2,7 @@
 
 use App\Models\User;
 use App\Models\Order;
+use App\Models\Holiday;
 use App\Models\Setting;
 use App\Models\Employee;
 use App\Models\Language;
@@ -38,6 +39,19 @@ Route::get('/', function () {
 // })->middleware('set_lang');
 
 Route::get('/test', function () {
+
+    $holidays = Holiday::oldest('start')->get()->transform(function ($date) {
+        $date->format_start_date = formatTime($date->start, 'D d M');
+        $date->format_end_date = formatTime($date->end, 'D d M');
+        return $date;
+    });
+
+
+    return Holiday::whereMonth('start', 02)->get();
+
+
+
+
 
     $encrypt = safeEncrypt(123);
     $decrypt = safeDecrypt($encrypt);

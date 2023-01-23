@@ -15,47 +15,11 @@ class HolidayController extends Controller
 {
     public function index()
     {
-        // $holidays = Holiday::all();
         $holidays = Holiday::oldest('start')->get()->transform(function ($date) {
             $date->format_start_date = formatTime($date->start, 'D d M');
             $date->format_end_date = formatTime($date->end, 'D d M');
             return $date;
         });
-
-        // $holidays = Holiday::oldest('id')->get()->groupBy(function($d) {
-        //     return Carbon::parse($d->start)->format('m');
-        // });
-
-        // return $months = Holiday::groupby(\DB::raw('MONTH(start) as month'))->get();
-
-        // return $holidays = Holiday::get()
-        //  ->groupBy(function($d) {
-        //     return Carbon::parse($d->start)->format('m');
-        // })
-        // ->map(function($d){
-        //     return $d->sort();
-        // });
-
-        // return $holidays->sortBy(function($object, $key){
-        //     return $key;
-        // });
-
-        // ->map(function($groupItems){
-        //     return $groupItems->sort(...);
-        // })->toArray()
-
-
-//         $my_objects= MyObject::with('category')
-//                                   ->get();
-
-// $my_objects = $my_objects->groupBy(function ($item, $key) {
-//                         if ($item->category) {
-//                             return $item->category->name;
-//                         }
-//                     });
-// $my_objects = $my_objects->sortBy(function ($object, $key) {
-//     return $key;
-// });
 
         return inertia('Admin/Holiday/Index', [
             'holidays' => $holidays,

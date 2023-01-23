@@ -106,7 +106,11 @@
             show: {
                 type: Boolean,
                 default: false
-            }
+            },
+            calendar: {
+                type: Object,
+                default: {start: null, end: null}
+            },
         },
         components: {
             ColorPicker,
@@ -117,8 +121,8 @@
             return {
                 form: this.$inertia.form({
                     title: '',
-                    start: '',
-                    end: '',
+                    start: this.calendar.start,
+                    end: this.calendar.end,
                     color: '#ff0000',
                 }),
 
@@ -163,8 +167,18 @@
                 this.form.end = formatTime;
             },
         },
+        watch: {
+            calendar: {
+                handler() {
+                    this.form.start = this.calendar.start ?? ''
+                    this.form.end = this.calendar.end ?? ''
+                },
+                deep: true,
+            },
+        },
         mounted() {
             this.checkPagePermission('admin')
         }
     };
+
 </script>

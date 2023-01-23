@@ -10,7 +10,7 @@
                             <div class="flex-1 overflow-y-auto py-6 px-4 sm:px-6">
                                 <div class="flex items-start justify-between rtl:flex-row-reverse mb-5">
                                     <h2 class="text-2xl tracking-wide font-bold text-gray-900">
-                                        {{ __('Department Update') }}
+                                        {{ __('Holiday Update') }}
                                     </h2>
 
                                     <div class="ml-3 flex h-7 items-center">
