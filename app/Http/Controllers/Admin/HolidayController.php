@@ -40,23 +40,6 @@ class HolidayController extends Controller
         return back();
     }
 
-    public function show(User $holiday)
-    {
-        $user = $holiday;
-        $organization = Organization::with('country:id,name')->where('user_id', $user->id)->firstOrFail();
-        $holidays = Holiday::where('organization_id', $organization->id)->oldest('start')->get()->transform(function ($date) {
-            $date->format_start_date = formatTime($date->start, 'D d M');
-            $date->format_end_date = formatTime($date->end, 'D d M');
-            return $date;
-        });
-
-        return inertia('Admin/Holiday/Show', [
-            'user' => $user,
-            'organization' => $organization,
-            'holidays' => $holidays,
-        ]);
-    }
-
     public function update(HolidaySaveRequest $request, Holiday $holiday)
     {
         $holiday->update([

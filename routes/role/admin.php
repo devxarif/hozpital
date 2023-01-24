@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\BedController;
+use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\Admin\NurseController;
 use App\Http\Controllers\Admin\DoctorController;
 use App\Http\Controllers\Admin\GlobalController;
@@ -73,6 +74,9 @@ Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function () 
 
     // Holiday
     Route::resource('holiday', HolidayController::class);
+
+    // Event
+    Route::resource('event', EventController::class);
 
 
     // Route::resource('doctor', DoctorController::class)->withoutMiddleware('auth');

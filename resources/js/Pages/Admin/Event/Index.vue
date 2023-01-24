@@ -1,6 +1,6 @@
 <template>
 
-    <Head :title="__('Holiday')" />
+    <Head :title="__('Event')" />
     <AppLayout>
 
         <!-- Header Part  -->
@@ -16,14 +16,14 @@
                     <div class="flex items-center">
                         <font-awesome-icon icon="fa-solid fa-chevron-right" class="w-3 h-3 text-gray-400" />
                         <a href="#"
-                            class="text-gray-700 hover:text-gray-900 ml-1 md:ml-2 text-sm font-medium">Holiday</a>
+                            class="text-gray-700 hover:text-gray-900 ml-1 md:ml-2 text-sm font-medium">Event</a>
                     </div>
                 </li>
             </ol>
         </nav>
         <div class="mb-4 flex justify-between">
             <h2 class="text-3xl font-semibold leading-7 text-gray-900 dark:text-gray-200 sm:text-3xl sm:truncate">
-                {{ __('Holiday') }}
+                {{ __('Event') }}
             </h2>
 
             <div class="flex items-center space-x-2 sm:space-x-3 ml-auto">
@@ -39,7 +39,7 @@
                 </BaseButton>
                 <BaseButton @click="showCreateDrawer = true" class="text-white bg-blue-600 hover:bg-blue-700 px-4 py-2.5">
                     <font-awesome-icon icon="fa-solid fa-plus" class="h-4 w-4 mr-2"/>
-                   {{ __('Add Holiday') }}
+                   {{ __('Add Event') }}
                 </BaseButton>
             </div>
         </div>
@@ -47,11 +47,11 @@
         <!-- Body Part  -->
        <CardSkeleton :show="loading" v-if="loading"/>
 
-       <template v-else-if="!loading && holidays && holidays.length && viewType == 'card'">
+       <template v-else-if="!loading && events && events.length && viewType == 'card'">
            <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-               <span v-for="holiday in holidays" :key="holiday.id" class="block p-6 bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+               <span v-for="event in events" :key="event.id" class="block p-6 bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
                    <div class="flex flex-wrap justify-between items-start">
-                    <h2 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">{{ holiday.title }}</h2>
+                    <h2 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">{{ event.title }}</h2>
 
                        <Menu as="div" class="relative inline-block text-left">
                            <div>
@@ -65,7 +65,7 @@
                                <MenuItems class="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                                    <div class="py-1 text-sm">
                                    <MenuItem v-slot="{ active }">
-                                       <a href="javascript:void(0)" @click.prevent="editData(holiday)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
+                                       <a href="javascript:void(0)" @click.prevent="editData(event)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
                                            <font-awesome-icon icon="fa-solid fa-pen-to-square" class="mr-3 h-5 w-5 text-blue-500 group-hover:text-blue-500"/>
                                            Edit
                                        </a>
@@ -77,7 +77,7 @@
                                        </a>
                                    </MenuItem>
                                    <MenuItem v-slot="{ active }">
-                                       <a href="javascript:void(0)" @click.prevent="deleteData(holiday.id)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
+                                       <a href="javascript:void(0)" @click.prevent="deleteData(event.id)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
                                            <font-awesome-icon icon="fa-solid fa-trash-can" class="mr-3 h-5 w-5 text-red-500 group-hover:text-red-500"/>
                                            Delete
                                        </a>
@@ -88,42 +88,35 @@
                        </Menu>
                    </div>
                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                       {{ holiday.format_start_date }} - {{ holiday.format_end_date }}
+                       {{ event.format_start_date }} - {{ event.format_end_date }}
                    </p>
-                   <h2 class="mb-2 text-2xl font-bold tracking-tight text-blue-600 dark:text-white">{{ holiday.days }} Days</h2>
+                   <h2 class="mb-2 text-2xl font-bold tracking-tight text-blue-600 dark:text-white">{{ event.days }} Days</h2>
                </span>
            </div>
        </template>
-       <template v-else-if="!loading && holidays && holidays.length && viewType == 'calendar'">
-
+       <template v-else-if="!loading && events && events.length && viewType == 'calendar'">
             <div class="mb-4 bg-white rounded-lg shadow-xs dark:bg-gray-800 items-center p-4">
                 <FullCalendar :options="calendarOptions" />
             </div>
-
-            <!-- <div class="block p-6 bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-               <FullCalendar :options="calendarOptions" />
-           </div> -->
        </template>
 
        <NothingFound v-else>
             <BaseButton @click="showCreateDrawer = true" class="text-white bg-blue-600 hover:bg-blue-700 px-4 py-2">
                 <font-awesome-icon icon="fa-solid fa-plus" class="h-4 w-4 mr-2"/>
-                {{ __('Add Holiday') }}
+                {{ __('Add Event') }}
             </BaseButton>
        </NothingFound>
 
 
-       <CreateHoliday :show="showCreateDrawer" @close-drawer="showCreateDrawer = false, calendar.start = null, calendar.end = null" :calendar="calendar"/>
-       <EditHoliday :show="showEditDrawer" @close-drawer="showEditDrawer = false" :holiday="editHoliday"/>
+       <CreateEvent :show="showCreateDrawer" @close-drawer="showCreateDrawer = false, calendar.start = null, calendar.end = null" :calendar="calendar"/>
+       <EditEvent :show="showEditDrawer" @close-drawer="showEditDrawer = false" :event="editEvent"/>
     </AppLayout>
 </template>
 
 <script>
-import CreateHoliday from "./Create.vue";
-import EditHoliday from "./Edit.vue";
+import CreateEvent from "./Create.vue";
+import EditEvent from "./Edit.vue";
 import CardSkeleton from "@/Shared/Skeleton/CardSkeleton.vue";
-
-import dayjs from "dayjs";
 
 import FullCalendar from '@fullcalendar/vue3'
 import dayGridPlugin from '@fullcalendar/daygrid'
@@ -133,13 +126,13 @@ import '@fullcalendar/core/vdom'
 
 export default {
     components: {
-        CreateHoliday,
-        EditHoliday,
+        CreateEvent,
+        EditEvent,
         CardSkeleton,
         FullCalendar
     },
     props: {
-        holidays:{
+        events:{
             type: Array,
             default: () => []
         },
@@ -152,7 +145,7 @@ export default {
         return {
             showCreateDrawer: false,
             showEditDrawer: false,
-            editHoliday: '',
+            editEvent: '',
 
             loading: false,
 
@@ -167,7 +160,7 @@ export default {
                     center: 'title',
                     right: 'dayGridMonth,dayGridWeek,listMonth'
                 },
-                events: this.holidays,
+                events: this.events,
                 selectable: true,
                 editable: true,
                 eventClick: this.eventClick,
@@ -205,18 +198,18 @@ export default {
                 confirmButtonText: "Yes, delete it!",
             }).then((result) => {
                 if (result.isConfirmed) {
-                    this.$inertia.delete(route("admin.holiday.destroy", id));
+                    this.$inertia.delete(route("admin.event.destroy", id));
                 }
             });
         },
-        editData(holiday){
-            console.log(holiday);
+        editData(event){
+            console.log(event);
             this.showEditDrawer = true
-            this.editHoliday = holiday
+            this.editEvent = event
         },
         filterData(){
             this.loading = true
-            this.filterForm.get(route('admin.holiday.index'), {
+            this.filterForm.get(route('admin.event.index'), {
                 onSuccess: () => {
                     this.loading = false
                 },
@@ -259,7 +252,7 @@ export default {
         eventClick(arg){
             let event = arg.event
 
-            this.editHoliday = {
+            this.editEvent = {
                 id: event.id,
                 title: event.title,
                 start: event.startStr,
@@ -270,7 +263,7 @@ export default {
             this.showEditDrawer = true
         },
         async updateData(){
-            let response = await axios.put(route('admin.holiday.update', this.form.id), this.form)
+            let response = await axios.put(route('admin.event.update', this.form.id), this.form)
             console.log(response)
         }
     }

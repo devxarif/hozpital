@@ -110,14 +110,19 @@
                         <svg xmlns="http://www.w3.org/2000/svg" class="ionicon mr-3 flex-shrink-0 h-6 w-6" viewBox="0 0 512 512"><title>Airplane</title><path d="M407.72 224c-3.4 0-14.79.1-18 .3l-64.9 1.7a1.83 1.83 0 01-1.69-.9L193.55 67.56a9 9 0 00-6.66-3.56H160l73 161a2.35 2.35 0 01-2.26 3.35l-121.69 1.8a8.06 8.06 0 01-6.6-3.1l-37-45c-3-3.9-8.62-6-13.51-6H33.08c-1.29 0-1.1 1.21-.75 2.43l19.84 71.42a16.3 16.3 0 010 11.9L32.31 333c-.59 1.95-.52 3 1.77 3H52c8.14 0 9.25-1.06 13.41-6.3l37.7-45.7a8.19 8.19 0 016.6-3.1l120.68 2.7a2.7 2.7 0 012.43 3.74L160 448h26.64a9 9 0 006.65-3.55L323.14 287c.39-.6 2-.9 2.69-.9l63.9 1.7c3.3.2 14.59.3 18 .3C452 288.1 480 275.93 480 256s-27.88-32-72.28-32z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/></svg>
                     </template>
                     <DropdownMenuItem title="Leave Type" :href="route('admin.leaveType.index')" :active="route().current('admin.leaveType.index')"/>
-                    <DropdownMenuItem title="Leave Manage" :href="route('admin.accountant.index')" :active="route().current('admin.accountant.index')"/>
+                    <DropdownMenuItem title="Leave Request" :href="route('admin.accountant.index')" :active="route().current('admin.accountant.index')"/>
                 </DropdownMenu>
                 <NavItem title="Attendance" :href="route('dashboard')" :active="false">
                     <template v-slot:icon>
                         <svg xmlns="http://www.w3.org/2000/svg" class="ionicon mr-3 flex-shrink-0 h-6 w-6" viewBox="0 0 512 512"><title>Checkbox</title><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M352 176L217.6 336 160 272"/><rect x="64" y="64" width="384" height="384" rx="48" ry="48" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="32"/></svg>
                     </template>
                 </NavItem>
-                <NavItem title="Holidays" :href="route('admin.holiday.index')" :active="false">
+                <NavItem title="Holidays" :href="route('admin.holiday.index')" :active="route().current('admin.holiday.index')">
+                    <template v-slot:icon>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="ionicon  mr-3 flex-shrink-0 h-6 w-6" viewBox="0 0 512 512"><title>Calendar Number</title><rect x="48" y="80" width="416" height="384" rx="48" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="32"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M128 48v32M384 48v32M464 160H48M304 260l43.42-32H352v168M191.87 306.63c9.11 0 25.79-4.28 36.72-15.47a37.9 37.9 0 0011.13-27.26c0-26.12-22.59-39.9-47.89-39.9-21.4 0-33.52 11.61-37.85 18.93M149 374.16c4.88 8.27 19.71 25.84 43.88 25.84 28.59 0 52.12-15.94 52.12-43.82 0-12.62-3.66-24-11.58-32.07-12.36-12.64-31.25-17.48-41.55-17.48"/></svg>
+                    </template>
+                </NavItem>
+                <NavItem title="Event" :href="route('admin.event.index')" :active="route().current('admin.event.index')">
                     <template v-slot:icon>
                         <svg xmlns="http://www.w3.org/2000/svg" class="ionicon  mr-3 flex-shrink-0 h-6 w-6" viewBox="0 0 512 512"><title>Calendar Number</title><rect x="48" y="80" width="416" height="384" rx="48" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="32"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M128 48v32M384 48v32M464 160H48M304 260l43.42-32H352v168M191.87 306.63c9.11 0 25.79-4.28 36.72-15.47a37.9 37.9 0 0011.13-27.26c0-26.12-22.59-39.9-47.89-39.9-21.4 0-33.52 11.61-37.85 18.93M149 374.16c4.88 8.27 19.71 25.84 43.88 25.84 28.59 0 52.12-15.94 52.12-43.82 0-12.62-3.66-24-11.58-32.07-12.36-12.64-31.25-17.48-41.55-17.48"/></svg>
                     </template>
@@ -132,18 +137,6 @@
                     <DropdownMenuItem title="Blood Donor" :href="route('admin.bloodDonor.index')" :active="route().current('admin.bloodDonor.index')"/>
                     <DropdownMenuItem title="Blood Donation" :href="route('admin.bloodDonation.index')" :active="route().current('admin.bloodDonation.index')"/>
                 </DropdownMenu>
-
-                <!-- Others  -->
-                <NavItem title="Appointment" :href="route('dashboard')" :active="false">
-                    <template v-slot:icon>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="ionicon mr-3 flex-shrink-0 h-6 w-6" viewBox="0 0 512 512"><title>Calendar Clear</title><rect fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="32" x="48" y="80" width="416" height="384" rx="48"/><path fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="32" stroke-linecap="round" d="M128 48v32M384 48v32M464 160H48"/></svg>
-                    </template>
-                </NavItem>
-                <NavItem title="Prescription" :href="route('dashboard')" :active="false">
-                    <template v-slot:icon>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="mr-2 flex-shrink-0 h-7 w-7" preserveAspectRatio="xMidYMid meet" viewBox="0 0 256 256"><path fill="currentColor" d="m183.3 188l22.4-22.3a8.1 8.1 0 0 0-11.4-11.4L172 176.7L130.3 135A52 52 0 0 0 120 32H72a8 8 0 0 0-8 8v152a8 8 0 0 0 16 0v-56h28.7l52 52l-22.4 22.3a8.1 8.1 0 0 0 0 11.4a8.2 8.2 0 0 0 11.4 0l22.3-22.4l22.3 22.4a8.2 8.2 0 0 0 11.4 0a8.1 8.1 0 0 0 0-11.4ZM80 120V48h40a36 36 0 0 1 0 72Z"/></svg>
-                    </template>
-                </NavItem>
 
                 <!-- Finance  -->
                 <DropdownMenu title="Finance" :active="route().current('admin.bloodBank.index') || route().current('admin.bloodDonor.index') || route().current('admin.bloodDonation.index') ">

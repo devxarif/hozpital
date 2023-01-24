@@ -39,6 +39,7 @@ use Database\Seeders\AppointmentSeeder;
 use Database\Seeders\DesignationSeeder;
 use Database\Seeders\ManufactureSeeder;
 use Database\Seeders\TestimonialSeeder;
+use Database\Seeders\AnnouncementSeeder;
 use Database\Seeders\BedAllotmentSeeder;
 use Database\Seeders\LaboratoristSeeder;
 use Database\Seeders\LeaveRequestSeeder;
@@ -139,7 +140,8 @@ class DatabaseSeeder extends Seeder
             SettingSeeder::class,
 
             // Others
-            // EventSeeder::class,
+            EventSeeder::class,
+            AnnouncementSeeder::class,
             // AmbulanceSeeder::class,
             AppointmentSeeder::class,
         ]);

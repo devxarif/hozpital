@@ -53,6 +53,17 @@
                       </template>
                   </NavItem>
 
+                  <NavItem title="Appointment" :href="route('dashboard')" :active="false">
+                    <template v-slot:icon>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="ionicon mr-3 flex-shrink-0 h-6 w-6" viewBox="0 0 512 512"><title>Calendar Clear</title><rect fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="32" x="48" y="80" width="416" height="384" rx="48"/><path fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="32" stroke-linecap="round" d="M128 48v32M384 48v32M464 160H48"/></svg>
+                    </template>
+                </NavItem>
+                <NavItem title="Prescription" :href="route('dashboard')" :active="false">
+                    <template v-slot:icon>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="mr-2 flex-shrink-0 h-7 w-7" preserveAspectRatio="xMidYMid meet" viewBox="0 0 256 256"><path fill="currentColor" d="m183.3 188l22.4-22.3a8.1 8.1 0 0 0-11.4-11.4L172 176.7L130.3 135A52 52 0 0 0 120 32H72a8 8 0 0 0-8 8v152a8 8 0 0 0 16 0v-56h28.7l52 52l-22.4 22.3a8.1 8.1 0 0 0 0 11.4a8.2 8.2 0 0 0 11.4 0l22.3-22.4l22.3 22.4a8.2 8.2 0 0 0 11.4 0a8.1 8.1 0 0 0 0-11.4ZM80 120V48h40a36 36 0 0 1 0 72Z"/></svg>
+                    </template>
+                </NavItem>
+
                   <NavItem title="Leave" :href="route('dashboard')" :active="false">
                       <template v-slot:icon>
                           <font-awesome-icon icon="fa-solid fa-home" class="mr-3 flex-shrink-0 h-5 w-5"/>

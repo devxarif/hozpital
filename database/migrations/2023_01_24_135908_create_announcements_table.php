@@ -13,10 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('notice_boards', function (Blueprint $table) {
+        Schema::create('announcements', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('title');
             $table->string('description')->nullable();
+            $table->date('start');
+            $table->date('end');
+            $table->enum('status', ['public', 'private'])->default('public');
             $table->timestamps();
         });
     }
@@ -28,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('notice_boards');
+        Schema::dropIfExists('announcements');
     }
 };
