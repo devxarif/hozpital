@@ -75,11 +75,8 @@
                                 <div class="grid grid-cols-3 gap-2">
                                     <div class="mb-4">
                                         <Label :name="__('Birth Date')" id="patient_age" :hasError="form.errors.age" :required="false"/>
-                                        <!-- <BaseInput v-model="form.age" placeholder="Age" id="patient_age" :hasError="form.errors.age"/> -->
-                                        <Datepicker v-model="form.birth_date" :enableTimePicker="false" class="bg-gray-50 border text-md rounded-lg block w-full p-1 dark:bg-gray-700 dark:placeholder-gray-400 dark:text-white"
-                                            @update:modelValue="handleCustomDate" :class="{'is-invalid': form.errors.birth_date}" :placeholder="__('Select Date')" :default-value="new Date()"
-      :disabled-date="disabledAfterToday" />
-                                        <!-- <span v-if="errors.birth_date" class="invalid-feedback">{{ errors.birth_date && errors.birth_date[0] }}</span> -->
+                                        <Datepicker v-model="form.birth_date" :enableTimePicker="false" class="border-none bg-gray-50 border text-md rounded-lg block w-full p-1 dark:bg-gray-700 dark:placeholder-gray-400 dark:text-white"
+                                            @update:modelValue="handleCustomDate" :class="{'is-invalid': form.errors.birth_date}" :placeholder="__('Select Date')" :default-value="new Date()" :disabled-date="disabledAfterToday" />
                                     </div>
                                     <div class="mb-4">
                                         <Label :name="__('Age')" id="patient_age" :hasError="form.errors.age" :required="false"/>
