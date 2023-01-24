@@ -213,8 +213,8 @@
             </BaseButton>
        </NothingFound>
 
-        <CreateBed :show="showCreateDrawer" @close-drawer="showCreateDrawer = false"/>
-        <EditBed :show="showEditBed" @close-drawer="showEditBed = false" :bed="editBed"/>
+        <CreateBed :show="showCreateDrawer" @close-drawer="closeCreateDrawer"/>
+        <EditBed :show="showEditBed" @close-drawer="closeEditDrawer" :bed="editBed"/>
     </AppLayout>
 </template>
 
@@ -316,6 +316,20 @@
             toggleFilter() {
                 this.showFilter = !this.showFilter;
                 localStorage.setItem("adminBed", this.showFilter);
+            },
+            closeCreateDrawer(freeze){
+                if(!freeze){
+                    this.showCreateDrawer = false
+                }else{
+                    this.showCreateDrawer = true
+                }
+            },
+            closeEditDrawer(freeze){
+                if(!freeze){
+                    this.showEditDoctor = false
+                }else{
+                    this.showEditDoctor = true
+                }
             },
         },
         created() {

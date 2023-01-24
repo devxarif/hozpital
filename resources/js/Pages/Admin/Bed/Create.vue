@@ -4,7 +4,7 @@
         <div class="absolute inset-0 overflow-hidden transition-opacity">
             <div class="absolute inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
             <div class="pointer-events-none absolute right-0 inset-y-0 flex max-w-full ltr:pl-10 rtl:pr-10"
-                v-click-outside="()=> $emit('close-drawer')">
+                v-click-outside="()=> $emit('close-drawer', freezeDrawer)">
                 <div class="pointer-events-auto w-screen max-w-xs lg:max-w-4xl">
                     <div class="flex h-full flex-col bg-white shadow-xl">
                         <div class="flex-1 overflow-y-auto py-6 px-4 sm:px-6">
@@ -14,7 +14,7 @@
                                 </h2>
                                 <div class="ml-3 flex h-7 items-center">
                                     <button type="button" class="-m-2 p-2 text-gray-400 hover:text-gray-500 focus:outline-none"
-                                        @click="$emit('close-drawer')">
+                                        @click="$emit('close-drawer', freezeDrawer)">
                                         <svg class="h-6 w-6"
                                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                             stroke="currentColor" aria-hidden="true">
@@ -47,11 +47,17 @@
                                     </div>
                                     <div class="mb-4">
                                         <Label :name="__('Floor')" id="bed_floor" :hasError="form.errors.floor"/>
-                                        <Multiselect id="bed_floor" :close-on-select="true" :can-clear="true"
-                                        :searchable="true" v-model="form.floor" :create-option="false"
-                                        placeholder="Select Floor" :options="floors.map(item => ({
-                                            value: item.id, label: item.name
-                                        }))"  />
+                                        <div class="flex items-center">
+                                            <Multiselect id="bed_floor" :close-on-select="true" :can-clear="true"
+                                            :searchable="true" v-model="form.floor" :create-option="false"
+                                            placeholder="Select Floor" :options="floors.map(item => ({
+                                                value: item.id, label: item.name
+                                            }))"  />
+
+                                            <button @click="showFloorModal()" type="button" class="inline-flex items-center rounded-full border border-transparent bg-blue-600 p-1 text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ml-2">
+                                                <font-awesome-icon icon="fa-solid fa-plus" class="h-5 w-5"/>
+                                            </button>
+                                        </div>
                                         <ErrorMessage :name="form.errors.floor"/>
                                     </div>
                                 </div>
@@ -94,15 +100,19 @@
         </div>
     </div>
 </Transition>
+
+<CreateFloorModal :show="showCreateFloorModal" @close-modal="closeDepartmentModal"/>
 </template>
 
 <script>
     import Multiselect from '@vueform/multiselect'
     import '@vueform/multiselect/themes/default.css';
+    import CreateFloorModal from './CreateFloorModal.vue'
 
     export default {
         components:{
-            Multiselect
+            Multiselect,
+            CreateFloorModal
         },
         props: {
             show: {
@@ -121,8 +131,11 @@
                     bed_type: ""
                 }),
 
+                freezeDrawer: false,
+                showCreateFloorModal: false,
+
                 bed_types: [],
-                floors: []
+                floors: [],
             };
         },
         methods: {
@@ -134,11 +147,12 @@
                     },
                 });
             },
-            async loadData(){
+            async loadBedTypes(){
                 // Fetches bed types
                 let bed_type_response = await axios.get(route("fetch.bedTypes"));
                 this.bed_types = bed_type_response.data;
-
+            },
+            async loadFloors(){
                 // Fetches bed floors
                 let bed_floor = await axios.get(route("fetch.bedFloors"));
                 this.floors = bed_floor.data;
@@ -146,14 +160,27 @@
             bedTypeChange(event) {
                 this.form.bed_type = event.target.value;
             },
-            showDepartmentModal() {
+            showFloorModal() {
                 this.freezeDrawer = true;
-                this.showCreateDepartmentModal = true
-            }
+                this.showCreateFloorModal = true
+            },
+            async closeDepartmentModal(fetched = false) {
+                if (fetched) {
+                    await this.loadFloors()
+                    this.form.floor = this.floors[0]?.id ?? ''
+                }
+
+                this.showCreateFloorModal = false
+
+                setTimeout(() => {
+                    this.freezeDrawer = false
+                }, 500);
+            },
         },
         mounted() {
             this.checkPagePermission('admin')
-            this.loadData()
+            this.loadBedTypes()
+            this.loadFloors()
         }
     };
 </script>
