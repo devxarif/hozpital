@@ -20,9 +20,7 @@ class AnnouncementFactory extends Factory
         return [
             'title' => fake()->name,
             'description' => fake()->realText(200),
-            'start' => fake()->date('Y-m-d'),
-            'end' => fake()->date('Y-m-d'),
-            'status' => Arr::random(['public','private']),
+            'type' => Arr::random(['public','private']),
         ];
     }
 }

@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Event;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\EventSaveRequest;
+use App\Services\Admin\Event\CreateEventService;
+use App\Services\Admin\Event\UpdateEventService;
 
 class EventController extends Controller
 {
@@ -24,13 +25,7 @@ class EventController extends Controller
 
     public function store(EventSaveRequest $request)
     {
-        Event::create([
-            'title' => $request->title,
-            'start' => $request->start,
-            'end' => $request->end,
-            'days' => diffBetweenDays($request->start, $request->end),
-            'color' => $request->color,
-        ]);
+        (new CreateEventService())->execute($request);
 
         $this->flashSuccess('success', 'Event created successfully!');
         return back();
@@ -38,13 +33,7 @@ class EventController extends Controller
 
     public function update(EventSaveRequest $request, Event $event)
     {
-        $event->update([
-            'title' => $request->title ?? $event->title,
-            'start' => $request->start ?? $event->start,
-            'end' => $request->end ?? $event->end,
-            'days' => diffBetweenDays($request->start ?? $event->start, $request->end ?? $event->end),
-            'color' => $request->color ?? $event->color,
-        ]);
+        (new UpdateEventService())->execute($request,$event);
 
         if ($request->type != 'api') {
             $this->flashSuccess('success', 'Event updated successfully!');

@@ -2,14 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Carbon\Carbon;
-use App\Models\User;
 use App\Models\Holiday;
-use App\Models\Organization;
-use Illuminate\Http\Request;
-use App\Models\HolidayRequest;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\HolidaySaveRequest;
+use App\Services\Admin\Holiday\CreateHolidayService;
+use App\Services\Admin\Holiday\UpdateHolidayService;
 
 class HolidayController extends Controller
 {
@@ -28,13 +25,7 @@ class HolidayController extends Controller
 
     public function store(HolidaySaveRequest $request)
     {
-        Holiday::create([
-            'title' => $request->title,
-            'start' => $request->start,
-            'end' => $request->end,
-            'days' => diffBetweenDays($request->start, $request->end),
-            'color' => $request->color,
-        ]);
+        (new CreateHolidayService())->execute($request);
 
         $this->flashSuccess('success', 'Holiday created successfully!');
         return back();
@@ -42,13 +33,7 @@ class HolidayController extends Controller
 
     public function update(HolidaySaveRequest $request, Holiday $holiday)
     {
-        $holiday->update([
-            'title' => $request->title ?? $holiday->title,
-            'start' => $request->start ?? $holiday->start,
-            'end' => $request->end ?? $holiday->end,
-            'days' => diffBetweenDays($request->start ?? $holiday->start, $request->end ?? $holiday->end),
-            'color' => $request->color ?? $holiday->color,
-        ]);
+        (new UpdateHolidayService())->execute($request,$holiday);
 
         if ($request->type != 'api') {
             $this->flashSuccess('success', 'Holiday updated successfully!');

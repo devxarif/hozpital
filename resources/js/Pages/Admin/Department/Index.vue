@@ -150,7 +150,7 @@
                    </p>
                </span>
            </div>
-           <Pagination :data="departments" v-if="departments && departments.data.length && departments.data.length > 20" class="mt-5"/>
+           <Pagination :data="departments" v-if="departments && departments.data.length && departments.total > 20" class="mt-5"/>
        </template>
 
        <NothingFound v-else>

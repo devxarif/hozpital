@@ -16,10 +16,8 @@ return new class extends Migration
         Schema::create('announcements', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('description')->nullable();
-            $table->date('start');
-            $table->date('end');
-            $table->enum('status', ['public', 'private'])->default('public');
+            $table->longText('description')->nullable();
+            $table->enum('type', ['public', 'private'])->default('public');
             $table->timestamps();
         });
     }

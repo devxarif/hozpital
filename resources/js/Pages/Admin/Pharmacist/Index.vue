@@ -148,7 +148,7 @@
                     <h6 class="my-1 text-sm font-bold tracking-tight text-gray-900 dark:text-white">{{ pharmacist.user.email ?? '-' }}</h6>
                 </span>
             </div>
-            <Pagination :data="pharmacists" v-if="pharmacists && pharmacists.data.length && pharmacists.data.length > 20" class="mt-5"/>
+            <Pagination :data="pharmacists" v-if="pharmacists && pharmacists.data.length && pharmacists.total > 20" class="mt-5"/>
        </template>
 
         <NothingFound v-else>

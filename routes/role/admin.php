@@ -19,6 +19,7 @@ use App\Http\Controllers\Admin\BloodDonorController;
 use App\Http\Controllers\Admin\DepartmentController;
 use App\Http\Controllers\Admin\PharmacistController;
 use App\Http\Controllers\Admin\ManufactureController;
+use App\Http\Controllers\Admin\AnnouncementController;
 use App\Http\Controllers\Admin\BedAllotmentController;
 use App\Http\Controllers\Admin\LaboratoristController;
 use App\Http\Controllers\Admin\ReceptionistController;
@@ -64,7 +65,7 @@ Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function () 
     Route::resource('bedAllotment', BedAllotmentController::class);
 
     // Blood
-    Route::resource('bloodBank', BloodBankController::class)->only(['index','update']);
+    Route::resource('bloodBank', BloodBankController::class);
     Route::resource('bloodDonor', BloodDonorController::class);
     Route::resource('bloodDonation', BloodDonationController::class);
 
@@ -77,6 +78,9 @@ Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function () 
 
     // Event
     Route::resource('event', EventController::class);
+
+    // Announcement
+    Route::resource('announcement', AnnouncementController::class);
 
 
     // Route::resource('doctor', DoctorController::class)->withoutMiddleware('auth');

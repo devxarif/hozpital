@@ -166,7 +166,7 @@
                     </div>
                 </span>
             </div>
-            <Pagination :data="blood_donors" v-if="blood_donors && blood_donors.data.length && blood_donors.data.length > 20" class="mt-5"/>
+            <Pagination :data="blood_donors" v-if="blood_donors && blood_donors.data.length && blood_donors.total > 20" class="mt-5"/>
        </template>
 
         <NothingFound v-else>

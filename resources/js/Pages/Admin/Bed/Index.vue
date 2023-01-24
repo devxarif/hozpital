@@ -134,7 +134,7 @@
                         <button type="button" @click="changeTab('all')" :class="['whitespace-nowrap flex py-4 px-1 border-b-2 font-medium text-sm focus:outline-none', currentTab == 'all' ? 'border-indigo-500 text-blue-600':'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-200' ]">
                             All
                             <span class="hidden ml-3 py-0.5 px-2.5 rounded-full text-xs font-medium md:inline-block" :class="currentTab == 'all' ? 'bg-indigo-100 text-blue-600':'bg-gray-100 text-gray-900'">
-                                52
+                                {{ beds.total }}
                             </span>
                         </button>
 
@@ -203,7 +203,7 @@
                     </p>
                 </span>
             </div>
-            <Pagination :data="beds" v-if="beds && beds.data.length && beds.data.length > 20" class="mt-5"/>
+            <Pagination :data="beds" v-if="beds && beds.data.length && beds.total > 20" class="mt-5"/>
         </template>
 
         <NothingFound v-else>

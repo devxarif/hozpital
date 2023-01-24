@@ -30,7 +30,7 @@ class LeaveTypeController extends Controller
             $query->whereLike(['name'],  $request->keyword);
         }
 
-        $leave_types = $query->latest()->paginate(16)->withQueryString();
+        $leave_types = $query->latest()->paginate(20)->withQueryString();
 
         return inertia('Admin/LeaveType/Index', [
             'leave_types' => $leave_types,

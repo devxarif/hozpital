@@ -161,7 +161,7 @@
                     </span>
                 </span>
             </div>
-            <Pagination :data="doctors" v-if="doctors && doctors.data.length && doctors.data.length > 20" class="mt-5"/>
+            <Pagination :data="doctors" v-if="doctors && doctors.data.length && doctors.total > 20" class="mt-5"/>
        </template>
 
         <NothingFound v-else>

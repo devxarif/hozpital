@@ -149,7 +149,7 @@
                     <h6 class="my-1 text-sm font-bold tracking-tight text-gray-900 dark:text-white">{{ nurse.user.email ?? '-' }}</h6>
                 </span>
             </div>
-            <Pagination :data="nurses" v-if="nurses && nurses.data.length && nurses.data.length > 20" class="mt-5"/>
+            <Pagination :data="nurses" v-if="nurses && nurses.data.length && nurses.total > 20" class="mt-5"/>
        </template>
 
         <NothingFound v-else>

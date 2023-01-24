@@ -150,7 +150,7 @@
                     </span>
                </span>
            </div>
-           <Pagination :data="leave_types" v-if="leave_types && leave_types.data.length && leave_types.data.length > 20" class="mt-5"/>
+           <Pagination :data="leave_types" v-if="leave_types && leave_types.data.length && leave_types.total > 20" class="mt-5"/>
        </template>
 
        <NothingFound v-else>

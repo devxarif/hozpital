@@ -146,7 +146,7 @@
                     <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ blood_donation.bags }} bags</h2>
                 </span>
             </div>
-            <Pagination :data="blood_donations" v-if="blood_donations && blood_donations.data.length && blood_donations.data.length > 20" class="mt-5"/>
+            <Pagination :data="blood_donations" v-if="blood_donations && blood_donations.data.length && blood_donations.total > 20" class="mt-5"/>
        </template>
 
         <NothingFound v-else>
