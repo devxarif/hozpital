@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\Admin\UpgradeController;
+use App\Models\Bed;
 use sirajcse\UniqueIdGenerator\UniqueIdGenerator;
 
 Route::get('/', function () {
@@ -40,17 +41,9 @@ Route::get('/', function () {
 
 Route::get('/test', function () {
 
-    $holidays = Holiday::oldest('start')->get()->transform(function ($date) {
-        $date->format_start_date = formatTime($date->start, 'D d M');
-        $date->format_end_date = formatTime($date->end, 'D d M');
-        return $date;
-    });
+   return Bed::with('bedType:id,name','floor:id,name')->get()->groupBy(['bed_type_id', 'bed_floor_id']);
 
-
-    return Holiday::whereMonth('start', 02)->get();
-
-
-
+   
 
 
     $encrypt = safeEncrypt(123);

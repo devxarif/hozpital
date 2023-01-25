@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Bed;
 use App\Models\BedType;
 use App\Models\BedAllotment;
 use Illuminate\Http\Request;
@@ -20,12 +21,22 @@ class BedAllotmentController extends Controller
      */
     public function index(Request $request)
     {
-        $bed_types = BedType::latest()->paginate(20)->withQueryString();
+        $data['bed_types'] = BedType::withCount('beds')->latest()->get(['id','name','slug']);
+        // $beds = Bed::with('bedType:id,name','floor:id,name')->get()->groupBy(['bed_type_id', 'bed_floor_id']);
 
-        return inertia('Admin/BedType/Index',[
-            'bed_types' => $bed_types,
-            'filter' => $request
-        ]);
+        $query = Bed::query();
+
+        if($request->has('bed_type') && $request->filled('bed_type') && $request->bed_type != 'all'){
+            $query->whereHas('bedType', function($q) use ($request){
+                $q->where('slug', $request->bed_type);
+            });
+        }
+
+       $data['beds'] = $query->with('bedType:id,name','floor:id,name')->latest()->get()->groupBy('bed_floor_id');
+
+        $data['filter'] = $request;
+
+        return inertia('Admin/BedAllotment/Index', $data);
     }
 
     /**
