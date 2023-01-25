@@ -37,6 +37,12 @@
                                                 </ul>
                                             </label>
                                         </div>
+                                        <div class="relative text-center">
+                                            <label @click="showBedTypeModal" class="flex p-2 bg-white border border-gray-300 rounded-lg cursor-pointer focus:outline-none hover:bg-gray-50 peer-checked:ring-blue-500 peer-checked:ring-2 peer-checked:border-transparent flex-col peer-checked:shadow-xl" for="bed_type">
+                                                <span class="text-lg font-bold w-12 h-6 bg-blue-500 flex items-center justify-center text-center  rounded-lg text-white hover:bg-blue-500 m-auto">+</span>
+                                                <span class="text-lg font-bold">Create New</span>
+                                            </label>
+                                        </div>
                                     </div>
                                     <ErrorMessage :name="form.errors.bed_type"/>
                                 </div>
@@ -102,17 +108,20 @@
 </Transition>
 
 <CreateFloorModal :show="showCreateFloorModal" @close-modal="closeDepartmentModal"/>
+<CreateBedTypeModal :show="showCreateBedTypeModal" @close-modal="closeLeaveTypeModal"/>
 </template>
 
 <script>
     import Multiselect from '@vueform/multiselect'
     import '@vueform/multiselect/themes/default.css';
     import CreateFloorModal from './CreateFloorModal.vue'
+    import CreateBedTypeModal from './CreateBedTypeModal.vue'
 
     export default {
         components:{
             Multiselect,
-            CreateFloorModal
+            CreateFloorModal,
+            CreateBedTypeModal
         },
         props: {
             show: {
@@ -132,6 +141,7 @@
                 }),
 
                 freezeDrawer: false,
+                showCreateBedTypeModal: false,
                 showCreateFloorModal: false,
 
                 bed_types: [],
@@ -164,6 +174,10 @@
                 this.freezeDrawer = true;
                 this.showCreateFloorModal = true
             },
+            showBedTypeModal() {
+                this.freezeDrawer = true;
+                this.showCreateBedTypeModal = true
+            },
             async closeDepartmentModal(fetched = false) {
                 if (fetched) {
                     await this.loadFloors()
@@ -171,6 +185,18 @@
                 }
 
                 this.showCreateFloorModal = false
+
+                setTimeout(() => {
+                    this.freezeDrawer = false
+                }, 500);
+            },
+            async closeLeaveTypeModal(fetched = false) {
+                if (fetched) {
+                    await this.loadBedTypes()
+                    this.form.bed_type = this.bed_types[0]?.id ?? ''
+                }
+
+                this.showCreateBedTypeModal = false
 
                 setTimeout(() => {
                     this.freezeDrawer = false
