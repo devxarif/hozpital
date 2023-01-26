@@ -41,9 +41,43 @@ Route::get('/', function () {
 
 Route::get('/test', function () {
 
-   return Bed::with('bedType:id,name','floor:id,name')->get()->groupBy(['bed_type_id', 'bed_floor_id']);
+//    return Bed::with('bedType:id,name','floor:id,name')->get()->groupBy(['bed_floor_id','bed_type_id']);
 
-   
+    $beds = Bed::latest()->get();
+
+    $beds = $beds->groupBy(function($bed) {
+        return $bed->bed_floor_id;
+    });
+
+    // return $beds;
+
+    $beds = $beds->map(function($bed) {
+        return $bed->groupBy(function($bed) {
+            return $bed->bed_type_id;
+        });
+    });
+
+    return $beds;
+
+
+//    $products::latest()->get();
+
+//     $products = products->groupBy(function($product) {
+//     return $product->name;
+//     });
+
+//     $products = products->map(function($product) {
+//     return $product->groupBy(function($prod) {
+//         return $prod->color;
+//     });
+//     });
+
+//     return $products;
+
+
+
+
+
 
 
     $encrypt = safeEncrypt(123);

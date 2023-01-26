@@ -1,6 +1,6 @@
 <template>
 
-    <Head :title="__('Bed')" />
+    <Head :title="__('Bed Allotment')" />
     <AppLayout>
 
         <!-- Header Part  -->
@@ -16,7 +16,7 @@
                     <div class="flex items-center">
                         <font-awesome-icon icon="fa-solid fa-chevron-right" class="w-3 h-3 text-gray-400" />
                         <a href="#"
-                            class="text-gray-700 hover:text-gray-900 ml-1 md:ml-2 text-sm font-medium">Bed</a>
+                            class="text-gray-700 hover:text-gray-900 ml-1 md:ml-2 text-sm font-medium">Bed Allotment</a>
                     </div>
                 </li>
             </ol>
@@ -24,9 +24,8 @@
 
         <div class="flex justify-between">
             <h2 class="text-3xl font-semibold leading-7 text-gray-900 dark:text-gray-200 sm:text-3xl sm:truncate">
-                {{ __('Bed') }}
+                {{ __('Bed Attotment Status') }}
             </h2>
-
             <div class="flex items-center space-x-2 sm:space-x-3 ml-auto">
                 <Menu as="div" class="relative inline-block text-left">
                     <div>
@@ -69,46 +68,28 @@
                    {{ __('Add Bed') }}
                 </BaseButton>
             </div>
-        </div>
 
+        </div>
         <div>
-            <div class="hidden sm:block">
-                <div class="border-b border-gray-200">
-                    <nav class="-mb-px flex space-x-8" aria-label="Tabs">
-                        <button type="button" @click="changeTab('all')" :class="['whitespace-nowrap flex py-4 px-1 border-b-2 font-medium text-sm focus:outline-none', currentTab == 'all' ? 'border-indigo-500 text-blue-600':'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-200' ]">
-                            All
-                            <span class="hidden ml-3 py-0.5 px-2.5 rounded-full text-xs font-medium md:inline-block" :class="currentTab == 'all' ? 'bg-indigo-100 text-blue-600':'bg-gray-100 text-gray-900'">
-                                {{ beds.length }}
-                            </span>
-                        </button>
-
-                        <button v-for="bed_type in bed_types" :key="bed_type.id" type="button" @click="changeTab(bed_type.slug)"  :class="['whitespace-nowrap flex py-4 px-1 border-b-2 font-medium text-sm focus:outline-none', currentTab == bed_type.slug ? 'border-indigo-500 text-blue-600':'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-200' ]">
-                            {{ bed_type.name }}
-                            <span class="hidden ml-3 py-0.5 px-2.5 rounded-full text-xs font-medium md:inline-block" :class="currentTab == bed_type.slug ? 'bg-indigo-100 text-blue-600':'bg-gray-100 text-gray-900'">
-                                {{ bed_type.beds_count }}
-                            </span>
-                        </button>
-                    </nav>
-                </div>
-            </div>
+             <span class="mr-5"><AllotedBedIcon class="h-12 w-12 inline"/> = Alloted</span>
+             <span><UnallotedBedIcon class="h-12 w-12 inline"/> = Unlloted</span>
         </div>
 
-        <!-- Body Part  -->
-        <CardSkeleton :show="loading" v-if="loading"/>
+        <div class="mt-5">
+            <span v-for="(bed_floors, i) in beds" :key="i" class="mb-3 block p-4 bg-slate-100 rounded-lg border border-slate-500  dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                <h2 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white mb-5">{{ getBedFloor(i).name }}</h2>
 
-        <template v-else-if="!loading && beds">
-            <div class="mt-5" v-for="(bed_floors, index) in beds" :key="index">
-                <span class="block p-4 bg-white rounded-lg border border-gray-200  dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-                    <h2 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white" v-if="bed_floors[0].floor">{{ bed_floors[0].floor?.name }}</h2>
+                <div v-for="(bed_types, j) in bed_floors" :key="j" class="mb-2 block p-4 bg-white rounded-lg border border-gray-200 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                    <h2 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ getBedType(j).name }}</h2>
+
                     <div class="grid gap-6 md:grid-cols-4 xl:grid-cols-6 mt-2">
-                        <span v-for="bed in bed_floors" :key="bed.id" class="cursor-pointer block p-4 bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                        <span v-for="(bed, k) in bed_types" :key="k" class="cursor-pointer block p-3 bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                            <!-- Floor: {{ bed.bed_floor_id }}
+                            Type: {{ bed.bed_type_id }} -->
+
                             <div class="flex flex-wrap justify-between items-start">
-
-                                <!-- <svg v-if="bed.status == 'alloted'" class="h-20 w-20 text-red-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M19 7h-8v7H3V5H1v15h2v-3h18v3h2v-9a4 4 0 0 0-4-4M7 13a3 3 0 0 0 3-3a3 3 0 0 0-3-3a3 3 0 0 0-3 3a3 3 0 0 0 3 3Z"/></svg>
-                                <svg v-else class="m-0 h-20 w-20 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M19 7H5v7H3V5H1v15h2v-3h18v3h2v-9a4 4 0 0 0-4-4"/></svg> -->
-
-                                <AllotedBedIcon v-if="bed.status == 'alloted'"/>
-                                <UnallotedBedIcon v-else />
+                                <AllotedBedIcon v-if="bed.status == 'alloted'" class="h-16 w-16"/>
+                                <UnallotedBedIcon v-else class="h-16 w-16"/>
 
                                 <Menu as="div" class="relative inline-block text-left">
                                     <div>
@@ -150,16 +131,80 @@
                             </span> -->
                             <p v-if="bed.status == 'alloted'">Patient: Ariful Islam</p>
                         </span>
-                        <!-- <span class="block p-6 bg-white rounded-lg border shadow-sm border-gray-200 hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                    </div>
+                </div>
+            </span>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- Body Part  -->
+        <!-- <CardSkeleton :show="loading" v-if="loading"/>
+
+        <template v-else-if="!loading && beds">
+            <div class="mt-5" v-for="(bed_floors, index) in beds" :key="index">
+                <span class="block p-4 bg-white rounded-lg border border-gray-200  dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                    <h2 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white" v-if="bed_floors[0].floor">{{ bed_floors[0].floor?.name }}</h2>
+                    <div class="grid gap-6 md:grid-cols-4 xl:grid-cols-6 mt-2">
+                        <span v-for="bed in bed_floors" :key="bed.id" class="cursor-pointer block p-4 bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
                             <div class="flex flex-wrap justify-between items-start">
-                                <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"></h2>
+                                <AllotedBedIcon v-if="bed.status == 'alloted'"/>
+                                <UnallotedBedIcon v-else />
 
+                                <Menu as="div" class="relative inline-block text-left">
+                                    <div>
+                                        <MenuButton class="flex items-center rounded-full text-gray-400 hover:text-gray-600 focus:outline-none">
+                                            <span class="sr-only">Open options</span>
+                                            <font-awesome-icon icon="fa-solid fa-ellipsis-vertical" class="h-6 w-6"/>
+                                        </MenuButton>
+                                    </div>
 
-
-
+                                    <transition enter-active-class="transition ease-out duration-100" enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100" leave-active-class="transition ease-in duration-75" leave-from-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
+                                        <MenuItems class="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                                            <div class="py-1 text-sm">
+                                            <MenuItem v-slot="{ active }">
+                                                <a href="javascript:void(0)" @click.prevent="editData(bed)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
+                                                    <font-awesome-icon icon="fa-solid fa-pen-to-square" class="mr-3 h-5 w-5 text-blue-500 group-hover:text-blue-500"/>
+                                                    Edit
+                                                </a>
+                                            </MenuItem>
+                                            <MenuItem v-slot="{ active }">
+                                                <a href="javascript:void(0)" @click.prevent="editData(bed)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
+                                                    <font-awesome-icon icon="fa-solid fa-eye" class="mr-3 h-5 w-5 text-sky-500 group-hover:text-sky-500"/>
+                                                    Details
+                                                </a>
+                                            </MenuItem>
+                                            <MenuItem v-slot="{ active }">
+                                                <a href="javascript:void(0)" @click.prevent="deleteData(bed.id)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
+                                                    <font-awesome-icon icon="fa-solid fa-trash-can" class="mr-3 h-5 w-5 text-red-500 group-hover:text-red-500"/>
+                                                    Delete
+                                                </a>
+                                            </MenuItem>
+                                            </div>
+                                        </MenuItems>
+                                    </transition>
+                                </Menu>
                             </div>
-
-                        </span> -->
+                            <h2 class="my-1 font-bold text-lg tracking-tight text-gray-900 dark:text-white">Bed Number: {{ bed.number }}</h2>
+                            <span class="text-xs font-semibold px-2 py-1 rounded bg-green-100 text-green-800 dark:bg-green-200 dark:text-green-900 capitalize">
+                                {{ bed.status }}
+                            </span>
+                            <p v-if="bed.status == 'alloted'">Patient: Ariful Islam</p>
+                        </span>
                     </div>
                 </span>
             </div>
@@ -170,7 +215,7 @@
                 <font-awesome-icon icon="fa-solid fa-plus" class="h-4 w-4 mr-2"/>
                 {{ __('Add Bed') }}
             </BaseButton>
-       </NothingFound>
+       </NothingFound> -->
 
         <!-- <CreateBed :show="showCreateDrawer" @close-drawer="closeCreateDrawer"/>
         <EditBed :show="showEditBed" @close-drawer="closeEditDrawer" :bed="editBed"/> -->
@@ -200,26 +245,20 @@
                 type: Array,
                 default: () => []
             },
-            bed_types:{
+            types:{
                 type: Array,
                 default: () => []
             },
             floors: {
                 type: Array,
                 default: () => []
-            },
-            filter:{
-                type: Array,
-                default: () => []
-            },
+            }
         },
         data() {
             return {
                 showCreateDrawer: false,
                 showEditBed: false,
                 editBed: '',
-
-                currentTab: this.filter.bed_type || "all",
 
                 beds: this.beds,
 
@@ -240,19 +279,12 @@
                 }).then((result) => {
                     if (result.isConfirmed) {
                         this.$inertia.delete(route("admin.bed.destroy", id));
-                        this.changeTab(this.currentTab);
                     }
                 });
             },
             editData(bed){
                 this.showEditBed = true
                 this.editBed = bed
-            },
-            async changeTab(tab) {
-                this.currentTab = tab;
-                this.$inertia.get(route("admin.bedAllotment.index"), {
-                    bed_type: this.currentTab
-                });
             },
             toggleFilter() {
                 this.showFilter = !this.showFilter;
@@ -272,6 +304,13 @@
                     this.showEditDoctor = true
                 }
             },
+            getBedType(id){
+                return this.types.find(type => type.id == id)
+            },
+            getBedFloor(id){
+                // return id;
+                return this.floors.find(floor => floor.id == id)
+            }
         },
         created() {
             this.showFilter = localStorage.getItem("adminBed") == "true" ? true: false;
