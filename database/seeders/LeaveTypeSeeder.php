@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use App\Models\LeaveType;
+use App\Models\LeaveBalance;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
@@ -36,8 +38,19 @@ class LeaveTypeSeeder extends Seeder
             ],
         ];
 
+        $users = User::where('role','!=', 'patients')->get();
+
         foreach ($types as $type) {
-            LeaveType::create($type);
+            $leave_type = LeaveType::create($type);
+
+            foreach ($users as $user) {
+                LeaveBalance::create([
+                    'user_id' => $user->id,
+                    'leave_type_id' => $leave_type->id,
+                    'total_days' => $leave_type->balance,
+                    'used_days' => rand(0, $leave_type->balance),
+                ]);
+            }
         }
     }
 }

@@ -21,18 +21,27 @@ class LeaveRequestController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        // $query = LeaveType::query();
+
+        // if($request->has('keyword') && $request->filled('keyword')){
+        //     $query->whereLike(['name'],  $request->keyword);
+        // }
+
+        // $leave_types = LeaveType::latest()->paginate(20)->withQueryString();
+
+        // return inertia('Admin/LeaveRequest/Index', [
+        //     'leave_types' => $leave_types,
+        //     'filter' => $request
+        // ]);
+
         $status = request('status') ?? '';
         $leave_type = request('leave_type') ?? '';
-        $id = request('id') ?? '';
-        $organization = currentOrganization();
 
         $leave_requests_query = LeaveRequest::query();
-        if ($id) {$leave_requests_query->where('id', $id);}
 
-        $leave_requests = $leave_requests_query->with(['employee.user', 'employee.team', 'organization.user', 'leaveType'])
-            ->where('organization_id', $organization->id)
+        $leave_requests = $leave_requests_query->with(['user:id,name,role', 'leaveType'])
             ->when($status, function ($query, $status) {
                 $query->where('status', $status);
             })
@@ -40,15 +49,18 @@ class LeaveRequestController extends Controller
                 $query->where('leave_type_id', $leave_type);
             })
             ->latest()
-            ->paginate(10);
+            ->paginate(20)
+            ->withQueryString();
 
-        $leave_types = LeaveType::where('organization_id', $organization->id)->get(['id', 'name']);
-        $teams = Team::where('organization_id', $organization->id)->get(['id', 'name']);
+        // $leave_types = LeaveType::get(['id', 'name']);
+        $leave_types = LeaveType::latest()->paginate(20);
 
-        return inertia('Organization/LeaveRequest/Index', [
-            'leaveRequests' => $leave_requests,
+
+        // return $leave_requests;
+        return inertia('Admin/LeaveRequest/Index', [
+            'leave_requests' => $leave_requests,
             'leaveTypes' => $leave_types,
-            'teams' => $teams,
+            'filter' => $request,
             'filters' => [
                 'status' => $status ?? '',
                 'leave_type' => $leave_type ?? ''
@@ -81,8 +93,15 @@ class LeaveRequestController extends Controller
      */
     public function store(LeaveRequestSaveRequest $request)
     {
-        $organization = currentOrganization();
-        $final_days_count = sumFinalDays($organization->id, $request->start, $request->end) ?? diffBetweenDays($request->start, $request->end);
+        // $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
+        // $table->foreignIdFor(LeaveType::class)->constrained()->cascadeOnDelete();
+        // $table->date('start');
+        // $table->date('end');
+        // $table->integer('days');
+        // $table->text('reason');
+        // $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending');
+
+        $final_days_count = sumFinalDays($request->start, $request->end) ?? diffBetweenDays($request->start, $request->end);
 
         $leave_request = LeaveRequest::create([
             'user_id' => $request->user_id,
@@ -93,7 +112,6 @@ class LeaveRequestController extends Controller
             'reason' => $request->reason,
             'status' => $request->status,
         ]);
-
 
         if ($request->status == 'approved') {
             $leave_balance = LeaveBalance::where('leave_type_id', $leave_request->leave_type_id)

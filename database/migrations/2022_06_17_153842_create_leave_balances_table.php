@@ -1,7 +1,7 @@
 <?php
 
-use App\Models\Employee;
 use App\Models\LeaveType;
+use App\Models\User;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -17,8 +17,8 @@ class CreateLeaveBalancesTable extends Migration
     {
         Schema::create('leave_balances', function (Blueprint $table) {
             $table->id();
-            // $table->foreignIdFor(Employee::class)->constrained()->cascadeOnDelete();
-            // $table->foreignIdFor(LeaveType::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(LeaveType::class)->constrained()->cascadeOnDelete();
             $table->unsignedInteger('total_days')->default(0);
             $table->unsignedInteger('used_days')->default(0);
             $table->timestamps();

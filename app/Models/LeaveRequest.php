@@ -13,8 +13,7 @@ class LeaveRequest extends Model
     use HasFactory;
 
     protected $fillable = [
-        'organization_id',
-        'employee_id',
+        'user_id',
         'leave_type_id',
         'start',
         'end',
@@ -23,14 +22,10 @@ class LeaveRequest extends Model
         'status',
     ];
 
-    public function organization()
-    {
-        return $this->belongsTo(Organization::class);
-    }
 
-    public function employee()
+    public function user()
     {
-        return $this->belongsTo(Employee::class);
+        return $this->belongsTo(User::class);
     }
 
     public function leaveType()
@@ -45,19 +40,10 @@ class LeaveRequest extends Model
         ->where('employee_id', $employee_id);
     }
 
-    public function scopeOrganizationTeamReport($query, $organization_id, $team_id)
-    {
-        return $query->with(['employee.user', 'employee.team', 'organization.user', 'leaveType'])
-        ->where('organization_id', $organization_id)
-        ->whereHas('employee', function ($query) use ($team_id) {
-            $query->where('team_id', $team_id);
-        });
-    }
-
-    public function scopeEmployeeReport($query, $employee_id)
+    public function scopeUserReport($query, $user_id)
     {
         return $query->with(['leaveType'])
-        ->where('employee_id', $employee_id);
+        ->where('user_id', $user_id);
     }
 
     public function scopeThisWeek($query)

@@ -16,7 +16,6 @@ class CreateWorkingDaysTable extends Migration
     {
         Schema::create('working_days', function (Blueprint $table) {
             $table->id();
-            // $table->foreignIdFor(Organization::class)->constrained()->cascadeOnDelete();
             $table->boolean('monday')->default(true);
             $table->boolean('tuesday')->default(true);
             $table->boolean('wednesday')->default(true);

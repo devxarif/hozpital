@@ -9,7 +9,7 @@ use App\Traits\HasSubscription;
 use App\Http\Controllers\Controller;
 use App\Models\Organization;
 use Illuminate\Support\Facades\Auth;
-use App\Traits\Employee\HasLeaveBalance;
+use App\Traits\HasLeaveBalance;
 use App\Notifications\Organization\NewEmployeeJoined;
 
 class InviteController extends Controller

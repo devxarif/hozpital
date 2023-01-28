@@ -27,6 +27,7 @@ import { InertiaProgress } from '@inertiajs/progress';
 import Popper from "vue3-popper";
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
+import dayjs from "dayjs";
 
 // Progress bar
 InertiaProgress.init({
@@ -49,7 +50,6 @@ import NothingFound from "@/Shared/NothingFound.vue";
 import Pagination from "@/Shared/Pagination.vue";
 
 // Icons
-import CheckIcon from "@/Shared/Icons/CheckIcon.vue";
 import LoadingIcon from "@/Shared/Icons/LoadingIcon.vue";
 import HomeIcon from "@/Shared/Icons/HomeIcon.vue";
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
@@ -84,7 +84,6 @@ createInertiaApp({
                 BaseTextarea,
                 BaseButton,
                 Pagination,
-                CheckIcon,
                 LoadingIcon,
                 HomeIcon,
                 Popper,

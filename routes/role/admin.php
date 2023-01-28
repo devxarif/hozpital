@@ -22,6 +22,7 @@ use App\Http\Controllers\Admin\ManufactureController;
 use App\Http\Controllers\Admin\AnnouncementController;
 use App\Http\Controllers\Admin\BedAllotmentController;
 use App\Http\Controllers\Admin\LaboratoristController;
+use App\Http\Controllers\Admin\LeaveRequestController;
 use App\Http\Controllers\Admin\ReceptionistController;
 use App\Http\Controllers\Admin\BloodDonationController;
 use App\Http\Controllers\Admin\MedicineCategoryController;
@@ -71,7 +72,7 @@ Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function () 
 
     // Leave
     Route::resource('leaveType', LeaveTypeController::class);
-    Route::resource('leaveRequest', LeaveTypeController::class);
+    Route::resource('leaveRequest', LeaveRequestController::class);
 
     // Holiday
     Route::resource('holiday', HolidayController::class);

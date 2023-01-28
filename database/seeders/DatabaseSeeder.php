@@ -132,6 +132,7 @@ class DatabaseSeeder extends Seeder
             // Leave & Holidays
             CountrySeeder::class,
             LeaveTypeSeeder::class,
+            LeaveRequestSeeder::class,
             HolidaySeeder::class,
 
             // Settings

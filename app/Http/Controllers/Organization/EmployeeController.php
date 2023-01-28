@@ -8,7 +8,7 @@ use App\Models\Employee;
 use Illuminate\Http\Request;
 use App\Traits\HasSubscription;
 use App\Http\Controllers\Controller;
-use App\Traits\Employee\HasLeaveBalance;
+use App\Traits\HasLeaveBalance;
 use App\Http\Requests\EmployeeUpdateRequest;
 use App\Notifications\Organization\NewEmployeeJoined;
 use App\Http\Requests\Organization\EmployeeCreateRequest;
