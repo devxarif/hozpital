@@ -567,8 +567,8 @@ if (!function_exists('sumFinalDays')) {
         $official_holidays = sumOfficialHolidays($days_periods, $holidays);
 
         // Weekly Off days
-        $organization_holidays = WorkingDay::first();
-        $weekly_holidays = weekly_holidays($organization_holidays);
+        $weekend_holiday = WorkingDay::first();
+        $weekly_holidays = weekly_holidays($weekend_holiday);
         $weekend_days = sumWeekendDays($days_periods, $weekly_holidays);
 
         return $total_days - $official_holidays - $weekend_days;

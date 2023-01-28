@@ -36,16 +36,14 @@ class LeaveRequestController extends Controller
         //     'filter' => $request
         // ]);
 
-        $status = request('status') ?? '';
-        $leave_type = request('leave_type') ?? '';
-
+        $all_requests = LeaveRequest::all();
         $leave_requests_query = LeaveRequest::query();
 
         $leave_requests = $leave_requests_query->with(['user:id,name,role', 'leaveType'])
-            ->when($status, function ($query, $status) {
+            ->when($request->status, function ($query, $status) {
                 $query->where('status', $status);
             })
-            ->when($leave_type, function ($query, $leave_type) {
+            ->when($request->leave_type, function ($query, $leave_type) {
                 $query->where('leave_type_id', $leave_type);
             })
             ->latest()
@@ -61,10 +59,13 @@ class LeaveRequestController extends Controller
             'leave_requests' => $leave_requests,
             'leaveTypes' => $leave_types,
             'filter' => $request,
-            'filters' => [
-                'status' => $status ?? '',
-                'leave_type' => $leave_type ?? ''
+            'count_request' => [
+                'all' => $all_requests->count() ?? 0,
+                'pending' => $all_requests->where('status', 'pending')->count() ?? 0,
+                'rejected' => $all_requests->where('status', 'rejected')->count() ?? 0,
+                'approved' => $all_requests->where('status', 'approved')->count() ?? 0,
             ],
+
         ]);
     }
 
@@ -206,16 +207,18 @@ class LeaveRequestController extends Controller
         return redirect_to('organization.leaveRequests.index');
     }
 
-    public function statusChange(Request $request)
+    public function statusChange(Request $request, LeaveRequest $leave_request)
     {
-        $leave_request = LeaveRequest::findOrFail($request->id);
-
+        // return [
+        //     $request->all(),
+        //     $leave_request
+        // ];
         if ($leave_request->status == 'pending' && $request->status == 'approved') {
 
-            $final_days_count = sumFinalDays($leave_request->organization_id, $leave_request->start, $leave_request->end) ?? diffBetweenDays($leave_request->start, $leave_request->end);
+            $final_days_count = sumFinalDays($leave_request->start, $leave_request->end) ?? diffBetweenDays($leave_request->start, $leave_request->end);
 
             $leave_balance = LeaveBalance::where('leave_type_id', $leave_request->leave_type_id)
-                ->where('employee_id', $leave_request->employee_id)
+                ->where('user_id', $leave_request->user_id)
                 ->first();
 
             $diffDays = $final_days_count;
@@ -240,7 +243,7 @@ class LeaveRequestController extends Controller
         // sendSms('twilio', $to, $message);
         // sendSms('vonage', $to, $message);
 
-        $message = 'Leave Request ' . $request->status . ' successfully';
+        $message = 'Leave request ' . $request->status . ' successfully';
         session()->flash('success', $message);
         return back();
     }
