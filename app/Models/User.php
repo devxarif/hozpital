@@ -129,6 +129,11 @@ class User extends Authenticatable
         return $this->where('role', 'employee');
     }
 
+    public function scopeStaffs()
+    {
+        return $this->where('role', '!=','patient');
+    }
+
     public function doctor(): HasOne
     {
         return $this->hasOne(Doctor::class);

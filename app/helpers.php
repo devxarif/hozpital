@@ -529,7 +529,7 @@ if (!function_exists('sumOfficialHolidays')) {
 }
 
 if (!function_exists('sumDaysBetweenDates')) {
-    function sumDaysBetweenDates($organization_id, $start_date, $end_date)
+    function sumDaysBetweenDates($start_date, $end_date)
     {
         $start_date = $start_date;
         $end_date = $end_date;
@@ -537,11 +537,11 @@ if (!function_exists('sumDaysBetweenDates')) {
         $total_days = count($days_periods);
 
         // Holidays
-        $holidays = official_holidays($organization_id, $start_date, $end_date);
+        $holidays = official_holidays($start_date, $end_date);
         $official_holidays = sumOfficialHolidays($days_periods, $holidays);
 
         // Weekly Off days
-        $organization_holidays = WorkingDay::where('organization_id', $organization_id)->first();
+        $organization_holidays = WorkingDay::first();
         $weekly_holidays = weekly_holidays($organization_holidays);
         $weekend_days = sumWeekendDays($days_periods, $weekly_holidays);
 

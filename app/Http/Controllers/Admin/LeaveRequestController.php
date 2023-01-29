@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Team;
+use App\Models\User;
 use App\Models\Employee;
 use App\Models\LeaveType;
 use App\Models\LeaveBalance;
@@ -31,7 +32,9 @@ class LeaveRequestController extends Controller
                 $query->whereLike(['user.name', 'user.email'],  $keyword);
             })
             ->when($request->status, function ($query, $status) {
-                $query->where('status', $status);
+                if ($status != 'all') {
+                    $query->where('status', $status);
+                }
             })
             ->when($request->leave_type, function ($query, $leave_type) {
                 $query->where('leave_type_id', $leave_type);
@@ -41,10 +44,15 @@ class LeaveRequestController extends Controller
             ->withQueryString();
 
         $leave_types = LeaveType::latest()->get(['id', 'name']);
+        $users = User::where('role','!=','admin')->get()->map(function($user){
+            $user->name = $user->name.' ('.ucfirst($user->role).')';
+            return $user;
+        });
 
         return inertia('Admin/LeaveRequest/Index', [
             'leave_requests' => $leave_requests,
             'leave_types' => $leave_types,
+            'users' => $users,
             'filter' => $request,
             'count_request' => [
                 'all' => $all_requests->count() ?? 0,
@@ -88,11 +96,16 @@ class LeaveRequestController extends Controller
         // $table->text('reason');
         // $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending');
 
+        // {"leave_type":"1","user":null,"start":"2023-01-01","end":"2023-01-02","reason":"cvxc","request_for":"me","status":"pending"}
+
+        // return $request;
+
         $final_days_count = sumFinalDays($request->start, $request->end) ?? diffBetweenDays($request->start, $request->end);
+        $user_id = $request->user ?? auth()->id();
 
         $leave_request = LeaveRequest::create([
-            'user_id' => $request->user_id,
-            'leave_type_id' => $request->leave_type_id,
+            'user_id' => $user_id,
+            'leave_type_id' => $request->leave_type,
             'start' => $request->start,
             'end' => $request->end,
             'days' => $final_days_count,
@@ -102,7 +115,7 @@ class LeaveRequestController extends Controller
 
         if ($request->status == 'approved') {
             $leave_balance = LeaveBalance::where('leave_type_id', $leave_request->leave_type_id)
-                ->where('employee_id', $leave_request->employee_id)
+                ->where('user_id', $user_id)
                 ->first();
 
             $diffDays = $final_days_count;
@@ -126,8 +139,8 @@ class LeaveRequestController extends Controller
         // sendSms('twilio', $to, $message);
         // sendSms('vonage', $to, $message);
 
-        $this->flashError('Leave request created successfully!');
-        return redirect_to('organization.leaveRequests.index');
+        $this->flashSuccess('Leave request created successfully!');
+        return back();
     }
 
     /**

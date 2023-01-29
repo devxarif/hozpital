@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\Admin\UpgradeController;
 use App\Models\Bed;
+use App\Models\LeaveBalance;
 use sirajcse\UniqueIdGenerator\UniqueIdGenerator;
 
 Route::get('/', function () {
@@ -40,6 +41,7 @@ Route::get('/', function () {
 // })->middleware('set_lang');
 
 Route::get('/test', function () {
+    return LeaveBalance::with('leaveType:id,name')->where('user_id', auth()->id())->latest()->get();
 
 //    return Bed::with('bedType:id,name','floor:id,name')->get()->groupBy(['bed_floor_id','bed_type_id']);
 

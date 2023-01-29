@@ -12,11 +12,6 @@ class LeaveType extends Model
 {
     use HasFactory, Sluggable;
 
-    public function organization()
-    {
-        return $this->belongsTo(Organization::class);
-    }
-
     public function leaveBalances()
     {
         return $this->hasMany(LeaveBalance::class, 'leave_type_id');

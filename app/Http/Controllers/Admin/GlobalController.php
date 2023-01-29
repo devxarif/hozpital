@@ -2,17 +2,18 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\BedType;
 use App\Models\Country;
+use App\Models\BedFloor;
 use App\Models\TeamSize;
+use App\Models\LeaveType;
+use App\Models\BloodDonor;
+use App\Models\Department;
+use App\Models\LeaveBalance;
 use App\Models\Organization;
 use Illuminate\Http\Request;
 use App\Models\ContactMessage;
 use App\Http\Controllers\Controller;
-use App\Models\BedFloor;
-use App\Models\BedType;
-use App\Models\BloodDonor;
-use App\Models\Department;
-use App\Models\LeaveType;
 
 class GlobalController extends Controller
 {
@@ -30,34 +31,35 @@ class GlobalController extends Controller
 
     public function bloodDonors(){
         return BloodDonor::latest()->get(['id','name','blood_group','email']);
-        // return BedType::withCount('beds')->latest()->get(['id','name']);
     }
 
+    public function fetchLeaveTypesBalance(Request $request){
+        $user_id = $request->user_id ?? auth()->id();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        return LeaveBalance::with('leaveType:id,name,slug')->where('user_id', $user_id)->latest()->get();
+    }
 
     public function diffBetweenDays(Request $request)
     {
-        $organization_id = $request->organization_id;
         $start = $request->start;
         $end = $request->end;
 
-        return sumDaysBetweenDates($organization_id, $start, $end);
+        return sumDaysBetweenDates($start, $end);
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     public function contactMessages()
     {
