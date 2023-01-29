@@ -40,20 +40,6 @@
                                                <!-- <v-select v-model="form.employee_id" label="name" :options="employees" :placeholder="__('Select Employee')" class="bg-gray-50 border text-md rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:placeholder-gray-400 dark:text-white"/> -->
                                            </div>
                                        </div>
-
-                                       <!-- default: "bg-gray-50 border text-md rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:placeholder-gray-400 dark:text-white",
-errorClass: 'border-red-600 focus:ring-red-500 focus:border-red-500 dark:border-red-600 dark:focus:ring-red-500 dark:focus:border-red-500',
-
-                defaultClass: 'border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 dark:border-gray-600 dark:focus:ring-blue-500 dark:focus:border-blue-500' -->
-
-                                       <!-- <v-select :options="['Canada', 'United States']"></v-select> -->
-
-                                       <v-select v-model="form.employee_id" label="name"  @input="setEmployee" :options="employees" :placeholder="__('Select Employee')"/>
-                                        <!-- <has-error :form="form" field="employee_id"></has-error> -->
-
-
-                                        {{ form.employee_id }}
-
                                        <div class="grid grid-cols-2 gap-4">
                                            <div class="mb-4">
                                                <Label :name="__('Status')" id="plan_max_teams" :hasError="form.errors.status"/>
@@ -82,9 +68,6 @@ errorClass: 'border-red-600 focus:ring-red-500 focus:border-red-500 dark:border-
 </template>
 
 <script>
-import vSelect from 'vue-select'
-import 'vue-select/dist/vue-select.css';
-
 export default {
     props: {
         show: {

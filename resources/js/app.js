@@ -28,6 +28,8 @@ import Popper from "vue3-popper";
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import dayjs from "dayjs";
+import Multiselect from '@vueform/multiselect'
+import '@vueform/multiselect/themes/default.css';
 
 // Progress bar
 InertiaProgress.init({
@@ -92,6 +94,7 @@ createInertiaApp({
                 MenuButton,
                 MenuItem,
                 MenuItems,
+                Multiselect,
             },
             methods:{
                 route: window.route,

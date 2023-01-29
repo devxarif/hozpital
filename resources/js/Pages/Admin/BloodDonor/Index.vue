@@ -185,15 +185,12 @@
     import CreateBloodDonor from "./Create.vue";
     import EditBloodDonor from "./Edit.vue";
     import CardSkeleton from "@/Shared/Skeleton/CardSkeleton.vue";
-    import Multiselect from '@vueform/multiselect'
-    import '@vueform/multiselect/themes/default.css';
 
     export default {
         components: {
             CreateBloodDonor,
             EditBloodDonor,
             CardSkeleton,
-            Multiselect,
         },
         props: {
             blood_donors:{

@@ -226,8 +226,6 @@
     // import CreateBed from "./Create.vue";
     // import EditBed from "./Edit.vue";
     import CardSkeleton from "@/Shared/Skeleton/CardSkeleton.vue";
-    import Multiselect from '@vueform/multiselect'
-    import '@vueform/multiselect/themes/default.css';
     import AllotedBedIcon from "@/Shared/Icons/AllotedBedIcon.vue";
     import UnallotedBedIcon from "@/Shared/Icons/UnallotedBedIcon.vue";
 
@@ -236,7 +234,6 @@
             // CreateBed,
             // EditBed,
             CardSkeleton,
-            Multiselect,
             AllotedBedIcon,
             UnallotedBedIcon,
         },

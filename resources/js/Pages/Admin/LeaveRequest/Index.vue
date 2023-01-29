@@ -1,6 +1,6 @@
 <template>
 
-    <Head :title="__('Leave Type')" />
+    <Head :title="__('Leave Request')" />
     <AppLayout>
 
         <!-- Header Part  -->
@@ -16,18 +16,18 @@
                     <div class="flex items-center">
                         <font-awesome-icon icon="fa-solid fa-chevron-right" class="w-3 h-3 text-gray-400" />
                         <a href="#"
-                            class="text-gray-700 hover:text-gray-900 ml-1 md:ml-2 text-sm font-medium">Leave Type</a>
+                            class="text-gray-700 hover:text-gray-900 ml-1 md:ml-2 text-sm font-medium">Leave Request</a>
                     </div>
                 </li>
             </ol>
         </nav>
         <div class="mb-4 flex justify-between">
             <h2 class="text-3xl font-semibold leading-7 text-gray-900 dark:text-gray-200 sm:text-3xl sm:truncate">
-                {{ __('Leave Type') }}
+                {{ __('Leave Request') }}
             </h2>
 
             <div class="flex items-center space-x-2 sm:space-x-3 ml-auto">
-                <BaseButton v-if="filter.keyword && filter.keyword.length" as="link" :href="route('admin.leaveType.index')" class="text-white bg-red-600 hover:bg-red-700 px-3 py-2">
+                <BaseButton v-if="filter.keyword && filter.keyword.length" as="link" :href="route('admin.leaveRequest.index')" class="text-white bg-red-600 hover:bg-red-700 px-3 py-2">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                     </svg>
@@ -90,6 +90,16 @@
                     </div>
                 </div>
                 <div>
+                    <label for="admin_leave_type" class="block text-sm font-medium text-gray-700">{{ __('Leave Type') }}</label>
+                    <div class="mt-1">
+                        <Multiselect id="admin_leave_type" :close-on-select="true" :can-clear="false"
+                            :searchable="true" v-model="filterForm.leave_type" :create-option="false"
+                            placeholder="Leave Type" :options="leave_types.map(item => ({
+                                value: item.id, label: item.name
+                            }))"  />
+                    </div>
+                </div>
+                <div>
                     <button @click="filterData" :disabled="loading" type="button" class="text-white bg-blue-600 hover:bg-blue-700 font-medium inline-flex items-center justify-center rounded-lg text-sm px-6 py-2.5 mt-6 text-center sm:w-auto focus:outline-none">
                         <font-awesome-icon icon="fa-solid fa-search" class="h-4 w-4 mr-2"/>
                        {{ __('Search') }}
@@ -102,28 +112,28 @@
             <div class="hidden sm:block">
                 <div class="border-b border-gray-200">
                     <nav class="-mb-px flex space-x-8" aria-label="Tabs">
-                        <button type="button" @click="changeTab('')" :class="['whitespace-nowrap flex py-4 px-1 border-b-2 font-medium text-sm focus:outline-none', currentTab == 'all' ? 'border-indigo-500 text-blue-600':'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-200' ]">
+                        <button type="button" @click="changeTab('')" :class="['whitespace-nowrap flex py-4 px-1 border-b-2 font-medium text-sm focus:outline-none', filterForm.status == 'all' ? 'border-indigo-500 text-blue-600':'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-200' ]">
                             All
-                            <span class="hidden ml-3 py-0.5 px-2.5 rounded-full text-xs font-medium md:inline-block" :class="currentTab == 'all' ? 'bg-indigo-100 text-blue-600':'bg-gray-100 text-gray-900'">
+                            <span class="hidden ml-3 py-0.5 px-2.5 rounded-full text-xs font-medium md:inline-block" :class="filterForm.status == 'all' ? 'bg-indigo-100 text-blue-600':'bg-gray-100 text-gray-900'">
                                 {{ count_request.all }}
                             </span>
                         </button>
 
-                        <button type="button" @click="changeTab('pending')"  :class="['whitespace-nowrap flex py-4 px-1 border-b-2 font-medium text-sm focus:outline-none', currentTab == 'pending' ? 'border-indigo-500 text-blue-600':'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-200' ]">
+                        <button type="button" @click="changeTab('pending')"  :class="['whitespace-nowrap flex py-4 px-1 border-b-2 font-medium text-sm focus:outline-none', filterForm.status == 'pending' ? 'border-indigo-500 text-blue-600':'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-200' ]">
                            Pending
-                            <span class="hidden ml-3 py-0.5 px-2.5 rounded-full text-xs font-medium md:inline-block" :class="currentTab == 'pending' ? 'bg-indigo-100 text-blue-600':'bg-gray-100 text-gray-900'">
+                            <span class="hidden ml-3 py-0.5 px-2.5 rounded-full text-xs font-medium md:inline-block" :class="filterForm.status == 'pending' ? 'bg-indigo-100 text-blue-600':'bg-gray-100 text-gray-900'">
                                 {{ count_request.pending }}
                             </span>
                         </button>
-                        <button type="button" @click="changeTab('approved')"  :class="['whitespace-nowrap flex py-4 px-1 border-b-2 font-medium text-sm focus:outline-none', currentTab == 'approved' ? 'border-indigo-500 text-blue-600':'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-200' ]">
+                        <button type="button" @click="changeTab('approved')"  :class="['whitespace-nowrap flex py-4 px-1 border-b-2 font-medium text-sm focus:outline-none', filterForm.status == 'approved' ? 'border-indigo-500 text-blue-600':'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-200' ]">
                            Approved
-                            <span class="hidden ml-3 py-0.5 px-2.5 rounded-full text-xs font-medium md:inline-block" :class="currentTab == 'approved' ? 'bg-indigo-100 text-blue-600':'bg-gray-100 text-gray-900'">
+                            <span class="hidden ml-3 py-0.5 px-2.5 rounded-full text-xs font-medium md:inline-block" :class="filterForm.status == 'approved' ? 'bg-indigo-100 text-blue-600':'bg-gray-100 text-gray-900'">
                                 {{ count_request.approved }}
                             </span>
                         </button>
-                        <button type="button" @click="changeTab('rejected')"  :class="['whitespace-nowrap flex py-4 px-1 border-b-2 font-medium text-sm focus:outline-none', currentTab == 'rejected' ? 'border-indigo-500 text-blue-600':'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-200' ]">
+                        <button type="button" @click="changeTab('rejected')"  :class="['whitespace-nowrap flex py-4 px-1 border-b-2 font-medium text-sm focus:outline-none', filterForm.status == 'rejected' ? 'border-indigo-500 text-blue-600':'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-200' ]">
                            Rejected
-                            <span class="hidden ml-3 py-0.5 px-2.5 rounded-full text-xs font-medium md:inline-block" :class="currentTab == 'rejected' ? 'bg-indigo-100 text-blue-600':'bg-gray-100 text-gray-900'">
+                            <span class="hidden ml-3 py-0.5 px-2.5 rounded-full text-xs font-medium md:inline-block" :class="filterForm.status == 'rejected' ? 'bg-indigo-100 text-blue-600':'bg-gray-100 text-gray-900'">
                                 {{ count_request.rejected }}
                             </span>
                         </button>
@@ -132,7 +142,11 @@
             </div>
         </div>
 
-        <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-4 mt-5 mb-60">
+        <!-- Body Part  -->
+       <CardSkeleton :show="loading" v-if="loading"/>
+
+       <template v-else-if="!loading && leave_requests && leave_requests.data.length">
+            <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-4 mt-5 mb-60">
                <span v-for="(leave_request, index) in leave_requests.data" :key="index" class="block p-6 bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
                    <div class="flex flex-wrap justify-between items-start">
                         <div class="flex items-center mb-5">
@@ -182,12 +196,6 @@
                    <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ leave_request?.leave_type?.name ?? '-' }}</h2>
                    <h2 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">{{ leave_request.days }} {{ pluralize(leave_request.days, 'Day') }}</h2>
                    <p>{{ formateDate(leave_request.start, 'MMMM D') }} - {{ formateDate(leave_request.end, 'MMMM D YYYY') }}</p>
-
-                   <!-- formateDate(date, format = 'MMMM D, YYYY') { -->
-                    <!-- <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 mt-2">
-                        <div class="bg-blue-600 h-2.5 rounded-full" style="width: 45%"></div>
-                    </div> -->
-
                     <div class="mt-5">
                         <template v-if="leave_request.status == 'pending'">
                             <div class="flex gap-3 text-white">
@@ -213,62 +221,8 @@
                         </template>
                     </div>
                </span>
-           </div>
-
-
-        <!-- Body Part  -->
-       <!-- <CardSkeleton :show="loading" v-if="loading"/>
-
-       <template v-else-if="!loading && leave_types && leave_types.data.length">
-           <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-4 mt-5">
-               <span v-for="leave_type in leave_types.data" :key="leave_type.id" class="block p-6 bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-                   <div class="flex flex-wrap justify-between items-start">
-                        <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ leave_type.name }}</h2>
-
-                       <Menu as="div" class="relative inline-block text-left">
-                           <div>
-                               <MenuButton class="flex items-center rounded-full text-gray-400 hover:text-gray-600 focus:outline-none">
-                                   <span class="sr-only">Open options</span>
-                                   <font-awesome-icon icon="fa-solid fa-ellipsis-vertical" class="h-6 w-6"/>
-                               </MenuButton>
-                           </div>
-
-                           <transition enter-active-class="transition ease-out duration-100" enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100" leave-active-class="transition ease-in duration-75" leave-from-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
-                               <MenuItems class="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                                   <div class="py-1 text-sm">
-                                   <MenuItem v-slot="{ active }">
-                                       <a href="javascript:void(0)" @click.prevent="editData(leave_type)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
-                                           <font-awesome-icon icon="fa-solid fa-pen-to-square" class="mr-3 h-5 w-5 text-blue-500 group-hover:text-blue-500"/>
-                                           Edit
-                                       </a>
-                                   </MenuItem>
-                                   <MenuItem v-slot="{ active }">
-                                       <a href="javascript:void(0)" @click.prevent="editData(leave_type)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
-                                           <font-awesome-icon icon="fa-solid fa-eye" class="mr-3 h-5 w-5 text-sky-500 group-hover:text-sky-500"/>
-                                           Details
-                                       </a>
-                                   </MenuItem>
-                                   <MenuItem v-slot="{ active }">
-                                       <a href="javascript:void(0)" @click.prevent="deleteData(leave_type.id)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
-                                           <font-awesome-icon icon="fa-solid fa-trash-can" class="mr-3 h-5 w-5 text-red-500 group-hover:text-red-500"/>
-                                           Delete
-                                       </a>
-                                   </MenuItem>
-                                   </div>
-                               </MenuItems>
-                           </transition>
-                       </Menu>
-                   </div>
-                   <p>Balance: {{ leave_type.balance }} Days</p>
-                   <span class="text-xs font-semibold mr-2 px-2.5 py-0.5 rounded bg-green-100 text-green-800 dark:bg-green-200 dark:text-green-900" v-if="leave_type.auto_approve">
-                        {{ leave_type.auto_approve ? 'Auto Approve':'' }}
-                    </span>
-                   <span class="text-xs font-semibold mr-2 px-2.5 py-0.5 rounded" :class="leave_type.status ? 'bg-green-100 text-green-800 dark:bg-green-200 dark:text-green-900':'bg-red-100 text-red-800 dark:bg-red-200 dark:text-red-900'">
-                        {{ leave_type.status ? 'Active':'Inactive' }}
-                    </span>
-               </span>
-           </div>
-           <Pagination :data="leave_types" v-if="leave_types && leave_types.data.length && leave_types.total > 20" class="mt-5"/>
+            </div>
+           <Pagination :data="leave_requests" v-if="leave_requests && leave_requests.data.length && leave_requests.total > 20" class="mt-5"/>
        </template>
 
        <NothingFound v-else>
@@ -276,7 +230,7 @@
                 <font-awesome-icon icon="fa-solid fa-plus" class="h-4 w-4 mr-2"/>
                 {{ __('Add Leave Type') }}
             </BaseButton>
-       </NothingFound> -->
+       </NothingFound>
 
         <CreateLeaveType :show="showCreateDrawer" @close-drawer="showCreateDrawer = false"/>
         <EditLeaveType :show="showEditDrawer" @close-drawer="showEditDrawer = false" :leave_type="editLeaveType"/>
@@ -321,13 +275,13 @@ export default {
             showEditDrawer: false,
             editLeaveType: '',
 
-            currentTab: this.filter.status || "all",
-
             showFilter: false,
             loading: false,
 
             filterForm: this.$inertia.form({
                 keyword: this.filter.keyword,
+                status: this.filter.status || "all",
+                leave_type: this.filter.leave_type,
             }),
         }
     },
@@ -343,7 +297,7 @@ export default {
                 confirmButtonText: "Yes, delete it!",
             }).then((result) => {
                 if (result.isConfirmed) {
-                    this.$inertia.delete(route("admin.leaveType.destroy", id));
+                    this.$inertia.delete(route("admin.leaveRequest.destroy", id));
                 }
             });
         },
@@ -353,7 +307,7 @@ export default {
         },
         filterData(){
             this.loading = true
-            this.filterForm.get(route('admin.leaveType.index'), {
+            this.filterForm.get(route('admin.leaveRequest.index'), {
                 onSuccess: () => {
                     this.loading = false
                 },
@@ -365,19 +319,17 @@ export default {
         },
         toggleFilter() {
             this.showFilter = !this.showFilter;
-            localStorage.setItem("adminLeaveType", this.showFilter);
+            localStorage.setItem("adminLeaveRequest", this.showFilter);
         },
         async changeTab(tab) {
-            this.currentTab = tab;
-            this.$inertia.get(route("admin.leaveRequest.index"), {
-                status: this.currentTab
-            });
+            this.filterForm.status = tab;
+            this.filterForm.get(route("admin.leaveRequest.index"));
         },
         changeStatus(id, status){
             this.$swal({
                 title: "Are you sure?",
                 text: "You won't be able to revert this!",
-                icon: "warning",
+                icon: "success",
                 showCancelButton: true,
                 confirmButtonColor: "#3085d6",
                 cancelButtonColor: "#d33",
@@ -392,7 +344,7 @@ export default {
         }
     },
     created() {
-        this.showFilter = localStorage.getItem("adminLeaveType") == "true" ? true: false;
+        this.showFilter = localStorage.getItem("adminLeaveRequest") == "true" ? true: false;
     },
 };
 </script>

@@ -23,23 +23,13 @@ class LeaveRequestController extends Controller
      */
     public function index(Request $request)
     {
-        // $query = LeaveType::query();
-
-        // if($request->has('keyword') && $request->filled('keyword')){
-        //     $query->whereLike(['name'],  $request->keyword);
-        // }
-
-        // $leave_types = LeaveType::latest()->paginate(20)->withQueryString();
-
-        // return inertia('Admin/LeaveRequest/Index', [
-        //     'leave_types' => $leave_types,
-        //     'filter' => $request
-        // ]);
-
         $all_requests = LeaveRequest::all();
         $leave_requests_query = LeaveRequest::query();
 
         $leave_requests = $leave_requests_query->with(['user:id,name,role', 'leaveType'])
+            ->when($request->keyword, function ($query, $keyword) {
+                $query->whereLike(['user.name', 'user.email'],  $keyword);
+            })
             ->when($request->status, function ($query, $status) {
                 $query->where('status', $status);
             })
@@ -50,22 +40,18 @@ class LeaveRequestController extends Controller
             ->paginate(20)
             ->withQueryString();
 
-        // $leave_types = LeaveType::get(['id', 'name']);
-        $leave_types = LeaveType::latest()->paginate(20);
+        $leave_types = LeaveType::latest()->get(['id', 'name']);
 
-
-        // return $leave_requests;
         return inertia('Admin/LeaveRequest/Index', [
             'leave_requests' => $leave_requests,
-            'leaveTypes' => $leave_types,
+            'leave_types' => $leave_types,
             'filter' => $request,
             'count_request' => [
                 'all' => $all_requests->count() ?? 0,
                 'pending' => $all_requests->where('status', 'pending')->count() ?? 0,
                 'rejected' => $all_requests->where('status', 'rejected')->count() ?? 0,
                 'approved' => $all_requests->where('status', 'approved')->count() ?? 0,
-            ],
-
+            ]
         ]);
     }
 

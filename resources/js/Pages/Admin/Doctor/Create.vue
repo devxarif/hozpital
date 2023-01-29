@@ -110,8 +110,6 @@ import EyeShowIcon from '@/Shared/Icons/EyeShowIcon.vue';
 import CreateDepartmentModal from './CreateDepartmentModal.vue'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faHome } from '@fortawesome/free-solid-svg-icons'
-import Multiselect from '@vueform/multiselect'
-import '@vueform/multiselect/themes/default.css';
 
 export default {
     components:{
@@ -120,7 +118,6 @@ export default {
         library,
         faHome,
         CreateDepartmentModal,
-        Multiselect
     },
     props: {
         show: {

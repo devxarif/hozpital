@@ -222,15 +222,12 @@
     import CreateBed from "./Create.vue";
     import EditBed from "./Edit.vue";
     import CardSkeleton from "@/Shared/Skeleton/CardSkeleton.vue";
-    import Multiselect from '@vueform/multiselect'
-    import '@vueform/multiselect/themes/default.css';
 
     export default {
         components: {
             CreateBed,
             EditBed,
             CardSkeleton,
-            Multiselect,
         },
         props: {
             beds:{

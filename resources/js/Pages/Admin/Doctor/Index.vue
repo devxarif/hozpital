@@ -179,20 +179,12 @@
 <script>
     import CreateDoctor from "./Create.vue";
     import EditDoctor from "./Edit.vue";
-    import vSelect from 'vue-select'
-    import 'vue-select/dist/vue-select.css';
-
-    import Multiselect from '@vueform/multiselect'
-    import '@vueform/multiselect/themes/default.css';
-
     import CardSkeleton from "@/Shared/Skeleton/CardSkeleton.vue";
 
     export default {
         components: {
             CreateDoctor,
             EditDoctor,
-            'v-select':vSelect,
-            Multiselect,
             CardSkeleton,
         },
         props: {
