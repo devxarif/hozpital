@@ -24,7 +24,6 @@
                                     </button>
                                 </div>
                             </div>
-                            {{ form }}
                             <form class="mb-4" @submit.prevent="saveData">
 
                                 <!-- <div class="flex space-x-1 rounded-xl bg-slate-100 p-1">
@@ -39,63 +38,55 @@
                                     </button>
                                 </div> -->
 
+                                <!-- <div class="flex space-x-1 rounded-xl bg-slate-300 p-1 justify-center">
+                                    <button @click="changeLeaveRequestFor('me')" class="w-full flex items-center rounded-xl pl-2 pr-2 py-2.5 text-md font-medium lg:pr-3 focus:outline-none" :class="form.request_for == 'me' ? 'bg-white shadow':''" type="button">
+                                        <UserIcon class="h-5 w-5"/>
+                                        <span class="sr-only lg:not-sr-only lg:ml-2 text-slate-900">For Me</span>
+                                    </button>
+                                    <button @click="changeLeaveRequestFor('others')" class="w-full flex items-center rounded-xl pl-2 pr-2 py-2.5 text-md font-medium lg:pr-3 focus:outline-none" :class="form.request_for == 'others' ? 'bg-white shadow':''" type="button">
+                                        <UsersIcon class="h-5 w-5"/>
+                                        <span class="sr-only lg:not-sr-only lg:ml-2 text-slate-600">For others</span>
+                                    </button>
+                                </div> -->
+
                                 <div class="mb-4">
                                     <Label :name="__('Create A Leave Request')" :hasError="form.errors.request_for" :required="false"/>
                                     <div class="w-full bg-gray-200 p-2 rounded-lg">
-                                    <div class="account-switcher relative flex after:absolute candidate after:transition-all duration-300 after:rounded-lg">
-                                        <div class="w-full rounded-xl" :class="form.request_for == 'me' ? 'bg-gray-800 text-white shadow':'text-gray-800'">
-                                            <input type="radio" id="radio1" name="radio" class="hidden" checked>
-                                            <label for="radio1" class="relative z-50 rounded-md transition-all duration-300 w-full py-3 gap-2 flex items-center justify-center cursor-pointer" @click="changeLeaveRequestFor('me')">
-                                                <UserIcon class="h-5 w-5"/>
-                                                <span>For Me</span>
-                                            </label>
-                                        </div>
-                                        <div class="w-full rounded-xl" :class="form.request_for == 'others' ? 'bg-gray-800 text-white shadow':'text-gray-800'">
-                                            <!-- :class="form.request_for == 'others' ? 'bg-gray-800 shadow':''" -->
-                                            <input type="radio" id="radio2" name="radio" class="hidden">
-                                            <label for="radio2" class="relative z-50 rounded-md transition-all duration-300 flex w-full py-3 gap-2 items-center justify-center cursor-pointer" @click="changeLeaveRequestFor('others')">
-                                                <UsersIcon class="h-5 w-5"/>
-                                                <span>For others</span>
-                                            </label>
+                                        <div class="account-switcher relative flex after:absolute candidate after:transition-all duration-300 after:rounded-lg">
+                                            <div class="w-full rounded-xl" :class="form.request_for == 'me' ? 'bg-gray-800 text-white shadow':'text-gray-800'">
+                                                <input type="radio" id="radio1" name="radio" class="hidden" checked>
+                                                <label for="radio1" class="relative z-50 rounded-md transition-all duration-300 w-full py-3 gap-2 flex items-center justify-center cursor-pointer" @click="changeLeaveRequestFor('me')">
+                                                    <UserIcon class="h-5 w-5"/>
+                                                    <span>For Me</span>
+                                                </label>
+                                            </div>
+                                            <div class="w-full rounded-xl" :class="form.request_for == 'others' ? 'bg-gray-800 text-white shadow':'text-gray-800'">
+                                                <input type="radio" id="radio2" name="radio" class="hidden">
+                                                <label for="radio2" class="relative z-50 rounded-md transition-all duration-300 flex w-full py-3 gap-2 items-center justify-center cursor-pointer" @click="changeLeaveRequestFor('others')">
+                                                    <UsersIcon class="h-5 w-5"/>
+                                                    <span>For Staffs</span>
+                                                </label>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                    <!-- <div class="flex space-x-1 rounded-xl bg-slate-300 p-1 justify-center">
-                                        <button @click="changeLeaveRequestFor('me')" class="w-full flex items-center rounded-xl pl-2 pr-2 py-2.5 text-md font-medium lg:pr-3 focus:outline-none" :class="form.request_for == 'me' ? 'bg-white shadow':''" type="button">
-                                            <UserIcon class="h-5 w-5"/>
-                                            <span class="sr-only lg:not-sr-only lg:ml-2 text-slate-900">For Me</span>
-                                        </button>
-                                        <button @click="changeLeaveRequestFor('others')" class="w-full flex items-center rounded-xl pl-2 pr-2 py-2.5 text-md font-medium lg:pr-3 focus:outline-none" :class="form.request_for == 'others' ? 'bg-white shadow':''" type="button">
-                                            <UsersIcon class="h-5 w-5"/>
-                                            <span class="sr-only lg:not-sr-only lg:ml-2 text-slate-600">For others</span>
-                                        </button>
-                                    </div> -->
-                                </div>
-
-                                <!-- <template v-if="form.request_for == 'me'">
-
-
-
-                                </template> -->
-
                                 <div class="mb-4" v-show="form.request_for == 'others'">
-                                    <Label :name="__('User')" id="admin_leave_request" :hasError="form.errors.user"/>
+                                    <Label :name="__('Staff')" id="admin_leave_request" :hasError="form.errors.user"/>
                                     <div class="flex items-center">
                                         <Multiselect @change="changeUser" id="admin_leave_request" :close-on-select="true" :can-clear="true"
                                         :searchable="true" v-model="form.user" :create-option="false"
-                                        placeholder="Select User" :options="users.map(item => ({
+                                        placeholder="Select Staff" :options="users.map(item => ({
                                             value: item.id, label: item.name
                                         }))"  />
                                     </div>
                                     <ErrorMessage :name="form.errors.user"/>
                                 </div>
-
                                 <template v-if="form.request_for == 'others' && form.user">
                                     <div class="mb-4">
-                                        <Label :name="__('Select Leave Type')" id="bed_name" :hasError="form.errors.bed_type"/>
+                                        <Label :name="__('Select Leave Type')" id="leave_type" :hasError="form.errors.leave_type"/>
                                         <div class="grid grid-cols-4 gap-2 mx-auto">
                                             <div class="relative" v-for="(leave_type_balance, index) in leave_types_balances" :key="index">
-                                                <input @change="leaveTypeChange" class="sr-only peer" type="radio" :value="leave_type_balance.leave_type_id" :id="leave_type_balance?.leave_type?.slug || 'leave_type_me'" v-model="form.leave_type_balance">
+                                                <input @change="leaveTypeChange" class="sr-only peer" type="radio" :value="leave_type_balance.leave_type_id" :id="leave_type_balance?.leave_type?.slug || 'leave_type_me'" v-model="form.leave_type">
                                                 <label class="flex p-2 bg-white border border-gray-300 rounded-lg cursor-pointer focus:outline-none hover:bg-gray-50 peer-checked:ring-blue-500 peer-checked:ring-2 peer-checked:border-transparent flex-col peer-checked:shadow-xl" :for="leave_type_balance?.leave_type?.slug || 'leave_type_me'">
                                                     <span class="text-lg font-bold">{{ leave_type_balance.leave_type.name }}</span>
                                                     <ul class="text-sm">
@@ -112,7 +103,7 @@
                                 </template>
                                 <template v-if="form.request_for == 'me' && leave_types_balances.length">
                                     <div class="mb-4">
-                                        <Label :name="__('Select Leave Type')" id="bed_name" :hasError="form.errors.bed_type"/>
+                                        <Label :name="__('Select Leave Type')" id="leave_type" :hasError="form.errors.leave_type"/>
                                         <div class="grid grid-cols-4 gap-2 mx-auto">
                                             <div class="relative" v-for="(leave_type_balance, index) in leave_types_balances" :key="index">
                                                 <input @change="leaveTypeChange" class="sr-only peer" type="radio" :value="leave_type_balance.leave_type_id" :id="leave_type_balance?.leave_type?.slug || 'leave_type_others'" v-model="form.leave_type_balance">
@@ -130,8 +121,6 @@
                                         <ErrorMessage :name="form.errors.leave_type"/>
                                     </div>
                                 </template>
-
-
                                 <div class="grid grid-cols-2 gap-2">
                                     <div class="mb-4">
                                         <Label :name="__('Start Date')" id="start_date" :hasError="form.errors.start"/>
@@ -152,6 +141,7 @@
                                 <div class="mb-4">
                                     <Label :name="__('Reason')" id="leave_reason" :hasError="form.errors.reason" :required="false"/>
                                     <BaseTextarea v-model="form.reason" placeholder="Reason" id="leave_reason" :hasError="form.errors.description"/>
+                                    <ErrorMessage :name="form.errors.reason"/>
                                 </div>
                                 <div class="mb-4">
                                     <Label :name="__('Status')" :hasError="form.errors.status" :required="false"/>
@@ -211,10 +201,6 @@ export default {
         UserIcon,
         UsersIcon
     },
-
-
-
-
     data() {
         return {
             form: this.$inertia.form({
@@ -233,6 +219,14 @@ export default {
     },
     methods: {
         saveData() {
+            let leave_type = this.leave_types_balances.find(leave_balance => leave_balance.leave_type_id == this.form.leave_type)
+            let isBigBetweenDays = leave_type.remaining_days < this.diffBetweenDays ? false:true
+
+            if (!isBigBetweenDays) {
+                this.toastError('Between days cannot be grater than the remainging days')
+                return ;
+            }
+
             this.form.post(route("admin.leaveRequest.store"), {
                 onSuccess: () => {
                     this.form.reset(),
@@ -302,7 +296,6 @@ export default {
                 return leave_type.remaining_days < this.diffBetweenDays ? 'text-red-500':''
             }
         }
-
     },
     computed: {
         dates() {

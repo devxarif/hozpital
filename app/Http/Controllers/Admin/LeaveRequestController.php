@@ -88,18 +88,6 @@ class LeaveRequestController extends Controller
      */
     public function store(LeaveRequestSaveRequest $request)
     {
-        // $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
-        // $table->foreignIdFor(LeaveType::class)->constrained()->cascadeOnDelete();
-        // $table->date('start');
-        // $table->date('end');
-        // $table->integer('days');
-        // $table->text('reason');
-        // $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending');
-
-        // {"leave_type":"1","user":null,"start":"2023-01-01","end":"2023-01-02","reason":"cvxc","request_for":"me","status":"pending"}
-
-        // return $request;
-
         $final_days_count = sumFinalDays($request->start, $request->end) ?? diffBetweenDays($request->start, $request->end);
         $user_id = $request->user ?? auth()->id();
 
@@ -144,25 +132,6 @@ class LeaveRequestController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(LeaveRequest $leaveRequest)
-    {
-        $organization_id = $leaveRequest->organization_id;
-        $leaveTypes = LeaveType::where('organization_id', $organization_id)->get(['id', 'name']);
-        $employeesUsers = Employee::with('user')->where('organization_id', $organization_id)->get(['id', 'user_id']);
-
-        return inertia('Organization/LeaveRequest/Edit', [
-            'leaveRequest' => $leaveRequest,
-            'leaveTypes' => $leaveTypes,
-            'employeesUsers' => $employeesUsers,
-        ]);
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param  LeaveRequestSaveRequest  $request
@@ -171,19 +140,27 @@ class LeaveRequestController extends Controller
      */
     public function update(LeaveRequestSaveRequest $request, LeaveRequest $leaveRequest)
     {
-        $organization = currentOrganization();
-        $final_days_count = sumFinalDays($organization->id, $request->start, $request->end) ?? diffBetweenDays($request->start, $request->end);
+        $final_days_count = sumFinalDays($request->start, $request->end) ?? diffBetweenDays($request->start, $request->end);
+        $user_id = $request->user ?? auth()->id();
 
         $leaveRequest->update([
-            'organization_id' => currentOrganization()->id,
-            'employee_id' => $request->employee_id,
-            'leave_type_id' => $request->leave_type_id,
+            'user_id' => $user_id,
+            'leave_type_id' => $request->leave_type,
             'start' => $request->start,
             'end' => $request->end,
             'days' => $final_days_count,
             'reason' => $request->reason,
             'status' => $request->status,
         ]);
+
+        if ($request->status == 'approved') {
+            $leave_balance = LeaveBalance::where('leave_type_id', $leaveRequest->leave_type_id)
+                ->where('user_id', $user_id)
+                ->first();
+
+            $diffDays = $final_days_count;
+            $leave_balance->increment('used_days', $diffDays);
+        }
 
         // Notification and mail sending
         // if ($leaveRequest->status == 'pending') {
@@ -203,15 +180,11 @@ class LeaveRequestController extends Controller
         // sendSms('vonage', $to, $message);
 
         session()->flash('success', 'Leave request updated successfully!');
-        return redirect_to('organization.leaveRequests.index');
+        return back();
     }
 
     public function statusChange(Request $request, LeaveRequest $leave_request)
     {
-        // return [
-        //     $request->all(),
-        //     $leave_request
-        // ];
         if ($leave_request->status == 'pending' && $request->status == 'approved') {
 
             $final_days_count = sumFinalDays($leave_request->start, $leave_request->end) ?? diffBetweenDays($leave_request->start, $leave_request->end);

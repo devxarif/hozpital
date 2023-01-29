@@ -136,13 +136,13 @@
                                <MenuItems class="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                                    <div class="py-1 text-sm">
                                    <MenuItem v-slot="{ active }">
-                                       <a href="javascript:void(0)" @click.prevent="editData()" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
+                                       <a href="javascript:void(0)" @click.prevent="editData(leave_request)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
                                            <font-awesome-icon icon="fa-solid fa-pen-to-square" class="mr-3 h-5 w-5 text-blue-500 group-hover:text-blue-500"/>
                                            Edit
                                        </a>
                                    </MenuItem>
                                    <MenuItem v-slot="{ active }">
-                                       <a href="javascript:void(0)" @click.prevent="editData()" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
+                                       <a href="javascript:void(0)" @click.prevent="editData(leave_request)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
                                            <font-awesome-icon icon="fa-solid fa-eye" class="mr-3 h-5 w-5 text-sky-500 group-hover:text-sky-500"/>
                                            Details
                                        </a>
@@ -198,20 +198,20 @@
        </NothingFound>
 
         <CreateLeaveRequest :show="showCreateDrawer" @close-drawer="showCreateDrawer = false" :users="users"/>
-        <!-- <EditLeaveType :show="showEditDrawer" @close-drawer="showEditDrawer = false" :leave_type="editLeaveType"/> -->
+        <EditLeaveRequest v-if="showEditDrawer" :show="showEditDrawer" @close-drawer="showEditDrawer = false" :leave_request="editLeaveRequest" :users="users"/>
     </AppLayout>
 </template>
 
 <script>
 import CreateLeaveRequest from "./Create.vue";
-// import EditLeaveType from "./Edit.vue";
+import EditLeaveRequest from "./Edit.vue";
 import CardSkeleton from "@/Shared/Skeleton/CardSkeleton.vue";
 import { CheckIcon, XMarkIcon, ChevronDownIcon } from '@heroicons/vue/24/outline'
 
 export default {
     components: {
         CreateLeaveRequest,
-        // EditLeaveType,
+        EditLeaveRequest,
         CardSkeleton,
         CheckIcon,
         XMarkIcon,
@@ -243,7 +243,7 @@ export default {
         return {
             showCreateDrawer: false,
             showEditDrawer: false,
-            editLeaveType: '',
+            editLeaveRequest: '',
 
             showFilter: false,
             loading: false,
@@ -271,9 +271,9 @@ export default {
                 }
             });
         },
-        editData(leave_type){
+        editData(leave_request){
             this.showEditDrawer = true
-            this.editLeaveType = leave_type
+            this.editLeaveRequest = leave_request
         },
         filterData(){
             this.loading = true
@@ -303,7 +303,7 @@ export default {
                 showCancelButton: true,
                 confirmButtonColor: "#3085d6",
                 cancelButtonColor: "#d33",
-                confirmButtonText: `Yes, ${status == 'approve' ? 'approve':'reject'} it!`,
+                confirmButtonText: `Yes, ${status == 'approved' ? 'approve':'reject'} it!`,
             }).then((result) => {
                 if (result.isConfirmed) {
                     this.$inertia.put(route("admin.leaveRequest.status", id), {
