@@ -20,20 +20,20 @@ use App\Models\Bed;
 use App\Models\LeaveBalance;
 use sirajcse\UniqueIdGenerator\UniqueIdGenerator;
 
-Route::get('/', function () {
+// Route::get('/', function () {
 
-    return inertia('Test/Chat/1');
-    return inertia('Test/Setting/1');
+//     return inertia('Test/Chat/1');
+//     return inertia('Test/Setting/1');
 
-    return Department::select('id','name')->get();
+//     return Department::select('id','name')->get();
 
-    return inertia('Layout');
+//     return inertia('Layout');
 
 
-    app()->setLocale('bn');
-    // return view('test.test');
-    return view('welcome');
-});
+//     app()->setLocale('bn');
+//     // return view('test.test');
+//     return view('welcome');
+// });
 // Route::get('/', function () {
 
 //     // return view('test.test');

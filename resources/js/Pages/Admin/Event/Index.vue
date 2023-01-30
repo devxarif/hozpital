@@ -118,11 +118,11 @@ import CreateEvent from "./Create.vue";
 import EditEvent from "./Edit.vue";
 import CardSkeleton from "@/Shared/Skeleton/CardSkeleton.vue";
 
+import '@fullcalendar/core/vdom'
 import FullCalendar from '@fullcalendar/vue3'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import listPlugin from '@fullcalendar/list'
 import interactionPlugin from '@fullcalendar/interaction'
-import '@fullcalendar/core/vdom'
 
 export default {
     components: {

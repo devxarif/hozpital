@@ -22,6 +22,8 @@ class WebsiteController extends Controller
 
     public function home()
     {
+
+        return view('welcome');
         $content = metaContent('home');
         $this->seo()->setTitle($content->title);
         $this->seo()->setDescription($content->description);
