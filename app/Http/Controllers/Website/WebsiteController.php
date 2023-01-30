@@ -23,7 +23,30 @@ class WebsiteController extends Controller
     public function home()
     {
 
-        return view('welcome');
+        return view('website.pages.home');
+
+        $content = metaContent('home');
+        $this->seo()->setTitle($content->title);
+        $this->seo()->setDescription($content->description);
+        SEOMeta::setKeywords($content->keywords);
+        $this->seo()->opengraph()->setUrl(url()->current());
+        $this->seo()->opengraph()->addProperty('type', 'website');
+        $this->seo()->twitter()->setSite(url()->current());
+        $this->seo()->jsonLd()->setType('Website');
+
+        $faqs = Faq::all();
+        $features = Feature::all();
+        $testimonials = Testimonial::all();
+        $plans = Plan::with('planFeatures')->whereStatus(1)->get();
+
+        return view('website.home', compact('faqs', 'features', 'testimonials', 'plans'));
+    }
+
+    public function shop()
+    {
+
+        return view('website.pages.shop');
+
         $content = metaContent('home');
         $this->seo()->setTitle($content->title);
         $this->seo()->setDescription($content->description);

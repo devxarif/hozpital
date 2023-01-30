@@ -6,10 +6,6 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Auth\SocialLoginController;
 use App\Http\Controllers\Auth\ForgetPasswordController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::controller(AuthController::class)->group(function () {
     Route::get('/login', 'showLoginForm')->name('login');
     Route::post('/login', 'login');
