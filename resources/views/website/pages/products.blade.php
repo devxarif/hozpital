@@ -108,7 +108,7 @@
                 </div>
                 <div
                     class="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-x-3 lg:gap-x-5 xl:gap-x-7 gap-y-3 xl:gap-y-5 2xl:gap-y-8 ">
-                    <div class="group box-border overflow-hidden flex rounded-md cursor-pointer pe-0 pb-2 lg:pb-3 flex-col items-start transition duration-200 ease-in-out transform hover:-translate-y-1 md:hover:-translate-y-1.5 hover:shadow-product bg-white"
+                    <a href="{{ route('website.product.details') }}" class="group box-border overflow-hidden flex rounded-md cursor-pointer pe-0 pb-2 lg:pb-3 flex-col items-start transition duration-200 ease-in-out transform hover:-translate-y-1 md:hover:-translate-y-1.5 hover:shadow-product bg-white"
                         role="button" title="12 Eco-Friendly Clothing Brands That">
                         <div class="flex mb-3 md:mb-3.5"><span
                                 style="box-sizing: border-box; display: inline-block; overflow: hidden; width: initial; height: initial; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"><span
@@ -135,10 +135,10 @@
            text-heading"><span class="inline-block false">$20.00</span><del
                                     class="sm:text-base font-normal text-gray-800">$28.00</del></div>
                         </div>
-                    </div>
+                    </a>
                 </div>
                 <div class="text-center pt-8 xl:pt-14"><button data-variant="slim"
-                        class="text-[13px] md:text-sm leading-4 inline-flex items-center cursor-pointer transition ease-in-out duration-300 font-semibold font-body text-center justify-center border-0 border-transparent placeholder-white focus-visible:outline-none focus:outline-none rounded-md  h-11 md:h-12 px-5 bg-heading text-white py-2 transform-none normal-case hover:text-white hover:bg-gray-600 hover:shadow-cart">Load
+                        class="text-[13px] md:text-sm leading-4 inline-flex items-center cursor-pointer transition ease-in-out duration-300 font-semibold font-body text-center justify-center border-0 border-transparent focus-visible:outline-none focus:outline-none rounded-md  h-11 md:h-12 px-5 bg-gray-900 text-white py-2 transform-none normal-case hover:text-white hover:bg-gray-600 hover:shadow-cart">Load
                         More</button></div>
             </div>
         </div>

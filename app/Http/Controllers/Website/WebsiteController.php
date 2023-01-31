@@ -42,10 +42,10 @@ class WebsiteController extends Controller
         return view('website.home', compact('faqs', 'features', 'testimonials', 'plans'));
     }
 
-    public function shop()
+    public function products()
     {
 
-        return view('website.pages.shop');
+        return view('website.pages.products');
 
         $content = metaContent('home');
         $this->seo()->setTitle($content->title);
@@ -62,6 +62,11 @@ class WebsiteController extends Controller
         $plans = Plan::with('planFeatures')->whereStatus(1)->get();
 
         return view('website.home', compact('faqs', 'features', 'testimonials', 'plans'));
+    }
+
+    public function productDetails()
+    {
+        return view('website.pages.product_details');
     }
 
     public function about()

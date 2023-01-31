@@ -96,7 +96,7 @@
                         </div>
                         <nav class="hidden space-x-10 md:flex">
                             <a href="{{ route('website.home') }}" class="text-base font-medium text-gray-500 hover:text-gray-900">Home</a>
-                            <a href="{{ route('website.shop') }}" class="text-base font-medium text-gray-500 hover:text-gray-900">Pharmacy &
+                            <a href="{{ route('website.products') }}" class="text-base font-medium text-gray-500 hover:text-gray-900">Pharmacy &
                                 Store</a>
                             <a href="#" class="text-base font-medium text-gray-500 hover:text-gray-900">Departments</a>
                             <a href="#" class="text-base font-medium text-gray-500 hover:text-gray-900">Doctors</a>
