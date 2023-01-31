@@ -67,7 +67,8 @@
             </div>
             <div class="w-full lg:-ms-9">
                 <div class="flex justify-between items-center mb-7">
-                    <h1 class="text-heading text-2xl font-bold hidden lg:inline-flex pb-1">Casual Wear</h1><button
+                    <h1 class="text-heading text-2xl font-bold hidden lg:inline-flex pb-1">Casual Wear</h1>
+                    <button
                         class="lg:hidden text-heading text-sm px-4 py-2 font-semibold border border-gray-300 rounded-md flex items-center transition duration-200 ease-in-out focus:outline-none hover:bg-gray-200"><svg
                             xmlns="http://www.w3.org/2000/svg" width="18px" height="14px" viewBox="0 0 18 14">
                             <g id="Group_36196" data-name="Group 36196" transform="translate(-925 -1122.489)">

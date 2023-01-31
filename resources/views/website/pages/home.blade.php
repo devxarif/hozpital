@@ -119,202 +119,199 @@
         </div>
     </div>
 
+
     <!-- Our Team Sections -->
-    <div class="bg-white">
-        <div class="mx-auto max-w-7xl py-12 px-6 text-center lg:px-8 lg:py-24">
-            <div class="space-y-12">
-                <div class="space-y-5 sm:mx-auto sm:max-w-xl sm:space-y-4 lg:max-w-5xl">
-                    <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">OUR SPECIALISTS</h2>
-                    <p class="text-xl text-gray-500">We have all the professional specialists in our
-                        hospital</p>
-                </div>
-                <ul role="list"
-                    class="mx-auto space-y-16 sm:grid sm:grid-cols-2 sm:gap-16 sm:space-y-0 lg:max-w-5xl lg:grid-cols-3">
-                    <li>
-                        <div class="space-y-6">
-                            <img class="mx-auto h-60 w-60 xl:h-60 xl:w-56"
-                                src="https://templates.envytheme.com/bexi/default/assets/images/team/team-1.jpg"
-                                alt="">
-                            <div class="space-y-2">
-                                <div class="space-y-1 text-lg font-medium leading-6">
-                                    <h3>Glenn Arredondo</h3>
-                                    <p class="text-indigo-600">Family Physicians</p>
-                                </div>
-                                <ul role="list" class="flex justify-center space-x-5">
-                                    <li>
-                                        <a href="#" class="text-gray-400 hover:text-gray-500">
-                                            <span class="sr-only">Twitter</span>
-                                            <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20"
-                                                aria-hidden="true">
-                                                <path
-                                                    d="M6.29 18.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0020 3.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.073 4.073 0 01.8 7.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 010 16.407a11.616 11.616 0 006.29 1.84" />
-                                            </svg>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="text-gray-400 hover:text-gray-500">
-                                            <span class="sr-only">LinkedIn</span>
-                                            <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20"
-                                                aria-hidden="true">
-                                                <path fill-rule="evenodd"
-                                                    d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z"
-                                                    clip-rule="evenodd" />
-                                            </svg>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="space-y-6">
-                            <img class="mx-auto h-60 w-60 xl:h-60 xl:w-60"
-                                src="https://templates.envytheme.com/bexi/default/assets/images/team/team-3.jpg"
-                                alt="">
-                            <div class="space-y-2">
-                                <div class="space-y-1 text-lg font-medium leading-6">
-                                    <h3>Christopher Perreault</h3>
-                                    <p class="text-indigo-600">Medicine Specialists</p>
-                                </div>
-                                <ul role="list" class="flex justify-center space-x-5">
-                                    <li>
-                                        <a href="#" class="text-gray-400 hover:text-gray-500">
-                                            <span class="sr-only">Twitter</span>
-                                            <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20"
-                                                aria-hidden="true">
-                                                <path
-                                                    d="M6.29 18.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0020 3.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.073 4.073 0 01.8 7.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 010 16.407a11.616 11.616 0 006.29 1.84" />
-                                            </svg>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="text-gray-400 hover:text-gray-500">
-                                            <span class="sr-only">LinkedIn</span>
-                                            <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20"
-                                                aria-hidden="true">
-                                                <path fill-rule="evenodd"
-                                                    d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z"
-                                                    clip-rule="evenodd" />
-                                            </svg>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </li>
-
-                    <!-- More people... -->
-                </ul>
+    <div class="mx-auto max-w-7xl py-8 px-6 text-center lg:px-8 lg:py-8">
+        <div class="space-y-12">
+            <div class="space-y-5 sm:mx-auto sm:max-w-xl sm:space-y-4 lg:max-w-5xl">
+                <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">OUR SPECIALISTS</h2>
+                <p class="text-xl text-gray-500">We have all the professional specialists in our
+                    hospital</p>
             </div>
+            <ul role="list"
+                class="mx-auto space-y-16 sm:grid sm:grid-cols-2 sm:gap-16 sm:space-y-0 lg:max-w-5xl lg:grid-cols-3">
+                <li>
+                    <div class="space-y-6">
+                        <img class="mx-auto h-60 w-60 xl:h-60 xl:w-56"
+                            src="https://templates.envytheme.com/bexi/default/assets/images/team/team-1.jpg"
+                            alt="">
+                        <div class="space-y-2">
+                            <div class="space-y-1 text-lg font-medium leading-6">
+                                <h3>Glenn Arredondo</h3>
+                                <p class="text-indigo-600">Family Physicians</p>
+                            </div>
+                            <ul role="list" class="flex justify-center space-x-5">
+                                <li>
+                                    <a href="#" class="text-gray-400 hover:text-gray-500">
+                                        <span class="sr-only">Twitter</span>
+                                        <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20"
+                                            aria-hidden="true">
+                                            <path
+                                                d="M6.29 18.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0020 3.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.073 4.073 0 01.8 7.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 010 16.407a11.616 11.616 0 006.29 1.84" />
+                                        </svg>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="text-gray-400 hover:text-gray-500">
+                                        <span class="sr-only">LinkedIn</span>
+                                        <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20"
+                                            aria-hidden="true">
+                                            <path fill-rule="evenodd"
+                                                d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z"
+                                                clip-rule="evenodd" />
+                                        </svg>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="space-y-6">
+                        <img class="mx-auto h-60 w-60 xl:h-60 xl:w-60"
+                            src="https://templates.envytheme.com/bexi/default/assets/images/team/team-3.jpg"
+                            alt="">
+                        <div class="space-y-2">
+                            <div class="space-y-1 text-lg font-medium leading-6">
+                                <h3>Christopher Perreault</h3>
+                                <p class="text-indigo-600">Medicine Specialists</p>
+                            </div>
+                            <ul role="list" class="flex justify-center space-x-5">
+                                <li>
+                                    <a href="#" class="text-gray-400 hover:text-gray-500">
+                                        <span class="sr-only">Twitter</span>
+                                        <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20"
+                                            aria-hidden="true">
+                                            <path
+                                                d="M6.29 18.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0020 3.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.073 4.073 0 01.8 7.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 010 16.407a11.616 11.616 0 006.29 1.84" />
+                                        </svg>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="text-gray-400 hover:text-gray-500">
+                                        <span class="sr-only">LinkedIn</span>
+                                        <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20"
+                                            aria-hidden="true">
+                                            <path fill-rule="evenodd"
+                                                d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z"
+                                                clip-rule="evenodd" />
+                                        </svg>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- More people... -->
+            </ul>
         </div>
     </div>
 
-    <!-- Alternating Feature Sections -->
-    <div class="relative overflow-hidden pt-16 pb-32">
-        <div aria-hidden="true" class="absolute inset-x-0 top-0 h-48 bg-gradient-to-b from-gray-100"></div>
-        <div class="relative">
-            <div
-                class="lg:mx-auto lg:grid lg:max-w-7xl lg:grid-flow-col-dense lg:grid-cols-2 lg:gap-24 lg:px-8">
-                <div class="mx-auto max-w-xl px-6 lg:mx-0 lg:max-w-none lg:py-16 lg:px-0">
-                    <div>
-                        <div>
-                            <span
-                                class="flex h-12 w-12 items-center justify-center rounded-md bg-gradient-to-r from-purple-600 to-indigo-600">
-                                <!-- Heroicon name: outline/inbox -->
-                                <svg class="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg"
-                                    fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                                    aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M2.25 13.5h3.86a2.25 2.25 0 012.012 1.244l.256.512a2.25 2.25 0 002.013 1.244h3.218a2.25 2.25 0 002.013-1.244l.256-.512a2.25 2.25 0 012.013-1.244h3.859m-19.5.338V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18v-4.162c0-.224-.034-.447-.1-.661L19.24 5.338a2.25 2.25 0 00-2.15-1.588H6.911a2.25 2.25 0 00-2.15 1.588L2.35 13.177a2.25 2.25 0 00-.1.661z" />
-                                </svg>
-                            </span>
-                        </div>
-                        <div class="mt-6">
-                            <h2 class="text-3xl font-bold tracking-tight text-gray-900">Stay on top of
-                                customer support</h2>
-                            <p class="mt-4 text-lg text-gray-500">Semper curabitur ullamcorper posuere nunc
-                                sed. Ornare iaculis bibendum malesuada faucibus lacinia porttitor. Pulvinar
-                                laoreet sagittis viverra duis. In venenatis sem arcu pretium pharetra at.
-                                Lectus viverra dui tellus ornare pharetra.</p>
-                            <div class="mt-6">
-                                <a href="#"
-                                    class="inline-flex rounded-md border border-transparent bg-gradient-to-r from-purple-600 to-indigo-600 bg-origin-border px-4 py-2 text-base font-medium text-white shadow-sm hover:from-purple-700 hover:to-indigo-700">Get
-                                    started</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mt-8 border-t border-gray-200 pt-6">
-                        <blockquote>
-                            <div>
-                                <p class="text-base text-gray-500">&ldquo;Cras velit quis eros eget rhoncus
-                                    lacus ultrices sed diam. Sit orci risus aenean curabitur donec aliquet.
-                                    Mi venenatis in euismod ut.&rdquo;</p>
-                            </div>
-                            <footer class="mt-3">
-                                <div class="flex items-center space-x-3">
-                                    <div class="flex-shrink-0">
-                                        <img class="h-6 w-6 rounded-full"
-                                            src="https://images.unsplash.com/photo-1509783236416-c9ad59bae472?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80"
-                                            alt="">
-                                    </div>
-                                    <div class="text-base font-medium text-gray-700">Marcia Hill, Digital
-                                        Marketing Manager</div>
-                                </div>
-                            </footer>
-                        </blockquote>
-                    </div>
+     <!-- Category Sections -->
+     <section aria-labelledby="category-heading" class="pt-8 sm:pt-32 xl:mx-auto xl:max-w-7xl xl:px-8">
+        <div class="px-4 sm:flex sm:items-center sm:justify-between sm:px-6 lg:px-8 xl:px-0">
+          <h2 id="category-heading" class="text-2xl font-bold tracking-tight text-gray-900">Shop by Category</h2>
+          <a href="#" class="hidden text-sm font-semibold text-indigo-600 hover:text-indigo-500 sm:block">
+            Browse all categories
+            <span aria-hidden="true"> →</span>
+          </a>
+        </div>
+
+        <div class="mt-4 flow-root">
+          <div class="-my-2">
+            <div class="relative box-content h-80 overflow-x-auto py-2 xl:overflow-visible">
+              <div class="min-w-screen-xl absolute flex space-x-8 px-4 sm:px-6 lg:px-8 xl:relative xl:grid xl:grid-cols-5 xl:gap-x-8 xl:space-x-0 xl:px-0">
+
+                  <a href="#" class="relative flex h-80 w-56 flex-col overflow-hidden rounded-lg p-6 hover:opacity-75 xl:w-auto">
+                    <span aria-hidden="true" class="absolute inset-0">
+                      <img src="https://tailwindui.com/img/ecommerce-images/home-page-01-category-01.jpg" alt="" class="h-full w-full object-cover object-center">
+                    </span>
+                    <span aria-hidden="true" class="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-gray-800 opacity-50"></span>
+                    <span class="relative mt-auto text-center text-xl font-bold text-white">New Arrivals</span>
+                  </a>
+
+                  <a href="#" class="relative flex h-80 w-56 flex-col overflow-hidden rounded-lg p-6 hover:opacity-75 xl:w-auto">
+                    <span aria-hidden="true" class="absolute inset-0">
+                      <img src="https://tailwindui.com/img/ecommerce-images/home-page-01-category-02.jpg" alt="" class="h-full w-full object-cover object-center">
+                    </span>
+                    <span aria-hidden="true" class="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-gray-800 opacity-50"></span>
+                    <span class="relative mt-auto text-center text-xl font-bold text-white">Productivity</span>
+                  </a>
+
+                  <a href="#" class="relative flex h-80 w-56 flex-col overflow-hidden rounded-lg p-6 hover:opacity-75 xl:w-auto">
+                    <span aria-hidden="true" class="absolute inset-0">
+                      <img src="https://tailwindui.com/img/ecommerce-images/home-page-01-category-04.jpg" alt="" class="h-full w-full object-cover object-center">
+                    </span>
+                    <span aria-hidden="true" class="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-gray-800 opacity-50"></span>
+                    <span class="relative mt-auto text-center text-xl font-bold text-white">Workspace</span>
+                  </a>
+
+                  <a href="#" class="relative flex h-80 w-56 flex-col overflow-hidden rounded-lg p-6 hover:opacity-75 xl:w-auto">
+                    <span aria-hidden="true" class="absolute inset-0">
+                      <img src="https://tailwindui.com/img/ecommerce-images/home-page-01-category-05.jpg" alt="" class="h-full w-full object-cover object-center">
+                    </span>
+                    <span aria-hidden="true" class="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-gray-800 opacity-50"></span>
+                    <span class="relative mt-auto text-center text-xl font-bold text-white">Accessories</span>
+                  </a>
+
+                  <a href="#" class="relative flex h-80 w-56 flex-col overflow-hidden rounded-lg p-6 hover:opacity-75 xl:w-auto">
+                    <span aria-hidden="true" class="absolute inset-0">
+                      <img src="https://tailwindui.com/img/ecommerce-images/home-page-01-category-03.jpg" alt="" class="h-full w-full object-cover object-center">
+                    </span>
+                    <span aria-hidden="true" class="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-gray-800 opacity-50"></span>
+                    <span class="relative mt-auto text-center text-xl font-bold text-white">Sale</span>
+                  </a>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-6 px-4 sm:hidden">
+          <a href="#" class="block text-sm font-semibold text-indigo-600 hover:text-indigo-500">
+            Browse all categories
+            <span aria-hidden="true"> →</span>
+          </a>
+        </div>
+      </section>
+
+    <!-- Product Sections -->
+    <section aria-labelledby="category-heading" class="pt-8 sm:pt-32 xl:mx-auto xl:max-w-7xl xl:px-8">
+        <div class="px-4 sm:flex sm:items-center sm:justify-between sm:px-6 lg:px-8 xl:px-0">
+          <h2 id="category-heading" class="text-2xl font-bold tracking-tight text-gray-900">Shop by Category</h2>
+          <a href="#" class="hidden text-sm font-semibold text-indigo-600 hover:text-indigo-500 sm:block">
+            Browse all categories
+            <span aria-hidden="true"> →</span>
+          </a>
+        </div>
+        <div class="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
+        <h2 class="text-xl font-bold text-gray-900">Customers also bought</h2>
+
+        <div class="mt-8 grid grid-cols-1 gap-y-12 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8">
+            <div>
+            <div class="relative">
+                <div class="relative h-72 w-full overflow-hidden rounded-lg">
+                <img src="https://tailwindui.com/img/ecommerce-images/product-page-03-related-product-01.jpg" alt="Front of zip tote bag with white canvas, black canvas straps and handle, and black zipper pulls." class="h-full w-full object-cover object-center">
                 </div>
-                <div class="mt-12 sm:mt-16 lg:mt-0">
-                    <div class="-mr-48 pl-6 md:-mr-16 lg:relative lg:m-0 lg:h-full lg:px-0">
-                        <img class="w-full rounded-xl shadow-xl ring-1 ring-black ring-opacity-5 lg:absolute lg:left-0 lg:h-full lg:w-auto lg:max-w-none"
-                            src="https://tailwindui.com/img/component-images/inbox-app-screenshot-1.jpg"
-                            alt="Inbox user interface">
-                    </div>
+                <div class="relative mt-4">
+                <h3 class="text-sm font-medium text-gray-900">Zip Tote Basket</h3>
+                <p class="mt-1 text-sm text-gray-500">White and black</p>
+                </div>
+                <div class="absolute inset-x-0 top-0 flex h-72 items-end justify-end overflow-hidden rounded-lg p-4">
+                <div aria-hidden="true" class="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-black opacity-50"></div>
+                <p class="relative text-lg font-semibold text-white">$140</p>
                 </div>
             </div>
-        </div>
-        <div class="mt-24">
-            <div
-                class="lg:mx-auto lg:grid lg:max-w-7xl lg:grid-flow-col-dense lg:grid-cols-2 lg:gap-24 lg:px-8">
-                <div class="mx-auto max-w-xl px-6 lg:col-start-2 lg:mx-0 lg:max-w-none lg:py-32 lg:px-0">
-                    <div>
-                        <div>
-                            <span
-                                class="flex h-12 w-12 items-center justify-center rounded-md bg-gradient-to-r from-purple-600 to-indigo-600">
-                                <!-- Heroicon name: outline/sparkles -->
-                                <svg class="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg"
-                                    fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                                    aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
-                                </svg>
-                            </span>
-                        </div>
-                        <div class="mt-6">
-                            <h2 class="text-3xl font-bold tracking-tight text-gray-900">Better understand
-                                your customers</h2>
-                            <p class="mt-4 text-lg text-gray-500">Semper curabitur ullamcorper posuere nunc
-                                sed. Ornare iaculis bibendum malesuada faucibus lacinia porttitor. Pulvinar
-                                laoreet sagittis viverra duis. In venenatis sem arcu pretium pharetra at.
-                                Lectus viverra dui tellus ornare pharetra.</p>
-                            <div class="mt-6">
-                                <a href="#"
-                                    class="inline-flex rounded-md border border-transparent bg-gradient-to-r from-purple-600 to-indigo-600 bg-origin-border px-4 py-2 text-base font-medium text-white shadow-sm hover:from-purple-700 hover:to-indigo-700">Get
-                                    started</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="mt-12 sm:mt-16 lg:col-start-1 lg:mt-0">
-                    <div class="-ml-48 pr-6 md:-ml-16 lg:relative lg:m-0 lg:h-full lg:px-0">
-                        <img class="w-full rounded-xl shadow-xl ring-1 ring-black ring-opacity-5 lg:absolute lg:right-0 lg:h-full lg:w-auto lg:max-w-none"
-                            src="https://tailwindui.com/img/component-images/inbox-app-screenshot-2.jpg"
-                            alt="Customer profile user interface">
-                    </div>
-                </div>
+            <div class="mt-6">
+                <a href="#" class="relative flex items-center justify-center rounded-md border border-transparent bg-gray-100 py-2 px-8 text-sm font-medium text-gray-900 hover:bg-gray-200">Add to bag<span class="sr-only">, Zip Tote Basket</span></a>
             </div>
+            </div>
+
+            <!-- More products... -->
         </div>
-    </div>
+        </div>
+    </section>
 
     <!-- Gradient Feature Section -->
     <div class="bg-gradient-to-r from-purple-800 to-indigo-700">

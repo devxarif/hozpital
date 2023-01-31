@@ -42,6 +42,16 @@ class WebsiteController extends Controller
         return view('website.home', compact('faqs', 'features', 'testimonials', 'plans'));
     }
 
+    public function department()
+    {
+        return view('website.pages.department');
+    }
+
+    public function doctor()
+    {
+        return view('website.pages.doctor');
+    }
+
     public function products()
     {
 
@@ -67,6 +77,26 @@ class WebsiteController extends Controller
     public function productDetails()
     {
         return view('website.pages.product_details');
+    }
+
+    public function bags()
+    {
+        return view('website.pages.bag');
+    }
+
+    public function checkout()
+    {
+        return view('website.pages.checkout');
+    }
+
+    public function shipping()
+    {
+        return view('website.pages.shipping');
+    }
+
+    public function payment()
+    {
+        return view('website.pages.payment');
     }
 
     public function about()

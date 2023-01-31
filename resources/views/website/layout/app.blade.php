@@ -53,8 +53,8 @@
                             </div>
 
                             <!-- Cart -->
-                            <div class="ml-4 flow-root lg:ml-6">
-                                <a href="#" class="group -m-2 flex items-center p-2">
+                            <div class="ml-4 flow-root lg:ml-6 relative">
+                                <a href="{{ route('website.bag') }}" class="group -m-2 flex items-center p-2">
                                     <svg class="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
                                         x-description="Heroicon name: outline/shopping-bag"
                                         xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -66,6 +66,50 @@
                                     <span class="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">0</span>
                                     <span class="sr-only">items in cart, view bag</span>
                                 </a>
+
+                                <div x-show="open" x-transition:enter="transition ease-out duration-200"
+                                    x-transition:enter-start="transform opacity-0 scale-95"
+                                    x-transition:enter-end="transform opacity-100 scale-100"
+                                    x-transition:leave="transition ease-in duration-75"
+                                    x-transition:leave-start="transform opacity-100 scale-100"
+                                    x-transition:leave-end="transform opacity-0 scale-95"
+                                    class="hidden absolute z-50 mt-2 w-80 rounded-md shadow-lg origin-top-right right-0">
+                                    <div class="rounded-md ring-1 ring-black ring-opacity-5 py-1 bg-white">
+                                        <div class="px-4 mt-px pb-6">
+                                            <h2 class="sr-only">Shopping Cart</h2>
+                                            <ul role="list" class="divide-y divide-gray-200">
+                                                <li class="py-6 flex">
+                                                    <img src="
+                                                                                                                                                                    https://demo.cartify.dev/storage/media/540/conversions/insulated-travel-mug-18-oz-white-1-thumb.jpg
+                                                                                                                                                            "
+                                                        alt="Insulated Travel Mug 18 Oz."
+                                                        class="flex-none w-16 rounded-md border border-gray-200">
+                                                    <div class="ml-4 flex flex-auto flex-col justify-between">
+                                                        <h3 class="font-medium text-gray-900">
+                                                            <a href="https://demo.cartify.dev/products/insulated-travel-mug-18-oz"
+                                                                class="line-clamp-2">
+                                                                Insulated Travel Mug 18 Oz.
+                                                            </a>
+                                                        </h3>
+                                                        <p class="text-gray-500">
+                                                            x1
+                                                        </p>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                            <a class="inline-flex items-center justify-center px-4 py-2 bg-blue-600 border border-transparent rounded-md font-medium text-white hover:bg-blue-500 focus:outline-none focus:border-blue-700 focus:ring focus:ring-blue-200 active:bg-blue-600 transition block w-full text-sm"
+                                                href="https://demo.cartify.dev/checkout">
+                                                Checkout
+                                            </a>
+                                            <p class="mt-6 text-center">
+                                                <a href="https://demo.cartify.dev/cart"
+                                                    class="text-sm font-medium text-blue-600 hover:text-blue-500">
+                                                    View Shopping Cart
+                                                </a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -98,11 +142,11 @@
                             <a href="{{ route('website.home') }}" class="text-base font-medium text-gray-500 hover:text-gray-900">Home</a>
                             <a href="{{ route('website.products') }}" class="text-base font-medium text-gray-500 hover:text-gray-900">Pharmacy &
                                 Store</a>
-                            <a href="#" class="text-base font-medium text-gray-500 hover:text-gray-900">Departments</a>
-                            <a href="#" class="text-base font-medium text-gray-500 hover:text-gray-900">Doctors</a>
+                            <a href="{{ route('website.department') }}" class="text-base font-medium text-gray-500 hover:text-gray-900">Departments</a>
+                            <a href="{{ route('website.doctor') }}" class="text-base font-medium text-gray-500 hover:text-gray-900">Doctors</a>
                         </nav>
                         <div class="hidden items-center justify-end md:flex md:flex-1 lg:w-0">
-                            <a href="#"
+                            <a href=""
                                 class="ml-8 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700">Book Appointment</a>
                         </div>
                     </div>
