@@ -9,7 +9,7 @@
       <div class="py-12">
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
           <div class="mb-4 max-w-xs">
-            <input type="search" v-model="params.search" aria-label="Search" placeholder="Search..." class="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"/>
+            <input type="search" v-model="params.search" aria-label="Search" placeholder="Search..." class="block w-full rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"/>
           </div>
 
           <div class="overflow-hidden bg-white shadow-md sm:rounded-lg">
@@ -19,7 +19,7 @@
                   <div class="overflow-hidden border-b border-gray-200 shadow sm:rounded-lg">
 
                     <table class="min-w-full divide-y divide-gray-200 table-fixed">
-                      <thead class="bg-indigo-500">
+                      <thead class="bg-blue-500">
                       <tr>
                         <th scope="col" class="w-3/12 text-xs font-semibold tracking-wider text-left text-white uppercase">
                           <span class="inline-flex py-3 px-6 w-full justify-between" @click="sort('name')">Name

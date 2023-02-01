@@ -8,7 +8,7 @@
 	@vite('resources/css/app.css')
     <link rel="stylesheet" href="{{ asset('admin/css/tailwind.output.css') }}">
 </head>
-<body class="antialiased">
+<body class="antialiased bg-slate-50">
 
     @inertia
 	@vite('resources/js/app.js')

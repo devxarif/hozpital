@@ -74,7 +74,7 @@
         <Sidebar/>
         <div class="flex flex-1 flex-col lg:pl-64">
             <Header />
-            <main class="p-8 dark:bg-gray-800 dark:text-white bg-gray-100 h-screen">
+            <main class="p-8 dark:bg-gray-800 h-screen">
                 <!-- Page header -->
                 <!-- <div class="bg-white shadow">
                     <div class="px-4 sm:px-6 lg:mx-auto">
@@ -139,8 +139,6 @@
 
         </div>
     </div>
-
-
 </template>
 
 <script>

@@ -6,7 +6,7 @@
 
                 <div class="mb-4 max-w-xs">
                     <input type="search" v-model="params.search" aria-label="Search" placeholder="Search..."
-                        class="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                        class="block w-full rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" />
                 </div>
 
                 <div class="overflow-hidden bg-white shadow-md sm:rounded-lg">
@@ -16,7 +16,7 @@
                                 <div class="overflow-hidden border-b border-gray-200 shadow sm:rounded-lg">
 
                                     <table class="min-w-full divide-y divide-gray-200 table-fixed">
-                                        <thead class="bg-indigo-500">
+                                        <thead class="bg-blue-500">
                                             <tr>
                                                 <!-- <th scope="col" class="py-3 px-6">
                                                     <div class="flex items-center">

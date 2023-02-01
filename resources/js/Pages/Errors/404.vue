@@ -2,7 +2,7 @@
     <div class="bg-white">
       <main class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="flex-shrink-0 pt-16">
-          <img class="mx-auto h-12 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="Your Company" />
+          <img class="mx-auto h-12 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=blue&shade=600" alt="Your Company" />
         </div>
         <div class="mx-auto max-w-xl py-16 sm:py-24">
           <div class="text-center">
@@ -15,13 +15,13 @@
             <ul role="list" class="mt-4 divide-y divide-gray-200 border-t border-b border-gray-200">
               <li v-for="(link, linkIdx) in links" :key="linkIdx" class="relative flex items-start space-x-4 py-6">
                 <div class="flex-shrink-0">
-                  <span class="flex h-12 w-12 items-center justify-center rounded-lg bg-indigo-50">
-                    <component :is="link.icon" class="h-6 w-6 text-indigo-700" aria-hidden="true" />
+                  <span class="flex h-12 w-12 items-center justify-center rounded-lg bg-blue-50">
+                    <component :is="link.icon" class="h-6 w-6 text-blue-700" aria-hidden="true" />
                   </span>
                 </div>
                 <div class="min-w-0 flex-1">
                   <h3 class="text-base font-medium text-gray-900">
-                    <span class="rounded-sm focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2">
+                    <span class="rounded-sm focus-within:ring-2 focus-within:ring-blue-500 focus-within:ring-offset-2">
                       <a href="#" class="focus:outline-none">
                         <span class="absolute inset-0" aria-hidden="true" />
                         {{ link.title }}
@@ -36,7 +36,7 @@
               </li>
             </ul>
             <div class="mt-8">
-              <a href="#" class="text-base font-medium text-blue-600 hover:text-indigo-500">
+              <a href="#" class="text-base font-medium text-blue-600 hover:text-blue-500">
                 Or go back home
                 <span aria-hidden="true"> &rarr;</span>
               </a>

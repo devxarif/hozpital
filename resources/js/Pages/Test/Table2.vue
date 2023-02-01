@@ -37,7 +37,7 @@
                             </td>
                             <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">Member</td>
                             <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                            <a href="#" class="text-blue-600 hover:text-indigo-900">Edit<span class="sr-only">, Lindsay Walton</span></a>
+                            <a href="#" class="text-blue-600 hover:text-blue-900">Edit<span class="sr-only">, Lindsay Walton</span></a>
                             </td>
                         </tr>
 

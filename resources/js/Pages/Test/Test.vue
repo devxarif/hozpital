@@ -96,7 +96,7 @@
 
 
                 <div class="bg-gray-50 px-4 py-3 flex justify-center items-center">
-                    <button type="button" class="w-full inline-flex justify-center px-4 py-2 bg-transparent text-xs font-medium text-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:w-auto" @click="open = false">
+                    <button type="button" class="w-full inline-flex justify-center px-4 py-2 bg-transparent text-xs font-medium text-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:w-auto" @click="open = false">
                         Close
                     </button>
                 </div>

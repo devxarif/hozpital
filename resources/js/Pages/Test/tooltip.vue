@@ -68,11 +68,11 @@
                         <p class="text-xs leading-4 text-gray-600 pb-3 pt-2">Reach out to more prospects at the right moment.</p>
                         <div class="flex justify-between">
                             <div class="flex items-center">
-                                <span class="text-xs font-bold text-indigo-700">Step 1 of 4</span>
+                                <span class="text-xs font-bold text-blue-700">Step 1 of 4</span>
                             </div>
                             <div class="flex items-center">
                                 <span class="text-xs text-gray-600 underline mr-2 cursor-pointer">Skip Tour</span>
-                                <button class="focus:outline-none bg-indigo-700 transition duration-150 ease-in-out hover:bg-indigo-600 rounded text-white px-5 py-1 text-xs">Next</button>
+                                <button class="focus:outline-none bg-blue-700 transition duration-150 ease-in-out hover:bg-blue-600 rounded text-white px-5 py-1 text-xs">Next</button>
                             </div>
                         </div>
 
@@ -98,7 +98,7 @@
                 </div>
                 <!--Code Block for white tooltip ends-->
 
-                <!--Code Block for indigo tooltip starts-->
+                <!--Code Block for blue tooltip starts-->
                 <div class="relative my-28 md:my-0 md:mx-64" @mouseover="showTooltip(2)" @mouseout="hideTooltip(2)">
                     <div class="mr-2 cursor-pointer">
                         <svg aria-haspopup="true" xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-info-circle" width="25" height="25" viewBox="0 0 24 24" stroke-width="1.5" stroke="#A0AEC0" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -108,7 +108,7 @@
                             <polyline points="11 12 12 12 12 16 13 16" />
                         </svg>
                     </div>
-                    <div id="tooltip2" role="tooltip" class="z-20 -mt-20 w-64 absolute transition duration-150 ease-in-out left-0 ml-8 shadow-lg bg-indigo-700 p-4 rounded">
+                    <div id="tooltip2" role="tooltip" class="z-20 -mt-20 w-64 absolute transition duration-150 ease-in-out left-0 ml-8 shadow-lg bg-blue-700 p-4 rounded">
                         <svg class="absolute left-0 -ml-2 bottom-0 top-0 h-full" width="9px" height="16px" viewBox="0 0 9 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                 <g id="Tooltips-" transform="translate(-874.000000, -1029.000000)" fill="#4c51bf">
@@ -128,12 +128,12 @@
                             </div>
                             <div class="flex items-center">
                                 <span class="text-xs text-white underline mr-2 cursor-pointer">Skip Tour</span>
-                                <button class="bg-white transition duration-150 ease-in-out focus:outline-none hover:bg-gray-200 rounded text-indigo-700 px-5 py-1 text-xs">Next</button>
+                                <button class="bg-white transition duration-150 ease-in-out focus:outline-none hover:bg-gray-200 rounded text-blue-700 px-5 py-1 text-xs">Next</button>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!--Code Block for indigo tooltip ends-->
+                <!--Code Block for blue tooltip ends-->
 
                 <!--Code Block for gray tooltip starts-->
                 <div class="relative" @mouseover="showTooltip(3)" @mouseout="hideTooltip(3)">

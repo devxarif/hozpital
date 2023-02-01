@@ -2,206 +2,117 @@
 
     <Head :title="__('Application')" />
 
-    <AppLayout>
-        <div class="grid grid-cols-12 gap-4 sm:gap-5 lg:gap-6">
-          <div class="col-span-12 lg:col-span-4">
-            <div class="card p-4 sm:p-5">
-              <ul class="mt-6 space-y-1.5 font-inter font-medium">
-                <li>
-                  <a class="flex items-center space-x-2 rounded-lg bg-blue-500 px-4 py-2.5 tracking-wide text-white outline-none transition-all dark:bg-accent" href="#">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                    </svg>
-                    <span>Account</span>
-                  </a>
-                </li>
-                <li>
-                  <a class="group flex space-x-2 rounded-lg px-4 py-2.5 tracking-wide outline-none transition-all hover:bg-blue-100 hover:text-slate-800 focus:bg-blue-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100" href="#">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-slate-400 transition-colors group-hover:text-slate-500 group-focus:text-slate-500 dark:text-navy-300 dark:group-hover:text-navy-200 dark:group-focus:text-navy-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path>
-                    </svg>
+    <SettingLayout>
+        <div class="grid gap-6 md:grid-cols-1 xl:grid-cols-1 mt-6">
+            <div class="bg-white w-full p-6 rounded-lg border border-gray-8 dark:border-gray-700 dark:hover:bg-gray-700">
 
-                    <span>Notification</span>
-                  </a>
-                </li>
-                <li>
-                  <a class="group flex space-x-2 rounded-lg px-4 py-2.5 tracking-wide outline-none transition-all hover:bg-blue-100 hover:text-slate-800 focus:bg-blue-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100" href="#">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-slate-400 transition-colors group-hover:text-slate-500 group-focus:text-slate-500 dark:text-navy-300 dark:group-hover:text-navy-200 dark:group-focus:text-navy-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
-                    </svg>
-                    <span>Security</span>
-                  </a>
-                </li>
-                <li>
-                  <a class="group flex space-x-2 rounded-lg px-4 py-2.5 tracking-wide outline-none transition-all hover:bg-blue-100 hover:text-slate-800 focus:bg-blue-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100" href="#">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-slate-400 transition-colors group-hover:text-slate-500 group-focus:text-slate-500 dark:text-navy-300 dark:group-hover:text-navy-200 dark:group-focus:text-navy-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
-                    </svg>
-                    <span>Apps</span>
-                  </a>
-                </li>
-                <li>
-                  <a class="group flex space-x-2 rounded-lg px-4 py-2.5 tracking-wide outline-none transition-all hover:bg-blue-100 hover:text-slate-800 focus:bg-blue-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100" href="#">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-slate-400 transition-colors group-hover:text-slate-500 group-focus:text-slate-500 dark:text-navy-300 dark:group-hover:text-navy-200 dark:group-focus:text-navy-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
-                    </svg>
-                    <span> Privacy &amp; data </span>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-span-12 lg:col-span-8 shadow-sm">
-            <div class="card">
-              <div class="flex flex-col items-center space-y-4 border-b border-slate-200 p-4 dark:border-navy-500 sm:flex-row sm:justify-between sm:space-y-0 sm:px-5">
-                <h2 class="text-lg font-medium tracking-wide text-slate-700 dark:text-navy-100">
-                  Account Setting
-                </h2>
-                <div class="flex justify-center space-x-2">
-                  <button class="btn min-w-[7rem] rounded-full border border-slate-300 font-medium text-slate-700 hover:bg-blue-150 focus:bg-blue-150 active:bg-blue-150/80 dark:border-navy-450 dark:text-navy-100 dark:hover:bg-navy-500 dark:focus:bg-navy-500 dark:active:bg-navy-500/90">
-                    Cancel
-                  </button>
-                  <button class="btn min-w-[7rem] rounded-full bg-blue-500 font-medium text-white hover:bg-blue-focus focus:bg-blue-focus active:bg-blue-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90">
-                    Save
-                  </button>
-                </div>
-              </div>
-              <div class="p-4 sm:p-5">
-                <div class="flex flex-col">
-                  <span class="text-base font-medium text-slate-600 dark:text-navy-100">Avatar</span>
-                  <div class="relative avatar mt-1.5 h-20 w-20">
-                    <img class="rounded-full" src="https://lineone.piniastudio.com/images/avatar/avatar-20.jpg" alt="avatar">
-                    <div class="absolute bottom-0 right-0 flex items-center justify-center rounded-full bg-white dark:bg-navy-700">
-                      <button class="btn h-6 w-6 rounded-full border border-blue-200 p-0 hover:bg-blue-300/20 focus:bg-blue-300/20 active:bg-blue-300/25 dark:border-navy-500 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
-                          <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path>
-                        </svg>
-                      </button>
+                <form class="space-y-8 divide-y divide-gray-200">
+                <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5">
+                    <div class="space-y-6 sm:space-y-5">
+                    <div>
+                        <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Basic Setting</h2>
+
+                        <p class="mt-1 max-w-2xl text-sm text-gray-500">This information will be displayed publicly so be careful what you share.</p>
                     </div>
-                  </div>
-                </div>
-                <div class="my-7 h-px bg-blue-200 dark:bg-navy-500"></div>
-                <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                  <label class="block">
-                    <span>Display name </span>
-                    <span class="relative mt-1.5 flex">
-                      <input class="form-input peer w-full rounded-full border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" placeholder="Enter name" type="text">
-                      <span class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
-                        <i class="fa-regular fa-user text-base"></i>
-                      </span>
-                    </span>
-                  </label>
-                  <label class="block">
-                    <span>Full Name </span>
-                    <span class="relative mt-1.5 flex">
-                      <input class="form-input peer w-full rounded-full border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" placeholder="Enter full name" type="text">
-                      <span class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
-                        <i class="fa-regular fa-user text-base"></i>
-                      </span>
-                    </span>
-                  </label>
-                  <label class="block">
-                    <span>Email Address </span>
-                    <span class="relative mt-1.5 flex">
-                      <input class="form-input peer w-full rounded-full border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" placeholder="Enter email address" type="text">
-                      <span class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
-                        <i class="fa-regular fa-envelope text-base"></i>
-                      </span>
-                    </span>
-                  </label>
-                  <label class="block">
-                    <span>Phone Number</span>
-                    <span class="relative mt-1.5 flex">
-                      <input class="form-input peer w-full rounded-full border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" placeholder="Enter phone number" type="text">
-                      <span class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
-                        <i class="fa fa-phone"></i>
-                      </span>
-                    </span>
-                  </label>
-                </div>
-                <div class="my-7 h-px bg-blue-200 dark:bg-navy-500"></div>
-                <div>
-                  <h3 class="text-base font-medium text-slate-600 dark:text-navy-100">
-                    Linked Accounts
-                  </h3>
-                  <p class="text-xs+ text-slate-400 dark:text-navy-300">
-                    Lorem ipsum dolor sit amet consectetur.
-                  </p>
-                  <div class="flex items-center justify-between pt-4">
-                    <div class="flex items-center space-x-4">
-                      <div class="h-12 w-12">
-                        <img src="images/logos/google.svg" alt="logo">
-                      </div>
-                      <p class="font-medium line-clamp-1">
-                        Sign In with Google
-                      </p>
+
+                    <div class="space-y-6 sm:space-y-5">
+                        <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
+                        <label for="username" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Username</label>
+                        <div class="mt-1 sm:col-span-2 sm:mt-0">
+                            <div class="flex max-w-lg rounded-md shadow-sm">
+                            <span class="inline-flex items-center rounded-l-md border border-r-0 border-gray-300 bg-gray-50 px-3 text-gray-500 sm:text-sm">workcation.com/</span>
+                            <input type="text" name="username" id="username" autocomplete="username" class="block w-full min-w-0 flex-1 rounded-none rounded-r-md border-gray-300 focus:border-blue-500 focus:ring-blue-500 sm:text-sm">
+                            </div>
+                        </div>
+                        </div>
+
+                        <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
+                        <label for="about" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">About</label>
+                        <div class="mt-1 sm:col-span-2 sm:mt-0">
+                            <textarea id="about" name="about" rows="3" class="block w-full max-w-lg rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"></textarea>
+                            <p class="mt-2 text-sm text-gray-500">Write a few sentences about yourself.</p>
+                        </div>
+                        </div>
+
+                        <div class="sm:grid sm:grid-cols-3 sm:items-center sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
+                        <label for="photo" class="block text-sm font-medium text-gray-700">Photo</label>
+                        <div class="mt-1 sm:col-span-2 sm:mt-0">
+                            <div class="flex items-center">
+                            <span class="h-12 w-12 overflow-hidden rounded-full bg-gray-100">
+                                <svg class="h-full w-full text-gray-300" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
+                                </svg>
+                            </span>
+                            <button type="button" class="ml-5 rounded-md border border-gray-300 bg-white py-2 px-3 text-sm font-medium leading-4 text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">Change</button>
+                            </div>
+                        </div>
+                        </div>
+
+                        <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
+                        <label for="cover-photo" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Cover photo</label>
+                        <div class="mt-1 sm:col-span-2 sm:mt-0">
+                            <div class="flex max-w-lg justify-center rounded-md border-2 border-dashed border-gray-300 px-6 pt-5 pb-6">
+                            <div class="space-y-1 text-center">
+                                <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
+                                <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                                <div class="flex text-sm text-gray-600">
+                                <label for="file-upload" class="relative cursor-pointer rounded-md bg-white font-medium text-blue-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-blue-500 focus-within:ring-offset-2 hover:text-blue-500">
+                                    <span>Upload a file</span>
+                                    <input id="file-upload" name="file-upload" type="file" class="sr-only">
+                                </label>
+                                <p class="pl-1">or drag and drop</p>
+                                </div>
+                                <p class="text-xs text-gray-500">PNG, JPG, GIF up to 10MB</p>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
                     </div>
-                    <button class="btn h-8 rounded-full border border-slate-200 px-3 text-xs+ font-medium text-primary hover:bg-blue-150 focus:bg-blue-150 active:bg-blue-150/80 dark:border-navy-500 dark:text-accent-light dark:hover:bg-navy-500 dark:focus:bg-navy-500 dark:active:bg-navy-500/90">
-                      Connect
+                    </div>
+
+                </div>
+
+                <div class="pt-5">
+                    <div class="flex justify-end">
+                    <button type="button" class="rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">Cancel</button>
+                    <button type="submit" class="ml-3 inline-flex justify-center rounded-md border border-transparent bg-blue-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">Save</button>
+                    </div>
+                </div>
+                </form>
+
+                <!-- <form class="mb-4">
+                    <div class="mb-4">
+                        <Label :name="__('Title')" id="holiday_title" :hasError="form.errors.title"/>
+                        <BaseInput v-model="form.title" placeholder="Title" id="holiday_title" :hasError="form.errors.title"/>
+                    </div>
+
+
+                    <button :disabled="form.processing"  type="submit"
+                        class="text-white justify-center flex items-center bg-blue-700 hover:bg-blue-800 w-full focus:ring-4 font-medium rounded-lg text-md px-5 py-2.5 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 mt-3">
+                        <Loading v-if="form.processing" :messageShow="false" />
+                        <span v-else>
+                            <svg class="inline w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"/><polyline fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="24" points="216 72.005 104 184 48 128.005"/></svg>
+                            {{ __('Save') }}
+                        </span>
                     </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-
-        <div class="row pt-3 gutters-sm">
-            <div class="col-md-4 d-none d-md-block">
-                <div class="card">
-                    <div class="card-body">
-                        <nav class="nav flex-column nav-pills nav-gap-y-1">
-                            <a href="javascript:void(0)" class="nav-item nav-link has-icon nav-link-faded"
-                                :class="{'active': currentTab == 'brand_info'}" @click="changeTab('brand_info')">
-                                <!-- <RingIcon class="mr-2" /> -->
-                                {{ __('Brand Information') }}
-                            </a>
-                            <a href="javascript:void(0)" class="nav-item nav-link has-icon nav-link-faded"
-                                :class="{'active': currentTab == 'social_media'}" @click="changeTab('social_media')">
-                                <!-- <TwitterIcon class="mr-2" /> -->
-                                {{ __('Social Media') }}
-                            </a>
-                            <a href="javascript:void(0)" class="nav-item nav-link has-icon nav-link-faded"
-                                :class="{'active': currentTab == 'sms'}" @click="changeTab('sms')">
-                                <!-- <PhoneIcon class="mr-2" /> -->
-                                {{ __('SMS') }}
-                            </a>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-8">
-                <!-- <div class=" tab-content">
-                    <div class="tab-pane fade" :class="{'show active': currentTab == 'brand_info'}">
-                        <BrandInfo :setting="setting" />
-                    </div>
-                    <div class="tab-pane fade" :class="{'show active': currentTab == 'social_media'}">
-                        <SocialMedia :setting="setting" />
-                    </div>
-                    <div class="tab-pane fade" :class="{'show active': currentTab == 'sms'}">
-                        <SMS :data="sms_settings"/>
-                    </div>
-                </div> -->
+                </form> -->
             </div>
         </div>
-    </AppLayout>
+    </SettingLayout>
 </template>
 
 <script>
-// import BrandInfo from "@/Shared/Admin/Setting/General/BrandInfo.vue";
-// import SocialMedia from "@/Shared/Admin/Setting/General/SocialMedia.vue";
-// import SMS from "@/Shared/Admin/Setting/General/SMS.vue";
-// import RingIcon from "@/Shared/Icons/RingIcon.vue";
-// import TwitterIcon from "@/Shared/Icons/TwitterIcon.vue";
-// import PhoneIcon from "@/Shared/Icons/PhoneIcon.vue";
+import SettingLayout from "@/Shared/Layout/Setting.vue";
 
 export default {
     props: {
-        setting: Object,
-        sms_settings: Object,
+        // setting: Object,
+        // sms_settings: Object,
     },
     components: {
+        SettingLayout,
+
         // BrandInfo,
         // SocialMedia,
         // SMS,
@@ -212,6 +123,11 @@ export default {
     data() {
         return {
             currentTab: "brand_info",
+
+            form: this.$inertia.form({
+                title: '',
+                color: '#ff0000',
+            }),
         };
     },
     methods: {
