@@ -277,18 +277,6 @@ Route::get('/test2', function () {
     return view('test/test');
 });
 
-Route::get('/home', function () {
-    return inertia('Home');
-})->name('home');
-
-Route::get('/about', function () {
-    return inertia('About');
-})->name('about');
-
-Route::get('/contact', function () {
-    return inertia('Contact');
-})->name('contact');
-
 
 // Route::get('/testt', [TestController::class, 'index']);
 

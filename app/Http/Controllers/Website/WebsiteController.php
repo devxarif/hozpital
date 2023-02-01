@@ -42,6 +42,24 @@ class WebsiteController extends Controller
         return view('website.home', compact('faqs', 'features', 'testimonials', 'plans'));
     }
 
+    public function about()
+    {
+        return view('website.pages.about');
+
+         //     $content = metaContent('about');
+    //     $this->seo()->setTitle($content->title);
+    //     $this->seo()->setDescription($content->description);
+    //     SEOMeta::setKeywords($content->keywords);
+    //     $this->seo()->opengraph()->setUrl(url()->current());
+    //     $this->seo()->opengraph()->addProperty('type', 'website');
+    //     $this->seo()->twitter()->setSite(url()->current());
+    //     $this->seo()->jsonLd()->setType('Website');
+
+    //     $testimonials = Testimonial::all();
+
+    //     return view('website.about', compact('testimonials'));
+    }
+
     public function department()
     {
         return view('website.pages.department');
@@ -99,165 +117,164 @@ class WebsiteController extends Controller
         return view('website.pages.payment');
     }
 
-    public function about()
-    {
-        $content = metaContent('about');
-        $this->seo()->setTitle($content->title);
-        $this->seo()->setDescription($content->description);
-        SEOMeta::setKeywords($content->keywords);
-        $this->seo()->opengraph()->setUrl(url()->current());
-        $this->seo()->opengraph()->addProperty('type', 'website');
-        $this->seo()->twitter()->setSite(url()->current());
-        $this->seo()->jsonLd()->setType('Website');
 
-        $testimonials = Testimonial::all();
+    // public function pricing()
+    // {
+    //     $content = metaContent('pricing');
+    //     $this->seo()->setTitle($content->title);
+    //     $this->seo()->setDescription($content->description);
+    //     SEOMeta::setKeywords($content->keywords);
+    //     $this->seo()->opengraph()->setUrl(url()->current());
+    //     $this->seo()->opengraph()->addProperty('type', 'website');
+    //     $this->seo()->twitter()->setSite(url()->current());
+    //     $this->seo()->jsonLd()->setType('Website');
 
-        return view('website.about', compact('testimonials'));
-    }
+    //     $faqs = Faq::all();
+    //     $plans = Plan::with('planFeatures')->whereStatus(1)->get();
 
-    public function pricing()
-    {
-        $content = metaContent('pricing');
-        $this->seo()->setTitle($content->title);
-        $this->seo()->setDescription($content->description);
-        SEOMeta::setKeywords($content->keywords);
-        $this->seo()->opengraph()->setUrl(url()->current());
-        $this->seo()->opengraph()->addProperty('type', 'website');
-        $this->seo()->twitter()->setSite(url()->current());
-        $this->seo()->jsonLd()->setType('Website');
+    //     return view('website.pricing', compact('faqs', 'plans'));
+    // }
 
-        $faqs = Faq::all();
-        $plans = Plan::with('planFeatures')->whereStatus(1)->get();
+    // public function blog()
+    // {
+    //     $content = metaContent('blog');
+    //     $this->seo()->setTitle($content->title);
+    //     $this->seo()->setDescription($content->description);
+    //     SEOMeta::setKeywords($content->keywords);
+    //     $this->seo()->opengraph()->setUrl(url()->current());
+    //     $this->seo()->opengraph()->addProperty('type', 'website');
+    //     $this->seo()->twitter()->setSite(url()->current());
+    //     $this->seo()->jsonLd()->setType('Website');
 
-        return view('website.pricing', compact('faqs', 'plans'));
-    }
+    //     $posts = Post::select('id', 'title', 'slug', 'thumbnail', 'short_description')
+    //         ->latest()
+    //         ->paginate(20)->withQueryString();
 
-    public function blog()
-    {
-        $content = metaContent('blog');
-        $this->seo()->setTitle($content->title);
-        $this->seo()->setDescription($content->description);
-        SEOMeta::setKeywords($content->keywords);
-        $this->seo()->opengraph()->setUrl(url()->current());
-        $this->seo()->opengraph()->addProperty('type', 'website');
-        $this->seo()->twitter()->setSite(url()->current());
-        $this->seo()->jsonLd()->setType('Website');
+    //     return view('website.blog', compact('posts'));
+    // }
 
-        $posts = Post::select('id', 'title', 'slug', 'thumbnail', 'short_description')
-            ->latest()
-            ->paginate(20)->withQueryString();
+    // public function blogDetails(Post $post)
+    // {
+    //     $this->seo()->setTitle($post->title);
+    //     $this->seo()->setDescription($post->short_description);
+    //     $this->seo()->opengraph()->setUrl(url()->current());
+    //     $this->seo()->opengraph()->addProperty('type', 'website');
+    //     $this->seo()->twitter()->setSite(url()->current());
+    //     $this->seo()->jsonLd()->setType('Website');
 
-        return view('website.blog', compact('posts'));
-    }
+    //     $post->increment('total_views');
+    //     $post->load('user');
+    //     $popular_posts = Post::select('id', 'title', 'slug', 'thumbnail')
+    //         ->latest('total_views')
+    //         ->limit(4)
+    //         ->get();
+    //     $latest_posts = Post::select('id', 'title', 'slug', 'thumbnail')
+    //         ->where('id', '!=', $post->id)
+    //         ->latest()
+    //         ->limit(3)
+    //         ->get();
 
-    public function blogDetails(Post $post)
-    {
-        $this->seo()->setTitle($post->title);
-        $this->seo()->setDescription($post->short_description);
-        $this->seo()->opengraph()->setUrl(url()->current());
-        $this->seo()->opengraph()->addProperty('type', 'website');
-        $this->seo()->twitter()->setSite(url()->current());
-        $this->seo()->jsonLd()->setType('Website');
+    //     return view('website.blog-details', compact(
+    //         'post',
+    //         'popular_posts',
+    //         'latest_posts'
+    //     ));
+    // }
 
-        $post->increment('total_views');
-        $post->load('user');
-        $popular_posts = Post::select('id', 'title', 'slug', 'thumbnail')
-            ->latest('total_views')
-            ->limit(4)
-            ->get();
-        $latest_posts = Post::select('id', 'title', 'slug', 'thumbnail')
-            ->where('id', '!=', $post->id)
-            ->latest()
-            ->limit(3)
-            ->get();
+    // public function contact()
+    // {
+    //     $content = metaContent('contact');
+    //     $this->seo()->setTitle($content->title);
+    //     $this->seo()->setDescription($content->description);
+    //     SEOMeta::setKeywords($content->keywords);
+    //     $this->seo()->opengraph()->setUrl(url()->current());
+    //     $this->seo()->opengraph()->addProperty('type', 'website');
+    //     $this->seo()->twitter()->setSite(url()->current());
+    //     $this->seo()->jsonLd()->setType('Website');
 
-        return view('website.blog-details', compact(
-            'post',
-            'popular_posts',
-            'latest_posts'
-        ));
-    }
+    //     return view('website.contact');
+    // }
 
-    public function contact()
-    {
-        $content = metaContent('contact');
-        $this->seo()->setTitle($content->title);
-        $this->seo()->setDescription($content->description);
-        SEOMeta::setKeywords($content->keywords);
-        $this->seo()->opengraph()->setUrl(url()->current());
-        $this->seo()->opengraph()->addProperty('type', 'website');
-        $this->seo()->twitter()->setSite(url()->current());
-        $this->seo()->jsonLd()->setType('Website');
+    // public function planDetails(Plan $plan)
+    // {
+    //     if ($plan->type == 'free') {
+    //         return $this->switchToFreePlan($plan);
+    //     }
 
-        return view('website.contact');
-    }
+    //     $content = metaContent('pricing');
+    //     $this->seo()->setTitle($content->title);
+    //     $this->seo()->setDescription($content->description);
+    //     SEOMeta::setKeywords($content->keywords);
+    //     $this->seo()->opengraph()->setUrl(url()->current());
+    //     $this->seo()->opengraph()->addProperty('type', 'website');
+    //     $this->seo()->twitter()->setSite(url()->current());
+    //     $this->seo()->jsonLd()->setType('Website');
 
-    public function planDetails(Plan $plan)
-    {
-        if ($plan->type == 'free') {
-            return $this->switchToFreePlan($plan);
-        }
+    //     // session data storing
+    //     session(['plan' => $plan]);
+    //     session(['stripe_amount' => currencyConversion($plan->price) * 100]);
+    //     session(['razor_amount' => currencyConversion(50, null, 'INR', 1) * 100]);
 
-        $content = metaContent('pricing');
-        $this->seo()->setTitle($content->title);
-        $this->seo()->setDescription($content->description);
-        SEOMeta::setKeywords($content->keywords);
-        $this->seo()->opengraph()->setUrl(url()->current());
-        $this->seo()->opengraph()->addProperty('type', 'website');
-        $this->seo()->twitter()->setSite(url()->current());
-        $this->seo()->jsonLd()->setType('Website');
+    //     // midtrans snap token
+    //     if (config('kodebazar.midtrans_active') && config('kodebazar.midtrans_id') && config('kodebazar.midtrans_key') && config('kodebazar.midtrans_secret')) {
+    //         $midtrans_amount = round(currencyConversion($plan->price, null, 'IDR', 1));
+    //         $order_id = uniqid();
 
-        // session data storing
-        session(['plan' => $plan]);
-        session(['stripe_amount' => currencyConversion($plan->price) * 100]);
-        session(['razor_amount' => currencyConversion(50, null, 'INR', 1) * 100]);
+    //         session(['midtrans_amount' => $midtrans_amount]);
+    //         session(['midtrans_order_id' => $order_id]);
 
-        // midtrans snap token
-        if (config('kodebazar.midtrans_active') && config('kodebazar.midtrans_id') && config('kodebazar.midtrans_key') && config('kodebazar.midtrans_secret')) {
-            $midtrans_amount = round(currencyConversion($plan->price, null, 'IDR', 1));
-            $order_id = uniqid();
+    //         $order['order_no'] = $order_id;
+    //         $order['total_price'] = $midtrans_amount;
 
-            session(['midtrans_amount' => $midtrans_amount]);
-            session(['midtrans_order_id' => $order_id]);
+    //         $midtrans = new CreateSnapTokenService($order);
+    //         $snapToken = $midtrans->getSnapToken();
+    //     }
 
-            $order['order_no'] = $order_id;
-            $order['total_price'] = $midtrans_amount;
-
-            $midtrans = new CreateSnapTokenService($order);
-            $snapToken = $midtrans->getSnapToken();
-        }
-
-        return view('website.plan_details', [
-            'plan' => $plan,
-            'mid_token' => $snapToken ?? null,
-        ]);
-    }
+    //     return view('website.plan_details', [
+    //         'plan' => $plan,
+    //         'mid_token' => $snapToken ?? null,
+    //     ]);
+    // }
 
     public function privacyPolicy()
     {
-        $content = metaContent('privacy-policy');
-        $this->seo()->setTitle($content->title);
-        $this->seo()->setDescription($content->description);
-        SEOMeta::setKeywords($content->keywords);
-        $this->seo()->opengraph()->setUrl(url()->current());
-        $this->seo()->opengraph()->addProperty('type', 'website');
-        $this->seo()->twitter()->setSite(url()->current());
-        $this->seo()->jsonLd()->setType('Website');
+        // $content = metaContent('privacy-policy');
+        // $this->seo()->setTitle($content->title);
+        // $this->seo()->setDescription($content->description);
+        // SEOMeta::setKeywords($content->keywords);
+        // $this->seo()->opengraph()->setUrl(url()->current());
+        // $this->seo()->opengraph()->addProperty('type', 'website');
+        // $this->seo()->twitter()->setSite(url()->current());
+        // $this->seo()->jsonLd()->setType('Website');
 
-        return view('website.privacy_policy');
+        return view('website.pages.privacy_policy');
     }
 
     public function termsCondition()
     {
-        $content = metaContent('terms-conditions');
-        $this->seo()->setTitle($content->title);
-        $this->seo()->setDescription($content->description);
-        SEOMeta::setKeywords($content->keywords);
-        $this->seo()->opengraph()->setUrl(url()->current());
-        $this->seo()->opengraph()->addProperty('type', 'website');
-        $this->seo()->twitter()->setSite(url()->current());
-        $this->seo()->jsonLd()->setType('Website');
+        // $content = metaContent('terms-conditions');
+        // $this->seo()->setTitle($content->title);
+        // $this->seo()->setDescription($content->description);
+        // SEOMeta::setKeywords($content->keywords);
+        // $this->seo()->opengraph()->setUrl(url()->current());
+        // $this->seo()->opengraph()->addProperty('type', 'website');
+        // $this->seo()->twitter()->setSite(url()->current());
+        // $this->seo()->jsonLd()->setType('Website');
 
-        return view('website.terms_condition');
+        return view('website.pages.terms_condition');
+    }
+
+    public function appointment()
+    {
+        // $content = metaContent('terms-conditions');
+        // $this->seo()->setTitle($content->title);
+        // $this->seo()->setDescription($content->description);
+        // SEOMeta::setKeywords($content->keywords);
+        // $this->seo()->opengraph()->setUrl(url()->current());
+        // $this->seo()->opengraph()->addProperty('type', 'website');
+        // $this->seo()->twitter()->setSite(url()->current());
+        // $this->seo()->jsonLd()->setType('Website');
+
+        return view('website.pages.appointment');
     }
 }
