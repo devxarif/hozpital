@@ -15,8 +15,9 @@
                             class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">{{ __('Public Key') }}</label>
                         <div class="mt-1 sm:col-span-2 sm:mt-0">
                             <div class="flex max-w-lg rounded-md shadow-sm">
-                                <input type="text"
+                                <input v-model="form.paystack_key" type="text"
                                     class="block w-full min-w-0 flex-1 rounded-md border-gray-300 sm:text-sm">
+                                <ErrorMessage :name="form.errors.paystack_key" />
                             </div>
                         </div>
                     </div>
@@ -25,18 +26,9 @@
                             class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">{{ __('Secret Key') }}</label>
                         <div class="mt-1 sm:col-span-2 sm:mt-0">
                             <div class="flex max-w-lg rounded-md shadow-sm">
-                                <input type="text"
+                                <input v-model="form.paystack_secret" type="text"
                                     class="block w-full min-w-0 flex-1 rounded-md border-gray-300 sm:text-sm">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
-                        <label for="username"
-                            class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">{{ __('Paystack Email') }}</label>
-                        <div class="mt-1 sm:col-span-2 sm:mt-0">
-                            <div class="flex max-w-lg rounded-md shadow-sm">
-                                <input type="text"
-                                    class="block w-full min-w-0 flex-1 rounded-md border-gray-300 sm:text-sm">
+                                <ErrorMessage :name="form.errors.paystack_secret" />
                             </div>
                         </div>
                     </div>
@@ -85,7 +77,6 @@ export default {
             form: this.$inertia.form({
                 paystack_key: this.data.paystack_key,
                 paystack_secret: this.data.paystack_secret,
-                paystack_merchant: this.data.paystack_merchant,
                 paystack_active: this.data.paystack_active ? 1 : 0,
                 provider: "paystack",
             }),
@@ -108,7 +99,6 @@ export default {
             handler() {
                 this.form.paystack_key = this.data.paystack_key;
                 this.form.paystack_secret = this.data.paystack_secret;
-                this.form.paystack_merchant = this.data.paystack_merchant;
                 this.form.paystack_active = this.data.paystack_active ? 1 : 0;
             },
             deep: true,

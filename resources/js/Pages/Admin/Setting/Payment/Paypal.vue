@@ -19,21 +19,21 @@
                                     <div
                                         class="account-switcher relative flex after:absolute candidate after:transition-all duration-300 after:rounded-lg">
                                         <div class="w-full rounded-xl"
-                                            :class="form.request_for == 'me' ? 'bg-blue-500 text-white shadow-md ':'text-gray-800'">
+                                            :class="form.paypal_mode == 'live' ? 'bg-blue-500 text-white shadow-md ':'text-gray-800'">
                                             <input type="radio" id="radio1" name="radio" class="hidden" checked>
                                             <label for="radio1"
                                                 class="relative z-50 rounded-md transition-all duration-300 w-full py-2 gap-2 flex items-center justify-center cursor-pointer"
-                                                @click="changeLeaveRequestFor('me')">
+                                                @click="changeModeType('live')">
                                                 <UserIcon class="h-5 w-5" />
                                                 <span>Live</span>
                                             </label>
                                         </div>
                                         <div class="w-full rounded-xl"
-                                            :class="form.request_for == 'others' ? 'bg-blue-500 text-white shadow-md ':'text-gray-800'">
+                                            :class="form.paypal_mode == 'sandbox' ? 'bg-blue-500 text-white shadow-md ':'text-gray-800'">
                                             <input type="radio" id="radio2" name="radio" class="hidden">
                                             <label for="radio2"
                                                 class="relative z-50 rounded-md transition-all duration-300 flex w-full py-2 gap-2 items-center justify-center cursor-pointer"
-                                                @click="changeLeaveRequestFor('others')">
+                                                @click="changeModeType('sandbox')">
                                                 <UsersIcon class="h-5 w-5" />
                                                 <span>Sandbox</span>
                                             </label>
@@ -49,8 +49,9 @@
                             (Live)</label>
                         <div class="mt-1 sm:col-span-2 sm:mt-0">
                             <div class="flex max-w-lg rounded-md shadow-sm">
-                                <input type="text"
+                                <input v-model="form.paypal_live_client_id" type="text"
                                     class="block w-full min-w-0 flex-1 rounded-md border-gray-300 sm:text-sm">
+                                <ErrorMessage :name="form.errors.paypal_live_client_id" />
                             </div>
                         </div>
                     </div>
@@ -60,8 +61,9 @@
                             (Live)</label>
                         <div class="mt-1 sm:col-span-2 sm:mt-0">
                             <div class="flex max-w-lg rounded-md shadow-sm">
-                                <input type="text"
+                                <input  v-model="form.paypal_live_client_secret" type="text"
                                     class="block w-full min-w-0 flex-1 rounded-md border-gray-300 sm:text-sm">
+                                <ErrorMessage :name="form.errors.paypal_live_client_secret" />
                             </div>
                         </div>
                     </div>
@@ -71,8 +73,9 @@
                             (Sandbox)</label>
                         <div class="mt-1 sm:col-span-2 sm:mt-0">
                             <div class="flex max-w-lg rounded-md shadow-sm">
-                                <input type="text"
+                                <input v-model="form.paypal_sandbox_client_id" type="text"
                                     class="block w-full min-w-0 flex-1 rounded-md border-gray-300 sm:text-sm">
+                                <ErrorMessage :name="form.errors.paypal_sandbox_client_id" />
                             </div>
                         </div>
                     </div>
@@ -82,8 +85,9 @@
                             (Sandbox)</label>
                         <div class="mt-1 sm:col-span-2 sm:mt-0">
                             <div class="flex max-w-lg rounded-md shadow-sm">
-                                <input type="text"
+                                <input v-model="form.paypal_sandbox_client_secret" type="text"
                                     class="block w-full min-w-0 flex-1 rounded-md border-gray-300 sm:text-sm">
+                                 <ErrorMessage :name="form.errors.paypal_sandbox_client_secret" />
                             </div>
                         </div>
                     </div>
@@ -136,7 +140,7 @@ export default {
                 paypal_sandbox_client_secret:
                     this.data.paypal_sandbox_client_secret,
                 paypal_active: this.data.paypal_active ? 1 : 0,
-                paypal_mode: this.data.paypal_mode == "live" ? 1 : 0,
+                paypal_mode: this.data.paypal_mode,
                 provider: "paypal",
             }),
         }
@@ -158,7 +162,12 @@ export default {
         },
         updateData() {
             this.form.put(route("admin.settings.payment.update"));
-        }
+        },
+        changeModeType(type) {
+            if (type != this.form.paypal_mode) {
+                this.form.paypal_mode = type;
+            }
+        },
     },
     watch: {
         data: {
@@ -172,7 +181,7 @@ export default {
                 this.form.paypal_sandbox_client_secret =
                     this.data.paypal_sandbox_client_secret;
                 this.form.paypal_active = this.data.paypal_active ? 1 : 0;
-                this.form.paypal_mode = this.data.paypal_mode == "live" ? 1 : 0;
+                this.form.paypal_mode = this.data.paypal_mode;
             },
             deep: true,
         },

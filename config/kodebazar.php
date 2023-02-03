@@ -22,7 +22,6 @@ return [
 
     'paystack_key' => env('PAYSTACK_PUBLIC_KEY'),
     'paystack_secret' => env('PAYSTACK_SECRET_KEY'),
-    'paystack_merchant' => env('MERCHANT_EMAIL'),
     'paystack_active' => env('PAYSTACK_ACTIVE'),
 
     'flw_public_key' => env('FLW_PUBLIC_KEY'),
@@ -35,6 +34,7 @@ return [
     'im_active' => env('IM_ACTIVE'),
 
     'midtrans_id' => env('MIDTRANS_MERCHAT_ID'),
+    'midtrans_mode' => env('MIDTRANS_CLIENT_KEY'),
     'midtrans_key' => env('MIDTRANS_CLIENT_KEY'),
     'midtrans_secret' => env('MIDTRANS_SERVER_KEY'),
     'midtrans_active' => env('MIDTRANS_ACTIVE'),

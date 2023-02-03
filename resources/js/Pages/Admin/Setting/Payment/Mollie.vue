@@ -15,8 +15,9 @@
                             class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">{{ __('API Key') }}</label>
                         <div class="mt-1 sm:col-span-2 sm:mt-0">
                             <div class="flex max-w-lg rounded-md shadow-sm">
-                                <input type="text"
+                                <input v-model="form.mollie_key" type="text"
                                     class="block w-full min-w-0 flex-1 rounded-md border-gray-300 sm:text-sm">
+                                <ErrorMessage :name="form.errors.mollie_key" />
                             </div>
                         </div>
                     </div>

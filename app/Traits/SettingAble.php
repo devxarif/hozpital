@@ -54,7 +54,6 @@ trait SettingAble
                 return [
                     'paystack_key' => config('kodebazar.paystack_key'),
                     'paystack_secret' => config('kodebazar.paystack_secret'),
-                    'paystack_merchant' => config('kodebazar.paystack_merchant'),
                     'paystack_active' => config('kodebazar.paystack_active'),
                 ];
                 break;
@@ -67,6 +66,7 @@ trait SettingAble
                 break;
             case 'midtrans':
                 return [
+                    'midtrans_mode' => config('kodebazar.midtrans_mode'),
                     'midtrans_id' => config('kodebazar.midtrans_id'),
                     'midtrans_key' => config('kodebazar.midtrans_key'),
                     'midtrans_secret' => config('kodebazar.midtrans_secret'),
@@ -80,32 +80,30 @@ trait SettingAble
     {
         switch ($data->provider) {
             case 'paypal':
-                if ($data->paypal_mode == 1) {
-                    $this->validate($data, [
-                        'paypal_live_client_id' => 'required',
-                        'paypal_live_client_secret' => 'required',
-                    ], [
-                        'paypal_live_client_id.required' => 'The paypal client id field is required',
-                        'paypal_live_client_secret.required' => 'The paypal client Secret field is required',
-                    ]);
-                } else {
-                    $this->validate($data, [
-                        'paypal_sandbox_client_id' => 'required',
-                        'paypal_sandbox_client_secret' => 'required',
-                    ], [
-                        'paypal_sandbox_client_id.required' => 'The paypal client id field is required',
-                        'paypal_sandbox_client_secret.required' => 'The paypal client Secret field is required',
-                    ]);
-                }
+                // if ($data->paypal_mode == 1) {
+                //     $this->validate($data, [
+                //         'paypal_live_client_id' => 'required',
+                //         'paypal_live_client_secret' => 'required',
+                //     ], [
+                //         'paypal_live_client_id.required' => 'The paypal client id field is required',
+                //         'paypal_live_client_secret.required' => 'The paypal client Secret field is required',
+                //     ]);
+                // } else {
+                //     $this->validate($data, [
+                //         'paypal_sandbox_client_id' => 'required',
+                //         'paypal_sandbox_client_secret' => 'required',
+                //     ], [
+                //         'paypal_sandbox_client_id.required' => 'The paypal client id field is required',
+                //         'paypal_sandbox_client_secret.required' => 'The paypal client Secret field is required',
+                //     ]);
+                // }
 
-                if ($data->paypal_mode) {
-                    checkSetEnv('PAYPAL_LIVE_CLIENT_ID', $data->paypal_live_client_id);
-                    checkSetEnv('PAYPAL_LIVE_CLIENT_SECRET', $data->paypal_live_client_secret);
-                } else {
-                    checkSetEnv('PAYPAL_SANDBOX_CLIENT_ID', $data->paypal_sandbox_client_id);
-                    checkSetEnv('PAYPAL_SANDBOX_CLIENT_SECRET', $data->paypal_sandbox_client_secret);
-                }
-                setEnv('PAYPAL_MODE', $data->paypal_mode ? 'live' : 'sandbox');
+                checkSetEnv('PAYPAL_LIVE_CLIENT_ID', $data->paypal_live_client_id);
+                checkSetEnv('PAYPAL_LIVE_CLIENT_SECRET', $data->paypal_live_client_secret);
+                checkSetEnv('PAYPAL_SANDBOX_CLIENT_ID', $data->paypal_sandbox_client_id);
+                checkSetEnv('PAYPAL_SANDBOX_CLIENT_SECRET', $data->paypal_sandbox_client_secret);
+
+                setEnv('PAYPAL_MODE', $data->paypal_mode);
                 setEnv('PAYPAL_ACTIVE', $data->paypal_active ? 'true' : 'false');
                 break;
             case 'stripe':
@@ -156,14 +154,10 @@ trait SettingAble
                 $this->validate($data, [
                     'paystack_key' => 'required',
                     'paystack_secret' => 'required',
-                    'paystack_merchant' => 'required',
-                ], [
-                    'paystack_merchant.required' => 'The paystack merchant email field is required',
                 ]);
 
                 checkSetEnv('PAYSTACK_PUBLIC_KEY', $data->paystack_key);
                 checkSetEnv('PAYSTACK_SECRET_KEY', $data->paystack_secret);
-                checkSetEnv('MERCHANT_EMAIL', $data->paystack_merchant);
                 setEnv('PAYSTACK_ACTIVE', $data->paystack_active ? 'true' : 'false');
                 break;
             case 'instamojo':

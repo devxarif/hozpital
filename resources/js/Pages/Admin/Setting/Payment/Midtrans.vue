@@ -48,48 +48,31 @@
                             class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">{{ __('Merchant ID') }}</label>
                         <div class="mt-1 sm:col-span-2 sm:mt-0">
                             <div class="flex max-w-lg rounded-md shadow-sm">
-                                <input type="text"
+                                <input v-model="form.midtrans_id" type="text"
                                     class="block w-full min-w-0 flex-1 rounded-md border-gray-300 sm:text-sm">
+                                <ErrorMessage :name="form.errors.midtrans_id" />
                             </div>
                         </div>
                     </div>
                     <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
                         <label for="username"
-                            class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">{{ __('Client Key') }} (Live)</label>
+                            class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">{{ __('Client Key') }}</label>
                         <div class="mt-1 sm:col-span-2 sm:mt-0">
                             <div class="flex max-w-lg rounded-md shadow-sm">
-                                <input type="text"
+                                <input v-model="form.midtrans_key" type="text"
                                     class="block w-full min-w-0 flex-1 rounded-md border-gray-300 sm:text-sm">
+                                <ErrorMessage :name="form.errors.midtrans_key" />
                             </div>
                         </div>
                     </div>
                     <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
                         <label for="username"
-                            class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">{{ __('Secret Key') }} (Live)</label>
+                            class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">{{ __('Secret Key') }}</label>
                         <div class="mt-1 sm:col-span-2 sm:mt-0">
                             <div class="flex max-w-lg rounded-md shadow-sm">
-                                <input type="text"
+                                <input v-model="form.midtrans_secret" type="text"
                                     class="block w-full min-w-0 flex-1 rounded-md border-gray-300 sm:text-sm">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
-                        <label for="username"
-                            class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">{{ __('Client Key') }} (Sandbox)</label>
-                        <div class="mt-1 sm:col-span-2 sm:mt-0">
-                            <div class="flex max-w-lg rounded-md shadow-sm">
-                                <input type="text"
-                                    class="block w-full min-w-0 flex-1 rounded-md border-gray-300 sm:text-sm">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
-                        <label for="username"
-                            class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">{{ __('Secret Key') }} (Sandbox)</label>
-                        <div class="mt-1 sm:col-span-2 sm:mt-0">
-                            <div class="flex max-w-lg rounded-md shadow-sm">
-                                <input type="text"
-                                    class="block w-full min-w-0 flex-1 rounded-md border-gray-300 sm:text-sm">
+                                <ErrorMessage :name="form.errors.midtrans_secret" />
                             </div>
                         </div>
                     </div>
@@ -137,11 +120,10 @@ export default {
         return {
             form: this.$inertia.form({
                 midtrans_id: this.data.midtrans_id,
-                midtrans_key_sandbox: this.data.midtrans_key,
-                midtrans_secret_sandbox: this.data.midtrans_secret,
-                midtrans_key_live: this.data.midtrans_key,
-                midtrans_secret_live: this.data.midtrans_secret,
+                midtrans_key: this.data.midtrans_key,
+                midtrans_secret: this.data.midtrans_secret,
                 midtrans_active: this.data.midtrans_active ? 1 : 0,
+                midtrans_mode: this.data.midtrans_mode ? 1 : 0,
                 provider: "midtrans",
             }),
         };
@@ -157,13 +139,18 @@ export default {
         updateData() {
             this.form.put(route("admin.settings.payment.update"));
         },
+        changeModeType(type) {
+            if (type != this.form.midtrans_mode) {
+                this.form.midtrans_mode = type;
+            }
+        }
     },
     watch: {
         data: {
             handler() {
                 this.form.midtrans_id = this.data.midtrans_id;
-                this.form.midtrans_key_sandbox = this.data.midtrans_key;
-                this.form.midtrans_secret_sandbox = this.data.midtrans_secret;
+                this.form.midtrans_key = this.data.midtrans_key;
+                this.form.midtrans_secret = this.data.midtrans_secret;
                 this.form.midtrans_key_live = this.data.midtrans_key;
                 this.form.midtrans_secret_live = this.data.midtrans_secret;
                 this.form.midtrans_active = this.data.midtrans_active ? 1 : 0;
