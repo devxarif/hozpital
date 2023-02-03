@@ -91,7 +91,7 @@ export default {
             }
         },
         updateData() {
-            this.form.put(route("settings.payment.update"));
+            this.form.put(route("admin.settings.payment.update"));
         },
     },
     watch: {

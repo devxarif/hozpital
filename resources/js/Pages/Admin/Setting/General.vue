@@ -5,7 +5,7 @@
     <SettingLayout>
         <div class="grid gap-6 md:grid-cols-1 xl:grid-cols-1 mt-6">
             <div class="bg-white w-full p-6 rounded-lg border border-gray-8 dark:border-gray-700 dark:hover:bg-gray-700">
-                <form class="space-y-8 divide-y divide-gray-200">
+                <form @submit.prevent="updateData" class="space-y-8 divide-y divide-gray-200">
                     <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5">
                         <div class="space-y-6 sm:space-y-5">
                         <div>
@@ -20,7 +20,7 @@
                             <div class="mt-1 sm:col-span-2 sm:mt-0">
                                 <div class="flex max-w-lg rounded-md shadow-sm">
                                 <span class="inline-flex items-center rounded-l-md border border-r-0 border-gray-300 bg-gray-50 px-3 text-gray-500 sm:text-sm">workcation.com/</span>
-                                <input type="text" name="username" id="username" autocomplete="username" class="block w-full min-w-0 flex-1 rounded-none rounded-r-md border-gray-300 focus:border-blue-500 focus:ring-blue-500 sm:text-sm">
+                                <input type="text"   class="block w-full min-w-0 flex-1 rounded-none rounded-r-md border-gray-300 focus:border-blue-500 focus:ring-blue-500 sm:text-sm">
                                 </div>
                             </div>
                             </div>

@@ -110,7 +110,7 @@ export default {
             localStorage.setItem("currentTab", tab);
             this.currentTab = tab;
             let response = await axios.get(
-                route("settings.payment.data", {
+                route("admin.settings.payment.data", {
                     provider: tab,
                 })
             );
