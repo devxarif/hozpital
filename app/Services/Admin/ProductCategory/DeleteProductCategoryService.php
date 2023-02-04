@@ -6,12 +6,10 @@ use App\Models\ProductCategory;
 
 class DeleteProductCategoryService
 {
-    public function execute(object $request, $product_category): ProductCategory
+    public function execute($product_category): ProductCategory
     {
-        $product_category->update([
-            'name' => $request->name,
-            'description' => $request->description,
-        ]);
+        deleteImage($product_category->image);
+        $product_category->delete();
 
         return $product_category;
     }

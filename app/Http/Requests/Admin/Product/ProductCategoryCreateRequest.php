@@ -25,7 +25,8 @@ class ProductCategoryCreateRequest extends FormRequest
     {
         return [
             'name' => 'required|max:255|unique:product_categories,name',
-            'description' => 'nullable'
+            'description' => 'nullable',
+            'image' => 'nullable|image|mimes:png,jpg,jpeg,svg,svg|max:5120',
         ];
     }
 }

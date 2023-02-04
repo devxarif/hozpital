@@ -13,6 +13,11 @@ class CreateProductCategoryService
             'description' => $request->description,
         ]);
 
+        if ($request->hasFile('image') && $request->file('image')->isValid()) {
+            $url = uploadFileToPublic('productcategory/image', $request->image);
+            $product_category->update(['image' => $url]);
+        }
+
         return $product_category;
     }
 }

@@ -7,7 +7,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Product\ProductCategoryCreateRequest;
 use App\Http\Requests\Admin\Product\ProductCategoryUpdateRequest;
 use App\Services\Admin\ProductCategory\CreateProductCategoryService;
+use App\Services\Admin\ProductCategory\DeleteProductCategoryService;
 use App\Services\Admin\ProductCategory\UpdateProductCategoryService;
+use Illuminate\Http\Request;
 
 class ProductCategoryController extends Controller
 {
@@ -18,17 +20,9 @@ class ProductCategoryController extends Controller
      */
     public function index()
     {
-        //
-    }
+        $product_categories = ProductCategory::latest()->paginate(20);
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return inertia('Admin/ProductCategory/Index', compact('product_categories'));
     }
 
     /**
@@ -51,18 +45,7 @@ class ProductCategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(ProductCategory $ProductCategory)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(ProductCategory $ProductCategory)
+    public function show(ProductCategory $productCategory)
     {
         //
     }
@@ -74,9 +57,9 @@ class ProductCategoryController extends Controller
      * @param  ProductCategory $ProductCategory
      * @return \Illuminate\Http\Response
      */
-    public function update(ProductCategoryUpdateRequest $request, ProductCategory $ProductCategory)
+    public function update(ProductCategoryUpdateRequest $request, ProductCategory $productCategory)
     {
-        (new UpdateProductCategoryService())->execute($request, $ProductCategory);
+        (new UpdateProductCategoryService())->execute($request, $productCategory);
 
         $this->flashSuccess('Product Category updated successfully');
         return back();
@@ -88,9 +71,9 @@ class ProductCategoryController extends Controller
      * @param  ProductCategory $ProductCategory
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ProductCategory $ProductCategory)
+    public function destroy(ProductCategory $productCategory)
     {
-        $ProductCategory->delete();
+        (new DeleteProductCategoryService())->execute($productCategory);
 
         $this->flashSuccess('Product Category deleted successfully');
         return back();

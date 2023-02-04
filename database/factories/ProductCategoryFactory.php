@@ -16,6 +16,7 @@ class ProductCategoryFactory extends Factory
     {
         return [
             'name' => fake()->name,
+            'image' => fake()->imageUrl(),
             'description' => fake()->sentence(),
         ];
     }

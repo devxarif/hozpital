@@ -136,7 +136,6 @@
 
                 <slot />
             </main>
-
         </div>
     </div>
 </template>

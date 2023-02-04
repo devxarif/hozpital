@@ -13,6 +13,12 @@ class UpdateProductCategoryService
             'description' => $request->description,
         ]);
 
+        if ($request->hasFile('image') && $request->file('image')->isValid()) {
+            deleteImage($product_category->image);
+            $url = uploadFileToPublic('productcategory/image', $request->image);
+            $product_category->update(['image' => $url]);
+        }
+
         return $product_category;
     }
 }
