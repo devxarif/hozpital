@@ -235,19 +235,22 @@
             <div class="mx-auto max-w-7xl overflow-hidden py-20 px-6 sm:py-24 lg:px-8">
               <nav class="-mb-6 columns-2 sm:flex sm:justify-center sm:space-x-12" aria-label="Footer">
                 <div class="pb-6">
-                  <a href="{{ route('website.about') }}" class="text-sm leading-6 text-gray-600 hover:text-gray-900">About</a>
+                    <a href="{{ route('website.home') }}" class="text-sm leading-6 text-gray-600 hover:text-gray-900">Home</a>
                 </div>
-
                 <div class="pb-6">
-                  <a href="#" class="text-sm leading-6 text-gray-600 hover:text-gray-900">Blog</a>
+                    <a href="{{ route('website.about') }}" class="text-sm leading-6 text-gray-600 hover:text-gray-900">About</a>
                 </div>
-
                 <div class="pb-6">
-                  <a href="{{ route('website.policy') }}" class="text-sm leading-6 text-gray-600 hover:text-gray-900">Privacy Policy</a>
+                    <a href="{{ route('website.about') }}" class="text-sm leading-6 text-gray-600 hover:text-gray-900">Pharmacy & Store</a>
                 </div>
-
                 <div class="pb-6">
-                  <a href="{{ route('website.terms') }}" class="text-sm leading-6 text-gray-600 hover:text-gray-900">Terms & Condition</a>
+                    <a href="{{ route('website.policy') }}" class="text-sm leading-6 text-gray-600 hover:text-gray-900">Privacy Policy</a>
+                </div>
+                <div class="pb-6">
+                    <a href="{{ route('website.terms') }}" class="text-sm leading-6 text-gray-600 hover:text-gray-900">Terms & Condition</a>
+                </div>
+                <div class="pb-6">
+                    <a href="{{ route('website.contact') }}" class="text-sm leading-6 text-gray-600 hover:text-gray-900">Contact</a>
                 </div>
               </nav>
               <div class="mt-10 flex justify-center space-x-10">

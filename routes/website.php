@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 Route::controller(WebsiteController::class)->group(function () {
     Route::get('/', 'home')->name('website.home');
     Route::get('/about', 'about')->name('website.about');
+    Route::get('/contact', 'contact')->name('website.contact');
     Route::get('/terms-conditions', 'termsCondition')->name('website.terms');
     Route::get('/privacy-policy', 'privacyPolicy')->name('website.policy');
     Route::get('/departments', 'department')->name('website.department');

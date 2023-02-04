@@ -60,6 +60,20 @@ class WebsiteController extends Controller
     //     return view('website.about', compact('testimonials'));
     }
 
+    public function contact()
+    {
+        return view('website.pages.contact');
+
+        // $content = metaContent('contact');
+        // $this->seo()->setTitle($content->title);
+        // $this->seo()->setDescription($content->description);
+        // SEOMeta::setKeywords($content->keywords);
+        // $this->seo()->opengraph()->setUrl(url()->current());
+        // $this->seo()->opengraph()->addProperty('type', 'website');
+        // $this->seo()->twitter()->setSite(url()->current());
+        // $this->seo()->jsonLd()->setType('Website');
+    }
+
     public function department()
     {
         return view('website.pages.department');
@@ -179,20 +193,6 @@ class WebsiteController extends Controller
     //         'popular_posts',
     //         'latest_posts'
     //     ));
-    // }
-
-    // public function contact()
-    // {
-    //     $content = metaContent('contact');
-    //     $this->seo()->setTitle($content->title);
-    //     $this->seo()->setDescription($content->description);
-    //     SEOMeta::setKeywords($content->keywords);
-    //     $this->seo()->opengraph()->setUrl(url()->current());
-    //     $this->seo()->opengraph()->addProperty('type', 'website');
-    //     $this->seo()->twitter()->setSite(url()->current());
-    //     $this->seo()->jsonLd()->setType('Website');
-
-    //     return view('website.contact');
     // }
 
     // public function planDetails(Plan $plan)
