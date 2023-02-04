@@ -41,7 +41,7 @@
                   <!-- Pharmacy  -->
                   <br>
                   <h3 class="mt-5 px-3 text-sm font-medium text-gray-500" id="projects-headline">Pharmacy</h3>
-                  <NavItem title="Medicine" :href="route('dashboard')" :active="false">
+                  <NavItem title="Product" :href="route('dashboard')" :active="false">
                       <template v-slot:icon>
                           <font-awesome-icon icon="fa-solid fa-home" class="mr-3 flex-shrink-0 h-5 w-5"/>
                       </template>

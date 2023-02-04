@@ -21,6 +21,7 @@ use Database\Seeders\ExpenseSeeder;
 use Database\Seeders\FeatureSeeder;
 use Database\Seeders\HolidaySeeder;
 use Database\Seeders\InvoiceSeeder;
+use Database\Seeders\ProductSeeder;
 use Database\Seeders\SettingSeeder;
 use Database\Seeders\BedFloorSeeder;
 use Database\Seeders\CalendarSeeder;
@@ -28,7 +29,6 @@ use Database\Seeders\CurrencySeeder;
 use Database\Seeders\EmployeeSeeder;
 use Database\Seeders\IndustrySeeder;
 use Database\Seeders\LanguageSeeder;
-use Database\Seeders\MedicineSeeder;
 use Database\Seeders\TeamSizeSeeder;
 use Database\Seeders\BloodBankSeeder;
 use Database\Seeders\AccountantSeeder;
@@ -50,10 +50,11 @@ use Database\Seeders\BloodDonationSeeder;
 use Database\Seeders\ContactMessageSeeder;
 use Database\Seeders\HolidayRequestSeeder;
 use Database\Seeders\IncomeCategorySeeder;
+use Database\Seeders\ProductGallerySeeder;
 use Database\Seeders\RolePermissionSeeder;
 use Database\Seeders\ExpenseCategorySeeder;
+use Database\Seeders\ProductCategorySeeder;
 use Database\Seeders\DiagnosticReportSeeder;
-use Database\Seeders\MedicineCategorySeeder;
 use Database\Seeders\DepartmentEmployeeSeeder;
 use Database\Seeders\DiagnosticReportTypeSeeder;
 
@@ -124,10 +125,10 @@ class DatabaseSeeder extends Seeder
             IncomeCategorySeeder::class,
             IncomeSeeder::class,
 
-            // Medicine & prescription
+            // Product & prescription
             ManufactureSeeder::class,
-            MedicineCategorySeeder::class,
-            MedicineSeeder::class,
+            ProductCategorySeeder::class,
+            ProductSeeder::class,
 
             // Leave & Holidays
             CountrySeeder::class,

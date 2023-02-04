@@ -1,33 +1,29 @@
 <?php
 
-namespace App\Services\Admin\Medicine;
+namespace App\Services\Admin\Product;
 
-use App\Models\Medicine;
+use App\Models\Product;
 
-/**
- * Class UpdateMedicineService
- * @package App\Services
- */
-class UpdateMedicineService
+class UpdateProductService
 {
-    public function execute(object $request, $medicine): Medicine
+    public function execute(object $request, $product): Product
     {
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
-            $url = uploadFileToPublic('medicine/image', $request->image);
+            $url = uploadFileToPublic('product/image', $request->image);
         }
 
-        $medicine->update([
-            'medicine_category_id' => $request->medicine_category,
+        $product->update([
+            'product_category_id' => $request->product_category,
             'manufacture_id' => $request->manufacture,
             'name' => $request->name,
             'buying_price' => $request->buying_price ?? 0,
             'selling_price' => $request->selling_price,
-            'image' => $url ??  $medicine->image,
+            'image' => $url ??  $product->image,
             'quantity' => $request->quantity,
             'description' => $request->description,
             'expire_date' => $request->expire_date,
         ]);
 
-        return $medicine;
+        return $product;
     }
 }

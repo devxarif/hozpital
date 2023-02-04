@@ -3,13 +3,10 @@
 namespace Database\Factories;
 
 use App\Models\Manufacture;
-use App\Models\MedicineCategory;
+use App\Models\ProductCategory;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Medicine>
- */
-class MedicineFactory extends Factory
+class ProductFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -19,7 +16,7 @@ class MedicineFactory extends Factory
     public function definition()
     {
         return [
-            'medicine_category_id' => MedicineCategory::inRandomOrder()->value('id'),
+            'product_category_id' => ProductCategory::inRandomOrder()->value('id'),
             'manufacture_id' => Manufacture::inRandomOrder()->value('id'),
             'name' => fake()->name,
             'buying_price' => rand(100, 200),

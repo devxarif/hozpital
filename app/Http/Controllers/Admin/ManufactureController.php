@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Manufacture;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\Medicine\ManufactureSaveRequest;
+use App\Http\Requests\Admin\Product\ManufactureSaveRequest;
 use App\Services\Admin\Manufacture\CreateManufactureService;
 use App\Services\Admin\Manufacture\UpdateManufactureService;
 

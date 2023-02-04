@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Admin\Medicine;
+namespace App\Http\Requests\Admin\Product;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class MedicineCategoryUpdateRequest extends FormRequest
+class ManufactureSaveRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,11 @@ class MedicineCategoryUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => "required|max:255|unique:medicine_categories,name,{$this->medicineCategory->id}",
-            'description' => 'nullable'
+            'name' => 'required|max:255',
+            'email' => 'required|email',
+            'phone' => 'required',
+            'address' => 'nullable',
+            'note' => 'nullable',
         ];
     }
 }

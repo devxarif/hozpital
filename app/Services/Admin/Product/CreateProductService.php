@@ -1,19 +1,19 @@
 <?php
 
-namespace App\Services\Admin\Medicine;
+namespace App\Services\Admin\Product;
 
-use App\Models\Medicine;
+use App\Models\Product;
 
-class CreateMedicineService
+class CreateProductService
 {
-    public function execute(object $request): Medicine
+    public function execute(object $request): Product
     {
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
-            $url = uploadFileToPublic('medicine/image', $request->image);
+            $url = uploadFileToPublic('product/image', $request->image);
         }
 
-        $medicine = Medicine::create([
-            'medicine_category_id' => $request->medicine_category,
+        $product = Product::create([
+            'product_category_id' => $request->product_category,
             'manufacture_id' => $request->manufacture,
             'name' => $request->name,
             'buying_price' => $request->buying_price ?? 0,
@@ -24,6 +24,6 @@ class CreateMedicineService
             'expire_date' => $request->expire_date ?? null,
         ]);
 
-        return $medicine;
+        return $product;
     }
 }

@@ -111,18 +111,17 @@
                                         <Label id="send_email" :name="__('Email Address')" :hasError="testMailForm.errors.type"/>
                                     </div>
                                     <div class="col-span-6 sm:col-span-3">
-                                        <BaseInput v-model="testMailForm.email" placeholder="Title" id="send_email" :hasError="testMailForm.errors.email"/>
+                                        <BaseInput v-model="testMailForm.email" placeholder="Email Address" id="send_email" :hasError="testMailForm.errors.email"/>
                                     </div>
                                     <div class="col-span-6 sm:col-span-3">
                                         <button :disabled="testMailForm.processing" type="submit"
                                             class="text-white justify-center flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 font-medium rounded-lg text-md px-5 py-2.5 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
                                             <Loading v-if="testMailForm.processing" :messageShow="false" />
                                             <span v-else>
-                                                <svg class="inline w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
-                                                    <rect width="256" height="256" fill="none" />
-                                                    <polyline fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                                        stroke-width="24" points="216 72.005 104 184 48 128.005" /></svg>
-                                                        {{ __('Send Email') }}
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"  class="inline w-5 h-5 mr-2">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
+                                                </svg>
+                                                {{ __('Send') }}
                                             </span>
                                         </button>
                                     </div>

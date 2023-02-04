@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Medicine;
+use App\Models\Product;
 use App\Http\Controllers\Controller;
-use App\Services\Admin\Medicine\CreateMedicineService;
-use App\Services\Admin\Medicine\UpdateMedicineService;
-use App\Http\Requests\Admin\Medicine\MedicineCreateRequest;
-use App\Http\Requests\Admin\Medicine\MedicineUpdateRequest;
+use App\Services\Admin\Product\CreateProductService;
+use App\Services\Admin\Product\UpdateProductService;
+use App\Http\Requests\Admin\Product\ProductCreateRequest;
+use App\Http\Requests\Admin\Product\ProductUpdateRequest;
 
-class MedicineController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,14 +34,14 @@ class MedicineController extends Controller
      /**
      * Store a newly created resource in storage.
      *
-     * @param  MedicineCreateRequest $request
+     * @param  ProductCreateRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(MedicineCreateRequest $request)
+    public function store(ProductCreateRequest $request)
     {
-        (new CreateMedicineService())->execute($request);
+        (new CreateProductService())->execute($request);
 
-        $this->flashSuccess('Medicine created successfully');
+        $this->flashSuccess('Product created successfully');
         return back();
     }
 
@@ -51,7 +51,7 @@ class MedicineController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Medicine $medicine)
+    public function show(Product $product)
     {
         //
     }
@@ -62,7 +62,7 @@ class MedicineController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Medicine $medicine)
+    public function edit(Product $product)
     {
         //
     }
@@ -70,29 +70,29 @@ class MedicineController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  MedicineUpdateRequest $request
-     * @param  Medicine $medicine
+     * @param  ProductUpdateRequest $request
+     * @param  Product $product
      * @return \Illuminate\Http\Response
      */
-    public function update(MedicineUpdateRequest $request, Medicine $medicine)
+    public function update(ProductUpdateRequest $request, Product $product)
     {
-        (new UpdateMedicineService())->execute($request, $medicine);
+        (new UpdateProductService())->execute($request, $product);
 
-        $this->flashSuccess('Medicine updated successfully');
+        $this->flashSuccess('Product updated successfully');
         return back();
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Medicine $medicine
+     * @param  Product $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Medicine $medicine)
+    public function destroy(Product $product)
     {
-        $medicine->delete();
+        $product->delete();
 
-        $this->flashSuccess('Medicine deleted successfully');
+        $this->flashSuccess('Product deleted successfully');
         return back();
     }
 }

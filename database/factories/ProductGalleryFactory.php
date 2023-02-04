@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\MedicineCategory>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\ProductGallery>
  */
-class MedicineCategoryFactory extends Factory
+class ProductGalleryFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,8 +17,7 @@ class MedicineCategoryFactory extends Factory
     public function definition()
     {
         return [
-            'name' => fake()->name,
-            'description' => fake()->sentence(),
+
         ];
     }
 }

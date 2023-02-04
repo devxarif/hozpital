@@ -11,7 +11,7 @@ use App\Http\Controllers\Admin\HolidayController;
 use App\Http\Controllers\Admin\PatientController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\BedFloorController;
-use App\Http\Controllers\Admin\MedicineController;
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\BloodBankController;
 use App\Http\Controllers\Admin\LeaveTypeController;
 use App\Http\Controllers\Admin\AccountantController;
@@ -25,7 +25,7 @@ use App\Http\Controllers\Admin\LaboratoristController;
 use App\Http\Controllers\Admin\LeaveRequestController;
 use App\Http\Controllers\Admin\ReceptionistController;
 use App\Http\Controllers\Admin\BloodDonationController;
-use App\Http\Controllers\Admin\MedicineCategoryController;
+use App\Http\Controllers\Admin\ProductCategoryController;
 
 // Route::middleware(['auth', 'check.admin.role'])->prefix('admin')->group(function () {
 Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function () {
@@ -53,9 +53,9 @@ Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function () 
     // Accountant Routes
     Route::resource('accountant', AccountantController::class);
 
-    // Medicine
-    Route::resource('medicine', MedicineController::class);
-    Route::resource('medicineCategory', MedicineCategoryController::class);
+    // product
+    Route::resource('product', ProductController::class);
+    Route::resource('productCategory', ProductCategoryController::class);
     Route::resource('manufacture', ManufactureController::class);
 
     // Bed
