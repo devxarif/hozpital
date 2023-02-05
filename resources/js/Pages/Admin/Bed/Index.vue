@@ -195,9 +195,14 @@
                     <h2 class="my-1 font-bold text-lg tracking-tight text-gray-900 dark:text-white">Bed Number: {{ bed.number }}</h2>
                     <h6 class="my-1 font-bold tracking-tight text-gray-900 dark:text-white" v-if="bed.floor">{{ bed.floor?.name ?? '' }}</h6>
                     <h6 class="my-1 font-bold tracking-tight text-gray-900 dark:text-white" v-if="bed.charge"><span class="text-sm">Charge</span>: $ {{ bed.charge }}</h6>
-                    <span class="text-xs font-semibold px-2 py-1 rounded bg-green-100 text-green-800 dark:bg-green-200 dark:text-green-900 capitalize">
+                    <!-- <span class="text-xs font-semibold px-2 py-1 rounded bg-green-100 text-green-800 dark:bg-green-200 dark:text-green-900 capitalize">
                         {{ bed.status }}
-                    </span>
+                    </span> -->
+                    <div class="mt-5">
+                        <span :class="bed.status == 'alloted' ? 'bg-red-500':'bg-green-500'" class="text-white text-sm font-medium mr-2 px-3 py-2 rounded-full dark:bg-green-900 dark:text-green-300 capitalize">
+                            {{ bed.status }}
+                        </span>
+                    </div>
                     <p class="my-3 font-normal text-gray-700 dark:text-gray-400">
                         {{ bed.description }}
                     </p>

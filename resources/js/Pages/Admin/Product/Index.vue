@@ -189,7 +189,7 @@
                     <p v-if="product.quantity"><b>Quantity:</b> {{ product.quantity }}</p>
                     <p v-if="product.expire_date"><b>Expire Date:</b> {{ formateDate(product.expire_date, 'MMMM D') }}</p>
                     <div class="mt-5">
-                        <span :class="product.type == 'medicine' ? 'bg-green-500':'bg-cyan-500'" class="bg-green-500 text-white text-sm font-medium mr-2 px-3 py-2 rounded-full dark:bg-green-900 dark:text-green-300 capitalize">
+                        <span :class="product.type == 'medicine' ? 'bg-green-500':'bg-cyan-500'" class="text-white text-sm font-medium mr-2 px-3 py-2 rounded-full dark:bg-green-900 dark:text-green-300 capitalize">
                             {{ product.type }}
                         </span>
                     </div>
