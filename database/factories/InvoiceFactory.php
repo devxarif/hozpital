@@ -24,7 +24,7 @@ class InvoiceFactory extends Factory
             'invoice_number' => uniqid('in_'),
             'patient_id' => Patient::inRandomOrder()->value('id'),
             'title' => fake()->name,
-            'creation_date' => $this->faker->dateTimeBetween('-7 day' ),
+            'date' => $this->faker->dateTimeBetween('-7 day' ),
             'due_date' => $this->faker->dateTimeBetween('-1 day' ),
             'status' => Arr::random(['paid','unpaid']),
         ];

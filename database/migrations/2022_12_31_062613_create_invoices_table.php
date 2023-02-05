@@ -19,10 +19,10 @@ return new class extends Migration
             $table->string('invoice_number');
             $table->foreignIdFor(Patient::class)->nullable()->constrained()->cascadeOnDelete();
             $table->string('title');
-            $table->date('creation_date');
-            $table->date('due_date');
+            $table->date('date');
             $table->enum('status', ['paid','unpaid']);
             $table->float('vat_percentage')->nullable();
+            $table->float('total_amount')->nullable();
             $table->float('discount_amount')->nullable();
             $table->timestamps();
         });

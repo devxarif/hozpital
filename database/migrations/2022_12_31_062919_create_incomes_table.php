@@ -17,13 +17,13 @@ return new class extends Migration
     {
         Schema::create('incomes', function (Blueprint $table) {
             $table->id();
-            $table->string('invoice_number')->nullable();
-            $table->foreignIdFor(Invoice::class)->nullable()->constrained()->cascadeOnDelete();
-            $table->string('payment_method')->nullable();
-            $table->foreignIdFor(IncomeCategory::class)->constrained()->cascadeOnDelete();
-            $table->float('amount')->default(0);
             $table->string('title');
+            $table->foreignIdFor(IncomeCategory::class)->constrained()->cascadeOnDelete();
+            $table->string('invoice_number')->nullable();
+            $table->float('amount')->default(0);
+            $table->date('date')->nullable();
             $table->text('description')->nullable();
+            $table->string('attachment')->nullable();
             $table->timestamps();
         });
     }
