@@ -15,7 +15,7 @@ class CreateProductService
         $product = Product::create([
             'product_category_id' => $request->product_category,
             'manufacture_id' => $request->manufacture,
-            'product_type' => $request->product_type,
+            'type' => $request->type,
             'name' => $request->name,
             'buying_price' => $request->buying_price ?? 0,
             'selling_price' => $request->selling_price,

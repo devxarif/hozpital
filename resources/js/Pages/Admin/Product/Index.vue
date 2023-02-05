@@ -75,7 +75,7 @@
                 </Menu>
                 <BaseButton @click="showCreateDrawer = true" class="text-white bg-blue-600 hover:bg-blue-700 px-4 py-2.5">
                     <font-awesome-icon icon="fa-solid fa-plus" class="h-4 w-4 mr-2"/>
-                   {{ __('Add Department') }}
+                   {{ __('Add Product') }}
                 </BaseButton>
             </div>
         </div>
@@ -85,7 +85,17 @@
                 <div>
                     <label for="keyword" class="block text-sm font-medium text-gray-700">{{ __('Search') }}</label>
                     <div class="mt-1">
-                        <input v-model="filterForm.keyword" type="text" id="keyword" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm py-2.5" placeholder="Department name">
+                        <input v-model="filterForm.keyword" type="text" id="keyword" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm py-2.5" placeholder="Product name">
+                    </div>
+                </div>
+                <div>
+                    <label for="admin_product_category" class="block text-sm font-medium text-gray-700">{{ __('Product Category') }}</label>
+                    <div class="mt-1">
+                        <Multiselect id="admin_product_category" :close-on-select="true" :can-clear="false"
+                            :searchable="true" v-model="filterForm.product_category" :create-option="false"
+                            placeholder="Product Category" :options="product_categories.map(item => ({
+                                value: item.id, label: item.name
+                            }))"  />
                     </div>
                 </div>
                 <div>
@@ -97,11 +107,38 @@
             </div>
         </transition>
 
+        <div>
+            <div class="hidden sm:block">
+                <div class="border-b border-gray-200">
+                    <nav class="-mb-px flex space-x-8" aria-label="Tabs">
+                        <button type="button" @click="changeTab('all')" :class="['whitespace-nowrap flex py-4 px-1 border-b-2 font-medium text-sm focus:outline-none', filterForm.type == 'all' ? 'border-blue-500 text-blue-600':'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-200' ]">
+                            All
+                            <span class="hidden ml-3 py-0.5 px-2.5 rounded-full text-xs font-medium md:inline-block" :class="filterForm.type == 'all' ? 'bg-blue-100 text-blue-600':'bg-gray-100 text-gray-900'">
+                                {{ count_request.all }}
+                            </span>
+                        </button>
+                        <button type="button" @click="changeTab('medicine')" :class="['whitespace-nowrap flex py-4 px-1 border-b-2 font-medium text-sm focus:outline-none', filterForm.type == 'medicine' ? 'border-blue-500 text-blue-600':'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-200' ]">
+                            Medicine
+                            <span class="hidden ml-3 py-0.5 px-2.5 rounded-full text-xs font-medium md:inline-block" :class="filterForm.type == 'medicine' ? 'bg-blue-100 text-blue-600':'bg-gray-100 text-gray-900'">
+                                {{ count_request.medicine }}
+                            </span>
+                        </button>
+                        <button type="button" @click="changeTab('others')" :class="['whitespace-nowrap flex py-4 px-1 border-b-2 font-medium text-sm focus:outline-none', filterForm.type == 'others' ? 'border-blue-500 text-blue-600':'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-200' ]">
+                            Others
+                            <span class="hidden ml-3 py-0.5 px-2.5 rounded-full text-xs font-medium md:inline-block" :class="filterForm.type == 'others' ? 'bg-blue-100 text-blue-600':'bg-gray-100 text-gray-900'">
+                                {{ count_request.others }}
+                            </span>
+                        </button>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
         <!-- Body Part  -->
        <CardSkeleton :show="loading" v-if="loading"/>
 
        <template v-else-if="!loading && products && products.data.length">
-           <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+           <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-4 mt-5">
                <span v-for="product in products.data" :key="product.id" class="block p-6 bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
                    <div class="flex flex-wrap justify-between items-start">
                        <div class="relative mb-5">
@@ -142,11 +179,20 @@
                                </MenuItems>
                            </transition>
                        </Menu>
-                   </div>
-                   <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ product.name }}</h2>
-                   <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                       {{ product.description }}
-                   </p>
+                    </div>
+                    <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ product.name }}</h2>
+                    <p v-if="product.product_category && product.product_category.name"><b>Category:</b> {{ product.product_category.name }}</p>
+                    <div class="flex justify-between">
+                        <p v-if="product.buying_price"><b>Buying Price:</b> {{ product.buying_price }}</p>
+                        <p v-if="product.selling_price"><b>Selling Price:</b> {{ product.selling_price }}</p>
+                    </div>
+                    <p v-if="product.quantity"><b>Quantity:</b> {{ product.quantity }}</p>
+                    <p v-if="product.expire_date"><b>Expire Date:</b> {{ formateDate(product.expire_date, 'MMMM D') }}</p>
+                    <div class="mt-5">
+                        <span :class="product.type == 'medicine' ? 'bg-green-500':'bg-cyan-500'" class="bg-green-500 text-white text-sm font-medium mr-2 px-3 py-2 rounded-full dark:bg-green-900 dark:text-green-300 capitalize">
+                            {{ product.type }}
+                        </span>
+                    </div>
                </span>
            </div>
            <Pagination :data="products" v-if="products && products.data.length && products.total > 20" class="my-5"/>
@@ -160,7 +206,7 @@
        </NothingFound>
 
         <CreateProductCategory :show="showCreateDrawer" @close-drawer="showCreateDrawer = false"/>
-        <EditProductCategory :show="showEditDrawer" @close-drawer="showEditDrawer = false" :category="editProductCategory"/>
+        <EditProductCategory v-if="showEditDrawer" :show="showEditDrawer" @close-drawer="showEditDrawer = false" :product="editProduct"/>
     </AppLayout>
 </template>
 
@@ -180,6 +226,14 @@ export default {
             type: Array,
             default: () => []
         },
+        product_categories:{
+            type: Array,
+            default: () => []
+        },
+        count_request:{
+            type: Object,
+            default: () => {}
+        },
         filter:{
             type: Array,
             default: () => []
@@ -189,13 +243,15 @@ export default {
         return {
             showCreateDrawer: false,
             showEditDrawer: false,
-            editProductCategory: '',
+            editProduct: '',
 
             showFilter: false,
             loading: false,
 
             filterForm: this.$inertia.form({
                 keyword: this.filter.keyword,
+                type: this.filter.type || 'all',
+                product_category: this.filter.product_category,
             }),
         }
     },
@@ -211,17 +267,21 @@ export default {
                 confirmButtonText: "Yes, delete it!",
             }).then((result) => {
                 if (result.isConfirmed) {
-                    this.$inertia.delete(route("admin.productCategory.destroy", id));
+                    this.$inertia.delete(route("admin.product.destroy", id));
                 }
             });
         },
-        editData(department){
+        async changeTab(tab) {
+            this.filterForm.type = tab;
+            this.filterForm.get(route("admin.product.index"));
+        },
+        editData(product){
             this.showEditDrawer = true
-            this.editProductCategory = department
+            this.editProduct = product
         },
         filterData(){
             this.loading = true
-            this.filterForm.get(route('admin.productCategory.index'), {
+            this.filterForm.get(route('admin.product.index'), {
                 onSuccess: () => {
                     this.loading = false
                 },
@@ -233,11 +293,11 @@ export default {
         },
         toggleFilter() {
             this.showFilter = !this.showFilter;
-            localStorage.setItem("adminDepartment", this.showFilter);
+            localStorage.setItem("adminProduct", this.showFilter);
         },
     },
     created() {
-        this.showFilter = localStorage.getItem("adminDepartment") == "true" ? true: false;
+        this.showFilter = localStorage.getItem("adminProduct") == "true" ? true: false;
     },
 };
 </script>

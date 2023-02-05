@@ -5,7 +5,7 @@
             <div class="absolute inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
             <div class="pointer-events-none absolute right-0 inset-y-0 flex max-w-full ltr:pl-10 rtl:pr-10"
                 v-click-outside="()=> $emit('close-drawer')">
-                <div class="pointer-events-auto w-screen max-w-xs lg:max-w-4xl">
+                <div class="pointer-events-auto w-screen max-w-xs lg:max-w-6xl">
                     <div class="flex h-full flex-col bg-white shadow-xl">
                         <div class="flex-1 overflow-y-auto py-6 px-4 sm:px-6">
                             <div class="flex items-start justify-between rtl:flex-row-reverse mb-5">
@@ -29,17 +29,15 @@
                                     <Label :name="__('Product Type')" id="productCategory_name" :hasError="form.errors.name"/>
                                     <div class="w-full bg-gray-200 p-2 rounded-lg">
                                         <div class="account-switcher relative flex after:absolute candidate after:transition-all duration-300 after:rounded-lg">
-                                            <div class="w-full rounded-xl" :class="form.product_type == 'medicine' ? 'bg-gray-800 text-white shadow':'text-gray-800'">
+                                            <div class="w-full rounded-xl" :class="form.type == 'medicine' ? 'bg-gray-800 text-white shadow':'text-gray-800'">
                                                 <input type="radio" id="radio1" name="radio" class="hidden" checked>
                                                 <label for="radio1" class="relative z-50 rounded-md transition-all duration-300 w-full py-3 gap-2 flex items-center justify-center cursor-pointer" @click="changeProductType('medicine')">
-                                                    <UserIcon class="h-5 w-5"/>
                                                     <span>Medicine</span>
                                                 </label>
                                             </div>
-                                            <div class="w-full rounded-xl" :class="form.product_type == 'others' ? 'bg-gray-800 text-white shadow':'text-gray-800'">
+                                            <div class="w-full rounded-xl" :class="form.type == 'others' ? 'bg-gray-800 text-white shadow':'text-gray-800'">
                                                 <input type="radio" id="radio2" name="radio" class="hidden">
                                                 <label for="radio2" class="relative z-50 rounded-md transition-all duration-300 flex w-full py-3 gap-2 items-center justify-center cursor-pointer" @click="changeProductType('others')">
-                                                    <UsersIcon class="h-5 w-5"/>
                                                     <span>Others</span>
                                                 </label>
                                             </div>
@@ -116,13 +114,9 @@
                                     </div>
                                 </div>
                                 <div class="mb-4">
-                                    <Label :name="__('Description')" id="productCategory_description" :hasError="form.errors.description" :required="false"/>
-                                    <BaseTextarea v-model="form.description" placeholder="Description" id="productCategory_description" :hasError="form.errors.description"/>
-                                </div>
-                                <div class="mb-4">
-                                    <Label :name="__('Image')" id="productCategory_image" :hasError="form.errors.image" :required="false"/>
+                                    <Label :name="__('Thumnail')" id="productCategory_image" :hasError="form.errors.image" :required="false"/>
                                     <div class="flex justify-center items-center w-full" v-if="!previewImage">
-                                        <label for="dropzone-file" class="flex flex-col justify-center items-center w-full h-60 bg-gray-50 rounded-lg border-2 border-gray-300 border-dashed cursor-pointer dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+                                        <label for="dropzone-file" class="flex flex-col justify-center items-center w-full h-40 bg-gray-50 rounded-lg border-2 border-gray-300 border-dashed cursor-pointer dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
                                             <div class="flex flex-col justify-center items-center pt-5 pb-6">
                                                 <input id="dropzone-file" type="file" class="hidden" @change="onFileChange" accept="image/svg+xml, image/jpeg, image/jpg/ image/png">
                                                 <svg aria-hidden="true" class="mb-3 w-10 h-10 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
@@ -138,6 +132,10 @@
                                         </button>
                                     </div>
                                     <ErrorMessage :name="form.errors.image"/>
+                                </div>
+                                <div class="mb-4">
+                                    <Label :name="__('Description')" id="productCategory_description" :hasError="form.errors.description" :required="false"/>
+                                    <QuillEditor theme="snow" v-model:content="form.description" contentType="html" class="h-60 rounded-md"/>
                                 </div>
                                 <button :disabled="form.processing"  type="submit"
                                     class="text-white justify-center flex items-center bg-blue-700 hover:bg-blue-800 w-full focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 mb-4 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 mt-3">
@@ -161,122 +159,107 @@
 import Datepicker from "@vuepic/vue-datepicker";
 import "@vuepic/vue-datepicker/dist/main.css";
 import dayjs from "dayjs";
+import { QuillEditor } from '@vueup/vue-quill'
+import '@vueup/vue-quill/dist/vue-quill.snow.css';
 
-    export default {
-        props: {
-            show: {
-                type: Boolean,
-                default: false
+export default {
+    props: {
+        show: {
+            type: Boolean,
+            default: false
+        }
+    },
+    components:{
+        Datepicker,
+        QuillEditor
+    },
+    data() {
+        return {
+            form: this.$inertia.form({
+                type: 'medicine',
+                product_category: '',
+                manufacture: '',
+                buying_price: 0,
+                selling_price: 0,
+                quantity: 0,
+                expire_date: '',
+                name: '',
+                description: "",
+                image: '',
+            }),
+
+            previewImage: null,
+            product_categories: [],
+            manufactures: [],
+        };
+    },
+    methods: {
+        onFileChange(e) {
+            const file = e.target.files[0];
+            this.form.image = file
+            this.previewImage = URL.createObjectURL(file);
+        },
+        removeImage(){
+            this.previewImage = null;
+            this.form.image = null
+        },
+        saveData() {
+            this.form.post(route("admin.product.store"), {
+                onSuccess: () => {
+                    this.form.reset(),
+                    this.removeImage()
+                    this.$emit('close-drawer')
+                },
+            });
+        },
+        handleExpiredDate(date) {
+            const formatTime = dayjs(date).format("YYYY-MM-DD");
+            this.form.expire_date = formatTime;
+        },
+        changeProductType(type) {
+            if (type != this.form.type) {
+                this.form.type = type;
             }
         },
-        components:{
-            Datepicker
+        async loadProductCategories(){
+            let response = await axios.get(route("fetch.productCategories"))
+            this.product_categories = response.data
         },
-        data() {
-            return {
-                form: this.$inertia.form({
-                    product_type: 'medicine',
-                    product_category: '',
-                    manufacture: '',
-                    buying_price: 0,
-                    selling_price: 0,
-                    quantity: 0,
-                    expire_date: '',
-                    name: '',
-                    description: "",
-                    image: '',
-                }),
-
-                previewImage: null,
-                product_categories: [],
-                manufactures: [],
-                showSellingPriceFieldError: false,
-                showBuyingPriceFieldError: false,
-                showQuantityFieldError: false,
-            };
+        async loadManufactures(){
+            let response = await axios.get(route("fetch.manufactures"))
+            this.manufactures = response.data
         },
-        methods: {
-            onFileChange(e) {
-                const file = e.target.files[0];
-                this.form.image = file
-                this.previewImage = URL.createObjectURL(file);
-            },
-            removeImage(){
-                this.previewImage = null;
-                this.form.image = null
-            },
-            saveData() {
-                this.form.post(route("admin.product.store"), {
-                    onSuccess: () => {
-                        this.form.reset(),
-                        this.removeImage()
-                        this.$emit('close-drawer')
-                    },
-                });
-            },
-            handleExpiredDate(date) {
-                const formatTime = dayjs(date).format("YYYY-MM-DD");
-                this.form.expire_date = formatTime;
-            },
-            statusChange(event) {
-                this.form.status = event.target.checked;
-            },
-            customLookStatusChange(event) {
-                this.form.custom_theme_lookup = event.target.checked;
-            },
-            changeProductType(type) {
-                if (type != this.form.product_type) {
-                    this.form.product_type = type;
+    },
+    watch: {
+        'form.buying_price': {
+            handler(val) {
+                if (val < 0) {
+                    this.form.buying_price = 0
                 }
             },
-            async loadProductCategories(){
-                let response = await axios.get(route("fetch.productCategories"))
-                this.product_categories = response.data
-            },
-            async loadManufactures(){
-                let response = await axios.get(route("fetch.manufactures"))
-                this.manufactures = response.data
-            },
+            deep: true,
         },
-        watch: {
-            'form.buying_price': {
-                handler(val) {
-                    if (val < 0) {
-                        this.showSellingPriceFieldError = true
-                        this.form.buying_price = 0
-                    }
-
-                    this.showSellingPriceFieldError = false
-                },
-                deep: true,
+        'form.selling_price': {
+            handler(val) {
+                if (val < 0) {
+                    this.form.selling_price = 0
+                }
             },
-            'form.selling_price': {
-                handler(val) {
-                    if (val < 0) {
-                        this.showBuyingPriceFieldError = true
-                        this.form.selling_price = 0
-                    }
-
-                    this.showBuyingPriceFieldError = false
-                },
-                deep: true,
-            },
-            'form.quantity': {
-                handler(val) {
-                    if (val < 0) {
-                        this.showQuantityFieldError = true
-                        this.form.quantity = 0
-                    }
-
-                    this.showQuantityFieldError = false
-                },
-                deep: true,
-            },
+            deep: true,
         },
-        mounted() {
-            this.checkPagePermission('admin')
-            this.loadProductCategories()
-            this.loadManufactures()
-        }
-    };
+        'form.quantity': {
+            handler(val) {
+                if (val < 0) {
+                    this.form.quantity = 0
+                }
+            },
+            deep: true,
+        },
+    },
+    mounted() {
+        this.checkPagePermission('admin')
+        this.loadProductCategories()
+        this.loadManufactures()
+    }
+};
 </script>

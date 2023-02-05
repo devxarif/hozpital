@@ -10,4 +10,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class ProductCategory extends Model
 {
     use HasFactory, Sluggable, HasImageAccessor;
+
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
 }

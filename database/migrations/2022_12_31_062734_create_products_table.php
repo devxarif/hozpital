@@ -19,7 +19,7 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(ProductCategory::class)->constrained()->cascadeOnDelete();
             $table->foreignIdFor(Manufacture::class)->constrained()->cascadeOnDelete();
-            $table->enum('product_type',['medicine', 'others']);
+            $table->enum('type',['medicine', 'others']);
             $table->string('name');
             $table->string('slug');
             $table->float('buying_price')->default(0);

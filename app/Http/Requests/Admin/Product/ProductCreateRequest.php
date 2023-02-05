@@ -26,7 +26,7 @@ class ProductCreateRequest extends FormRequest
         return [
             'product_category' => 'required|exists:product_categories,id',
             'manufacture' => 'required|exists:manufactures,id',
-            'product_type' => 'required' ,
+            'type' => 'required' ,
             'name' => 'required|max:255|unique:products,name' ,
             'buying_price' => 'nullable',
             'selling_price' => 'required',
