@@ -221,6 +221,8 @@ Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function () 
 
 Route::controller(GlobalController::class)->group(function(){
     Route::get('fetch/departments', 'fetchDepartments')->name('fetch.departments');
+    Route::get('fetch/productCategories', 'fetchProductCategories')->name('fetch.productCategories');
+    Route::get('fetch/manufactures', 'fetchManufactures')->name('fetch.manufactures');
     Route::get('fetch/bedTypes', 'fetchBedTypes')->name('fetch.bedTypes');
     Route::get('fetch/bedFloors', 'fetchBedFloors')->name('fetch.bedFloors');
     Route::get('fetch/bloodDonors', 'bloodDonors')->name('fetch.bloodDonors');

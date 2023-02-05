@@ -18,17 +18,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
-    }
+        $products = Product::latest()->paginate(20);
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return inertia('Admin/Product/Index', compact('products'));
     }
 
      /**

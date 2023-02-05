@@ -14,11 +14,21 @@ use App\Models\Organization;
 use Illuminate\Http\Request;
 use App\Models\ContactMessage;
 use App\Http\Controllers\Controller;
+use App\Models\Manufacture;
+use App\Models\ProductCategory;
 
 class GlobalController extends Controller
 {
     public function fetchDepartments(){
         return Department::select('id','name')->latest()->get();
+    }
+
+    public function fetchProductCategories(){
+        return ProductCategory::latest()->get(['id','name']);
+    }
+
+    public function fetchManufactures(){
+        return Manufacture::latest()->get(['id','name','email','phone']);
     }
 
     public function fetchBedTypes(){
