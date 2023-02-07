@@ -25,8 +25,10 @@ class InvoiceFactory extends Factory
             'patient_id' => Patient::inRandomOrder()->value('id'),
             'title' => fake()->name,
             'date' => $this->faker->dateTimeBetween('-7 day' ),
-            'due_date' => $this->faker->dateTimeBetween('-1 day' ),
             'status' => Arr::random(['paid','unpaid']),
+            'vat_percentage' => rand(1,10),
+            'total_amount' => rand(200,500),
+            'discount_amount' => rand(1,50),
         ];
     }
 }

@@ -6,12 +6,14 @@ use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\Admin\NurseController;
 use App\Http\Controllers\Admin\DoctorController;
 use App\Http\Controllers\Admin\GlobalController;
+use App\Http\Controllers\Admin\IncomeController;
 use App\Http\Controllers\Admin\BedTypeController;
+use App\Http\Controllers\Admin\ExpenseController;
 use App\Http\Controllers\Admin\HolidayController;
 use App\Http\Controllers\Admin\PatientController;
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\BedFloorController;
-use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\BloodBankController;
 use App\Http\Controllers\Admin\LeaveTypeController;
 use App\Http\Controllers\Admin\AccountantController;
@@ -25,6 +27,8 @@ use App\Http\Controllers\Admin\LaboratoristController;
 use App\Http\Controllers\Admin\LeaveRequestController;
 use App\Http\Controllers\Admin\ReceptionistController;
 use App\Http\Controllers\Admin\BloodDonationController;
+use App\Http\Controllers\Admin\IncomeCategoryController;
+use App\Http\Controllers\Admin\ExpenseCategoryController;
 use App\Http\Controllers\Admin\ProductCategoryController;
 
 // Route::middleware(['auth', 'check.admin.role'])->prefix('admin')->group(function () {
@@ -83,6 +87,14 @@ Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function () 
 
     // Announcement
     Route::resource('announcement', AnnouncementController::class);
+
+    // Income
+    Route::resource('income', IncomeController::class);
+    Route::resource('incomeCategory', IncomeCategoryController::class);
+
+    // Expense
+    Route::resource('expense', ExpenseController::class);
+    Route::resource('expenseCategory', ExpenseCategoryController::class);
 
 
     // Route::resource('doctor', DoctorController::class)->withoutMiddleware('auth');

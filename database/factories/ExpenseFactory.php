@@ -19,16 +19,14 @@ class ExpenseFactory extends Factory
      */
     public function definition()
     {
-        $invoice = Invoice::inRandomOrder()->first();
-
         return [
-            'invoice_id' => $invoice->id,
-            'invoice_number' => $invoice->invoice_number,
-            'expense_category_id' => ExpenseCategory::inRandomOrder()->value('id'),
-            'payment_method' => Arr::random(['stripe','paypal']),
-            'amount' => rand(200, 1000),
             'title' => fake()->name,
+            'expense_category_id' => ExpenseCategory::inRandomOrder()->value('id'),
+            'invoice_number' => uniqid('inv_'),
+            'amount' => rand(200, 1000),
+            'date' => fake()->dateTime(),
             'description' => fake()->paragraph,
+            'attachment' => 'admin/img/sample.pdf',
         ];
     }
 }
