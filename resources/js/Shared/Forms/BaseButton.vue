@@ -3,7 +3,7 @@
     <button v-if="as == 'button'" :type="type" class="w-1/2 text-sm text-center sm:w-auto focus:outline-none rounded-lg font-medium inline-flex items-center justify-center" :class="class" :disabled="disabled">
         <slot/>
     </button>
-    <Link v-else :href="href" :type="type" class="w-1/2 text-sm text-center sm:w-auto focus:outline-none rounded-lg font-medium inline-flex items-center justify-center" :class="class" >
+    <Link v-else :href="href" class="w-1/2 text-sm text-center sm:w-auto focus:outline-none rounded-lg font-medium inline-flex items-center justify-center" :class="class" >
         <slot/>
     </Link>
 </template>

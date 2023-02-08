@@ -238,6 +238,8 @@ Route::controller(GlobalController::class)->group(function(){
     Route::get('fetch/bedTypes', 'fetchBedTypes')->name('fetch.bedTypes');
     Route::get('fetch/bedFloors', 'fetchBedFloors')->name('fetch.bedFloors');
     Route::get('fetch/bloodDonors', 'bloodDonors')->name('fetch.bloodDonors');
+    Route::get('fetch/incomeCategories', 'incomeCategories')->name('fetch.incomeCategories');
+    Route::get('fetch/expenseCategories', 'expenseCategories')->name('fetch.expenseCategories');
     Route::get('fetch/leaveTypesBalance', 'fetchLeaveTypesBalance')->name('fetch.leaveTypesBalance');
     Route::get('/diff/between/days', 'diffBetweenDays')->name('difference.between.days');
 });

@@ -43,6 +43,7 @@ InertiaProgress.init({
 import AppLayout from "@/Shared/Layout/App.vue";
 import ErrorMessage from "@/Shared/Forms/ErrorMessage.vue";
 import Loading from "@/Shared/Loading.vue";
+import GlobalLoader from "@/Shared/GlobalLoader.vue";
 import Label from "@/Shared/Forms/Label.vue";
 import BaseInput from "@/Shared/Forms/BaseInput.vue";
 import BaseSelect from "@/Shared/Forms/BaseSelect.vue";
@@ -79,6 +80,7 @@ createInertiaApp({
                 AppLayout,
                 ErrorMessage,
                 Loading,
+                GlobalLoader,
                 NothingFound,
                 Label,
                 BaseInput,
