@@ -10,7 +10,7 @@
                             <div class="flex-1 overflow-y-auto py-6 px-4 sm:px-6">
                                 <div class="flex items-start justify-between rtl:flex-row-reverse mb-5">
                                     <h2 class="text-2xl tracking-wide font-bold text-gray-900">
-                                        {{ __('Department Update') }}
+                                        {{ __('Income Update') }}
                                     </h2>
 
                                     <div class="ml-3 flex h-7 items-center">
@@ -26,43 +26,60 @@
                                     </div>
                                 </div>
                                 <form class="mb-4" @submit.prevent="saveData">
-                                <div class="mb-4">
-                                    <Label :name="__('Name')" id="department_name" :hasError="form.errors.name"/>
-                                    <BaseInput v-model="form.name" placeholder="Name" id="department_name" :hasError="form.errors.name"/>
-                                </div>
-                                <div class="mb-4">
-                                    <Label :name="__('Description')" id="department_description" :hasError="form.errors.description" :required="false"/>
-                                    <BaseTextarea v-model="form.description" placeholder="Description" id="department_description" :hasError="form.errors.description"/>
-                                </div>
-                                <div class="mb-4">
-                                    <Label :name="__('Image')" id="department_image" :hasError="form.errors.image" :required="false"/>
-                                    <div class="flex justify-center items-center w-full" v-if="!previewImage">
-                                        <label for="dropzone-file" class="flex flex-col justify-center items-center w-full h-60 bg-gray-50 rounded-lg border-2 border-gray-300 border-dashed cursor-pointer dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
-                                            <div class="flex flex-col justify-center items-center pt-5 pb-6">
-                                                <input id="dropzone-file" type="file" class="hidden" @change="onFileChange" accept="image/svg+xml, image/jpeg, image/jpg/ image/png">
-                                                <svg aria-hidden="true" class="mb-3 w-10 h-10 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
-                                                <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to upload image</span></p>
-                                                <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or JPEG (MAX. 5MB)</p>
-                                            </div>
-                                        </label>
+                                    <div class="mb-4">
+                                        <Label :name="__('Income Category')" id="income_category_name" :hasError="form.errors.income_category"/>
+                                        <div class="flex items-center">
+                                            <Multiselect id="admin_income_category" :close-on-select="true" :can-clear="true"
+                                            :searchable="true" v-model="form.income_category" :create-option="false"
+                                            placeholder="Select Income Category" :options="income_categories.map(item => ({
+                                                value: item.id, label: item.name
+                                            }))"  />
+                                            <button @click="showDepartmentModal()" type="button" class="inline-flex items-center rounded-full border border-transparent bg-blue-600 p-1 text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ml-2">
+                                                <font-awesome-icon icon="fa-solid fa-plus" class="h-5 w-5"/>
+                                            </button>
+                                        </div>
+                                        <ErrorMessage :name="form.errors.income_category"/>
                                     </div>
-                                    <div class="relative" v-if="previewImage">
-                                        <img :src="previewImage" class="h-60 w-full rounded-lg object-cover" alt="image description">
-                                        <button @click="removeImage" type="button" class="absolute top-2 right-2 text-white bg-red-700 focus:ring-4 focus:ring-red-300 rounded-lg px-5 py-2.5 dark:bg-red-600 focus:outline-none dark:focus:ring-red-800">
-                                            <font-awesome-icon icon="fa-solid fa-trash-can" class=" h-5 w-5"/>
-                                        </button>
+                                    <div class="grid grid-cols-2 gap-2">
+                                        <div class="mb-4">
+                                            <Label :name="__('Title')" id="income_name" :hasError="form.errors.title"/>
+                                            <BaseInput v-model="form.title" placeholder="Title" id="income_name" :hasError="form.errors.title"/>
+                                        </div>
+                                        <div class="mb-4">
+                                            <Label :name="__('Invoice Number')" id="income_invoice_number" :hasError="form.errors.invoice_number" :required="false"/>
+                                            <BaseInput v-model="form.invoice_number" placeholder="Invoice Number" id="income_invoice_number" :hasError="form.errors.invoice_number"/>
+                                        </div>
                                     </div>
-                                    <ErrorMessage :name="form.errors.image"/>
-                                </div>
-                                <button :disabled="form.processing"  type="submit"
-                                    class="text-white justify-center flex items-center bg-blue-700 hover:bg-blue-800 w-full focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-md px-5 py-2.5 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 mt-3">
-                                    <Loading v-if="form.processing" :messageShow="false" />
-                                    <span v-else>
-                                        <svg class="inline w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"/><polyline fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="24" points="216 72.005 104 184 48 128.005"/></svg>
-                                        {{ __('Save') }}
-                                    </span>
-                                </button>
-                            </form>
+                                    <div class="grid grid-cols-2 gap-2">
+                                        <div class="mb-4">
+                                            <Label :name="__('Amount')" id="income_amount" :hasError="form.errors.amount"/>
+                                            <BaseInput v-model="form.amount" placeholder="Amount" id="income_amount" :hasError="form.errors.amount"/>
+                                        </div>
+                                        <div class="mb-4">
+                                            <Label :name="__('Date')" id="income_date" :hasError="form.errors.date" :required="false"/>
+                                            <Datepicker v-model="form.date" :enableTimePicker="false" class="border-none bg-gray-50 border text-md rounded-lg block w-full p-1 dark:bg-gray-700 dark:placeholder-gray-400 dark:text-white border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 dark:border-gray-600  dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                @update:modelValue="handleDate" :placeholder="__('Select Date')" :default-value="new Date()" />
+                                            <ErrorMessage :name="form.errors.date"/>
+                                        </div>
+                                    </div>
+                                    <div class="mb-4">
+                                        <Label :name="__('Description')" id="expense_description" :hasError="form.errors.description" :required="false"/>
+                                        <BaseTextarea v-model="form.description" placeholder="Description" id="expense_description" :hasError="form.errors.description"/>
+                                    </div>
+                                    <div class="mb-4">
+                                        <Label :name="__('Attachment')" id="attachment_image" :hasError="form.errors.attachment" :required="false"/>
+                                        <BaseInput v-model="form.attachment" @change="onFileChange" className="text-sm p-0" placeholder="Name" id="income_amount" :hasError="form.errors.attachment" type="file"/>
+                                        <ErrorMessage :name="form.errors.attachment"/>
+                                    </div>
+                                    <button :disabled="form.processing"  type="submit"
+                                        class="text-white justify-center flex items-center bg-blue-700 hover:bg-blue-800 w-full focus:ring-4 font-medium rounded-lg text-md px-5 py-2.5 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 mt-3">
+                                        <Loading v-if="form.processing" :messageShow="false" />
+                                        <span v-else>
+                                            <svg class="inline w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"/><polyline fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="24" points="216 72.005 104 184 48 128.005"/></svg>
+                                            {{ __('Save') }}
+                                        </span>
+                                    </button>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -73,9 +90,13 @@
 </template>
 
 <script>
+import Datepicker from "@vuepic/vue-datepicker";
+import "@vuepic/vue-datepicker/dist/main.css";
+import dayjs from "dayjs";
+
 export default {
     props: {
-        department: {
+        income: {
             type: Object,
             required: true,
         },
@@ -84,24 +105,34 @@ export default {
             default: false
         }
     },
+    components:{
+        Datepicker
+    },
     data() {
         return {
             form: this.$inertia.form({
-                name: this.department.name,
-                description: this.department.description,
-                image: '',
+                title: this.income.title,
+                income_category: this.income.income_category_id,
+                invoice_number: this.income.invoice_number,
+                amount: this.income.amount,
+                date: this.income.date,
+                description: this.income.description,
+                attachment: '',
                 _method: 'PUT'
             }),
 
-            previewImage: this.department.image,
+            income_categories: []
         };
     },
     watch: {
-        department: {
+        income: {
             handler() {
-                this.form.name = this.department.name
-                this.form.description = this.department.description
-                this.previewImage = this.department.image
+                this.form.title = this.income.title
+                this.form.income_category = this.income.income_category_id
+                this.form.invoice_number = this.income.invoice_number
+                this.form.amount = this.income.amount
+                this.form.date = this.income.date
+                this.form.description = this.income.description
             },
             deep: true,
         },
@@ -109,25 +140,28 @@ export default {
     methods: {
         onFileChange(e) {
             const file = e.target.files[0];
-            this.form.image = file
-            this.previewImage = URL.createObjectURL(file);
+            this.form.attachment = file
         },
-        removeImage(){
-            this.previewImage = null;
-            this.form.image = null
+        handleDate(date) {
+            const formatTime = dayjs(date).format("YYYY-MM-DD");
+            this.form.date = formatTime;
         },
         saveData() {
-            this.form.post(route("admin.department.update", this.department.id), {
+            this.form.post(route("admin.income.update", this.income.id), {
                 onSuccess: () => {
                     this.form.reset(),
-                    this.removeImage()
                     this.$emit('close-drawer')
                 },
             });
+        },
+        async loadIncomeCategories(){
+            let response = await axios.get(route("fetch.incomeCategories"));
+            this.income_categories = response.data;
         }
     },
     mounted(){
         this.checkPagePermission('admin')
+        this.loadIncomeCategories()
     }
 };
 </script>

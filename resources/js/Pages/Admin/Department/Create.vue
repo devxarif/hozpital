@@ -108,13 +108,7 @@
                         this.$emit('close-drawer')
                     },
                 });
-            },
-            statusChange(event) {
-                this.form.status = event.target.checked;
-            },
-            customLookStatusChange(event) {
-                this.form.custom_theme_lookup = event.target.checked;
-            },
+            }
         },
         mounted() {
             this.checkPagePermission('admin')

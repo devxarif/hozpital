@@ -74,6 +74,10 @@
                         </MenuItems>
                     </transition>
                 </Menu>
+                <BaseButton as="link" :href="route('admin.incomeCategory.index')" class="text-white bg-green-600 hover:bg-green-700 px-4 py-2.5">
+                    <font-awesome-icon icon="fa-solid fa-plus" class="h-4 w-4 mr-2"/>
+                   {{ __('Income Category') }}
+                </BaseButton>
                 <BaseButton @click="showCreateDrawer = true" class="text-white bg-blue-600 hover:bg-blue-700 px-4 py-2.5">
                     <font-awesome-icon icon="fa-solid fa-plus" class="h-4 w-4 mr-2"/>
                    {{ __('Add Income') }}
@@ -160,20 +164,20 @@
             </BaseButton>
        </NothingFound>
 
-        <!-- <CreateDepartment :show="showCreateDrawer" @close-drawer="showCreateDrawer = false"/>
-        <EditDepartment :show="showEditDrawer" @close-drawer="showEditDrawer = false" :department="editDepartment"/> -->
+        <CreateIncome :show="showCreateDrawer" @close-drawer="showCreateDrawer = false"/>
+        <EditIncome :show="showEditDrawer" @close-drawer="showEditDrawer = false" :income="editIncome"/>
     </AppLayout>
 </template>
 
 <script>
-// import CreateDepartment from "./Create.vue";
-// import EditDepartment from "./Edit.vue";
+import CreateIncome from "./Create.vue";
+import EditIncome from "./Edit.vue";
 import CardSkeleton from "@/Shared/Skeleton/CardSkeleton.vue";
 
 export default {
     components: {
-        // CreateDepartment,
-        // EditDepartment,
+        CreateIncome,
+        EditIncome,
         CardSkeleton,
     },
     props: {
@@ -190,7 +194,7 @@ export default {
         return {
             showCreateDrawer: false,
             showEditDrawer: false,
-            editDepartment: '',
+            editIncome: '',
 
             showFilter: false,
             loading: false,
@@ -212,13 +216,13 @@ export default {
                 confirmButtonText: "Yes, delete it!",
             }).then((result) => {
                 if (result.isConfirmed) {
-                    this.$inertia.delete(route("admin.department.destroy", id));
+                    this.$inertia.delete(route("admin.income.destroy", id));
                 }
             });
         },
-        editData(department){
+        editData(income){
             this.showEditDrawer = true
-            this.editDepartment = department
+            this.editIncome = income
         },
         filterData(){
             this.loading = true

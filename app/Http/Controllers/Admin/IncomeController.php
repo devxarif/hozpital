@@ -3,7 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Income\IncomeCreateRequest;
+use App\Http\Requests\Admin\Income\IncomeUpdateRequest;
 use App\Models\Income;
+use App\Services\Admin\Income\CreateIncomeService;
+use App\Services\Admin\Income\UpdateIncomeService;
 use Illuminate\Http\Request;
 
 class IncomeController extends Controller
@@ -34,43 +38,43 @@ class IncomeController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param LeaveTypeCreateRequest  $request
+     * @param IncomeCreateRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(LeaveTypeCreateRequest $request)
+    public function store(IncomeCreateRequest $request)
     {
-        (new CreateLeaveTypeService())->execute($request);
+        (new CreateIncomeService())->execute($request);
 
-        $this->flashSuccess('Leave type created successfully!');
+        $this->flashSuccess('Income created successfully!');
         return back();
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  LeaveTypeUpdateRequest $request
-     * @param  LeaveType $leaveType
+     * @param  IncomeUpdateRequest $request
+     * @param  Income $income
      * @return \Illuminate\Http\Response
      */
-    public function update(LeaveTypeUpdateRequest $request, LeaveType $leaveType)
+    public function update(IncomeUpdateRequest $request, Income $income)
     {
-        (new UpdateLeaveTypeService())->execute($request, $leaveType);
+        (new UpdateIncomeService())->execute($request, $income);
 
-        $this->flashSuccess('Leave type updated successfully!');
+        $this->flashSuccess('Income updated successfully!');
         return back();
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  LeaveType $leaveType
+     * @param  Income $income
      * @return \Illuminate\Http\Response
      */
-    public function destroy(LeaveType $leaveType)
+    public function destroy(Income $income)
     {
-        $leaveType->delete();
+        $income->delete();
 
-        $this->flashSuccess('Leave type deleted successfully!');
+        $this->flashSuccess('Income deleted successfully!');
         return back();
     }
 }

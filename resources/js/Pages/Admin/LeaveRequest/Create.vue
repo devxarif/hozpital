@@ -234,9 +234,6 @@ export default {
                 },
             });
         },
-        statusChange(event) {
-            this.form.status = event.target.checked;
-        },
         leaveTypeChange(event) {
             this.form.leave_type = event.target.value;
         },
