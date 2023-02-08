@@ -14,6 +14,7 @@ use App\Models\Organization;
 use Illuminate\Http\Request;
 use App\Models\ContactMessage;
 use App\Http\Controllers\Controller;
+use App\Models\IncomeCategory;
 use App\Models\Manufacture;
 use App\Models\ProductCategory;
 
@@ -41,6 +42,14 @@ class GlobalController extends Controller
 
     public function bloodDonors(){
         return BloodDonor::latest()->get(['id','name','blood_group','email']);
+    }
+
+    public function incomeCategories(){
+        return IncomeCategory::latest()->get(['id','name']);
+    }
+
+    public function expenseCategories(){
+        return IncomeCategory::latest()->get(['id','name']);
     }
 
     public function fetchLeaveTypesBalance(Request $request){
