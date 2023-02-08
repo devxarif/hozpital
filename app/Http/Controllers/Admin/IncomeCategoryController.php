@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\IncomeCategory;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Income\IncomeCategoryCreateRequest;
+use App\Http\Requests\Admin\Income\IncomeCategoryUpdateRequest;
+use App\Services\Admin\IncomeCategory\CreateIncomeCategoryService;
+use App\Services\Admin\IncomeCategory\UpdateIncomeCategoryService;
 
 class IncomeCategoryController extends Controller
 {
@@ -14,16 +19,16 @@ class IncomeCategoryController extends Controller
      */
     public function index(Request $request)
     {
-        $query = LeaveType::query();
+        $query = IncomeCategory::query();
 
         if($request->has('keyword') && $request->filled('keyword')){
-            $query->whereLike(['name'],  $request->keyword);
+            $query->whereLike('name', $request->keyword);
         }
 
-        $leave_types = $query->latest()->paginate(20)->withQueryString();
+        $income_categories = $query->latest()->paginate(20)->withQueryString();
 
-        return inertia('Admin/LeaveType/Index', [
-            'leave_types' => $leave_types,
+        return inertia('Admin/IncomeCategory/Index', [
+            'income_categories' => $income_categories,
             'filter' => $request
         ]);
     }
@@ -31,43 +36,43 @@ class IncomeCategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param LeaveTypeCreateRequest  $request
+     * @param IncomeCategoryCreateRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(LeaveTypeCreateRequest $request)
+    public function store(IncomeCategoryCreateRequest $request)
     {
-        (new CreateLeaveTypeService())->execute($request);
+        (new CreateIncomeCategoryService())->execute($request);
 
-        $this->flashSuccess('Leave type created successfully!');
+        $this->flashSuccess('Income category created successfully!');
         return back();
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  LeaveTypeUpdateRequest $request
-     * @param  LeaveType $leaveType
+     * @param  IncomeCategoryUpdateRequest $request
+     * @param  IncomeCategory $incomeCategory
      * @return \Illuminate\Http\Response
      */
-    public function update(LeaveTypeUpdateRequest $request, LeaveType $leaveType)
+    public function update(IncomeCategoryUpdateRequest $request, IncomeCategory $incomeCategory)
     {
-        (new UpdateLeaveTypeService())->execute($request, $leaveType);
+        (new UpdateIncomeCategoryService())->execute($request, $incomeCategory);
 
-        $this->flashSuccess('Leave type updated successfully!');
+        $this->flashSuccess('Income category updated successfully!');
         return back();
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  LeaveType $leaveType
+     * @param  IncomeCategory $incomeCategory
      * @return \Illuminate\Http\Response
      */
-    public function destroy(LeaveType $leaveType)
+    public function destroy(IncomeCategory $incomeCategory)
     {
-        $leaveType->delete();
+        $incomeCategory->delete();
 
-        $this->flashSuccess('Leave type deleted successfully!');
+        $this->flashSuccess('Income category deleted successfully!');
         return back();
     }
 }
