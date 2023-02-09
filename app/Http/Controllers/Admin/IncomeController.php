@@ -27,7 +27,7 @@ class IncomeController extends Controller
 
         // $leave_types = $query->latest()->paginate(20)->withQueryString();
 
-        $incomes = Income::latest()->paginate(20)->withQueryString();
+        $incomes = Income::with('incomeCategory:id,name')->latest()->paginate(20)->withQueryString();
 
         return inertia('Admin/Income/Index', [
             'incomes' => $incomes,

@@ -102,18 +102,23 @@
             </div>
         </transition>
 
+               <!-- $table->string('title');
+            $table->foreignIdFor(IncomeCategory::class)->constrained()->cascadeOnDelete();
+            $table->string('invoice_number')->nullable();
+            $table->float('amount')->default(0);
+            $table->date('date')->nullable();
+            $table->text('description')->nullable();
+            $table->string('attachment')->nullable(); -->
+
         <!-- Body Part  -->
        <CardSkeleton :show="loading" v-if="loading"/>
 
        <template v-else-if="!loading && incomes && incomes.data.length">
            <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-               <span v-for="department in incomes.data" :key="department.id" class="block p-6 bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+               <span v-for="income in incomes.data" :key="income.id" class="block p-6 bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
                    <div class="flex flex-wrap justify-between items-start">
-                       <div class="relative mb-5">
-                           <span>
-                               <img class="w-16 h-16 rounded object-cover" alt="Figma logo" :src="department.image">
-                           </span>
-                       </div>
+                        <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ income.title }}</h2>
+
                        <Menu as="div" class="relative inline-block text-left">
                            <div>
                                <MenuButton class="flex items-center rounded-full text-gray-400 hover:text-gray-600 focus:outline-none">
@@ -126,19 +131,19 @@
                                <MenuItems class="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                                    <div class="py-1 text-sm">
                                    <MenuItem v-slot="{ active }">
-                                       <a href="javascript:void(0)" @click.prevent="editData(department)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
+                                       <a href="javascript:void(0)" @click.prevent="editData(income)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
                                            <font-awesome-icon icon="fa-solid fa-pen-to-square" class="mr-3 h-5 w-5 text-blue-500 group-hover:text-blue-500"/>
                                            Edit
                                        </a>
                                    </MenuItem>
                                    <MenuItem v-slot="{ active }">
-                                       <a href="javascript:void(0)" @click.prevent="editData(department)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
+                                       <a href="javascript:void(0)" @click.prevent="editData(income)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
                                            <font-awesome-icon icon="fa-solid fa-eye" class="mr-3 h-5 w-5 text-sky-500 group-hover:text-sky-500"/>
                                            Details
                                        </a>
                                    </MenuItem>
                                    <MenuItem v-slot="{ active }">
-                                       <a href="javascript:void(0)" @click.prevent="deleteData(department.id)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
+                                       <a href="javascript:void(0)" @click.prevent="deleteData(income.id)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
                                            <font-awesome-icon icon="fa-solid fa-trash-can" class="mr-3 h-5 w-5 text-red-500 group-hover:text-red-500"/>
                                            Delete
                                        </a>
@@ -148,9 +153,18 @@
                            </transition>
                        </Menu>
                    </div>
-                   <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ department.name }}</h2>
+
+                   <div class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                        <p v-if="income.income_category && income.income_category.name"><b>Category</b>: <span class="capitalize">{{ income.income_category?.name ?? '' }}</span></p>
+                        <p v-if="income.invoice_number"><b>Invoice No</b>: #{{ income.invoice_number }}</p>
+                        <p v-if="income.amount"><b>Amount</b>: {{ income.amount }}</p>
+                        <p v-if="income.date"><b>Date</b>: {{ income.date }}</p>
+                        <p v-if="income.attachment">
+                            <b>Attachment</b>: <a href="" class="underline cursor-pointer">{{ __('Download') }}</a>
+                        </p>
+                    </div>
                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                       {{ department.description }}
+                       {{ income.description }}
                    </p>
                </span>
            </div>
