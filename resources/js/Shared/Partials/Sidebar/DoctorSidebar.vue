@@ -32,108 +32,16 @@
               <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=blue&amp;shade=500" alt="Your Company">
             </div>
             <nav class="mt-5 flex-1 space-y-1 px-2">
-                  <NavItem title="Doctor Dashboard" :href="route('dashboard')" :active="checkLinkActive('Dashboard')">
-                      <template v-slot:icon>
-                          <font-awesome-icon icon="fa-solid fa-home" class="mr-3 flex-shrink-0 h-5 w-5"/>
-                      </template>
-                  </NavItem>
-                  <DropdownMenu title="Dropdown">
-                      <template v-slot:icon>
-                          <font-awesome-icon icon="fa-solid fa-home" class="mr-3 flex-shrink-0 h-5 w-5"/>
-                      </template>
-                      <DropdownMenuItem title="Overview"/>
-                      <DropdownMenuItem title="Members"/>
-                      <DropdownMenuItem title="Calendar"/>
-                      <DropdownMenuItem title="Settings"/>
-                  </DropdownMenu>
-
-                  <NavItem title="Patient" :href="route('dashboard')" :active="false">
-                      <template v-slot:icon>
-                          <font-awesome-icon icon="fa-solid fa-home" class="mr-3 flex-shrink-0 h-5 w-5"/>
-                      </template>
-                  </NavItem>
-
-                  <NavItem title="Appointment" :href="route('dashboard')" :active="false">
+                <NavItem title="Dashboard" :href="route('dashboard')" :active="checkLinkActive('Dashboard')">
                     <template v-slot:icon>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="ionicon mr-3 flex-shrink-0 h-6 w-6" viewBox="0 0 512 512"><title>Calendar Clear</title><rect fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="32" x="48" y="80" width="416" height="384" rx="48"/><path fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="32" stroke-linecap="round" d="M128 48v32M384 48v32M464 160H48"/></svg>
+                        <font-awesome-icon icon="fa-solid fa-home" class="mr-3 flex-shrink-0 h-5 w-5"/>
                     </template>
                 </NavItem>
-                <NavItem title="Prescription" :href="route('dashboard')" :active="false">
+                <NavItem title="Patient" :href="route('doctor.patient.index')" :active="route().current('doctor.patient.index')">
                     <template v-slot:icon>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="mr-2 flex-shrink-0 h-7 w-7" preserveAspectRatio="xMidYMid meet" viewBox="0 0 256 256"><path fill="currentColor" d="m183.3 188l22.4-22.3a8.1 8.1 0 0 0-11.4-11.4L172 176.7L130.3 135A52 52 0 0 0 120 32H72a8 8 0 0 0-8 8v152a8 8 0 0 0 16 0v-56h28.7l52 52l-22.4 22.3a8.1 8.1 0 0 0 0 11.4a8.2 8.2 0 0 0 11.4 0l22.3-22.4l22.3 22.4a8.2 8.2 0 0 0 11.4 0a8.1 8.1 0 0 0 0-11.4ZM80 120V48h40a36 36 0 0 1 0 72Z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="ionicon mr-3 flex-shrink-0 h-6 w-6" viewBox="0 0 512 512"><title>Person</title><path d="M344 144c-3.92 52.87-44 96-88 96s-84.15-43.12-88-96c-4-55 35-96 88-96s92 42 88 96z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><path d="M256 304c-87 0-175.3 48-191.64 138.6C62.39 453.52 68.57 464 80 464h352c11.44 0 17.62-10.48 15.65-21.4C431.3 352 343 304 256 304z" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"/></svg>
                     </template>
                 </NavItem>
-
-                  <NavItem title="Leave" :href="route('dashboard')" :active="false">
-                      <template v-slot:icon>
-                          <font-awesome-icon icon="fa-solid fa-home" class="mr-3 flex-shrink-0 h-5 w-5"/>
-                      </template>
-                  </NavItem>
-                  <NavItem title="Attendance" :href="route('dashboard')" :active="false">
-                      <template v-slot:icon>
-                          <font-awesome-icon icon="fa-solid fa-home" class="mr-3 flex-shrink-0 h-5 w-5"/>
-                      </template>
-                  </NavItem>
-                  <NavItem title="Holidays" :href="route('dashboard')" :active="false">
-                      <template v-slot:icon>
-                          <font-awesome-icon icon="fa-solid fa-home" class="mr-3 flex-shrink-0 h-5 w-5"/>
-                      </template>
-                  </NavItem>
-                  <NavItem title="Payroll" :href="route('dashboard')" :active="false">
-                      <template v-slot:icon>
-                          <font-awesome-icon icon="fa-solid fa-home" class="mr-3 flex-shrink-0 h-5 w-5"/>
-                      </template>
-                  </NavItem>
-
-                  <!-- Blood  -->
-                  <br>
-                  <h3 class="mt-5 px-3 text-sm font-medium text-gray-500" id="projects-headline">Blood</h3>
-                  <NavItem title="Blood Bank" :href="route('dashboard')" :active="false">
-                      <template v-slot:icon>
-                          <font-awesome-icon icon="fa-solid fa-home" class="mr-3 flex-shrink-0 h-5 w-5"/>
-                      </template>
-                  </NavItem>
-
-                  <NavItem title="Leave" :href="route('dashboard')" :active="false">
-                      <template v-slot:icon>
-                          <font-awesome-icon icon="fa-solid fa-home" class="mr-3 flex-shrink-0 h-5 w-5"/>
-                      </template>
-                  </NavItem>
-                  <NavItem title="Attendance" :href="route('dashboard')" :active="false">
-                      <template v-slot:icon>
-                          <font-awesome-icon icon="fa-solid fa-home" class="mr-3 flex-shrink-0 h-5 w-5"/>
-                      </template>
-                  </NavItem>
-                  <NavItem title="Holidays" :href="route('dashboard')" :active="false">
-                      <template v-slot:icon>
-                          <font-awesome-icon icon="fa-solid fa-home" class="mr-3 flex-shrink-0 h-5 w-5"/>
-                      </template>
-                  </NavItem>
-
-                  <!-- Others  -->
-                  <br>
-                  <h3 class="px-3 text-sm font-medium text-gray-500" id="projects-headline">Others</h3>
-                  <NavItem title="Appointment" :href="route('dashboard')" :active="false">
-                      <template v-slot:icon>
-                          <font-awesome-icon icon="fa-solid fa-home" class="mr-3 flex-shrink-0 h-5 w-5"/>
-                      </template>
-                  </NavItem>
-                  <NavItem title="Prescription" :href="route('dashboard')" :active="false">
-                      <template v-slot:icon>
-                          <font-awesome-icon icon="fa-solid fa-home" class="mr-3 flex-shrink-0 h-5 w-5"/>
-                      </template>
-                  </NavItem>
-
-                  <NavItem title="Report" :href="route('dashboard')" :active="false">
-                      <template v-slot:icon>
-                          <font-awesome-icon icon="fa-solid fa-home" class="mr-3 flex-shrink-0 h-5 w-5"/>
-                      </template>
-                  </NavItem>
-                  <NavItem title="Notice" :href="route('dashboard')" :active="false">
-                      <template v-slot:icon>
-                          <font-awesome-icon icon="fa-solid fa-home" class="mr-3 flex-shrink-0 h-5 w-5"/>
-                      </template>
-                  </NavItem>
             </nav>
           </div>
           <div class="flex flex-shrink-0 bg-gray-700 p-4">
