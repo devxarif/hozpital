@@ -42,7 +42,7 @@
                     Admin Dashboard
                 </a> -->
 
-                <NavItem title="Admin Dashboard" :href="route('dashboard')" :active="route().current('dashboard')">
+                <NavItem title="Dashboard" :href="route('dashboard')" :active="route().current('dashboard')">
                     <template v-slot:icon>
                         <HomeIcon class="mr-3 flex-shrink-0 h-7 w-7"/>
                     </template>

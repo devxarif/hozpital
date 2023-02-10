@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Nurse;
 
 use App\Models\Patient;
 use Illuminate\Http\Request;
@@ -22,7 +22,7 @@ class PatientController extends Controller
     {
         $patients = Patient::with('user:id,name,email')->latest()->paginate(20)->withQueryString();
 
-        return inertia('Admin/Patient/Index',[
+        return inertia('Nurse/Patient/Index',[
             'patients' => $patients,
             'filter' => $request
         ]);

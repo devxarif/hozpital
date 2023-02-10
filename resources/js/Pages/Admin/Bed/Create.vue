@@ -155,12 +155,10 @@
                 });
             },
             async loadBedTypes(){
-                // Fetches bed types
                 let bed_type_response = await axios.get(route("fetch.bedTypes"));
                 this.bed_types = bed_type_response.data;
             },
             async loadFloors(){
-                // Fetches bed floors
                 let bed_floor = await axios.get(route("fetch.bedFloors"));
                 this.floors = bed_floor.data;
             },

@@ -3,6 +3,7 @@
 include(base_path('routes/website.php'));
 include(base_path('routes/auth.php'));
 include(base_path('routes/role/admin.php'));
+include(base_path('routes/role/nurse.php'));
 // include(base_path('routes/role/organization.php'));
 // include(base_path('routes/role/employee.php'));
 // include(base_path('routes/payment.php'));
