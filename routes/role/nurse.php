@@ -28,7 +28,6 @@ Route::middleware(['auth'])->name('nurse.')->prefix('nurse')->group(function () 
 
     // Doctor Routes
     Route::get('doctor', [DoctorController::class, 'index'])->name('doctor.index');
-    // Route::resource('doctor', DoctorController::class);
 
     // Patient Routes
     Route::resource('patient', PatientController::class);

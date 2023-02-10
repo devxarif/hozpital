@@ -1,11 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Nurse\BedController;
+use App\Http\Controllers\Doctor\BedController;
 use App\Http\Controllers\Doctor\EventController;
 use App\Http\Controllers\Doctor\NurseController;
 use App\Http\Controllers\Doctor\DoctorController;
-use App\Http\Controllers\Nurse\BedTypeController;
+use App\Http\Controllers\Doctor\BedTypeController;
 use App\Http\Controllers\Doctor\HolidayController;
 use App\Http\Controllers\Doctor\PatientController;
 use App\Http\Controllers\Nurse\BedFloorController;
@@ -17,7 +17,7 @@ use App\Http\Controllers\Doctor\DepartmentController;
 use App\Http\Controllers\Doctor\PharmacistController;
 use App\Http\Controllers\Doctor\ManufactureController;
 use App\Http\Controllers\Doctor\AnnouncementController;
-use App\Http\Controllers\Nurse\BedAllotmentController;
+use App\Http\Controllers\Doctor\BedAllotmentController;
 use App\Http\Controllers\Doctor\LeaveRequestController;
 use App\Http\Controllers\Doctor\BloodDonationController;
 
@@ -32,6 +32,11 @@ Route::middleware(['auth'])->name('doctor.')->prefix('doctor')->group(function (
     Route::resource('patient', PatientController::class);
 
     // Bed
+    Route::get('bedType/beds', [BedController::class, 'bedTypeWiseBeds'])->name('bedtype.bed');
+    Route::get('bed', [BedController::class, 'index'])->name('bed.index');
+    Route::get('bedType', [BedTypeController::class, 'index'])->name('bedType.index');
+    Route::get('bedAllotment', [BedAllotmentController::class, 'index'])->name('bedAllotment.index');
+
     // Route::get('bedType/beds', [BedController::class, 'bedTypeWiseBeds'])->name('bedtype.bed');
     // Route::resource('bed', BedController::class);
     // Route::resource('bedFloor', BedFloorController::class);
