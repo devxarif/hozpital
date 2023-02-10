@@ -49,14 +49,14 @@
                     <DropdownMenuItem title="Department List" :href="route('admin.department.index')" :active="route().current('admin.department.index')"/>
                     <DropdownMenuItem title="Doctor List" :href="route('admin.doctor.index')" :active="route().current('admin.doctor.index')"/>
                 </DropdownMenu>
-                <DropdownMenu title="Bed" :active="route().current('admin.bed.index') || route().current('admin.bedType.index') || route().current('admin.bedFloor.index') || route().current('admin.bedAllotment.index')">
+                <DropdownMenu title="Bed" :active="route().current('nurse.bed.index') || route().current('nurse.bedType.index') || route().current('nurse.bedFloor.index') || route().current('nurse.bedAllotment.index')">
                     <template v-slot:icon>
                         <svg xmlns="http://www.w3.org/2000/svg" class="ionicon mr-3 flex-shrink-0 h-6 w-6" viewBox="0 0 512 512"><title>Bed</title><path d="M384 240H96V136a40.12 40.12 0 0140-40h240a40.12 40.12 0 0140 40v104zM48 416V304a64.19 64.19 0 0164-64h288a64.19 64.19 0 0164 64v112" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><path d="M48 416v-8a24.07 24.07 0 0124-24h368a24.07 24.07 0 0124 24v8M112 240v-16a32.09 32.09 0 0132-32h80a32.09 32.09 0 0132 32v16M256 240v-16a32.09 32.09 0 0132-32h80a32.09 32.09 0 0132 32v16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/></svg>
                     </template>
-                    <DropdownMenuItem title="Bed List" :href="route('admin.bed.index')" :active="route().current('admin.bed.index')"/>
-                    <DropdownMenuItem title="Bed Type List" :href="route('admin.bedType.index')" :active="route().current('admin.bedType.index')"/>
-                    <DropdownMenuItem title="Bed Floor List" :href="route('admin.bedFloor.index')" :active="route().current('admin.bedFloor.index')"/>
-                    <DropdownMenuItem title="Bed Allotment" :href="route('admin.bedAllotment.index')" :active="route().current('admin.bedAllotment.index')"/>
+                    <DropdownMenuItem title="Bed List" :href="route('nurse.bed.index')" :active="route().current('nurse.bed.index')"/>
+                    <DropdownMenuItem title="Bed Type List" :href="route('nurse.bedType.index')" :active="route().current('nurse.bedType.index')"/>
+                    <DropdownMenuItem title="Bed Floor List" :href="route('nurse.bedFloor.index')" :active="route().current('nurse.bedFloor.index')"/>
+                    <DropdownMenuItem title="Bed Allotment" :href="route('nurse.bedAllotment.index')" :active="route().current('admin.bedAllotment.index')"/>
                 </DropdownMenu>
                 <DropdownMenu title="Blood Bank" :active="route().current('nurse.bloodBank.index') || route().current('nurse.bloodDonor.index') || route().current('nurse.bloodDonation.index') ">
                     <template v-slot:icon>

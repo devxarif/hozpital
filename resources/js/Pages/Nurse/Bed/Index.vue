@@ -28,7 +28,7 @@
             </h2>
 
             <div class="flex items-center space-x-2 sm:space-x-3 ml-auto">
-                <BaseButton v-if="filter.keyword || filter.bed_type || filter.bed_floor || filter.status" as="link" :href="route('admin.bed.index')" class="text-white bg-red-600 hover:bg-red-700 px-3 py-2">
+                <BaseButton v-if="filter.keyword || filter.bed_type || filter.bed_floor || filter.status" as="link" :href="route('nurse.bed.index')" class="text-white bg-red-600 hover:bg-red-700 px-3 py-2">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                     </svg>
@@ -91,9 +91,9 @@
                     </div>
                 </div>
                 <div>
-                    <label for="admin_bed_type" class="block text-sm font-medium text-gray-700">{{ __('Bed Type') }}</label>
+                    <label for="nurse_bed_type" class="block text-sm font-medium text-gray-700">{{ __('Bed Type') }}</label>
                     <div class="mt-1">
-                        <Multiselect id="admin_bed_type" :close-on-select="true" :can-clear="true"
+                        <Multiselect id="nurse_bed_type" :close-on-select="true" :can-clear="true"
                             :searchable="true" v-model="filterForm.bed_type" :create-option="false"
                             placeholder="Bed Type" :options="bed_types.map(item => ({
                                 value: item.id, label: item.name
@@ -101,9 +101,9 @@
                     </div>
                 </div>
                 <div>
-                    <label for="admin_bed_floor" class="block text-sm font-medium text-gray-700">{{ __('Floor') }}</label>
+                    <label for="nurse_bed_floor" class="block text-sm font-medium text-gray-700">{{ __('Floor') }}</label>
                     <div class="mt-1">
-                        <Multiselect id="admin_bed_floor" :close-on-select="true" :can-clear="true"
+                        <Multiselect id="nurse_bed_floor" :close-on-select="true" :can-clear="true"
                             :searchable="true" v-model="filterForm.bed_floor" :create-option="false"
                             placeholder="Floor" :options="floors.map(item => ({
                                 value: item.id, label: item.name
@@ -111,9 +111,9 @@
                     </div>
                 </div>
                 <div>
-                    <label for="admin_bed_status" class="block text-sm font-medium text-gray-700">{{ __('Status') }}</label>
+                    <label for="nurse_bed_status" class="block text-sm font-medium text-gray-700">{{ __('Status') }}</label>
                     <div class="mt-1">
-                        <Multiselect id="admin_bed_status" :close-on-select="true" :can-clear="true"
+                        <Multiselect id="nurse_bed_status" :close-on-select="true" :can-clear="true"
                             :searchable="false" v-model="filterForm.status" :create-option="false"
                             placeholder="Status" :options="[{ value: 'alloted', label: 'Alloted' },{ value: 'unalloted', label: 'Unalloted' },]"  />
                     </div>
@@ -235,6 +235,10 @@
             CardSkeleton,
         },
         props: {
+            total_bed_count:{
+                type: Number,
+                default: 0
+            },
             beds:{
                 type: Array,
                 default: () => []
@@ -284,7 +288,7 @@
                     confirmButtonText: "Yes, delete it!",
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        this.$inertia.delete(route("admin.bed.destroy", id));
+                        this.$inertia.delete(route("nurse.bed.destroy", id));
                         this.changeTab(this.currentTab);
                     }
                 });
@@ -296,7 +300,7 @@
             async changeTab(tab) {
                 this.currentTab = tab;
                 let response = await axios.get(
-                    route("admin.bedtype.bed", {
+                    route("nurse.bedtype.bed", {
                         type: tab,
                     })
                 );
@@ -305,7 +309,7 @@
             },
             filterData(){
                 this.loading = true
-                this.filterForm.get(route('admin.bed.index'), {
+                this.filterForm.get(route('nurse.bed.index'), {
                     onSuccess: () => {
                         this.loading = false
                     },
@@ -317,7 +321,7 @@
             },
             toggleFilter() {
                 this.showFilter = !this.showFilter;
-                localStorage.setItem("adminBed", this.showFilter);
+                localStorage.setItem("nurseBed", this.showFilter);
             },
             closeCreateDrawer(freeze){
                 if(!freeze){
@@ -335,7 +339,7 @@
             },
         },
         created() {
-            this.showFilter = localStorage.getItem("adminBed") == "true" ? true: false;
+            this.showFilter = localStorage.getItem("nurseBed") == "true" ? true: false;
         },
     };
 </script>
