@@ -5,10 +5,10 @@ namespace App\Http\Controllers\Nurse;
 use App\Models\BedFloor;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Nurse\Bed\BedFloorCreateRequest;
-use App\Http\Requests\Nurse\Bed\BedFloorUpdateRequest;
-use App\Services\Nurse\BedFloor\CreateBedFloorService;
-use App\Services\Nurse\BedFloor\UpdateBedFloorService;
+use App\Http\Requests\Admin\Bed\BedFloorCreateRequest;
+use App\Http\Requests\Admin\Bed\BedFloorUpdateRequest;
+use App\Services\Admin\BedFloor\CreateBedFloorService;
+use App\Services\Admin\BedFloor\UpdateBedFloorService;
 
 class BedFloorController extends Controller
 {

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Nurse\BedController;
 use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\Admin\NurseController;
-use App\Http\Controllers\Admin\DoctorController;
+use App\Http\Controllers\Nurse\DoctorController;
 use App\Http\Controllers\Nurse\BedTypeController;
 use App\Http\Controllers\Admin\HolidayController;
 use App\Http\Controllers\Nurse\PatientController;
@@ -26,7 +26,8 @@ Route::middleware(['auth'])->name('nurse.')->prefix('nurse')->group(function () 
     // // Department Routes
     // Route::resource('department', DepartmentController::class);
 
-    // // Doctor Routes
+    // Doctor Routes
+    Route::get('doctor', [DoctorController::class, 'index'])->name('doctor.index');
     // Route::resource('doctor', DoctorController::class);
 
     // Patient Routes

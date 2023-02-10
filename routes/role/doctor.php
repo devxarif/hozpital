@@ -9,17 +9,17 @@ use App\Http\Controllers\Nurse\BedTypeController;
 use App\Http\Controllers\Doctor\HolidayController;
 use App\Http\Controllers\Doctor\PatientController;
 use App\Http\Controllers\Nurse\BedFloorController;
-use App\Http\Controllers\Nurse\BloodBankController;
+use App\Http\Controllers\Doctor\BloodBankController;
 use App\Http\Controllers\Doctor\LeaveTypeController;
 use App\Http\Controllers\Doctor\AccountantController;
-use App\Http\Controllers\Nurse\BloodDonorController;
+use App\Http\Controllers\Doctor\BloodDonorController;
 use App\Http\Controllers\Doctor\DepartmentController;
 use App\Http\Controllers\Doctor\PharmacistController;
 use App\Http\Controllers\Doctor\ManufactureController;
 use App\Http\Controllers\Doctor\AnnouncementController;
 use App\Http\Controllers\Nurse\BedAllotmentController;
 use App\Http\Controllers\Doctor\LeaveRequestController;
-use App\Http\Controllers\Nurse\BloodDonationController;
+use App\Http\Controllers\Doctor\BloodDonationController;
 
 Route::middleware(['auth'])->name('doctor.')->prefix('doctor')->group(function () {
     // // Department Routes
@@ -38,10 +38,10 @@ Route::middleware(['auth'])->name('doctor.')->prefix('doctor')->group(function (
     // Route::resource('bedType', BedTypeController::class);
     // Route::resource('bedAllotment', BedAllotmentController::class);
 
-    // // Blood
-    // Route::resource('bloodBank', BloodBankController::class);
-    // Route::resource('bloodDonor', BloodDonorController::class);
-    // Route::resource('bloodDonation', BloodDonationController::class);
+    // Blood
+    Route::resource('bloodBank', BloodBankController::class);
+    Route::resource('bloodDonor', BloodDonorController::class);
+    Route::resource('bloodDonation', BloodDonationController::class);
 
     // // Leave
     // Route::resource('leaveType', LeaveTypeController::class);

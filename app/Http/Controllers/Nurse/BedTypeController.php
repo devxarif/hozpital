@@ -5,10 +5,10 @@ namespace App\Http\Controllers\Nurse;
 use App\Models\BedType;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Services\Nurse\BedType\CreateBedTypeService;
-use App\Services\Nurse\BedType\UpdateBedTypeService;
-use App\Http\Requests\Nurse\Bed\BedTypeCreateRequest;
-use App\Http\Requests\Nurse\Bed\BedTypeUpdateRequest;
+use App\Services\Admin\BedType\CreateBedTypeService;
+use App\Services\Admin\BedType\UpdateBedTypeService;
+use App\Http\Requests\Admin\Bed\BedTypeCreateRequest;
+use App\Http\Requests\Admin\Bed\BedTypeUpdateRequest;
 
 class BedTypeController extends Controller
 {

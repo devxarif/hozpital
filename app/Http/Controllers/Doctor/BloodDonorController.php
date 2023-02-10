@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Nurse;
+namespace App\Http\Controllers\Doctor;
 
 use App\Models\BloodDonor;
 use Illuminate\Http\Request;
@@ -33,7 +33,7 @@ class BloodDonorController extends Controller
 
         $blood_donors = $query->latest()->paginate(20)->withQueryString();
 
-        return inertia('Nurse/BloodDonor/Index',[
+        return inertia('Doctor/BloodDonor/Index',[
             'blood_donors' => $blood_donors,
             'filter' => $request
         ]);

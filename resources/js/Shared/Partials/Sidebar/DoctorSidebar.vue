@@ -25,7 +25,6 @@
           </div>
         </div>
       </div> <div class="hidden md:fixed md:inset-y-0 md:flex md:w-64 md:flex-col">
-        <!-- Sidebar component, swap this element with another sidebar if you like -->
         <div class="flex min-h-0 flex-1 flex-col bg-slate-800">
           <div class="flex flex-1 flex-col overflow-y-auto pt-5 pb-4">
             <div class="flex flex-shrink-0 items-center px-4">
@@ -42,6 +41,14 @@
                         <svg xmlns="http://www.w3.org/2000/svg" class="ionicon mr-3 flex-shrink-0 h-6 w-6" viewBox="0 0 512 512"><title>Person</title><path d="M344 144c-3.92 52.87-44 96-88 96s-84.15-43.12-88-96c-4-55 35-96 88-96s92 42 88 96z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><path d="M256 304c-87 0-175.3 48-191.64 138.6C62.39 453.52 68.57 464 80 464h352c11.44 0 17.62-10.48 15.65-21.4C431.3 352 343 304 256 304z" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"/></svg>
                     </template>
                 </NavItem>
+                <DropdownMenu title="Blood Bank" :active="route().current('doctor.bloodBank.index') || route().current('doctor.bloodDonor.index') || route().current('doctor.bloodDonation.index') ">
+                    <template v-slot:icon>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="ionicon mr-3 flex-shrink-0 h-6 w-6" viewBox="0 0 512 512"><title>Water</title><path d="M400 320c0 88.37-55.63 144-144 144s-144-55.63-144-144c0-94.83 103.23-222.85 134.89-259.88a12 12 0 0118.23 0C296.77 97.15 400 225.17 400 320z" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"/><path d="M344 328a72 72 0 01-72 72" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/></svg>
+                    </template>
+                    <DropdownMenuItem title="Blood Bank" :href="route('doctor.bloodBank.index')" :active="route().current('doctor.bloodBank.index')"/>
+                    <DropdownMenuItem title="Blood Donor" :href="route('doctor.bloodDonor.index')" :active="route().current('doctor.bloodDonor.index')"/>
+                    <DropdownMenuItem title="Blood Donation" :href="route('doctor.bloodDonation.index')" :active="route().current('doctor.bloodDonation.index')"/>
+                </DropdownMenu>
             </nav>
           </div>
           <div class="flex flex-shrink-0 bg-gray-700 p-4">
