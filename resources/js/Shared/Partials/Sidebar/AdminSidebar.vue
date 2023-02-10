@@ -91,6 +91,7 @@
                     <DropdownMenuItem title="Product List" :href="route('admin.product.index')" :active="route().current('admin.product.index')"/>
                     <DropdownMenuItem title="Product Category List" :href="route('admin.productCategory.index')" :active="route().current('admin.productCategory.index')"/>
                     <DropdownMenuItem title="Manufacture List" :href="route('admin.manufacture.index')" :active="route().current('admin.manufacture.index')"/>
+                    <DropdownMenuItem title="Order List" href="/" :active="false"/>
                 </DropdownMenu>
 
                 <!-- Bed  -->
@@ -145,10 +146,8 @@
                     </template>
                     <DropdownMenuItem title="Income List" :href="route('admin.income.index')" :active="route().current('admin.income.index')"/>
                     <DropdownMenuItem title="Expense List" :href="route('admin.expense.index')" :active="route().current('admin.expense.index')"/>
-                    <DropdownMenuItem title="Order List" href="/" :active="false"/>
                     <DropdownMenuItem title="Transaction List" href="/" :active="false"/>
                     <DropdownMenuItem title="Invoice List" href="/" :active="false"/>
-                    <DropdownMenuItem title="Billing List" href="/" :active="false"/>
                 </DropdownMenu>
                 <NavItem title="Report" :href="route('dashboard')" :active="false">
                     <template v-slot:icon>
