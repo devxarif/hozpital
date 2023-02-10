@@ -58,13 +58,13 @@
                     <DropdownMenuItem title="Bed Floor List" :href="route('admin.bedFloor.index')" :active="route().current('admin.bedFloor.index')"/>
                     <DropdownMenuItem title="Bed Allotment" :href="route('admin.bedAllotment.index')" :active="route().current('admin.bedAllotment.index')"/>
                 </DropdownMenu>
-                <DropdownMenu title="Blood Bank" :active="route().current('admin.bloodBank.index') || route().current('admin.bloodDonor.index') || route().current('admin.bloodDonation.index') ">
+                <DropdownMenu title="Blood Bank" :active="route().current('nurse.bloodBank.index') || route().current('nurse.bloodDonor.index') || route().current('nurse.bloodDonation.index') ">
                     <template v-slot:icon>
                         <svg xmlns="http://www.w3.org/2000/svg" class="ionicon mr-3 flex-shrink-0 h-6 w-6" viewBox="0 0 512 512"><title>Water</title><path d="M400 320c0 88.37-55.63 144-144 144s-144-55.63-144-144c0-94.83 103.23-222.85 134.89-259.88a12 12 0 0118.23 0C296.77 97.15 400 225.17 400 320z" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"/><path d="M344 328a72 72 0 01-72 72" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/></svg>
                     </template>
-                    <DropdownMenuItem title="Blood Bank" :href="route('admin.bloodBank.index')" :active="route().current('admin.bloodBank.index')"/>
-                    <DropdownMenuItem title="Blood Donor" :href="route('admin.bloodDonor.index')" :active="route().current('admin.bloodDonor.index')"/>
-                    <DropdownMenuItem title="Blood Donation" :href="route('admin.bloodDonation.index')" :active="route().current('admin.bloodDonation.index')"/>
+                    <DropdownMenuItem title="Blood Bank" :href="route('nurse.bloodBank.index')" :active="route().current('nurse.bloodBank.index')"/>
+                    <DropdownMenuItem title="Blood Donor" :href="route('nurse.bloodDonor.index')" :active="route().current('nurse.bloodDonor.index')"/>
+                    <DropdownMenuItem title="Blood Donation" :href="route('nurse.bloodDonation.index')" :active="route().current('nurse.bloodDonation.index')"/>
                 </DropdownMenu>
                 <DropdownMenu title="Leave" :active="route().current('admin.leaveType.index') || route().current('admin.leaveRequest.index')">
                     <template v-slot:icon>
