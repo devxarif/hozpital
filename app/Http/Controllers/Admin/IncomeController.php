@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Income\IncomeCreateRequest;
 use App\Http\Requests\Admin\Income\IncomeUpdateRequest;
 use App\Models\Income;
+use App\Models\IncomeCategory;
 use App\Services\Admin\Income\CreateIncomeService;
 use App\Services\Admin\Income\UpdateIncomeService;
 use Illuminate\Http\Request;
@@ -19,18 +20,19 @@ class IncomeController extends Controller
      */
     public function index(Request $request)
     {
-        // $query = LeaveType::query();
+        $query = Income::query();
+        if($request->has('keyword') && $request->filled('keyword')){
+            $query->whereLike(['invoice_number', 'title'],  $request->keyword);
+        }
+        if($request->has('category') && $request->filled('category')){
+            $query->where('income_category_id', $request->category);
+        }
 
-        // if($request->has('keyword') && $request->filled('keyword')){
-        //     $query->whereLike(['name'],  $request->keyword);
-        // }
-
-        // $leave_types = $query->latest()->paginate(20)->withQueryString();
-
-        $incomes = Income::with('incomeCategory:id,name')->latest()->paginate(20)->withQueryString();
+        $incomes = $query->with('incomeCategory:id,name')->latest()->paginate(20)->withQueryString();
 
         return inertia('Admin/Income/Index', [
             'incomes' => $incomes,
+            'incomes_categories' => IncomeCategory::latest()->get(['id','name']),
             'filter' => $request
         ]);
     }

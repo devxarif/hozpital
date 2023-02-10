@@ -90,7 +90,15 @@
                 <div>
                     <label for="keyword" class="block text-sm font-medium text-gray-700">{{ __('Search') }}</label>
                     <div class="mt-1">
-                        <input v-model="filterForm.keyword" type="text" id="keyword" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm py-2.5" placeholder="Department name">
+                        <input v-model="filterForm.keyword" type="text" id="keyword" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm py-2.5" placeholder="Invoice no, title">
+                    </div>
+                </div>
+                <div>
+                    <label for="admin_expense" class="block text-sm font-medium text-gray-700">{{ __('Category') }}</label>
+                    <div class="mt-1">
+                        <Multiselect id="admin_expense" :close-on-select="true" :can-clear="true"
+                            :searchable="true" v-model="filterForm.category" :create-option="false"
+                            placeholder="Category" :options="expense_categories.map(item => ({value: item.id, label: item.name}))"/>
                     </div>
                 </div>
                 <div>
@@ -109,11 +117,8 @@
            <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
                <span v-for="expense in expenses.data" :key="expense.id" class="block p-6 bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
                    <div class="flex flex-wrap justify-between items-start">
-                       <div class="relative mb-5">
-                           <span>
-                               <img class="w-16 h-16 rounded object-cover" alt="Figma logo" :src="expense.image">
-                           </span>
-                       </div>
+                        <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ expense.title }}</h2>
+
                        <Menu as="div" class="relative inline-block text-left">
                            <div>
                                <MenuButton class="flex items-center rounded-full text-gray-400 hover:text-gray-600 focus:outline-none">
@@ -148,7 +153,15 @@
                            </transition>
                        </Menu>
                    </div>
-                   <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ expense.name }}</h2>
+                   <div class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                        <p v-if="expense.expense_category && expense.expense_category.name"><b>Category</b>: <span class="capitalize">{{ expense.expense_category?.name ?? '' }}</span></p>
+                        <p v-if="expense.invoice_number"><b>Invoice No</b>: #{{ expense.invoice_number }}</p>
+                        <p v-if="expense.amount"><b>Amount</b>: {{ expense.amount }}</p>
+                        <p v-if="expense.date"><b>Date</b>: {{ expense.date }}</p>
+                        <p v-if="expense.attachment">
+                            <b>Attachment</b>: <a href="" class="underline cursor-pointer">{{ __('Download') }}</a>
+                        </p>
+                    </div>
                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
                        {{ expense.description }}
                    </p>
@@ -185,6 +198,10 @@ export default {
             type: Array,
             default: () => []
         },
+        expense_categories:{
+            type: Array,
+            default: () => []
+        },
         filter:{
             type: Array,
             default: () => []
@@ -201,6 +218,7 @@ export default {
 
             filterForm: this.$inertia.form({
                 keyword: this.filter.keyword,
+                category: this.filter.category,
             }),
         }
     },

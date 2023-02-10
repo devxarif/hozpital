@@ -90,7 +90,15 @@
                 <div>
                     <label for="keyword" class="block text-sm font-medium text-gray-700">{{ __('Search') }}</label>
                     <div class="mt-1">
-                        <input v-model="filterForm.keyword" type="text" id="keyword" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm py-2.5" placeholder="Department name">
+                        <input v-model="filterForm.keyword" type="text" id="keyword" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm py-2.5" placeholder="Invoice no, title">
+                    </div>
+                </div>
+                <div>
+                    <label for="admin_income" class="block text-sm font-medium text-gray-700">{{ __('Category') }}</label>
+                    <div class="mt-1">
+                        <Multiselect id="admin_income" :close-on-select="true" :can-clear="true"
+                            :searchable="true" v-model="filterForm.category" :create-option="false"
+                            placeholder="Category" :options="incomes_categories.map(item => ({value: item.id, label: item.name}))"/>
                     </div>
                 </div>
                 <div>
@@ -101,14 +109,6 @@
                 </div>
             </div>
         </transition>
-
-               <!-- $table->string('title');
-            $table->foreignIdFor(IncomeCategory::class)->constrained()->cascadeOnDelete();
-            $table->string('invoice_number')->nullable();
-            $table->float('amount')->default(0);
-            $table->date('date')->nullable();
-            $table->text('description')->nullable();
-            $table->string('attachment')->nullable(); -->
 
         <!-- Body Part  -->
        <CardSkeleton :show="loading" v-if="loading"/>
@@ -199,6 +199,10 @@ export default {
             type: Array,
             default: () => []
         },
+        incomes_categories:{
+            type: Array,
+            default: () => []
+        },
         filter:{
             type: Array,
             default: () => []
@@ -215,6 +219,7 @@ export default {
 
             filterForm: this.$inertia.form({
                 keyword: this.filter.keyword,
+                category: this.filter.category,
             }),
         }
     },
@@ -240,7 +245,7 @@ export default {
         },
         filterData(){
             this.loading = true
-            this.filterForm.get(route('admin.department.index'), {
+            this.filterForm.get(route('admin.income.index'), {
                 onSuccess: () => {
                     this.loading = false
                 },
@@ -252,11 +257,11 @@ export default {
         },
         toggleFilter() {
             this.showFilter = !this.showFilter;
-            localStorage.setItem("adminDepartment", this.showFilter);
+            localStorage.setItem("adminIncome", this.showFilter);
         },
     },
     created() {
-        this.showFilter = localStorage.getItem("adminDepartment") == "true" ? true: false;
+        this.showFilter = localStorage.getItem("adminIncome") == "true" ? true: false;
     },
 };
 </script>

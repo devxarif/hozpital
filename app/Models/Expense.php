@@ -9,5 +9,17 @@ class Expense extends Model
 {
     use HasFactory;
 
+    public function expenseCategory()
+    {
+        return $this->belongsTo(ExpenseCategory::class);
+    }
 
+    public function getDateAttribute($date)
+    {
+        if ($date) {
+            return formatTime($date, 'd M Y');
+        }
+
+        return null;
+    }
 }

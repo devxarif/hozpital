@@ -9,6 +9,7 @@ use App\Services\Admin\Expense\CreateExpenseService;
 use App\Services\Admin\Expense\UpdateExpenseService;
 use App\Http\Requests\Admin\Expense\ExpenseCreateRequest;
 use App\Http\Requests\Admin\Expense\ExpenseUpdateRequest;
+use App\Models\ExpenseCategory;
 
 class ExpenseController extends Controller
 {
@@ -19,18 +20,19 @@ class ExpenseController extends Controller
      */
     public function index(Request $request)
     {
-        // $query = LeaveType::query();
+        $query = Expense::query();
+        if($request->has('keyword') && $request->filled('keyword')){
+            $query->whereLike(['invoice_number', 'title'],  $request->keyword);
+        }
+        if($request->has('category') && $request->filled('category')){
+            $query->where('expense_category_id', $request->category);
+        }
 
-        // if($request->has('keyword') && $request->filled('keyword')){
-        //     $query->whereLike(['name'],  $request->keyword);
-        // }
-
-        // $leave_types = $query->latest()->paginate(20)->withQueryString();
-
-        $expenses = Expense::latest()->paginate(20)->withQueryString();
+        $expenses = $query->with('expenseCategory:id,name')->latest()->paginate(20)->withQueryString();
 
         return inertia('Admin/Expense/Index', [
             'expenses' => $expenses,
+            'expense_categories' => ExpenseCategory::latest()->get(['id','name']),
             'filter' => $request
         ]);
     }
