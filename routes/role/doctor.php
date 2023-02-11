@@ -22,12 +22,6 @@ use App\Http\Controllers\Doctor\LeaveRequestController;
 use App\Http\Controllers\Doctor\BloodDonationController;
 
 Route::middleware(['auth'])->name('doctor.')->prefix('doctor')->group(function () {
-    // // Department Routes
-    // Route::resource('department', DepartmentController::class);
-
-    // // Doctor Routes
-    // Route::resource('doctor', DoctorController::class);
-
     // Patient Routes
     Route::resource('patient', PatientController::class);
 
