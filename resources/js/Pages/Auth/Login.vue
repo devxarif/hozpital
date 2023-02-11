@@ -172,6 +172,10 @@
                     class="block px-4 py-2 mt-1 text-sm font-medium leading-5 text-center text-white transition-colors duration-150 bg-gray-600 border border-transparent rounded-lg  hover:bg-gray-700 focus:outline-none focus:shadow-outline-gray"><small>Log
                         in Via Pharmacist</small>
                 </button>
+                <button @click="roleLogin('laboratorist@mail.com', 'password')" type="button"
+                    class="block px-4 py-2 mt-1 text-sm font-medium leading-5 text-center text-white transition-colors duration-150 bg-gray-600 border border-transparent rounded-lg  hover:bg-gray-700 focus:outline-none focus:shadow-outline-gray"><small>Log
+                        in Via Laboratorist</small>
+                </button>
             </div>
         </div>
 
