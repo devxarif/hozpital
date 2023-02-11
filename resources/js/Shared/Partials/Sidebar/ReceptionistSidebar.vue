@@ -12,7 +12,7 @@
                   <svg class="text-gray-500 mr-3 flex-shrink-0 h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"></path>
                   </svg>
-                  Admin Dashboard
+                  Dashboard
                 </a>
 
                 <a href="#" class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
@@ -32,70 +32,33 @@
               <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=blue&amp;shade=500" alt="Your Company">
             </div>
             <nav class="mt-5 flex-1 space-y-1 px-2">
-                  <NavItem title="Admin Dashboard" :href="route('dashboard')" :active="checkLinkActive('Dashboard')">
-                      <template v-slot:icon>
-                          <font-awesome-icon icon="fa-solid fa-home" class="mr-3 flex-shrink-0 h-5 w-5"/>
-                      </template>
-                  </NavItem>
-
-                  <NavItem title="Leave" :href="route('dashboard')" :active="false">
-                      <template v-slot:icon>
-                          <font-awesome-icon icon="fa-solid fa-home" class="mr-3 flex-shrink-0 h-5 w-5"/>
-                      </template>
-                  </NavItem>
-                  <NavItem title="Attendance" :href="route('dashboard')" :active="false">
-                      <template v-slot:icon>
-                          <font-awesome-icon icon="fa-solid fa-home" class="mr-3 flex-shrink-0 h-5 w-5"/>
-                      </template>
-                  </NavItem>
-                  <NavItem title="Holidays" :href="route('dashboard')" :active="false">
-                      <template v-slot:icon>
-                          <font-awesome-icon icon="fa-solid fa-home" class="mr-3 flex-shrink-0 h-5 w-5"/>
-                      </template>
-                  </NavItem>
-                  <NavItem title="Payroll" :href="route('dashboard')" :active="false">
-                      <template v-slot:icon>
-                          <font-awesome-icon icon="fa-solid fa-home" class="mr-3 flex-shrink-0 h-5 w-5"/>
-                      </template>
-                  </NavItem>
-
-                  <!-- Payments  -->
-                  <br>
-                  <h3 class="mt-5 px-3 text-sm font-medium text-gray-500" id="projects-headline">Payments</h3>
-                  <NavItem title="Leave" :href="route('dashboard')" :active="false">
-                      <template v-slot:icon>
-                          <font-awesome-icon icon="fa-solid fa-home" class="mr-3 flex-shrink-0 h-5 w-5"/>
-                      </template>
-                  </NavItem>
-                  <NavItem title="Attendance" :href="route('dashboard')" :active="false">
-                      <template v-slot:icon>
-                          <font-awesome-icon icon="fa-solid fa-home" class="mr-3 flex-shrink-0 h-5 w-5"/>
-                      </template>
-                  </NavItem>
-                  <NavItem title="Holidays" :href="route('dashboard')" :active="false">
-                      <template v-slot:icon>
-                          <font-awesome-icon icon="fa-solid fa-home" class="mr-3 flex-shrink-0 h-5 w-5"/>
-                      </template>
-                  </NavItem>
-
-                  <!-- Others  -->
-                  <br>
-                  <h3 class="px-3 text-sm font-medium text-gray-500" id="projects-headline">Others</h3>
-                  <NavItem title="Appointment" :href="route('dashboard')" :active="false">
-                      <template v-slot:icon>
-                          <font-awesome-icon icon="fa-solid fa-home" class="mr-3 flex-shrink-0 h-5 w-5"/>
-                      </template>
-                  </NavItem>
-                  <NavItem title="Report" :href="route('dashboard')" :active="false">
-                      <template v-slot:icon>
-                          <font-awesome-icon icon="fa-solid fa-home" class="mr-3 flex-shrink-0 h-5 w-5"/>
-                      </template>
-                  </NavItem>
-                  <NavItem title="Notice" :href="route('dashboard')" :active="false">
-                      <template v-slot:icon>
-                          <font-awesome-icon icon="fa-solid fa-home" class="mr-3 flex-shrink-0 h-5 w-5"/>
-                      </template>
-                  </NavItem>
+                <NavItem title="Dashboard" :href="route('dashboard')" :active="route().current('dashboard')">
+                    <template v-slot:icon>
+                        <HomeIcon class="mr-3 flex-shrink-0 h-7 w-7"/>
+                    </template>
+                </NavItem>
+                <NavItem title="Patient" :href="route('receptionist.patient.index')" :active="route().current('receptionist.patient.index')">
+                    <template v-slot:icon>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="ionicon mr-3 flex-shrink-0 h-6 w-6" viewBox="0 0 512 512"><title>Person</title><path d="M344 144c-3.92 52.87-44 96-88 96s-84.15-43.12-88-96c-4-55 35-96 88-96s92 42 88 96z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><path d="M256 304c-87 0-175.3 48-191.64 138.6C62.39 453.52 68.57 464 80 464h352c11.44 0 17.62-10.48 15.65-21.4C431.3 352 343 304 256 304z" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"/></svg>
+                    </template>
+                </NavItem>
+                <DropdownMenu title="Bed" :active="route().current('receptionist.bed.index') || route().current('receptionist.bedType.index') || route().current('receptionist.bedFloor.index') || route().current('receptionist.bedAllotment.index')">
+                    <template v-slot:icon>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="ionicon mr-3 flex-shrink-0 h-6 w-6" viewBox="0 0 512 512"><title>Bed</title><path d="M384 240H96V136a40.12 40.12 0 0140-40h240a40.12 40.12 0 0140 40v104zM48 416V304a64.19 64.19 0 0164-64h288a64.19 64.19 0 0164 64v112" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><path d="M48 416v-8a24.07 24.07 0 0124-24h368a24.07 24.07 0 0124 24v8M112 240v-16a32.09 32.09 0 0132-32h80a32.09 32.09 0 0132 32v16M256 240v-16a32.09 32.09 0 0132-32h80a32.09 32.09 0 0132 32v16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/></svg>
+                    </template>
+                    <DropdownMenuItem title="Bed List" :href="route('receptionist.bed.index')" :active="route().current('receptionist.bed.index')"/>
+                    <DropdownMenuItem title="Bed Type List" :href="route('receptionist.bedType.index')" :active="route().current('receptionist.bedType.index')"/>
+                    <DropdownMenuItem title="Bed Floor List" :href="route('receptionist.bedFloor.index')" :active="route().current('receptionist.bedFloor.index')"/>
+                    <DropdownMenuItem title="Bed Allotment" :href="route('receptionist.bedAllotment.index')" :active="route().current('receptionist.bedAllotment.index')"/>
+                </DropdownMenu>
+                <DropdownMenu title="Blood Bank" :active="route().current('receptionist.bloodBank.index') || route().current('receptionist.bloodDonor.index') || route().current('receptionist.bloodDonation.index') ">
+                    <template v-slot:icon>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="ionicon mr-3 flex-shrink-0 h-6 w-6" viewBox="0 0 512 512"><title>Water</title><path d="M400 320c0 88.37-55.63 144-144 144s-144-55.63-144-144c0-94.83 103.23-222.85 134.89-259.88a12 12 0 0118.23 0C296.77 97.15 400 225.17 400 320z" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"/><path d="M344 328a72 72 0 01-72 72" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/></svg>
+                    </template>
+                    <DropdownMenuItem title="Blood Bank" :href="route('receptionist.bloodBank.index')" :active="route().current('receptionist.bloodBank.index')"/>
+                    <DropdownMenuItem title="Blood Donor" :href="route('receptionist.bloodDonor.index')" :active="route().current('receptionist.bloodDonor.index')"/>
+                    <DropdownMenuItem title="Blood Donation" :href="route('receptionist.bloodDonation.index')" :active="route().current('receptionist.bloodDonation.index')"/>
+                </DropdownMenu>
             </nav>
           </div>
           <div class="flex flex-shrink-0 bg-gray-700 p-4">
