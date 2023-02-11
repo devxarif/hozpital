@@ -145,12 +145,14 @@
                    <div class="mb-3 font-normal text-gray-700 dark:text-gray-400">
                         <p v-if="prescription.date && prescription.format_date"><b>Date</b>: {{ prescription.format_date }}</p>
                     </div>
-                    <span class="text-lg font-bold">Medicine</span>
-                   <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                       <span class="block my-1" v-for="medicine in prescription.medicines" :key="medicine.id">
-                            {{ medicine.medicine }} | {{ medicine.frequency }} | {{ medicine.days }}
-                        </span>
-                   </p>
+                    <template v-if="prescription.medicines && prescription.medicines.length">
+                        <span class="text-lg font-bold">Medicine</span>
+                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                            <span class="block my-1" v-for="medicine in prescription.medicines" :key="medicine.id">
+                                {{ medicine.medicine }} | {{ medicine.frequency }} | {{ medicine.days }}
+                            </span>
+                        </p>
+                    </template>
                </span>
            </div>
            <Pagination :data="prescriptions" v-if="prescriptions && prescriptions.data.length && prescriptions.total > 20" class="mt-5"/>

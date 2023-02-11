@@ -24,7 +24,6 @@ class PrescriptionCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'doctor' => 'required|exists:doctors,id',
             'patient' => 'required|exists:patients,id',
             'date' => 'required',
             'case' => 'nullable',

@@ -28,9 +28,9 @@ class CreatePrescriptionService
         if ($medicines && count($medicines) && $prescription) {
             foreach ($medicines as $medicine) {
                 $prescription->medicines()->create([
-                    'medicine' => $medicine->medicine,
-                    'frequency' => $medicine->frequency,
-                    'days' => $medicine->days,
+                    'medicine' => $medicine['medicine'] ?? '',
+                    'frequency' => $medicine['frequency'] ?? '',
+                    'days' => $medicine['days'] ?? '',
                 ]);
             }
         }

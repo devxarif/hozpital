@@ -24,19 +24,6 @@
                                     </button>
                                 </div>
                             </div>
-                            <!--
-                            $table->foreignIdFor(Patient::class)->constrained()->cascadeOnDelete();
-                            $table->date('date');
-                            $table->longText('case')->nullable();
-                            $table->longText('note')->nullable();
-                            $table->longText('advice')->nullable(); -->
-<!--
-                            $table->foreignIdFor(Prescription::class)->constrained()->cascadeOnDelete();
-                            $table->string('medicine')->nullable();
-                            $table->string('frequency')->nullable();
-                            $table->string('days')->nullable(); -->
-
-                            {{ form }}
                             <form class="mb-4" @submit.prevent="saveData">
                                 <div class="grid grid-cols-2 gap-2">
                                     <div class="mb-4">
@@ -54,21 +41,52 @@
                                         <ErrorMessage :name="form.errors.patient"/>
                                     </div>
                                     <div class="mb-4">
-                                        <Label :name="__('Date')" id="income_date" :hasError="form.errors.date" :required="false"/>
+                                        <Label :name="__('Date')" id="income_date" :hasError="form.errors.date"/>
                                         <Datepicker v-model="form.date" :enableTimePicker="false" class="border-none bg-gray-50 border text-md rounded-lg block w-full p-1 dark:bg-gray-700 dark:placeholder-gray-400 dark:text-white border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 dark:border-gray-600  dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                             @update:modelValue="handleDate" :placeholder="__('Select Date')" :default-value="new Date()" />
                                         <ErrorMessage :name="form.errors.date"/>
                                     </div>
                                 </div>
 
+                                <div>
+                                    <Label :name="__('Medicine')" id="prescription_note" :hasError="form.errors.case" :required="false"/>
+                                    <div class="grid grid-cols-12 gap-4" v-for="(medicine, index) in form.medicines" :key="index">
+                                        <div class="mb-4 col-span-4">
+                                            <div class="rounded-md border border-gray-300 px-3 py-2 shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600">
+                                                <label :for="'name_'+index" class="block text-xs font-medium text-gray-900">Medicine Name</label>
+                                                <input v-model="form.medicines[index].medicine" type="text" :id="'name_'+index" class="block w-full border-0 p-0 text-gray-900 placeholder-gray-500 focus:ring-0 sm:text-sm" placeholder="Name">
+                                            </div>
+                                        </div>
+                                        <div class="mb-4 col-span-4">
+                                            <div class="rounded-md border border-gray-300 px-3 py-2 shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600">
+                                                <label :for="'feed_'+index" class="block text-xs font-medium text-gray-900">Frequency / Feeding Rules</label>
+                                                <input v-model="form.medicines[index].frequency" type="text" :id="'feed_'+index" class="block w-full border-0 p-0 text-gray-900 placeholder-gray-500 focus:ring-0 sm:text-sm" placeholder="E.g: 1+1+1 (After Meal)">
+                                            </div>
+                                        </div>
+                                        <div class="mb-4 col-span-3">
+                                            <div class="rounded-md border border-gray-300 px-3 py-2 shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600">
+                                                <label :for="'days_'+index" class="block text-xs font-medium text-gray-900">Days</label>
+                                                <input v-model="form.medicines[index].days" type="text" :id="'days_'+index" class="block w-full border-0 p-0 text-gray-900 placeholder-gray-500 focus:ring-0 sm:text-sm" placeholder="E.g: 7 days">
+                                            </div>
+                                        </div>
+                                        <div class="mb-4 col-span-1 flex items-center">
+                                            <button v-if="index == 0" @click="addMore" type="button" class="inline-flex items-center rounded-full border border-transparent bg-blue-600 p-1 text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ml-2">
+                                                <font-awesome-icon icon="fa-solid fa-plus" class="h-5 w-5"/>
+                                            </button>
+                                            <button v-else  @click="removeField(index)" type="button" class="inline-flex items-center rounded-full border border-transparent bg-red-600 p-1 text-white shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 ml-2">
+                                                <font-awesome-icon icon="fa-solid fa-trash-can" class="h-5 w-5"/>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="grid grid-cols-2 gap-2">
                                     <div class="mb-4">
                                         <Label :name="__('Case')" id="prescription_note" :hasError="form.errors.case" :required="false"/>
-                                        <QuillEditor theme="snow" v-model:content="form.case" contentType="html" class="h-60 rounded-md"/>
+                                        <QuillEditor theme="snow" v-model:content="form.case" contentType="html" class="h-40 rounded-md"/>
                                     </div>
                                     <div class="mb-4">
                                         <Label :name="__('Note')" id="prescription_note" :hasError="form.errors.note" :required="false"/>
-                                        <QuillEditor theme="snow" v-model:content="form.note" contentType="html" class="h-60 rounded-md"/>
+                                        <QuillEditor theme="snow" v-model:content="form.note" contentType="html" class="h-40 rounded-md"/>
                                     </div>
                                 </div>
                                 <div class="mb-4">
@@ -115,7 +133,11 @@ export default {
                 case: '',
                 note: '',
                 advice: '',
-                medicines: [],
+                medicines: [{
+                    medicine: '',
+                    frequency: '',
+                    days: '',
+                }],
             }),
 
             patients:[]
@@ -129,6 +151,16 @@ export default {
                     this.$emit('close-drawer')
                 },
             });
+        },
+        addMore() {
+            this.form.medicines.push({
+                medicine: '',
+                frequency: '',
+                days: '',
+            });
+        },
+        removeField(index) {
+            this.form.medicines.splice(index, 1);
         },
         handleDate(date) {
             const formatTime = this.formateDate(date, "YYYY-MM-DD");
