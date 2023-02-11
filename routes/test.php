@@ -41,6 +41,8 @@ use sirajcse\UniqueIdGenerator\UniqueIdGenerator;
 // })->middleware('set_lang');
 
 Route::get('/test', function () {
+    return auth()->user()->doctor;
+
     return LeaveBalance::with('leaveType:id,name')->where('user_id', auth()->id())->latest()->get();
 
 //    return Bed::with('bedType:id,name','floor:id,name')->get()->groupBy(['bed_floor_id','bed_type_id']);

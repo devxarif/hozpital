@@ -89,19 +89,12 @@
 </template>
 
 <script>
-import Datepicker from "@vuepic/vue-datepicker";
-import "@vuepic/vue-datepicker/dist/main.css";
-import dayjs from "dayjs";
-
 export default {
     props: {
         show: {
             type: Boolean,
             default: false
         }
-    },
-    components:{
-        Datepicker
     },
     data() {
         return {
@@ -132,7 +125,7 @@ export default {
             });
         },
         handleDate(date) {
-            const formatTime = dayjs(date).format("YYYY-MM-DD");
+            const formatTime = this.formateDate(date, "YYYY-MM-DD");
             this.form.date = formatTime;
         },
         async loadIncomeCategories(){

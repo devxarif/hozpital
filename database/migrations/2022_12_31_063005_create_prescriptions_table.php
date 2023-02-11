@@ -19,9 +19,10 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(Doctor::class)->constrained()->cascadeOnDelete();
             $table->foreignIdFor(Patient::class)->constrained()->cascadeOnDelete();
-            $table->longText('case_history');
-            $table->longText('medication');
-            $table->longText('note');
+            $table->date('date');
+            $table->longText('case')->nullable();
+            $table->longText('note')->nullable();
+            $table->longText('advice')->nullable();
             $table->timestamps();
         });
     }

@@ -103,10 +103,6 @@
 </template>
 
 <script>
-import Datepicker from "@vuepic/vue-datepicker";
-import "@vuepic/vue-datepicker/dist/main.css";
-import dayjs from "dayjs";
-
 export default {
     props: {
         users: {
@@ -126,16 +122,13 @@ export default {
             required: true,
         },
     },
-    components: {
-        Datepicker,
-    },
     data() {
         return {
             form: this.$inertia.form({
                 leave_type_id: this.leaveRequest.leave_type_id,
                 employee_id: this.leaveRequest.employee_id,
-                start: dayjs(this.leaveRequest.start).format("YYYY-MM-DD"),
-                end: dayjs(this.leaveRequest.end).format("YYYY-MM-DD"),
+                start: this.formateDate(this.leaveRequest.start, "YYYY-MM-DD"),
+                end: this.formateDate(this.leaveRequest.end, "YYYY-MM-DD"),
                 reason: this.leaveRequest.reason,
                 status: this.leaveRequest.status,
             }),
@@ -159,7 +152,7 @@ export default {
             this.form.status = event.target.checked;
         },
         handleStartDate(startDate) {
-            const formatTime = dayjs(startDate).format("YYYY-MM-DD");
+            const formatTime = this.formateDate(startDate, "YYYY-MM-DD");
 
             if(this.form.end){
                 let dateCheck = this.checkDateValidity(formatTime, this.form.end);
@@ -173,7 +166,7 @@ export default {
             this.form.start = formatTime;
         },
         handleEndDate(endDate) {
-            const formatTime = dayjs(endDate).format("YYYY-MM-DD");
+            const formatTime = this.formateDate(startDate, "YYYY-MM-DD");
 
             if(this.form.start){
                 let dateCheck = this.checkDateValidity(this.form.start, formatTime);

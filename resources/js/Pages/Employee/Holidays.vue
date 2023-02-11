@@ -236,7 +236,6 @@
 // import interactionPlugin from "@fullcalendar/interaction";
 // import Datepicker from "@vuepic/vue-datepicker";
 // import "@vuepic/vue-datepicker/dist/main.css";
-// import dayjs from "dayjs";
 
 // import FullCalendar from '@fullcalendar/vue3'
 // import dayGridPlugin from '@fullcalendar/daygrid'
@@ -250,7 +249,6 @@ export default {
         holidays: Array,
     },
     components: {
-        // Datepicker,
         // FullCalendar,
     },
     data() {
@@ -285,7 +283,7 @@ export default {
             });
         },
         handleStartDate(startDate) {
-            const formatTime = dayjs(startDate).format("YYYY-MM-DD");
+            const formatTime = this.formateDate(startDate, "YYYY-MM-DD");
 
             if(this.form.end){
                 let dateCheck = this.checkDateValidity(formatTime, this.form.end, true);
@@ -299,7 +297,7 @@ export default {
             this.form.start = formatTime;
         },
         handleEndDate(endDate) {
-            const formatTime = dayjs(endDate).format("YYYY-MM-DD");
+            const formatTime = this.formateDate(startDate, "YYYY-MM-DD");
 
             if(this.form.start){
                 let dateCheck = this.checkDateValidity(this.form.start, formatTime, true);

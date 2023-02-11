@@ -238,10 +238,6 @@
 </template>
 
 <script>
-import Datepicker from "@vuepic/vue-datepicker";
-import "@vuepic/vue-datepicker/dist/main.css";
-import dayjs from "dayjs";
-
 export default {
     props: {
         leaveTypes: {
@@ -256,9 +252,6 @@ export default {
             type: Boolean,
             default: false
         }
-    },
-    components: {
-        Datepicker,
     },
     data() {
         return {
@@ -285,7 +278,7 @@ export default {
             this.form.status = event.target.checked;
         },
         handleStartDate(startDate) {
-            const formatTime = dayjs(startDate).format("YYYY-MM-DD");
+            const formatTime = this.formateDate(startDate, "YYYY-MM-DD");
 
             if(this.form.end){
                 let dateCheck = this.checkDateValidity(formatTime, this.form.end);
@@ -299,7 +292,7 @@ export default {
             this.form.start = formatTime;
         },
         handleEndDate(endDate) {
-            const formatTime = dayjs(endDate).format("YYYY-MM-DD");
+            const formatTime = this.formateDate(startDate, "YYYY-MM-DD");
 
             if(this.form.start){
                 let dateCheck = this.checkDateValidity(this.form.start, formatTime);

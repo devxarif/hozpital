@@ -336,7 +336,6 @@
 
 <script>
 import Actions from "@/Shared/Organization/LeaveRequest/Status.vue";
-import dayjs from "dayjs";
 import CreateLeaveRequest from "./Create.vue";
 import EditLeaveRequest from "./Edit.vue";
 
@@ -396,10 +395,10 @@ export default {
             }
         },
         startDate(date) {
-            return dayjs(date).format("DD MMM, YYYY");
+            return this.formateDate(date, "DD MMM, YYYY");
         },
         endDate(date) {
-            return dayjs(date).format("DD MMM, YYYY");
+            return this.formateDate(date, "DD MMM, YYYY");
         },
         filteringData() {
             this.showFilter = !this.showFilter;
@@ -432,8 +431,8 @@ export default {
             this.showModal = true;
         },
         requestFor(startDate, endDate) {
-            const start = dayjs(startDate).format("DD MMM, YYYY");
-            const end = dayjs(endDate).format("DD MMM, YYYY");
+            const start = this.formateDate(startDate, "DD MMM, YYYY");
+            const end = this.formateDate(endDate, "DD MMM, YYYY");
 
             return `${start} - ${end}`;
         },

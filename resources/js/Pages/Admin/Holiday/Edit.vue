@@ -98,9 +98,6 @@
 <script>
 import { ColorPicker } from 'vue-color-kit'
 import 'vue-color-kit/dist/vue-color-kit.css'
-import Datepicker from "@vuepic/vue-datepicker";
-import "@vuepic/vue-datepicker/dist/main.css";
-import dayjs from "dayjs";
 
 export default {
     props: {
@@ -115,8 +112,6 @@ export default {
     },
     components: {
         ColorPicker,
-        Datepicker
-
     },
     data() {
         return {
@@ -171,11 +166,11 @@ export default {
             this.form.color = color.hex
         },
         handleStartDate(date) {
-            const formatTime = dayjs(date).format("YYYY-MM-DD");
+            const formatTime = this.formateDate(date, "YYYY-MM-DD");
             this.form.start = formatTime;
         },
         handleEndDate(date) {
-            const formatTime = dayjs(date).format("YYYY-MM-DD");
+            const formatTime = this.formateDate(date, "YYYY-MM-DD");
             this.form.end = formatTime;
         },
     },

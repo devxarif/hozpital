@@ -95,90 +95,84 @@
 </template>
 
 <script>
-    import { ColorPicker } from 'vue-color-kit'
-    import 'vue-color-kit/dist/vue-color-kit.css'
-    import Datepicker from "@vuepic/vue-datepicker";
-    import "@vuepic/vue-datepicker/dist/main.css";
-    import dayjs from "dayjs";
+import { ColorPicker } from 'vue-color-kit'
+import 'vue-color-kit/dist/vue-color-kit.css'
 
-    export default {
-        props: {
-            show: {
-                type: Boolean,
-                default: false
-            },
-            calendar: {
-                type: Object,
-                default: {start: null, end: null}
-            },
+export default {
+    props: {
+        show: {
+            type: Boolean,
+            default: false
         },
-        components: {
-            ColorPicker,
-            Datepicker
+        calendar: {
+            type: Object,
+            default: {start: null, end: null}
+        },
+    },
+    components: {
+        ColorPicker,
+    },
+    data() {
+        return {
+            form: this.$inertia.form({
+                title: '',
+                start: this.calendar.start,
+                end: this.calendar.end,
+                color: '#ff0000',
+            }),
 
-        },
-        data() {
-            return {
-                form: this.$inertia.form({
-                    title: '',
-                    start: this.calendar.start,
-                    end: this.calendar.end,
-                    color: '#ff0000',
-                }),
-
-                isOpenColorPicker: false,
-                isSucking: true,
-                swatches: [
-                    '#FF1900',
-                    '#2E81FF',
-                    '#FFE623',
-                    '#00FF00',
-                    '#f3722c',
-                    '#1BC7B1',
-                    '#FC3CAD',
-                    '#577590',
-                    '#00BEFF',
-                    '#4a4e69',
-                    '#c9ada7',
-                    '#8E00A7',
-                    '#000000',
-                    '#FFFFFF',
-                ]
-            };
-        },
-        methods: {
-            saveData() {
-                this.form.post(route("admin.holiday.store"), {
-                    onSuccess: () => {
-                        this.form.reset(),
-                        this.$emit('close-drawer')
-                    },
-                });
-            },
-            changeColor(color) {
-                this.form.color = color.hex
-            },
-            handleStartDate(date) {
-                const formatTime = dayjs(date).format("YYYY-MM-DD");
-                this.form.start = formatTime;
-            },
-            handleEndDate(date) {
-                const formatTime = dayjs(date).format("YYYY-MM-DD");
-                this.form.end = formatTime;
-            },
-        },
-        watch: {
-            calendar: {
-                handler() {
-                    this.form.start = this.calendar.start ?? ''
-                    this.form.end = this.calendar.end ?? ''
+            isOpenColorPicker: false,
+            isSucking: true,
+            swatches: [
+                '#FF1900',
+                '#2E81FF',
+                '#FFE623',
+                '#00FF00',
+                '#f3722c',
+                '#1BC7B1',
+                '#FC3CAD',
+                '#577590',
+                '#00BEFF',
+                '#4a4e69',
+                '#c9ada7',
+                '#8E00A7',
+                '#000000',
+                '#FFFFFF',
+            ]
+        };
+    },
+    methods: {
+        saveData() {
+            this.form.post(route("admin.holiday.store"), {
+                onSuccess: () => {
+                    this.form.reset(),
+                    this.$emit('close-drawer')
                 },
-                deep: true,
-            },
+            });
         },
-        mounted() {
-            this.checkPagePermission('admin')
-        }
-    };
-
+        changeColor(color) {
+            this.form.color = color.hex
+        },
+        handleStartDate(date) {
+            const formatTime = this.formateDate(date, "YYYY-MM-DD");
+            this.form.start = formatTime;
+        },
+        handleEndDate(date) {
+            const formatTime = this.formateDate(date, "YYYY-MM-DD");
+            this.form.end = formatTime;
+        },
+    },
+    watch: {
+        calendar: {
+            handler() {
+                this.form.start = this.calendar.start ?? ''
+                this.form.end = this.calendar.end ?? ''
+            },
+            deep: true,
+        },
+    },
+    mounted() {
+        this.checkPagePermission('admin')
+    }
+};
 </script>

@@ -16,10 +16,15 @@ use App\Models\ContactMessage;
 use App\Http\Controllers\Controller;
 use App\Models\IncomeCategory;
 use App\Models\Manufacture;
+use App\Models\Patient;
 use App\Models\ProductCategory;
 
 class GlobalController extends Controller
 {
+    public function fetchPatients(){
+        return Patient::with('user:id,name')->latest()->get();
+    }
+
     public function fetchDepartments(){
         return Department::select('id','name')->latest()->get();
     }

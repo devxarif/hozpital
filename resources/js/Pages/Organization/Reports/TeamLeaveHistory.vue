@@ -132,9 +132,6 @@
 
 
 <script>
-import Datepicker from "@vuepic/vue-datepicker";
-import "@vuepic/vue-datepicker/dist/main.css";
-import dayjs from "dayjs";
 import axios from 'axios';
 import Actions from "../../../Shared/Company/LeaveRequest/Status.vue";
 
@@ -143,7 +140,6 @@ export default {
         teams: Array
     },
     components: {
-        Datepicker,
         Actions
     },
     data() {
@@ -167,7 +163,7 @@ export default {
     },
     methods: {
         handleCustomDate(date) {
-            const formatTime = dayjs(date).format("YYYY-MM-DD");
+            const formatTime = this.formateDate(date, "YYYY-MM-DD");
             this.form.custom_date = formatTime;
         },
         handleCustomRangeDate(date) {
@@ -181,8 +177,8 @@ export default {
                 this.errors.custom_end_date = null;
             }
 
-            this.form.custom_start_date = dayjs(startDate).format("YYYY-MM-DD")
-            this.form.custom_end_date = dayjs(endDate).format("YYYY-MM-DD")
+            this.form.custom_start_date = this.formateDate(startDate, "YYYY-MM-DD")
+            this.form.custom_end_date = this.formateDate(startDate, "YYYY-MM-DD")
         },
         async getReport(){
             try {
@@ -218,10 +214,10 @@ export default {
             }
         },
         startDate(date) {
-            return dayjs(date).format("DD MMM, YYYY");
+            return this.formateDate(date, "DD MMM, YYYY");
         },
         endDate(date) {
-            return dayjs(date).format("DD MMM, YYYY");
+            return this.formateDate(date, "DD MMM, YYYY");
         },
     },
     watch:{

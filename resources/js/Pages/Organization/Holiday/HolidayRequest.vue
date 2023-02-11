@@ -133,7 +133,6 @@
 
 <script>
 import Pagination from "../../../Shared/Pagination.vue";
-import dayjs from "dayjs";
 
 export default {
     props: {
@@ -160,8 +159,8 @@ export default {
     },
     methods: {
         requestFor(startDate, endDate) {
-            const start = dayjs(startDate).format("DD MMM, YYYY");
-            const end = dayjs(endDate).format("DD MMM, YYYY");
+            const start = this.formateDate(startDate, "DD MMM, YYYY");
+            const end = this.formateDate(endDate, "DD MMM, YYYY");
 
             return `${start} - ${end}`;
         },

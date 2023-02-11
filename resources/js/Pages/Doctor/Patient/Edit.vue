@@ -149,9 +149,6 @@ import EyeHideIcon from '@/Shared/Icons/EyeHideIcon.vue';
 import EyeShowIcon from '@/Shared/Icons/EyeShowIcon.vue';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faHome } from '@fortawesome/free-solid-svg-icons'
-import Datepicker from "@vuepic/vue-datepicker";
-import "@vuepic/vue-datepicker/dist/main.css";
-import dayjs from "dayjs";
 
 export default {
     components:{
@@ -159,8 +156,6 @@ export default {
         EyeShowIcon,
         library,
         faHome,
-        dayjs,
-        Datepicker
     },
     props: {
         show: {
@@ -249,7 +244,7 @@ export default {
             return text + '@mail.com';
         },
         handleCustomDate(date) {
-            const formatTime = dayjs(date).format("YYYY-MM-DD");
+            const formatTime = this.formateDate(date, "YYYY-MM-DD");
             this.form.birth_date = formatTime;
         },
         disabledAfterToday(date) {

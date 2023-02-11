@@ -336,7 +336,6 @@
 
 <script>
 import Pagination from "../../../Shared/Pagination.vue";
-import dayjs from "dayjs";
 import { Inertia } from "@inertiajs/inertia";
 import CreateLeaveRequest from "./Create.vue";
 import EditLeaveRequest from "./Edit.vue";
@@ -409,14 +408,14 @@ export default {
             }
         },
         startDate(Date) {
-            return dayjs(Date).format("DD MMM, YYYY");
+            return this.formateDate(date, "DD MMM, YYYY");
         },
         endDate(Date) {
-            return dayjs(Date).format("DD MMM, YYYY");
+            return this.formateDate(date, "DD MMM, YYYY");
         },
         requestFor(startDate, endDate) {
-            const start = dayjs(startDate).format("DD MMM, YYYY");
-            const end = dayjs(endDate).format("DD MMM, YYYY");
+            const start = this.formateDate(startDate, "DD MMM, YYYY");
+            const end = this.formateDate(endDate, "DD MMM, YYYY");
 
             return `${start} - ${end}`;
         },

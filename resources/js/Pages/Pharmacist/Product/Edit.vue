@@ -157,9 +157,6 @@
 </template>
 
 <script>
-import Datepicker from "@vuepic/vue-datepicker";
-import "@vuepic/vue-datepicker/dist/main.css";
-import dayjs from "dayjs";
 import { QuillEditor } from '@vueup/vue-quill'
 import '@vueup/vue-quill/dist/vue-quill.snow.css';
 
@@ -175,7 +172,6 @@ export default {
         }
     },
     components: {
-        Datepicker,
         QuillEditor
     },
     data() {
@@ -236,7 +232,7 @@ export default {
             });
         },
         handleExpiredDate(date) {
-            const formatTime = dayjs(date).format("YYYY-MM-DD");
+            const formatTime = this.formateDate(date, "YYYY-MM-DD");
             this.form.expire_date = formatTime;
         },
         changeProductType(type) {

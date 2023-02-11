@@ -30,6 +30,8 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import dayjs from "dayjs";
 import Multiselect from '@vueform/multiselect'
 import '@vueform/multiselect/themes/default.css';
+import Datepicker from "@vuepic/vue-datepicker";
+import "@vuepic/vue-datepicker/dist/main.css";
 
 // Progress bar
 InertiaProgress.init({
@@ -97,6 +99,8 @@ createInertiaApp({
                 MenuItem,
                 MenuItems,
                 Multiselect,
+                Datepicker,
+                dayjs
             },
             methods:{
                 route: window.route,

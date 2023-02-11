@@ -50,6 +50,20 @@ if (!function_exists('deleteImage')) {
 }
 
 if (!function_exists('currentUser')) {
+    function currentDoctor()
+    {
+        return auth()->user()->doctor;
+    }
+}
+
+if (!function_exists('currentUser')) {
+    function currentPatient()
+    {
+        return auth()->user()->patient;
+    }
+}
+
+if (!function_exists('currentUser')) {
     function currentUser()
     {
         return auth()->user();

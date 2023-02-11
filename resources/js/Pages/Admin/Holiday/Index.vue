@@ -123,8 +123,6 @@ import CreateHoliday from "./Create.vue";
 import EditHoliday from "./Edit.vue";
 import CardSkeleton from "@/Shared/Skeleton/CardSkeleton.vue";
 
-import dayjs from "dayjs";
-
 import '@fullcalendar/core/vdom'
 import FullCalendar from '@fullcalendar/vue3'
 import dayGridPlugin from '@fullcalendar/daygrid'

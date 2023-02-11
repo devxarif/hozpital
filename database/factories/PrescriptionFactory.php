@@ -21,9 +21,10 @@ class PrescriptionFactory extends Factory
         return [
             'doctor_id' => Doctor::inRandomOrder()->value('id'),
             'patient_id' => Patient::inRandomOrder()->value('id'),
-            'case_history' => fake()->paragraph,
-            'medication' => fake()->paragraph,
-            'note' => fake()->paragraph,
+            'date' => fake()->date(),
+            'case' => fake()->realText(),
+            'note' => fake()->realText(),
+            'advice' => fake()->realText(),
         ];
     }
 }

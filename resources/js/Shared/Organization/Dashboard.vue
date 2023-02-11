@@ -204,7 +204,7 @@
 
     </div>
 
-   
+
 
 
 
@@ -2153,7 +2153,6 @@
     // import dayGridPlugin from "@fullcalendar/daygrid";
     // import interactionPlugin from "@fullcalendar/interaction";
     // import CheckIcon from "../Icons/CheckIcon.vue";
-    // import dayjs from "dayjs";
     // import Feature from "../Admin/Plan/Feature.vue";
 
     export default {
@@ -2203,14 +2202,14 @@
                 }
             },
             startDate(Date) {
-                return dayjs(Date).format("DD MMM, YYYY");
+                return this.formateDate(Date, "DD MMM, YYYY");
             },
             endDate(Date) {
-                return dayjs(Date).format("DD MMM, YYYY");
+                return  this.formateDate(Date, "DD MMM, YYYY");
             },
             requestFor(startDate, endDate) {
-                const start = dayjs(startDate).format("DD MMM, YYYY");
-                const end = dayjs(endDate).format("DD MMM, YYYY");
+                const start =  this.formateDate(startDate, "DD MMM, YYYY");
+                const end =  this.formateDate(endDate, "DD MMM, YYYY");
 
                 return `${start} - ${end}`;
             },

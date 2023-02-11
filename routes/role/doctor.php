@@ -20,10 +20,14 @@ use App\Http\Controllers\Doctor\AnnouncementController;
 use App\Http\Controllers\Doctor\BedAllotmentController;
 use App\Http\Controllers\Doctor\LeaveRequestController;
 use App\Http\Controllers\Doctor\BloodDonationController;
+use App\Http\Controllers\Doctor\PrescriptionController;
 
 Route::middleware(['auth'])->name('doctor.')->prefix('doctor')->group(function () {
     // Patient Routes
     Route::resource('patient', PatientController::class);
+
+    // Prescription Routes
+    Route::resource('prescription', PrescriptionController::class);
 
     // Bed
     Route::get('bedType/beds', [BedController::class, 'bedTypeWiseBeds'])->name('bedtype.bed');

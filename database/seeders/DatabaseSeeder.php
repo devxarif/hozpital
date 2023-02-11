@@ -57,6 +57,7 @@ use Database\Seeders\ProductCategorySeeder;
 use Database\Seeders\DiagnosticReportSeeder;
 use Database\Seeders\DepartmentEmployeeSeeder;
 use Database\Seeders\DiagnosticReportTypeSeeder;
+use Database\Seeders\PrescriptionMedicineSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -113,11 +114,6 @@ class DatabaseSeeder extends Seeder
             BloodBankSeeder::class,
             BloodDonationSeeder::class,
 
-            // Report
-            PrescriptionSeeder::class,
-            DiagnosticReportTypeSeeder::class,
-            DiagnosticReportSeeder::class,
-
             // Payment
             InvoiceSeeder::class,
             ExpenseCategorySeeder::class,
@@ -129,6 +125,12 @@ class DatabaseSeeder extends Seeder
             ManufactureSeeder::class,
             ProductCategorySeeder::class,
             ProductSeeder::class,
+
+            // Report
+            PrescriptionSeeder::class,
+            PrescriptionMedicineSeeder::class,
+            DiagnosticReportTypeSeeder::class,
+            DiagnosticReportSeeder::class,
 
             // Leave & Holidays
             CountrySeeder::class,
