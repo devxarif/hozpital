@@ -8,11 +8,13 @@ use App\Models\Holiday;
 use App\Models\Setting;
 use App\Models\Employee;
 use App\Models\Language;
+use Carbon\CarbonPeriod;
 use App\Models\LeaveType;
 use App\Models\Department;
 use Illuminate\Support\Str;
 use App\Models\LeaveBalance;
 use App\Models\ContactMessage;
+use App\Models\AppointmentSchedule;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Benchmark;
 use Illuminate\Support\Facades\DB;
@@ -43,6 +45,165 @@ use sirajcse\UniqueIdGenerator\UniqueIdGenerator;
 // })->middleware('set_lang');
 
 Route::get('/test', function () {
+    $start = '8:5';
+    $end = '12:59';
+
+    return  $start = Carbon::parse($start)->format('H:i');
+
+
+    $hours_24 = HoursHelper::create($start, $end, 20);
+    $hours_12 = HoursHelper::create($start, $end, 20, 'g:i A');
+
+    return [
+        'hours_24' => $hours_24,
+        'hours_12' => $hours_12
+    ];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    $schedule = AppointmentSchedule::currentDoctor()->with('appointmentSlots')->first();
+    // return $schedule = currentDoctor()->appointmentSlots;
+
+    // return $schedule->appointmentSlots;
+
+    $collections = [];
+    foreach ($schedule->appointmentSlots as $slot) {
+        $values = HoursHelper::create($slot->start, $slot->end, $slot->diff_time);
+        $collections[] = $values;
+    }
+
+    $result = array();
+    foreach ($collections as $array) {
+        $result = array_merge($result, json_decode(json_encode($array), true));
+    }
+
+    $unique_values = array_values(array_unique($result));
+
+
+    return $unique_values;
+
+
+
+
+
+
+
+
+
+    // foreach ($collections as $idx => $val ) {
+    //     $all_array[] = $val;
+    //     // $all_array[] = [$val, $array2[$idx], $array3[$idx] ];
+    // }
+
+
+
+    // return $all_array;
+
+    $all_array = [];
+
+    for($z=0; $z <count($collections); $z++){
+        // return $collection
+        // $all_array[$z][] = array_merge($array1[$z],$array2[$z] );
+
+        $all_array[] = array_combine_array($collections[$z]);
+
+        $all_array = array_merge(json_decode(json_encode($collections[$z]), true));
+    }
+
+    return $all_array;
+
+
+
+    foreach ($collections as $key => $collection) {
+        return $collection;
+    }
+
+    // for ($i=0; $i < ; $i++) {
+    //     # code...
+    // }
+
+    return count($collection);
+
+
+    $from = '08:00';
+    $to = '12:00';
+    $from2 = '10:00';
+    $to2 = '15:00';
+
+    // $days_periods = CarbonPeriod::create($from, $to)->map(fn ($date) => $date->toDateString());
+    // return iterator_to_array($days_periods);
+
+
+    // $holidays = [];
+    // $holidays_between_days = Holiday::where('company_id', $company_id)
+    //     ->whereDate('start', '>=', $start_date)
+    //     ->whereDate('end', '<=', $end_date)
+    //     ->get(['start', 'end']);
+
+    // foreach ($holidays_between_days as $holiday) {
+    //     $holidays = array_merge($holidays, iterator_to_array(CarbonPeriod::create($holiday->start, $holiday->end)->map(fn ($date) => $date->toDateString())));
+    // }
+
+    // $holidays = array_values(array_unique($holidays));
+
+
+
+    $hours_1 = HoursHelper::create($from, $to, 20);
+    $hours_2 = HoursHelper::create($from2, $to2, 20);
+
+
+    return [
+        json_decode(json_encode($hours_1), true),
+        json_decode(json_encode($hours_2), true)
+    ];
+
+    $array = array_merge( json_decode(json_encode($hours_1), true),  json_decode(json_encode($hours_2), true));
+
+    $unique_array = array_values(array_unique($array));
+
+
+    // $hours = HoursHelper::create('08:00', '11:00', 60, 'H:i', [
+    //     ['09:00', '09:59'],
+    //     // more..
+    // ]);
+
+    return $unique_array;
+    // return [
+    //     $array,
+    //     $hours_24
+    // ];
+
+
+
+    $hours_24 = HoursHelper::create($from, $to, 20);
+    $doctor = currentDoctor();
+    $slot = $doctor->appointmentSlots;
+
+    // return $slot;
+    $hours_24 = HoursHelper::create($slot->start, $slot->end, 20);
+    $hours_12 = HoursHelper::create($slot->start, $slot->end, 20, 'g:i A');
+
+    return [
+        'slot' => $slot,
+        'hours_24' => $hours_24,
+        'hours_12' => $hours_12
+    ];
+
     $from = '08:00';
     $to = '14:00';
 

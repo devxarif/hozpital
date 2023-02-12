@@ -17,6 +17,7 @@ use App\Http\Controllers\Doctor\DepartmentController;
 use App\Http\Controllers\Doctor\PharmacistController;
 use App\Http\Controllers\Doctor\ManufactureController;
 use App\Http\Controllers\Doctor\AnnouncementController;
+use App\Http\Controllers\Doctor\AppointmentScheduleController;
 use App\Http\Controllers\Doctor\BedAllotmentController;
 use App\Http\Controllers\Doctor\LeaveRequestController;
 use App\Http\Controllers\Doctor\BloodDonationController;
@@ -28,6 +29,12 @@ Route::middleware(['auth'])->name('doctor.')->prefix('doctor')->group(function (
 
     // Prescription Routes
     Route::resource('prescription', PrescriptionController::class);
+
+    // Prescription Routes
+    Route::controller(AppointmentScheduleController::class)->group(function(){
+        Route::get('appointmentSchedule', 'index')->name('appointmentSchedule.index');
+        Route::put('appointmentSchedule/{appointmentSchedule}/status-update', 'statusUpdate')->name('appointmentSchedule.status');
+    });
 
     // Bed
     Route::get('bedType/beds', [BedController::class, 'bedTypeWiseBeds'])->name('bedtype.bed');

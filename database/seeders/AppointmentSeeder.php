@@ -2,11 +2,9 @@
 
 namespace Database\Seeders;
 
-use App\Models\Appointment;
-use App\Models\AppointmentDays;
 use App\Models\Doctor;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Arr;
 
 class AppointmentSeeder extends Seeder
 {
@@ -18,11 +16,24 @@ class AppointmentSeeder extends Seeder
     public function run()
     {
         // Appointment::factory(50)->create();
+        $week_days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
         $doctors = Doctor::all();
 
         foreach ($doctors as $doctor) {
-            $appointment_days = $doctor->appointmentDays()->create();
-            $appointment_days->appointmentSlots()->create();
+            foreach ($week_days as $day_name) {
+                $appointment_days = $doctor->appointmentSchedule()->create([
+                    'name' => $day_name,
+                    'status' => $day_name == 'sunday' ? 0: 1
+                ]);
+
+                for ($i=0; $i < 3; $i++) {
+                    $appointment_days->appointmentSlots()->create([
+                        'start' => Arr::random(['09:00', '10:00','12:00']),
+                        'end' => Arr::random(['13:00', '15:00','20:00']),
+                        'diff_time' => Arr::random([15,20,30]),
+                    ]);
+                }
+            }
         }
     }
 }

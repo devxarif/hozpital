@@ -14,16 +14,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('appointment_days', function (Blueprint $table) {
+        Schema::create('appointment_schedules', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(Doctor::class)->constrained()->cascadeOnDelete();
-            $table->boolean('sunday')->default(false);
-            $table->boolean('monday')->default(true);
-            $table->boolean('tuesday')->default(true);
-            $table->boolean('wednesday')->default(true);
-            $table->boolean('thursday')->default(true);
-            $table->boolean('friday')->default(true);
-            $table->boolean('saturday')->default(true);
+            $table->string('name');
+            $table->boolean('status')->default(1);
             $table->timestamps();
         });
     }
@@ -35,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('appointment_days');
+        Schema::dropIfExists('appointment_schedules');
     }
 };

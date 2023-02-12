@@ -148,7 +148,7 @@ class DatabaseSeeder extends Seeder
             EventSeeder::class,
             AnnouncementSeeder::class,
             // AmbulanceSeeder::class,
-            AppointmentSeeder::class,
+            // AppointmentSeeder::class,
         ]);
         // $this->call([
         //     RolePermissionSeeder::class,
