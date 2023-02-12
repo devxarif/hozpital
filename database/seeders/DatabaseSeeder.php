@@ -127,6 +127,7 @@ class DatabaseSeeder extends Seeder
             ProductSeeder::class,
 
             // Report
+            AppointmentSeeder::class,
             PrescriptionSeeder::class,
             PrescriptionMedicineSeeder::class,
             DiagnosticReportTypeSeeder::class,

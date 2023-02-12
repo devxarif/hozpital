@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6f1cde272d0d01cc0f7d8e8e1b91b84e",
+    "content-hash": "d7a9da5bbde2e1662a3d803f6b670f26",
     "packages": [
         {
             "name": "amrshawky/currency",
@@ -1650,6 +1650,62 @@
                 }
             ],
             "time": "2022-06-27T23:21:15+00:00"
+        },
+        {
+            "name": "label84/laravel-hours-helper",
+            "version": "v1.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Label84/laravel-hours-helper.git",
+                "reference": "a5ac348e382b1a0dd6e57b28edc0d6eb00288109"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Label84/laravel-hours-helper/zipball/a5ac348e382b1a0dd6e57b28edc0d6eb00288109",
+                "reference": "a5ac348e382b1a0dd6e57b28edc0d6eb00288109",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^9.0|^10.0",
+                "php": "^8.0"
+            },
+            "require-dev": {
+                "nunomaduro/larastan": "^2.0",
+                "orchestra/testbench": "^7.0|^8.0",
+                "phpunit/phpunit": "^9.5"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Label84\\HoursHelper\\HoursHelperServiceProvider"
+                    ],
+                    "aliases": {
+                        "HoursHelper": "Label84\\HoursHelper\\Facades\\HoursHelper"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Label84\\HoursHelper\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Label84",
+                    "email": "info@label84.com"
+                }
+            ],
+            "description": "Creates a Collection of times with a given interval.",
+            "support": {
+                "issues": "https://github.com/Label84/laravel-hours-helper/issues",
+                "source": "https://github.com/Label84/laravel-hours-helper/tree/v1.2.1"
+            },
+            "time": "2023-02-11T20:01:12+00:00"
         },
         {
             "name": "laminas/laminas-diactoros",

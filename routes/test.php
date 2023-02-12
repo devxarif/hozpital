@@ -1,5 +1,7 @@
 <?php
 
+use Carbon\Carbon;
+use App\Models\Bed;
 use App\Models\User;
 use App\Models\Order;
 use App\Models\Holiday;
@@ -9,15 +11,15 @@ use App\Models\Language;
 use App\Models\LeaveType;
 use App\Models\Department;
 use Illuminate\Support\Str;
+use App\Models\LeaveBalance;
 use App\Models\ContactMessage;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Benchmark;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestController;
+use Label84\HoursHelper\Facades\HoursHelper;
 use App\Http\Controllers\Admin\UpgradeController;
-use App\Models\Bed;
-use App\Models\LeaveBalance;
 use sirajcse\UniqueIdGenerator\UniqueIdGenerator;
 
 // Route::get('/', function () {
@@ -41,6 +43,38 @@ use sirajcse\UniqueIdGenerator\UniqueIdGenerator;
 // })->middleware('set_lang');
 
 Route::get('/test', function () {
+    $from = '08:00';
+    $to = '14:00';
+
+
+    $hours = HoursHelper::create($from, $to, 60);
+    // $hours = HoursHelper::create($from, $to, 60, 'g:i A');
+
+    foreach ($hours as $hour) {
+       $match = Str::is('08:00', $hour);
+
+        if ($match) {
+            return $match.'-'.$hour;
+        }
+    }
+
+
+    return 'nai';
+    $time = Carbon::parse($from);
+    $timeRange = [];
+
+    do
+    {
+        array_push($timeRange, [
+            'start' => $time->format("H:i"),
+            'end' => $time->addMinutes(15)->format("H:i")
+        ]);
+    } while ($time->format("H:i") !== $to);
+
+    return $timeRange;
+
+
+
     return auth()->user()->doctor;
 
     return LeaveBalance::with('leaveType:id,name')->where('user_id', auth()->id())->latest()->get();
