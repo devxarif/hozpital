@@ -34,6 +34,7 @@ Route::middleware(['auth'])->name('doctor.')->prefix('doctor')->group(function (
     Route::controller(AppointmentScheduleController::class)->group(function(){
         Route::get('appointmentSchedule', 'index')->name('appointmentSchedule.index');
         Route::put('appointmentSchedule/{appointmentSchedule}/status-update', 'statusUpdate')->name('appointmentSchedule.status');
+        Route::put('appointmentSchedule/{appointmentSchedule}/update', 'update')->name('appointmentSchedule.update');
     });
 
     // Bed

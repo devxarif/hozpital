@@ -28,8 +28,8 @@ class AppointmentSeeder extends Seeder
 
                 for ($i=0; $i < 3; $i++) {
                     $appointment_days->appointmentSlots()->create([
-                        'start' => Arr::random(['09:00', '10:00','12:00']),
-                        'end' => Arr::random(['13:00', '15:00','20:00']),
+                        'start_time' => Arr::random(['09:00', '10:00','12:00']),
+                        'end_time' => Arr::random(['13:00', '15:00','20:00']),
                         'diff_time' => Arr::random([15,20,30]),
                     ]);
                 }

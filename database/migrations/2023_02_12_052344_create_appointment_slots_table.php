@@ -17,8 +17,8 @@ return new class extends Migration
         Schema::create('appointment_slots', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(AppointmentSchedule::class)->constrained()->cascadeOnDelete();
-            $table->string('start')->default('09:00');
-            $table->string('end')->default('17:00');
+            $table->string('start_time')->default('09:00');
+            $table->string('end_time')->default('17:00');
             $table->string('diff_time')->default(15);
             $table->timestamps();
         });

@@ -45,10 +45,12 @@ use sirajcse\UniqueIdGenerator\UniqueIdGenerator;
 // })->middleware('set_lang');
 
 Route::get('/test', function () {
-    $start = '8:5';
+    $start = '8:00';
     $end = '12:59';
 
-    return  $start = Carbon::parse($start)->format('H:i');
+    return explode(':', $start)[0];
+
+    return $start = Carbon::parse($start)->format('H:i');
 
 
     $hours_24 = HoursHelper::create($start, $end, 20);

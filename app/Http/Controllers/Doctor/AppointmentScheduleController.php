@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Doctor;
 
-use App\Http\Controllers\Controller;
-use App\Models\AppointmentSchedule;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use App\Models\AppointmentSchedule;
+use App\Http\Controllers\Controller;
 
 class AppointmentScheduleController extends Controller
 {
@@ -18,10 +19,27 @@ class AppointmentScheduleController extends Controller
         $diff_times = AppointmentSchedule::$diff_times;
         $schedules = AppointmentSchedule::currentDoctor()
             ->select('id','doctor_id','name','status')
-            ->with('appointmentSlots:id,appointment_schedule_id,start,end,diff_time')
-            ->get();
-
-        // $blood_donations = BloodDonation::with('bloodDonor')->latest()->paginate(20)->withQueryString();
+            ->with('appointmentSlots:id,appointment_schedule_id,start_time,end_time,diff_time')
+            ->get()
+            ->transform(fn ($appointmentSchedule) => [
+                'id' => $appointmentSchedule->id,
+                'name' => $appointmentSchedule->name,
+                'status' => $appointmentSchedule->status,
+                'appointment_slots' => $appointmentSchedule->appointmentSlots->transform(fn ($slot) => [
+                    'id' => $slot->id,
+                    'start_time' => $slot->start_time,
+                    'end_time' => $slot->end_time,
+                    'diff_time' => $slot->diff_time,
+                    'start' => [
+                        'hours' => explode(':', $slot->start_time)[0],
+                        'minutes' => explode(':', $slot->start_time)[1],
+                    ],
+                    'end' => [
+                        'hours' => explode(':', $slot->end_time)[0],
+                        'minutes' => explode(':', $slot->end_time)[1],
+                    ],
+                ])
+            ]);
 
         return inertia('Doctor/Appointment/Schedule', compact('schedules','diff_times'));
     }
@@ -36,21 +54,22 @@ class AppointmentScheduleController extends Controller
      */
     public function update(Request $request, AppointmentSchedule $appointmentSchedule)
     {
-        $appointmentSchedule->update([
-            "sunday" => $request->sunday ? true : false,
-            "monday" => $request->monday ? true : false,
-            "tuesday" => $request->tuesday ? true : false,
-            "wednesday" => $request->wednesday ? true : false,
-            "thursday" => $request->thursday ? true : false,
-            "friday" => $request->friday ? true : false,
-            "saturday" => $request->saturday ? true : false,
-        ]);
+        $appointmentSchedule->appointmentSlots()->delete();
 
-        // $appointmentSchedule->
+        $slots = $request->slots;
 
-        (new UpdateBloodDonationService())->execute($request, $bloodDonation);
+        foreach ($slots as $slot) {
+            $start_time = Carbon::parse($slot['start']['hours'].':'.$slot['start']['minutes'])->format('H:i');
+            $end_time = Carbon::parse($slot['end']['hours'].':'.$slot['end']['minutes'])->format('H:i');
 
-        $this->flashSuccess('Blood donation updated successfully');
+            $appointmentSchedule->appointmentSlots()->create([
+                'start_time' => $start_time,
+                'end_time' => $end_time,
+                'diff_time' => $slot['diff_time'],
+            ]);
+        }
+
+        $this->flashSuccess('Appointment schedule updated successfully');
         return back();
     }
 

@@ -1,10 +1,9 @@
 <template>
     <div class="mb-3">
         <h2 id="accordion-color-heading-1">
-           <pre> {{ form }}</pre>
             <span type="button"
                 class="flex items-center justify-between w-full p-5 font-medium text-left text-gray-500 border border-b-0 border-gray-200 rounded-t-xl focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-800 dark:border-gray-700 dark:text-gray-400  dark:hover:bg-gray-800">
-                <span class="capitalize">{{ schedule.name }}</span>
+                <span class="capitalize text-lg font-bold text-gray-900">{{ schedule.name }}</span>
 
                 <span class="flex justify-center items-center">
                     <svg v-if="loading" class="inline mx-2 w-6 h-6 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600  justify-center items-center" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -32,9 +31,6 @@
                         </span>
                     </Switch>
                 </span>
-
-
-
             </span>
         </h2>
         <div id="accordion-color-body-1" v-show="enabled">
@@ -42,13 +38,11 @@
                 <div>
                     <div class="grid grid-cols-12 gap-2" v-for="(slot, index) in form.slots" :key="index">
                         <div class="mb-4 col-span-4">
-                            <Datepicker  @open="alertFn(index)" v-model="form.slots[index].start" @update:modelValue="handleStartTime" time-picker
+                            <Datepicker v-model="form.slots[index].start" time-picker
                                 placeholder="Start Time" class="border border-gray-100 rounded-lg" />
-                            <!-- <Datepicker v-model="form.slots[index].start" @update:modelValue="(time) => time.hours + ':' + time.minutes" time-picker
-                                placeholder="Start Time" class="border border-gray-100 rounded-lg" /> -->
                         </div>
                         <div class="mb-4 col-span-4">
-                            <Datepicker v-model="form.slots[index].end" @update:modelValue="(time) => time.hours + ':' + time.minutes" time-picker
+                            <Datepicker v-model="form.slots[index].end" time-picker
                                 placeholder="End Time" class="border border-gray-100 rounded-lg" />
                         </div>
                         <div class="mb-4 col-span-3">
@@ -61,14 +55,29 @@
 
                         <div class="mb-4 col-span-1 flex items-center">
                             <button v-if="index == 0" @click="addMore" type="button"
-                                class="inline-flex items-center rounded-full border border-transparent bg-blue-600 p-1 text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ml-2">
+                                class="inline-flex items-center rounded-full border border-transparent bg-blue-600 p-1 text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 ml-2">
                                 <font-awesome-icon icon="fa-solid fa-plus" class="h-5 w-5" />
                             </button>
                             <button v-else @click="removeField(index)" type="button"
-                                class="inline-flex items-center rounded-full border border-transparent bg-red-600 p-1 text-white shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 ml-2">
+                                class="inline-flex items-center rounded-full border border-transparent bg-red-600 p-1 text-white shadow-sm hover:bg-red-700 focus:outline-none focus:ring-offset-2 ml-2">
                                 <font-awesome-icon icon="fa-solid fa-trash-can" class="h-5 w-5" />
                             </button>
                         </div>
+                    </div>
+                    <div class="mx-auto text-center flex justify-center gap-2">
+                        <button v-if="form.slots && form.slots.length" @click.prevent="saveData" :disabled="form.processing" type="button"
+                            class="text-white justify-center flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 font-medium rounded-lg text-md px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 mt-3">
+                            <Loading v-if="form.processing" :messageShow="false" />
+                            <span v-else>
+                                <svg class="inline w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"/><polyline fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="24" points="216 72.005 104 184 48 128.005"/></svg>
+                                {{ __('Save') }}
+                            </span>
+                        </button>
+                        <button v-else @click="addMore" type="button"
+                                class="inline-flex items-center rounded-full border border-transparent bg-blue-600 px-4 py-2 text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 mx-2">
+                                <font-awesome-icon icon="fa-solid fa-plus" class="h-5 w-5 pr-2" />
+                                <p>Add Slot</p>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -102,32 +111,19 @@
             return {
                 loading: false,
                 enabled: this.schedule.status || 0,
-                time: '',
-                index: 0,
 
                 form: this.$inertia.form({
                     slots: this.schedule.appointment_slots ? this.schedule.appointment_slots : [{
-                        start: 4,
-                        end: 5,
+                        start: {hours: "09", minutes: "00"},
+                        end: {hours: "17", minutes: "00"},
                         diff_time: 30,
                     }]
                 })
             }
         },
         methods: {
-            alertFn(index){
-                this.index = index
-            },
             handleStartTime(time) {
-                // return time.hours + ':' + time.minutes;
-                // console.log(time,index)
-
                 this.form.slots[this.index].start = time.hours + ':' + time.minutes
-
-
-                // this.time = time.hours + ':' + time.minutes
-                // const formatTime = this.formateDate(date, "YYYY-MM-DD");
-                // this.form.start = formatTime;
             },
             handleEndTime(time) {
                 console.log(time)
@@ -138,24 +134,30 @@
                 // this.form.start = formatTime;
             },
             addMore() {
-                this.form.medicines.push({
-                    medicine: '',
-                    frequency: '',
-                    days: '',
+                this.form.slots.push({
+                    start: {hours: "09", minutes: "00"},
+                    end: {hours: "17", minutes: "00"},
+                    diff_time: 30,
                 });
             },
             removeField(index) {
-                this.form.medicines.splice(index, 1);
+                this.form.slots.splice(index, 1);
+            },
+            saveData(){
+                this.form.put(route("doctor.appointmentSchedule.update", this.schedule.id), {
+                    onSuccess: () => {
+                        this.form.reset(),
+                        this.$emit('close-drawer')
+                    },
+                });
             },
             async updateStatus(){
-                this.loading = true;
-                let response = await axios.put(route('doctor.appointmentSchedule.status', this.schedule.id))
-                this.enabled = !this.enabled
-                this.loading = false;
-                if (!loading) {
+                if (!this.loading) {
+                    this.loading = true;
+                    let response = await axios.put(route('doctor.appointmentSchedule.status', this.schedule.id))
+                    this.enabled = !this.enabled
+                    this.loading = false;
                 }
-                console.log(response);
-                // console.log(this.schedule)
             }
         },
         created() {
