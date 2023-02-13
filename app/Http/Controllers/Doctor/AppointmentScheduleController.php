@@ -67,6 +67,7 @@ class AppointmentScheduleController extends Controller
                     'start_time' => $start_time,
                     'end_time' => $end_time,
                     'diff_time' => $slot['diff_time'],
+                    'slot' => $start_time.' - '.$end_time,
                 ]);
             }
         }

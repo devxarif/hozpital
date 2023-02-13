@@ -45,6 +45,60 @@ use sirajcse\UniqueIdGenerator\UniqueIdGenerator;
 // })->middleware('set_lang');
 
 Route::get('/test', function () {
+    $time = [
+        ['start' => '08:00', 'end' => '08:30'],
+        ['start' => '08:30', 'end' => '09:00'],
+        ['start' => '10:00', 'end' => '10:30'],
+        ['start' => '10:30', 'end' => '11:00'],
+        ['start' => '11:30', 'end' => '12:00'],
+        ['start' => '14:00', 'end' => '14:30'],
+        ['start' => '14:30', 'end' => '15:00'],
+        ['start' => '15:00', 'end' => '15:30'],
+        ['start' => '15:30', 'end' => '16:00'],
+    ];
+
+    return $time[8];
+
+
+
+
+
+
+
+
+    return $hours_24 = HoursHelper::create('10:00', '12:00', 30);
+
+    $startDate =  '2023-02-01';
+    $endDate = '2023-04-20';
+
+    return Carbon::parse($endDate)->isFuture();
+
+    return $startDate->isPast();
+
+    return now()->format('Y-m-d');
+
+
+    $dateRange = iterator_to_array(CarbonPeriod::create($startDate, $endDate)->map(fn ($date) => $date->toDateString()));
+    $index = rand(0, 70);
+
+    return $dateRange[$index];
+    // $dateRange = CarbonPeriod::since($startDate)->days(1)->until($endDate)->map(fn ($date) => $date->toDateString());
+    // $dateRange = CarbonPeriod::create($startDate, $endDate);
+
+    // return $dateRange;
+    // return $dateRange->random();
+    $data= json_decode(json_encode($dateRange),true) ;
+
+    return $data->random();
+
+    // return $dateRange;
+
+
+
+
+
+    return $days;
+
     $start = '8:00';
     $end = '12:59';
 

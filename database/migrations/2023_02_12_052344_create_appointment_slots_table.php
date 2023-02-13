@@ -19,7 +19,8 @@ return new class extends Migration
             $table->foreignIdFor(AppointmentSchedule::class)->constrained()->cascadeOnDelete();
             $table->string('start_time')->default('09:00');
             $table->string('end_time')->default('17:00');
-            $table->string('diff_time')->default(15);
+            $table->string('diff_time')->default(30);
+            $table->string('slot')->default("09:00 - 17:00");
             $table->timestamps();
         });
     }

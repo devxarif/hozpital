@@ -22,7 +22,11 @@ return new class extends Migration
             $table->string('problem');
             $table->string('serial_no');
             $table->date('date');
-            $table->enum('status', ['complete', 'incomplete']);
+            $table->string('start_time');
+            $table->string('end_time');
+            $table->string('slot');
+            $table->enum('status', ['approved', 'pending','cancelled','completed']);
+            $table->enum('type', ['online', 'offline'])->default('offline');
             $table->timestamps();
         });
     }

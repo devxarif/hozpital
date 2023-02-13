@@ -52,6 +52,7 @@ use Database\Seeders\HolidayRequestSeeder;
 use Database\Seeders\IncomeCategorySeeder;
 use Database\Seeders\ProductGallerySeeder;
 use Database\Seeders\RolePermissionSeeder;
+use Database\Seeders\AppointmentSlotSeeder;
 use Database\Seeders\ExpenseCategorySeeder;
 use Database\Seeders\ProductCategorySeeder;
 use Database\Seeders\DiagnosticReportSeeder;
@@ -128,6 +129,7 @@ class DatabaseSeeder extends Seeder
 
             // Report
             AppointmentSeeder::class,
+            AppointmentSlotSeeder::class,
             PrescriptionSeeder::class,
             PrescriptionMedicineSeeder::class,
             DiagnosticReportTypeSeeder::class,
