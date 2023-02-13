@@ -59,14 +59,16 @@ class AppointmentScheduleController extends Controller
         $slots = $request->slots;
 
         foreach ($slots as $slot) {
-            $start_time = Carbon::parse($slot['start']['hours'].':'.$slot['start']['minutes'])->format('H:i');
-            $end_time = Carbon::parse($slot['end']['hours'].':'.$slot['end']['minutes'])->format('H:i');
+            if ($slot['diff_time'] && $slot['start'] && $slot['end']) {
+                $start_time = Carbon::parse($slot['start']['hours'].':'.$slot['start']['minutes'])->format('H:i');
+                $end_time = Carbon::parse($slot['end']['hours'].':'.$slot['end']['minutes'])->format('H:i');
 
-            $appointmentSchedule->appointmentSlots()->create([
-                'start_time' => $start_time,
-                'end_time' => $end_time,
-                'diff_time' => $slot['diff_time'],
-            ]);
+                $appointmentSchedule->appointmentSlots()->create([
+                    'start_time' => $start_time,
+                    'end_time' => $end_time,
+                    'diff_time' => $slot['diff_time'],
+                ]);
+            }
         }
 
         $this->flashSuccess('Appointment schedule updated successfully');
@@ -80,8 +82,8 @@ class AppointmentScheduleController extends Controller
      * @param  AppointmentSchedule $appointmentSchedule
      * @return \Illuminate\Http\Response
      */
-    public function statusUpdate(AppointmentSchedule $appointmentSchedule){
-        $appointmentSchedule->update(['status' => $appointmentSchedule->status ? 0:1]);
+    public function statusUpdate(Request $request, AppointmentSchedule $appointmentSchedule){
+        $appointmentSchedule->update(['status' => $request->status]);
 
         return true;
     }
