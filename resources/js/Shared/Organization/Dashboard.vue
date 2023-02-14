@@ -256,7 +256,7 @@
                 <ul class="hidden text-[14px] md:text-base font-medium sm:flex flex-wrap">
                     <li><a href="index.html" class="text-[#333333]">Dashboard</a></li>
                     <li><span class="px-2">/</span></li>
-                    <li class="text-[#6c757d]">Employee</li>
+                    <li class="text-[#6c757d]">Employeeddd</li>
                 </ul>
             </div>
             <div class="flex items-center">
