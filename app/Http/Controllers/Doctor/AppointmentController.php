@@ -20,7 +20,9 @@ class AppointmentController extends Controller
 
         $appointments = $appointments_query->currentDoctor()->with('patient.user:id,name,email','patient:id,user_id')
             ->when($request->keyword, function ($query, $keyword) {
-                $query->whereLike(['name'],  $keyword);
+                $query->whereHas('patient', function($q) use($keyword){
+                    $q->whereLike(['user.name','user.email'],  $keyword);
+                });
             })
             ->when($request->status, function ($query, $status) {
                 if ($status != 'all') {

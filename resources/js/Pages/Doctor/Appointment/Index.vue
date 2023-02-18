@@ -21,14 +21,6 @@
                 </li>
             </ol>
         </nav>
-        <!--
-            $table->foreignIdFor(Patient::class)->constrained()->cascadeOnDelete();
-            $table->string('problem');
-            $table->date('date');
-            $table->string('start_time');
-            $table->string('end_time');
-            $table->string('slot');
-            $table->enum('status', ['approved', 'pending','cancelled','completed']); -->
 
         <div class="mb-4 flex justify-between">
             <h2 class="text-3xl font-semibold leading-7 text-gray-900 dark:text-gray-200 sm:text-3xl sm:truncate">
@@ -110,7 +102,7 @@
                 <div>
                     <label for="keyword" class="block text-sm font-medium text-gray-700">{{ __('Search') }}</label>
                     <div class="mt-1">
-                        <input v-model="filterForm.keyword" type="text" id="keyword" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm py-2.5" placeholder="Appointment name">
+                        <input v-model="filterForm.keyword" type="text" id="keyword" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm py-2.5" placeholder="Patient name, email">
                     </div>
                 </div>
                 <div>
@@ -436,18 +428,18 @@ export default {
             this.filterForm.status = tab;
             this.filterForm.get(route("doctor.appointment.index"));
         },
-        // filterData(){
-        //     this.loading = true
-        //     this.filterForm.get(route('admin.appointment.index'), {
-        //         onSuccess: () => {
-        //             this.loading = false
-        //         },
-        //         onError: () => {
-        //             this.loading = false
-        //             alert('Something went wrong')
-        //         },
-        //     })
-        // },
+        filterData(){
+            this.loading = true
+            this.filterForm.get(route('doctor.appointment.index'), {
+                onSuccess: () => {
+                    this.loading = false
+                },
+                onError: () => {
+                    this.loading = false
+                    alert('Something went wrong')
+                },
+            })
+        },
         changeViewType(type){
             this.viewType = type
             localStorage.setItem("adminAppointmentView", this.viewType);
