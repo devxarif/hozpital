@@ -45,6 +45,9 @@ use sirajcse\UniqueIdGenerator\UniqueIdGenerator;
 // })->middleware('set_lang');
 
 Route::get('/test', function () {
+    return inertia('Auth/LoginPage2');
+
+
     $time = [
         ['start' => '08:00', 'end' => '08:30'],
         ['start' => '08:30', 'end' => '09:00'],

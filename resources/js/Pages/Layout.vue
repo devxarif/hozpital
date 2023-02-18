@@ -115,8 +115,9 @@
                     <div
                         class="logo-segment flex justify-between items-center bg-white dark:bg-slate-800 z-[9] py-6  sticky top-0   px-4  w-[248px]  border-none">
                         <a aria-current="page" href="/app/home" class="router-link-active router-link-exact-active">
-                            <!----><img src="/img/logo-white.18c6f36c.svg" alt=""></a>
-                        <!----><span class="cursor-pointer text-slate-900 dark:text-white text-2xl"><svg
+                            <!-- <img src="/img/logo-white.18c6f36c.svg" alt=""> -->
+                        </a>
+                        <span class="cursor-pointer text-slate-900 dark:text-white text-2xl"><svg
                                 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                 aria-hidden="true" role="img" width="1em" height="1em"
                                 preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"
@@ -657,8 +658,8 @@
                                             </ul>
                                             <div class="bg-slate-900 mb-10 mt-24 p-4 relative text-center rounded-2xl text-white"
                                                 style="translate: none; rotate: none; scale: none; opacity: 1; transform: translate(0px, 0px);">
-                                                <img src="/img/rabit.996ac733.svg" alt=""
-                                                    class="mx-auto relative -mt-[73px]">
+                                                <!-- <img src="/img/rabit.996ac733.svg" alt=""
+                                                    class="mx-auto relative -mt-[73px]"> -->
                                                 <div class="max-w-[160px] mx-auto mt-6">
                                                     <div class="widget-title">Unlimited Access</div>
                                                     <div class="text-xs font-light"> Upgrade your system to business
@@ -3134,9 +3135,9 @@
                                                                                     <div class="flex-none">
                                                                                         <div
                                                                                             class="w-8 h-8 rounded-[100%] mr-3">
-                                                                                            <img src="/img/user-1.141736e4.jpg"
+                                                                                            <!-- <img src="/img/user-1.141736e4.jpg"
                                                                                                 alt=""
-                                                                                                class="w-full h-full rounded-[100%] object-cover">
+                                                                                                class="w-full h-full rounded-[100%] object-cover"> -->
                                                                                         </div>
                                                                                     </div>
                                                                                     <div class="flex-1 text-start">
@@ -3193,9 +3194,9 @@
                                                                                     <div class="flex-none">
                                                                                         <div
                                                                                             class="w-8 h-8 rounded-[100%] mr-3">
-                                                                                            <img src="/img/user-2.5ab1cb09.jpg"
+                                                                                            <!-- <img src="/img/user-2.5ab1cb09.jpg"
                                                                                                 alt=""
-                                                                                                class="w-full h-full rounded-[100%] object-cover">
+                                                                                                class="w-full h-full rounded-[100%] object-cover"> -->
                                                                                         </div>
                                                                                     </div>
                                                                                     <div class="flex-1 text-start">
@@ -3252,9 +3253,9 @@
                                                                                     <div class="flex-none">
                                                                                         <div
                                                                                             class="w-8 h-8 rounded-[100%] mr-3">
-                                                                                            <img src="/img/user-3.328241d1.jpg"
+                                                                                            <!-- <img src="/img/user-3.328241d1.jpg"
                                                                                                 alt=""
-                                                                                                class="w-full h-full rounded-[100%] object-cover">
+                                                                                                class="w-full h-full rounded-[100%] object-cover"> -->
                                                                                         </div>
                                                                                     </div>
                                                                                     <div class="flex-1 text-start">
@@ -3311,9 +3312,9 @@
                                                                                     <div class="flex-none">
                                                                                         <div
                                                                                             class="w-8 h-8 rounded-[100%] mr-3">
-                                                                                            <img src="/img/user-4.8df6d54d.jpg"
+                                                                                            <!-- <img src="/img/user-4.8df6d54d.jpg"
                                                                                                 alt=""
-                                                                                                class="w-full h-full rounded-[100%] object-cover">
+                                                                                                class="w-full h-full rounded-[100%] object-cover"> -->
                                                                                         </div>
                                                                                     </div>
                                                                                     <div class="flex-1 text-start">
@@ -3370,9 +3371,9 @@
                                                                                     <div class="flex-none">
                                                                                         <div
                                                                                             class="w-8 h-8 rounded-[100%] mr-3">
-                                                                                            <img src="/img/user-5.20454a8c.jpg"
+                                                                                            <!-- <img src="/img/user-5.20454a8c.jpg"
                                                                                                 alt=""
-                                                                                                class="w-full h-full rounded-[100%] object-cover">
+                                                                                                class="w-full h-full rounded-[100%] object-cover"> -->
                                                                                         </div>
                                                                                     </div>
                                                                                     <div class="flex-1 text-start">
@@ -3572,9 +3573,10 @@
                                                     <li
                                                         class="flex items-center space-x-3 border-b border-slate-100 dark:border-slate-700 last:border-b-0 pb-3 last:pb-0">
                                                         <div>
-                                                            <div class="w-8 h-8 rounded-[100%]"><img
+                                                            <div class="w-8 h-8 rounded-[100%]">
+                                                                <!-- <img
                                                                     src="/img/user-1.141736e4.jpg" alt=""
-                                                                    class="w-full h-full rounded-[100%] object-cover">
+                                                                    class="w-full h-full rounded-[100%] object-cover"> -->
                                                             </div>
                                                         </div>
                                                         <div
@@ -3592,9 +3594,10 @@
                                                     <li
                                                         class="flex items-center space-x-3 border-b border-slate-100 dark:border-slate-700 last:border-b-0 pb-3 last:pb-0">
                                                         <div>
-                                                            <div class="w-8 h-8 rounded-[100%]"><img
+                                                            <div class="w-8 h-8 rounded-[100%]">
+                                                                <!-- <img
                                                                     src="/img/user-2.5ab1cb09.jpg" alt=""
-                                                                    class="w-full h-full rounded-[100%] object-cover">
+                                                                    class="w-full h-full rounded-[100%] object-cover"> -->
                                                             </div>
                                                         </div>
                                                         <div
@@ -3612,9 +3615,10 @@
                                                     <li
                                                         class="flex items-center space-x-3 border-b border-slate-100 dark:border-slate-700 last:border-b-0 pb-3 last:pb-0">
                                                         <div>
-                                                            <div class="w-8 h-8 rounded-[100%]"><img
+                                                            <div class="w-8 h-8 rounded-[100%]">
+                                                                <!-- <img
                                                                     src="/img/user-3.328241d1.jpg" alt=""
-                                                                    class="w-full h-full rounded-[100%] object-cover">
+                                                                    class="w-full h-full rounded-[100%] object-cover"> -->
                                                             </div>
                                                         </div>
                                                         <div
@@ -3632,9 +3636,10 @@
                                                     <li
                                                         class="flex items-center space-x-3 border-b border-slate-100 dark:border-slate-700 last:border-b-0 pb-3 last:pb-0">
                                                         <div>
-                                                            <div class="w-8 h-8 rounded-[100%]"><img
+                                                            <div class="w-8 h-8 rounded-[100%]">
+                                                                <!-- <img
                                                                     src="/img/user-4.8df6d54d.jpg" alt=""
-                                                                    class="w-full h-full rounded-[100%] object-cover">
+                                                                    class="w-full h-full rounded-[100%] object-cover"> -->
                                                             </div>
                                                         </div>
                                                         <div
@@ -3652,9 +3657,10 @@
                                                     <li
                                                         class="flex items-center space-x-3 border-b border-slate-100 dark:border-slate-700 last:border-b-0 pb-3 last:pb-0">
                                                         <div>
-                                                            <div class="w-8 h-8 rounded-[100%]"><img
+                                                            <div class="w-8 h-8 rounded-[100%]">
+                                                                <!-- <img
                                                                     src="/img/user-5.20454a8c.jpg" alt=""
-                                                                    class="w-full h-full rounded-[100%] object-cover">
+                                                                    class="w-full h-full rounded-[100%] object-cover"> -->
                                                             </div>
                                                         </div>
                                                         <div
@@ -3672,9 +3678,10 @@
                                                     <li
                                                         class="flex items-center space-x-3 border-b border-slate-100 dark:border-slate-700 last:border-b-0 pb-3 last:pb-0">
                                                         <div>
-                                                            <div class="w-8 h-8 rounded-[100%]"><img
+                                                            <div class="w-8 h-8 rounded-[100%]">
+                                                                <!-- <img
                                                                     src="/img/user-6.e47b2403.jpg" alt=""
-                                                                    class="w-full h-full rounded-[100%] object-cover">
+                                                                    class="w-full h-full rounded-[100%] object-cover"> -->
                                                             </div>
                                                         </div>
                                                         <div
@@ -3692,9 +3699,10 @@
                                                     <li
                                                         class="flex items-center space-x-3 border-b border-slate-100 dark:border-slate-700 last:border-b-0 pb-3 last:pb-0">
                                                         <div>
-                                                            <div class="w-8 h-8 rounded-[100%]"><img
+                                                            <div class="w-8 h-8 rounded-[100%]">
+                                                                <!-- <img
                                                                     src="/img/user-1.141736e4.jpg" alt=""
-                                                                    class="w-full h-full rounded-[100%] object-cover">
+                                                                    class="w-full h-full rounded-[100%] object-cover"> -->
                                                             </div>
                                                         </div>
                                                         <div
@@ -3712,9 +3720,10 @@
                                                     <li
                                                         class="flex items-center space-x-3 border-b border-slate-100 dark:border-slate-700 last:border-b-0 pb-3 last:pb-0">
                                                         <div>
-                                                            <div class="w-8 h-8 rounded-[100%]"><img
+                                                            <div class="w-8 h-8 rounded-[100%]">
+                                                                <!-- <img
                                                                     src="/img/user-2.5ab1cb09.jpg" alt=""
-                                                                    class="w-full h-full rounded-[100%] object-cover">
+                                                                    class="w-full h-full rounded-[100%] object-cover"> -->
                                                             </div>
                                                         </div>
                                                         <div
@@ -3732,9 +3741,10 @@
                                                     <li
                                                         class="flex items-center space-x-3 border-b border-slate-100 dark:border-slate-700 last:border-b-0 pb-3 last:pb-0">
                                                         <div>
-                                                            <div class="w-8 h-8 rounded-[100%]"><img
+                                                            <div class="w-8 h-8 rounded-[100%]">
+                                                                <!-- <img
                                                                     src="/img/user-2.5ab1cb09.jpg" alt=""
-                                                                    class="w-full h-full rounded-[100%] object-cover">
+                                                                    class="w-full h-full rounded-[100%] object-cover"> -->
                                                             </div>
                                                         </div>
                                                         <div

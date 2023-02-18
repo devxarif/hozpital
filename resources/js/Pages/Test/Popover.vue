@@ -8,9 +8,9 @@
     <div class="p-3">
         <div class="flex">
             <div class="mr-3 shrink-0">
-                <a href="#" class="block p-2 bg-gray-100 rounded-lg dark:bg-gray-700">
+                <!-- <a href="#" class="block p-2 bg-gray-100 rounded-lg dark:bg-gray-700">
                 <img class="w-8 h-8 rounded-full" src="https://flowbite.com/docs/images/logo.svg" alt="Flowbite logo">
-            </a>
+            </a> -->
             </div>
             <div>
                 <p class="mb-1 text-base font-semibold leading-none text-gray-900 dark:text-white">
@@ -35,9 +35,9 @@
                     </li>
                 </ul>
                 <div class="flex mb-3 -space-x-3">
-                    <img class="w-8 h-8 rounded-full border-2 border-white dark:border-gray-800" src="/docs/images/people/profile-picture-5.jpg" alt="">
+                    <!-- <img class="w-8 h-8 rounded-full border-2 border-white dark:border-gray-800" src="/docs/images/people/profile-picture-5.jpg" alt="">
                     <img class="w-8 h-8 rounded-full border-2 border-white dark:border-gray-800" src="/docs/images/people/profile-picture-2.jpg" alt="">
-                    <img class="w-8 h-8 rounded-full border-2 border-white dark:border-gray-800" src="/docs/images/people/profile-picture-3.jpg" alt="">
+                    <img class="w-8 h-8 rounded-full border-2 border-white dark:border-gray-800" src="/docs/images/people/profile-picture-3.jpg" alt=""> -->
                     <a class="flex justify-center items-center w-8 h-8 text-xs font-medium text-white bg-gray-400 rounded-full border-2 border-white hover:bg-gray-500 dark:border-gray-800" href="#">+3</a>
                 </div>
                 <div class="flex">

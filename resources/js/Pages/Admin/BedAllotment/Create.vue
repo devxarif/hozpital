@@ -107,17 +107,17 @@
     </div>
 </Transition>
 
-<CreateBedTypeModal :show="showCreateBedTypeModal" @close-modal="closeLeaveTypeModal"/>
+<!-- <CreateBedTypeModal :show="showCreateBedTypeModal" @close-modal="closeLeaveTypeModal"/> -->
 </template>
 
 <script>
-    import CreateFloorModal from './CreateFloorModal.vue'
-    import CreateBedTypeModal from './CreateBedTypeModal.vue'
+    // import CreateFloorModal from './CreateFloorModal.vue'
+    // import CreateBedTypeModal from './CreateBedTypeModal.vue'
 
     export default {
         components:{
-            CreateFloorModal,
-            CreateBedTypeModal
+            // CreateFloorModal,
+            // CreateBedTypeModal
         },
         props: {
             show: {

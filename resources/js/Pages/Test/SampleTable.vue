@@ -1,7 +1,6 @@
 <template>
-
-    <div class="flex flex-col mb-5"
-        v-else-if="!loading && departments && departments.data.length && viewType == 'table'">
+    <div v-if="true"></div>
+    <!-- <div class="flex flex-col mb-5" v-else-if="!loading && departments && departments.data.length && viewType == 'table'">
         <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
                 <div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
@@ -95,7 +94,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
 
 
@@ -109,7 +108,7 @@
 
 
 
-    <div class="flex flex-col mb-5 shadow-lg" v-else-if="!loading && departments && departments.data.length && viewType == 'table'">
+    <!-- <div class="flex flex-col mb-5 shadow-lg" v-else-if="!loading && departments && departments.data.length && viewType == 'table'">
             <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
                 <div class="inline-block py-2 align-middle md:px-6 lg:px-8">
                     <div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
@@ -179,7 +178,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
 
 

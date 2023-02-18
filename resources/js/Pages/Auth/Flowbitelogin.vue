@@ -1,7 +1,7 @@
 <template>
 
 <div class="flex flex-col min-h-screen bg-white dark:bg-gray-900">
-    <main class="bg-gray-50 dark:bg-gray-900">
+    <!-- <main class="bg-gray-50 dark:bg-gray-900">
         <div class="flex flex-col justify-center items-center py-8 px-6 mx-auto md:h-screen"><a
                 class="flex justify-center items-center mb-8 text-3xl font-semibold lg:mb-10 dark:text-white"
                 href="/"><span
@@ -71,7 +71,7 @@
                 </div>
             </div>
         </div>
-    </main>
+    </main> -->
 </div>
 
 </template>
