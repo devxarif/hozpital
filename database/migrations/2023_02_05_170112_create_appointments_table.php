@@ -20,7 +20,6 @@ return new class extends Migration
             $table->foreignIdFor(Doctor::class)->constrained()->cascadeOnDelete();
             $table->foreignIdFor(Patient::class)->constrained()->cascadeOnDelete();
             $table->string('problem');
-            $table->string('serial_no');
             $table->date('date');
             $table->string('start_time');
             $table->string('end_time');

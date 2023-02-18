@@ -54,7 +54,7 @@ class AppointmentSeeder extends Seeder
                     'start_time' => $start_time,
                     'end_time' =>$end_time,
                     'slot' => (string) $slot,
-                    'status' => Carbon::parse($dateRange[$index])->isFuture() == 1 ? 'pending': Arr::random(['approved','cancelled','completed']),
+                    'status' => Carbon::parse($dateRange[$index])->isFuture() == 1 ? 'pending': Arr::random(['approved','cancelled','completed','pending']),
                     'type' => 'offline',
                 ]);
             }

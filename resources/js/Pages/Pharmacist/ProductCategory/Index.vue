@@ -106,7 +106,7 @@
                    <div class="flex flex-wrap justify-between items-start">
                        <div class="relative mb-5">
                            <span>
-                               <img class="w-16 h-16 rounded object-cover" alt="Figma logo" :src="produt_category.image">
+                               <img class="w-16 h-16 rounded object-cover" alt="image" :src="produt_category.image">
                            </span>
                        </div>
                        <Menu as="div" class="relative inline-block text-left">

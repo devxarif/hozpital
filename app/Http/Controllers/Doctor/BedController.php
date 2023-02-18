@@ -57,4 +57,21 @@ class BedController extends Controller
     {
         //
     }
+
+     /**
+     * Fetch bedtype wise beds collection
+     *
+     * @param  string $slug
+     * @return \Illuminate\Http\Response
+     */
+    public function bedTypeWiseBeds(Request $request){
+        if ($request->type && $request->type != 'all') {
+            $type = BedType::whereSlug($request->type)->firstOrFail();
+            $beds = $type->beds()->with('bedType:id,name')->latest()->paginate(20)->withQueryString();
+        } else {
+            $beds = Bed::with('bedType:id,name')->latest()->paginate(20)->withQueryString();
+        }
+
+        return $beds;
+    }
 }

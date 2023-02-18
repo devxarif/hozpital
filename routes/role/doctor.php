@@ -15,13 +15,14 @@ use App\Http\Controllers\Doctor\AccountantController;
 use App\Http\Controllers\Doctor\BloodDonorController;
 use App\Http\Controllers\Doctor\DepartmentController;
 use App\Http\Controllers\Doctor\PharmacistController;
+use App\Http\Controllers\Doctor\AppointmentController;
 use App\Http\Controllers\Doctor\ManufactureController;
 use App\Http\Controllers\Doctor\AnnouncementController;
-use App\Http\Controllers\Doctor\AppointmentScheduleController;
 use App\Http\Controllers\Doctor\BedAllotmentController;
 use App\Http\Controllers\Doctor\LeaveRequestController;
-use App\Http\Controllers\Doctor\BloodDonationController;
 use App\Http\Controllers\Doctor\PrescriptionController;
+use App\Http\Controllers\Doctor\BloodDonationController;
+use App\Http\Controllers\Doctor\AppointmentScheduleController;
 
 Route::middleware(['auth'])->name('doctor.')->prefix('doctor')->group(function () {
     // Patient Routes
@@ -30,11 +31,19 @@ Route::middleware(['auth'])->name('doctor.')->prefix('doctor')->group(function (
     // Prescription Routes
     Route::resource('prescription', PrescriptionController::class);
 
-    // Prescription Routes
+    // Appointment Schedule Routes
+    Route::controller(AppointmentController::class)->group(function(){
+        Route::get('appointment/list', 'index')->name('appointment.index');
+        Route::put('appointment/status/{appointment}', 'statusUpdate')->name('appointment.status');
+        // Route::put('appointmentSchedule/{appointmentSchedule}/status/update', 'statusUpdate')->name('appointmentSchedule.status');
+        // Route::put('appointmentSchedule/{appointmentSchedule}/update', 'update')->name('appointmentSchedule.update');
+    });
+
+    // Appointment Schedule Routes
     Route::controller(AppointmentScheduleController::class)->group(function(){
-        Route::get('appointmentSchedule', 'index')->name('appointmentSchedule.index');
-        Route::put('appointmentSchedule/{appointmentSchedule}/status/update', 'statusUpdate')->name('appointmentSchedule.status');
-        Route::put('appointmentSchedule/{appointmentSchedule}/update', 'update')->name('appointmentSchedule.update');
+        Route::get('appointment/schedule', 'index')->name('appointmentSchedule.index');
+        Route::put('appointment/schedule/{appointmentSchedule}/status/update', 'statusUpdate')->name('appointmentSchedule.status');
+        Route::put('appointment/schedule/{appointmentSchedule}/update', 'update')->name('appointmentSchedule.update');
     });
 
     // Bed

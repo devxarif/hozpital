@@ -47,11 +47,11 @@
                         <svg xmlns="http://www.w3.org/2000/svg" class="ionicon mr-3 flex-shrink-0 h-6 w-6" viewBox="0 0 512 512"><title>Person</title><path d="M344 144c-3.92 52.87-44 96-88 96s-84.15-43.12-88-96c-4-55 35-96 88-96s92 42 88 96z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><path d="M256 304c-87 0-175.3 48-191.64 138.6C62.39 453.52 68.57 464 80 464h352c11.44 0 17.62-10.48 15.65-21.4C431.3 352 343 304 256 304z" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"/></svg>
                     </template>
                 </NavItem>
-                <DropdownMenu title="Appointment" :active="route().current('doctor.bed.index') || route().current('doctor.bedType.index') || route().current('doctor.bedAllotment.index')">
+                <DropdownMenu title="Appointment" :active="route().current('doctor.appointmentSchedule.index') || route().current('doctor.appointment.index')">
                     <template v-slot:icon>
                         <svg xmlns="http://www.w3.org/2000/svg" class="ionicon mr-3 flex-shrink-0 h-6 w-6" viewBox="0 0 512 512"><title>Calendar Clear</title><rect fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="32" x="48" y="80" width="416" height="384" rx="48"/><path fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="32" stroke-linecap="round" d="M128 48v32M384 48v32M464 160H48"/></svg>
                     </template>
-                    <DropdownMenuItem title="Appointment List" :href="route('doctor.bed.index')" :active="route().current('doctor.bed.index')"/>
+                    <DropdownMenuItem title="Appointment List" :href="route('doctor.appointment.index')" :active="route().current('doctor.appointment.index')"/>
                     <DropdownMenuItem title="Appointment Schedule" :href="route('doctor.appointmentSchedule.index')" :active="route().current('doctor.appointmentSchedule.index')"/>
                 </DropdownMenu>
                 <DropdownMenu title="Bed" :active="route().current('doctor.bed.index') || route().current('doctor.bedType.index') || route().current('doctor.bedAllotment.index')">
