@@ -53,24 +53,24 @@
                     <transition enter-active-class="transition ease-out duration-100" enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100" leave-active-class="transition ease-in duration-75" leave-from-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
                         <MenuItems class="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                             <div class="py-1 text-sm">
-                            <MenuItem v-slot="{ active }">
-                                <a href="javascript:void(0)" @click.prevent="editData(department)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
-                                    <font-awesome-icon icon="fa-solid fa-plus" class="h-4 w-4 mr-2"/>
-                                    As PDF
-                                </a>
-                            </MenuItem>
-                            <MenuItem v-slot="{ active }">
-                                <a href="javascript:void(0)" @click.prevent="editData(department)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
-                                    <font-awesome-icon icon="fa-solid fa-trash-can" class="h-4 w-4 mr-2 "/>
-                                    As Excel
-                                </a>
-                            </MenuItem>
-                            <MenuItem v-slot="{ active }">
-                                <a href="javascript:void(0)" @click.prevent="editData(department)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
-                                    <font-awesome-icon icon="fa-solid fa-trash-can" class="h-4 w-4 mr-2 "/>
-                                    As CSV
-                                </a>
-                            </MenuItem>
+                                <MenuItem v-slot="{ active }">
+                                    <a :href="route('admin.laboratorist.export', 'pdf')" target="_blank" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
+                                        <font-awesome-icon icon="fa-solid fa-file-pdf" class="h-6 w-6 mr-2 text-red-500 group-hover:text-red-500"/>
+                                        As PDF
+                                    </a>
+                                </MenuItem>
+                                <MenuItem v-slot="{ active }">
+                                    <a :href="route('admin.laboratorist.export', 'csv')" target="_blank" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
+                                        <font-awesome-icon icon="fa-solid fa-file-csv" class="h-6 w-6 mr-2 text-blue-500 group-hover:text-blue-500"/>
+                                        As CSV
+                                    </a>
+                                </MenuItem>
+                                <MenuItem v-slot="{ active }">
+                                    <a :href="route('admin.laboratorist.export', 'xlsx')" target="_blank" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
+                                        <font-awesome-icon icon="fa-solid fa-file-excel" class="h-6 w-6 mr-2 text-green-500 group-hover:text-green-500"/>
+                                        As Excel
+                                    </a>
+                                </MenuItem>
                             </div>
                         </MenuItems>
                     </transition>

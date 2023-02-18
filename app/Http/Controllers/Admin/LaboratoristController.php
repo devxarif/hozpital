@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Exports\LaboratoristExport;
 use App\Models\Laboratorist;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Requests\Admin\LaboratoristCreateRequest;
 use App\Http\Requests\Admin\LaboratoristUpdateRequest;
 use App\Services\Admin\Laboratorist\CreateLaboratoristService;
@@ -97,5 +99,18 @@ class LaboratoristController extends Controller
 
         $this->flashSuccess('Laboratorist deleted successfully');
         return back();
+    }
+
+    /**
+     * Export data
+     *
+     * @param  Patient  $patient
+     * @return \Illuminate\Http\Response
+     */
+    public function export($type)
+    {
+        $name = time().'_laboratorists.'.$type;
+
+        return Excel::download(new LaboratoristExport, $name);
     }
 }

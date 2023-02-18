@@ -58,8 +58,8 @@ import Pagination from "@/Shared/Pagination.vue";
 import LoadingIcon from "@/Shared/Icons/LoadingIcon.vue";
 import HomeIcon from "@/Shared/Icons/HomeIcon.vue";
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
-import { faHome, faPenToSquare, faEye, faTrashCan, faPlus, faChevronRight, faEllipsisVertical, faSearch } from '@fortawesome/free-solid-svg-icons'
-library.add(faHome, faPenToSquare, faEye, faTrashCan, faPlus, faChevronRight, faEllipsisVertical, faSearch)
+import { faHome, faPenToSquare, faEye, faTrashCan, faPlus, faChevronRight, faEllipsisVertical, faSearch, faFilePdf, faFileCsv, faFileExcel } from '@fortawesome/free-solid-svg-icons'
+library.add(faHome, faPenToSquare, faEye, faTrashCan, faPlus, faChevronRight, faEllipsisVertical, faSearch, faFilePdf, faFileCsv, faFileExcel)
 
 
 createInertiaApp({

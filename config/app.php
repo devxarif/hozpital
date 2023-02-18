@@ -186,6 +186,8 @@ return [
          * Package Service Providers...
          */
         Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,
+
         /*
          * Application Service Providers...
          */
@@ -216,6 +218,7 @@ return [
         'Twitter'         => Artesaos\SEOTools\Facades\TwitterCard::class,
         'JsonLd'          => Artesaos\SEOTools\Facades\JsonLd::class,
         'JsonLdMulti'     => Artesaos\SEOTools\Facades\JsonLdMulti::class,
+        'Excel'           => Maatwebsite\Excel\Facades\Excel::class,
     ])->toArray(),
 
 ];

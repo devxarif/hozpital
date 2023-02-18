@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Exports\NurseExport;
 use App\Models\Nurse;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Requests\Admin\NurseCreateRequest;
 use App\Http\Requests\Admin\NurseUpdateRequest;
 use App\Services\Admin\Nurse\CreateNurseService;
@@ -107,5 +109,18 @@ class NurseController extends Controller
 
         $this->flashSuccess('Nurse deleted successfully');
         return back();
+    }
+
+    /**
+     * Export data
+     *
+     * @param  Patient  $patient
+     * @return \Illuminate\Http\Response
+     */
+    public function export($type)
+    {
+        $name = time().'_nurses.'.$type;
+
+        return Excel::download(new NurseExport, $name);
     }
 }

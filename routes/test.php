@@ -13,17 +13,19 @@ use App\Models\LeaveType;
 use App\Models\Department;
 use Illuminate\Support\Str;
 use App\Models\LeaveBalance;
+use App\Exports\PatientExport;
 use App\Models\ContactMessage;
-use App\Models\AppointmentSchedule;
-use Barryvdh\DomPDF\Facade\Pdf;
+// use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Benchmark;
 use Illuminate\Support\Facades\DB;
+use App\Models\AppointmentSchedule;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestController;
 use Label84\HoursHelper\Facades\HoursHelper;
 use App\Http\Controllers\Admin\UpgradeController;
 use sirajcse\UniqueIdGenerator\UniqueIdGenerator;
-
+// use Dompdf\Dompdf;
 // Route::get('/', function () {
 
 //     return inertia('Test/Chat/1');
@@ -45,6 +47,23 @@ use sirajcse\UniqueIdGenerator\UniqueIdGenerator;
 // })->middleware('set_lang');
 
 Route::get('/test', function () {
+
+    $type = 'csv';
+    $name = time().'_patients.'.$type;
+
+    return Excel::download(new PatientExport, $name);
+
+
+
+    return Excel::download(new PatientExport, 'users.xls');
+    return Excel::download(new PatientExport, 'users.pdf', \Maatwebsite\Excel\Excel::MPDF);
+    // return Excel::download(new PatientExport, 'users.pdf', \Maatwebsite\Excel\Excel::DOMPDF);
+    return Excel::download(new PatientExport, 'users.html');
+    return Excel::download(new PatientExport, 'users.csv');
+    return Excel::download(new PatientExport, 'users.xlsx');
+    return Excel::download(new PatientExport, 'users.pdf');
+
+
     return inertia('Auth/LoginPage2');
 
 

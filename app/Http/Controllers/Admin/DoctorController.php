@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Exports\DoctorExport;
 use App\Models\Doctor;
+use App\Models\Department;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Requests\Admin\DoctorCreateRequest;
 use App\Http\Requests\Admin\DoctorUpdateRequest;
-use App\Models\Department;
 use App\Services\Admin\Doctor\CreateDoctorService;
 use App\Services\Admin\Doctor\DeleteDoctorService;
 use App\Services\Admin\Doctor\UpdateDoctorService;
-use Illuminate\Http\Request;
 
 class DoctorController extends Controller
 {
@@ -114,5 +116,18 @@ class DoctorController extends Controller
 
         $this->flashSuccess('Doctor deleted successfully');
         return back();
+    }
+
+    /**
+     * Export data
+     *
+     * @param  Patient  $patient
+     * @return \Illuminate\Http\Response
+     */
+    public function export($type)
+    {
+        $name = time().'_doctors.'.$type;
+
+        return Excel::download(new DoctorExport, $name);
     }
 }

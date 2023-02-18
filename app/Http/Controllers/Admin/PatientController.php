@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Patient;
 use Illuminate\Http\Request;
+use App\Exports\PatientExport;
 use App\Http\Controllers\Controller;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Requests\Admin\PatientCreateRequest;
 use App\Http\Requests\Admin\PatientUpdateRequest;
 use App\Services\Admin\Patient\CreatePatientService;
@@ -80,5 +82,18 @@ class PatientController extends Controller
 
         $this->flashSuccess('Patient deleted successfully');
         return back();
+    }
+
+    /**
+     * Export data
+     *
+     * @param  Patient  $patient
+     * @return \Illuminate\Http\Response
+     */
+    public function export($type)
+    {
+        $name = time().'_patients.'.$type;
+
+        return Excel::download(new PatientExport, $name);
     }
 }

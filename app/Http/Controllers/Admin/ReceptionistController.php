@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Exports\ReceptionistExport;
 use App\Models\Receptionist;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Requests\Admin\ReceptionistCreateRequest;
 use App\Http\Requests\Admin\ReceptionistUpdateRequest;
 use App\Services\Admin\Receptionist\CreateReceptionistService;
 use App\Services\Admin\Receptionist\DeleteReceptionistService;
 use App\Services\Admin\Receptionist\UpdateReceptionistService;
-use Illuminate\Http\Request;
 
 class ReceptionistController extends Controller
 {
@@ -107,5 +109,18 @@ class ReceptionistController extends Controller
 
          $this->flashSuccess('Receptionist deleted successfully');
         return back();
+    }
+
+    /**
+     * Export data
+     *
+     * @param  Patient  $patient
+     * @return \Illuminate\Http\Response
+     */
+    public function export($type)
+    {
+        $name = time().'_receptionists.'.$type;
+
+        return Excel::download(new ReceptionistExport, $name);
     }
 }

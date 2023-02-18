@@ -38,24 +38,31 @@ Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function () 
 
     // Doctor Routes
     Route::resource('doctor', DoctorController::class);
+    Route::get('doctor/export/{type}', [DoctorController::class, 'export'])->name('doctor.export');
 
     // Patient Routes
     Route::resource('patient', PatientController::class);
+    Route::get('patient/export/{type}', [PatientController::class, 'export'])->name('patient.export');
 
     // Nurse Routes
     Route::resource('nurse', NurseController::class);
+    Route::get('nurse/export/{type}', [NurseController::class, 'export'])->name('nurse.export');
 
     // Receptionist Routes
     Route::resource('receptionist', ReceptionistController::class);
+    Route::get('receptionist/export/{type}', [ReceptionistController::class, 'export'])->name('receptionist.export');
 
     // Pharmacist Routes
     Route::resource('pharmacist', PharmacistController::class);
+    Route::get('pharmacist/export/{type}', [PharmacistController::class, 'export'])->name('pharmacist.export');
 
     // Laboratorist Routes
     Route::resource('laboratorist', LaboratoristController::class);
+    Route::get('laboratorist/export/{type}', [LaboratoristController::class, 'export'])->name('laboratorist.export');
 
     // Accountant Routes
     Route::resource('accountant', AccountantController::class);
+    Route::get('accountant/export/{type}', [AccountantController::class, 'export'])->name('accountant.export');
 
     // product
     Route::resource('product', ProductController::class);

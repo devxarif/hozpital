@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Exports\PharmacistExport;
 use App\Models\Pharmacist;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Requests\Admin\PharmacistCreateRequest;
 use App\Http\Requests\Admin\PharmacistUpdateRequest;
 use App\Services\Admin\Pharmacist\CreatePharmacistService;
@@ -107,5 +109,18 @@ class PharmacistController extends Controller
 
         $this->flashSuccess('Pharmacist deleted successfully');
         return back();
+    }
+
+    /**
+     * Export data
+     *
+     * @param  Patient  $patient
+     * @return \Illuminate\Http\Response
+     */
+    public function export($type)
+    {
+        $name = time().'_pharmacists.'.$type;
+
+        return Excel::download(new PharmacistExport, $name);
     }
 }
