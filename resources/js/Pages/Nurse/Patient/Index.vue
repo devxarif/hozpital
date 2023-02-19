@@ -27,6 +27,20 @@
             </h2>
 
             <div class="flex items-center space-x-2 sm:space-x-3 ml-auto">
+                <div class="ml-6 hidden items-center rounded-lg bg-gray-100 p-0.5 sm:flex">
+                    <button @click="changeViewType('table')" type="button" class="rounded-md p-1.5 focus:outline-none text-gray-600 hover:bg-white hover:shadow-sm shadow-sm" :class="viewType == 'table' ? 'bg-white':''">
+                        <svg class="h-5 w-5" x-description="Heroicon name: mini/bars-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M2 3.75A.75.75 0 012.75 3h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 3.75zm0 4.167a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75a.75.75 0 01-.75-.75zm0 4.166a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75a.75.75 0 01-.75-.75zm0 4.167a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75a.75.75 0 01-.75-.75z" clip-rule="evenodd"></path>
+                        </svg>
+                        <span class="sr-only">Use list view</span>
+                    </button>
+                    <button @click="changeViewType('card')" type="button" class="rounded-md p-1.5 focus:outline-none ml-0.5 text-gray-600 hover:bg-white hover:shadow-sm shadow-sm" :class="viewType == 'card' ? 'bg-white':''">
+                        <svg class="h-5 w-5" x-description="Heroicon name: mini/squares-2x2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M4.25 2A2.25 2.25 0 002 4.25v2.5A2.25 2.25 0 004.25 9h2.5A2.25 2.25 0 009 6.75v-2.5A2.25 2.25 0 006.75 2h-2.5zm0 9A2.25 2.25 0 002 13.25v2.5A2.25 2.25 0 004.25 18h2.5A2.25 2.25 0 009 15.75v-2.5A2.25 2.25 0 006.75 11h-2.5zm9-9A2.25 2.25 0 0011 4.25v2.5A2.25 2.25 0 0013.25 9h2.5A2.25 2.25 0 0018 6.75v-2.5A2.25 2.25 0 0015.75 2h-2.5zm0 9A2.25 2.25 0 0011 13.25v2.5A2.25 2.25 0 0013.25 18h2.5A2.25 2.25 0 0018 15.75v-2.5A2.25 2.25 0 0015.75 11h-2.5z" clip-rule="evenodd"></path>
+                            </svg>
+                        <span class="sr-only">Use grid view</span>
+                    </button>
+                </div>
                 <BaseButton v-if="filter.keyword && filter.keyword.length" as="link" :href="route('nurse.pharmacist.index')" class="text-white bg-red-600 hover:bg-red-700 px-3 py-2">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -52,32 +66,52 @@
                     <transition enter-active-class="transition ease-out duration-100" enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100" leave-active-class="transition ease-in duration-75" leave-from-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
                         <MenuItems class="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                             <div class="py-1 text-sm">
-                            <MenuItem v-slot="{ active }">
-                                <a href="javascript:void(0)" @click.prevent="editData(department)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
-                                    <font-awesome-icon icon="fa-solid fa-plus" class="h-4 w-4 mr-2"/>
-                                    As PDF
-                                </a>
-                            </MenuItem>
-                            <MenuItem v-slot="{ active }">
-                                <a href="javascript:void(0)" @click.prevent="editData(department)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
-                                    <font-awesome-icon icon="fa-solid fa-trash-can" class="h-4 w-4 mr-2 "/>
-                                    As Excel
-                                </a>
-                            </MenuItem>
-                            <MenuItem v-slot="{ active }">
-                                <a href="javascript:void(0)" @click.prevent="editData(department)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
-                                    <font-awesome-icon icon="fa-solid fa-trash-can" class="h-4 w-4 mr-2 "/>
-                                    As CSV
-                                </a>
-                            </MenuItem>
+                                <MenuItem v-slot="{ active }">
+                                    <a :href="route('nurse.patient.export', 'pdf')" target="_blank" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
+                                        <font-awesome-icon icon="fa-solid fa-file-pdf" class="h-6 w-6 mr-2 text-red-500 group-hover:text-red-500"/>
+                                        As PDF
+                                    </a>
+                                </MenuItem>
+                                <MenuItem v-slot="{ active }">
+                                    <a :href="route('nurse.patient.export', 'csv')" target="_blank" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
+                                        <font-awesome-icon icon="fa-solid fa-file-csv" class="h-6 w-6 mr-2 text-blue-500 group-hover:text-blue-500"/>
+                                        As CSV
+                                    </a>
+                                </MenuItem>
+                                <MenuItem v-slot="{ active }">
+                                    <a :href="route('nurse.patient.export', 'xlsx')" target="_blank" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
+                                        <font-awesome-icon icon="fa-solid fa-file-excel" class="h-6 w-6 mr-2 text-green-500 group-hover:text-green-500"/>
+                                        As Excel
+                                    </a>
+                                </MenuItem>
                             </div>
                         </MenuItems>
                     </transition>
                 </Menu>
-                <BaseButton @click="showCreateDrawer = true" class="text-white bg-blue-600 hover:bg-blue-700 px-4 py-2.5">
-                    <font-awesome-icon icon="fa-solid fa-plus" class="h-4 w-4 mr-2"/>
-                   {{ __('Add Patient') }}
-                </BaseButton>
+                <div class="inline-flex rounded-md shadow-sm">
+                    <button @click="showCreateDrawer = true" type="button" class="relative inline-flex items-center rounded-l-md border border-gray-300 bg-blue-600 px-4 py-2.5 text-sm font-medium text-white hover:bg-blue-700 focus:z-10 focus:outline-none focus:ring-1">
+                        <font-awesome-icon icon="fa-solid fa-plus" class="h-4 w-4 mr-2"/>
+                        {{ __('Add Patient') }}
+                    </button>
+                    <Menu as="div" class="relative -ml-px block">
+                        <MenuButton  class="relative inline-flex items-center rounded-r-md border border-gray-300 bg-blue-600 px-2 py-2.5 text-sm font-medium text-white hover:bg-blue-700 focus:z-10 focus:outline-none focus:ring-1">
+                            <span class="sr-only">Open options</span>
+                            <ChevronDownIcon class="h-5 w-5" aria-hidden="true" />
+                        </MenuButton>
+                        <transition enter-active-class="transition ease-out duration-100" enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100" leave-active-class="transition ease-in duration-75" leave-from-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
+                            <MenuItems class="absolute right-0 z-10 mt-2 -mr-1 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                            <div class="py-1">
+                                <MenuItem v-slot="{ active }">
+                                    <a href="#" @click="showBulkImportModal = true" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm']">
+                                        <font-awesome-icon icon="fa-solid fa-upload" class="h-4 w-4 mr-2"/>
+                                        Bulk Import
+                                    </a>
+                                </MenuItem>
+                            </div>
+                            </MenuItems>
+                        </transition>
+                    </Menu>
+                </div>
             </div>
         </div>
 
@@ -101,7 +135,8 @@
         <!-- Body Part  -->
         <CardSkeleton :show="loading" v-if="loading"/>
 
-       <template v-else-if="!loading && patients && patients.data.length">
+        <!-- Card View -->
+       <template v-else-if="!loading && patients && patients.data.length && viewType == 'card'">
             <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
                 <span v-for="patient in patients.data" :key="patient.id" class="block p-6 bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
                     <div class="flex flex-wrap justify-between items-start">
@@ -155,6 +190,86 @@
             <Pagination :data="patients" v-if="patients && patients.data.length && patients.total > 20" class="mt-5"/>
        </template>
 
+        <!-- Table View  -->
+        <div class="flex flex-col mb-5 shadow-lg" v-else-if="!loading && patients && patients.data.length && viewType == 'table'">
+            <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                <div class="inline-block py-2 align-middle md:px-6 lg:px-8">
+                    <div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
+                        <table class="w-full divide-y divide-gray-300 table-fixed">
+                            <thead class="bg-gray-50">
+                            <tr class="divide-x divide-gray-200">
+                                <th class="py-3.5 pl-4 pr-4 text-left text-sm font-semibold text-gray-900 sm:pl-6">Name</th>
+                                <th class="py-3.5 pl-4 pr-4 text-left text-sm font-semibold text-gray-900 sm:pl-6">Email</th>
+                                <th class="px-4 py-3.5 text-left text-sm font-semibold text-gray-900 break-words">Phone</th>
+                                <th class="px-4 py-3.5 text-left text-sm font-semibold text-gray-900 break-words">Gender</th>
+                                <th width="80px" class="py-3.5 pl-4 pr-4 text-left text-sm font-semibold text-gray-900 sm:pr-6">Action</th>
+                            </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200 bg-white">
+                                <tr v-for="patient in patients.data" :key="patient.id" class="divide-x divide-gray-200">
+                                    <td class="py-4 pl-4 pr-4 text-sm font-medium text-gray-900 sm:pl-6">
+                                        <div class="flex items-center" v-if="patient && patient.user">
+                                            <div class="h-10 w-10 flex-shrink-0">
+                                                <img class="h-10 w-10 rounded-md" :src="patient.user.avatar_url" alt="">
+                                            </div>
+                                            <div class="ml-4">
+                                                <div class="font-medium text-gray-900">{{ patient.user.name }}</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="p-4 text-sm text-gray-500 break-all">
+                                        {{ patient.user.email ?? 'No email entry' }}
+                                    </td>
+                                    <td class="p-4 text-sm text-gray-500 break-all">
+                                        {{ patient.user.phone ?? 'No phone entry'}}
+                                    </td>
+                                    <td class="p-4 text-sm text-gray-500 break-all">
+                                        {{ patient.user.gender ?? 'No gender entry' }}
+                                    </td>
+                                    <td class="py-4 pl-4 pr-4 text-sm text-gray-500 sm:pr-6">
+                                        <Menu as="div" class="inline-block text-left">
+                                            <div>
+                                                <MenuButton class="flex items-center rounded-full text-gray-400 hover:text-gray-600 focus:outline-none">
+                                                    <span class="sr-only">Open options</span>
+                                                    <font-awesome-icon icon="fa-solid fa-ellipsis-vertical" class="h-6 w-6"/>
+                                                </MenuButton>
+                                            </div>
+
+                                            <transition enter-active-class="transition ease-out duration-100" enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100" leave-active-class="transition ease-in duration-75" leave-from-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
+                                                <MenuItems class="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                                                    <div class="py-1 text-sm">
+                                                    <MenuItem v-slot="{ active }">
+                                                        <a href="javascript:void(0)" @click.prevent="editData(patient)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
+                                                            <font-awesome-icon icon="fa-solid fa-pen-to-square" class="mr-3 h-5 w-5 text-blue-500 group-hover:text-blue-500"/>
+                                                            Edit
+                                                        </a>
+                                                    </MenuItem>
+                                                    <MenuItem v-slot="{ active }">
+                                                        <a href="javascript:void(0)" @click.prevent="editData(patient)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
+                                                            <font-awesome-icon icon="fa-solid fa-eye" class="mr-3 h-5 w-5 text-sky-500 group-hover:text-sky-500"/>
+                                                            Details
+                                                        </a>
+                                                    </MenuItem>
+                                                    <MenuItem v-slot="{ active }">
+                                                        <a href="javascript:void(0)" @click.prevent="deleteData(patient.id)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
+                                                            <font-awesome-icon icon="fa-solid fa-trash-can" class="mr-3 h-5 w-5 text-red-500 group-hover:text-red-500"/>
+                                                            Delete
+                                                        </a>
+                                                    </MenuItem>
+                                                    </div>
+                                                </MenuItems>
+                                            </transition>
+                                        </Menu>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <Pagination :data="patients" v-if="patients && patients.data.length && patients.total > 20"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <NothingFound v-else>
             <BaseButton @click="showCreateDrawer = true" class="text-white bg-blue-600 hover:bg-blue-700 px-4 py-2">
                 <font-awesome-icon icon="fa-solid fa-plus" class="h-4 w-4 mr-2"/>
@@ -164,18 +279,21 @@
 
         <CreatePatient v-show="showCreateDrawer" :show="showCreateDrawer" @close-drawer="showCreateDrawer = false"/>
         <EditPatient v-show="showEditDrawer && editPatient" :show="showEditDrawer" @close-drawer="showEditDrawer = false" :patient="editPatient"/>
+        <BulkImport :show="showBulkImportModal" @close-modal="showBulkImportModal = false"/>
     </AppLayout>
 </template>
 
 <script>
     import CreatePatient from "./Create.vue";
     import EditPatient from "./Edit.vue";
+    import BulkImport from "./BulkImport.vue";
     import CardSkeleton from "@/Shared/Skeleton/CardSkeleton.vue";
 
     export default {
         components: {
             CreatePatient,
             EditPatient,
+            BulkImport,
             CardSkeleton,
         },
         props: {
@@ -190,9 +308,11 @@
         },
         data() {
             return {
+                viewType: 'card',
                 showCreateDrawer: false,
                 showEditDrawer: false,
                 editPatient: '',
+                showBulkImportModal: false,
 
                 showFilter: false,
                 loading: false,
@@ -203,6 +323,10 @@
             }
         },
         methods: {
+            changeViewType(type){
+                this.viewType = type
+                localStorage.setItem("nursePatientView", this.viewType);
+            },
             deleteData(id) {
                 this.$swal({
                     title: "Are you sure?",
@@ -240,8 +364,8 @@
             },
         },
         created() {
-            this.checkPagePermission('nurse')
             this.showFilter = localStorage.getItem("nursePatient") == "true" ? true: false;
+            this.viewType = localStorage.getItem("nursePatientView") == "card" ? 'card': 'table';
         },
     };
 </script>

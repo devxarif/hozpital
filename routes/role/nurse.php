@@ -30,6 +30,8 @@ Route::middleware(['auth'])->name('nurse.')->prefix('nurse')->group(function () 
     Route::get('doctor', [DoctorController::class, 'index'])->name('doctor.index');
 
     // Patient Routes
+    Route::get('patient/export/{type}', [PatientController::class, 'export'])->name('patient.export');
+    Route::post('patient/import', [PatientController::class, 'import'])->name('patient.import');
     Route::resource('patient', PatientController::class);
 
     // Bed
