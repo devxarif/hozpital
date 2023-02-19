@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Requests\Admin\ReceptionistCreateRequest;
 use App\Http\Requests\Admin\ReceptionistUpdateRequest;
+use App\Imports\ReceptionistImport;
 use App\Services\Admin\Receptionist\CreateReceptionistService;
 use App\Services\Admin\Receptionist\DeleteReceptionistService;
 use App\Services\Admin\Receptionist\UpdateReceptionistService;
@@ -121,5 +122,22 @@ class ReceptionistController extends Controller
         $name = time().'_receptionists.'.$type;
 
         return Excel::download(new ReceptionistExport, $name);
+    }
+
+    /**
+     * Import data
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function import(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|mimes:csv,xlsx,xls'
+        ]);
+
+        Excel::import(new ReceptionistImport, $request->file);
+
+        $this->flashSuccess('Receptionist imported successfully');
+        return back();
     }
 }

@@ -7,7 +7,7 @@
                 <span class="sr-only">Close modal</span>
             </button>
             <div class="px-6 py-6 lg:px-8">
-                <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Patient Bulk Import</h3>
+                <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Receptionist Bulk Import</h3>
                 <form class="mb-4" @submit.prevent="saveData">
                     <div class="rounded-md bg-yellow-50 p-4">
                         <div class="flex">
@@ -25,8 +25,8 @@
                     </div>
 
                     <div class="my-4">
-                        <Label :name="__('Example File')" id="department_name" :hasError="form.errors.name"/>
-                        <a href="/admin/dummy/patient_example.xlsx" class="text-white justify-center flex items-center bg-blue-700 hover:bg-blue-800 w-full focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-md px-5 py-2.5 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 mt-3">
+                        <Label :name="__('Example File')"/>
+                        <a href="/admin/dummy/staff_example.xlsx" class="text-white justify-center flex items-center bg-blue-700 hover:bg-blue-800 w-full focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-md px-5 py-2.5 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 mt-3">
                             <span>
                                 <font-awesome-icon icon="fa-solid fa-download" class="h-4 w-4 mr-2"/>
                                 {{ __('Download Example File') }}
@@ -117,7 +117,7 @@ export default {
             this.form.file = null
         },
         saveData() {
-            this.form.post(route("admin.patient.import"), {
+            this.form.post(route("admin.receptionist.import"), {
                 onSuccess: () => {
                     this.form.reset(),
                     this.removeFile()

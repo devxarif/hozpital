@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Requests\Admin\PharmacistCreateRequest;
 use App\Http\Requests\Admin\PharmacistUpdateRequest;
+use App\Imports\PharmacistImport;
 use App\Services\Admin\Pharmacist\CreatePharmacistService;
 use App\Services\Admin\Pharmacist\DeletePharmacistService;
 use App\Services\Admin\Pharmacist\UpdatePharmacistService;
@@ -121,5 +122,22 @@ class PharmacistController extends Controller
         $name = time().'_pharmacists.'.$type;
 
         return Excel::download(new PharmacistExport, $name);
+    }
+
+    /**
+     * Import data
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function import(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|mimes:csv,xlsx,xls'
+        ]);
+
+        Excel::import(new PharmacistImport, $request->file);
+
+        $this->flashSuccess('Pharmacist imported successfully');
+        return back();
     }
 }

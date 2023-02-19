@@ -102,7 +102,10 @@
                             <MenuItems class="absolute right-0 z-10 mt-2 -mr-1 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                             <div class="py-1">
                                 <MenuItem v-slot="{ active }">
-                                    <a href="#" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm']">Bulk Import</a>
+                                    <a href="#" @click="showBulkImportModal = true" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm']">
+                                        <font-awesome-icon icon="fa-solid fa-upload" class="h-4 w-4 mr-2"/>
+                                        Bulk Import
+                                    </a>
                                 </MenuItem>
                             </div>
                             </MenuItems>
@@ -268,6 +271,8 @@
 
         <CreatePharmacist v-show="showCreateDrawer" :show="showCreateDrawer" @close-drawer="showCreateDrawer = false"/>
         <EditPharmacist v-show="showEditDrawer" :show="showEditDrawer" @close-drawer="showEditDrawer = false" :pharmacist="editPharmacist"/>
+        <BulkImport :show="showBulkImportModal" @close-modal="showBulkImportModal = false"/>
+
     </AppLayout>
 </template>
 
@@ -275,14 +280,14 @@
     import CreatePharmacist from "./Create.vue";
     import EditPharmacist from "./Edit.vue";
     import CardSkeleton from "@/Shared/Skeleton/CardSkeleton.vue";
-    import { ChevronDownIcon } from '@heroicons/vue/20/solid'
+    import BulkImport from "./BulkImport.vue";
 
     export default {
         components: {
             CreatePharmacist,
             EditPharmacist,
             CardSkeleton,
-            ChevronDownIcon,
+            BulkImport,
 
         },
         props: {
@@ -297,10 +302,11 @@
         },
         data() {
             return {
-                viewType: 'table',
+                viewType: 'card',
                 showCreateDrawer: false,
                 showEditDrawer: false,
                 editPharmacist: '',
+                showBulkImportModal: false,
 
                 showFilter: false,
                 loading: false,

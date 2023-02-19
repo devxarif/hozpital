@@ -57,9 +57,10 @@ import Pagination from "@/Shared/Pagination.vue";
 // Icons
 import LoadingIcon from "@/Shared/Icons/LoadingIcon.vue";
 import HomeIcon from "@/Shared/Icons/HomeIcon.vue";
+import { ChevronDownIcon } from '@heroicons/vue/20/solid'
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
-import { faHome, faPenToSquare, faEye, faTrashCan, faPlus, faChevronRight, faEllipsisVertical, faSearch, faFilePdf, faFileCsv, faFileExcel } from '@fortawesome/free-solid-svg-icons'
-library.add(faHome, faPenToSquare, faEye, faTrashCan, faPlus, faChevronRight, faEllipsisVertical, faSearch, faFilePdf, faFileCsv, faFileExcel)
+import { faHome, faPenToSquare, faEye, faTrashCan, faPlus, faChevronRight, faEllipsisVertical, faSearch, faFilePdf, faFileCsv, faFileExcel, faUpload } from '@fortawesome/free-solid-svg-icons'
+library.add(faHome, faPenToSquare, faEye, faTrashCan, faPlus, faChevronRight, faEllipsisVertical, faSearch, faFilePdf, faFileCsv, faFileExcel, faUpload)
 
 
 createInertiaApp({
@@ -92,6 +93,7 @@ createInertiaApp({
                 Pagination,
                 LoadingIcon,
                 HomeIcon,
+                ChevronDownIcon,
                 Popper,
                 FontAwesomeIcon,
                 Menu,

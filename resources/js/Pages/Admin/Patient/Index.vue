@@ -102,7 +102,10 @@
                             <MenuItems class="absolute right-0 z-10 mt-2 -mr-1 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                             <div class="py-1">
                                 <MenuItem v-slot="{ active }">
-                                    <a href="#" @click="showBulkImportModal = true" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm']">Bulk Import</a>
+                                    <a href="#" @click="showBulkImportModal = true" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm']">
+                                        <font-awesome-icon icon="fa-solid fa-upload" class="h-4 w-4 mr-2"/>
+                                        Bulk Import
+                                    </a>
                                 </MenuItem>
                             </div>
                             </MenuItems>
@@ -285,7 +288,6 @@
     import EditPatient from "./Edit.vue";
     import BulkImport from "./BulkImport.vue";
     import CardSkeleton from "@/Shared/Skeleton/CardSkeleton.vue";
-    import { ChevronDownIcon } from '@heroicons/vue/20/solid'
 
     export default {
         components: {
@@ -293,7 +295,6 @@
             EditPatient,
             BulkImport,
             CardSkeleton,
-            ChevronDownIcon,
         },
         props: {
             patients:{
@@ -307,7 +308,7 @@
         },
         data() {
             return {
-                viewType: 'table',
+                viewType: 'card',
                 showCreateDrawer: false,
                 showEditDrawer: false,
                 editPatient: '',

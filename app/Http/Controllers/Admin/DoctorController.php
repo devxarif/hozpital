@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Exports\DoctorExport;
 use App\Models\Doctor;
 use App\Models\Department;
 use Illuminate\Http\Request;
+use App\Exports\DoctorExport;
+use App\Imports\DoctorImport;
 use App\Http\Controllers\Controller;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Requests\Admin\DoctorCreateRequest;
@@ -128,5 +129,22 @@ class DoctorController extends Controller
         $name = time().'_doctors.'.$type;
 
         return Excel::download(new DoctorExport, $name);
+    }
+
+    /**
+     * Import data
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function import(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|mimes:csv,xlsx,xls'
+        ]);
+
+        Excel::import(new DoctorImport, $request->file);
+
+        $this->flashSuccess('Doctor imported successfully');
+        return back();
     }
 }

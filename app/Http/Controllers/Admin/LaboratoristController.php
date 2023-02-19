@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Requests\Admin\LaboratoristCreateRequest;
 use App\Http\Requests\Admin\LaboratoristUpdateRequest;
+use App\Imports\LaboratoristImport;
 use App\Services\Admin\Laboratorist\CreateLaboratoristService;
 use App\Services\Admin\Laboratorist\DeleteLaboratoristService;
 use App\Services\Admin\Laboratorist\UpdateLaboratoristService;
@@ -111,5 +112,22 @@ class LaboratoristController extends Controller
         $name = time().'_laboratorists.'.$type;
 
         return Excel::download(new LaboratoristExport, $name);
+    }
+
+    /**
+     * Import data
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function import(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|mimes:csv,xlsx,xls'
+        ]);
+
+        Excel::import(new LaboratoristImport, $request->file);
+
+        $this->flashSuccess('Laboratorist imported successfully');
+        return back();
     }
 }

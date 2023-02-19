@@ -37,8 +37,9 @@ Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function () 
     Route::resource('department', DepartmentController::class);
 
     // Doctor Routes
-    Route::resource('doctor', DoctorController::class);
     Route::get('doctor/export/{type}', [DoctorController::class, 'export'])->name('doctor.export');
+    Route::post('doctor/import', [DoctorController::class, 'import'])->name('doctor.import');
+    Route::resource('doctor', DoctorController::class);
 
     // Patient Routes
     Route::get('patient/export/{type}', [PatientController::class, 'export'])->name('patient.export');
@@ -46,24 +47,29 @@ Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function () 
     Route::resource('patient', PatientController::class);
 
     // Nurse Routes
-    Route::resource('nurse', NurseController::class);
     Route::get('nurse/export/{type}', [NurseController::class, 'export'])->name('nurse.export');
+    Route::post('nurse/import', [NurseController::class, 'import'])->name('nurse.import');
+    Route::resource('nurse', NurseController::class);
 
     // Receptionist Routes
-    Route::resource('receptionist', ReceptionistController::class);
     Route::get('receptionist/export/{type}', [ReceptionistController::class, 'export'])->name('receptionist.export');
+    Route::post('receptionist/import', [ReceptionistController::class, 'import'])->name('receptionist.import');
+    Route::resource('receptionist', ReceptionistController::class);
 
     // Pharmacist Routes
-    Route::resource('pharmacist', PharmacistController::class);
     Route::get('pharmacist/export/{type}', [PharmacistController::class, 'export'])->name('pharmacist.export');
+    Route::post('pharmacist/import', [PharmacistController::class, 'import'])->name('pharmacist.import');
+    Route::resource('pharmacist', PharmacistController::class);
 
     // Laboratorist Routes
-    Route::resource('laboratorist', LaboratoristController::class);
     Route::get('laboratorist/export/{type}', [LaboratoristController::class, 'export'])->name('laboratorist.export');
+    Route::post('laboratorist/import', [LaboratoristController::class, 'import'])->name('laboratorist.import');
+    Route::resource('laboratorist', LaboratoristController::class);
 
     // Accountant Routes
-    Route::resource('accountant', AccountantController::class);
     Route::get('accountant/export/{type}', [AccountantController::class, 'export'])->name('accountant.export');
+    Route::post('accountant/import', [AccountantController::class, 'import'])->name('accountant.import');
+    Route::resource('accountant', AccountantController::class);
 
     // product
     Route::resource('product', ProductController::class);

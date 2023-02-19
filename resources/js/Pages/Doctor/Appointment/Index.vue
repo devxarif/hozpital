@@ -367,7 +367,7 @@ export default {
     },
     data() {
         return {
-            viewType: 'table',
+            viewType: 'card',
             showCreateDrawer: false,
             showEditDrawer: false,
             editAppointment: '',

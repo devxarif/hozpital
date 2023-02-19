@@ -110,11 +110,6 @@ class PatientController extends Controller
         ]);
 
         Excel::import(new PatientImport, $request->file);
-        // $url = uploadFileToPublic('import', $request->file);
-        // return $url;
-
-        // return Excel::import(new PatientImport, $url);
-        // return Excel::import(new PatientImport, 'uploads/import/s6g78UQGjE7EJGPcGjL7BlVVdT8opqa6GY9x2PIR.xlsx');
 
         $this->flashSuccess('Patient imported successfully');
         return back();

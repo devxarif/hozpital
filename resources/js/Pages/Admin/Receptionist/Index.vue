@@ -88,10 +88,30 @@
                         </MenuItems>
                     </transition>
                 </Menu>
-                <BaseButton @click="showCreateDrawer = true" class="text-white bg-blue-600 hover:bg-blue-700 px-4 py-2.5">
-                    <font-awesome-icon icon="fa-solid fa-plus" class="h-4 w-4 mr-2"/>
-                   {{ __('Add Receptionist') }}
-                </BaseButton>
+                <div class="inline-flex rounded-md shadow-sm">
+                    <button @click="showCreateDrawer = true" type="button" class="relative inline-flex items-center rounded-l-md border border-gray-300 bg-blue-600 px-4 py-2.5 text-sm font-medium text-white hover:bg-blue-700 focus:z-10 focus:outline-none focus:ring-1">
+                        <font-awesome-icon icon="fa-solid fa-plus" class="h-4 w-4 mr-2"/>
+                        {{ __('Add Receptionist') }}
+                    </button>
+                    <Menu as="div" class="relative -ml-px block">
+                        <MenuButton  class="relative inline-flex items-center rounded-r-md border border-gray-300 bg-blue-600 px-2 py-2.5 text-sm font-medium text-white hover:bg-blue-700 focus:z-10 focus:outline-none focus:ring-1">
+                            <span class="sr-only">Open options</span>
+                            <ChevronDownIcon class="h-5 w-5" aria-hidden="true" />
+                        </MenuButton>
+                        <transition enter-active-class="transition ease-out duration-100" enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100" leave-active-class="transition ease-in duration-75" leave-from-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
+                            <MenuItems class="absolute right-0 z-10 mt-2 -mr-1 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                            <div class="py-1">
+                                <MenuItem v-slot="{ active }">
+                                    <a href="#" @click="showBulkImportModal = true" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm']">
+                                        <font-awesome-icon icon="fa-solid fa-upload" class="h-4 w-4 mr-2"/>
+                                        Bulk Import
+                                    </a>
+                                </MenuItem>
+                            </div>
+                            </MenuItems>
+                        </transition>
+                    </Menu>
+                </div>
             </div>
         </div>
 
@@ -252,89 +272,93 @@
 
         <CreateReceptionist v-show="showCreateDrawer" :show="showCreateDrawer" @close-drawer="showCreateDrawer = false"/>
         <EditReceptionist v-show="showEditDrawer" :show="showEditDrawer" @close-drawer="showEditDrawer = false" :receptionist="editPharmacist"/>
+        <BulkImport :show="showBulkImportModal" @close-modal="showBulkImportModal = false"/>
     </AppLayout>
 </template>
 
 <script>
-    import CreateReceptionist from "./Create.vue";
-    import EditReceptionist from "./Edit.vue";
-    import CardSkeleton from "@/Shared/Skeleton/CardSkeleton.vue";
+import CreateReceptionist from "./Create.vue";
+import EditReceptionist from "./Edit.vue";
+import CardSkeleton from "@/Shared/Skeleton/CardSkeleton.vue";
+import BulkImport from "./BulkImport.vue";
 
-    export default {
-        components: {
-            CreateReceptionist,
-            EditReceptionist,
-            CardSkeleton,
+export default {
+    components: {
+        CreateReceptionist,
+        EditReceptionist,
+        CardSkeleton,
+        BulkImport,
+    },
+    props: {
+        receptionists:{
+            type: Array,
+            default: () => []
         },
-        props: {
-            receptionists:{
-                type: Array,
-                default: () => []
-            },
-            filter:{
-                type: Array,
-                default: () => []
-            },
+        filter:{
+            type: Array,
+            default: () => []
         },
-        data() {
-            return {
-                viewType: 'table',
-                showCreateDrawer: false,
-                showEditDrawer: false,
-                editPharmacist: '',
+    },
+    data() {
+        return {
+            viewType: 'card',
+            showCreateDrawer: false,
+            showEditDrawer: false,
+            editPharmacist: '',
+            showBulkImportModal: false,
 
-                showFilter: false,
-                loading: false,
+            showFilter: false,
+            loading: false,
 
-                filterForm: this.$inertia.form({
-                    keyword: this.filter.keyword,
-                }),
-            }
+            filterForm: this.$inertia.form({
+                keyword: this.filter.keyword,
+            }),
+        }
+    },
+    methods: {
+        deleteData(id) {
+            this.$swal({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!",
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    this.$inertia.delete(route("admin.receptionist.destroy", id));
+                }
+            });
         },
-        methods: {
-            deleteData(id) {
-                this.$swal({
-                    title: "Are you sure?",
-                    text: "You won't be able to revert this!",
-                    icon: "warning",
-                    showCancelButton: true,
-                    confirmButtonColor: "#3085d6",
-                    cancelButtonColor: "#d33",
-                    confirmButtonText: "Yes, delete it!",
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        this.$inertia.delete(route("admin.receptionist.destroy", id));
-                    }
-                });
-            },
-            editData(data){
-                this.showEditDrawer = true
-                this.editPharmacist = data
-            },
-            filterData(){
-                this.loading = true
-                this.filterForm.get(route('admin.receptionist.index'), {
-                    onSuccess: () => {
-                        this.loading = false
-                    },
-                    onError: () => {
-                        this.loading = false
-                        alert('Something went wrong')
-                    },
-                })
-            },
-            toggleFilter() {
-                this.showFilter = !this.showFilter;
-                localStorage.setItem("adminReceptionist", this.showFilter);
-            },
-            changeViewType(type){
-                this.viewType = type
-                localStorage.setItem("adminReceptionistView", this.viewType);
-            },
+        editData(data){
+            this.showEditDrawer = true
+            this.editPharmacist = data
         },
-        created() {
-            this.showFilter = localStorage.getItem("adminReceptionist") == "true" ? true: false;
-            this.viewType = localStorage.getItem("adminReceptionistView") == "card" ? 'card': 'table';
+        filterData(){
+            this.loading = true
+            this.filterForm.get(route('admin.receptionist.index'), {
+                onSuccess: () => {
+                    this.loading = false
+                },
+                onError: () => {
+                    this.loading = false
+                    alert('Something went wrong')
+                },
+            })
         },
-    };
+        toggleFilter() {
+            this.showFilter = !this.showFilter;
+            localStorage.setItem("adminReceptionist", this.showFilter);
+        },
+        changeViewType(type){
+            this.viewType = type
+            localStorage.setItem("adminReceptionistView", this.viewType);
+        },
+    },
+    created() {
+        this.showFilter = localStorage.getItem("adminReceptionist") == "true" ? true: false;
+        this.viewType = localStorage.getItem("adminReceptionistView") == "card" ? 'card': 'table';
+    },
+};
 </script>

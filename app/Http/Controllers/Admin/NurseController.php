@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Requests\Admin\NurseCreateRequest;
 use App\Http\Requests\Admin\NurseUpdateRequest;
+use App\Imports\NurseImport;
 use App\Services\Admin\Nurse\CreateNurseService;
 use App\Services\Admin\Nurse\DeleteNurseService;
 use App\Services\Admin\Nurse\UpdateNurseService;
@@ -121,5 +122,22 @@ class NurseController extends Controller
         $name = time().'_nurses.'.$type;
 
         return Excel::download(new NurseExport, $name);
+    }
+
+    /**
+     * Import data
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function import(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|mimes:csv,xlsx,xls'
+        ]);
+
+        Excel::import(new NurseImport, $request->file);
+
+        $this->flashSuccess('Nurse imported successfully');
+        return back();
     }
 }

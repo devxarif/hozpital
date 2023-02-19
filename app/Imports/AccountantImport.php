@@ -3,13 +3,12 @@
 namespace App\Imports;
 
 use App\Models\User;
-use App\Models\Patient;
-use Illuminate\Support\Arr;
+use App\Models\Accountant;
 use App\Traits\HasUserUniqueEmail;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithStartRow;
 
-class PatientImport implements ToModel, WithStartRow
+class AccountantImport implements ToModel, WithStartRow
 {
     use HasUserUniqueEmail;
 
@@ -22,17 +21,13 @@ class PatientImport implements ToModel, WithStartRow
             'name' => $name,
             'email' => $email,
             'password' => bcrypt($row[2] ?? 'password'),
-            'role' => 'patient',
+            'role' => 'accountant',
         ]);
 
-        return new Patient([
+        return new Accountant([
             'user_id' => $user->id,
-            'gender' => $row[3] ?? Arr::random(['male', 'female']),
-            'phone' => $row[4] ?? fake()->phoneNumber,
-            'birth_date' => $row[5] ?? '2000-01-01',
-            'age' => $row[6] ?? '23',
-            'blood_group' => $row[7] ?? Arr::random(['A+','B+','O+', 'AB+','A-','B-','O-', 'AB-']),
-            'address' => $row[8] ?? fake()->address,
+            'phone' => $row[3] ?? fake()->phoneNumber,
+            'address' => $row[4] ?? fake()->address,
         ]);
     }
 
