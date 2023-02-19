@@ -4,7 +4,10 @@ namespace App\Http\Controllers\Receptionist;
 
 use App\Models\Patient;
 use Illuminate\Http\Request;
+use App\Exports\PatientExport;
+use App\Imports\PatientImport;
 use App\Http\Controllers\Controller;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Requests\Admin\PatientCreateRequest;
 use App\Http\Requests\Admin\PatientUpdateRequest;
 use App\Services\Admin\Patient\CreatePatientService;
@@ -79,6 +82,44 @@ class PatientController extends Controller
         (new DeletePatientService())->execute($patient);
 
         $this->flashSuccess('Patient deleted successfully');
+        return back();
+    }
+
+     /**
+     * Export data
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function export($type)
+    {
+        $name = time().'_patients.'.$type;
+
+        try {
+            return Excel::download(new PatientExport, $name);
+        } catch (\Throwable $th) {
+            $this->flashError($th->getMessage());
+            return back();
+        }
+    }
+
+    /**
+     * Import data
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function import(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|mimes:csv,xlsx,xls'
+        ]);
+
+        try {
+            Excel::import(new PatientImport, $request->file);
+            $this->flashSuccess('Patient imported successfully');
+        } catch (\Throwable $th) {
+            $this->flashError($th->getMessage());
+        }
+
         return back();
     }
 }
