@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Patient;
 use Illuminate\Support\Arr;
 use App\Traits\HasUserUniqueEmail;
+use Carbon\Carbon;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithStartRow;
 
@@ -17,6 +18,7 @@ class PatientImport implements ToModel, WithStartRow
     {
         $name = $row[0] ?? fake()->name;
         $email = $this->generateUserUniqueEmail($row[1] ?? fake()->safeEmail, $name);
+        $date_of_birth = Carbon::parse($row[5])->format('Y-m-d') ?? Carbon::parse('2000-01-01')->format('Y-m-d');
 
         $user = User::create([
             'name' => $name,
@@ -29,7 +31,7 @@ class PatientImport implements ToModel, WithStartRow
             'user_id' => $user->id,
             'gender' => $row[3] ?? Arr::random(['male', 'female']),
             'phone' => $row[4] ?? fake()->phoneNumber,
-            'birth_date' => $row[5] ?? '2000-01-01',
+            'birth_date' => $date_of_birth,
             'age' => $row[6] ?? '23',
             'blood_group' => $row[7] ?? Arr::random(['A+','B+','O+', 'AB+','A-','B-','O-', 'AB-']),
             'address' => $row[8] ?? fake()->address,

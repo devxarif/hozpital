@@ -26,6 +26,8 @@ use App\Http\Controllers\Doctor\AppointmentScheduleController;
 
 Route::middleware(['auth'])->name('doctor.')->prefix('doctor')->group(function () {
     // Patient Routes
+    Route::get('patient/export/{type}', [PatientController::class, 'export'])->name('patient.export');
+    Route::post('patient/import', [PatientController::class, 'import'])->name('patient.import');
     Route::resource('patient', PatientController::class);
 
     // Prescription Routes

@@ -51,7 +51,7 @@ class AppointmentController extends Controller
 
     public function statusUpdate(Request $request, Appointment $appointment){
         $appointment->update([
-            'status' => $request->status,
+            'status' => $request->status
         ]);
 
         $this->flashSuccess('Appointment status updated successfully');

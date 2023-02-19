@@ -121,7 +121,12 @@ class ReceptionistController extends Controller
     {
         $name = time().'_receptionists.'.$type;
 
-        return Excel::download(new ReceptionistExport, $name);
+        try {
+            return Excel::download(new ReceptionistExport, $name);
+        } catch (\Throwable $th) {
+            $this->flashError($th->getMessage());
+            return back();
+        }
     }
 
     /**
@@ -135,9 +140,14 @@ class ReceptionistController extends Controller
             'file' => 'required|mimes:csv,xlsx,xls'
         ]);
 
-        Excel::import(new ReceptionistImport, $request->file);
+        try {
+            Excel::import(new ReceptionistImport, $request->file);
+            $this->flashSuccess('Receptionist imported successfully');
+        } catch (\Throwable $th) {
+            $this->flashError($th->getMessage());
+        }
 
-        $this->flashSuccess('Receptionist imported successfully');
+
         return back();
     }
 }

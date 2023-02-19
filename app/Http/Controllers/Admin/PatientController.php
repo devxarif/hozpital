@@ -95,7 +95,12 @@ class PatientController extends Controller
     {
         $name = time().'_patients.'.$type;
 
-        return Excel::download(new PatientExport, $name);
+        try {
+            return Excel::download(new PatientExport, $name);
+        } catch (\Throwable $th) {
+            $this->flashError($th->getMessage());
+            return back();
+        }
     }
 
     /**
@@ -109,9 +114,14 @@ class PatientController extends Controller
             'file' => 'required|mimes:csv,xlsx,xls'
         ]);
 
-        Excel::import(new PatientImport, $request->file);
+        try {
+            Excel::import(new PatientImport, $request->file);
+            $this->flashSuccess('Patient imported successfully');
+        } catch (\Throwable $th) {
+            $this->flashError($th->getMessage());
+            return back();
+        }
 
-        $this->flashSuccess('Patient imported successfully');
         return back();
     }
 }

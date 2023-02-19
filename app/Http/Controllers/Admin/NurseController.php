@@ -121,7 +121,12 @@ class NurseController extends Controller
     {
         $name = time().'_nurses.'.$type;
 
-        return Excel::download(new NurseExport, $name);
+        try {
+            return Excel::download(new NurseExport, $name);
+        } catch (\Throwable $th) {
+            $this->flashError($th->getMessage());
+            return back();
+        }
     }
 
     /**
@@ -134,10 +139,13 @@ class NurseController extends Controller
         $request->validate([
             'file' => 'required|mimes:csv,xlsx,xls'
         ]);
+        try {
+            Excel::import(new NurseImport, $request->file);
+            $this->flashSuccess('Nurse imported successfully');
+        } catch (\Throwable $th) {
+            $this->flashError($th->getMessage());
+        }
 
-        Excel::import(new NurseImport, $request->file);
-
-        $this->flashSuccess('Nurse imported successfully');
         return back();
     }
 }

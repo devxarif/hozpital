@@ -121,7 +121,12 @@ class PharmacistController extends Controller
     {
         $name = time().'_pharmacists.'.$type;
 
-        return Excel::download(new PharmacistExport, $name);
+        try {
+            return Excel::download(new PharmacistExport, $name);
+        } catch (\Throwable $th) {
+            $this->flashError($th->getMessage());
+            return back();
+        }
     }
 
     /**
@@ -135,9 +140,13 @@ class PharmacistController extends Controller
             'file' => 'required|mimes:csv,xlsx,xls'
         ]);
 
-        Excel::import(new PharmacistImport, $request->file);
+        try {
+            Excel::import(new PharmacistImport, $request->file);
+            $this->flashSuccess('Pharmacist imported successfully');
+        } catch (\Throwable $th) {
+            $this->flashError($th->getMessage());
+        }
 
-        $this->flashSuccess('Pharmacist imported successfully');
         return back();
     }
 }
