@@ -648,21 +648,23 @@ if (!function_exists('userCan')) {
  * @param string $link
  * @return void
  */
-function youtubeId($link)
-{
-    try {
+if (!function_exists('youtubeId')) {
+    function youtubeId($link)
+    {
+        try {
 
-        // Validate link
-        if (preg_match("#(?<=v=)[a-zA-Z0-9-]+(?=&)|(?<=v\/)[^&\n]+(?=\?)|(?<=v=)[^&\n]+|(?<=youtu.be/)[^&\n]+#", $link, $matches)) {
-            return isset($matches[0]) ? $matches[0] : null;
+            // Validate link
+            if (preg_match("#(?<=v=)[a-zA-Z0-9-]+(?=&)|(?<=v\/)[^&\n]+(?=\?)|(?<=v=)[^&\n]+|(?<=youtu.be/)[^&\n]+#", $link, $matches)) {
+                return isset($matches[0]) ? $matches[0] : null;
+            }
+
+            // Not found
+            return null;
+
+        } catch (\Throwable $th) {
+            // throw $th;
+            return null;
         }
-
-        // Not found
-        return null;
-
-    } catch (\Throwable $th) {
-        // throw $th;
-        return null;
     }
 }
 
@@ -674,25 +676,26 @@ function youtubeId($link)
  * @param string $data
  * @return string
  */
-function safeEncrypt($data)
-{
-    $output         = false;
+if (!function_exists('safeEncrypt')) {
+    function safeEncrypt($data)
+    {
+        $output         = false;
 
-    $encrypt_method = 'AES-256-CBC';
-    $secret_key     = 'WU9AHAl#Ra--WWre';
-    $secret_iv      = 'M43Sy96JuvJ5N6jY';
+        $encrypt_method = 'AES-256-CBC';
+        $secret_key     = 'WU9AHAl#Ra--WWre';
+        $secret_iv      = 'M43Sy96JuvJ5N6jY';
 
-    // hash
-    $key            = hash('sha256', $secret_key);
+        // hash
+        $key            = hash('sha256', $secret_key);
 
-    // iv - encrypt method AES-256-CBC expects 16 bytes - else you will get a warning
-    $iv             = substr(hash('sha256', $secret_iv), 0, 16);
+        // iv - encrypt method AES-256-CBC expects 16 bytes - else you will get a warning
+        $iv             = substr(hash('sha256', $secret_iv), 0, 16);
 
-    $output         = openssl_encrypt($data, $encrypt_method, $key, 0, $iv);
-    $output         = base64_encode($output);
+        $output         = openssl_encrypt($data, $encrypt_method, $key, 0, $iv);
+        $output         = base64_encode($output);
 
-    return $output;
-
+        return $output;
+    }
 }
 
 
@@ -702,21 +705,23 @@ function safeEncrypt($data)
  * @param string $encrypted
  * @return string
  */
-function safeDecrypt($encrypted)
-{
-    $output         = false;
+if (!function_exists('safeDecrypt')) {
+    function safeDecrypt($encrypted)
+    {
+        $output         = false;
 
-    $encrypt_method = 'AES-256-CBC';
-    $secret_key     = 'WU9AHAl#Ra--WWre';
-    $secret_iv      = 'M43Sy96JuvJ5N6jY';
+        $encrypt_method = 'AES-256-CBC';
+        $secret_key     = 'WU9AHAl#Ra--WWre';
+        $secret_iv      = 'M43Sy96JuvJ5N6jY';
 
-    // hash
-    $key            = hash('sha256', $secret_key);
+        // hash
+        $key            = hash('sha256', $secret_key);
 
-    // iv - encrypt method AES-256-CBC expects 16 bytes - else you will get a warning
-    $iv             = substr(hash('sha256', $secret_iv), 0, 16);
+        // iv - encrypt method AES-256-CBC expects 16 bytes - else you will get a warning
+        $iv             = substr(hash('sha256', $secret_iv), 0, 16);
 
-    $output         = openssl_decrypt(base64_decode($encrypted), $encrypt_method, $key, 0, $iv);
+        $output         = openssl_decrypt(base64_decode($encrypted), $encrypt_method, $key, 0, $iv);
 
-    return $output;
+        return $output;
+    }
 }

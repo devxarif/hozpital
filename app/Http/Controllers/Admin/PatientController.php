@@ -5,12 +5,14 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Patient;
 use Illuminate\Http\Request;
 use App\Exports\PatientExport;
+use App\Imports\PatientImport;
 use App\Http\Controllers\Controller;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Requests\Admin\PatientCreateRequest;
 use App\Http\Requests\Admin\PatientUpdateRequest;
 use App\Services\Admin\Patient\CreatePatientService;
 use App\Services\Admin\Patient\DeletePatientService;
+use App\Services\Admin\Patient\ImportPatientService;
 use App\Services\Admin\Patient\UpdatePatientService;
 
 class PatientController extends Controller
@@ -87,7 +89,6 @@ class PatientController extends Controller
     /**
      * Export data
      *
-     * @param  Patient  $patient
      * @return \Illuminate\Http\Response
      */
     public function export($type)
@@ -95,5 +96,27 @@ class PatientController extends Controller
         $name = time().'_patients.'.$type;
 
         return Excel::download(new PatientExport, $name);
+    }
+
+    /**
+     * Import data
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function import(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|mimes:csv,xlsx,xls'
+        ]);
+
+        Excel::import(new PatientImport, $request->file);
+        // $url = uploadFileToPublic('import', $request->file);
+        // return $url;
+
+        // return Excel::import(new PatientImport, $url);
+        // return Excel::import(new PatientImport, 'uploads/import/s6g78UQGjE7EJGPcGjL7BlVVdT8opqa6GY9x2PIR.xlsx');
+
+        $this->flashSuccess('Patient imported successfully');
+        return back();
     }
 }

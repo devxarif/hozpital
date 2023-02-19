@@ -114,7 +114,6 @@ class PharmacistController extends Controller
     /**
      * Export data
      *
-     * @param  Patient  $patient
      * @return \Illuminate\Http\Response
      */
     public function export($type)

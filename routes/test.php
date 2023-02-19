@@ -14,8 +14,9 @@ use App\Models\Department;
 use Illuminate\Support\Str;
 use App\Models\LeaveBalance;
 use App\Exports\PatientExport;
-use App\Models\ContactMessage;
+use App\Imports\PatientImport;
 // use Barryvdh\DomPDF\Facade\Pdf;
+use App\Models\ContactMessage;
 use Illuminate\Support\Benchmark;
 use Illuminate\Support\Facades\DB;
 use App\Models\AppointmentSchedule;
@@ -47,6 +48,18 @@ use sirajcse\UniqueIdGenerator\UniqueIdGenerator;
 // })->middleware('set_lang');
 
 Route::get('/test', function () {
+    // $user = User::create([
+    //     'name' => $row[0] ?? fake()->name,
+    //     'email' => $row[1] ?? fake()->safeEmail,
+    //     'password' => bcrypt($row[2] ?? 'password'),
+    //     // 'role' => 'patient',
+    // ]);
+
+    // return $user;
+
+    return Excel::import(new PatientImport, public_path('uploads/import/mBUY7cVNW0SIKUpkRP7WLzfqb8Wj8cMPcL1kvyCy.csv'));
+    return Excel::import(new PatientImport, public_path('uploads/import/s6g78UQGjE7EJGPcGjL7BlVVdT8opqa6GY9x2PIR.xlsx'));
+
 
     $type = 'csv';
     $name = time().'_patients.'.$type;
