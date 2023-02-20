@@ -3,7 +3,7 @@
       <!-- Sidebar component, swap this element with another sidebar if you like -->
       <div class="flex flex-grow flex-col overflow-y-auto border-r border-gray-200 bg-white pt-5">
         <div class="flex flex-shrink-0 items-center px-4">
-          <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=blue&amp;shade=600" alt="Your Company">
+          <!-- <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=blue&amp;shade=600" alt="Your Company"> -->
         </div>
         <div class="mt-5 flex flex-grow flex-col">
           <nav class="flex-1 space-y-1 px-2 pb-4">
@@ -25,23 +25,12 @@
         </div>
       </div>
     </div> <div class="hidden md:fixed md:inset-y-0 md:flex md:w-64 md:flex-col">
-      <!-- Sidebar component, swap this element with another sidebar if you like -->
       <div class="flex min-h-0 flex-1 flex-col bg-slate-800">
         <div class="flex flex-1 flex-col overflow-y-auto pt-5 pb-4">
           <div class="flex flex-shrink-0 items-center px-4">
-            <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=blue&amp;shade=500" alt="Your Company">
+            <img class="h-16 w-full" src="/admin/img/hozpital_logo.svg" alt="Your Company">
           </div>
           <nav class="mt-5 flex-1 space-y-1 px-2">
-
-                <!-- <a href="#" class="bg-slate-50 text-gray-900 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-sm font-medium">
-                    <HomeIcon class="text-gray-900 mr-3 flex-shrink-0 h-5 w-5"/>
-                    Admin Dashboard
-                </a>
-                <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white group flex items-center px-2 py-2 text-sm font-medium">
-                    <HomeIcon class="text-gray-300 mr-3 flex-shrink-0 h-4 w-4"/>
-                    Admin Dashboard
-                </a> -->
-
                 <NavItem title="Dashboard" :href="route('dashboard')" :active="route().current('dashboard')">
                     <template v-slot:icon>
                         <HomeIcon class="mr-3 flex-shrink-0 h-7 w-7"/>
@@ -185,13 +174,13 @@
 
         <Menu as="div" class="inline-block text-left">
             <div class="flex flex-shrink-0 bg-gray-700 p-4">
-                <a href="#" class="group block w-full flex-shrink-0">
+                <a href="javascript:void(0)" class="group block w-full flex-shrink-0">
                     <div class="flex items-center">
                     <div>
                         <img class="inline-block h-9 w-9 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=2&amp;w=256&amp;h=256&amp;q=80" alt="">
                     </div>
                     <div class="ml-3">
-                        <p class="text-sm font-medium text-white">Tom Cook</p>
+                        <p class="text-sm font-medium text-white">Admin</p>
                         <p class="text-xs font-medium text-gray-300 group-hover:text-gray-200">View profile</p>
                     </div>
                     </div>

@@ -16,8 +16,8 @@
                     </div>
 
                     <div class="flex flex-shrink-0 items-center px-4">
-                        <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=cyan&shade=300"
-                            alt="Easywire logo">
+                        <!-- <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=cyan&shade=300"
+                            alt="Easywire logo"> -->
                     </div>
 
                     <nav class="mt-5 h-full flex-shrink-0 divide-y divide-cyan-800 overflow-y-auto"

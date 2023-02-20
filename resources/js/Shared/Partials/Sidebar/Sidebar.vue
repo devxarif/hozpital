@@ -1,12 +1,9 @@
 <template>
-    <!-- <AdminSidebar v-if="role == 'admin'"/>
-    <OrganizationSidebar v-else-if="role == 'owner'"/>
-    <EmployeeSidebar v-else/> -->
     <div class="hidden lg:fixed lg:inset-y-0 lg:flex lg:w-64 lg:flex-col">
             <div class="flex flex-grow flex-col overflow-y-auto bg-gray-800 pt-5 pb-4">
                 <div class="flex flex-shrink-0 items-center px-4">
-                    <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=cyan&shade=300"
-                        alt="Easywire logo">
+                    <!-- <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=cyan&shade=300"
+                        alt="Easywire logo"> -->
                 </div>
 
                 <AdminSidebar v-if="role == 'admin'"/>
@@ -17,16 +14,8 @@
                 <ReceptionistSidebar v-else-if="role == 'receptionist'"/>
                 <PharmacistSidebar v-else-if="role == 'pharmacist'"/>
                 <LaboratoristSidebar v-else-if="role == 'laboratorist'"/>
-
-
-                <!-- <AdminSidebar v-if="role == 'admin'"/>
-                <OrganizationSidebar v-else-if="role == 'owner'"/>
-                <EmployeeSidebar v-else/> -->
-
-
             </div>
         </div>
-
 </template>
 
 <script>
@@ -38,8 +27,6 @@ import AccountantSidebar from "./AccountantSidebar.vue"
 import ReceptionistSidebar from "./ReceptionistSidebar.vue"
 import PharmacistSidebar from "./PharmacistSidebar.vue"
 import LaboratoristSidebar from "./LaboratoristSidebar.vue"
-// import OrganizationSidebar from "./OrganizationSidebar.vue"
-// import EmployeeSidebar from "./EmployeeSidebar.vue"
 
 export default {
     components: {
@@ -51,8 +38,6 @@ export default {
         ReceptionistSidebar,
         PharmacistSidebar,
         LaboratoristSidebar,
-        // OrganizationSidebar,
-        // EmployeeSidebar
     },
     data(){
         return {
