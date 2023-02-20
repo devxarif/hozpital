@@ -78,7 +78,7 @@
                                                     <span class="text-gray-500 sm:text-sm">$</span>
                                                 </div>
 
-                                                <input v-model="form.buying_price" type="number" id="buying_price" class="block w-full border-gray-300 pl-7 pr-12 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm text-md p-2.5 bg-gray-50 border rounded-lg dark:bg-gray-700 dark:placeholder-gray-400 dark:text-white" placeholder="0" min="0">
+                                                <input v-model="form.buying_price" type="number" id="buying_price" class="block w-full border-gray-300 pl-7 pr-12 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm text-md p-2.5 bg-gray-50 border rounded-lg   " placeholder="0" min="0">
 
                                                 <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
                                                     <span class="text-gray-500 sm:text-sm" id="price-currency">USD</span>
@@ -93,7 +93,7 @@
                                                     <span class="text-gray-500 sm:text-sm">$</span>
                                                 </div>
 
-                                                <input v-model="form.selling_price" type="number" id="selling_price" class="block w-full border-gray-300 pl-7 pr-12 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm  text-md p-2.5 bg-gray-50 border rounded-lg dark:bg-gray-700 dark:placeholder-gray-400 dark:text-white" placeholder="0" min="0">
+                                                <input v-model="form.selling_price" type="number" id="selling_price" class="block w-full border-gray-300 pl-7 pr-12 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm  text-md p-2.5 bg-gray-50 border rounded-lg   " placeholder="0" min="0">
 
                                                 <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
                                                     <span class="text-gray-500 sm:text-sm" id="price-currency">USD</span>
@@ -109,7 +109,7 @@
                                         </div>
                                         <div class="mb-4">
                                             <Label :name="__('Expired Date')" id="expire_date" :hasError="form.errors.expire_date" :required="false"/>
-                                            <Datepicker v-model="form.expire_date" :enableTimePicker="false" class="border-none bg-gray-50 border text-sm rounded-lg block w-full p-1 dark:bg-gray-700 dark:placeholder-gray-400 dark:text-white border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 dark:border-gray-600  dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                            <Datepicker v-model="form.expire_date" :enableTimePicker="false" class="border-none bg-gray-50 border text-sm rounded-lg block w-full p-1    border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500    "
                                                 @update:modelValue="handleExpiredDate" :placeholder="__('Select Date')" :default-value="new Date()" />
                                             <ErrorMessage :name="form.errors.expire_date"/>
                                         </div>
@@ -117,18 +117,18 @@
                                     <div class="mb-4">
                                         <Label :name="__('Thumnail')" id="productCategory_image" :hasError="form.errors.image" :required="false"/>
                                         <div class="flex justify-center items-center w-full" v-if="!previewImage">
-                                            <label for="dropzone-file" class="flex flex-col justify-center items-center w-full h-40 bg-gray-50 rounded-lg border-2 border-gray-300 border-dashed cursor-pointer dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+                                            <label for="dropzone-file" class="flex flex-col justify-center items-center w-full h-40 bg-gray-50 rounded-lg border-2 border-gray-300 border-dashed cursor-pointer   hover:bg-gray-100   ">
                                                 <div class="flex flex-col justify-center items-center pt-5 pb-6">
                                                     <input id="dropzone-file" type="file" class="hidden" @change="onFileChange" accept="image/svg+xml, image/jpeg, image/jpg/ image/png">
                                                     <svg aria-hidden="true" class="mb-3 w-10 h-10 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
-                                                    <p class="mb-4 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to upload image</span></p>
-                                                    <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or JPEG (MAX. 5MB)</p>
+                                                    <p class="mb-4 text-sm text-gray-500 "><span class="font-semibold">Click to upload image</span></p>
+                                                    <p class="text-xs text-gray-500 ">SVG, PNG, JPG or JPEG (MAX. 5MB)</p>
                                                 </div>
                                             </label>
                                         </div>
                                         <div class="relative" v-if="previewImage">
                                             <img :src="previewImage" class="h-60 w-full rounded-lg object-cover" alt="image description">
-                                            <button @click="removeImage" type="button" class="absolute top-2 right-2 text-white bg-red-700 focus:ring-4 focus:ring-red-300 rounded-lg px-5 py-2.5 dark:bg-red-600 focus:outline-none dark:focus:ring-red-800">
+                                            <button @click="removeImage" type="button" class="absolute top-2 right-2 text-white bg-red-700 focus:ring-4 focus:ring-red-300 rounded-lg px-5 py-2.5  focus:outline-none ">
                                                 <font-awesome-icon icon="fa-solid fa-trash-can" class=" h-5 w-5"/>
                                             </button>
                                         </div>
@@ -139,7 +139,7 @@
                                         <QuillEditor theme="snow" v-model:content="form.description" contentType="html" class="h-60 rounded-md"/>
                                     </div>
                                     <button :disabled="form.processing"  type="submit"
-                                        class="text-white justify-center flex items-center bg-blue-700 hover:bg-blue-800 w-full focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 mb-4 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 mt-3">
+                                        class="text-white justify-center flex items-center bg-blue-700 hover:bg-blue-800 w-full focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 mb-4   focus:outline-none  mt-3">
                                         <Loading v-if="form.processing" :messageShow="false" />
                                         <span v-else>
                                             <svg class="inline w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"/><polyline fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="24" points="216 72.005 104 184 48 128.005"/></svg>

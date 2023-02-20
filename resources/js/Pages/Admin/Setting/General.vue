@@ -4,12 +4,12 @@
 
     <SettingLayout>
         <div class="grid gap-6 md:grid-cols-1 xl:grid-cols-1 mt-6">
-            <div class="bg-white w-full p-6 rounded-lg border border-gray-8 dark:border-gray-700 dark:hover:bg-gray-700">
+            <div class="bg-white w-full p-6 rounded-lg border border-gray-8  ">
                 <form @submit.prevent="updateData" class="space-y-8 divide-y divide-gray-200">
                     <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5">
                         <div class="space-y-6 sm:space-y-5">
                         <div>
-                            <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Basic Setting</h2>
+                            <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">Basic Setting</h2>
 
                             <p class="mt-1 max-w-2xl text-sm text-gray-500">This information will be displayed publicly so be careful what you share.</p>
                         </div>

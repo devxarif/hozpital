@@ -22,7 +22,7 @@
             </ol>
         </nav>
         <div class="mb-4 flex justify-between">
-            <h2 class="text-3xl font-semibold leading-7 text-gray-900 dark:text-gray-200 sm:text-3xl sm:truncate">
+            <h2 class="text-3xl font-semibold leading-7 text-gray-900  sm:text-3xl sm:truncate">
                 {{ __('Leave Request') }}
             </h2>
 
@@ -47,7 +47,7 @@
         </div>
 
         <transition enter-active-class="transition ease-out duration-100" enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100" leave-active-class="transition ease-in duration-100" leave-from-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
-            <div v-if="showFilter" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 xl:grid-cols-6 gap-5 mb-4 bg-white rounded-lg shadow-xs dark:bg-gray-800 items-center p-4">
+            <div v-if="showFilter" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 xl:grid-cols-6 gap-5 mb-4 bg-white rounded-lg shadow-xs  items-center p-4">
                 <div>
                     <label for="keyword" class="block text-sm font-medium text-gray-700">{{ __('Search') }}</label>
                     <div class="mt-1">
@@ -112,7 +112,7 @@
 
        <template v-else-if="!loading && leave_requests && leave_requests.data.length">
             <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-4 mt-5 mb-60">
-               <span v-for="(leave_request, index) in leave_requests.data" :key="index" class="block p-6 bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+               <span v-for="(leave_request, index) in leave_requests.data" :key="index" class="block p-6 bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100   ">
                    <div class="flex flex-wrap justify-between items-start">
                         <div class="flex items-center mb-5">
                             <div class="h-10 w-10 flex-shrink-0">
@@ -158,8 +158,8 @@
                            </transition>
                        </Menu>
                    </div>
-                   <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ leave_request?.leave_type?.name ?? '-' }}</h2>
-                   <h2 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">{{ leave_request.days }} {{ pluralize(leave_request.days, 'Day') }}</h2>
+                   <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">{{ leave_request?.leave_type?.name ?? '-' }}</h2>
+                   <h2 class="mb-2 text-xl font-bold tracking-tight text-gray-900 ">{{ leave_request.days }} {{ pluralize(leave_request.days, 'Day') }}</h2>
                    <p>{{ formateDate(leave_request.start, 'MMMM D') }} - {{ formateDate(leave_request.end, 'MMMM D YYYY') }}</p>
                     <div class="mt-5">
                         <template v-if="leave_request.status == 'pending'">
@@ -175,12 +175,12 @@
                             </div>
                         </template>
                         <template v-else-if="leave_request.status == 'approved'">
-                            <span class="bg-green-500 text-white text-sm font-medium mr-2 px-3 py-2 rounded-full dark:bg-green-900 dark:text-green-300">
+                            <span class="bg-green-500 text-white text-sm font-medium mr-2 px-3 py-2 rounded-full  ">
                                 Approved
                             </span>
                         </template>
                         <template v-else>
-                            <span class="bg-red-500 text-white text-sm font-medium mr-2 px-3 py-2 rounded-full dark:bg-green-900 dark:text-green-300">
+                            <span class="bg-red-500 text-white text-sm font-medium mr-2 px-3 py-2 rounded-full  ">
                                 Rejected
                             </span>
                         </template>

@@ -1,16 +1,16 @@
 <template>
-        <section class="bg-gray-100 dark:bg-gray-900">
+        <section class="bg-gray-100 ">
         <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-            <a href="#" class="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
+            <a href="#" class="flex items-center mb-6 text-2xl font-semibold text-gray-900 ">
                 <img class="w-8 h-8 mr-2" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg"
                     alt="logo">
                 Tracking
             </a>
             <div
-                class="w-full bg-white rounded-lg shadow-xl dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+                class="w-full bg-white rounded-lg shadow-xl md:mt-0 sm:max-w-md xl:p-0  ">
                 <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
                     <h1
-                        class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+                        class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl ">
                         Sign in to your account
                     </h1>
 
@@ -92,19 +92,19 @@
                     <form class="space-y-4 md:space-y-6" @submit.prevent="login">
                         <div>
                             <label for="email"
-                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Account</label>
+                                class="block mb-2 text-sm font-medium text-gray-900 ">Account</label>
                             <input v-model="form.username" type="email" name="email" id="email"
-                                :class="['border sm:text-sm text-gray-900 rounded-lg block w-full p-2.5', form.errors.username ? 'bg-white border-red-600 focus:ring-red-600 focus:border-red-600 dark:bg-red-600 dark:border-red-600 dark:placeholder-red-400 dark:text-white dark:focus:ring-red-500 dark:focus:border-blue-500':'bg-white border-gray-300 focus:ring-blue-600 focus:border-blue-600 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500']"
+                                :class="['border sm:text-sm text-gray-900 rounded-lg block w-full p-2.5', form.errors.username ? 'bg-white border-red-600 focus:ring-red-600 focus:border-red-600      ':'bg-white border-gray-300 focus:ring-blue-600 focus:border-blue-600      ']"
                                 placeholder="Username or Email Address">
                             <ErrorMessage :name="form.errors.username" />
                         </div>
                         <div>
                             <label for="password"
-                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
+                                class="block mb-2 text-sm font-medium text-gray-900 ">Password</label>
                             <div class="relative">
                                 <input v-model="form.password" :type="passwordFieldType" name="password" id="password"
                                     placeholder="Password"
-                                    :class="['border text-gray-900 sm:text-sm rounded-lg block w-full p-2.5', form.errors.username ? 'bg-white border-red-600 focus:ring-red-600 focus:border-red-600 dark:bg-red-600 dark:border-red-600 dark:placeholder-red-400 dark:text-white dark:focus:ring-red-500 dark:focus:border-blue-500':'bg-white border-gray-300 focus:ring-blue-600 focus:border-blue-600 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500']">
+                                    :class="['border text-gray-900 sm:text-sm rounded-lg block w-full p-2.5', form.errors.username ? 'bg-white border-red-600 focus:ring-red-600 focus:border-red-600      ':'bg-white border-gray-300 focus:ring-blue-600 focus:border-blue-600      ']">
                                 <span class="absolute inset-y-0 right-0 pr-2 flex items-center cursor-pointer"
                                     @click="switchVisibility" v-if="form.password">
                                     <svg v-if="passwordFieldType == 'text'" class="w-6 h-6" fill="none"
@@ -128,31 +128,31 @@
                             <div class="flex items-start">
                                 <div class="flex items-center h-5">
                                     <input id="remember" aria-describedby="remember" type="checkbox"
-                                        class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800">
+                                        class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300    ">
                                 </div>
                                 <div class="ml-3 text-sm">
-                                    <label for="remember" class="text-gray-500 dark:text-gray-300">Remember me</label>
+                                    <label for="remember" class="text-gray-500 ">Remember me</label>
                                 </div>
                             </div>
                             <Link :href="route('password.email')"
-                                class="text-sm font-medium text-blue-600 hover:underline dark:text-blue-500">Forgot
+                                class="text-sm font-medium text-blue-600 hover:underline ">Forgot
                             password?</Link>
                         </div>
                         <button :disabled="form.processing" type="submit"
-                            class="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                            class="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center   ">
                             <Loading v-if="form.processing" :messageShow="false" />
                             <span v-else>Sign in</span>
                         </button>
                     </form>
-                    <p class="text-sm font-light text-gray-500 dark:text-gray-400">
+                    <p class="text-sm font-light text-gray-500 ">
                         Don’t have an account yet? <a href="#"
-                            class="font-medium text-blue-600 hover:underline dark:text-blue-500">Sign up</a>
+                            class="font-medium text-blue-600 hover:underline ">Sign up</a>
                     </p>
                 </div>
             </div>
 
             <div class="border-gray-50 my-5">
-                <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+                <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl ">
                     Demo account login credentials
                 </h1>
                 <div class="flex items-center gap-3">
@@ -192,11 +192,11 @@
             </div>
         </div>
         <footer
-            class="p-4 bg-white rounded-lg shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800">
-            <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2022 <a href="https://flowbite.com/"
+            class="p-4 bg-white rounded-lg shadow md:flex md:items-center md:justify-between md:p-6 ">
+            <span class="text-sm text-gray-500 sm:text-center ">© 2022 <a href="https://flowbite.com/"
                     class="hover:underline">Flowbite™</a>. All Rights Reserved.
             </span>
-            <ul class="flex flex-wrap items-center mt-3 text-sm text-gray-500 dark:text-gray-400 sm:mt-0">
+            <ul class="flex flex-wrap items-center mt-3 text-sm text-gray-500  sm:mt-0">
                 <li>
                     <a href="#" class="mr-4 hover:underline md:mr-6 ">Help</a>
                 </li>

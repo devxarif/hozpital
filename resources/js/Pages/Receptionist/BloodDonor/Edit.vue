@@ -50,11 +50,11 @@
                                         <div class="mb-4">
                                             <Label :name="__('Gender')" :hasError="form.errors.gender"/>
                                             <div class="flex gap-2">
-                                                <label for="donor_male" class="w-full rounded-lg flex items-center pl-4 border border-gray-200 dark:border-gray-700   py-3 text-sm font-medium text-gray-700 gap-2">
+                                                <label for="donor_male" class="w-full rounded-lg flex items-center pl-4 border border-gray-200    py-3 text-sm font-medium text-gray-700 gap-2">
                                                     <input id="donor_male" value="male" v-model="form.gender" name="gender" type="radio" class="h-4 w-4 border-gray-300 text-blue-600 focus:outline-none">
                                                     <span>{{ __('Male') }}</span>
                                                 </label>
-                                                <label for="donor_female" class="w-full rounded-lg flex items-center pl-4 border border-gray-200 dark:border-gray-700 py-3 text-sm font-medium text-gray-700 gap-2">
+                                                <label for="donor_female" class="w-full rounded-lg flex items-center pl-4 border border-gray-200  py-3 text-sm font-medium text-gray-700 gap-2">
                                                     <input id="donor_female" value="female" v-model="form.gender" name="gender" type="radio" class="h-4 w-4 border-gray-300 text-blue-600 focus:outline-none">
                                                     <span>{{ __('Female') }}</span>
                                                 </label>
@@ -80,7 +80,7 @@
                                         <BaseTextarea v-model="form.address" placeholder="Address" id="donor_address" :hasError="form.errors.address"/>
                                     </div>
                                     <button :disabled="form.processing"  type="submit"
-                                        class="text-white justify-center flex items-center bg-blue-700 hover:bg-blue-800 w-full focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-md px-5 py-2.5 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 mt-3">
+                                        class="text-white justify-center flex items-center bg-blue-700 hover:bg-blue-800 w-full focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-md px-5 py-2.5 mb-2   focus:outline-none  mt-3">
                                         <Loading v-if="form.processing" :messageShow="false" />
                                         <span v-else>
                                             <svg class="inline w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"/><polyline fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="24" points="216 72.005 104 184 48 128.005"/></svg>

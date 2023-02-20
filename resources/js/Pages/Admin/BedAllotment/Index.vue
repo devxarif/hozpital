@@ -23,7 +23,7 @@
         </nav>
 
         <div class="flex justify-between">
-            <h2 class="text-3xl font-semibold leading-7 text-gray-900 dark:text-gray-200 sm:text-3xl sm:truncate">
+            <h2 class="text-3xl font-semibold leading-7 text-gray-900  sm:text-3xl sm:truncate">
                 {{ __('Bed Attotment Status') }}
             </h2>
             <div class="flex items-center space-x-2 sm:space-x-3 ml-auto">
@@ -76,20 +76,20 @@
         </div>
 
         <div class="mt-5">
-            <span v-for="(bed_floors, i) in beds" :key="i" class="mb-3 block p-4 bg-slate-100 rounded-lg border border-slate-500  dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-                <h2 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white mb-5">{{ getBedFloor(i).name }}</h2>
+            <span v-for="(bed_floors, i) in beds" :key="i" class="mb-3 block p-4 bg-slate-100 rounded-lg border border-slate-500    ">
+                <h2 class="text-2xl font-bold tracking-tight text-gray-900  mb-5">{{ getBedFloor(i).name }}</h2>
 
-                <div v-for="(bed_types, j) in bed_floors" :key="j" class="mb-2 block p-4 bg-white rounded-lg border border-gray-200 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-                    <h2 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ getBedType(j).name }}</h2>
+                <div v-for="(bed_types, j) in bed_floors" :key="j" class="mb-2 block p-4 bg-white rounded-lg border border-gray-200   ">
+                    <h2 class="text-2xl font-bold tracking-tight text-gray-900 ">{{ getBedType(j).name }}</h2>
 
                     <div class="grid gap-6 md:grid-cols-4 xl:grid-cols-6 mt-2">
-                        <span v-for="(bed, k) in bed_types" :key="k" class="cursor-pointer block p-3 bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                        <span v-for="(bed, k) in bed_types" :key="k" class="cursor-pointer block p-3 bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100   ">
                             <!-- Floor: {{ bed.bed_floor_id }}
                             Type: {{ bed.bed_type_id }} -->
 
                             <div class="flex flex-wrap justify-between items-start">
-                                <AllotedBedIcon v-if="bed.status == 'alloted'" class="h-16 w-16"/>
-                                <UnallotedBedIcon v-else class="h-16 w-16"/>
+                                <AllotedBedIcon v-if="bed.status == 'alloted'" class="h-12 w-12"/>
+                                <UnallotedBedIcon v-else class="h-12 w-12"/>
 
                                 <Menu as="div" class="relative inline-block text-left">
                                     <div>
@@ -125,8 +125,8 @@
                                     </transition>
                                 </Menu>
                             </div>
-                            <h2 class="my-1 font-bold text-lg tracking-tight text-gray-900 dark:text-white">Bed Number: {{ bed.number }}</h2>
-                            <!-- <span class="text-xs font-semibold px-2 py-1 rounded bg-green-100 text-green-800 dark:bg-green-200 dark:text-green-900 capitalize">
+                            <h2 class="my-1 font-bold text-lg tracking-tight text-gray-900 ">Bed Number: {{ bed.number }}</h2>
+                            <!-- <span class="text-xs font-semibold px-2 py-1 rounded bg-green-100 text-green-800   capitalize">
                                 {{ bed.status }}
                             </span> -->
                             <p v-if="bed.status == 'alloted'">Patient: Ariful Islam</p>
@@ -157,10 +157,10 @@
 
         <template v-else-if="!loading && beds">
             <div class="mt-5" v-for="(bed_floors, index) in beds" :key="index">
-                <span class="block p-4 bg-white rounded-lg border border-gray-200  dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-                    <h2 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white" v-if="bed_floors[0].floor">{{ bed_floors[0].floor?.name }}</h2>
+                <span class="block p-4 bg-white rounded-lg border border-gray-200    ">
+                    <h2 class="text-2xl font-bold tracking-tight text-gray-900 " v-if="bed_floors[0].floor">{{ bed_floors[0].floor?.name }}</h2>
                     <div class="grid gap-6 md:grid-cols-4 xl:grid-cols-6 mt-2">
-                        <span v-for="bed in bed_floors" :key="bed.id" class="cursor-pointer block p-4 bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                        <span v-for="bed in bed_floors" :key="bed.id" class="cursor-pointer block p-4 bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100   ">
                             <div class="flex flex-wrap justify-between items-start">
                                 <AllotedBedIcon v-if="bed.status == 'alloted'"/>
                                 <UnallotedBedIcon v-else />
@@ -199,8 +199,8 @@
                                     </transition>
                                 </Menu>
                             </div>
-                            <h2 class="my-1 font-bold text-lg tracking-tight text-gray-900 dark:text-white">Bed Number: {{ bed.number }}</h2>
-                            <span class="text-xs font-semibold px-2 py-1 rounded bg-green-100 text-green-800 dark:bg-green-200 dark:text-green-900 capitalize">
+                            <h2 class="my-1 font-bold text-lg tracking-tight text-gray-900 ">Bed Number: {{ bed.number }}</h2>
+                            <span class="text-xs font-semibold px-2 py-1 rounded bg-green-100 text-green-800   capitalize">
                                 {{ bed.status }}
                             </span>
                             <p v-if="bed.status == 'alloted'">Patient: Ariful Islam</p>

@@ -21,7 +21,7 @@
             </ol>
         </nav>
         <div class="mb-4 flex justify-between">
-            <h2 class="text-3xl font-semibold leading-7 text-gray-900 dark:text-gray-200 sm:text-3xl sm:truncate">
+            <h2 class="text-3xl font-semibold leading-7 text-gray-900  sm:text-3xl sm:truncate">
                 {{ __('Product') }}
             </h2>
 
@@ -81,7 +81,7 @@
         </div>
 
         <transition enter-active-class="transition ease-out duration-100" enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100" leave-active-class="transition ease-in duration-100" leave-from-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
-            <div v-if="showFilter" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 xl:grid-cols-6 gap-5 mb-4 bg-white rounded-lg shadow-xs dark:bg-gray-800 items-center p-4">
+            <div v-if="showFilter" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 xl:grid-cols-6 gap-5 mb-4 bg-white rounded-lg shadow-xs  items-center p-4">
                 <div>
                     <label for="keyword" class="block text-sm font-medium text-gray-700">{{ __('Search') }}</label>
                     <div class="mt-1">
@@ -139,7 +139,7 @@
 
        <template v-else-if="!loading && products && products.data.length">
            <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-4 mt-5">
-               <span v-for="product in products.data" :key="product.id" class="block p-6 bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+               <span v-for="product in products.data" :key="product.id" class="block p-6 bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100   ">
                    <div class="flex flex-wrap justify-between items-start">
                        <div class="relative mb-5">
                            <span>
@@ -180,7 +180,7 @@
                            </transition>
                        </Menu>
                     </div>
-                    <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ product.name }}</h2>
+                    <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">{{ product.name }}</h2>
                     <p v-if="product.product_category && product.product_category.name"><b>Category:</b> {{ product.product_category.name }}</p>
                     <div class="flex justify-between">
                         <p v-if="product.buying_price"><b>Buying Price:</b> {{ product.buying_price }}</p>
@@ -189,7 +189,7 @@
                     <p v-if="product.quantity"><b>Quantity:</b> {{ product.quantity }}</p>
                     <p v-if="product.expire_date"><b>Expire Date:</b> {{ formateDate(product.expire_date, 'MMMM D') }}</p>
                     <div class="mt-5">
-                        <span :class="product.type == 'medicine' ? 'bg-green-500':'bg-cyan-500'" class="text-white text-sm font-medium mr-2 px-3 py-2 rounded-full dark:bg-green-900 dark:text-green-300 capitalize">
+                        <span :class="product.type == 'medicine' ? 'bg-green-500':'bg-cyan-500'" class="text-white text-sm font-medium mr-2 px-3 py-2 rounded-full   capitalize">
                             {{ product.type }}
                         </span>
                     </div>

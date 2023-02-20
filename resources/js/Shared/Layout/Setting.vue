@@ -24,7 +24,7 @@
             </ol>
         </nav>
         <div class="mb-4 flex justify-between">
-            <h2 class="text-3xl font-semibold leading-7 text-gray-900 dark:text-gray-200 sm:text-3xl sm:truncate">
+            <h2 class="text-3xl font-semibold leading-7 text-gray-900 sm:text-3xl sm:truncate">
                 General
             </h2>
         </div>

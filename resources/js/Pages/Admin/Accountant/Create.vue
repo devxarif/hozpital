@@ -37,7 +37,7 @@
                                 <div class="mb-4">
                                     <label for="accountant_password">
                                         <div class="flex justify-between ">
-                                            <span class="text-md font-medium" :class="['block mb-2 text-md font-medium', form.errors.password ? 'text-red-600 dark:text-red-600':'text-gray-900 dark:text-gray-300']">{{ __('Password') }}</span>
+                                            <span class="text-md font-medium" :class="['block mb-2 text-md font-medium', form.errors.password ? 'text-red-600 ':'text-gray-900 ']">{{ __('Password') }}</span>
                                             <button type="button" class="underline focus:outline-none text-xs" @click.prevent="generatePassword()">Generate random password</button>
                                         </div>
                                     </label>
@@ -53,25 +53,25 @@
                                 <div class="mb-4">
                                     <Label :name="__('Image')" id="accountant_create_image" :hasError="form.errors.image" :required="false"/>
                                     <div class="flex justify-center items-center w-full" v-if="!previewImage">
-                                        <label for="dropzone-file" class="flex flex-col justify-center items-center w-full h-60 bg-gray-50 rounded-lg border-2 border-gray-300 border-dashed cursor-pointer dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+                                        <label for="dropzone-file" class="flex flex-col justify-center items-center w-full h-60 bg-gray-50 rounded-lg border-2 border-gray-300 border-dashed cursor-pointer   hover:bg-gray-100   ">
                                             <div class="flex flex-col justify-center items-center pt-5 pb-6">
                                                 <input id="dropzone-file" type="file" class="hidden" @change="onFileChange" accept="image/svg+xml, image/jpeg, image/jpg/ image/png">
                                                 <svg aria-hidden="true" class="mb-3 w-10 h-10 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
-                                                <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to upload image</span></p>
-                                                <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or JPEG (MAX. 5MB)</p>
+                                                <p class="mb-2 text-sm text-gray-500 "><span class="font-semibold">Click to upload image</span></p>
+                                                <p class="text-xs text-gray-500 ">SVG, PNG, JPG or JPEG (MAX. 5MB)</p>
                                             </div>
                                         </label>
                                     </div>
                                     <div class="relative" v-if="previewImage">
                                         <img :src="previewImage" class="h-60 w-full rounded-lg object-cover" alt="image description">
-                                        <button @click="removeImage" type="button" class="absolute top-2 right-2 text-white bg-red-700 focus:ring-4 focus:ring-red-300 rounded-lg px-5 py-2.5 dark:bg-red-600 focus:outline-none dark:focus:ring-red-800">
+                                        <button @click="removeImage" type="button" class="absolute top-2 right-2 text-white bg-red-700 focus:ring-4 focus:ring-red-300 rounded-lg px-5 py-2.5  focus:outline-none ">
                                             <font-awesome-icon icon="fa-solid fa-trash-can" class=" h-5 w-5"/>
                                         </button>
                                     </div>
                                     <ErrorMessage :name="form.errors.image"/>
                                 </div>
                                 <button :disabled="form.processing"  type="submit"
-                                    class="text-white justify-center flex items-center bg-blue-700 hover:bg-blue-800 w-full focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-md px-5 py-2.5 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 mt-3">
+                                    class="text-white justify-center flex items-center bg-blue-700 hover:bg-blue-800 w-full focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-md px-5 py-2.5 mb-2   focus:outline-none  mt-3">
                                     <Loading v-if="form.processing" :messageShow="false" />
                                     <span v-else>
                                         <svg class="inline w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"/><polyline fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="24" points="216 72.005 104 184 48 128.005"/></svg>

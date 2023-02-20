@@ -167,7 +167,8 @@
                 </NavItem>
           </nav>
         </div>
-        <div class="flex flex-shrink-0 bg-gray-700 p-4">
+
+        <!-- <div class="flex flex-shrink-0 bg-gray-700 p-4">
           <a href="#" class="group block w-full flex-shrink-0">
             <div class="flex items-center">
               <div>
@@ -179,7 +180,56 @@
               </div>
             </div>
           </a>
-        </div>
+        </div> -->
+
+
+        <Menu as="div" class="inline-block text-left">
+            <div class="flex flex-shrink-0 bg-gray-700 p-4">
+                <a href="#" class="group block w-full flex-shrink-0">
+                    <div class="flex items-center">
+                    <div>
+                        <img class="inline-block h-9 w-9 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=2&amp;w=256&amp;h=256&amp;q=80" alt="">
+                    </div>
+                    <div class="ml-3">
+                        <p class="text-sm font-medium text-white">Tom Cook</p>
+                        <p class="text-xs font-medium text-gray-300 group-hover:text-gray-200">View profile</p>
+                    </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- <div>
+                <MenuButton class="inline-flex w-full justify-center rounded-md px-4 py-2 text-sm font-medium text-gray-700 focus:outline-none">
+                    <img class="object-cover w-10 h-10 rounded-full" :src="role == 'owner' ? currentOrganization.organization_logo: $page.props.authenticatedUser.avatar_url" alt="" aria-hidden="true" />
+                </MenuButton>
+            </div> -->
+
+            <transition enter-active-class="transition ease-out duration-100" enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100" leave-active-class="transition ease-in duration-75" leave-from-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
+            <MenuItems class="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                <div class="px-4 py-3">
+                <p class="text-sm">{{ $page.props.authenticatedUser.name }}</p>
+                <p class="truncate text-sm font-medium text-gray-900">{{ $page.props.authenticatedUser.email }}</p>
+                </div>
+                <div class="py-1">
+                <MenuItem v-slot="{ active }">
+                    <a href="#" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm']">Profile</a>
+                </MenuItem>
+                <MenuItem v-slot="{ active }">
+                    <a href="#" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm']">Settings</a>
+                </MenuItem>
+                </div>
+                <div class="py-1">
+                    <MenuItem v-slot="{ active }">
+                    <Link href="/logout" method="post" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block w-full px-4 py-2 text-left text-sm']">Sign out</Link>
+                    </MenuItem>
+                </div>
+            </MenuItems>
+            </transition>
+        </Menu>
+
+
+
+
       </div>
     </div>
 

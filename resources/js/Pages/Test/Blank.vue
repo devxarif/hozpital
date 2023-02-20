@@ -46,7 +46,7 @@
                     </nav>
                 </div>
                 <div class="sm:flex">
-                    <h2 class="text-3xl font-semibold leading-7 text-gray-900 dark:text-gray-200 sm:text-3xl sm:truncate">
+                    <h2 class="text-3xl font-semibold leading-7 text-gray-900 sm:text-3xl sm:truncate">
                         {{ __('Department') }}
                     </h2>
                     <div class="flex items-center space-x-2 sm:space-x-3 ml-auto">
@@ -77,21 +77,21 @@
         </div>
 
         <div class="bg-white shadow sm:rounded-lg mt-2 -mx-4 sm:-mx-0 overflow-hidden">
-            <div class=" rounded-lg bg-white dark:bg-gray-800  shadow-xs overflow-hidden">
+            <div class=" rounded-lg bg-white  shadow-xs overflow-hidden">
                 <div class="p-4">
                     <form class="py-3 grid gap-4 lg:gap-6 xl:gap-6 md:flex xl:flex">
                         <div class="flex-grow-0 md:flex-grow lg:flex-grow xl:flex-grow"><input
-                                class="px-3 py-1 dark:text-gray-300 leading-5 rounded-md focus:border-gray-200 border-gray-200 dark:border-gray-600 focus:ring focus:ring-blue-300 dark:focus:border-gray-500 dark:focus:ring-gray-300 dark:bg-gray-700 border h-12 text-sm focus:outline-none block w-full bg-gray-100 border-transparent focus:bg-white"
+                                class="px-3 py-1 leading-5 rounded-md focus:border-gray-200 border-gray-200 focus:ring focus:ring-blue-300 border h-12 text-sm focus:outline-none block w-full bg-gray-100 border-transparent focus:bg-white"
                                 type="search" name="search" placeholder="Search by product name"><button
                                 type="submit" class="absolute right-0 top-0 mt-5 mr-1"></button></div>
                         <div class="flex-grow-0 md:flex-grow lg:flex-grow xl:flex-grow"><select
-                                class="px-2 py-1 dark:text-gray-300 rounded-md form-select focus:border-gray-200 border-gray-200 dark:border-gray-600 focus:shadow-none focus:ring focus:ring-blue-300 dark:focus:border-gray-500 dark:focus:ring-gray-300 dark:bg-gray-700 leading-5 border h-12 text-sm focus:outline-none block w-full bg-gray-100 border-transparent focus:bg-white">
-                                <option value="All" hidden="">Category</option>
+                                class="px-2 py-1 rounded-md form-select focus:border-gray-200 border-gray-200 focus:shadow-none focus:ring focus:ring-blue-300 leading-5 border h-12 text-sm focus:outline-none block w-full bg-gray-100 border-transparent focus:bg-white">
+                                <option value="All">Category</option>
                                 <option value="Fish &amp; Meat">Fish &amp; Meat</option>
                             </select></div>
                         <div class="flex-grow-0 md:flex-grow lg:flex-grow xl:flex-grow"><select
-                                class="px-2 py-1 dark:text-gray-300 rounded-md form-select focus:border-gray-200 border-gray-200 dark:border-gray-600 focus:shadow-none focus:ring focus:ring-blue-300 dark:focus:border-gray-500 dark:focus:ring-gray-300 dark:bg-gray-700 leading-5 border h-12 text-sm focus:outline-none block w-full bg-gray-100 border-transparent focus:bg-white">
-                                <option value="All" hidden="">Price</option>
+                                class="px-2 py-1 rounded-md form-select focus:border-gray-200 border-gray-200 focus:shadow-none focus:ring focus:ring-blue-300 leading-5 border h-12 text-sm focus:outline-none block w-full bg-gray-100 border-transparent focus:bg-white">
+                                <option value="All">Price</option>
                                 <option value="Low">Low to High</option>
                                 <option value="High">High to Low</option>
                             </select></div>

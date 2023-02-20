@@ -74,7 +74,7 @@
         <Sidebar/>
         <div class="flex flex-1 flex-col lg:pl-64">
             <Header />
-            <main class="p-8 dark:bg-gray-800 h-screen">
+            <main class="p-8 h-screen">
                 <!-- Page header -->
                 <!-- <div class="bg-white shadow">
                     <div class="px-4 sm:px-6 lg:mx-auto">
@@ -90,7 +90,7 @@
                                                 src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.6&w=256&h=256&q=80"
                                                 alt="">
                                             <h1
-                                                class="ml-3 text-2xl font-bold leading-7 text-white-900 dark:text-white dark:bg-gray-900 sm:truncate sm:leading-9">
+                                                class="ml-3 text-2xl font-bold leading-7 text-white-900 sm:truncate sm:leading-9">
                                                 Good morning, Emilia Birch</h1>
                                         </div>
                                         <dl class="mt-6 flex flex-col sm:ml-3 sm:mt-1 sm:flex-row sm:flex-wrap">

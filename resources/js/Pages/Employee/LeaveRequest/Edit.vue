@@ -30,9 +30,9 @@
                                         <div class="grid grid-cols-4 gap-3 mx-auto" v-if="leaveTypeLoading">
                                             <div role="status" class="animate-pulse" v-for="i in 3" :key="i">
                                                 <label class="flex p-5 bg-white border border-gray-300 rounded-lg cursor-pointer focus:outline-none hover:bg-gray-50 peer-checked:ring-blue-500 peer-checked:ring-2 peer-checked:border-transparent flex-col peer-checked:shadow-xl">
-                                                    <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700  mb-4"></div>
-                                                    <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[300px] mb-2.5"></div>
-                                                    <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[300px] mb-2.5"></div>
+                                                    <div class="h-2.5 bg-gray-200 rounded-full   mb-4"></div>
+                                                    <div class="h-2 bg-gray-200 rounded-full  max-w-[300px] mb-2.5"></div>
+                                                    <div class="h-2 bg-gray-200 rounded-full  max-w-[300px] mb-2.5"></div>
                                                 </label>
                                             </div>
                                         </div>
@@ -79,7 +79,7 @@
                                         </div>
                                     </div>
                                     <button type="submit"
-                                        class="text-white justify-center flex items-center bg-blue-700 hover:bg-blue-800 w-full focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-md px-5 py-2.5 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 mt-3 ">
+                                        class="text-white justify-center flex items-center bg-blue-700 hover:bg-blue-800 w-full focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-md px-5 py-2.5 mb-2   focus:outline-none  mt-3 ">
                                         <Loading v-if="form.processing" :messageShow="false" />
                                         <span v-else>
                                             <svg class="inline w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"/><polyline fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="24" points="216 72.005 104 184 48 128.005"/></svg>

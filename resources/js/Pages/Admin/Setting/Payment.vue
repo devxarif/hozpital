@@ -4,7 +4,7 @@
 
     <SettingLayout>
         <div class="grid gap-6 md:grid-cols-1 xl:grid-cols-12 mt-6">
-            <div class="col-span-4 bg-white w-full p-6 rounded-lg border border-gray-8 dark:border-gray-700 dark:hover:bg-gray-700">
+            <div class="col-span-4 bg-white w-full p-6 rounded-lg border border-gray-8  ">
                 <div class="overflow-hidden bg-white shadow sm:rounded-md">
                     <ul role="list" class="space-y-1 shadow-lg">
                         <li class="overflow-hidden rounded-md px-3.5 py-3.5 sm:px-6 text-sm border border-gray-100 cursor-pointer" :class="{'bg-blue-500 text-white': currentTab == 'paypal'}" @click="changeTab('paypal')">{{ __('Paypal') }}</li>
@@ -18,28 +18,28 @@
                     </ul>
                 </div>
             </div>
-            <div v-if="currentTab == 'paypal'" class="col-span-8 bg-white w-full p-6 rounded-lg border border-gray-8 dark:border-gray-700 dark:hover:bg-gray-700">
+            <div v-if="currentTab == 'paypal'" class="col-span-8 bg-white w-full p-6 rounded-lg border border-gray-8  ">
                 <Paypal :data="paymentData"/>
             </div>
-            <div v-if="currentTab == 'stripe'" class="col-span-8 bg-white w-full p-6 rounded-lg border border-gray-8 dark:border-gray-700 dark:hover:bg-gray-700">
+            <div v-if="currentTab == 'stripe'" class="col-span-8 bg-white w-full p-6 rounded-lg border border-gray-8  ">
                 <Stripe :data="paymentData"/>
             </div>
-            <div v-if="currentTab == 'razorpay'" class="col-span-8 bg-white w-full p-6 rounded-lg border border-gray-8 dark:border-gray-700 dark:hover:bg-gray-700">
+            <div v-if="currentTab == 'razorpay'" class="col-span-8 bg-white w-full p-6 rounded-lg border border-gray-8  ">
                 <Razorpay :data="paymentData"/>
             </div>
-            <div v-if="currentTab == 'flutterwave'" class="col-span-8 bg-white w-full p-6 rounded-lg border border-gray-8 dark:border-gray-700 dark:hover:bg-gray-700">
+            <div v-if="currentTab == 'flutterwave'" class="col-span-8 bg-white w-full p-6 rounded-lg border border-gray-8  ">
                 <Flutterwave :data="paymentData"/>
             </div>
-            <div v-if="currentTab == 'mollie'" class="col-span-8 bg-white w-full p-6 rounded-lg border border-gray-8 dark:border-gray-700 dark:hover:bg-gray-700">
+            <div v-if="currentTab == 'mollie'" class="col-span-8 bg-white w-full p-6 rounded-lg border border-gray-8  ">
                 <Mollie :data="paymentData"/>
             </div>
-            <div v-if="currentTab == 'paystack'" class="col-span-8 bg-white w-full p-6 rounded-lg border border-gray-8 dark:border-gray-700 dark:hover:bg-gray-700">
+            <div v-if="currentTab == 'paystack'" class="col-span-8 bg-white w-full p-6 rounded-lg border border-gray-8  ">
                 <Paystack :data="paymentData"/>
             </div>
-            <div v-if="currentTab == 'instamojo'" class="col-span-8 bg-white w-full p-6 rounded-lg border border-gray-8 dark:border-gray-700 dark:hover:bg-gray-700">
+            <div v-if="currentTab == 'instamojo'" class="col-span-8 bg-white w-full p-6 rounded-lg border border-gray-8  ">
                 <Instamojo :data="paymentData"/>
             </div>
-            <div v-if="currentTab == 'midtrans'" class="col-span-8 bg-white w-full p-6 rounded-lg border border-gray-8 dark:border-gray-700 dark:hover:bg-gray-700">
+            <div v-if="currentTab == 'midtrans'" class="col-span-8 bg-white w-full p-6 rounded-lg border border-gray-8  ">
                 <Midtrans :data="paymentData"/>
             </div>
         </div>

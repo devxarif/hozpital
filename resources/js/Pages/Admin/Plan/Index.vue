@@ -46,7 +46,7 @@
                             </li>
                         </ol>
                     </nav>
-                    <h2 class="text-3xl font-semibold leading-7 text-gray-900 dark:text-gray-200 sm:text-3xl sm:truncate">
+                    <h2 class="text-3xl font-semibold leading-7 text-gray-900  sm:text-3xl sm:truncate">
                         {{ __('Plan') }}
                     </h2>
                 </div>
@@ -217,7 +217,7 @@
         <!-- <div class="page-header mb-[1.875rem]">
             <div class="flex items-center justify-between">
                 <div>
-                    <h2 class="text-3xl font-semibold leading-7 text-gray-900 dark:text-gray-200 sm:text-3xl sm:truncate">
+                    <h2 class="text-3xl font-semibold leading-7 text-gray-900  sm:text-3xl sm:truncate">
                         {{ __('Plan') }}
                     </h2>
                 </div>
@@ -255,17 +255,17 @@
         </div> -->
 
         <div class="lg:grid lg:grid-cols-4 sm:gap-6 xl:gap-10 lg:space-y-0 mt-10">
-            <div class="flex flex-col mx-auto relative overflow-hidden p-4 w-full max-w-sm bg-white rounded-lg border shadow-md dark:bg-gray-800 dark:border-gray-700" v-for="plan in plans" :key="plan.id">
-                <h5 class="mb-4 text-xl font-medium text-gray-500 dark:text-gray-400">
+            <div class="flex flex-col mx-auto relative overflow-hidden p-4 w-full max-w-sm bg-white rounded-lg border shadow-md  " v-for="plan in plans" :key="plan.id">
+                <h5 class="mb-4 text-xl font-medium text-gray-500 ">
                     {{ plan.name }}
                     <span v-if="plan.default"
                         class="inline-flex items-center justify-center px-2 py-1 mr-2 text-xs font-bold leading-none text-red-100 bg-blue-600 rounded-full">{{ __('Default') }}</span>
                 </h5>
 
-                <div class="flex items-baseline text-gray-900 dark:text-white">
+                <div class="flex items-baseline text-gray-900 ">
                     <span class="text-3xl font-semibold">{{ $page.props.setting.app_currency_symbol }}</span>
                     <span class="text-5xl font-extrabold tracking-tight">{{ plan.price }}</span>
-                    <span class="ml-1 text-xl font-normal text-gray-500 dark:text-gray-400">
+                    <span class="ml-1 text-xl font-normal text-gray-500 ">
                         <template v-if="plan.interval != 'custom_days'">
                             /{{ plan.interval }}
                         </template>
@@ -284,10 +284,10 @@
                     <Feature name="Custom Theme Look" :checked="plan.plan_features.custom_theme_look" />
                 </ul>
                 <div class="flex gap-2">
-                    <button @click="editData(plan)" type="button" class="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-200 dark:focus:ring-blue-900 font-medium rounded-lg text-sm px-5 py-2.5 inline-flex justify-center w-full text-center">
+                    <button @click="editData(plan)" type="button" class="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-200 font-medium rounded-lg text-sm px-5 py-2.5 inline-flex justify-center w-full text-center">
                         {{ __('Edit') }}
                     </button>
-                    <button @click="deleteData(plan.id)" :disabled="plan.default" type="button" class="text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-blue-200 dark:focus:ring-blue-900 font-medium rounded-lg text-sm px-5 py-2.5 inline-flex justify-center w-full text-center">
+                    <button @click="deleteData(plan.id)" :disabled="plan.default" type="button" class="text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-blue-200 font-medium rounded-lg text-sm px-5 py-2.5 inline-flex justify-center w-full text-center">
                         {{ __('Delete') }}
                     </button>
                 </div>

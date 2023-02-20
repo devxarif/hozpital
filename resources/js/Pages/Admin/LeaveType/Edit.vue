@@ -63,7 +63,7 @@
                                             </div>
                                             <div class="mb-4">
                                                 <Label :name="__('Leave Balance Day')" :hasError="form.errors.type" id="leave_type_balance"/>
-                                                <input type="number" min="1" id="leave_type_balance" class="bg-gray-50 border text-md rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:placeholder-gray-400 dark:text-white border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 dark:border-gray-600  dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                <input type="number" min="1" id="leave_type_balance" class="bg-gray-50 border text-md rounded-lg block w-full p-2.5    border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500    "
                                                     placeholder="Leave Balance" v-model="form.balance">
                                             </div>
                                     </div>
@@ -73,21 +73,21 @@
                                             <Label :name="__('Status')" id="plan_max_teams" :hasError="form.errors.status"/>
                                             <label for="checked-toggle" class="inline-flex relative items-center cursor-pointer">
                                                 <input v-model="form.status" @change="statusChange" type="checkbox" id="checked-toggle" class="sr-only peer" checked>
-                                                <div class="w-11 h-6 bg-gray-200 rounded-full peer dark:peer-focus:ring-blue-800 dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+                                                <div class="w-11 h-6 bg-gray-200 rounded-full peer   peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all  peer-checked:bg-blue-600"></div>
                                             </label>
                                         </div>
 
                                         <div class="mb-4">
                                             <div class="flex items-start mb-6">
                                                 <div class="flex items-center h-5">
-                                                <input v-model="form.auto_approve" id="auto_approve" type="checkbox" value="" class="w-5 h-5 bg-gray-50 rounded border border-gray-300  dark:bg-gray-700 dark:border-gray-600 checked:bg-blue-600 checked:border-blue-600 transition duration-200">
+                                                <input v-model="form.auto_approve" id="auto_approve" type="checkbox" value="" class="w-5 h-5 bg-gray-50 rounded border border-gray-300    checked:bg-blue-600 checked:border-blue-600 transition duration-200">
                                                 </div>
-                                                <label for="auto_approve" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Auto Approve</label>
+                                                <label for="auto_approve" class="ml-2 text-sm font-medium text-gray-900 ">Auto Approve</label>
                                             </div>
                                         </div>
                                     </div>
                                     <button :disabled="form.processing"  type="submit"
-                                        class="text-white justify-center flex items-center bg-blue-700 hover:bg-blue-800 w-full focus:ring-4 font-medium rounded-lg text-md px-5 py-2.5 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 mt-3">
+                                        class="text-white justify-center flex items-center bg-blue-700 hover:bg-blue-800 w-full focus:ring-4 font-medium rounded-lg text-md px-5 py-2.5 mb-2   focus:outline-none  mt-3">
                                         <Loading v-if="form.processing" :messageShow="false" />
                                         <span v-else>
                                             <svg class="inline w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"/><polyline fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="24" points="216 72.005 104 184 48 128.005"/></svg>

@@ -4,12 +4,12 @@
     <SettingLayout>
         <div class="grid gap-6 md:grid-cols-1 xl:grid-cols-1 mt-6">
             <div
-                class="bg-white w-full p-6 rounded-lg border border-gray-8 dark:border-gray-700 dark:hover:bg-gray-700">
+                class="bg-white w-full p-6 rounded-lg border border-gray-8  ">
                 <form class="space-y-8 divide-y divide-gray-200" @submit.prevent="saveSetting">
                     <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5">
                         <div class="space-y-6 sm:space-y-5">
                             <div>
-                                <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">SMTP
+                                <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">SMTP
                                     Setting</h2>
 
                                 <p class="mt-1 max-w-2xl text-sm text-gray-500">This information will be displayed
@@ -42,11 +42,11 @@
                                     <div class="col-span-6 sm:col-span-3">
                                         <Label :name="__('Mail Encryption')" :hasError="form.errors.host"/>
                                         <div class="flex gap-2">
-                                            <label for="tls" class="w-full rounded-lg flex items-center pl-4 border border-gray-200 dark:border-gray-700 py-3 text-sm font-medium text-gray-700 gap-2">
+                                            <label for="tls" class="w-full rounded-lg flex items-center pl-4 border border-gray-200  py-3 text-sm font-medium text-gray-700 gap-2">
                                                 <input id="tls" value="tls" v-model="form.encryption" type="radio" class="h-4 w-4 border-gray-300 text-blue-600 focus:outline-none">
                                                 <span>{{ __('TLS') }}</span>
                                             </label>
-                                            <label for="ssl" class="w-full rounded-lg flex items-center pl-4 border border-gray-200 dark:border-gray-700 py-3 text-sm font-medium text-gray-700 gap-2">
+                                            <label for="ssl" class="w-full rounded-lg flex items-center pl-4 border border-gray-200  py-3 text-sm font-medium text-gray-700 gap-2">
                                                 <input id="ssl" value="ssl" v-model="form.encryption" type="radio" class="h-4 w-4 border-gray-300 text-blue-600 focus:outline-none">
                                                 <span>{{ __('SSL') }}</span>
                                             </label>
@@ -79,7 +79,7 @@
                     <div class="pt-5">
                         <div class="flex justify-end">
                             <button :disabled="form.processing" type="submit"
-                                class="text-white justify-center flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 font-medium rounded-lg text-md px-5 py-2.5 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 mt-3">
+                                class="text-white justify-center flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 font-medium rounded-lg text-md px-5 py-2.5 mb-2   focus:outline-none  mt-3">
                                 <Loading v-if="form.processing" :messageShow="false" />
                                 <span v-else>
                                     <svg class="inline w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
@@ -94,12 +94,12 @@
                 </form>
             </div>
             <div
-                class="bg-white w-full p-6 rounded-lg border border-gray-8 dark:border-gray-700 dark:hover:bg-gray-700 mb-5">
+                class="bg-white w-full p-6 rounded-lg border border-gray-8   mb-5">
                 <form class="space-y-8 divide-y divide-gray-200" @submit.prevent="testMailSend">
                     <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5">
                         <div class="space-y-6 sm:space-y-5">
                             <div>
-                                <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Send Test Mail</h2>
+                                <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">Send Test Mail</h2>
 
                                 <p class="mt-1 max-w-2xl text-sm text-gray-500">This information will be displayed
                                     publicly so be careful what you share.</p>
@@ -115,7 +115,7 @@
                                     </div>
                                     <div class="col-span-6 sm:col-span-3">
                                         <button :disabled="testMailForm.processing" type="submit"
-                                            class="text-white justify-center flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 font-medium rounded-lg text-md px-5 py-2.5 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+                                            class="text-white justify-center flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 font-medium rounded-lg text-md px-5 py-2.5 mb-2   focus:outline-none ">
                                             <Loading v-if="testMailForm.processing" :messageShow="false" />
                                             <span v-else>
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"  class="inline w-5 h-5 mr-2">

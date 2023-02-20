@@ -22,7 +22,7 @@
             </ol>
         </nav>
         <div class="mb-4 flex justify-between">
-            <h2 class="text-3xl font-semibold leading-7 text-gray-900 dark:text-gray-200 sm:text-3xl sm:truncate">
+            <h2 class="text-3xl font-semibold leading-7 text-gray-900  sm:text-3xl sm:truncate">
                 {{ __('Holiday') }}
             </h2>
 
@@ -49,9 +49,9 @@
 
        <template v-else-if="!loading && holidays && holidays.length && viewType == 'card'">
            <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-               <span v-for="holiday in holidays" :key="holiday.id" class="block p-6 bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+               <span v-for="holiday in holidays" :key="holiday.id" class="block p-6 bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100   ">
                    <div class="flex flex-wrap justify-between items-start">
-                    <h2 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">{{ holiday.title }}</h2>
+                    <h2 class="mb-2 text-xl font-bold tracking-tight text-gray-900 ">{{ holiday.title }}</h2>
 
                        <Menu as="div" class="relative inline-block text-left">
                            <div>
@@ -87,20 +87,20 @@
                            </transition>
                        </Menu>
                    </div>
-                   <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                   <p class="mb-3 font-normal text-gray-700 ">
                        {{ holiday.format_start_date }} - {{ holiday.format_end_date }}
                    </p>
-                   <h2 class="mb-2 text-2xl font-bold tracking-tight text-blue-600 dark:text-white">{{ holiday.days }} Days</h2>
+                   <h2 class="mb-2 text-2xl font-bold tracking-tight text-blue-600 ">{{ holiday.days }} Days</h2>
                </span>
            </div>
        </template>
        <template v-else-if="!loading && holidays && holidays.length && viewType == 'calendar'">
 
-            <div class="mb-4 bg-white rounded-lg shadow-xs dark:bg-gray-800 items-center p-4">
+            <div class="mb-4 bg-white rounded-lg shadow-xs  items-center p-4">
                 <FullCalendar :options="calendarOptions" />
             </div>
 
-            <!-- <div class="block p-6 bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+            <!-- <div class="block p-6 bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100   ">
                <FullCalendar :options="calendarOptions" />
            </div> -->
        </template>

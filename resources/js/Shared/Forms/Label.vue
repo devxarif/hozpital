@@ -32,8 +32,8 @@
         },
         data(){
             return {
-                errorClass: 'text-red-600 dark:text-red-600',
-                defaultClass: 'text-gray-900 dark:text-gray-300'
+                errorClass: 'text-red-600',
+                defaultClass: 'text-gray-900'
             }
         }
     };

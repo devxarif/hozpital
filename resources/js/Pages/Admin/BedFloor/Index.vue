@@ -23,7 +23,7 @@
         </nav>
 
         <div class="mb-4 flex justify-between">
-            <h2 class="text-3xl font-semibold leading-7 text-gray-900 dark:text-gray-200 sm:text-3xl sm:truncate">
+            <h2 class="text-3xl font-semibold leading-7 text-gray-900  sm:text-3xl sm:truncate">
                 {{ __('Bed Floor') }}
             </h2>
 
@@ -76,9 +76,9 @@
         <!-- Body Part  -->
        <template v-if="bed_floors && bed_floors.length">
             <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-                <span v-for="bed_floor in bed_floors" :key="bed_floor.id" class="block p-6 bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                <span v-for="bed_floor in bed_floors" :key="bed_floor.id" class="block p-6 bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100   ">
                     <div class="flex flex-wrap justify-between items-start">
-                        <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ bed_floor.name }}</h2>
+                        <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">{{ bed_floor.name }}</h2>
 
                         <Menu as="div" class="relative inline-block text-left">
                             <div>
@@ -114,7 +114,7 @@
                             </transition>
                         </Menu>
                     </div>
-                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                    <p class="mb-3 font-normal text-gray-700 ">
                         {{ bed_floor.description }}
                     </p>
                 </span>

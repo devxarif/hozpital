@@ -37,7 +37,7 @@
                                     <div class="mb-4">
                                         <label for="patient_password">
                                             <div class="flex justify-between ">
-                                                <span class="text-md font-medium" :class="['block mb-2 text-md font-medium', form.errors.password ? 'text-red-600 dark:text-red-600':'text-gray-900 dark:text-gray-300']">
+                                                <span class="text-md font-medium" :class="['block mb-2 text-md font-medium', form.errors.password ? 'text-red-600':'text-gray-900']">
                                                     {{ __('Password') }}
                                                     <span class="text-red-700">*</span>
                                                 </span>
@@ -62,11 +62,11 @@
                                     <div class="mb-4">
                                         <Label :name="__('Gender')" :hasError="form.errors.email" :required="false"/>
                                         <div class="flex gap-2">
-                                            <label for="patient_male" class="w-full rounded-lg flex items-center pl-4 border border-gray-200 dark:border-gray-700   py-3 ml-2 text-sm font-medium text-gray-700 gap-2">
+                                            <label for="patient_male" class="w-full rounded-lg flex items-center pl-4 border border-gray-200   py-3 ml-2 text-sm font-medium text-gray-700 gap-2">
                                                 <input id="patient_male" value="male" v-model="form.gender" name="gender" type="radio" class="h-4 w-4 border-gray-300 text-blue-600 focus:outline-none">
                                                 <span>{{ __('Male') }}</span>
                                             </label>
-                                            <label for="patient_female" class="w-full rounded-lg flex items-center pl-4 border border-gray-200 dark:border-gray-700 py-3 ml-2 text-sm font-medium text-gray-700 gap-2">
+                                            <label for="patient_female" class="w-full rounded-lg flex items-center pl-4 border border-gray-200 py-3 ml-2 text-sm font-medium text-gray-700 gap-2">
                                                 <input id="patient_female" value="female" v-model="form.gender" name="gender" type="radio" class="h-4 w-4 border-gray-300 text-blue-600 focus:outline-none">
                                                 <span>{{ __('Female') }}</span>
                                             </label>
@@ -77,7 +77,7 @@
                                     <div class="mb-4">
                                         <Label :name="__('Birth Date')" id="patient_age" :hasError="form.errors.age" :required="false"/>
                                         <!-- <BaseInput v-model="form.age" placeholder="Age" id="patient_age" :hasError="form.errors.age"/> -->
-                                        <Datepicker v-model="form.birth_date" :enableTimePicker="false" class="bg-gray-50 border text-md rounded-lg block w-full p-1 dark:bg-gray-700 dark:placeholder-gray-400 dark:text-white"
+                                        <Datepicker v-model="form.birth_date" :enableTimePicker="false" class="bg-gray-50 border text-md rounded-lg block w-full p-1"
                                             @update:modelValue="handleCustomDate" :class="{'is-invalid': form.errors.birth_date}" :placeholder="__('Select Date')" :default-value="new Date()"
       :disabled-date="disabledAfterToday" />
                                         <!-- <span v-if="errors.birth_date" class="invalid-feedback">{{ errors.birth_date && errors.birth_date[0] }}</span> -->
@@ -108,25 +108,25 @@
                                 <div class="mb-4">
                                     <Label :name="__('Image')" id="patient_create_image" :hasError="form.errors.image" :required="false"/>
                                     <div class="flex justify-center items-center w-full" v-if="!previewImage">
-                                        <label for="dropzone-file" class="flex flex-col justify-center items-center w-full h-60 bg-gray-50 rounded-lg border-2 border-gray-300 border-dashed cursor-pointer dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+                                        <label for="dropzone-file" class="flex flex-col justify-center items-center w-full h-60 bg-gray-50 rounded-lg border-2 border-gray-300 border-dashed cursor-pointer  hover:bg-gray-100">
                                             <div class="flex flex-col justify-center items-center pt-5 pb-6">
                                                 <input id="dropzone-file" type="file" class="hidden" @change="onFileChange" accept="image/svg+xml, image/jpeg, image/jpg/ image/png">
                                                 <svg aria-hidden="true" class="mb-3 w-10 h-10 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
-                                                <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to upload image</span></p>
-                                                <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or JPEG (MAX. 5MB)</p>
+                                                <p class="mb-2 text-sm text-gray-500"><span class="font-semibold">Click to upload image</span></p>
+                                                <p class="text-xs text-gray-500">SVG, PNG, JPG or JPEG (MAX. 5MB)</p>
                                             </div>
                                         </label>
                                     </div>
                                     <div class="relative" v-if="previewImage">
                                         <img :src="previewImage" class="h-60 w-full rounded-lg object-cover" alt="image description">
-                                        <button @click="removeImage" type="button" class="absolute top-2 right-2 text-white bg-red-700 focus:ring-4 focus:ring-red-300 rounded-lg px-5 py-2.5 dark:bg-red-600 focus:outline-none dark:focus:ring-red-800">
+                                        <button @click="removeImage" type="button" class="absolute top-2 right-2 text-white bg-red-700 focus:ring-4 focus:ring-red-300 rounded-lg px-5 py-2.5">
                                             <font-awesome-icon icon="fa-solid fa-trash-can" class=" h-5 w-5"/>
                                         </button>
                                     </div>
                                     <ErrorMessage :name="form.errors.image"/>
                                 </div>
                                 <button :disabled="form.processing"  type="submit"
-                                    class="text-white justify-center flex items-center bg-blue-700 hover:bg-blue-800 w-full focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-md px-5 py-2.5 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 mt-3">
+                                    class="text-white justify-center flex items-center bg-blue-700 hover:bg-blue-800 w-full focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-md px-5 py-2.5 mb-2 focus:outline-none mt-3">
                                     <Loading v-if="form.processing" :messageShow="false" />
                                     <span v-else>
                                         <svg class="inline w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"/><polyline fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="24" points="216 72.005 104 184 48 128.005"/></svg>

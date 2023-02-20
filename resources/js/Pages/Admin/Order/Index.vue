@@ -6,7 +6,7 @@
         <div class="page-header mb-[1.875rem]">
             <div class="flex items-center justify-between">
                 <div>
-                    <h2 class="text-3xl font-semibold leading-7 text-gray-900 dark:text-gray-200 sm:text-3xl sm:truncate">
+                    <h2 class="text-3xl font-semibold leading-7 text-gray-900  sm:text-3xl sm:truncate">
                         {{ __('Plan') }}
                     </h2>
                 </div>
@@ -30,7 +30,7 @@
             <div class="flex items-center justify-between">
                 <div class="flex-1 min-w-0">
                     <div>
-                        <h2 class="text-3xl font-semibold leading-7 text-gray-900 dark:text-gray-200 sm:text-3xl sm:truncate">
+                        <h2 class="text-3xl font-semibold leading-7 text-gray-900  sm:text-3xl sm:truncate">
                             {{ __('Orders') }}
                         </h2>
                     </div>
@@ -39,7 +39,7 @@
         </div>
         <!-- component -->
         <div class="bg-white shadow sm:rounded-lg mt-6 -mx-4 sm:-mx-0 overflow-hidden">
-            <div class=" rounded-lg bg-white dark:bg-gray-800  shadow-xs overflow-hidden mb-5">
+            <div class=" rounded-lg bg-white   shadow-xs overflow-hidden mb-5">
                 <div class="p-4">
                     <div class="py-3 grid gap-4 lg:gap-6 xl:gap-6 md:flex xl:flex">
                         <div class="card-body border-bottom row" v-if="showFilter">
@@ -83,12 +83,12 @@
                         </div>
 
                         <div class="flex-grow-0 md:flex-grow lg:flex-grow xl:flex-grow">
-                            <input @keyup="searchData" v-model="filterForm.search" class="px-3 py-1 dark:text-gray-300 leading-5 rounded-md focus:border-gray-200 border-gray-200 dark:border-gray-600 focus:ring focus:ring-blue-300 dark:focus:border-gray-500 dark:focus:ring-gray-300 dark:bg-gray-700 border h-12 text-sm focus:outline-none block w-full bg-gray-100 border-transparent focus:bg-white"
+                            <input @keyup="searchData" v-model="filterForm.search" class="px-3 py-1  leading-5 rounded-md focus:border-gray-200 border-gray-200  focus:ring focus:ring-blue-300    border h-12 text-sm focus:outline-none block w-full bg-gray-100 border-transparent focus:bg-white"
                                 type="search" name="search" placeholder="Search order id, transaction id">
                             <button type="submit" class="absolute right-0 top-0 mt-5 mr-1"></button>
                         </div>
                         <div class="flex-grow-0 md:flex-grow lg:flex-grow xl:flex-grow">
-                            <select v-model="filterForm.organization" @change="filterData" class="px-2 py-1 dark:text-gray-300 rounded-md form-select focus:border-gray-200 border-gray-200 dark:border-gray-600 focus:shadow-none focus:ring focus:ring-blue-300 dark:focus:border-gray-500 dark:focus:ring-gray-300 dark:bg-gray-700 leading-5 border h-12 text-sm focus:outline-none block w-full bg-gray-100 border-transparent focus:bg-white">
+                            <select v-model="filterForm.organization" @change="filterData" class="px-2 py-1  rounded-md form-select focus:border-gray-200 border-gray-200  focus:shadow-none focus:ring focus:ring-blue-300    leading-5 border h-12 text-sm focus:outline-none block w-full bg-gray-100 border-transparent focus:bg-white">
                                 <option value="" hidden="">{{ __('Organization') }}</option>
                                 <option :value="organization.id" v-for="organization in organizations" :key="organization.id">
                                     {{ organization.organization_name }}
@@ -96,7 +96,7 @@
                             </select>
                         </div>
                         <div class="flex-grow-0 md:flex-grow lg:flex-grow xl:flex-grow">
-                            <select v-model="filterForm.plan" @change="filterData" class="px-2 py-1 dark:text-gray-300 rounded-md form-select focus:border-gray-200 border-gray-200 dark:border-gray-600 focus:shadow-none focus:ring focus:ring-blue-300 dark:focus:border-gray-500 dark:focus:ring-gray-300 dark:bg-gray-700 leading-5 border h-12 text-sm focus:outline-none block w-full bg-gray-100 border-transparent focus:bg-white">
+                            <select v-model="filterForm.plan" @change="filterData" class="px-2 py-1  rounded-md form-select focus:border-gray-200 border-gray-200  focus:shadow-none focus:ring focus:ring-blue-300    leading-5 border h-12 text-sm focus:outline-none block w-full bg-gray-100 border-transparent focus:bg-white">
                                 <option value="" hidden="">{{ __('Plan') }}</option>
                                 <option v-for="plan in plans" :key="plan.id" :value="plan.id">
                                     {{ plan.name }}
@@ -104,7 +104,7 @@
                             </select>
                         </div>
                         <div class="flex-grow-0 md:flex-grow lg:flex-grow xl:flex-grow">
-                            <select v-model="filterForm.payment" @change="filterData" class="px-2 py-1 dark:text-gray-300 rounded-md form-select focus:border-gray-200 border-gray-200 dark:border-gray-600 focus:shadow-none focus:ring focus:ring-blue-300 dark:focus:border-gray-500 dark:focus:ring-gray-300 dark:bg-gray-700 leading-5 border h-12 text-sm focus:outline-none block w-full bg-gray-100 border-transparent focus:bg-white">
+                            <select v-model="filterForm.payment" @change="filterData" class="px-2 py-1  rounded-md form-select focus:border-gray-200 border-gray-200  focus:shadow-none focus:ring focus:ring-blue-300    leading-5 border h-12 text-sm focus:outline-none block w-full bg-gray-100 border-transparent focus:bg-white">
                                 <option value="" hidden="">{{ __('Payment') }}</option>
                                 <option value="paypal">{{ __('Paypal') }}</option>
                                 <option value="stripe">{{ __('Stripe') }}</option>
@@ -117,12 +117,12 @@
                             </select>
                         </div>
                         <div class="w-full md:w-56 lg:w-56 xl:w-56 relative">
-                            <!-- <button id="dropdownDefault" data-dropdown-toggle="dropdown" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">Dropdown button <svg class="ml-2 w-4 h-4" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
+                            <!-- <button id="dropdownDefault" data-dropdown-toggle="dropdown" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center   " type="button">Dropdown button <svg class="ml-2 w-4 h-4" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
 
-                            <ul class="absolute right-0 w-56 p-2 mt-2 space-y-2 text-gray-600 bg-white border border-gray-100 rounded-md shadow-md dark:border-gray-700 dark:text-gray-300 dark:bg-gray-700"
+                            <ul class="absolute right-0 w-56 p-2 mt-2 space-y-2 text-gray-600 bg-white border border-gray-100 rounded-md shadow-md   "
                                 aria-label="submenu">
                                 <li class="flex"><a
-                                        class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200"
+                                        class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800  "
                                         href="#"><svg class="w-4 h-4 mr-3" aria-hidden="true" fill="none"
                                             stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             viewBox="0 0 24 24" stroke="currentColor">
@@ -131,7 +131,7 @@
                                             </path>
                                         </svg><span>Profile</span></a></li>
                                 <li class="flex"><a
-                                        class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200"
+                                        class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800  "
                                         href="#"><svg class="w-4 h-4 mr-3" aria-hidden="true" fill="none"
                                             stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             viewBox="0 0 24 24" stroke="currentColor">
@@ -141,7 +141,7 @@
                                             <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
                                         </svg><span>Settings</span></a></li>
                                 <li class="flex"><a
-                                        class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200"
+                                        class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800  "
                                         href="/logout"><svg class="w-4 h-4 mr-3" aria-hidden="true" fill="none"
                                             stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             viewBox="0 0 24 24" stroke="currentColor">

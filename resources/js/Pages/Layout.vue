@@ -2,15 +2,14 @@
     <div id="app" class="h-full" data-v-app="">
         <main class="app-wrapper">
             <header class="sticky top-0 z-[999] ml-[248px]" data-v-6a3703b0="">
-                <div class="app-header md:px-6 px-[15px]  dark:bg-slate-800 shadow-base dark:shadow-base3 bg-white dark:border-b dark:border-slate-700 dark:border-opacity-60 undefined
-      md:py-6 py-3" data-v-6a3703b0="">
+                <div class="app-header md:px-6 px-[15px]   shadow-base bg-white md:py-6 py-3" data-v-6a3703b0="">
                     <div class="flex justify-between items-center h-full" data-v-6a3703b0="">
                         <div class="flex items-center md:space-x-4 space-x-2" data-v-6a3703b0="">
                             <!---->
                             <!---->
                             <!---->
                             <div><button
-                                    class="flex items-center xl:text-sm text-lg xl:text-slate-400 text-slate-800 dark:text-slate-300 px-1 space-x-3"><span><svg
+                                    class="flex items-center xl:text-sm text-lg xl:text-slate-400 text-slate-800  px-1 space-x-3"><span><svg
                                             xmlns="http://www.w3.org/2000/svg"
                                             xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img"
                                             width="1em" height="1em" preserveAspectRatio="xMidYMid meet"
@@ -32,11 +31,11 @@
                                             class="inline-block md:h-6 md:w-6 w-4 h-4 rounded-full"><img
                                                 src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAAA1CAMAAACA7r40AAAA/FBMVEWyIjNPN2Y8O27///8/PnBOTXxycpY9PG9RUX5HR3dIR3dLSnlPTny4uMpWVYFFRHVwb5VlZIx7e52DgqOIh6aIiKc+PXBJSHhTUn9hYYqyIjReXohgX4lYV4Lr6/C2tcjPdYB0c5haWYRYV4Nra5GJiac+PW/FxdTHYG1RUH3eoajltbtOTXvty89BQHHg3+hSUX6GYoC6usyVlbFycZa7u8yUk6+sq8FCQXO0tMe1tMhiYYpMS3pDQnNvbpTExNN8fJ7GxdTGxtWCgqLHx9WXlrLXi5SYl7Kiobrg4Oiiorrn5u3n5+2jo7ukpLvw8PTx8fX09Pf19firqsC5sMNxAAAAAnRSTlPQ9qN1Xw4AAAGlSURBVHhe7ZXFiiRBFEVjznvp5W7t7j3u7m7//y8D1dAMGbnI4jW5KOpsgjibCxFcrrtVEmcBGAGQJHB98d3EgEM/ygsg/nwRAy15rxQ4Ywh3JQX49hVgKA/Ad1hDkkGTMSQJjGkOEmo133FmwAEQyl8FfSj3gFgkzjsQAw6AZ796AP2fGcDBS8/ZQ7ZQlJ2d+bEFqp6zhuh9Cf9/pDtKkTs04KBTD4jgx3eICOodoshz1p7M6UUAUQ+Ap2Pf2UMI5UBBX18/Ut7ZQ84Jui10QKsbcA7dt77jxIBDt+sxMNzrD4HL+rZS4Iw9iTZkCjRFmsBUHkcUOGMI7dkpKezuQsrprM3zR76zN572ekdBX623gaONJ0d5B5sGHAA1+QTwRQJgX2Q/7+w9GZGlDZKERpoxgkbDc8s0WscGSo+WGMiNVlgwWuFNjdafPsDe7wzg3RvP2UNCFGVtbX6EoOo7PhgoO1rGnswHiquB4mqgfIcxpBTGkNslMf2JVMAShRxXgJtUwBKFbFbAqicL4U4qYNWThXCHFbDqyUK4swpY9WQhXBX8A2rVjaQ6HWXmAAAAAElFTkSuQmCC"
                                                 alt="" class="h-full w-full object-cover rounded-full"></span><span
-                                            class="text-sm md:block hidden font-medium text-slate-600 dark:text-slate-300">En</span></button>
+                                            class="text-sm md:block hidden font-medium text-slate-600 ">En</span></button>
                                     <!---->
                                 </div>
                             </div><span
-                                class="lg:h-[32px] lg:w-[32px] lg:bg-gray-500-f7 lg:dark:bg-slate-900 dark:text-white text-slate-900 cursor-pointer rounded-full text-[20px] flex flex-col items-center justify-center"
+                                class="lg:h-[32px] lg:w-[32px] lg:bg-gray-500-f7   text-slate-900 cursor-pointer rounded-full text-[20px] flex flex-col items-center justify-center"
                                 data-v-6a3703b0=""><span><svg xmlns="http://www.w3.org/2000/svg"
                                         xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img"
                                         width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"
@@ -49,7 +48,7 @@
                             <div data-headlessui-state="" class="relative inline-block" data-v-6a3703b0=""><button
                                     id="headlessui-menu-button-3" type="button" aria-haspopup="true"
                                     aria-expanded="false" data-headlessui-state="" class="block w-full"><span
-                                        class="relative lg:h-[32px] lg:w-[32px] lg:bg-gray-500-f7 lg:dark:bg-slate-900 dark:text-white mr-6 last:mr-0 text-slate-900 cursor-pointer rounded-full text-[20px] flex flex-col items-center justify-center"><span><svg
+                                        class="relative lg:h-[32px] lg:w-[32px] lg:bg-gray-500-f7   mr-6 last:mr-0 text-slate-900 cursor-pointer rounded-full text-[20px] flex flex-col items-center justify-center"><span><svg
                                                 xmlns="http://www.w3.org/2000/svg"
                                                 xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img"
                                                 width="1em" height="1em" preserveAspectRatio="xMidYMid meet"
@@ -65,7 +64,7 @@
                             <div data-headlessui-state="" class="relative inline-block" data-v-6a3703b0=""><button
                                     id="headlessui-menu-button-5" type="button" aria-haspopup="true"
                                     aria-expanded="false" data-headlessui-state="" class="block w-full"><span
-                                        class="relative lg:h-[32px] lg:w-[32px] lg:bg-gray-500-f7 mr-6 last:mr-0 text-slate-900 lg:dark:bg-slate-900 dark:text-white cursor-pointer rounded-full text-[20px] flex flex-col items-center justify-center"><span><svg
+                                        class="relative lg:h-[32px] lg:w-[32px] lg:bg-gray-500-f7 mr-6 last:mr-0 text-slate-900   cursor-pointer rounded-full text-[20px] flex flex-col items-center justify-center"><span><svg
                                                 xmlns="http://www.w3.org/2000/svg"
                                                 xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img"
                                                 width="1em" height="1em" preserveAspectRatio="xMidYMid meet"
@@ -88,7 +87,7 @@
                                                     alt="" class="block w-full h-full object-cover rounded-full"></div>
                                         </div>
                                         <div
-                                            class="flex-none text-slate-600 dark:text-white text-sm font-normal items-center lg:flex hidden overflow-hidden text-ellipsis whitespace-nowrap">
+                                            class="flex-none text-slate-600  text-sm font-normal items-center lg:flex hidden overflow-hidden text-ellipsis whitespace-nowrap">
                                             <span
                                                 class="overflow-hidden text-ellipsis whitespace-nowrap w-[85px] block">Albert
                                                 Flores</span><span class="text-base inline-block ml-[10px]"><span><svg
@@ -111,13 +110,13 @@
                 </div>
             </header>
             <div class="">
-                <div class="sidebar-wrapper bg-white dark:bg-slate-800    shadow-base   w-[248px]">
+                <div class="sidebar-wrapper bg-white     shadow-base   w-[248px]">
                     <div
-                        class="logo-segment flex justify-between items-center bg-white dark:bg-slate-800 z-[9] py-6  sticky top-0   px-4  w-[248px]  border-none">
+                        class="logo-segment flex justify-between items-center bg-white  z-[9] py-6  sticky top-0   px-4  w-[248px]  border-none">
                         <a aria-current="page" href="/app/home" class="router-link-active router-link-exact-active">
                             <!-- <img src="/img/logo-white.18c6f36c.svg" alt=""> -->
                         </a>
-                        <span class="cursor-pointer text-slate-900 dark:text-white text-2xl"><svg
+                        <span class="cursor-pointer text-slate-900  text-2xl"><svg
                                 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                 aria-hidden="true" role="img" width="1em" height="1em"
                                 preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"
@@ -182,32 +181,32 @@
                                                         <li class="block pl-4 pr-1 mb-4 first:mt-4"><a
                                                                 aria-current="page" href="/app/home"
                                                                 class="router-link-active router-link-exact-active"><span
-                                                                    class="text-sm flex space-x-3 items-center transition-all duration-150 text-slate-900 dark:text-white font-medium"><span
-                                                                        class="h-2 w-2 rounded-full border border-slate-600 dark:border-slate-300 inline-block flex-none bg-slate-900 dark:bg-slate-300 ring-4 ring-opacity-[15%] ring-black-500 dark:ring-slate-300 dark:ring-opacity-20"></span><span
+                                                                    class="text-sm flex space-x-3 items-center transition-all duration-150 text-slate-900  font-medium"><span
+                                                                        class="h-2 w-2 rounded-full border border-slate-600  inline-block flex-none bg-slate-900 ring-4 ring-opacity-[15%] ring-black-500"></span><span
                                                                         class="flex-1">Analytics
                                                                         Dashboard</span></span></a></li>
                                                         <li class="block pl-4 pr-1 mb-4 first:mt-4"><a
                                                                 href="/app/ecommerce" class=""><span
-                                                                    class="text-sm flex space-x-3 items-center transition-all duration-150 text-slate-600 dark:text-slate-300"><span
-                                                                        class="h-2 w-2 rounded-full border border-slate-600 dark:border-slate-300 inline-block flex-none"></span><span
+                                                                    class="text-sm flex space-x-3 items-center transition-all duration-150 text-slate-600 "><span
+                                                                        class="h-2 w-2 rounded-full border border-slate-600  inline-block flex-none"></span><span
                                                                         class="flex-1">Ecommerce
                                                                         Dashboard</span></span></a></li>
                                                         <li class="block pl-4 pr-1 mb-4 first:mt-4"><a
                                                                 href="/app/project" class=""><span
-                                                                    class="text-sm flex space-x-3 items-center transition-all duration-150 text-slate-600 dark:text-slate-300"><span
-                                                                        class="h-2 w-2 rounded-full border border-slate-600 dark:border-slate-300 inline-block flex-none"></span><span
+                                                                    class="text-sm flex space-x-3 items-center transition-all duration-150 text-slate-600 "><span
+                                                                        class="h-2 w-2 rounded-full border border-slate-600  inline-block flex-none"></span><span
                                                                         class="flex-1">Project
                                                                         Dashbaord</span></span></a></li>
                                                         <li class="block pl-4 pr-1 mb-4 first:mt-4"><a href="/app/crm"
                                                                 class=""><span
-                                                                    class="text-sm flex space-x-3 items-center transition-all duration-150 text-slate-600 dark:text-slate-300"><span
-                                                                        class="h-2 w-2 rounded-full border border-slate-600 dark:border-slate-300 inline-block flex-none"></span><span
+                                                                    class="text-sm flex space-x-3 items-center transition-all duration-150 text-slate-600 "><span
+                                                                        class="h-2 w-2 rounded-full border border-slate-600  inline-block flex-none"></span><span
                                                                         class="flex-1"> CRM Dashbaord</span></span></a>
                                                         </li>
                                                         <li class="block pl-4 pr-1 mb-4 first:mt-4"><a
                                                                 href="/app/banking" class=""><span
-                                                                    class="text-sm flex space-x-3 items-center transition-all duration-150 text-slate-600 dark:text-slate-300"><span
-                                                                        class="h-2 w-2 rounded-full border border-slate-600 dark:border-slate-300 inline-block flex-none"></span><span
+                                                                    class="text-sm flex space-x-3 items-center transition-all duration-150 text-slate-600 "><span
+                                                                        class="h-2 w-2 rounded-full border border-slate-600  inline-block flex-none"></span><span
                                                                         class="flex-1">Banking
                                                                         Dashboard</span></span></a></li>
                                                     </ul>
@@ -689,7 +688,7 @@
             <!---->
             <!---->
             <div data-v-b2da374e=""><span
-                    class="fixed md:right-[-32px] right-0 top-1/2 z-[888] translate-y-1/2 bg-slate-800 text-slate-50 dark:bg-slate-700 dark:text-slate-300 cursor-pointer transform rotate-90 flex items-center text-sm font-medium px-2 py-2 shadow-deep rounded-b"
+                    class="fixed md:right-[-32px] right-0 top-1/2 z-[888] translate-y-1/2 bg-slate-800 text-slate-50  cursor-pointer transform rotate-90 flex items-center text-sm font-medium px-2 py-2 shadow-deep rounded-b"
                     data-v-b2da374e=""><span class="text-slate-50 text-lg" data-v-b2da374e=""><svg
                             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                             aria-hidden="true" role="img" width="1em" height="1em" preserveAspectRatio="xMidYMid meet"
@@ -702,7 +701,7 @@
                                 <path d="M15 12a3 3 0 1 1-6 0a3 3 0 0 1 6 0Z"></path>
                             </g>
                         </svg></span><span class="hidden md:inline-block ml-2" data-v-b2da374e="">Settings</span></span>
-                <div class="setting-wrapper fixed right-0 top-0 md:w-[400px] w-[300px] bg-white dark:bg-slate-800 h-screen z-[9999] px-6 md:pb-6 pb-[100px] shadow-base2 dark:shadow-base3 border border-gray-5002 dark:border-slate-700"
+                <div class="setting-wrapper fixed right-0 top-0 md:w-[400px] w-[300px] bg-white  h-screen z-[9999] px-6 md:pb-6 pb-[100px] shadow-base2 border border-gray-5002 "
                     data-simplebar="init" data-v-b2da374e="" style="display: none;">
                     <div class="simplebar-wrapper" style="margin: 0px -24px -24px;">
                         <div class="simplebar-height-auto-observer-wrapper">
@@ -714,14 +713,14 @@
                                     aria-label="scrollable content" style="height: auto; overflow: hidden;">
                                     <div class="simplebar-content" style="padding: 0px 24px 24px;">
                                         <header
-                                            class="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 ml-[-24px] mr-[-24px] px-6 py-[15px] mb-6"
+                                            class="flex items-center justify-between border-b border-slate-100  ml-[-24px] mr-[-24px] px-6 py-[15px] mb-6"
                                             data-v-b2da374e="">
                                             <div data-v-b2da374e=""><span
-                                                    class="block text-xl text-slate-900 font-medium dark:text-[#eee]"
+                                                    class="block text-xl text-slate-900 font-medium"
                                                     data-v-b2da374e="">Theme customizer</span><span
-                                                    class="block text-sm font-light text-[#68768A] dark:text-[#eee]"
+                                                    class="block text-sm font-light text-[#68768A]"
                                                     data-v-b2da374e="">Customize &amp; Preview in Real Time</span></div>
-                                            <div class="cursor-pointer text-2xl text-slate-800 dark:text-slate-200"
+                                            <div class="cursor-pointer text-2xl text-slate-800 "
                                                 data-v-b2da374e=""><span data-v-b2da374e=""><svg
                                                         xmlns="http://www.w3.org/2000/svg"
                                                         xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"
@@ -736,45 +735,45 @@
                                         <div class="space-y-4" data-v-b2da374e="">
                                             <div data-v-b2da374e="">
                                                 <div
-                                                    class="col-span-12 text-slate-600 dark:text-slate-300 text-base mb-2">
+                                                    class="col-span-12 text-slate-600  text-base mb-2">
                                                     Skin </div>
                                                 <div class="grid md:grid-cols-3 grid-cols-1 gap-3">
                                                     <div><label for="skin_id0"
-                                                            class="flex items-center text-sm text-slate-500 dark:text-slate-400 cursor-pointer"><input
+                                                            class="flex items-center text-sm text-slate-500  cursor-pointer"><input
                                                                 class="hidden" type="radio" name="sidebar" id="skin_id0"
                                                                 value="default"><span
-                                                                class="shadow-inset-4 flex-none h-4 w-4 bg-white dark:bg-transparent rounded-full border border-secondary-500 inline-block mr-3 transition-all duration-150"></span>
+                                                                class="shadow-inset-4 flex-none h-4 w-4 bg-white  rounded-full border border-secondary-500 inline-block mr-3 transition-all duration-150"></span>
                                                             Default</label></div>
                                                     <div><label for="skin_id1"
-                                                            class="flex items-center text-sm text-slate-500 dark:text-slate-400 cursor-pointer"><input
+                                                            class="flex items-center text-sm text-slate-500  cursor-pointer"><input
                                                                 class="hidden" type="radio" name="sidebar" id="skin_id1"
                                                                 value="bordered"><span
-                                                                class="flex-none h-4 w-4 bg-white dark:bg-transparent rounded-full border border-secondary-500 inline-block mr-3 transition-all duration-150"></span>
+                                                                class="flex-none h-4 w-4 bg-white  rounded-full border border-secondary-500 inline-block mr-3 transition-all duration-150"></span>
                                                             Bordered</label></div>
                                                 </div>
                                             </div>
                                             <div data-v-b2da374e="">
                                                 <div
-                                                    class="col-span-12 text-slate-600 dark:text-slate-300 text-base mb-2">
+                                                    class="col-span-12 text-slate-600  text-base mb-2">
                                                     Theme </div>
                                                 <div class="grid md:grid-cols-3 grid-cols-1 gap-3">
                                                     <div><label for="theme_id0"
-                                                            class="flex items-center text-sm text-slate-500 dark:text-slate-400 cursor-pointer"><input
+                                                            class="flex items-center text-sm text-slate-500  cursor-pointer"><input
                                                                 class="hidden" type="radio" name="sidebar"
                                                                 id="theme_id0" value="light"><span
-                                                                class="flex-none h-4 w-4 bg-white dark:bg-transparent rounded-full border border-secondary-500 inline-block mr-3 transition-all duration-150"></span>
+                                                                class="flex-none h-4 w-4 bg-white  rounded-full border border-secondary-500 inline-block mr-3 transition-all duration-150"></span>
                                                             Light</label></div>
                                                     <div><label for="theme_id1"
-                                                            class="flex items-center text-sm text-slate-500 dark:text-slate-400 cursor-pointer"><input
+                                                            class="flex items-center text-sm text-slate-500  cursor-pointer"><input
                                                                 class="hidden" type="radio" name="sidebar"
                                                                 id="theme_id1" value="dark"><span
-                                                                class="shadow-inset-4 flex-none h-4 w-4 bg-white dark:bg-transparent rounded-full border border-secondary-500 inline-block mr-3 transition-all duration-150"></span>
+                                                                class="shadow-inset-4 flex-none h-4 w-4 bg-white  rounded-full border border-secondary-500 inline-block mr-3 transition-all duration-150"></span>
                                                             Dark</label></div>
                                                 </div>
                                             </div>
                                             <div data-v-b2da374e="">
                                                 <div class="flex justify-between mt-6 items-center">
-                                                    <div class="text-slate-600 text-base dark:text-slate-300">Semi Dark
+                                                    <div class="text-slate-600 text-base ">Semi Dark
                                                     </div>
                                                     <div><label
                                                             class="bg-secondary-500 relative inline-flex h-6 w-[46px] items-center rounded-full transition-all duration-150 cursor-pointer"><input
@@ -783,47 +782,47 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <hr class="-mx-6 border-slate-200 dark:border-slate-700" data-v-b2da374e="">
+                                            <hr class="-mx-6 border-slate-200 " data-v-b2da374e="">
                                             <div data-v-b2da374e="">
                                                 <div
-                                                    class="col-span-12 text-slate-600 dark:text-slate-300 text-base mb-2">
+                                                    class="col-span-12 text-slate-600  text-base mb-2">
                                                     Content Width </div>
                                                 <div class="grid md:grid-cols-3 grid-cols-1 gap-3">
                                                     <div><label for="contentWidth_id0"
-                                                            class="flex items-center text-sm text-slate-500 dark:text-slate-400 cursor-pointer"><input
+                                                            class="flex items-center text-sm text-slate-500  cursor-pointer"><input
                                                                 class="hidden" type="radio" name="contentWidth"
                                                                 id="contentWidth_id0" value="full"><span
-                                                                class="shadow-inset-4 flex-none h-4 w-4 bg-white dark:bg-transparent rounded-full border border-secondary-500 inline-block mr-3 transition-all duration-150"></span>
+                                                                class="shadow-inset-4 flex-none h-4 w-4 bg-white  rounded-full border border-secondary-500 inline-block mr-3 transition-all duration-150"></span>
                                                             Full Width</label></div>
                                                     <div><label for="contentWidth_id1"
-                                                            class="flex items-center text-sm text-slate-500 dark:text-slate-400 cursor-pointer"><input
+                                                            class="flex items-center text-sm text-slate-500  cursor-pointer"><input
                                                                 class="hidden" type="radio" name="contentWidth"
                                                                 id="contentWidth_id1" value="boxed"><span
-                                                                class="flex-none h-4 w-4 bg-white dark:bg-transparent rounded-full border border-secondary-500 inline-block mr-3 transition-all duration-150"></span>
+                                                                class="flex-none h-4 w-4 bg-white  rounded-full border border-secondary-500 inline-block mr-3 transition-all duration-150"></span>
                                                             Boxed</label></div>
                                                 </div>
                                             </div>
                                             <div class="xl:block hidden" data-v-b2da374e="">
                                                 <div data-v-b2da374e="">
                                                     <div
-                                                        class="col-span-12 text-slate-600 dark:text-slate-300 text-base mb-2">
+                                                        class="col-span-12 text-slate-600  text-base mb-2">
                                                         Menu layout </div>
                                                     <div class="grid grid-cols-3 gap-3">
                                                         <div><label for="menu_layout_id0"
-                                                                class="flex items-center text-sm text-slate-500 dark:text-slate-400 cursor-pointer"><input
+                                                                class="flex items-center text-sm text-slate-500  cursor-pointer"><input
                                                                     class="hidden" type="radio" name="menulayout"
                                                                     id="menu_layout_id0" value="vertical"><span
-                                                                    class="shadow-inset-4 h-4 w-4 bg-white rounded-full dark:bg-transparent border border-secondary-500 inline-block mr-3 transition-all duration-150"></span>
+                                                                    class="shadow-inset-4 h-4 w-4 bg-white rounded-full  border border-secondary-500 inline-block mr-3 transition-all duration-150"></span>
                                                                 Vertical</label></div>
                                                         <div><label for="menu_layout_id1"
-                                                                class="flex items-center text-sm text-slate-500 dark:text-slate-400 cursor-pointer"><input
+                                                                class="flex items-center text-sm text-slate-500  cursor-pointer"><input
                                                                     class="hidden" type="radio" name="menulayout"
                                                                     id="menu_layout_id1" value="horizontal"><span
-                                                                    class="h-4 w-4 bg-white rounded-full dark:bg-transparent border border-secondary-500 inline-block mr-3 transition-all duration-150"></span>
+                                                                    class="h-4 w-4 bg-white rounded-full  border border-secondary-500 inline-block mr-3 transition-all duration-150"></span>
                                                                 Horizontal</label></div>
                                                     </div>
                                                     <div class="flex justify-between mt-6 items-center">
-                                                        <div class="text-slate-600 text-base dark:text-slate-300"> Menu
+                                                        <div class="text-slate-600 text-base "> Menu
                                                             Collapsed </div>
                                                         <div><label
                                                                 class="bg-secondary-500 relative inline-flex h-6 w-[46px] items-center rounded-full transition-all duration-150 cursor-pointer"><input
@@ -832,7 +831,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="flex justify-between mt-6 items-center">
-                                                        <div class="text-slate-600 text-base dark:text-slate-300"> Menu
+                                                        <div class="text-slate-600 text-base "> Menu
                                                             Hidden </div>
                                                         <div><label
                                                                 class="bg-secondary-500 relative inline-flex h-6 w-[46px] items-center rounded-full transition-all duration-150 cursor-pointer"><input
@@ -842,60 +841,60 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <hr class="-mx-6 border-slate-200 dark:border-slate-700" data-v-b2da374e="">
+                                            <hr class="-mx-6 border-slate-200 " data-v-b2da374e="">
                                             <div data-v-b2da374e="">
                                                 <div
-                                                    class="col-span-12 text-slate-600 dark:text-slate-300 text-base mb-3 mt-6">
+                                                    class="col-span-12 text-slate-600  text-base mb-3 mt-6">
                                                     Navbar Type </div>
                                                 <div class="grid md:grid-cols-4 grid-cols-1 gap-3">
                                                     <div><label for="navbar_type0"
-                                                            class="text-slate-500 dark:text-slate-400 text-sm cursor-pointer flex items-center"><input
+                                                            class="text-slate-500  text-sm cursor-pointer flex items-center"><input
                                                                 class="hidden" type="radio" name="navType"
                                                                 id="navbar_type0" value="floating"><span
-                                                                class="flex-none h-4 w-4 bg-white dark:bg-transparent rounded-full border border-secondary-500 inline-block mr-3 transition-all duration-150"></span>
+                                                                class="flex-none h-4 w-4 bg-white  rounded-full border border-secondary-500 inline-block mr-3 transition-all duration-150"></span>
                                                             Floating</label></div>
                                                     <div><label for="navbar_type1"
-                                                            class="text-slate-500 dark:text-slate-400 text-sm cursor-pointer flex items-center"><input
+                                                            class="text-slate-500  text-sm cursor-pointer flex items-center"><input
                                                                 class="hidden" type="radio" name="navType"
                                                                 id="navbar_type1" value="sticky"><span
-                                                                class="shadow-inset-4 flex-none h-4 w-4 bg-white dark:bg-transparent rounded-full border border-secondary-500 inline-block mr-3 transition-all duration-150"></span>
+                                                                class="shadow-inset-4 flex-none h-4 w-4 bg-white  rounded-full border border-secondary-500 inline-block mr-3 transition-all duration-150"></span>
                                                             Sticky</label></div>
                                                     <div><label for="navbar_type2"
-                                                            class="text-slate-500 dark:text-slate-400 text-sm cursor-pointer flex items-center"><input
+                                                            class="text-slate-500  text-sm cursor-pointer flex items-center"><input
                                                                 class="hidden" type="radio" name="navType"
                                                                 id="navbar_type2" value="static"><span
-                                                                class="flex-none h-4 w-4 bg-white dark:bg-transparent rounded-full border border-secondary-500 inline-block mr-3 transition-all duration-150"></span>
+                                                                class="flex-none h-4 w-4 bg-white  rounded-full border border-secondary-500 inline-block mr-3 transition-all duration-150"></span>
                                                             Static</label></div>
                                                     <div><label for="navbar_type3"
-                                                            class="text-slate-500 dark:text-slate-400 text-sm cursor-pointer flex items-center"><input
+                                                            class="text-slate-500  text-sm cursor-pointer flex items-center"><input
                                                                 class="hidden" type="radio" name="navType"
                                                                 id="navbar_type3" value="hidden"><span
-                                                                class="flex-none h-4 w-4 bg-white dark:bg-transparent rounded-full border border-secondary-500 inline-block mr-3 transition-all duration-150"></span>
+                                                                class="flex-none h-4 w-4 bg-white  rounded-full border border-secondary-500 inline-block mr-3 transition-all duration-150"></span>
                                                             Hidden</label></div>
                                                 </div>
                                             </div>
                                             <div data-v-b2da374e="">
                                                 <div
-                                                    class="col-span-12 text-slate-600 dark:text-slate-300 text-base mb-3 mt-6">
+                                                    class="col-span-12 text-slate-600  text-base mb-3 mt-6">
                                                     Footer Type </div>
                                                 <div class="grid md:grid-cols-4 grid-cols-1 gap-3">
                                                     <div><label for="foo_type0"
-                                                            class="text-slate-500 dark:text-slate-400 text-sm cursor-pointer flex items-center"><input
+                                                            class="text-slate-500  text-sm cursor-pointer flex items-center"><input
                                                                 class="hidden" type="radio" name="footerType"
                                                                 id="foo_type0" value="sticky"><span
-                                                                class="flex-none h-4 w-4 bg-white dark:bg-transparent rounded-full border border-secondary-500 inline-block mr-3 transition-all duration-150"></span>
+                                                                class="flex-none h-4 w-4 bg-white  rounded-full border border-secondary-500 inline-block mr-3 transition-all duration-150"></span>
                                                             Sticky</label></div>
                                                     <div><label for="foo_type1"
-                                                            class="text-slate-500 dark:text-slate-400 text-sm cursor-pointer flex items-center"><input
+                                                            class="text-slate-500  text-sm cursor-pointer flex items-center"><input
                                                                 class="hidden" type="radio" name="footerType"
                                                                 id="foo_type1" value="static"><span
-                                                                class="shadow-inset-4 flex-none h-4 w-4 bg-white dark:bg-transparent rounded-full border border-secondary-500 inline-block mr-3 transition-all duration-150"></span>
+                                                                class="shadow-inset-4 flex-none h-4 w-4 bg-white  rounded-full border border-secondary-500 inline-block mr-3 transition-all duration-150"></span>
                                                             Static</label></div>
                                                     <div><label for="foo_type2"
-                                                            class="text-slate-500 dark:text-slate-400 text-sm cursor-pointer flex items-center"><input
+                                                            class="text-slate-500  text-sm cursor-pointer flex items-center"><input
                                                                 class="hidden" type="radio" name="footerType"
                                                                 id="foo_type2" value="hidden"><span
-                                                                class="flex-none h-4 w-4 bg-white dark:bg-transparent rounded-full border border-secondary-500 inline-block mr-3 transition-all duration-150"></span>
+                                                                class="flex-none h-4 w-4 bg-white  rounded-full border border-secondary-500 inline-block mr-3 transition-all duration-150"></span>
                                                             Hidden</label></div>
                                                 </div>
                                             </div>
@@ -933,7 +932,7 @@
                                             aria-expanded="false" data-headlessui-state="">
                                             <div>
                                                 <div
-                                                    class="date-btn inline-flex btn btn-md whitespace-nowrap space-x-2 cursor-pointer bg-white dark:bg-slate-800 dark:text-slate-300 btn-md h-min text-sm font-normal text-slate-900">
+                                                    class="date-btn inline-flex btn btn-md whitespace-nowrap space-x-2 cursor-pointer bg-white   btn-md h-min text-sm font-normal text-slate-900">
                                                     <span class="text-lg"><span><svg xmlns="http://www.w3.org/2000/svg"
                                                                 xmlns:xlink="http://www.w3.org/1999/xlink"
                                                                 aria-hidden="true" role="img" width="1em" height="1em"
@@ -955,7 +954,7 @@
                                             aria-expanded="false" data-headlessui-state="">
                                             <div>
                                                 <div
-                                                    class="date-btn inline-flex btn btn-md whitespace-nowrap space-x-2 cursor-pointer bg-white dark:bg-slate-800 dark:text-slate-300 btn-md h-min text-sm font-normal text-slate-900">
+                                                    class="date-btn inline-flex btn btn-md whitespace-nowrap space-x-2 cursor-pointer bg-white   btn-md h-min text-sm font-normal text-slate-900">
                                                     <span class="text-lg"><span><svg xmlns="http://www.w3.org/2000/svg"
                                                                 xmlns:xlink="http://www.w3.org/1999/xlink"
                                                                 aria-hidden="true" role="img" width="1em" height="1em"
@@ -989,7 +988,7 @@
                                     </div>
                                 </div>
                                 <div class="2xl:col-span-9 lg:col-span-8 col-span-12">
-                                    <div class="card rounded-md bg-white dark:bg-slate-800 lg:h-full  shadow-base"
+                                    <div class="card rounded-md bg-white  lg:h-full  shadow-base"
                                         data-v-888d181c="">
                                         <div class="card-body flex flex-col p-4" data-v-888d181c="">
                                             <!---->
@@ -997,7 +996,7 @@
                                             <div class="card-text h-full" data-v-888d181c="">
                                                 <div class="grid md:grid-cols-3 col-span-1 gap-4">
                                                     <div
-                                                        class="py-[18px] px-4 rounded-[6px] bg-[#E5F9FF] dark:bg-slate-900">
+                                                        class="py-[18px] px-4 rounded-[6px] bg-[#E5F9FF] ">
                                                         <div class="flex items-center space-x-6">
                                                             <div class="flex-none">
                                                                 <div class="vue-apexcharts" style="min-height: 48px;">
@@ -1263,16 +1262,16 @@
                                                             </div>
                                                             <div class="flex-1">
                                                                 <div
-                                                                    class="text-slate-800 dark:text-slate-300 text-sm mb-1 font-medium">
+                                                                    class="text-slate-800  text-sm mb-1 font-medium">
                                                                     Totel revenue</div>
                                                                 <div
-                                                                    class="text-slate-900 dark:text-white text-lg font-medium">
+                                                                    class="text-slate-900  text-lg font-medium">
                                                                     3,564</div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div
-                                                        class="py-[18px] px-4 rounded-[6px] bg-[#FFEDE5] dark:bg-slate-900">
+                                                        class="py-[18px] px-4 rounded-[6px] bg-[#FFEDE5] ">
                                                         <div class="flex items-center space-x-6">
                                                             <div class="flex-none">
                                                                 <div class="vue-apexcharts" style="min-height: 48px;">
@@ -1538,16 +1537,16 @@
                                                             </div>
                                                             <div class="flex-1">
                                                                 <div
-                                                                    class="text-slate-800 dark:text-slate-300 text-sm mb-1 font-medium">
+                                                                    class="text-slate-800  text-sm mb-1 font-medium">
                                                                     Products sold</div>
                                                                 <div
-                                                                    class="text-slate-900 dark:text-white text-lg font-medium">
+                                                                    class="text-slate-900  text-lg font-medium">
                                                                     564</div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div
-                                                        class="py-[18px] px-4 rounded-[6px] bg-[#EAE5FF] dark:bg-slate-900">
+                                                        class="py-[18px] px-4 rounded-[6px] bg-[#EAE5FF] ">
                                                         <div class="flex items-center space-x-6">
                                                             <div class="flex-none">
                                                                 <div class="vue-apexcharts" style="min-height: 48px;">
@@ -1813,10 +1812,10 @@
                                                             </div>
                                                             <div class="flex-1">
                                                                 <div
-                                                                    class="text-slate-800 dark:text-slate-300 text-sm mb-1 font-medium">
+                                                                    class="text-slate-800  text-sm mb-1 font-medium">
                                                                     Growth</div>
                                                                 <div
-                                                                    class="text-slate-900 dark:text-white text-lg font-medium">
+                                                                    class="text-slate-900  text-lg font-medium">
                                                                     +5.0%</div>
                                                             </div>
                                                         </div>
@@ -1830,7 +1829,7 @@
                             </div>
                             <div class="grid grid-cols-12 gap-5">
                                 <div class="lg:col-span-8 col-span-12">
-                                    <div class="card rounded-md bg-white dark:bg-slate-800 lg:h-full  shadow-base"
+                                    <div class="card rounded-md bg-white  lg:h-full  shadow-base"
                                         data-v-888d181c="">
                                         <div class="card-body flex flex-col p-6" data-v-888d181c="">
                                             <!---->
@@ -2772,14 +2771,14 @@
                                     <!---->
                                 </div>
                                 <div class="lg:col-span-4 col-span-12">
-                                    <div class="card rounded-md bg-white dark:bg-slate-800 lg:h-full  shadow-base"
+                                    <div class="card rounded-md bg-white  lg:h-full  shadow-base"
                                         data-v-888d181c="">
                                         <div class="card-body flex flex-col p-6" data-v-888d181c="">
                                             <header
-                                                class="flex mb-5 items-center border-b border-slate-100 dark:border-slate-700 pb-5  -mx-6 px-6"
+                                                class="flex mb-5 items-center border-b border-slate-100  pb-5  -mx-6 px-6"
                                                 data-v-888d181c="">
                                                 <div class="flex-1" data-v-888d181c="">
-                                                    <div class="card-title text-slate-900 dark:text-white"
+                                                    <div class="card-title text-slate-900 "
                                                         data-v-888d181c="">overview</div>
                                                     <!---->
                                                 </div>
@@ -2789,7 +2788,7 @@
                                                             <button id="headlessui-menu-button-9" type="button"
                                                                 aria-haspopup="true" aria-expanded="false"
                                                                 data-headlessui-state="" class="block w-full"><span
-                                                                    class="text-lg inline-flex h-6 w-6 flex-col items-center justify-center border border-slate-200 dark:border-slate-700 rounded dark:text-slate-400"><span><svg
+                                                                    class="text-lg inline-flex h-6 w-6 flex-col items-center justify-center border border-slate-200  rounded "><span><svg
                                                                             xmlns="http://www.w3.org/2000/svg"
                                                                             xmlns:xlink="http://www.w3.org/1999/xlink"
                                                                             aria-hidden="true" role="img" width="1em"
@@ -3024,12 +3023,12 @@
                                     <!---->
                                 </div>
                                 <div class="lg:col-span-8 col-span-12">
-                                    <div class="card rounded-md bg-white dark:bg-slate-800 lg:h-full  shadow-base"
+                                    <div class="card rounded-md bg-white  lg:h-full  shadow-base"
                                         data-v-888d181c="">
                                         <div class="card-body flex flex-col p-6" data-v-888d181c="">
                                             <header class="flex mb-5 items-center" data-v-888d181c="">
                                                 <div class="flex-1" data-v-888d181c="">
-                                                    <div class="card-title text-slate-900 dark:text-white"
+                                                    <div class="card-title text-slate-900 "
                                                         data-v-888d181c="">All company</div>
                                                     <!---->
                                                 </div>
@@ -3039,7 +3038,7 @@
                                                             <button id="headlessui-menu-button-11" type="button"
                                                                 aria-haspopup="true" aria-expanded="false"
                                                                 data-headlessui-state="" class="block w-full"><span
-                                                                    class="text-lg inline-flex h-6 w-6 flex-col items-center justify-center border border-slate-200 dark:border-slate-700 rounded dark:text-slate-400"><span><svg
+                                                                    class="text-lg inline-flex h-6 w-6 flex-col items-center justify-center border border-slate-200  rounded "><span><svg
                                                                             xmlns="http://www.w3.org/2000/svg"
                                                                             xmlns:xlink="http://www.w3.org/1999/xlink"
                                                                             aria-hidden="true" role="img" width="1em"
@@ -3146,7 +3145,7 @@
                                                                                             Biffco Enterprises Ltd.
                                                                                         </h4>
                                                                                         <div
-                                                                                            class="text-xs font-normal text-slate-600 dark:text-slate-400">
+                                                                                            class="text-xs font-normal text-slate-600 ">
                                                                                             Biffco@example.com </div>
                                                                                     </div>
                                                                                 </div>
@@ -3205,7 +3204,7 @@
                                                                                             Biffco Enterprises Ltd.
                                                                                         </h4>
                                                                                         <div
-                                                                                            class="text-xs font-normal text-slate-600 dark:text-slate-400">
+                                                                                            class="text-xs font-normal text-slate-600 ">
                                                                                             Biffco@example.com </div>
                                                                                     </div>
                                                                                 </div>
@@ -3264,7 +3263,7 @@
                                                                                             Biffco Enterprises Ltd.
                                                                                         </h4>
                                                                                         <div
-                                                                                            class="text-xs font-normal text-slate-600 dark:text-slate-400">
+                                                                                            class="text-xs font-normal text-slate-600 ">
                                                                                             Biffco@example.com </div>
                                                                                     </div>
                                                                                 </div>
@@ -3323,7 +3322,7 @@
                                                                                             Biffco Enterprises Ltd.
                                                                                         </h4>
                                                                                         <div
-                                                                                            class="text-xs font-normal text-slate-600 dark:text-slate-400">
+                                                                                            class="text-xs font-normal text-slate-600 ">
                                                                                             Biffco@example.com </div>
                                                                                     </div>
                                                                                 </div>
@@ -3382,7 +3381,7 @@
                                                                                             Biffco Enterprises Ltd.
                                                                                         </h4>
                                                                                         <div
-                                                                                            class="text-xs font-normal text-slate-600 dark:text-slate-400">
+                                                                                            class="text-xs font-normal text-slate-600 ">
                                                                                             Biffco@example.com </div>
                                                                                     </div>
                                                                                 </div>
@@ -3434,7 +3433,7 @@
                                                                     data-v-7373e9ae="">
                                                                     <!---->
                                                                     <ul class="pagination default" data-v-7373e9ae="">
-                                                                        <li class="text-xl leading-4 text-slate-900 dark:text-white"
+                                                                        <li class="text-xl leading-4 text-slate-900 "
                                                                             data-v-7373e9ae=""><button disabled=""
                                                                                 class="opacity-50 cursor-not-allowed"
                                                                                 data-v-7373e9ae=""><span
@@ -3500,7 +3499,7 @@
                                                                             </button></li>
                                                                         <!---->
                                                                         <!---->
-                                                                        <li class="text-xl leading-4 text-slate-900 dark:text-white"
+                                                                        <li class="text-xl leading-4 text-slate-900 "
                                                                             data-v-7373e9ae=""><button class=""
                                                                                 data-v-7373e9ae=""><span
                                                                                     data-v-7373e9ae=""><svg
@@ -3531,14 +3530,14 @@
                                     <!---->
                                 </div>
                                 <div class="lg:col-span-4 col-span-12">
-                                    <div class="card rounded-md bg-white dark:bg-slate-800 lg:h-full  shadow-base"
+                                    <div class="card rounded-md bg-white  lg:h-full  shadow-base"
                                         data-v-888d181c="">
                                         <div class="card-body flex flex-col p-6" data-v-888d181c="">
                                             <header
-                                                class="flex mb-5 items-center border-b border-slate-100 dark:border-slate-700 pb-5  -mx-6 px-6"
+                                                class="flex mb-5 items-center border-b border-slate-100  pb-5  -mx-6 px-6"
                                                 data-v-888d181c="">
                                                 <div class="flex-1" data-v-888d181c="">
-                                                    <div class="card-title text-slate-900 dark:text-white"
+                                                    <div class="card-title text-slate-900 "
                                                         data-v-888d181c="">Recent activity</div>
                                                     <!---->
                                                 </div>
@@ -3548,7 +3547,7 @@
                                                             <button id="headlessui-menu-button-13" type="button"
                                                                 aria-haspopup="true" aria-expanded="false"
                                                                 data-headlessui-state="" class="block w-full"><span
-                                                                    class="text-lg inline-flex h-6 w-6 flex-col items-center justify-center border border-slate-200 dark:border-slate-700 rounded dark:text-slate-400"><span><svg
+                                                                    class="text-lg inline-flex h-6 w-6 flex-col items-center justify-center border border-slate-200  rounded "><span><svg
                                                                             xmlns="http://www.w3.org/2000/svg"
                                                                             xmlns:xlink="http://www.w3.org/1999/xlink"
                                                                             aria-hidden="true" role="img" width="1em"
@@ -3571,7 +3570,7 @@
                                             <div class="card-text h-full" data-v-888d181c="">
                                                 <ul class="list-item space-y-3 h-full overflow-x-auto">
                                                     <li
-                                                        class="flex items-center space-x-3 border-b border-slate-100 dark:border-slate-700 last:border-b-0 pb-3 last:pb-0">
+                                                        class="flex items-center space-x-3 border-b border-slate-100  last:border-b-0 pb-3 last:pb-0">
                                                         <div>
                                                             <div class="w-8 h-8 rounded-[100%]">
                                                                 <!-- <img
@@ -3582,17 +3581,17 @@
                                                         <div
                                                             class="text-start overflow-hidden text-ellipsis whitespace-nowrap max-w-[63%]">
                                                             <div
-                                                                class="text-sm text-slate-600 dark:text-slate-300 overflow-hidden text-ellipsis whitespace-nowrap">
+                                                                class="text-sm text-slate-600  overflow-hidden text-ellipsis whitespace-nowrap">
                                                                 Finance KPI Mobile app launch preparion meeting. </div>
                                                         </div>
                                                         <div class="flex-1 text-right">
                                                             <div
-                                                                class="text-sm font-light text-slate-400 dark:text-slate-400">
+                                                                class="text-sm font-light text-slate-400 ">
                                                                 1 hours </div>
                                                         </div>
                                                     </li>
                                                     <li
-                                                        class="flex items-center space-x-3 border-b border-slate-100 dark:border-slate-700 last:border-b-0 pb-3 last:pb-0">
+                                                        class="flex items-center space-x-3 border-b border-slate-100  last:border-b-0 pb-3 last:pb-0">
                                                         <div>
                                                             <div class="w-8 h-8 rounded-[100%]">
                                                                 <!-- <img
@@ -3603,17 +3602,17 @@
                                                         <div
                                                             class="text-start overflow-hidden text-ellipsis whitespace-nowrap max-w-[63%]">
                                                             <div
-                                                                class="text-sm text-slate-600 dark:text-slate-300 overflow-hidden text-ellipsis whitespace-nowrap">
+                                                                class="text-sm text-slate-600  overflow-hidden text-ellipsis whitespace-nowrap">
                                                                 Finance KPI Mobile app launch preparion meeting. </div>
                                                         </div>
                                                         <div class="flex-1 text-right">
                                                             <div
-                                                                class="text-sm font-light text-slate-400 dark:text-slate-400">
+                                                                class="text-sm font-light text-slate-400 ">
                                                                 1 hours </div>
                                                         </div>
                                                     </li>
                                                     <li
-                                                        class="flex items-center space-x-3 border-b border-slate-100 dark:border-slate-700 last:border-b-0 pb-3 last:pb-0">
+                                                        class="flex items-center space-x-3 border-b border-slate-100  last:border-b-0 pb-3 last:pb-0">
                                                         <div>
                                                             <div class="w-8 h-8 rounded-[100%]">
                                                                 <!-- <img
@@ -3624,17 +3623,17 @@
                                                         <div
                                                             class="text-start overflow-hidden text-ellipsis whitespace-nowrap max-w-[63%]">
                                                             <div
-                                                                class="text-sm text-slate-600 dark:text-slate-300 overflow-hidden text-ellipsis whitespace-nowrap">
+                                                                class="text-sm text-slate-600  overflow-hidden text-ellipsis whitespace-nowrap">
                                                                 Finance KPI Mobile app launch preparion meeting. </div>
                                                         </div>
                                                         <div class="flex-1 text-right">
                                                             <div
-                                                                class="text-sm font-light text-slate-400 dark:text-slate-400">
+                                                                class="text-sm font-light text-slate-400 ">
                                                                 1 hours </div>
                                                         </div>
                                                     </li>
                                                     <li
-                                                        class="flex items-center space-x-3 border-b border-slate-100 dark:border-slate-700 last:border-b-0 pb-3 last:pb-0">
+                                                        class="flex items-center space-x-3 border-b border-slate-100  last:border-b-0 pb-3 last:pb-0">
                                                         <div>
                                                             <div class="w-8 h-8 rounded-[100%]">
                                                                 <!-- <img
@@ -3645,17 +3644,17 @@
                                                         <div
                                                             class="text-start overflow-hidden text-ellipsis whitespace-nowrap max-w-[63%]">
                                                             <div
-                                                                class="text-sm text-slate-600 dark:text-slate-300 overflow-hidden text-ellipsis whitespace-nowrap">
+                                                                class="text-sm text-slate-600  overflow-hidden text-ellipsis whitespace-nowrap">
                                                                 Finance KPI Mobile app launch preparion meeting. </div>
                                                         </div>
                                                         <div class="flex-1 text-right">
                                                             <div
-                                                                class="text-sm font-light text-slate-400 dark:text-slate-400">
+                                                                class="text-sm font-light text-slate-400 ">
                                                                 1 hours </div>
                                                         </div>
                                                     </li>
                                                     <li
-                                                        class="flex items-center space-x-3 border-b border-slate-100 dark:border-slate-700 last:border-b-0 pb-3 last:pb-0">
+                                                        class="flex items-center space-x-3 border-b border-slate-100  last:border-b-0 pb-3 last:pb-0">
                                                         <div>
                                                             <div class="w-8 h-8 rounded-[100%]">
                                                                 <!-- <img
@@ -3666,17 +3665,17 @@
                                                         <div
                                                             class="text-start overflow-hidden text-ellipsis whitespace-nowrap max-w-[63%]">
                                                             <div
-                                                                class="text-sm text-slate-600 dark:text-slate-300 overflow-hidden text-ellipsis whitespace-nowrap">
+                                                                class="text-sm text-slate-600  overflow-hidden text-ellipsis whitespace-nowrap">
                                                                 Finance KPI Mobile app launch preparion meeting. </div>
                                                         </div>
                                                         <div class="flex-1 text-right">
                                                             <div
-                                                                class="text-sm font-light text-slate-400 dark:text-slate-400">
+                                                                class="text-sm font-light text-slate-400 ">
                                                                 1 hours </div>
                                                         </div>
                                                     </li>
                                                     <li
-                                                        class="flex items-center space-x-3 border-b border-slate-100 dark:border-slate-700 last:border-b-0 pb-3 last:pb-0">
+                                                        class="flex items-center space-x-3 border-b border-slate-100  last:border-b-0 pb-3 last:pb-0">
                                                         <div>
                                                             <div class="w-8 h-8 rounded-[100%]">
                                                                 <!-- <img
@@ -3687,17 +3686,17 @@
                                                         <div
                                                             class="text-start overflow-hidden text-ellipsis whitespace-nowrap max-w-[63%]">
                                                             <div
-                                                                class="text-sm text-slate-600 dark:text-slate-300 overflow-hidden text-ellipsis whitespace-nowrap">
+                                                                class="text-sm text-slate-600  overflow-hidden text-ellipsis whitespace-nowrap">
                                                                 Finance KPI Mobile app launch preparion meeting. </div>
                                                         </div>
                                                         <div class="flex-1 text-right">
                                                             <div
-                                                                class="text-sm font-light text-slate-400 dark:text-slate-400">
+                                                                class="text-sm font-light text-slate-400 ">
                                                                 1 hours </div>
                                                         </div>
                                                     </li>
                                                     <li
-                                                        class="flex items-center space-x-3 border-b border-slate-100 dark:border-slate-700 last:border-b-0 pb-3 last:pb-0">
+                                                        class="flex items-center space-x-3 border-b border-slate-100  last:border-b-0 pb-3 last:pb-0">
                                                         <div>
                                                             <div class="w-8 h-8 rounded-[100%]">
                                                                 <!-- <img
@@ -3708,17 +3707,17 @@
                                                         <div
                                                             class="text-start overflow-hidden text-ellipsis whitespace-nowrap max-w-[63%]">
                                                             <div
-                                                                class="text-sm text-slate-600 dark:text-slate-300 overflow-hidden text-ellipsis whitespace-nowrap">
+                                                                class="text-sm text-slate-600  overflow-hidden text-ellipsis whitespace-nowrap">
                                                                 Finance KPI Mobile app launch preparion meeting. </div>
                                                         </div>
                                                         <div class="flex-1 text-right">
                                                             <div
-                                                                class="text-sm font-light text-slate-400 dark:text-slate-400">
+                                                                class="text-sm font-light text-slate-400 ">
                                                                 1 hours </div>
                                                         </div>
                                                     </li>
                                                     <li
-                                                        class="flex items-center space-x-3 border-b border-slate-100 dark:border-slate-700 last:border-b-0 pb-3 last:pb-0">
+                                                        class="flex items-center space-x-3 border-b border-slate-100  last:border-b-0 pb-3 last:pb-0">
                                                         <div>
                                                             <div class="w-8 h-8 rounded-[100%]">
                                                                 <!-- <img
@@ -3729,17 +3728,17 @@
                                                         <div
                                                             class="text-start overflow-hidden text-ellipsis whitespace-nowrap max-w-[63%]">
                                                             <div
-                                                                class="text-sm text-slate-600 dark:text-slate-300 overflow-hidden text-ellipsis whitespace-nowrap">
+                                                                class="text-sm text-slate-600  overflow-hidden text-ellipsis whitespace-nowrap">
                                                                 Finance KPI Mobile app launch preparion meeting. </div>
                                                         </div>
                                                         <div class="flex-1 text-right">
                                                             <div
-                                                                class="text-sm font-light text-slate-400 dark:text-slate-400">
+                                                                class="text-sm font-light text-slate-400 ">
                                                                 1 hours </div>
                                                         </div>
                                                     </li>
                                                     <li
-                                                        class="flex items-center space-x-3 border-b border-slate-100 dark:border-slate-700 last:border-b-0 pb-3 last:pb-0">
+                                                        class="flex items-center space-x-3 border-b border-slate-100  last:border-b-0 pb-3 last:pb-0">
                                                         <div>
                                                             <div class="w-8 h-8 rounded-[100%]">
                                                                 <!-- <img
@@ -3750,12 +3749,12 @@
                                                         <div
                                                             class="text-start overflow-hidden text-ellipsis whitespace-nowrap max-w-[63%]">
                                                             <div
-                                                                class="text-sm text-slate-600 dark:text-slate-300 overflow-hidden text-ellipsis whitespace-nowrap">
+                                                                class="text-sm text-slate-600  overflow-hidden text-ellipsis whitespace-nowrap">
                                                                 Finance KPI Mobile app launch preparion meeting. </div>
                                                         </div>
                                                         <div class="flex-1 text-right">
                                                             <div
-                                                                class="text-sm font-light text-slate-400 dark:text-slate-400">
+                                                                class="text-sm font-light text-slate-400 ">
                                                                 1 hours </div>
                                                         </div>
                                                     </li>
@@ -3766,23 +3765,23 @@
                                     <!---->
                                 </div>
                                 <div class="lg:col-span-8 col-span-12">
-                                    <div class="card rounded-md bg-white dark:bg-slate-800 lg:h-full  shadow-base"
+                                    <div class="card rounded-md bg-white  lg:h-full  shadow-base"
                                         data-v-888d181c="">
                                         <div class="card-body flex flex-col p-6" data-v-888d181c="">
                                             <header
-                                                class="flex mb-5 items-center border-b border-slate-100 dark:border-slate-700 pb-5  -mx-6 px-6"
+                                                class="flex mb-5 items-center border-b border-slate-100  pb-5  -mx-6 px-6"
                                                 data-v-888d181c="">
                                                 <div class="flex-1" data-v-888d181c="">
-                                                    <div class="card-title text-slate-900 dark:text-white"
+                                                    <div class="card-title text-slate-900 "
                                                         data-v-888d181c="">Most sales</div>
                                                     <!---->
                                                 </div>
                                                 <div class="flex-0" data-v-888d181c="">
                                                     <div
-                                                        class="border border-slate-200 dark:border-slate-700 dark:bg-slate-900 rounded p-1 flex items-center">
+                                                        class="border border-slate-200   rounded p-1 flex items-center">
                                                         <span
-                                                            class="flex-1 text-sm font-normal px-3 py-1 transition-all duration-150 rounded cursor-pointer dark:text-slate-300">Global</span><span
-                                                            class="flex-1 text-sm font-normal px-3 py-1 rounded transition-all duration-150 cursor-pointer bg-slate-900 text-white dark:bg-slate-700 dark:text-slate-300">USA</span>
+                                                            class="flex-1 text-sm font-normal px-3 py-1 transition-all duration-150 rounded cursor-pointer ">Global</span><span
+                                                            class="flex-1 text-sm font-normal px-3 py-1 rounded transition-all duration-150 cursor-pointer bg-slate-900 text-white ">USA</span>
                                                     </div>
                                                 </div>
                                             </header>
@@ -3791,44 +3790,44 @@
                                                 <div class="md:flex items-center">
                                                     <div class="flex-none">
                                                         <h4
-                                                            class="text-slate-600 dark:text-slate-200 text-sm font-normal mb-[6px]">
+                                                            class="text-slate-600  text-sm font-normal mb-[6px]">
                                                             Total earnings </h4>
                                                         <div
-                                                            class="tetx-lg font-medium mb-[6px] dark:text-white text-slate-900">
+                                                            class="tetx-lg font-medium mb-[6px]  text-slate-900">
                                                             $12,65,64787.00 </div>
                                                         <!---->
-                                                        <div class="text-xs font-light dark:text-slate-200"><span
+                                                        <div class="text-xs font-light "><span
                                                                 class="text-primary-500">+08%</span> From last month
                                                         </div>
                                                         <ul
-                                                            class="bg-slate-50 dark:bg-slate-900 rounded p-4 min-w-[184px] space-y-5 mt-4">
+                                                            class="bg-slate-50  rounded p-4 min-w-[184px] space-y-5 mt-4">
                                                             <li
-                                                                class="flex justify-between text-xs text-slate-600 dark:text-slate-300">
+                                                                class="flex justify-between text-xs text-slate-600 ">
                                                                 <span class="flex space-x-2 items-center"><span
                                                                         class="bg-primary-500 ring-primary-500 inline-flex h-[6px] w-[6px] bg-primary-500 ring-opacity-25 rounded-full ring-4"></span><span>Nevada</span></span><span>$125k</span>
                                                             </li>
                                                             <li
-                                                                class="flex justify-between text-xs text-slate-600 dark:text-slate-300">
+                                                                class="flex justify-between text-xs text-slate-600 ">
                                                                 <span class="flex space-x-2 items-center"><span
                                                                         class="bg-success-500 ring-success-500 inline-flex h-[6px] w-[6px] bg-primary-500 ring-opacity-25 rounded-full ring-4"></span><span>Colorado</span></span><span>$$325k</span>
                                                             </li>
                                                             <li
-                                                                class="flex justify-between text-xs text-slate-600 dark:text-slate-300">
+                                                                class="flex justify-between text-xs text-slate-600 ">
                                                                 <span class="flex space-x-2 items-center"><span
                                                                         class="bg-info-500 ring-info-500 inline-flex h-[6px] w-[6px] bg-primary-500 ring-opacity-25 rounded-full ring-4"></span><span>Iowa</span></span><span>$67</span>
                                                             </li>
                                                             <li
-                                                                class="flex justify-between text-xs text-slate-600 dark:text-slate-300">
+                                                                class="flex justify-between text-xs text-slate-600 ">
                                                                 <span class="flex space-x-2 items-center"><span
                                                                         class="bg-warning-500 ring-warning-500 inline-flex h-[6px] w-[6px] bg-primary-500 ring-opacity-25 rounded-full ring-4"></span><span>Arkansas</span></span><span>$354k</span>
                                                             </li>
                                                             <li
-                                                                class="flex justify-between text-xs text-slate-600 dark:text-slate-300">
+                                                                class="flex justify-between text-xs text-slate-600 ">
                                                                 <span class="flex space-x-2 items-center"><span
                                                                         class="bg-success-500 ring-success-500 inline-flex h-[6px] w-[6px] bg-primary-500 ring-opacity-25 rounded-full ring-4"></span><span>Wyoming</span></span><span>$195k</span>
                                                             </li>
                                                             <li
-                                                                class="flex justify-between text-xs text-slate-600 dark:text-slate-300">
+                                                                class="flex justify-between text-xs text-slate-600 ">
                                                                 <span class="flex space-x-2 items-center"><span
                                                                         class="bg-secondary-500 ring-secondary-500 inline-flex h-[6px] w-[6px] bg-primary-500 ring-opacity-25 rounded-full ring-4"></span><span>Other
                                                                         countries</span></span><span>$295k</span></li>
@@ -3865,14 +3864,14 @@
                                     <!---->
                                 </div>
                                 <div class="lg:col-span-4 col-span-12">
-                                    <div class="card rounded-md bg-white dark:bg-slate-800 lg:h-full  shadow-base"
+                                    <div class="card rounded-md bg-white  lg:h-full  shadow-base"
                                         data-v-888d181c="">
                                         <div class="card-body flex flex-col p-6" data-v-888d181c="">
                                             <header
-                                                class="flex mb-5 items-center border-b border-slate-100 dark:border-slate-700 pb-5  -mx-6 px-6"
+                                                class="flex mb-5 items-center border-b border-slate-100  pb-5  -mx-6 px-6"
                                                 data-v-888d181c="">
                                                 <div class="flex-1" data-v-888d181c="">
-                                                    <div class="card-title text-slate-900 dark:text-white"
+                                                    <div class="card-title text-slate-900 "
                                                         data-v-888d181c="">overview</div>
                                                     <!---->
                                                 </div>
@@ -3882,7 +3881,7 @@
                                                                 id="headlessui-listbox-button-15" type="button"
                                                                 aria-haspopup="true" aria-expanded="false"
                                                                 data-headlessui-state=""
-                                                                class="relative w-full flex justify-between cursor-pointer rounded-md bg-white items-center min-w-[110px] form-control py-2 px-3 dark:text-slate-300"><span
+                                                                class="relative w-full flex justify-between cursor-pointer rounded-md bg-white items-center min-w-[110px] form-control py-2 px-3 "><span
                                                                     class="text-sm">January</span><span><span><svg
                                                                             xmlns="http://www.w3.org/2000/svg"
                                                                             xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -4043,29 +4042,29 @@
                                                     </div>
                                                 </div>
                                                 <div
-                                                    class="bg-slate-50 dark:bg-slate-900 rounded p-4 mt-8 flex justify-between flex-wrap">
+                                                    class="bg-slate-50  rounded p-4 mt-8 flex justify-between flex-wrap">
                                                     <div class="space-y-1">
                                                         <h4
-                                                            class="text-slate-600 dark:text-slate-200 text-xs font-normal">
+                                                            class="text-slate-600  text-xs font-normal">
                                                             Invested amount </h4>
-                                                        <div class="tetx-sm font-medium text-slate-900 dark:text-white">
+                                                        <div class="tetx-sm font-medium text-slate-900 ">
                                                             $8264.35 </div>
                                                         <div
-                                                            class="text-slate-500 dark:text-slate-300 text-xs font-normal">
+                                                            class="text-slate-500  text-xs font-normal">
                                                             +0.001.23 (0.2%) </div>
                                                     </div>
                                                     <div class="space-y-1">
                                                         <h4
-                                                            class="text-slate-600 dark:text-slate-200 text-xs font-normal">
+                                                            class="text-slate-600  text-xs font-normal">
                                                             Invested amount </h4>
-                                                        <div class="tetx-sm font-medium text-slate-900 dark:text-white">
+                                                        <div class="tetx-sm font-medium text-slate-900 ">
                                                             $8264.35 </div>
                                                     </div>
                                                     <div class="space-y-1">
                                                         <h4
-                                                            class="text-slate-600 dark:text-slate-200 text-xs font-normal">
+                                                            class="text-slate-600  text-xs font-normal">
                                                             Invested amount </h4>
-                                                        <div class="tetx-sm font-medium text-slate-900 dark:text-white">
+                                                        <div class="tetx-sm font-medium text-slate-900 ">
                                                             $8264.35 </div>
                                                     </div>
                                                 </div>
@@ -4081,7 +4080,7 @@
             </div>
             <!---->
             <footer class="static ml-[248px]">
-                <div class="site-footer px-6 bg-white dark:bg-slate-800 text-slate-500 dark:text-slate-300 py-4">
+                <div class="site-footer px-6 bg-white  text-slate-500  py-4">
                     <div class="grid md:grid-cols-2 grid-cols-1 md:gap-5">
                         <div class="text-center md:text-start text-sm"> COPYRIGHT © 2022 DashCode, All rights Reserved
                         </div>

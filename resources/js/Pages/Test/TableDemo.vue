@@ -1,5 +1,5 @@
 <template>
-    <div class="border border-gray-300 shadow-sm bg-white rounded-lg dark:bg-gray-800 dark:border-gray-700">
+    <div class="border border-gray-300 shadow-sm bg-white rounded-lg">
             <div class="p-4 mb-1 w-full">
 
                 <div class="sm:flex">

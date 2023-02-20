@@ -23,7 +23,7 @@
         </nav>
 
         <div class="mb-4 flex justify-between">
-            <h2 class="text-3xl font-semibold leading-7 text-gray-900 dark:text-gray-200 sm:text-3xl sm:truncate">
+            <h2 class="text-3xl font-semibold leading-7 text-gray-900  sm:text-3xl sm:truncate">
                 {{ __('Blood Donation') }}
             </h2>
 
@@ -83,7 +83,7 @@
         </div>
 
         <transition enter-active-class="transition ease-out duration-100" enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100" leave-active-class="transition ease-in duration-100" leave-from-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
-            <div v-if="showFilter" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 xl:grid-cols-6 gap-5 mb-4 bg-white rounded-lg shadow-xs dark:bg-gray-800 items-center p-4">
+            <div v-if="showFilter" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 xl:grid-cols-6 gap-5 mb-4 bg-white rounded-lg shadow-xs  items-center p-4">
                 <div>
                     <label for="keyword" class="block text-sm font-medium text-gray-700">{{ __('Search') }}</label>
                     <div class="mt-1">
@@ -104,9 +104,9 @@
 
        <template v-else-if="!loading && blood_donations && blood_donations.data.length">
             <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-                <span v-for="blood_donation in blood_donations.data" :key="blood_donation.id" class="block p-6 bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                <span v-for="blood_donation in blood_donations.data" :key="blood_donation.id" class="block p-6 bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100   ">
                     <div class="flex flex-wrap justify-between items-start">
-                        <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ blood_donation.blood_donor?.name }}</h2>
+                        <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">{{ blood_donation.blood_donor?.name }}</h2>
 
                         <Menu as="div" class="relative inline-block text-left">
                             <div>
@@ -142,8 +142,8 @@
                             </transition>
                         </Menu>
                     </div>
-                    <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ blood_donation.blood_donor?.blood_group ?? '' }}</h2>
-                    <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ blood_donation.bags }} bags</h2>
+                    <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">{{ blood_donation.blood_donor?.blood_group ?? '' }}</h2>
+                    <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">{{ blood_donation.bags }} bags</h2>
                 </span>
             </div>
             <Pagination :data="blood_donations" v-if="blood_donations && blood_donations.data.length && blood_donations.total > 20" class="mt-5"/>

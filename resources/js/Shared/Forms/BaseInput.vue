@@ -1,5 +1,5 @@
 <template>
-    <input :type="type" :id="id" class="bg-gray-50 border rounded-lg block w-full dark:bg-gray-700 dark:placeholder-gray-400 dark:text-white" :class="[className, hasError ? errorClass:defaultClass]"
+    <input :type="type" :id="id" class="bg-gray-50 border rounded-lg block w-full" :class="[className, hasError ? errorClass:defaultClass]"
     :placeholder="placeholder ? __(placeholder) : ''" @input="$emit('update:modelValue', $event.target.value)" :value="modelValue" :disabled="disabled">
     <ErrorMessage :name="hasError"/>
 </template>
@@ -38,9 +38,9 @@
         },
         data(){
             return {
-                errorClass: 'border-red-600 focus:ring-red-500 focus:border-red-500 dark:border-red-600 dark:focus:ring-red-500 dark:focus:border-red-500',
+                errorClass: 'border-red-600 focus:ring-red-500 focus:border-red-500',
 
-                defaultClass: 'border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 dark:border-gray-600  dark:focus:ring-blue-500 dark:focus:border-blue-500'
+                defaultClass: 'border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500'
             }
         }
     };

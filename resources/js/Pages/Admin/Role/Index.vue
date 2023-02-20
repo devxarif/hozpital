@@ -4,7 +4,7 @@
 
 
         <!-- <button type="button"
-            class="hs-dropdown-toggle inline-flex flex-shrink-0 justify-center items-center gap-2 h-[2.375rem] w-[2.375rem] rounded-full font-medium bg-white text-gray-700 align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-white transition-all text-xs dark:bg-gray-800 dark:hover:bg-slate-800 dark:text-gray-400 dark:hover:text-white dark:focus:ring-gray-700 dark:focus:ring-offset-gray-800"
+            class="hs-dropdown-toggle inline-flex flex-shrink-0 justify-center items-center gap-2 h-[2.375rem] w-[2.375rem] rounded-full font-medium bg-white text-gray-700 align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-white transition-all text-xs"
             data-hs-offcanvas="#hs-offcanvas-right">
             <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                 viewBox="0 0 16 16">
@@ -15,14 +15,14 @@
         </button>
 
         <div id="hs-offcanvas-right"
-        class="hs-offcanvas hs-offcanvas-open:translate-x-0 translate-x-full fixed top-0 right-0 transition-all duration-300 transform h-full max-w-xs w-full z-[60] bg-white border-l dark:bg-gray-800 dark:border-gray-700"
+        class="hs-offcanvas hs-offcanvas-open:translate-x-0 translate-x-full fixed top-0 right-0 transition-all duration-300 transform h-full max-w-xs w-full z-[60] bg-white border-l  "
         tabindex="-1">
-        <div class="flex justify-between items-center py-3 px-4 border-b dark:border-gray-700">
-            <h3 class="font-bold text-gray-800 dark:text-white">
+        <div class="flex justify-between items-center py-3 px-4 border-b ">
+            <h3 class="font-bold text-gray-800 ">
                 Offcanvas title
             </h3>
             <button type="button"
-                class="hs-dropdown-toggle inline-flex flex-shrink-0 justify-center items-center h-8 w-8 rounded-md text-gray-500 hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-white text-sm dark:text-gray-500 dark:hover:text-gray-400 dark:focus:ring-gray-700 dark:focus:ring-offset-gray-800"
+                class="hs-dropdown-toggle inline-flex flex-shrink-0 justify-center items-center h-8 w-8 rounded-md text-gray-500 hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-white text-sm "
                 data-hs-offcanvas="#hs-offcanvas-right">
                 <span class="sr-only">Close modal</span>
                 <svg class="w-3.5 h-3.5" width="8" height="8" viewBox="0 0 8 8" fill="none"
@@ -34,7 +34,7 @@
             </button>
         </div>
         <div class="p-4">
-            <p class="text-gray-800 dark:text-gray-400">
+            <p class="text-gray-800 ">
                 Some text as placeholder. In real life you can have the
                 elements you have chosen. Like, text, images, lists, etc.
             </p>
@@ -113,7 +113,7 @@
                                                 </button>
                                                 <div :class="hide == role.id ? '' : 'hidden'" class="flex flex-wrap gap-2 text-center">
                                                     <template v-if="role.permissions.length > 0">
-                                                        <span v-for="per in role.permissions" :key="per.id" class="bg-blue-500 text-white text-sm py-0.5 dark:bg-blue-200 dark:text-blue-800 p-1  rounded font-bold">{{ per.name }}</span>
+                                                        <span v-for="per in role.permissions" :key="per.id" class="bg-blue-500 text-white text-sm py-0.5 p-1  rounded font-bold">{{ per.name }}</span>
                                                     </template>
                                                     <template v-else>
                                                         <div class="bg-blue-500 text-white p-1 px-3 rounded font-bold">

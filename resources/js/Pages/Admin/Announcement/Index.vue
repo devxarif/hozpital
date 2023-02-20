@@ -22,7 +22,7 @@
             </ol>
         </nav>
         <div class="mb-4 flex justify-between">
-            <h2 class="text-3xl font-semibold leading-7 text-gray-900 dark:text-gray-200 sm:text-3xl sm:truncate">
+            <h2 class="text-3xl font-semibold leading-7 text-gray-900  sm:text-3xl sm:truncate">
                 {{ __('Announcement') }}
             </h2>
 
@@ -80,9 +80,9 @@
         <!-- Card View  -->
        <template v-else-if="!loading && announcements && announcements.data.length &&viewType == 'card'">
            <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-               <span v-for="announcement in announcements.data" :key="announcement.id" class="block p-6 bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+               <span v-for="announcement in announcements.data" :key="announcement.id" class="block p-6 bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100   ">
                    <div class="flex flex-wrap justify-between items-start">
-                        <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ announcement.title }}</h2>
+                        <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">{{ announcement.title }}</h2>
 
                        <Menu as="div" class="relative inline-block text-left">
                            <div>
@@ -118,10 +118,10 @@
                            </transition>
                        </Menu>
                    </div>
-                   <span :class="announcement.type == 'public' ? 'bg-green-500':'bg-red-500'" class="text-white text-sm font-medium mr-2 px-3 py-2 rounded-full dark:bg-green-900 dark:text-green-300 capitalize">
+                   <span :class="announcement.type == 'public' ? 'bg-green-500':'bg-red-500'" class="text-white text-sm font-medium mr-2 px-3 py-2 rounded-full   capitalize">
                         {{ announcement.type }}
                     </span>
-                   <p class="my-3 font-normal text-gray-700 dark:text-gray-400">
+                   <p class="my-3 font-normal text-gray-700 ">
                        {{ announcement.description }}
                    </p>
                </span>
@@ -155,7 +155,7 @@
                                     </td>
                                     <td class="p-4 text-sm text-gray-500 break-all">
                                         <div class="mt-5">
-                                            <span :class="announcement.type == 'public' ? 'bg-green-500':'bg-red-500'" class="text-white text-sm font-medium mr-2 px-3 py-2 rounded-full dark:bg-green-900 dark:text-green-300 capitalize">
+                                            <span :class="announcement.type == 'public' ? 'bg-green-500':'bg-red-500'" class="text-white text-sm font-medium mr-2 px-3 py-2 rounded-full   capitalize">
                                                 {{ announcement.type }}
                                             </span>
                                         </div>
