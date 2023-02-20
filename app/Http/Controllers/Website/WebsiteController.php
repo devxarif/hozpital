@@ -11,6 +11,7 @@ use App\Models\Feature;
 use App\Models\Testimonial;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Department;
 use Artesaos\SEOTools\Facades\SEOMeta;
 use App\Services\Midtrans\CreateSnapTokenService;
 use App\Traits\PaymentAble;
@@ -22,8 +23,9 @@ class WebsiteController extends Controller
 
     public function home()
     {
+        $data['departments'] = Department::withCount('doctors')->latest('doctors_count')->take(6)->get();
 
-        return view('website.pages.home');
+        return view('website.pages.home', $data);
 
         $content = metaContent('home');
         $this->seo()->setTitle($content->title);
