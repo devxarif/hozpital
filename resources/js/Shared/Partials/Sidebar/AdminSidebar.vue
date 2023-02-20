@@ -1,30 +1,7 @@
 <template>
   <div class="hidden md:fixed md:inset-y-0 md:flex md:w-64 md:flex-col">
-      <!-- Sidebar component, swap this element with another sidebar if you like -->
-      <div class="flex flex-grow flex-col overflow-y-auto border-r border-gray-200 bg-white pt-5">
-        <div class="flex flex-shrink-0 items-center px-4">
-          <!-- <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=blue&amp;shade=600" alt="Your Company"> -->
-        </div>
-        <div class="mt-5 flex flex-grow flex-col">
-          <nav class="flex-1 space-y-1 px-2 pb-4">
-
-              <a href="#" class="bg-gray-100 text-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
-                <svg class="text-gray-500 mr-3 flex-shrink-0 h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"></path>
-                </svg>
-                Admin Dashboard
-              </a>
-
-              <a href="#" class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
-                <svg class="text-gray-400 group-hover:text-gray-500 mr-3 flex-shrink-0 h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z"></path>
-                </svg>
-                Team
-              </a>
-          </nav>
-        </div>
-      </div>
-    </div> <div class="hidden md:fixed md:inset-y-0 md:flex md:w-64 md:flex-col">
+    </div>
+    <div class="hidden md:fixed md:inset-y-0 md:flex md:w-64 md:flex-col">
       <div class="flex min-h-0 flex-1 flex-col bg-slate-800">
         <div class="flex flex-1 flex-col overflow-y-auto pt-5 pb-4">
           <div class="flex flex-shrink-0 items-center px-4">
@@ -157,7 +134,7 @@
           </nav>
         </div>
 
-        <!-- <div class="flex flex-shrink-0 bg-gray-700 p-4">
+        <div class="flex flex-shrink-0 bg-gray-700 p-4">
           <a href="#" class="group block w-full flex-shrink-0">
             <div class="flex items-center">
               <div>
@@ -169,56 +146,7 @@
               </div>
             </div>
           </a>
-        </div> -->
-
-
-        <Menu as="div" class="inline-block text-left">
-            <div class="flex flex-shrink-0 bg-gray-700 p-4">
-                <a href="javascript:void(0)" class="group block w-full flex-shrink-0">
-                    <div class="flex items-center">
-                    <div>
-                        <img class="inline-block h-9 w-9 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=2&amp;w=256&amp;h=256&amp;q=80" alt="">
-                    </div>
-                    <div class="ml-3">
-                        <p class="text-sm font-medium text-white">Admin</p>
-                        <p class="text-xs font-medium text-gray-300 group-hover:text-gray-200">View profile</p>
-                    </div>
-                    </div>
-                </a>
-            </div>
-
-            <!-- <div>
-                <MenuButton class="inline-flex w-full justify-center rounded-md px-4 py-2 text-sm font-medium text-gray-700 focus:outline-none">
-                    <img class="object-cover w-10 h-10 rounded-full" :src="role == 'owner' ? currentOrganization.organization_logo: $page.props.authenticatedUser.avatar_url" alt="" aria-hidden="true" />
-                </MenuButton>
-            </div> -->
-
-            <transition enter-active-class="transition ease-out duration-100" enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100" leave-active-class="transition ease-in duration-75" leave-from-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
-            <MenuItems class="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                <div class="px-4 py-3">
-                <p class="text-sm">{{ $page.props.authenticatedUser.name }}</p>
-                <p class="truncate text-sm font-medium text-gray-900">{{ $page.props.authenticatedUser.email }}</p>
-                </div>
-                <div class="py-1">
-                <MenuItem v-slot="{ active }">
-                    <a href="#" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm']">Profile</a>
-                </MenuItem>
-                <MenuItem v-slot="{ active }">
-                    <a href="#" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm']">Settings</a>
-                </MenuItem>
-                </div>
-                <div class="py-1">
-                    <MenuItem v-slot="{ active }">
-                    <Link href="/logout" method="post" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block w-full px-4 py-2 text-left text-sm']">Sign out</Link>
-                    </MenuItem>
-                </div>
-            </MenuItems>
-            </transition>
-        </Menu>
-
-
-
-
+        </div>
       </div>
     </div>
 

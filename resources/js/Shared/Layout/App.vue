@@ -72,8 +72,11 @@
 
         <!-- Static sidebar for desktop -->
         <Sidebar/>
+        <!-- <Sidebar :showSidebar="showSidebar"/> -->
+        <!-- <div class="flex flex-1 flex-col" :class="!showSidebar ? 'lg:pl-64':''"> -->
         <div class="flex flex-1 flex-col lg:pl-64">
-            <Header />
+            <Header/>
+            <!-- <Header @updateSidebar="toggleSidebar" /> -->
             <main class="p-8 h-screen">
                 <!-- Page header -->
                 <!-- <div class="bg-white shadow">
@@ -158,11 +161,13 @@
         },
         data() {
             return {
-                showSSidebar: true
+                showSidebar: true
             }
         },
         methods: {
-
+            toggleSidebar(type){
+                this.showSidebar = type
+            }
         },
         watch: {
             pageFlashes: {
