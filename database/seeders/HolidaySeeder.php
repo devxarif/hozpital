@@ -20,7 +20,8 @@ class HolidaySeeder extends Seeder
         $this->createHoliday($bdCountry);
     }
 
-    public function createHoliday($country){
+    public function createHoliday($country)
+    {
         $holidays = getHolidays($country->code);
 
         for ($i = 0; $i < count($holidays); $i++) {

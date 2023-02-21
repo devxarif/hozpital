@@ -1,9 +1,9 @@
 <?php
 
 use App\Models\Patient;
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
@@ -17,12 +17,11 @@ return new class extends Migration
         Schema::create('reports', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(Patient::class)->constrained()->cascadeOnDelete();
-            $table->enum('type', ['operation','birth','death'])->default('operation');
+            $table->enum('type', ['operation', 'birth', 'death'])->default('operation');
             $table->text('description')->nullable();
             $table->timestamps();
         });
     }
-
 
     /**
      * Reverse the migrations.

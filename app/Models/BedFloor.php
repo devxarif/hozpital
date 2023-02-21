@@ -3,9 +3,9 @@
 namespace App\Models;
 
 use App\Http\Traits\Sluggable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class BedFloor extends Model
 {

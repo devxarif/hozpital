@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Department;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\DepartmentCreateRequest;
 use App\Http\Requests\Admin\DepartmentUpdateRequest;
+use App\Models\Department;
 use App\Services\Admin\Department\CreateDepartmentService;
 use App\Services\Admin\Department\DeleteDepartmentService;
 use App\Services\Admin\Department\UpdateDepartmentService;
+use Illuminate\Http\Request;
 
 class DepartmentController extends Controller
 {
@@ -22,29 +22,29 @@ class DepartmentController extends Controller
     {
         $query = Department::query();
 
-        if($request->has('keyword') && $request->filled('keyword')){
+        if($request->has('keyword') && $request->filled('keyword')) {
             $query->whereLike('name', $request->keyword);
         }
 
         $departments = $query->latest()->paginate(20)->withQueryString();
 
-        return inertia('Admin/Department/Index',[
+        return inertia('Admin/Department/Index', [
             'departments' => $departments,
-            'filter' => $request
+            'filter' => $request,
         ]);
     }
 
-     /**
+    /**
      * Store a newly created resource in storage.
      *
-     * @param  DepartmentCreateRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(DepartmentCreateRequest $request)
     {
-        (new CreateDepartmentService())->execute($request);
+        (new CreateDepartmentService)->execute($request);
 
         $this->flashSuccess('Department created successfully');
+
         return back();
     }
 
@@ -62,13 +62,11 @@ class DepartmentController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param DepartmentUpdateRequest  $request
-     * @param Department  $department
      * @return \Illuminate\Http\Response
      */
     public function update(DepartmentUpdateRequest $request, Department $department)
     {
-        (new UpdateDepartmentService())->execute($request,$department);
+        (new UpdateDepartmentService)->execute($request, $department);
 
         return back();
     }
@@ -81,9 +79,10 @@ class DepartmentController extends Controller
      */
     public function destroy(Department $department)
     {
-        (new DeleteDepartmentService())->execute($department);
+        (new DeleteDepartmentService)->execute($department);
 
         $this->flashSuccess('Department deleted successfully');
+
         return back();
     }
 }

@@ -40,6 +40,7 @@ class TestimonialController extends Controller
         Testimonial::create($data);
 
         session()->flash('success', 'Testimonial created successfully!');
+
         return back();
     }
 
@@ -63,6 +64,7 @@ class TestimonialController extends Controller
         $testimonial->update($data);
 
         session()->flash('success', 'Testimonial updated successfully!');
+
         return back();
     }
 
@@ -71,6 +73,7 @@ class TestimonialController extends Controller
         $testimonial->delete();
 
         session()->flash('success', 'Testimonial deleted successfully!');
+
         return back();
     }
 }

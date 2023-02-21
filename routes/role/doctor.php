@@ -1,28 +1,22 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Doctor\BedController;
-use App\Http\Controllers\Doctor\EventController;
-use App\Http\Controllers\Doctor\NurseController;
-use App\Http\Controllers\Doctor\DoctorController;
-use App\Http\Controllers\Doctor\BedTypeController;
-use App\Http\Controllers\Doctor\HolidayController;
-use App\Http\Controllers\Doctor\PatientController;
-use App\Http\Controllers\Nurse\BedFloorController;
-use App\Http\Controllers\Doctor\BloodBankController;
-use App\Http\Controllers\Doctor\LeaveTypeController;
-use App\Http\Controllers\Doctor\AccountantController;
-use App\Http\Controllers\Doctor\BloodDonorController;
-use App\Http\Controllers\Doctor\DepartmentController;
-use App\Http\Controllers\Doctor\PharmacistController;
-use App\Http\Controllers\Doctor\AppointmentController;
-use App\Http\Controllers\Doctor\ManufactureController;
 use App\Http\Controllers\Doctor\AnnouncementController;
-use App\Http\Controllers\Doctor\BedAllotmentController;
-use App\Http\Controllers\Doctor\LeaveRequestController;
-use App\Http\Controllers\Doctor\PrescriptionController;
-use App\Http\Controllers\Doctor\BloodDonationController;
+use App\Http\Controllers\Doctor\AppointmentController;
 use App\Http\Controllers\Doctor\AppointmentScheduleController;
+use App\Http\Controllers\Doctor\BedAllotmentController;
+use App\Http\Controllers\Doctor\BedController;
+use App\Http\Controllers\Doctor\BedTypeController;
+use App\Http\Controllers\Doctor\BloodBankController;
+use App\Http\Controllers\Doctor\BloodDonationController;
+use App\Http\Controllers\Doctor\BloodDonorController;
+use App\Http\Controllers\Doctor\EventController;
+use App\Http\Controllers\Doctor\HolidayController;
+use App\Http\Controllers\Doctor\LeaveRequestController;
+use App\Http\Controllers\Doctor\LeaveTypeController;
+use App\Http\Controllers\Doctor\PatientController;
+use App\Http\Controllers\Doctor\PrescriptionController;
+use App\Http\Controllers\Nurse\BedFloorController;
+use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth'])->name('doctor.')->prefix('doctor')->group(function () {
     // Patient Routes
@@ -34,7 +28,7 @@ Route::middleware(['auth'])->name('doctor.')->prefix('doctor')->group(function (
     Route::resource('prescription', PrescriptionController::class);
 
     // Appointment Schedule Routes
-    Route::controller(AppointmentController::class)->group(function(){
+    Route::controller(AppointmentController::class)->group(function () {
         Route::get('appointment/list', 'index')->name('appointment.index');
         Route::put('appointment/status/{appointment}', 'statusUpdate')->name('appointment.status');
         // Route::put('appointmentSchedule/{appointmentSchedule}/status/update', 'statusUpdate')->name('appointmentSchedule.status');
@@ -42,7 +36,7 @@ Route::middleware(['auth'])->name('doctor.')->prefix('doctor')->group(function (
     });
 
     // Appointment Schedule Routes
-    Route::controller(AppointmentScheduleController::class)->group(function(){
+    Route::controller(AppointmentScheduleController::class)->group(function () {
         Route::get('appointment/schedule', 'index')->name('appointmentSchedule.index');
         Route::put('appointment/schedule/{appointmentSchedule}/status/update', 'statusUpdate')->name('appointmentSchedule.status');
         Route::put('appointment/schedule/{appointmentSchedule}/update', 'update')->name('appointmentSchedule.update');

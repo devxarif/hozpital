@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\ProductCategory;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Product\ProductCategoryCreateRequest;
 use App\Http\Requests\Admin\Product\ProductCategoryUpdateRequest;
+use App\Models\ProductCategory;
 use App\Services\Admin\ProductCategory\CreateProductCategoryService;
 use App\Services\Admin\ProductCategory\DeleteProductCategoryService;
 use App\Services\Admin\ProductCategory\UpdateProductCategoryService;
-use Illuminate\Http\Request;
 
 class ProductCategoryController extends Controller
 {
@@ -28,14 +27,14 @@ class ProductCategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  ProductCategoryCreateRequest $request
      * @return \Illuminate\Http\Response
      */
     public function store(ProductCategoryCreateRequest $request)
     {
-        (new CreateProductCategoryService())->execute($request);
+        (new CreateProductCategoryService)->execute($request);
 
         $this->flashSuccess('Product Category created successfully');
+
         return back();
     }
 
@@ -53,29 +52,30 @@ class ProductCategoryController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  ProductCategoryUpdateRequest $request
-     * @param  ProductCategory $ProductCategory
+     * @param  ProductCategory  $ProductCategory
      * @return \Illuminate\Http\Response
      */
     public function update(ProductCategoryUpdateRequest $request, ProductCategory $productCategory)
     {
-        (new UpdateProductCategoryService())->execute($request, $productCategory);
+        (new UpdateProductCategoryService)->execute($request, $productCategory);
 
         $this->flashSuccess('Product Category updated successfully');
+
         return back();
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  ProductCategory $ProductCategory
+     * @param  ProductCategory  $ProductCategory
      * @return \Illuminate\Http\Response
      */
     public function destroy(ProductCategory $productCategory)
     {
-        (new DeleteProductCategoryService())->execute($productCategory);
+        (new DeleteProductCategoryService)->execute($productCategory);
 
         $this->flashSuccess('Product Category deleted successfully');
+
         return back();
     }
 }

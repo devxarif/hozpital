@@ -2,16 +2,15 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\User;
-use App\Models\Country;
-use App\Models\Holiday;
-use App\Traits\HasCountry;
-use Illuminate\Http\Request;
-use App\Rules\MatchOldPassword;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ProfileUpdateRequest;
 use App\Http\Requests\UserCreateRequest;
 use App\Http\Requests\UserUpdateRequest;
-use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\Country;
+use App\Models\User;
+use App\Rules\MatchOldPassword;
+use App\Traits\HasCountry;
+use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
@@ -28,8 +27,8 @@ class UserController extends Controller
 
         $admins = User::query()
             ->where(function ($query) use ($search) {
-                $query->where('name', 'LIKE', '%' . $search . '%')
-                    ->orWhere('email', 'LIKE', '%' . $search . '%');
+                $query->where('name', 'LIKE', '%'.$search.'%')
+                    ->orWhere('email', 'LIKE', '%'.$search.'%');
             })
             ->where('role', 'admin')
             ->where('id', '!=', auth()->id())
@@ -38,8 +37,8 @@ class UserController extends Controller
             ->withQueryString()
             ->through(fn ($user) => [
                 'id' => $user->id,
-                'name' => $search ? preg_replace('/(' . $search . ')/i', "<b class='bg-warning'>$1</b>", $user->name) : $user->name,
-                'email' => $search ? preg_replace('/(' . $search . ')/i', "<b class='bg-warning'>$1</b>", $user->email) : $user->email,
+                'name' => $search ? preg_replace('/('.$search.')/i', "<b class='bg-warning'>$1</b>", $user->name) : $user->name,
+                'email' => $search ? preg_replace('/('.$search.')/i', "<b class='bg-warning'>$1</b>", $user->email) : $user->email,
                 'avatar' => $user->avatar,
                 'avatar_url' => $user->avatar_url,
             ]);
@@ -63,12 +62,11 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  UserCreateRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(UserCreateRequest $request)
     {
-        $data = $request->only(['name', 'email','password','avatar']);
+        $data = $request->only(['name', 'email', 'password', 'avatar']);
         $data['password'] = bcrypt($data['password']);
         $data['role'] = 'admin';
 
@@ -83,6 +81,7 @@ class UserController extends Controller
         User::create($data);
 
         session()->flash('success', 'User created successfully!');
+
         return back();
     }
 
@@ -108,6 +107,7 @@ class UserController extends Controller
     public function edit(User $admin)
     {
         $user = $admin;
+
         return inertia('Admin/User/Edit', [
             'user' => $user,
         ]);
@@ -142,6 +142,7 @@ class UserController extends Controller
         $admin->update($data);
 
         session()->flash('success', 'Admin updated successfully!');
+
         return redirect()->route('admins.index');
     }
 
@@ -157,6 +158,7 @@ class UserController extends Controller
         $admin->delete();
 
         session()->flash('success', 'User deleted successfully!');
+
         return back();
     }
 
@@ -168,7 +170,7 @@ class UserController extends Controller
 
         if ($role == 'owner') {
             $data['countries'] = Country::all(['id', 'name']);
-        }else if($role == 'employee'){
+        }elseif($role == 'employee') {
             $data['user'] = $user->load('employee');
         }
 
@@ -198,11 +200,12 @@ class UserController extends Controller
 
         $user->update($data);
 
-        if($role == 'employee' && $request->phone){
+        if($role == 'employee' && $request->phone) {
             $user->employee->update(['phone' => $request->phone]);
         }
 
         session()->flash('success', 'Profile updated successfully!');
+
         return back();
     }
 
@@ -219,6 +222,7 @@ class UserController extends Controller
         ]);
 
         session()->flash('success', 'Password changed successfully!');
+
         return back();
     }
 
@@ -227,6 +231,7 @@ class UserController extends Controller
         User::find(auth()->id())->delete();
 
         session()->flash('success', 'Account deleted successfully!');
+
         return redirect()->route('login');
     }
 }

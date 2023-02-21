@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class AppointmentController extends Controller
 {
-        /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -18,10 +18,10 @@ class AppointmentController extends Controller
         $all_appointment = Appointment::currentDoctor()->get();
         $appointments_query = Appointment::query();
 
-        $appointments = $appointments_query->currentDoctor()->with('patient.user:id,name,email','patient:id,user_id')
+        $appointments = $appointments_query->currentDoctor()->with('patient.user:id,name,email', 'patient:id,user_id')
             ->when($request->keyword, function ($query, $keyword) {
-                $query->whereHas('patient', function($q) use($keyword){
-                    $q->whereLike(['user.name','user.email'],  $keyword);
+                $query->whereHas('patient', function ($q) use ($keyword) {
+                    $q->whereLike(['user.name', 'user.email'], $keyword);
                 });
             })
             ->when($request->status, function ($query, $status) {
@@ -45,16 +45,18 @@ class AppointmentController extends Controller
                 'approved' => $all_appointment->where('status', 'approved')->count() ?? 0,
                 'cancelled' => $all_appointment->where('status', 'cancelled')->count() ?? 0,
                 'completed' => $all_appointment->where('status', 'completed')->count() ?? 0,
-            ]
+            ],
         ]);
     }
 
-    public function statusUpdate(Request $request, Appointment $appointment){
+    public function statusUpdate(Request $request, Appointment $appointment)
+    {
         $appointment->update([
-            'status' => $request->status
+            'status' => $request->status,
         ]);
 
         $this->flashSuccess('Appointment status updated successfully');
+
         return back();
     }
 }

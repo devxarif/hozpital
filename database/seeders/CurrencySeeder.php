@@ -4,11 +4,10 @@ namespace Database\Seeders;
 
 use App\Models\Currency;
 use Illuminate\Database\Seeder;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class CurrencySeeder extends Seeder
 {
-     /**
+    /**
      * Run the database seeds.
      *
      * @return void
@@ -39,7 +38,7 @@ class CurrencySeeder extends Seeder
                 'code' => 'BDT',
                 'symbol' => '৳',
                 'symbol_position' => 'left',
-            ]
+            ],
         ];
 
         foreach ($currencies as $currency) {

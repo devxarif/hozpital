@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\Auth;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
-    public function showLoginForm(){
+    public function showLoginForm()
+    {
         if (auth()->check()) {
             return redirect()->route('dashboard');
         }
@@ -33,6 +34,7 @@ class AuthController extends Controller
             $request->session()->regenerate();
 
             session()->flash('success', 'Logged in successfully!');
+
             return redirect()->intended('/dashboard');
         }
 
@@ -45,6 +47,7 @@ class AuthController extends Controller
     {
         Auth::logout();
         session()->flash('success', 'Logged out successfully!');
+
         return redirect()->route('login');
     }
 }

@@ -26,7 +26,7 @@ class ProductUpdateRequest extends FormRequest
         return [
             'product_category' => 'required|exists:product_categories,id',
             'manufacture' => 'required|exists:manufactures,id',
-            'name' => "required|max:255|unique:products,name,{$this->product->id}" ,
+            'name' => "required|max:255|unique:products,name,{$this->product->id}",
             'buying_price' => 'nullable',
             'selling_price' => 'required',
             'quantity' => 'required|numeric',

@@ -35,7 +35,6 @@ class BlogController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -43,7 +42,7 @@ class BlogController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'short_description' => 'required|string',
-            'long_description' => 'required|string'
+            'long_description' => 'required|string',
         ]);
 
         if ($request->hasFile('thumbnail') && $request->file('thumbnail')->isValid()) {
@@ -61,6 +60,7 @@ class BlogController extends Controller
         ]);
 
         session()->flash('success', 'Post created successfully!');
+
         return back();
     }
 
@@ -80,7 +80,6 @@ class BlogController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -89,7 +88,7 @@ class BlogController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'short_description' => 'required|string',
-            'long_description' => 'required|string'
+            'long_description' => 'required|string',
         ]);
 
         if ($request->hasFile('thumbnail') && $request->file('thumbnail')->isValid()) {
@@ -107,6 +106,7 @@ class BlogController extends Controller
         ]);
 
         session()->flash('success', 'Post updated successfully!');
+
         return back();
     }
 
@@ -120,6 +120,7 @@ class BlogController extends Controller
     {
         $post->delete();
         session()->flash('success', 'Post deleted successfully!');
+
         return back();
     }
 }

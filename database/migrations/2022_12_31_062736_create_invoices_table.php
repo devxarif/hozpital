@@ -20,7 +20,7 @@ return new class extends Migration
             $table->foreignIdFor(Patient::class)->nullable()->constrained()->cascadeOnDelete();
             $table->string('title');
             $table->date('date');
-            $table->enum('status', ['paid','unpaid']);
+            $table->enum('status', ['paid', 'unpaid']);
             $table->float('vat_percentage')->nullable();
             $table->float('total_amount')->nullable();
             $table->float('discount_amount')->nullable();

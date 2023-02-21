@@ -2,11 +2,11 @@
 
 use App\Models\BedFloor;
 
-beforeEach(function(){
+beforeEach(function () {
     $this->user = createUser();
 });
 
-test('bed floor create validation redirect back to form', function(){
+test('bed floor create validation redirect back to form', function () {
     actingAs($this->user)
     ->post(route('admin.bedFloor.store'), [
         'name' => '',
@@ -16,7 +16,7 @@ test('bed floor create validation redirect back to form', function(){
     ->assertInvalid(['name']);
 });
 
-test('bed floor create unique validation redirect back to form', function(){
+test('bed floor create unique validation redirect back to form', function () {
     BedFloor::create(['name' => 'Ground Floor']);
 
     actingAs($this->user)
@@ -40,7 +40,7 @@ test('admin can create a bed floor', function () {
     expect($lastProduct->description)->toBe($bed_floor['description']);
 });
 
-test('bed floor update validation redirect back to form', function(){
+test('bed floor update validation redirect back to form', function () {
     $bed_floor = BedFloor::create(['name' => '1st Floor']);
 
     actingAs($this->user)
@@ -52,7 +52,7 @@ test('bed floor update validation redirect back to form', function(){
     ->assertInvalid(['name']);
 });
 
-test('bed floor update unique validation redirect back to form', function(){
+test('bed floor update unique validation redirect back to form', function () {
     $bed_floor = BedFloor::create(['name' => '2nd Floor']);
     BedFloor::create(['name' => '1st Floor']);
 
@@ -65,7 +65,7 @@ test('bed floor update unique validation redirect back to form', function(){
 
 test('admin can update a bed floor', function () {
     $data = ['name' => 'Ground Floor', 'description' => 'any description'];
-    $bed_floor = BedFloor::create($data );
+    $bed_floor = BedFloor::create($data);
 
     actingAs($this->user)
     ->put(route('admin.bedFloor.update', $bed_floor->id), [
@@ -77,14 +77,12 @@ test('admin can update a bed floor', function () {
 
 test('admin can delete a bed floor', function () {
     $data = ['name' => 'Ground Floor', 'description' => 'any description'];
-    $bed_floor = BedFloor::create($data );
+    $bed_floor = BedFloor::create($data);
 
     actingAs($this->user)
     ->delete(route('admin.bedFloor.destroy', $bed_floor->id))
     ->assertStatus(302);
 
     $this->assertDatabaseMissing('bed_floors', $bed_floor->toArray());
-    $this->assertDatabaseCount('bed_floors',0);
+    $this->assertDatabaseCount('bed_floors', 0);
 });
-
-

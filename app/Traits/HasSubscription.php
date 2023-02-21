@@ -6,21 +6,21 @@ trait HasSubscription
 {
     public function checkEmployeesLimitation($new_employees_count = null, $company = null)
     {
-        if (!$company) {
+        if (! $company) {
             $features = getCurrentSubscriptionFeatures();
-        }else{
+        }else {
             $features = $company->subscription->plan->planFeatures;
         }
 
         if ($features->is_limited_employee) {
-            if (!$company) {
+            if (! $company) {
                 $company = currentCompany();
             }
 
-            $total_employees =  $company->employees->count();
+            $total_employees = $company->employees->count();
 
             if ($new_employees_count) {
-                $total_employees = $total_employees+$new_employees_count;
+                $total_employees = $total_employees + $new_employees_count;
             }
 
             if ($total_employees >= $features->max_employees) {
@@ -35,7 +35,7 @@ trait HasSubscription
     {
         if ($company) {
             $features = $company->subscription->plan->planFeatures;
-        }else{
+        }else {
             $features = getCurrentSubscriptionFeatures();
             $company = currentCompany();
         }
@@ -53,7 +53,7 @@ trait HasSubscription
     {
         if ($company) {
             $features = $company->subscription->plan->planFeatures;
-        }else{
+        }else {
             $features = getCurrentSubscriptionFeatures();
             $company = currentCompany();
         }
@@ -71,7 +71,7 @@ trait HasSubscription
     {
         $features = getCurrentSubscriptionFeatures();
 
-        if (!$features->custom_theme_look) {
+        if (! $features->custom_theme_look) {
             return true;
         }
 

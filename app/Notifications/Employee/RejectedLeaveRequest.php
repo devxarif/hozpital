@@ -3,7 +3,6 @@
 namespace App\Notifications\Employee;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
@@ -32,8 +31,8 @@ class RejectedLeaveRequest extends Notification
     public function via($notifiable)
     {
         if (checkMailConfig()) {
-            return ['database','mail'];
-        }else{
+            return ['database', 'mail'];
+        }else {
             return ['database'];
         }
     }

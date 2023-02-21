@@ -1,10 +1,9 @@
 <?php
 
 use App\Models\User;
-use App\Models\Department;
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
@@ -20,8 +19,8 @@ return new class extends Migration
             $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
             $table->string('avatar')->nullable();
             $table->text('address')->nullable();
-            $table->string('phone',20)->nullable();
-            $table->enum('gender', ['male','female'])->nullable();
+            $table->string('phone', 20)->nullable();
+            $table->enum('gender', ['male', 'female'])->nullable();
             $table->date('birth_date')->nullable();
             $table->integer('age')->nullable();
             $table->string('blood_group', 3)->nullable();

@@ -8,7 +8,4 @@ use Illuminate\Database\Eloquent\Model;
 class DiagnosticReport extends Model
 {
     use HasFactory;
-
-
-
 }

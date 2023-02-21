@@ -6,7 +6,7 @@ use App\Models\Receptionist;
 
 class UpdateReceptionistService
 {
-    public function execute(object $request,  object $receptionist): Receptionist
+    public function execute(object $request, object $receptionist): Receptionist
     {
         $this->UpdateUser($request, $receptionist);
 
@@ -18,7 +18,8 @@ class UpdateReceptionistService
         return $receptionist;
     }
 
-    protected function UpdateUser($request, $receptionist){
+    protected function UpdateUser($request, $receptionist)
+    {
         return $receptionist->user()->update([
             'name' => $request->name,
             'email' => $request->email,

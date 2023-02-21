@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\BedType;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class BedTypeSeeder extends Seeder
@@ -15,7 +14,7 @@ class BedTypeSeeder extends Seeder
      */
     public function run()
     {
-        $types = ['Cabin','Male Ward','Female Ward','ICU'];
+        $types = ['Cabin', 'Male Ward', 'Female Ward', 'ICU'];
 
         foreach ($types as $type) {
             BedType::create([

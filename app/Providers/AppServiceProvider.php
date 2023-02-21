@@ -3,10 +3,10 @@
 namespace App\Providers;
 
 use App\Models\Cms;
-use App\Models\Setting;
 use App\Models\Language;
-use Illuminate\Pagination\Paginator;
+use App\Models\Setting;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -33,7 +33,7 @@ class AppServiceProvider extends ServiceProvider
 
         Paginator::useBootstrap();
 
-        if (!app()->runningInConsole()) {
+        if (! app()->runningInConsole()) {
             // Setting
             $setting = Setting::first();
             view()->share('setting', $setting);

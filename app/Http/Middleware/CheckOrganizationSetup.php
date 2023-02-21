@@ -10,14 +10,13 @@ class CheckOrganizationSetup
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
     public function handle(Request $request, Closure $next)
     {
         $user = auth()->check() ? $request->user() : '';
-        if ($user && $user->role == 'owner' && !$user->is_opening_setup_complete) {
+        if ($user && $user->role == 'owner' && ! $user->is_opening_setup_complete) {
             return redirect()->route('organization.account.setup');
         }
 

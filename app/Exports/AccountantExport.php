@@ -17,7 +17,7 @@ class AccountantExport implements FromCollection, WithHeadings
     public function headings(): array
     {
         return [
-            'Name', 'Email', 'Phone',"Address"
+            'Name', 'Email', 'Phone', 'Address',
         ];
     }
 }

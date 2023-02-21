@@ -2,10 +2,10 @@
 
 namespace App\Traits;
 
-use Illuminate\Support\Facades\Notification;
 use App\Models\Order;
 use App\Models\User;
 use App\Notifications\Admin\PlanPurchase;
+use Illuminate\Support\Facades\Notification;
 
 trait PaymentAble
 {
@@ -57,6 +57,7 @@ trait PaymentAble
 
         if ($redirect) {
             session()->flash('success', 'Plan purchased successfully.');
+
             return redirect()->route('organization.billing')->send();
         }
     }
@@ -69,7 +70,8 @@ trait PaymentAble
         session()->forget('stripe_amount');
     }
 
-    public function switchToFreePlan($plan){
+    public function switchToFreePlan($plan)
+    {
         $company_subscription = currentCompany()->subscription;
 
         // attach the plan to the company
@@ -116,6 +118,7 @@ trait PaymentAble
         }
 
         session()->flash('success', 'Plan purchased successfully.');
+
         return redirect()->route('organization.billing')->send();
     }
 }

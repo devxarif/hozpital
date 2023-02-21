@@ -1,27 +1,14 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Doctor\BedController;
-use App\Http\Controllers\Doctor\EventController;
-use App\Http\Controllers\Doctor\NurseController;
-use App\Http\Controllers\Doctor\DoctorController;
-use App\Http\Controllers\Doctor\BedTypeController;
-use App\Http\Controllers\Doctor\HolidayController;
-use App\Http\Controllers\Doctor\PatientController;
-use App\Http\Controllers\Nurse\BedFloorController;
-use App\Http\Controllers\Doctor\BloodBankController;
-use App\Http\Controllers\Doctor\LeaveTypeController;
-use App\Http\Controllers\Doctor\AccountantController;
-use App\Http\Controllers\Doctor\BloodDonorController;
-use App\Http\Controllers\Doctor\DepartmentController;
-use App\Http\Controllers\Doctor\PharmacistController;
-use App\Http\Controllers\Pharmacist\ManufactureController;
 use App\Http\Controllers\Doctor\AnnouncementController;
-use App\Http\Controllers\Doctor\BedAllotmentController;
+use App\Http\Controllers\Doctor\EventController;
+use App\Http\Controllers\Doctor\HolidayController;
 use App\Http\Controllers\Doctor\LeaveRequestController;
-use App\Http\Controllers\Doctor\BloodDonationController;
-use App\Http\Controllers\Pharmacist\ProductController;
+use App\Http\Controllers\Doctor\LeaveTypeController;
+use App\Http\Controllers\Pharmacist\ManufactureController;
 use App\Http\Controllers\Pharmacist\ProductCategoryController;
+use App\Http\Controllers\Pharmacist\ProductController;
+use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth'])->name('pharmacist.')->prefix('pharmacist')->group(function () {
     // product

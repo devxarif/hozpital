@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Employee;
 
-use App\Models\LeaveType;
+use App\Http\Controllers\Controller;
 use App\Models\LeaveBalance;
 use App\Models\LeaveRequest;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\Notifications\Organization\NewLeaveRequest;
+use App\Models\LeaveType;
 use App\Notifications\Employee\PendingLeaveRequest;
+use App\Notifications\Organization\NewLeaveRequest;
+use Illuminate\Http\Request;
 
 class LeaveRequestController extends Controller
 {
@@ -22,7 +22,9 @@ class LeaveRequestController extends Controller
 
         $leave_requests_query = LeaveRequest::query();
 
-        if ($id) {$leave_requests_query->where('id', $id);}
+        if ($id) {
+        $leave_requests_query->where('id', $id);
+        }
 
         $leave_requests = $leave_requests_query->with(['employee.user', 'employee.team', 'organization.user', 'leaveType'])
             ->where('employee_id', $employee->id)
@@ -104,9 +106,11 @@ class LeaveRequestController extends Controller
             // sendSms('vonage', $to, $message);
 
             session()->flash('success', 'Leave request sent successfully!');
+
             return back();
         } catch (\Throwable $th) {
             session()->flash('error', 'Something went wrong!');
+
             return back();
         }
     }
@@ -119,7 +123,7 @@ class LeaveRequestController extends Controller
 
         return inertia('Employee/LeaveRequest/Edit', [
             'leaveRequest' => $leave_request,
-            'leaveTypes' =>  $leave_types,
+            'leaveTypes' => $leave_types,
             'leaveTypeBalances' => $leaveTypeBalances,
         ]);
     }
@@ -147,22 +151,27 @@ class LeaveRequestController extends Controller
             ]);
 
             session()->flash('success', 'Leave request updated successfully!');
+
             return redirect_to('employee.leave.request.index');
         } catch (\Throwable $th) {
             session()->flash('error', 'Something went wrong!');
+
             return back();
         }
     }
 
-    public function destroy(LeaveRequest $leave_request){
+    public function destroy(LeaveRequest $leave_request)
+    {
         if ($leave_request->status == 'pending') {
             $leave_request->delete();
 
             session()->flash('success', 'Leave request deleted successfully!');
+
             return back();
         }
 
         session()->flash('error', "Sorry you can't delete this leave request");
+
         return back();
     }
 

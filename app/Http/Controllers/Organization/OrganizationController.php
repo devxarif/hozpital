@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Organization;
 
-use App\Models\Plan;
+use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Models\Organization;
-use App\Http\Controllers\Controller;
+use App\Models\Plan;
 
 class OrganizationController extends Controller
 {
@@ -16,6 +16,7 @@ class OrganizationController extends Controller
         ]);
 
         session()->flash('success', 'Organization Switched');
+
         return back();
     }
 
@@ -38,19 +39,21 @@ class OrganizationController extends Controller
             $user->update(['current_organization_id' => $companies[0]]);
 
             session()->flash('success', 'Organization deleted successfully');
+
             return redirect()->route('dashboard');
-        }else{
+        }else {
             $user->update([
                 'current_organization_id' => null,
                 'is_opening_setup_complete' => 0,
-                'opening_setup_steps' => 1
+                'opening_setup_steps' => 1,
             ]);
 
             return redirect()->intended('/account/setup');
         }
     }
 
-    public function billing(){
+    public function billing()
+    {
         $currently_subscribed = currentOrganization()->subscription->load('plan');
         $plans = Plan::with('planFeatures')->get();
 
@@ -61,8 +64,8 @@ class OrganizationController extends Controller
         $orders = Order::whereOrganizationId(currentOrganization()->id)
             ->with('plan.planFeatures')
             ->where(function ($query) use ($search) {
-                $query->where('order_id', 'LIKE', '%' . $search . '%')
-                    ->orWhere('transaction_id', 'LIKE', '%' . $search . '%');
+                $query->where('order_id', 'LIKE', '%'.$search.'%')
+                    ->orWhere('transaction_id', 'LIKE', '%'.$search.'%');
             })
             ->when($plan, function ($query, $plan) {
                 $query->where('plan_id', $plan);
@@ -75,8 +78,8 @@ class OrganizationController extends Controller
             ->withQueryString()
             ->through(fn ($order) => [
                 'id' => $order->id,
-                'order_id' => $search ? preg_replace('/(' . $search . ')/i', "<b class='bg-warning'>$1</b>", $order->order_id) : $order->order_id,
-                'transaction_id' => $search ? preg_replace('/(' . $search . ')/i', "<b class='bg-warning'>$1</b>", $order->transaction_id) : $order->transaction_id,
+                'order_id' => $search ? preg_replace('/('.$search.')/i', "<b class='bg-warning'>$1</b>", $order->order_id) : $order->order_id,
+                'transaction_id' => $search ? preg_replace('/('.$search.')/i', "<b class='bg-warning'>$1</b>", $order->transaction_id) : $order->transaction_id,
                 'currency_symbol' => $order->currency_symbol,
                 'amount' => $order->amount,
                 'payment_provider' => $order->payment_provider,

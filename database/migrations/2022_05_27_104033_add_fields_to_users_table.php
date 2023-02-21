@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->string('username')->after('email');
-            $table->enum('role', ['admin','patient','doctor','nurse','receptionist','accountant','laboratorist','pharmacist'])->default('patient');
+            $table->enum('role', ['admin', 'patient', 'doctor', 'nurse', 'receptionist', 'accountant', 'laboratorist', 'pharmacist'])->default('patient');
             $table->integer('code')->nullable();
             $table->boolean('status')->default(true);
         });

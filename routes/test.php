@@ -1,31 +1,32 @@
 <?php
 
-use Carbon\Carbon;
-use App\Models\Bed;
-use App\Models\User;
-use App\Models\Order;
-use App\Models\Holiday;
-use App\Models\Setting;
-use App\Models\Employee;
-use App\Models\Language;
-use Carbon\CarbonPeriod;
-use App\Models\LeaveType;
-use App\Models\Department;
-use Illuminate\Support\Str;
-use App\Models\LeaveBalance;
 use App\Exports\PatientExport;
+use App\Http\Controllers\Admin\UpgradeController;
+use App\Http\Controllers\TestController;
 use App\Imports\PatientImport;
-// use Barryvdh\DomPDF\Facade\Pdf;
+use App\Models\AppointmentSchedule;
+use App\Models\Bed;
 use App\Models\ContactMessage;
+use App\Models\Department;
+use App\Models\Employee;
+use App\Models\Holiday;
+use App\Models\Language;
+use App\Models\LeaveBalance;
+use App\Models\LeaveType;
+use App\Models\Order;
+use App\Models\Setting;
+// use Barryvdh\DomPDF\Facade\Pdf;
+use App\Models\User;
+use Carbon\Carbon;
+use Carbon\CarbonPeriod;
 use Illuminate\Support\Benchmark;
 use Illuminate\Support\Facades\DB;
-use App\Models\AppointmentSchedule;
-use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\TestController;
+use Illuminate\Support\Str;
 use Label84\HoursHelper\Facades\HoursHelper;
-use App\Http\Controllers\Admin\UpgradeController;
+use Maatwebsite\Excel\Facades\Excel;
 use sirajcse\UniqueIdGenerator\UniqueIdGenerator;
+
 // use Dompdf\Dompdf;
 // Route::get('/', function () {
 
@@ -35,7 +36,6 @@ use sirajcse\UniqueIdGenerator\UniqueIdGenerator;
 //     return Department::select('id','name')->get();
 
 //     return inertia('Layout');
-
 
 //     app()->setLocale('bn');
 //     // return view('test.test');
@@ -58,27 +58,27 @@ Route::get('/test', function () {
     // return $user;
 
     return Excel::import(new PatientImport, public_path('uploads/import/mBUY7cVNW0SIKUpkRP7WLzfqb8Wj8cMPcL1kvyCy.csv'));
-    return Excel::import(new PatientImport, public_path('uploads/import/s6g78UQGjE7EJGPcGjL7BlVVdT8opqa6GY9x2PIR.xlsx'));
 
+    return Excel::import(new PatientImport, public_path('uploads/import/s6g78UQGjE7EJGPcGjL7BlVVdT8opqa6GY9x2PIR.xlsx'));
 
     $type = 'csv';
     $name = time().'_patients.'.$type;
 
     return Excel::download(new PatientExport, $name);
 
-
-
     return Excel::download(new PatientExport, 'users.xls');
+
     return Excel::download(new PatientExport, 'users.pdf', \Maatwebsite\Excel\Excel::MPDF);
     // return Excel::download(new PatientExport, 'users.pdf', \Maatwebsite\Excel\Excel::DOMPDF);
     return Excel::download(new PatientExport, 'users.html');
+
     return Excel::download(new PatientExport, 'users.csv');
+
     return Excel::download(new PatientExport, 'users.xlsx');
+
     return Excel::download(new PatientExport, 'users.pdf');
 
-
     return inertia('Auth/LoginPage2');
-
 
     $time = [
         ['start' => '08:00', 'end' => '08:30'],
@@ -94,16 +94,9 @@ Route::get('/test', function () {
 
     return $time[8];
 
-
-
-
-
-
-
-
     return $hours_24 = HoursHelper::create('10:00', '12:00', 30);
 
-    $startDate =  '2023-02-01';
+    $startDate = '2023-02-01';
     $endDate = '2023-04-20';
 
     return Carbon::parse($endDate)->isFuture();
@@ -111,7 +104,6 @@ Route::get('/test', function () {
     return $startDate->isPast();
 
     return now()->format('Y-m-d');
-
 
     $dateRange = iterator_to_array(CarbonPeriod::create($startDate, $endDate)->map(fn ($date) => $date->toDateString()));
     $index = rand(0, 70);
@@ -122,15 +114,11 @@ Route::get('/test', function () {
 
     // return $dateRange;
     // return $dateRange->random();
-    $data= json_decode(json_encode($dateRange),true) ;
+    $data = json_decode(json_encode($dateRange), true);
 
     return $data->random();
 
     // return $dateRange;
-
-
-
-
 
     return $days;
 
@@ -141,31 +129,13 @@ Route::get('/test', function () {
 
     return $start = Carbon::parse($start)->format('H:i');
 
-
     $hours_24 = HoursHelper::create($start, $end, 20);
     $hours_12 = HoursHelper::create($start, $end, 20, 'g:i A');
 
     return [
         'hours_24' => $hours_24,
-        'hours_12' => $hours_12
+        'hours_12' => $hours_12,
     ];
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     $schedule = AppointmentSchedule::currentDoctor()->with('appointmentSlots')->first();
     // return $schedule = currentDoctor()->appointmentSlots;
@@ -178,36 +148,25 @@ Route::get('/test', function () {
         $collections[] = $values;
     }
 
-    $result = array();
+    $result = [];
     foreach ($collections as $array) {
         $result = array_merge($result, json_decode(json_encode($array), true));
     }
 
     $unique_values = array_values(array_unique($result));
 
-
     return $unique_values;
-
-
-
-
-
-
-
-
 
     // foreach ($collections as $idx => $val ) {
     //     $all_array[] = $val;
     //     // $all_array[] = [$val, $array2[$idx], $array3[$idx] ];
     // }
 
-
-
     // return $all_array;
 
     $all_array = [];
 
-    for($z=0; $z <count($collections); $z++){
+    for($z = 0; $z < count($collections); $z++) {
         // return $collection
         // $all_array[$z][] = array_merge($array1[$z],$array2[$z] );
 
@@ -217,8 +176,6 @@ Route::get('/test', function () {
     }
 
     return $all_array;
-
-
 
     foreach ($collections as $key => $collection) {
         return $collection;
@@ -230,7 +187,6 @@ Route::get('/test', function () {
 
     return count($collection);
 
-
     $from = '08:00';
     $to = '12:00';
     $from2 = '10:00';
@@ -238,7 +194,6 @@ Route::get('/test', function () {
 
     // $days_periods = CarbonPeriod::create($from, $to)->map(fn ($date) => $date->toDateString());
     // return iterator_to_array($days_periods);
-
 
     // $holidays = [];
     // $holidays_between_days = Holiday::where('company_id', $company_id)
@@ -252,21 +207,17 @@ Route::get('/test', function () {
 
     // $holidays = array_values(array_unique($holidays));
 
-
-
     $hours_1 = HoursHelper::create($from, $to, 20);
     $hours_2 = HoursHelper::create($from2, $to2, 20);
 
-
     return [
         json_decode(json_encode($hours_1), true),
-        json_decode(json_encode($hours_2), true)
+        json_decode(json_encode($hours_2), true),
     ];
 
-    $array = array_merge( json_decode(json_encode($hours_1), true),  json_decode(json_encode($hours_2), true));
+    $array = array_merge(json_decode(json_encode($hours_1), true), json_decode(json_encode($hours_2), true));
 
     $unique_array = array_values(array_unique($array));
-
 
     // $hours = HoursHelper::create('08:00', '11:00', 60, 'H:i', [
     //     ['09:00', '09:59'],
@@ -279,8 +230,6 @@ Route::get('/test', function () {
     //     $hours_24
     // ];
 
-
-
     $hours_24 = HoursHelper::create($from, $to, 20);
     $doctor = currentDoctor();
     $slot = $doctor->appointmentSlots;
@@ -292,12 +241,11 @@ Route::get('/test', function () {
     return [
         'slot' => $slot,
         'hours_24' => $hours_24,
-        'hours_12' => $hours_12
+        'hours_12' => $hours_12,
     ];
 
     $from = '08:00';
     $to = '14:00';
-
 
     $hours = HoursHelper::create($from, $to, 60);
     // $hours = HoursHelper::create($from, $to, 60, 'g:i A');
@@ -310,22 +258,18 @@ Route::get('/test', function () {
         }
     }
 
-
     return 'nai';
     $time = Carbon::parse($from);
     $timeRange = [];
 
-    do
-    {
+    do {
         array_push($timeRange, [
-            'start' => $time->format("H:i"),
-            'end' => $time->addMinutes(15)->format("H:i")
+            'start' => $time->format('H:i'),
+            'end' => $time->addMinutes(15)->format('H:i'),
         ]);
-    } while ($time->format("H:i") !== $to);
+    } while ($time->format('H:i') !== $to);
 
     return $timeRange;
-
-
 
     return auth()->user()->doctor;
 
@@ -335,20 +279,19 @@ Route::get('/test', function () {
 
     $beds = Bed::latest()->get();
 
-    $beds = $beds->groupBy(function($bed) {
+    $beds = $beds->groupBy(function ($bed) {
         return $bed->bed_floor_id;
     });
 
     // return $beds;
 
-    $beds = $beds->map(function($bed) {
-        return $bed->groupBy(function($bed) {
+    $beds = $beds->map(function ($bed) {
+        return $bed->groupBy(function ($bed) {
             return $bed->bed_type_id;
         });
     });
 
     return $beds;
-
 
 //    $products::latest()->get();
 
@@ -364,12 +307,6 @@ Route::get('/test', function () {
 
 //     return $products;
 
-
-
-
-
-
-
     $encrypt = safeEncrypt(123);
     $decrypt = safeDecrypt($encrypt);
 
@@ -380,16 +317,15 @@ Route::get('/test', function () {
 
     // return youtubeId('https://www.youtube.com/watch?v=hEmi12wNGas');
 
-
     return inertia('Test/Counter');
 
     return inertia('Test/Login');
-    return inertia('Test/Align');
 
+    return inertia('Test/Align');
 
     request()->validate([
         'direction' => ['in:asc,desc'],
-        'field' => ['in:name,email,phone']
+        'field' => ['in:name,email,phone'],
     ]);
 
     $query = ContactMessage::query();
@@ -404,17 +340,17 @@ Route::get('/test', function () {
 
     return inertia('Test/Datatable', [
         'contacts' => $query->paginate()->withQueryString(),
-        'filters' => request()->all(['search', 'field', 'direction'])
+        'filters' => request()->all(['search', 'field', 'direction']),
     ]);
 
-
-    $leave_types = LeaveType::with(['leaveBalances' => function($q){
+    $leave_types = LeaveType::with(['leaveBalances' => function ($q) {
         $q->where('employee_id', currentEmployee('id'));
     }])->where('organization_id', 1)
     ->get()
     ->transform(function ($data) {
         $data->remaining_days = $data->leaveBalances[0]->remaining_days;
         $data->used_days = $data->leaveBalances[0]->used_days;
+
         return $data;
     });
 
@@ -427,11 +363,10 @@ Route::get('/test', function () {
     //     'Get employee by employee model' => fn() => Employee::where('user_id', auth()->id())->first(['id']),
     // ]);
 
-
     // return auth()->user()->employee->only('id');
 
     // return currentEmployee('id');
-    $leave_types = LeaveType::with(['leaveBalances' => function($q){
+    $leave_types = LeaveType::with(['leaveBalances' => function ($q) {
         $q->where('employee_id', currentEmployee('id'));
     }])->where('organization_id', 1)->get();
 
@@ -439,19 +374,25 @@ Route::get('/test', function () {
     return $leave_types;
 
     return inertia('Test/Chart');
-    return $user = User::first()->roles;
 
+    return $user = User::first()->roles;
 
     return inertia('Test/Popover');
 
     return fake('hi_en')->name();
 
    return fake()->macPlatformToken();
+
    return fake()->chrome();
+
    return fake()->userAgent();
+
    return fake()->iban();
+
    return fake()->creditCardNumber();
+
    return fake()->emoji();
+
    return fake()->name();
 
     // $id = UniqueIdGenerator::generate(['table' => 'employees', 'field' => 'phone','length' => 10, 'prefix' =>'INV-']);
@@ -460,21 +401,16 @@ Route::get('/test', function () {
     // $id = UniqueIdGenerator::generate(['table' => 'employees', 'field' => 'phone','length' => 10,'prefix' => 'Emp-', 'suffix' => 'EMP']);
     // return $id;
 
-
-
     return idGenerator();
     // return Employee::latest('id')->first();
-
-
 
     $username = Str::slug('admin');
 
     $is_exists = User::whereUsername($username)->exists();
 
-    $is_exists ? $username = $username.'-'.time():$username;
+    $is_exists ? $username = $username.'-'.time() : $username;
 
     return $username;
-
 
     $data['order'] = Order::first();
     $data['company'] = $data['order']->company->load('country:id,name', 'user');
@@ -489,9 +425,6 @@ Route::get('/test', function () {
 
     return $pdf->download('invoice.pdf');
 
-
-
-
     // $collection = collect([19, 21, 29, 46]);
 
     // $filtered = $collection->filter(function ($value, $key) {
@@ -499,7 +432,6 @@ Route::get('/test', function () {
     // });
 
     // dd($filtered->all());
-
 
     // return 645654;
 
@@ -515,24 +447,20 @@ Route::get('/test', function () {
     //     return $data->notifiable_id == 3;
     // });
 
-
-
     DB::flushQueryLog();
     // $album_list = Album::with(['first_photo'])->where('status', '=', '1');
     // $album_list = $album_list->get();
     $arr = DB::getQueryLog();
     dd($arr);
 
-
-
-
     return route('employee.leave.request.index');
 
     return auth()->user()->employee->company;
+
     return currentCompany()->subscription->plan->planFeatures->max_teams;
     if ($company) {
         $features = $company->subscription->plan->planFeatures;
-    }else{
+    }else {
         $features = getCurrentSubscriptionFeatures();
         $company = currentCompany();
     }
@@ -543,8 +471,6 @@ Route::get('/test', function () {
         return true;
     }
 
-
-
     if (auth()->check() && auth()->user()->current_organization_id) {
        return 'ase';
     }
@@ -552,19 +478,22 @@ Route::get('/test', function () {
     return 'nai';
 
     return auth()->user()->companies;
+
     return Language::where('status', 1)->get(['id', 'name', 'code']);
+
     return view('system.app_status');
 
     return 4665;
+
     return view('app');
     // return view('test/test');
 })->name('test');
 
 Route::get('/test2', function () {
     return view('app');
+
     return view('test/test');
 });
-
 
 // Route::get('/testt', [TestController::class, 'index']);
 

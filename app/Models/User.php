@@ -2,24 +2,20 @@
 
 namespace App\Models;
 
-use App\Models\Team;
-use App\Models\Holiday;
-use App\Models\Employee;
-use App\Models\Accountant;
-use Illuminate\Support\Str;
-use App\Models\Organization;
-use Illuminate\Support\Facades\DB;
-use Spatie\Permission\Traits\HasRoles;
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
     use HasFactory, Notifiable, HasRoles;
 
     public const ROLE_EMPLOYEE = 'employee';
+
     public const ROLE_OWNER = 'owner';
 
     /**
@@ -27,8 +23,6 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-
-
     protected $appends = ['avatar_url'];
 
     /**
@@ -50,17 +44,16 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-     /**
+    /**
      * Interact with the user's username.
      *
-     * @param  string  $value
      * @return \Illuminate\Database\Eloquent\Casts\Attribute
      */
     public function setNameAttribute(string $value): void
     {
         $username = Str::slug($value);
         $is_exists = User::whereUsername($username)->exists();
-        $is_exists ? $username = $username.'-'.time():$username;
+        $is_exists ? $username = $username.'-'.time() : $username;
 
         User::whereUsername($username)->exists();
         $this->attributes['name'] = $value;
@@ -69,15 +62,16 @@ class User extends Authenticatable
 
     public function getAvatarAttribute($avatar)
     {
-        if (!$avatar) {
+        if (! $avatar) {
             return asset('admin/img/default-user.png');
         }
 
         return asset($avatar);
     }
 
-    public function getAvatarUrlAttribute(){
-        if (!$this->avatar) {
+    public function getAvatarUrlAttribute()
+    {
+        if (! $this->avatar) {
             return asset('admin/img/default-user.png');
         }
 
@@ -90,6 +84,7 @@ class User extends Authenticatable
             ->select('group_name as name')
             ->groupBy('group_name')
             ->get();
+
         return $permission_group;
     }
 
@@ -99,6 +94,7 @@ class User extends Authenticatable
             ->select('name', 'id')
             ->where('group_name', $group_name)
             ->get();
+
         return $permissions;
     }
 
@@ -106,11 +102,13 @@ class User extends Authenticatable
     {
         $hasPermission = true;
         foreach ($permissions as $permission) {
-            if (!$role->hasPermissionTo($permission->name)) {
+            if (! $role->hasPermissionTo($permission->name)) {
                 $hasPermission = false;
+
                 return $hasPermission;
             }
         }
+
         return $hasPermission;
     }
 
@@ -131,7 +129,7 @@ class User extends Authenticatable
 
     public function scopeStaffs()
     {
-        return $this->where('role', '!=','patient');
+        return $this->where('role', '!=', 'patient');
     }
 
     public function doctor(): HasOne

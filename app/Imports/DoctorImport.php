@@ -3,8 +3,8 @@
 namespace App\Imports;
 
 use App\Models\Department;
-use App\Models\User;
 use App\Models\Doctor;
+use App\Models\User;
 use App\Traits\HasUserUniqueEmail;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithStartRow;
@@ -25,10 +25,10 @@ class DoctorImport implements ToModel, WithStartRow
             'role' => 'doctor',
         ]);
 
-        $row_department = $row[3] ?? "No Department";
-        $department = Department::where("name", "LIKE", "%$row_department%")->first();
+        $row_department = $row[3] ?? 'No Department';
+        $department = Department::where('name', 'LIKE', "%$row_department%")->first();
 
-        if (!$department) {
+        if (! $department) {
             $department = Department::first() ?? Department::create(['name' => $row_department]);
         }
 

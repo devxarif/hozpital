@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('blood_group', 10);
-            $table->enum('gender', ['male','female'])->default('male');
+            $table->enum('gender', ['male', 'female'])->default('male');
             $table->string('phone');
             $table->string('email');
             $table->text('address')->nullable();

@@ -2,19 +2,17 @@
 
 namespace App\Http\Controllers\Website;
 
-use App\Models\Faq;
-use App\Models\Seo;
-use App\Models\Plan;
-use App\Models\Post;
-use AmrShawky\Currency;
-use App\Models\Feature;
-use App\Models\Testimonial;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Department;
-use Artesaos\SEOTools\Facades\SEOMeta;
+use App\Models\Faq;
+use App\Models\Feature;
+use App\Models\Plan;
+use App\Models\Post;
+use App\Models\Seo;
+use App\Models\Testimonial;
 use App\Services\Midtrans\CreateSnapTokenService;
 use App\Traits\PaymentAble;
+use Artesaos\SEOTools\Facades\SEOMeta;
 use Artesaos\SEOTools\Traits\SEOTools as SEOToolsTrait;
 
 class WebsiteController extends Controller
@@ -132,7 +130,6 @@ class WebsiteController extends Controller
     {
         return view('website.pages.payment');
     }
-
 
     // public function pricing()
     // {

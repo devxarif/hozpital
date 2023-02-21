@@ -2,11 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\LeaveType;
 use App\Models\LeaveBalance;
+use App\Models\LeaveType;
 use App\Models\User;
 use Illuminate\Database\Seeder;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class LeaveTypeSeeder extends Seeder
 {
@@ -22,23 +21,23 @@ class LeaveTypeSeeder extends Seeder
                 'name' => 'Casual Leave',
                 'color' => '#00D084',
                 'balance' => 14,
-                'description' => "Casual leave means leave to cover casual absence of the sales promotion employee from duty for personal reasons",
+                'description' => 'Casual leave means leave to cover casual absence of the sales promotion employee from duty for personal reasons',
             ],
             [
                 'name' => 'Paid Leave',
                 'color' => '#EB144C',
                 'balance' => 14,
-                'description' => "Paid Leave is time allowed away from work for holiday, illness, etc. during which you receive your normal pay",
+                'description' => 'Paid Leave is time allowed away from work for holiday, illness, etc. during which you receive your normal pay',
             ],
             [
                 'name' => 'Sick Leave',
                 'color' => '#FF9F43',
                 'balance' => 7,
-                'description' => "Sick Leave is time away from work because of illness",
+                'description' => 'Sick Leave is time away from work because of illness',
             ],
         ];
 
-        $users = User::where('role','!=', 'patients')->get();
+        $users = User::where('role', '!=', 'patients')->get();
 
         foreach ($types as $type) {
             $leave_type = LeaveType::create($type);

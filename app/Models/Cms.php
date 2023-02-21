@@ -9,8 +9,6 @@ class Cms extends Model
 {
     use HasFactory;
 
-
-
     public function getAboutImageAttribute($value)
     {
         if (is_null($value)) {

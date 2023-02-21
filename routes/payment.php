@@ -1,14 +1,15 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Payment\FlutterwaveController;
+use App\Http\Controllers\Payment\InstamojoController;
+use App\Http\Controllers\Payment\MidtransController;
 use App\Http\Controllers\Payment\MollieController;
 use App\Http\Controllers\Payment\PayPalController;
-use App\Http\Controllers\Payment\StripeController;
-use App\Http\Controllers\Payment\MidtransController;
 use App\Http\Controllers\Payment\PaystackController;
 use App\Http\Controllers\Payment\RazorpayController;
-use App\Http\Controllers\Payment\InstamojoController;
-use App\Http\Controllers\Payment\FlutterwaveController;
+use App\Http\Controllers\Payment\StripeController;
+use Illuminate\Support\Facades\Route;
+
 // use App\Http\Controllers\Payment\ManualPaymentController;
 
 //Paypal

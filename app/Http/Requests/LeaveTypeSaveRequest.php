@@ -32,7 +32,7 @@ class LeaveTypeSaveRequest extends FormRequest
     public function messages()
     {
         return [
-            'user_id' => "The company field is required.",
+            'user_id' => 'The company field is required.',
         ];
     }
 }

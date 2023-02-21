@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use App\Models\Setting;
 use Illuminate\Database\Seeder;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class SettingSeeder extends Seeder
 {
@@ -16,7 +15,7 @@ class SettingSeeder extends Seeder
     public function run()
     {
         // Setting table
-        $setting = new Setting();
+        $setting = new Setting;
 
         // Brand info
         $setting->app_email = 'kodebazar@gmail.com';

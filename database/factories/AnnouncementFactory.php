@@ -2,8 +2,8 @@
 
 namespace Database\Factories;
 
-use Illuminate\Support\Arr;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Arr;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Announcement>
@@ -20,7 +20,7 @@ class AnnouncementFactory extends Factory
         return [
             'title' => fake()->name,
             'description' => fake()->realText(200),
-            'type' => Arr::random(['public','private']),
+            'type' => Arr::random(['public', 'private']),
         ];
     }
 }

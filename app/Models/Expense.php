@@ -20,6 +20,5 @@ class Expense extends Model
             return formatTime($date, 'd M Y');
         }
 
-        return null;
     }
 }

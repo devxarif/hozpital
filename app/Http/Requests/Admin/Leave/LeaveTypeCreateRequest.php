@@ -26,7 +26,7 @@ class LeaveTypeCreateRequest extends FormRequest
         return [
             'name' => 'required|string|max:255|unique:leave_types,name',
             'color' => 'required|string',
-            'balance' => 'required'
+            'balance' => 'required',
         ];
     }
 }

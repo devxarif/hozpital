@@ -9,7 +9,6 @@ class LeaveRequestObserver
     /**
      * Handle the LeaveRequest "created" event.
      *
-     * @param  \App\Models\LeaveRequest  $leaveRequest
      * @return void
      */
     public function created(LeaveRequest $leaveRequest)
@@ -20,7 +19,6 @@ class LeaveRequestObserver
     /**
      * Handle the LeaveRequest "updated" event.
      *
-     * @param  \App\Models\LeaveRequest  $leaveRequest
      * @return void
      */
     public function updated(LeaveRequest $leaveRequest)
@@ -31,7 +29,6 @@ class LeaveRequestObserver
     /**
      * Handle the LeaveRequest "deleted" event.
      *
-     * @param  \App\Models\LeaveRequest  $leaveRequest
      * @return void
      */
     public function deleted(LeaveRequest $leaveRequest)
@@ -42,7 +39,6 @@ class LeaveRequestObserver
     /**
      * Handle the LeaveRequest "restored" event.
      *
-     * @param  \App\Models\LeaveRequest  $leaveRequest
      * @return void
      */
     public function restored(LeaveRequest $leaveRequest)
@@ -53,7 +49,6 @@ class LeaveRequestObserver
     /**
      * Handle the LeaveRequest "force deleted" event.
      *
-     * @param  \App\Models\LeaveRequest  $leaveRequest
      * @return void
      */
     public function forceDeleted(LeaveRequest $leaveRequest)

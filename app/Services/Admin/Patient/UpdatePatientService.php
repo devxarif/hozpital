@@ -27,7 +27,8 @@ class UpdatePatientService
         return $patient;
     }
 
-    protected function UpdateUser($request, $patient){
+    protected function UpdateUser($request, $patient)
+    {
         return $patient->user()->update([
             'name' => $request->name,
             'email' => $request->email,

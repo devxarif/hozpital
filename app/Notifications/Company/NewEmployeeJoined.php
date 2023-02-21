@@ -3,7 +3,6 @@
 namespace App\Notifications\Company;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
@@ -11,7 +10,9 @@ class NewEmployeeJoined extends Notification
 {
     use Queueable;
 
-    public $user, $organization_id;
+    public $user;
+
+    public $organization_id;
 
     /**
      * Create a new notification instance.

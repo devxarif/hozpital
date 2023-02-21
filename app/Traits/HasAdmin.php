@@ -2,12 +2,11 @@
 
 namespace App\Traits;
 
-use App\Models\Team;
-use App\Models\Order;
 use App\Models\Company;
 use App\Models\Country;
-use App\Models\Holiday;
 use App\Models\Employee;
+use App\Models\Order;
+use App\Models\Team;
 
 trait HasAdmin
 {
@@ -28,13 +27,13 @@ trait HasAdmin
 
     public function adminExpensePerCompany()
     {
-        $expense_per_company = Company::select('id','user_id')
+        $expense_per_company = Company::select('id', 'user_id')
         ->with('user:id,name')
-        ->withSum('orders as expense_amount','usd_amount')
+        ->withSum('orders as expense_amount', 'usd_amount')
         ->latest('expense_amount')
         ->limit(5)
         ->get()
-        ->transform(fn($item) => [
+        ->transform(fn ($item) => [
             'id' => $item->id,
             'name' => $item->user->name,
             'user_id' => $item->user->id,
@@ -54,7 +53,7 @@ trait HasAdmin
 
     public function adminCompaniesPerCountry()
     {
-        $companies_per_country = Country::select('id','name')
+        $companies_per_country = Country::select('id', 'name')
         ->withCount('companies')
         ->latest('companies_count')
         ->limit(5)
@@ -77,7 +76,7 @@ trait HasAdmin
             \DB::raw('sum(usd_amount) as `amount`'),
             \DB::raw("DATE_FORMAT(created_at,'%M') as month")
         )
-            ->where("created_at", ">", \Carbon\Carbon::now()->startOfYear())
+            ->where('created_at', '>', \Carbon\Carbon::now()->startOfYear())
             ->orderBy('created_at')
             ->groupBy('month')
             ->get();
@@ -95,11 +94,11 @@ trait HasAdmin
 
     public function adminRecentCompanies()
     {
-        return Company::select('id','user_id','country_id')
-        ->with('user:id,name,email,avatar','country:id,name')
+        return Company::select('id', 'user_id', 'country_id')
+        ->with('user:id,name,email,avatar', 'country:id,name')
         ->latest()
         ->limit(5)
-        ->get()->transform(fn($company) => [
+        ->get()->transform(fn ($company) => [
             'id' => $company->id,
             'name' => $company->user->name,
             'email' => $company->user->email,
@@ -111,12 +110,12 @@ trait HasAdmin
 
     public function adminRecentOrders()
     {
-        return Order::select('id','order_id','amount','currency_symbol','plan_id','organization_id')
-        ->with('organization.user:id,name','plan:id,name')
+        return Order::select('id', 'order_id', 'amount', 'currency_symbol', 'plan_id', 'organization_id')
+        ->with('organization.user:id,name', 'plan:id,name')
         ->latest()
         ->limit(5)
         ->get()
-        ->transform(fn($order) => [
+        ->transform(fn ($order) => [
             'id' => $order->id,
             'order_id' => $order->order_id,
             'company' => $order->company->user,

@@ -2,17 +2,17 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
 use App\Models\Country;
 use App\Models\Holiday;
 use App\Models\Industry;
 use App\Models\TeamSize;
+use App\Models\User;
 use Illuminate\Database\Seeder;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class OrganizationSeeder extends Seeder
 {
-    public function createHoliday($organization, $country){
+    public function createHoliday($organization, $country)
+    {
         $holidays = getHolidays($country->code);
 
         for ($i = 0; $i < count($holidays); $i++) {
@@ -72,8 +72,6 @@ class OrganizationSeeder extends Seeder
         $johnOwner->update(['current_organization_id' => $kodebazar->id]);
         $this->createHoliday($kodebazar, $bdCountry);
         $this->createHoliday($templatecookie, $bdCountry);
-
-
 
         // Owner and organization create
         $inCountry = Country::where('code', 'bd')->first();

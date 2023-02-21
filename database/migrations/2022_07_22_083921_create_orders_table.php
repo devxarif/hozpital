@@ -1,10 +1,8 @@
 <?php
 
-use App\Models\Plan;
-use App\Models\Organization;
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateOrdersTable extends Migration
 {
@@ -19,7 +17,7 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->string('order_id');
             $table->string('transaction_id')->nullable();
-            $table->enum('payment_provider', ['flutterwave', 'mollie', 'midtrans', 'paypal', 'paystack', 'razorpay', 'sslcommerz', 'stripe', 'instamojo', 'offline','none']);
+            $table->enum('payment_provider', ['flutterwave', 'mollie', 'midtrans', 'paypal', 'paystack', 'razorpay', 'sslcommerz', 'stripe', 'instamojo', 'offline', 'none']);
             $table->string('amount')->default('0');
             $table->string('currency_symbol')->default('$');
             $table->string('usd_amount')->default('0');

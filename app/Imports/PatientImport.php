@@ -2,11 +2,11 @@
 
 namespace App\Imports;
 
-use App\Models\User;
 use App\Models\Patient;
-use Illuminate\Support\Arr;
+use App\Models\User;
 use App\Traits\HasUserUniqueEmail;
 use Carbon\Carbon;
+use Illuminate\Support\Arr;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithStartRow;
 
@@ -33,7 +33,7 @@ class PatientImport implements ToModel, WithStartRow
             'phone' => $row[4] ?? fake()->phoneNumber,
             'birth_date' => $date_of_birth,
             'age' => $row[6] ?? '23',
-            'blood_group' => $row[7] ?? Arr::random(['A+','B+','O+', 'AB+','A-','B-','O-', 'AB-']),
+            'blood_group' => $row[7] ?? Arr::random(['A+', 'B+', 'O+', 'AB+', 'A-', 'B-', 'O-', 'AB-']),
             'address' => $row[8] ?? fake()->address,
         ]);
     }

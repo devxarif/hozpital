@@ -3,7 +3,6 @@
 namespace App\Services\Doctor;
 
 use App\Models\Prescription;
-use App\Models\PrescriptionMedicine;
 
 class CreatePrescriptionService
 {
@@ -23,7 +22,8 @@ class CreatePrescriptionService
         return $prescription;
     }
 
-    protected function prescriptionMedicine($prescription, $medicines){
+    protected function prescriptionMedicine($prescription, $medicines)
+    {
 
         if ($medicines && count($medicines) && $prescription) {
             foreach ($medicines as $medicine) {

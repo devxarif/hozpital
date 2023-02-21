@@ -10,7 +10,5 @@ class Receptionist extends Model
 {
     use HasFactory, HasUser;
 
-
-
     protected $tables = 'receptionists';
 }

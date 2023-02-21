@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use App\Models\Cms;
 use Illuminate\Database\Seeder;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class CmsSeeder extends Seeder
 {
@@ -15,7 +14,7 @@ class CmsSeeder extends Seeder
      */
     public function run()
     {
-        $cms = new Cms();
+        $cms = new Cms;
 
         // Home Page
         $cms->home_banner_title = 'Leave Management System (SAAS)';

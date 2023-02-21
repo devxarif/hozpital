@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers\Doctor;
 
+use App\Http\Controllers\Controller;
+use App\Models\AppointmentSchedule;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use App\Models\AppointmentSchedule;
-use App\Http\Controllers\Controller;
 
 class AppointmentScheduleController extends Controller
 {
-        /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -18,7 +18,7 @@ class AppointmentScheduleController extends Controller
     {
         $diff_times = AppointmentSchedule::$diff_times;
         $schedules = AppointmentSchedule::currentDoctor()
-            ->select('id','doctor_id','name','status')
+            ->select('id', 'doctor_id', 'name', 'status')
             ->with('appointmentSlots:id,appointment_schedule_id,start_time,end_time,diff_time')
             ->get()
             ->transform(fn ($appointmentSchedule) => [
@@ -38,18 +38,15 @@ class AppointmentScheduleController extends Controller
                         'hours' => explode(':', $slot->end_time)[0],
                         'minutes' => explode(':', $slot->end_time)[1],
                     ],
-                ])
+                ]),
             ]);
 
-        return inertia('Doctor/Appointment/Schedule', compact('schedules','diff_times'));
+        return inertia('Doctor/Appointment/Schedule', compact('schedules', 'diff_times'));
     }
-
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  Request $request
-     * @param  AppointmentSchedule $appointmentSchedule
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, AppointmentSchedule $appointmentSchedule)
@@ -73,17 +70,17 @@ class AppointmentScheduleController extends Controller
         }
 
         $this->flashSuccess('Appointment schedule updated successfully');
+
         return back();
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  Request $request
-     * @param  AppointmentSchedule $appointmentSchedule
      * @return \Illuminate\Http\Response
      */
-    public function statusUpdate(Request $request, AppointmentSchedule $appointmentSchedule){
+    public function statusUpdate(Request $request, AppointmentSchedule $appointmentSchedule)
+    {
         $appointmentSchedule->update(['status' => $request->status]);
 
         return true;

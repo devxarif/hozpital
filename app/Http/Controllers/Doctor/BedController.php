@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers\Doctor;
 
-use App\Models\Bed;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\BedFloor;
+use App\Models\Bed;
 use App\Models\BedType;
+use Illuminate\Http\Request;
 
 class BedController extends Controller
 {
@@ -19,32 +18,32 @@ class BedController extends Controller
     {
         $query = Bed::query();
 
-        if($request->has('keyword') && $request->filled('keyword')){
-            $query->whereLike(['number', 'charge'],  $request->keyword);
+        if($request->has('keyword') && $request->filled('keyword')) {
+            $query->whereLike(['number', 'charge'], $request->keyword);
         }
 
-        if($request->has('status') && $request->filled('status')){
-            $query->whereLike(['status'],  $request->status);
+        if($request->has('status') && $request->filled('status')) {
+            $query->whereLike(['status'], $request->status);
         }
 
-        if($request->has('bed_type') && $request->filled('bed_type')){
-            $query->whereHas('bedType', function($q) use ($request){
+        if($request->has('bed_type') && $request->filled('bed_type')) {
+            $query->whereHas('bedType', function ($q) use ($request) {
                 $q->where('id', $request->bed_type);
             });
         }
 
-        if($request->has('bed_floor') && $request->filled('bed_floor')){
-            $query->whereHas('floor', function($q) use ($request){
+        if($request->has('bed_floor') && $request->filled('bed_floor')) {
+            $query->whereHas('floor', function ($q) use ($request) {
                 $q->where('id', $request->bed_floor);
             });
         }
 
-        $data['beds'] = $query->with('bedType:id,name','floor:id,name')->latest()->paginate(20)->withQueryString();
-        $data['bed_types'] = BedType::withCount('beds')->latest()->get(['id','name','slug']);
-        $data['filter'] =  $request;
+        $data['beds'] = $query->with('bedType:id,name', 'floor:id,name')->latest()->paginate(20)->withQueryString();
+        $data['bed_types'] = BedType::withCount('beds')->latest()->get(['id', 'name', 'slug']);
+        $data['filter'] = $request;
         $data['total_bed_count'] = Bed::count();
 
-        return inertia('Doctor/Bed/Index',$data);
+        return inertia('Doctor/Bed/Index', $data);
     }
 
     /**
@@ -58,13 +57,14 @@ class BedController extends Controller
         //
     }
 
-     /**
+    /**
      * Fetch bedtype wise beds collection
      *
-     * @param  string $slug
+     * @param  string  $slug
      * @return \Illuminate\Http\Response
      */
-    public function bedTypeWiseBeds(Request $request){
+    public function bedTypeWiseBeds(Request $request)
+    {
         if ($request->type && $request->type != 'all') {
             $type = BedType::whereSlug($request->type)->firstOrFail();
             $beds = $type->beds()->with('bedType:id,name')->latest()->paginate(20)->withQueryString();

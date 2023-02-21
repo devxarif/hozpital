@@ -7,7 +7,7 @@ use App\Models\Order;
 
 trait HasCompany
 {
-    function companyDashboardHolidays($company)
+    public function companyDashboardHolidays($company)
     {
         Holiday::where('organization_id', $company->id)
             ->get()
@@ -22,7 +22,7 @@ trait HasCompany
             });
     }
 
-    function companyDashboardAcceptedLeaves($all_leave_requests)
+    public function companyDashboardAcceptedLeaves($all_leave_requests)
     {
         return $all_leave_requests->where('status', 'approved')
             ->transform(function ($leaveRequest) {
@@ -37,7 +37,7 @@ trait HasCompany
             });
     }
 
-    function companyDashboardPendingLeave($all_leave_requests)
+    public function companyDashboardPendingLeave($all_leave_requests)
     {
         return $all_leave_requests->where('status', 'pending')
             ->transform(function ($leaveRequest) {
@@ -56,7 +56,7 @@ trait HasCompany
             });
     }
 
-    function companyDashboardApprovedLeave($all_leave_requests)
+    public function companyDashboardApprovedLeave($all_leave_requests)
     {
         return $all_leave_requests->where('status', 'approved')
             ->transform(function ($leaveRequest) {
@@ -76,9 +76,9 @@ trait HasCompany
 
     public function companyDashboardSummary($company, $all_leave_requests)
     {
-        $total_expense =  currencyConversion(Order::where('organization_id', currentCompany()->id)->sum('usd_amount'), 'USD', currentCompany()->currency);
-        $pending_leave_request =  $all_leave_requests->where('status', 'pending')->count();
-        $approve_leave_request =  $all_leave_requests->where('status', 'approved')->count();
+        $total_expense = currencyConversion(Order::where('organization_id', currentCompany()->id)->sum('usd_amount'), 'USD', currentCompany()->currency);
+        $pending_leave_request = $all_leave_requests->where('status', 'pending')->count();
+        $approve_leave_request = $all_leave_requests->where('status', 'approved')->count();
         $total_teams = $company->teams->count();
         $total_employees = $company->employees->count();
 

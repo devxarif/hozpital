@@ -6,8 +6,7 @@ use App\Models\Laboratorist;
 
 class UpdateLaboratoristService
 {
-
-    public function execute(object $request,  object $laboratorist): Laboratorist
+    public function execute(object $request, object $laboratorist): Laboratorist
     {
         $this->UpdateUser($request, $laboratorist);
 
@@ -19,7 +18,8 @@ class UpdateLaboratoristService
         return $laboratorist;
     }
 
-    protected function UpdateUser($request, $laboratorist){
+    protected function UpdateUser($request, $laboratorist)
+    {
         return $laboratorist->user()->update([
             'name' => $request->name,
             'email' => $request->email,

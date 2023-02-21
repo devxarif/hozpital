@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Expense;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Services\Admin\Expense\CreateExpenseService;
-use App\Services\Admin\Expense\UpdateExpenseService;
 use App\Http\Requests\Admin\Expense\ExpenseCreateRequest;
 use App\Http\Requests\Admin\Expense\ExpenseUpdateRequest;
+use App\Models\Expense;
 use App\Models\ExpenseCategory;
+use App\Services\Admin\Expense\CreateExpenseService;
+use App\Services\Admin\Expense\UpdateExpenseService;
+use Illuminate\Http\Request;
 
 class ExpenseController extends Controller
 {
@@ -21,10 +21,10 @@ class ExpenseController extends Controller
     public function index(Request $request)
     {
         $query = Expense::query();
-        if($request->has('keyword') && $request->filled('keyword')){
-            $query->whereLike(['invoice_number', 'title'],  $request->keyword);
+        if($request->has('keyword') && $request->filled('keyword')) {
+            $query->whereLike(['invoice_number', 'title'], $request->keyword);
         }
-        if($request->has('category') && $request->filled('category')){
+        if($request->has('category') && $request->filled('category')) {
             $query->where('expense_category_id', $request->category);
         }
 
@@ -32,44 +32,42 @@ class ExpenseController extends Controller
 
         return inertia('Admin/Expense/Index', [
             'expenses' => $expenses,
-            'expense_categories' => ExpenseCategory::latest()->get(['id','name']),
-            'filter' => $request
+            'expense_categories' => ExpenseCategory::latest()->get(['id', 'name']),
+            'filter' => $request,
         ]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param ExpenseCreateRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(ExpenseCreateRequest $request)
     {
-        (new CreateExpenseService())->execute($request);
+        (new CreateExpenseService)->execute($request);
 
         $this->flashSuccess('Expense created successfully!');
+
         return back();
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  ExpenseUpdateRequest $request
-     * @param  Expense $expense
      * @return \Illuminate\Http\Response
      */
     public function update(ExpenseUpdateRequest $request, Expense $expense)
     {
-        (new UpdateExpenseService())->execute($request, $expense);
+        (new UpdateExpenseService)->execute($request, $expense);
 
         $this->flashSuccess('Expense updated successfully!');
+
         return back();
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Expense $expense
      * @return \Illuminate\Http\Response
      */
     public function destroy(Expense $expense)
@@ -77,6 +75,7 @@ class ExpenseController extends Controller
         $expense->delete();
 
         $this->flashSuccess('Expense deleted successfully!');
+
         return back();
     }
 }

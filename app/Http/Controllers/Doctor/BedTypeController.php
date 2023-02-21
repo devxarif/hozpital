@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Doctor;
 
+use App\Http\Controllers\Controller;
 use App\Models\BedType;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
 class BedTypeController extends Controller
 {
@@ -17,9 +17,9 @@ class BedTypeController extends Controller
     {
         $bed_types = BedType::latest()->paginate(20)->withQueryString();
 
-        return inertia('Doctor/BedType/Index',[
+        return inertia('Doctor/BedType/Index', [
             'bed_types' => $bed_types,
-            'filter' => $request
+            'filter' => $request,
         ]);
     }
 

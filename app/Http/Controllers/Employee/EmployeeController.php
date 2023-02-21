@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers\Employee;
 
-use App\Models\Team;
-use App\Models\Organization;
-use App\Models\Holiday;
-use App\Models\Employee;
-use Illuminate\Http\Request;
-use App\Models\HolidayRequest;
 use App\Http\Controllers\Controller;
+use App\Models\Employee;
+use App\Models\Holiday;
+use App\Models\HolidayRequest;
+use App\Models\Organization;
+use App\Models\Team;
 use App\Notifications\Organization\NewHolidayRequest;
+use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
 {
@@ -23,9 +23,9 @@ class EmployeeController extends Controller
             ->transform(function ($date) {
                 $date->format_start_date = formatTime($date->start, 'D d M');
                 $date->format_end_date = formatTime($date->end, 'D d M');
+
                 return $date;
             });
-
 
         return inertia('Employee/Holidays', [
             'user' => $user,
@@ -60,6 +60,7 @@ class EmployeeController extends Controller
         isset($user) ? $user->notify(new NewHolidayRequest($employee->organization_id)) : '';
 
         session()->flash('success', 'Holiday request sent successfully!');
+
         return back();
     }
 

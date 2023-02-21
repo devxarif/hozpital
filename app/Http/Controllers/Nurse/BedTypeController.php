@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Nurse;
 
-use App\Models\BedType;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Services\Admin\BedType\CreateBedTypeService;
-use App\Services\Admin\BedType\UpdateBedTypeService;
 use App\Http\Requests\Admin\Bed\BedTypeCreateRequest;
 use App\Http\Requests\Admin\Bed\BedTypeUpdateRequest;
+use App\Models\BedType;
+use App\Services\Admin\BedType\CreateBedTypeService;
+use App\Services\Admin\BedType\UpdateBedTypeService;
+use Illuminate\Http\Request;
 
 class BedTypeController extends Controller
 {
@@ -21,9 +21,9 @@ class BedTypeController extends Controller
     {
         $bed_types = BedType::latest()->paginate(20)->withQueryString();
 
-        return inertia('Nurse/BedType/Index',[
+        return inertia('Nurse/BedType/Index', [
             'bed_types' => $bed_types,
-            'filter' => $request
+            'filter' => $request,
         ]);
     }
 
@@ -40,14 +40,14 @@ class BedTypeController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  BedTypeCreateRequest $request
      * @return \Illuminate\Http\Response
      */
     public function store(BedTypeCreateRequest $request)
     {
-        (new CreateBedTypeService())->execute($request);
+        (new CreateBedTypeService)->execute($request);
 
         $this->flashSuccess('Bed type created successfully');
+
         return back();
     }
 
@@ -76,22 +76,20 @@ class BedTypeController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  BedTypeUpdateRequest $request
-     * @param  BedType $bedType
      * @return \Illuminate\Http\Response
      */
     public function update(BedTypeUpdateRequest $request, BedType $bedType)
     {
-        (new UpdateBedTypeService())->execute($request, $bedType);
+        (new UpdateBedTypeService)->execute($request, $bedType);
 
         $this->flashSuccess('Bed type updated successfully');
+
         return back();
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  BedType $bedType
      * @return \Illuminate\Http\Response
      */
     public function destroy(BedType $bedType)
@@ -99,6 +97,7 @@ class BedTypeController extends Controller
         $bedType->delete();
 
         $this->flashSuccess('Bed type deleted successfully');
+
         return back();
     }
 }

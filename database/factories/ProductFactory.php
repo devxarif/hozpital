@@ -3,9 +3,9 @@
 namespace Database\Factories;
 
 use App\Models\Manufacture;
-use Illuminate\Support\Arr;
 use App\Models\ProductCategory;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Arr;
 
 class ProductFactory extends Factory
 {
@@ -22,10 +22,10 @@ class ProductFactory extends Factory
             'name' => fake()->name,
             'buying_price' => rand(100, 200),
             'selling_price' => rand(200, 400),
-            'quantity' => rand(200,500),
+            'quantity' => rand(200, 500),
             'description' => fake()->sentence,
-            'type' => Arr::random(['medicine','others']),
-            'expire_date' => $this->faker->dateTimeBetween('','+2 years'),
+            'type' => Arr::random(['medicine', 'others']),
+            'expire_date' => $this->faker->dateTimeBetween('', '+2 years'),
         ];
     }
 }

@@ -25,7 +25,7 @@ class BedTypeCreateRequest extends FormRequest
     {
         return [
             'name' => 'required|max:255|unique:bed_types,name',
-            'description' => 'nullable'
+            'description' => 'nullable',
         ];
     }
 }

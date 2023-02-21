@@ -2,8 +2,8 @@
 
 namespace App\Services\Admin\Patient;
 
-use App\Models\User;
 use App\Models\Patient;
+use App\Models\User;
 
 class CreatePatientService
 {
@@ -29,7 +29,8 @@ class CreatePatientService
         return $patient;
     }
 
-    protected function createUser($request){
+    protected function createUser($request)
+    {
         return User::create([
             'name' => $request->name,
             'email' => $request->email,

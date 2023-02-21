@@ -11,13 +11,13 @@ class DoctorExport implements FromCollection, WithHeadings
 {
     public function collection()
     {
-        return DoctorExportResource::collection(Doctor::with('user:id,name,email','department:id,name')->get());
+        return DoctorExportResource::collection(Doctor::with('user:id,name,email', 'department:id,name')->get());
     }
 
     public function headings(): array
     {
         return [
-            'Name', 'Email', 'Phone',"Address"
+            'Name', 'Email', 'Phone', 'Address',
         ];
     }
 }

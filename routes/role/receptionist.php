@@ -1,25 +1,20 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Receptionist\BedController;
-use App\Http\Controllers\Admin\EventController;
-use App\Http\Controllers\Admin\NurseController;
-use App\Http\Controllers\Receptionist\DoctorController;
-use App\Http\Controllers\Receptionist\BedTypeController;
-use App\Http\Controllers\Admin\HolidayController;
-use App\Http\Controllers\Receptionist\PatientController;
-use App\Http\Controllers\Receptionist\BedFloorController;
-use App\Http\Controllers\Receptionist\BloodBankController;
-use App\Http\Controllers\Admin\LeaveTypeController;
-use App\Http\Controllers\Admin\AccountantController;
-use App\Http\Controllers\Receptionist\BloodDonorController;
-use App\Http\Controllers\Admin\DepartmentController;
-use App\Http\Controllers\Admin\PharmacistController;
-use App\Http\Controllers\Admin\ManufactureController;
 use App\Http\Controllers\Admin\AnnouncementController;
-use App\Http\Controllers\Receptionist\BedAllotmentController;
+use App\Http\Controllers\Admin\EventController;
+use App\Http\Controllers\Admin\HolidayController;
 use App\Http\Controllers\Admin\LeaveRequestController;
+use App\Http\Controllers\Admin\LeaveTypeController;
+use App\Http\Controllers\Receptionist\BedAllotmentController;
+use App\Http\Controllers\Receptionist\BedController;
+use App\Http\Controllers\Receptionist\BedFloorController;
+use App\Http\Controllers\Receptionist\BedTypeController;
+use App\Http\Controllers\Receptionist\BloodBankController;
 use App\Http\Controllers\Receptionist\BloodDonationController;
+use App\Http\Controllers\Receptionist\BloodDonorController;
+use App\Http\Controllers\Receptionist\DoctorController;
+use App\Http\Controllers\Receptionist\PatientController;
+use Illuminate\Support\Facades\Route;
 
 // Route::middleware(['auth', 'check.admin.role'])->prefix('admin')->group(function () {
 Route::middleware(['auth'])->name('receptionist.')->prefix('receptionist')->group(function () {

@@ -13,12 +13,11 @@ trait HasUser
     }
 
     /**
-    * The accessors that should be return avatar full path
-    *
-    * @param string $avatar
-    *
-    * @return array
-    */
+     * The accessors that should be return avatar full path
+     *
+     * @param  string  $avatar
+     * @return array
+     */
     public function getAvatarAttribute($avatar)
     {
         return $avatar ? asset($avatar) : asset('admin/img/default-user.png');

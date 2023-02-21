@@ -3,16 +3,16 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Exports\PharmacistExport;
-use App\Models\Pharmacist;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Requests\Admin\PharmacistCreateRequest;
 use App\Http\Requests\Admin\PharmacistUpdateRequest;
 use App\Imports\PharmacistImport;
+use App\Models\Pharmacist;
 use App\Services\Admin\Pharmacist\CreatePharmacistService;
 use App\Services\Admin\Pharmacist\DeletePharmacistService;
 use App\Services\Admin\Pharmacist\UpdatePharmacistService;
+use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PharmacistController extends Controller
 {
@@ -25,15 +25,15 @@ class PharmacistController extends Controller
     {
         $query = Pharmacist::query();
 
-        if($request->has('keyword') && $request->filled('keyword')){
-            $query->whereLike(['user.name', 'user.email'],  $request->keyword);
+        if($request->has('keyword') && $request->filled('keyword')) {
+            $query->whereLike(['user.name', 'user.email'], $request->keyword);
         }
 
         $pharmacists = $query->with('user:id,name,email')->latest()->paginate(20)->withQueryString();
 
-        return inertia('Admin/Pharmacist/Index',[
+        return inertia('Admin/Pharmacist/Index', [
             'pharmacists' => $pharmacists,
-            'filter' => $request
+            'filter' => $request,
         ]);
     }
 
@@ -47,17 +47,17 @@ class PharmacistController extends Controller
         //
     }
 
-        /**
+    /**
      * Store a newly created resource in storage.
      *
-     * @param  PharmacistCreateRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(PharmacistCreateRequest $request)
     {
-        (new CreatePharmacistService())->execute($request);
+        (new CreatePharmacistService)->execute($request);
 
         $this->flashSuccess('Pharmacist created successfully');
+
         return back();
     }
 
@@ -87,14 +87,14 @@ class PharmacistController extends Controller
      * Update the specified resource in storage.
      *
      * @param  Pharmacist  $request
-     * @param  Pharmacist  $pharmacist
      * @return \Illuminate\Http\Response
      */
     public function update(PharmacistUpdateRequest $request, Pharmacist $pharmacist)
     {
-        (new UpdatePharmacistService())->execute($request,$pharmacist);
+        (new UpdatePharmacistService)->execute($request, $pharmacist);
 
         $this->flashSuccess('Pharmacist updated successfully');
+
         return back();
     }
 
@@ -106,9 +106,10 @@ class PharmacistController extends Controller
      */
     public function destroy(Pharmacist $pharmacist)
     {
-        (new DeletePharmacistService())->execute($pharmacist);
+        (new DeletePharmacistService)->execute($pharmacist);
 
         $this->flashSuccess('Pharmacist deleted successfully');
+
         return back();
     }
 
@@ -125,6 +126,7 @@ class PharmacistController extends Controller
             return Excel::download(new PharmacistExport, $name);
         } catch (\Throwable $th) {
             $this->flashError($th->getMessage());
+
             return back();
         }
     }
@@ -137,7 +139,7 @@ class PharmacistController extends Controller
     public function import(Request $request)
     {
         $request->validate([
-            'file' => 'required|mimes:csv,xlsx,xls'
+            'file' => 'required|mimes:csv,xlsx,xls',
         ]);
 
         try {

@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers\Payment;
 
-use Instamojo\Instamojo;
+use App\Http\Controllers\Controller;
 use App\Traits\PaymentAble;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
 class InstamojoController extends Controller
 {
@@ -19,42 +18,43 @@ class InstamojoController extends Controller
 
         session(['order_payment' => [
             'payment_provider' => 'instamojo',
-            'amount' =>  $amount,
+            'amount' => $amount,
             'currency_symbol' => '₹',
-            'usd_amount' =>  $converted_amount,
+            'usd_amount' => $converted_amount,
         ]]);
 
         $ch = curl_init();
 
         curl_setopt($ch, CURLOPT_URL, 'https://test.instamojo.com/api/1.1/payment-requests/');
-        curl_setopt($ch, CURLOPT_HEADER, FALSE);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, TRUE);
+        curl_setopt($ch, CURLOPT_HEADER, false);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
         curl_setopt(
             $ch,
             CURLOPT_HTTPHEADER,
-            array(
-                "X-Api-Key:" . config('kodebazar.im_key'),
-                "X-Auth-Token:" . config('kodebazar.im_secret')
-            )
+            [
+                'X-Api-Key:'.config('kodebazar.im_key'),
+                'X-Auth-Token:'.config('kodebazar.im_secret'),
+            ]
         );
-        $payload = array(
-            'purpose' => "Payment for the plan: " . $plan->name,
+        $payload = [
+            'purpose' => 'Payment for the plan: '.$plan->name,
             'amount' => $amount,
-            'phone' => "9888888888",
+            'phone' => '9888888888',
             'buyer_name' => auth()->user()->name,
             'redirect_url' => route('instamojo.success'),
             'send_email' => true,
             'webhook' => 'http://www.example.com/webhook/',
             'send_sms' => true,
             'email' => auth()->user()->email,
-            'allow_repeated_payments' => false
-        );
+            'allow_repeated_payments' => false,
+        ];
         curl_setopt($ch, CURLOPT_POST, true);
         curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($payload));
         $response = curl_exec($ch);
         curl_close($ch);
         $response = json_decode($response);
+
         return redirect($response->payment_request->longurl);
     }
 
@@ -64,17 +64,17 @@ class InstamojoController extends Controller
 
         $ch = curl_init();
 
-        curl_setopt($ch, CURLOPT_URL, 'https://test.instamojo.com/api/1.1/payments/' . $request->get('payment_id'));
-        curl_setopt($ch, CURLOPT_HEADER, FALSE);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, TRUE);
+        curl_setopt($ch, CURLOPT_URL, 'https://test.instamojo.com/api/1.1/payments/'.$request->get('payment_id'));
+        curl_setopt($ch, CURLOPT_HEADER, false);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
         curl_setopt(
             $ch,
             CURLOPT_HTTPHEADER,
-            array(
-                "X-Api-Key:" . config('kodebazar.im_key'),
-                "X-Auth-Token:" . config('kodebazar.im_secret')
-            )
+            [
+                'X-Api-Key:'.config('kodebazar.im_key'),
+                'X-Auth-Token:'.config('kodebazar.im_secret'),
+            ]
         );
 
         $response = curl_exec($ch);
@@ -94,6 +94,7 @@ class InstamojoController extends Controller
                 $this->orderPlacing();
             } else {
                 session()->flash('error', 'Payment was failed, , Try Again!!');
+
                 return redirect()->route('payment');
             }
         }

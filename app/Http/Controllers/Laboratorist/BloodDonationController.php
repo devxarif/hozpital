@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Laboratorist;
 
-use Illuminate\Http\Request;
-use App\Models\BloodDonation;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\BloodBank\BloodDonationSaveRequest;
+use App\Models\BloodDonation;
 use App\Services\Admin\BloodDonation\CreateBloodDonationService;
 use App\Services\Admin\BloodDonation\UpdateBloodDonationService;
+use Illuminate\Http\Request;
 
 class BloodDonationController extends Controller
 {
@@ -20,9 +20,9 @@ class BloodDonationController extends Controller
     {
         $blood_donations = BloodDonation::with('bloodDonor')->latest()->paginate(20)->withQueryString();
 
-        return inertia('Laboratorist/BloodDonation/Index',[
+        return inertia('Laboratorist/BloodDonation/Index', [
             'blood_donations' => $blood_donations,
-            'filter' => $request
+            'filter' => $request,
         ]);
     }
 
@@ -36,17 +36,17 @@ class BloodDonationController extends Controller
         //
     }
 
-       /**
+    /**
      * Store a newly created resource in storage.
      *
-     * @param  BloodDonationSaveRequest $request
      * @return \Illuminate\Http\Response
      */
     public function store(BloodDonationSaveRequest $request)
     {
-        (new CreateBloodDonationService())->execute($request);
+        (new CreateBloodDonationService)->execute($request);
 
         $this->flashSuccess('Blood donation created successfully');
+
         return back();
     }
 
@@ -75,22 +75,20 @@ class BloodDonationController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  BloodDonationSaveRequest $request
-     * @param  BloodDonation $bloodDonation
      * @return \Illuminate\Http\Response
      */
     public function update(BloodDonationSaveRequest $request, BloodDonation $bloodDonation)
     {
-        (new UpdateBloodDonationService())->execute($request, $bloodDonation);
+        (new UpdateBloodDonationService)->execute($request, $bloodDonation);
 
         $this->flashSuccess('Blood donation updated successfully');
+
         return back();
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  BloodDonation $bloodDonation
      * @return \Illuminate\Http\Response
      */
     public function destroy(BloodDonation $bloodDonation)
@@ -98,6 +96,7 @@ class BloodDonationController extends Controller
         $bloodDonation->delete();
 
         $this->flashSuccess('Blood donation deleted successfully');
+
         return back();
     }
 }

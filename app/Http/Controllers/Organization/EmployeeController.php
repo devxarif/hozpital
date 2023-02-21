@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers\Organization;
 
+use App\Http\Controllers\Controller;
+use App\Http\Requests\EmployeeUpdateRequest;
+use App\Http\Requests\Organization\EmployeeCreateRequest;
+use App\Models\Employee;
 use App\Models\Team;
 use App\Models\User;
-use App\Models\Employee;
-use Illuminate\Http\Request;
-use App\Traits\HasSubscription;
-use App\Http\Controllers\Controller;
-use App\Traits\HasLeaveBalance;
-use App\Http\Requests\EmployeeUpdateRequest;
 use App\Notifications\Organization\NewEmployeeJoined;
-use App\Http\Requests\Organization\EmployeeCreateRequest;
+use App\Traits\HasLeaveBalance;
+use App\Traits\HasSubscription;
+use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
 {
@@ -33,6 +33,7 @@ class EmployeeController extends Controller
         // Check if the user is limited to create employees
         if ($this->checkEmployeesLimitation()) {
             session()->flash('error', __('You have reached the maximum number of employees'));
+
             return back();
         }
 
@@ -40,6 +41,7 @@ class EmployeeController extends Controller
 
         if ($organization->leaveTypes->count() == 0) {
             session()->flash('error', 'Please add leave types first');
+
             return redirect_to(route('leaveTypes.create'));
         }
 
@@ -58,13 +60,12 @@ class EmployeeController extends Controller
 
         $user = User::create($data);
 
-
        $employee = $user->employee()->create([
-            'user_id' => $user->id,
-            'organization_id' => $organization->id,
-            'team_id' => $request->team_id,
-            'phone' => $request->phone ?? '',
-        ]);
+           'user_id' => $user->id,
+           'organization_id' => $organization->id,
+           'team_id' => $request->team_id,
+           'phone' => $request->phone ?? '',
+       ]);
 
         // Create leave balance for the employee
         $this->employeeLeaveBalanceCreate($organization->id, $employee->id);
@@ -72,6 +73,7 @@ class EmployeeController extends Controller
         $employee->organization->user->notify(new NewEmployeeJoined($employee->user, $employee->organization_id));
 
         session()->flash('success', 'Employee created successfully!');
+
         return back();
     }
 
@@ -84,15 +86,15 @@ class EmployeeController extends Controller
         // organization summary
         $leave_requests = $userEmployee->leaveRequests;
         $summary = [
-             'total_rejected_leave_requests' => $leave_requests->where('status','rejected')->count(),
-             'total_pending_leave_requests' => $leave_requests->where('status','pending')->count(),
-             'total_approved_leave_requests' => $leave_requests->where('status','approved')->count(),
-         ];
+            'total_rejected_leave_requests' => $leave_requests->where('status', 'rejected')->count(),
+            'total_pending_leave_requests' => $leave_requests->where('status', 'pending')->count(),
+            'total_approved_leave_requests' => $leave_requests->where('status', 'approved')->count(),
+        ];
 
         // Leave balance
         $leave_balances = $userEmployee->leaveBalances->load('leaveType:id,name');
 
-        return inertia('Organization/EmployeeDetails',[
+        return inertia('Organization/EmployeeDetails', [
             'user' => $user,
             'summary' => $summary,
             'leave_balances' => $leave_balances,
@@ -138,6 +140,7 @@ class EmployeeController extends Controller
         ]);
 
         session()->flash('success', 'Employee updated successfully!');
+
         return back();
     }
 
@@ -147,12 +150,13 @@ class EmployeeController extends Controller
         $employee->employee()->delete();
 
         session()->flash('success', 'Employee deleted successfully!');
+
         return back();
     }
 
     public function fetchEmployees()
     {
-        $employees = Employee::select('id','user_id')
+        $employees = Employee::select('id', 'user_id')
             ->where('organization_id', currentOrganization()->id)
             ->with('user:id,name')
             ->get()

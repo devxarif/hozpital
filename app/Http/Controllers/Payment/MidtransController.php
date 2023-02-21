@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Payment;
 
-use App\Models\Order;
-use Illuminate\Http\Request;
-use App\Traits\PaymentAble;
 use App\Http\Controllers\Controller;
+use App\Models\Order;
+use App\Traits\PaymentAble;
+use Illuminate\Http\Request;
 
 class MidtransController extends Controller
 {
@@ -21,7 +21,7 @@ class MidtransController extends Controller
             'payment_provider' => 'midtrans',
             'amount' => session('midtrans_amount'),
             'currency_symbol' => 'Rp',
-            'usd_amount' =>  $converted_amount,
+            'usd_amount' => $converted_amount,
         ]]);
 
         // plan data store

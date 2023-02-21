@@ -1,15 +1,13 @@
 <?php
 
-use App\Models\User;
-use App\Models\Nurse;
-use App\Models\Department;
 use App\Models\Laboratorist;
+use App\Models\User;
 
-beforeEach(function(){
+beforeEach(function () {
     $this->user = createUser();
 });
 
-test('laboratorist create validation redirect back to form', function(){
+test('laboratorist create validation redirect back to form', function () {
     actingAs($this->user)
     ->post(route('admin.laboratorist.store'), [
         'name' => '',
@@ -17,14 +15,13 @@ test('laboratorist create validation redirect back to form', function(){
         'password' => '',
     ])
     ->assertStatus(302)
-    ->assertSessionHasErrors(['name','email','password'])
-    ->assertInvalid(['name','email','password']);
+    ->assertSessionHasErrors(['name', 'email', 'password'])
+    ->assertInvalid(['name', 'email', 'password']);
 });
 
-test('laboratorist create unique validation redirect back to form', function(){
+test('laboratorist create unique validation redirect back to form', function () {
     $user = User::factory()->create(['email' => 'laboratorist@mail.com']);
     Laboratorist::factory()->create(['user_id' => $user->id]);
-
 
    actingAs($this->user)
     ->post(route('admin.laboratorist.store'), [
@@ -34,7 +31,7 @@ test('laboratorist create unique validation redirect back to form', function(){
 });
 
 test('admin can create a laboratorist', function () {
-    $laboratorist  = ['name' => 'Laboratorist', 'email' => 'laboratorist@mail.com', 'password' => 'password'];
+    $laboratorist = ['name' => 'Laboratorist', 'email' => 'laboratorist@mail.com', 'password' => 'password'];
 
    actingAs($this->user)
     ->post(route('admin.laboratorist.store'), $laboratorist)
@@ -47,35 +44,34 @@ test('admin can create a laboratorist', function () {
     expect($lastlaboratorist->user->email)->toBe($laboratorist['email']);
 });
 
-test('laboratorist update validation redirect back to form', function(){
-    $laboratorist  = Laboratorist::factory()->create();
+test('laboratorist update validation redirect back to form', function () {
+    $laboratorist = Laboratorist::factory()->create();
 
    actingAs($this->user)
-    ->put(route('admin.laboratorist.update', $laboratorist->id),[
+    ->put(route('admin.laboratorist.update', $laboratorist->id), [
         'name' => '',
         'email' => '',
         'password' => '',
     ])
     ->assertStatus(302)
-    ->assertSessionHasErrors(['name','email'])
-    ->assertInvalid(['name','email']);
+    ->assertSessionHasErrors(['name', 'email'])
+    ->assertInvalid(['name', 'email']);
 });
 
-test('laboratorist update unique validation redirect back to form', function(){
+test('laboratorist update unique validation redirect back to form', function () {
     User::factory()->create(['email' => 'laboratorist@mail.com', 'role' => 'nurse']);
     $laboratorist = Laboratorist::factory()->create();
-
 
    actingAs($this->user)
     ->put(route('admin.laboratorist.update', $laboratorist->id), [
         'name' => 'Laboratorist',
-        'email' => 'laboratorist@mail.com'
+        'email' => 'laboratorist@mail.com',
     ])
     ->assertStatus(302);
 });
 
 test('admin can update a laboratorist', function () {
-    $laboratorist  = Laboratorist::factory()->create();
+    $laboratorist = Laboratorist::factory()->create();
 
    actingAs($this->user)
     ->put(route('admin.laboratorist.update', $laboratorist->id), [
@@ -86,12 +82,12 @@ test('admin can update a laboratorist', function () {
 });
 
 test('admin can delete a nurse', function () {
-    $laboratorist  = Laboratorist::factory()->create();
+    $laboratorist = Laboratorist::factory()->create();
 
    actingAs($this->user)
     ->delete(route('admin.laboratorist.destroy', $laboratorist->id))
     ->assertStatus(302);
 
     $this->assertDatabaseMissing('laboratorists', $laboratorist->toArray());
-    $this->assertDatabaseCount('laboratorists',0);
+    $this->assertDatabaseCount('laboratorists', 0);
 });

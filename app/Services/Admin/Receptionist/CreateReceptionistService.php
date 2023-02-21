@@ -20,7 +20,8 @@ class CreateReceptionistService
         return $receptionist;
     }
 
-    protected function createUser($request){
+    protected function createUser($request)
+    {
         return User::create([
             'name' => $request->name,
             'email' => $request->email,

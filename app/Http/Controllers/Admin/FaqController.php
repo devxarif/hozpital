@@ -27,6 +27,7 @@ class FaqController extends Controller
         Faq::create($request->all());
 
         session()->flash('success', 'Faq created successfully!');
+
         return back();
     }
 
@@ -40,6 +41,7 @@ class FaqController extends Controller
         $faq->update($request->all());
 
         session()->flash('success', 'Faq updated successfully!');
+
         return back();
     }
 
@@ -48,6 +50,7 @@ class FaqController extends Controller
         $faq->delete();
 
         session()->flash('success', 'Faq deleted successfully!');
+
         return back();
     }
 }

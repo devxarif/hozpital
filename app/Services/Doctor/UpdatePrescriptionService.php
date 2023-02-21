@@ -22,7 +22,8 @@ class UpdatePrescriptionService
         return $prescription;
     }
 
-    protected function prescriptionMedicine($prescription, $medicines){
+    protected function prescriptionMedicine($prescription, $medicines)
+    {
 
         if ($medicines && count($medicines) && $prescription) {
             $prescription->medicines()->delete();

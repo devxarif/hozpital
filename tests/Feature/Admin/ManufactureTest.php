@@ -1,13 +1,12 @@
 <?php
 
-use App\Models\Department;
 use App\Models\Manufacture;
 
-beforeEach(function(){
+beforeEach(function () {
     $this->user = createUser();
 });
 
-test('manufacture create validation redirect back to form', function(){
+test('manufacture create validation redirect back to form', function () {
     actingAs($this->user)
     ->post(route('admin.manufacture.store'), [
         'name' => '',
@@ -17,13 +16,12 @@ test('manufacture create validation redirect back to form', function(){
         'note' => '',
     ])
     ->assertStatus(302)
-    ->assertSessionHasErrors(['name','email','phone'])
-    ->assertInvalid(['name','email','phone']);
+    ->assertSessionHasErrors(['name', 'email', 'phone'])
+    ->assertInvalid(['name', 'email', 'phone']);
 });
 
-
 test('admin can create a department', function () {
-    $manufacture = ['name' => 'Acme', 'email' => 'acme@mail.com','phone' => '123456789'];
+    $manufacture = ['name' => 'Acme', 'email' => 'acme@mail.com', 'phone' => '123456789'];
 
     actingAs($this->user)
     ->post(route('admin.manufacture.store'), $manufacture)
@@ -37,7 +35,7 @@ test('admin can create a department', function () {
     expect($lastItem->phone)->toBe($manufacture['phone']);
 });
 
-test('manufacture update validation redirect back to form', function(){
+test('manufacture update validation redirect back to form', function () {
     $manufacture = Manufacture::factory()->create();
 
     actingAs($this->user)
@@ -49,15 +47,15 @@ test('manufacture update validation redirect back to form', function(){
         'note' => '',
     ])
     ->assertStatus(302)
-    ->assertSessionHasErrors(['name','email','phone'])
-    ->assertInvalid(['name','email','phone']);
+    ->assertSessionHasErrors(['name', 'email', 'phone'])
+    ->assertInvalid(['name', 'email', 'phone']);
 });
 
 test('admin can update a manufacture', function () {
     $manufacture = Manufacture::create([
         'name' => 'Acme',
         'email' => 'acme@mail.com',
-        'phone' => '123456789'
+        'phone' => '123456789',
     ]);
 
     actingAs($this->user)
@@ -79,5 +77,5 @@ test('admin can delete a manufacture', function () {
     ->assertStatus(302);
 
     $this->assertDatabaseMissing('manufactures', $manufacture->toArray());
-    $this->assertDatabaseCount('manufactures',0);
+    $this->assertDatabaseCount('manufactures', 0);
 });

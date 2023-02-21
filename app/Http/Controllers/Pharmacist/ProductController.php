@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Pharmacist;
 
-use App\Models\Product;
 use App\Http\Controllers\Controller;
-use App\Services\Admin\Product\CreateProductService;
-use App\Services\Admin\Product\UpdateProductService;
 use App\Http\Requests\Admin\Product\ProductCreateRequest;
 use App\Http\Requests\Admin\Product\ProductUpdateRequest;
+use App\Models\Product;
 use App\Models\ProductCategory;
+use App\Services\Admin\Product\CreateProductService;
+use App\Services\Admin\Product\UpdateProductService;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -21,12 +21,12 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         $all_products = Product::all();
-        $product_categories = ProductCategory::latest()->get(['id','name','slug']);
+        $product_categories = ProductCategory::latest()->get(['id', 'name', 'slug']);
         $products_query = Product::query();
 
         $products = $products_query->with(['productCategory:id,name'])
             ->when($request->keyword, function ($query, $keyword) {
-                $query->whereLike(['name'],  $keyword);
+                $query->whereLike(['name'], $keyword);
             })
             ->when($request->type, function ($query, $type) {
                 if ($type != 'all') {
@@ -48,22 +48,22 @@ class ProductController extends Controller
                 'all' => $all_products->count() ?? 0,
                 'medicine' => $all_products->where('type', 'medicine')->count() ?? 0,
                 'others' => $all_products->where('type', 'others')->count() ?? 0,
-            ]
+            ],
         ]);
 
     }
 
-     /**
+    /**
      * Store a newly created resource in storage.
      *
-     * @param  ProductCreateRequest $request
      * @return \Illuminate\Http\Response
      */
     public function store(ProductCreateRequest $request)
     {
-        (new CreateProductService())->execute($request);
+        (new CreateProductService)->execute($request);
 
         $this->flashSuccess('Product created successfully');
+
         return back();
     }
 
@@ -92,22 +92,20 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  ProductUpdateRequest $request
-     * @param  Product $product
      * @return \Illuminate\Http\Response
      */
     public function update(ProductUpdateRequest $request, Product $product)
     {
-        (new UpdateProductService())->execute($request, $product);
+        (new UpdateProductService)->execute($request, $product);
 
         $this->flashSuccess('Product updated successfully');
+
         return back();
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Product $product
      * @return \Illuminate\Http\Response
      */
     public function destroy(Product $product)
@@ -115,6 +113,7 @@ class ProductController extends Controller
         $product->delete();
 
         $this->flashSuccess('Product deleted successfully');
+
         return back();
     }
 }

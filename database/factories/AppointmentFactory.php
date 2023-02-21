@@ -23,9 +23,9 @@ class AppointmentFactory extends Factory
             'doctor_id' => Doctor::inRandomOrder()->value('id'),
             'patient_id' => Patient::inRandomOrder()->value('id'),
             'problem' => fake()->sentence,
-            'serial_no' => rand(1,900),
+            'serial_no' => rand(1, 900),
             'date' => fake()->date('Y-m-d'),
-            'status' => Arr::random(['complete','incomplete']),
+            'status' => Arr::random(['complete', 'incomplete']),
         ];
     }
 }

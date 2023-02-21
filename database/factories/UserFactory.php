@@ -21,7 +21,7 @@ class UserFactory extends Factory
             'name' => fake()->name,
             'email' => fake()->safeEmail,
             'password' => bcrypt('password'),
-            'role' => Arr::random(['admin','patient','doctor','nurse','receptionist','accountant','laboratorist','pharmacist'])
+            'role' => Arr::random(['admin', 'patient', 'doctor', 'nurse', 'receptionist', 'accountant', 'laboratorist', 'pharmacist']),
         ];
     }
 }

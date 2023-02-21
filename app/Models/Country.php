@@ -9,8 +9,6 @@ class Country extends Model
 {
     use HasFactory;
 
-
-
     public function companies()
     {
         return $this->hasMany(Organization::class, 'country_id');

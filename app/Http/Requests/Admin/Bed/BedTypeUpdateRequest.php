@@ -25,7 +25,7 @@ class BedTypeUpdateRequest extends FormRequest
     {
         return [
             'name' => "required|max:255|unique:bed_types,name,{$this->bedType->id}",
-            'description' => 'nullable'
+            'description' => 'nullable',
         ];
     }
 }

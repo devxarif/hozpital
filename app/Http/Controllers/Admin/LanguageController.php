@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Language;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\File;
-use Stichoza\GoogleTranslate\GoogleTranslate;
 use App\Http\Requests\Admin\LanguageCreateRequest;
 use App\Http\Requests\Admin\LanguageUpdateRequest;
+use App\Models\Language;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
+use Stichoza\GoogleTranslate\GoogleTranslate;
 
 class LanguageController extends Controller
 {
@@ -35,47 +35,50 @@ class LanguageController extends Controller
         ]);
 
         $baseFile = base_path('resources/lang/en.json');
-        $fileName = base_path('resources/lang/' . strSlug($request->code) . '.json');
+        $fileName = base_path('resources/lang/'.strSlug($request->code).'.json');
         copy($baseFile, $fileName);
 
         session()->flash('success', 'Language added successfully.');
+
         return redirect()->route('languages.translation.edit', $language->id);
     }
 
     public function update(LanguageUpdateRequest $request, Language $lang)
     {
-        $oldFile = $lang->code . '.json';
-        $oldName = base_path('resources/lang/' . $oldFile);
-        $newFile = strSlug($request->code) . '.json';
-        $newName = base_path('resources/lang/' . $newFile);
+        $oldFile = $lang->code.'.json';
+        $oldName = base_path('resources/lang/'.$oldFile);
+        $newFile = strSlug($request->code).'.json';
+        $newName = base_path('resources/lang/'.$newFile);
 
         rename($oldName, $newName);
 
         $lang->update([
             'name' => $request->name,
             'code' => $request->code,
-            'status' => $request->status ? 1 : 0
+            'status' => $request->status ? 1 : 0,
         ]);
 
         session()->flash('success', 'Language updated successfully.');
+
         return back();
     }
 
     public function destroy(Language $lang)
     {
-        if (File::exists(base_path('resources/lang/' . $lang->code . '.json'))) {
-            File::delete(base_path('resources/lang/' . $lang->code . '.json'));
+        if (File::exists(base_path('resources/lang/'.$lang->code.'.json'))) {
+            File::delete(base_path('resources/lang/'.$lang->code.'.json'));
         }
 
         $lang->delete();
 
         session()->flash('success', 'Language deleted successfully.');
+
         return back();
     }
 
     public function translationEdit(Language $lang)
     {
-        $path = base_path('resources/lang/' . $lang->code . '.json');
+        $path = base_path('resources/lang/'.$lang->code.'.json');
         $translations = json_decode(file_get_contents($path), true);
 
         return inertia('Admin/Setting/Language/Translation', [
@@ -86,7 +89,7 @@ class LanguageController extends Controller
 
     public function translationUpdate(Request $request, Language $lang)
     {
-        $filePath = base_path('resources/lang/' . $lang->code . '.json');
+        $filePath = base_path('resources/lang/'.$lang->code.'.json');
 
         $data = file_get_contents($filePath);
         $translations = json_decode($data, true);
@@ -96,12 +99,13 @@ class LanguageController extends Controller
             if ($requestTranslations[$key]) {
                 $translations[$key] = $requestTranslations[$key];
             } else {
-                $translations[$key] = "";
+                $translations[$key] = '';
             }
         }
         file_put_contents($filePath, json_encode($translations, JSON_UNESCAPED_UNICODE));
 
         session()->flash('success', 'Language translation updated successfully.');
+
         return back();
     }
 
@@ -114,6 +118,7 @@ class LanguageController extends Controller
         }
 
         session()->flash('success', 'Language status updated successfully.');
+
         return back();
     }
 
@@ -124,15 +129,17 @@ class LanguageController extends Controller
             $key = $request->key;
 
             $translatedText = translateIt($key, $code);
+
             return response()->json($translatedText);
         } catch (\Exception $e) {
             return response()->json($key);
         }
     }
+
     public function allTranslate()
     {
         $language = Language::findOrFail(request('id'));
-        $data = file_get_contents(base_path('resources/lang/' . $language->code . '.json'));
+        $data = file_get_contents(base_path('resources/lang/'.$language->code.'.json'));
         $translations = json_decode($data, true);
 
         $afterTrans = [];
@@ -146,10 +153,12 @@ class LanguageController extends Controller
         return response()->json($afterTrans);
     }
 
-    public function defaultLanguage(Language $lang){
+    public function defaultLanguage(Language $lang)
+    {
         checkSetEnv('APP_DEFAULT_LANGUAGE', $lang->code);
 
         session()->flash('success', 'Language default set successfully.');
+
         return back();
     }
 }

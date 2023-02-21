@@ -2,16 +2,17 @@
 
 namespace App\Http\Controllers\Organization;
 
-use App\Models\Team;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Team;
 use App\Traits\Organization\HasAccountSetup;
+use Illuminate\Http\Request;
 
 class AccountSetupController extends Controller
 {
     use HasAccountSetup;
 
-    public function accountSetup(){
+    public function accountSetup()
+    {
         if (auth()->user()->is_opening_setup_complete) {
             return redirect_to('dashboard');
         }
@@ -19,58 +20,74 @@ class AccountSetupController extends Controller
         return inertia('Organization/Setup/Index');
     }
 
-    public function progressFetch(){
+    public function progressFetch()
+    {
         return auth()->user()->opening_setup_steps;
     }
 
-    public function progressUpdate($step){
+    public function progressUpdate($step)
+    {
         $user = auth()->user();
         $user->update(['opening_setup_steps' => $step]);
     }
 
-    public function step1(Request $request){
+    public function step1(Request $request)
+    {
         $this->saveStep1($request);
+
         return back();
     }
 
-    public function step2(Request $request){
+    public function step2(Request $request)
+    {
         try {
             $this->saveStep2($request);
+
             return back();
         } catch (\Throwable $th) {
-            session()->flash('error', config('app.debug') ? $th->getMessage():'Something went wrong');
+            session()->flash('error', config('app.debug') ? $th->getMessage() : 'Something went wrong');
+
             return back();
         }
     }
 
-    public function step3(Request $request){
+    public function step3(Request $request)
+    {
         try {
             $this->saveStep3($request);
             session()->flash('success', 'Invite Sent');
+
             return back();
         } catch (\Throwable $th) {
-            session()->flash('error', config('app.debug') ? $th->getMessage():'Something went wrong');
+            session()->flash('error', config('app.debug') ? $th->getMessage() : 'Something went wrong');
+
             return back();
         }
     }
 
-    public function step4(Request $request){
+    public function step4(Request $request)
+    {
         try {
             $this->saveStep4($request);
+
             return back();
         } catch (\Throwable $th) {
-            session()->flash('error', config('app.debug') ? $th->getMessage():'Something went wrong');
+            session()->flash('error', config('app.debug') ? $th->getMessage() : 'Something went wrong');
+
             return back();
         }
     }
 
-    public function step5(){
+    public function step5()
+    {
         try {
             $user = auth()->user();
             $user->update(['is_opening_setup_complete' => 1]);
+
             return redirect_to('dashboard');
         } catch (\Throwable $th) {
-            session()->flash('error', config('app.debug') ? $th->getMessage():'Something went wrong');
+            session()->flash('error', config('app.debug') ? $th->getMessage() : 'Something went wrong');
+
             return back();
         }
     }
@@ -82,7 +99,7 @@ class AccountSetupController extends Controller
 
         return [
             'team_limitation' => $team_limitation,
-            'teams' => $teams
+            'teams' => $teams,
         ];
     }
 
@@ -91,6 +108,7 @@ class AccountSetupController extends Controller
         $team->delete();
 
         session()->flash('success', 'Team deleted');
+
         return back();
     }
 
@@ -99,6 +117,7 @@ class AccountSetupController extends Controller
         return $request;
 
         session()->flash('success', 'Team deleted');
+
         return back();
     }
 }

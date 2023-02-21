@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Payment;
 
-use Illuminate\Http\Request;
-use App\Traits\PaymentAble;
 use App\Http\Controllers\Controller;
+use App\Traits\PaymentAble;
+use Illuminate\Http\Request;
 use Srmklive\PayPal\Services\PayPal as PayPalClient;
 
 class PayPalController extends Controller
@@ -23,9 +23,9 @@ class PayPalController extends Controller
 
         session(['order_payment' => [
             'payment_provider' => 'paypal',
-            'amount' =>  $converted_amount,
+            'amount' => $converted_amount,
             'currency_symbol' => '$',
-            'usd_amount' =>  $converted_amount,
+            'usd_amount' => $converted_amount,
         ]]);
 
         $provider = new PayPalClient;
@@ -33,22 +33,22 @@ class PayPalController extends Controller
         $provider->getAccessToken();
 
         $response = $provider->createOrder([
-            "intent" => "CAPTURE",
-            "application_context" => [
-                "return_url" => route('paypal.successTransaction', [
+            'intent' => 'CAPTURE',
+            'application_context' => [
+                'return_url' => route('paypal.successTransaction', [
                     'plan_id' => $plan->id,
-                    'amount' => $converted_amount
+                    'amount' => $converted_amount,
                 ]),
-                "cancel_url" => route('paypal.cancelTransaction'),
+                'cancel_url' => route('paypal.cancelTransaction'),
             ],
-            "purchase_units" => [
+            'purchase_units' => [
                 0 => [
-                    "amount" => [
-                        "currency_code" => "USD",
-                        "value" => $converted_amount,
-                    ]
-                ]
-            ]
+                    'amount' => [
+                        'currency_code' => 'USD',
+                        'value' => $converted_amount,
+                    ],
+                ],
+            ],
         ]);
 
         if (isset($response['id']) && $response['id'] != null) {
@@ -61,9 +61,11 @@ class PayPalController extends Controller
             }
 
             session()->flash('error', 'Something went wrong.');
+
             return back();
         } else {
             session()->flash('error', 'Something went wrong.');
+
             return back();
         }
     }
@@ -85,6 +87,7 @@ class PayPalController extends Controller
             $this->orderPlacing();
         } else {
             session()->flash('error', 'Transaction is Invalid');
+
             return back();
         }
     }
@@ -97,6 +100,7 @@ class PayPalController extends Controller
     public function cancelTransaction(Request $request)
     {
         session()->flash('error', 'Payment Failed');
+
         return back();
     }
 }

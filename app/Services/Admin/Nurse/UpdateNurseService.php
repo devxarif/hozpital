@@ -6,7 +6,7 @@ use App\Models\Nurse;
 
 class UpdateNurseService
 {
-    public function execute(object $request,  object $nurse): Nurse
+    public function execute(object $request, object $nurse): Nurse
     {
         $this->UpdateUser($request, $nurse);
 
@@ -18,7 +18,8 @@ class UpdateNurseService
         return $nurse;
     }
 
-    protected function UpdateUser($request, $nurse){
+    protected function UpdateUser($request, $nurse)
+    {
         return $nurse->user()->update([
             'name' => $request->name,
             'email' => $request->email,

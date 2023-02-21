@@ -3,7 +3,6 @@
 namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
@@ -45,7 +44,7 @@ class ResetPassword extends Notification
         return (new MailMessage)
             ->subject('Password Reset')
             ->greeting('Hello there,')
-            ->line('This is your reset password code: ' . $this->code)
+            ->line('This is your reset password code: '.$this->code)
             ->line('Thank you for using our application!');
     }
 

@@ -1,11 +1,10 @@
 <?php
 
-use Tests\TestCase;
-use App\Models\User;
 use App\Models\Admin;
+use App\Models\User;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-
+use Tests\TestCase;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,10 +45,10 @@ expect()->extend('toBeOne', function () {
 |
 */
 
-function createUser(string $role = 'admin'):User
+function createUser(string $role = 'admin'): User
 {
     return User::factory()->create([
-        'role' => $role
+        'role' => $role,
     ]);
 }
 

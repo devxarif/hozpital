@@ -17,7 +17,7 @@ class PatientExport implements FromCollection, WithHeadings
     public function headings(): array
     {
         return [
-            'Name', 'Email', 'Phone', 'Gender','Blood Group', 'Age', "Birth Date","Address"
+            'Name', 'Email', 'Phone', 'Gender', 'Blood Group', 'Age', 'Birth Date', 'Address',
         ];
     }
 }

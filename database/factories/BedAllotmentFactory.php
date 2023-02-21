@@ -20,7 +20,7 @@ class BedAllotmentFactory extends Factory
     public function definition()
     {
         $start = fake()->dateTimeBetween('next Monday', 'next Monday +7 days');
-        $end = fake()->dateTimeBetween($start, $start->format('Y-m-d') . ' +2 days');
+        $end = fake()->dateTimeBetween($start, $start->format('Y-m-d').' +2 days');
 
         return [
             'bed_id' => Bed::inRandomOrder()->value('id'),

@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Payment;
 
-use Stripe\Charge;
-use Stripe\Stripe;
+use App\Http\Controllers\Controller;
 use App\Traits\PaymentAble;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use Stripe\Charge;
+use Stripe\Stripe;
 
 class StripeController extends Controller
 {
@@ -19,18 +19,18 @@ class StripeController extends Controller
 
         session(['order_payment' => [
             'payment_provider' => 'stripe',
-            'amount' =>  $converted_amount,
+            'amount' => $converted_amount,
             'currency_symbol' => '$',
-            'usd_amount' =>  $converted_amount,
+            'usd_amount' => $converted_amount,
         ]]);
 
         try {
             Stripe::setApiKey(config('kodebazar.stripe_secret'));
             $charge = Charge::create([
-                "amount" => session('stripe_amount'),
-                "currency" => 'USD',
-                "source" => $request->stripeToken,
-                "description" => "Payment for " . $plan->name . " plan" . " in " . config('app.name'),
+                'amount' => session('stripe_amount'),
+                'currency' => 'USD',
+                'source' => $request->stripeToken,
+                'description' => 'Payment for '.$plan->name.' plan'.' in '.config('app.name'),
             ]);
 
             session(['transaction_id' => $charge->id ?? null]);

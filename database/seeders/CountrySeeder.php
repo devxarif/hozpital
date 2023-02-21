@@ -3,13 +3,12 @@
 namespace Database\Seeders;
 
 use App\Models\Country;
-use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Support\Str;
 
 class CountrySeeder extends Seeder
 {
-     /**
+    /**
      * Run the database seeds.
      *
      * @return void
@@ -22,7 +21,7 @@ class CountrySeeder extends Seeder
             $country_data[] = [
                 'name' => $countries_list[$i]['name'],
                 'slug' => Str::slug($countries_list[$i]['name']),
-                'icon' => 'flag-icon-' . Str::lower($countries_list[$i]['sortname']),
+                'icon' => 'flag-icon-'.Str::lower($countries_list[$i]['sortname']),
                 'code' => strtolower($countries_list[$i]['sortname']),
             ];
         }

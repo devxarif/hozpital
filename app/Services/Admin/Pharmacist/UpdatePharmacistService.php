@@ -6,8 +6,7 @@ use App\Models\Pharmacist;
 
 class UpdatePharmacistService
 {
-
-    public function execute(object $request,  object $pharmacist): Pharmacist
+    public function execute(object $request, object $pharmacist): Pharmacist
     {
         $this->UpdateUser($request, $pharmacist);
 
@@ -19,7 +18,8 @@ class UpdatePharmacistService
         return $pharmacist;
     }
 
-    protected function UpdateUser($request, $pharmacist){
+    protected function UpdateUser($request, $pharmacist)
+    {
         return $pharmacist->user()->update([
             'name' => $request->name,
             'email' => $request->email,

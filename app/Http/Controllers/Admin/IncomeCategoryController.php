@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
-use App\Models\IncomeCategory;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Income\IncomeCategoryCreateRequest;
 use App\Http\Requests\Admin\Income\IncomeCategoryUpdateRequest;
+use App\Models\IncomeCategory;
 use App\Services\Admin\IncomeCategory\CreateIncomeCategoryService;
 use App\Services\Admin\IncomeCategory\UpdateIncomeCategoryService;
+use Illuminate\Http\Request;
 
 class IncomeCategoryController extends Controller
 {
@@ -21,7 +21,7 @@ class IncomeCategoryController extends Controller
     {
         $query = IncomeCategory::query();
 
-        if($request->has('keyword') && $request->filled('keyword')){
+        if($request->has('keyword') && $request->filled('keyword')) {
             $query->whereLike('name', $request->keyword);
         }
 
@@ -29,43 +29,41 @@ class IncomeCategoryController extends Controller
 
         return inertia('Admin/IncomeCategory/Index', [
             'income_categories' => $income_categories,
-            'filter' => $request
+            'filter' => $request,
         ]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param IncomeCategoryCreateRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(IncomeCategoryCreateRequest $request)
     {
-        (new CreateIncomeCategoryService())->execute($request);
+        (new CreateIncomeCategoryService)->execute($request);
 
         $this->flashSuccess('Income category created successfully!');
+
         return back();
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  IncomeCategoryUpdateRequest $request
-     * @param  IncomeCategory $incomeCategory
      * @return \Illuminate\Http\Response
      */
     public function update(IncomeCategoryUpdateRequest $request, IncomeCategory $incomeCategory)
     {
-        (new UpdateIncomeCategoryService())->execute($request, $incomeCategory);
+        (new UpdateIncomeCategoryService)->execute($request, $incomeCategory);
 
         $this->flashSuccess('Income category updated successfully!');
+
         return back();
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  IncomeCategory $incomeCategory
      * @return \Illuminate\Http\Response
      */
     public function destroy(IncomeCategory $incomeCategory)
@@ -73,6 +71,7 @@ class IncomeCategoryController extends Controller
         $incomeCategory->delete();
 
         $this->flashSuccess('Income category deleted successfully!');
+
         return back();
     }
 }

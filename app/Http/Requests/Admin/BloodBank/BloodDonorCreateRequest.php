@@ -28,7 +28,7 @@ class BloodDonorCreateRequest extends FormRequest
             'blood_group' => 'required',
             'gender' => 'required',
             'phone' => 'required',
-            'email' => "required|email|unique:blood_donors,email",
+            'email' => 'required|email|unique:blood_donors,email',
             'address' => 'nullable',
             'age' => 'nullable',
         ];

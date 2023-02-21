@@ -2,12 +2,11 @@
 
 use App\Models\LeaveType;
 
-
-beforeEach(function(){
+beforeEach(function () {
     $this->user = createUser();
 });
 
-test('leave type create validation redirect back to form', function(){
+test('leave type create validation redirect back to form', function () {
     actingAs($this->user)
     ->post(route('admin.leaveType.store'), [
         'name' => '',
@@ -15,11 +14,11 @@ test('leave type create validation redirect back to form', function(){
         'balance' => '',
     ])
     ->assertStatus(302)
-    ->assertSessionHasErrors(['name','color','balance'])
-    ->assertInvalid(['name','color','balance']);
+    ->assertSessionHasErrors(['name', 'color', 'balance'])
+    ->assertInvalid(['name', 'color', 'balance']);
 });
 
-test('leave type create unique validation redirect back to form', function(){
+test('leave type create unique validation redirect back to form', function () {
     LeaveType::create(['name' => 'Casual Leave', 'balance' => 5]);
 
     actingAs($this->user)
@@ -30,7 +29,7 @@ test('leave type create unique validation redirect back to form', function(){
 });
 
 test('admin can create a leave type', function () {
-    $leave_type = ['name' => 'Casual Leave', 'balance' => 10,'color' => '#ffffff'];
+    $leave_type = ['name' => 'Casual Leave', 'balance' => 10, 'color' => '#ffffff'];
 
     actingAs($this->user)
     ->post(route('admin.leaveType.store'), $leave_type)
@@ -44,7 +43,7 @@ test('admin can create a leave type', function () {
     expect($lastProduct->color)->toBe($leave_type['color']);
 });
 
-test('leave type update validation redirect back to form', function(){
+test('leave type update validation redirect back to form', function () {
     $leave_type = LeaveType::create(['name' => 'Casual Leave', 'balance' => 5]);
 
     actingAs($this->user)
@@ -54,11 +53,11 @@ test('leave type update validation redirect back to form', function(){
         'balance' => '',
     ])
     ->assertStatus(302)
-    ->assertSessionHasErrors(['name','color','balance'])
-    ->assertInvalid(['name','color','balance']);
+    ->assertSessionHasErrors(['name', 'color', 'balance'])
+    ->assertInvalid(['name', 'color', 'balance']);
 });
 
-test('leave type update unique validation redirect back to form', function(){
+test('leave type update unique validation redirect back to form', function () {
     $leave_type = LeaveType::create(['name' => 'Casual Leave', 'balance' => 5]);
     LeaveType::create(['name' => 'Paid Leave', 'balance' => 5]);
 
@@ -73,14 +72,14 @@ test('admin can update a leave type', function () {
     $leave_type = LeaveType::create([
         'name' => 'Casual Leave',
         'balance' => 10,
-        'color' => '#ffffff'
+        'color' => '#ffffff',
     ]);
 
     actingAs($this->user)
     ->put(route('admin.leaveType.update', $leave_type->id), [
         'name' => 'Paid Leave',
         'balance' => 10,
-        'color' => '#ffffff'
+        'color' => '#ffffff',
     ])
     ->assertStatus(302);
 });
@@ -89,7 +88,7 @@ test('admin can delete a leave type', function () {
     $leave_type = LeaveType::create([
         'name' => 'Casual Leave',
         'balance' => 10,
-        'color' => '#ffffff'
+        'color' => '#ffffff',
     ]);
 
     actingAs($this->user)
@@ -97,6 +96,5 @@ test('admin can delete a leave type', function () {
     ->assertStatus(302);
 
     $this->assertDatabaseMissing('leave_types', $leave_type->toArray());
-    $this->assertDatabaseCount('leave_types',0);
+    $this->assertDatabaseCount('leave_types', 0);
 });
-

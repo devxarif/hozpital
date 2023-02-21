@@ -2,15 +2,14 @@
 
 namespace App\Http\Controllers\Receptionist;
 
-use App\Models\Bed;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Services\Admin\Bed\CreateBedService;
-use App\Services\Admin\Bed\UpdateBedService;
 use App\Http\Requests\Admin\Bed\BedCreateRequest;
 use App\Http\Requests\Admin\Bed\BedUpdateRequest;
-use App\Models\BedFloor;
+use App\Models\Bed;
 use App\Models\BedType;
+use App\Services\Admin\Bed\CreateBedService;
+use App\Services\Admin\Bed\UpdateBedService;
+use Illuminate\Http\Request;
 
 class BedController extends Controller
 {
@@ -23,45 +22,45 @@ class BedController extends Controller
     {
         $query = Bed::query();
 
-        if($request->has('keyword') && $request->filled('keyword')){
-            $query->whereLike(['number', 'charge'],  $request->keyword);
+        if($request->has('keyword') && $request->filled('keyword')) {
+            $query->whereLike(['number', 'charge'], $request->keyword);
         }
 
-        if($request->has('status') && $request->filled('status')){
-            $query->whereLike(['status'],  $request->status);
+        if($request->has('status') && $request->filled('status')) {
+            $query->whereLike(['status'], $request->status);
         }
 
-        if($request->has('bed_type') && $request->filled('bed_type')){
-            $query->whereHas('bedType', function($q) use ($request){
+        if($request->has('bed_type') && $request->filled('bed_type')) {
+            $query->whereHas('bedType', function ($q) use ($request) {
                 $q->where('id', $request->bed_type);
             });
         }
 
-        if($request->has('bed_floor') && $request->filled('bed_floor')){
-            $query->whereHas('floor', function($q) use ($request){
+        if($request->has('bed_floor') && $request->filled('bed_floor')) {
+            $query->whereHas('floor', function ($q) use ($request) {
                 $q->where('id', $request->bed_floor);
             });
         }
 
-        $data['beds'] = $query->with('bedType:id,name','floor:id,name')->latest()->paginate(20)->withQueryString();
-        $data['bed_types'] = BedType::withCount('beds')->latest()->get(['id','name','slug']);
-        $data['filter'] =  $request;
+        $data['beds'] = $query->with('bedType:id,name', 'floor:id,name')->latest()->paginate(20)->withQueryString();
+        $data['bed_types'] = BedType::withCount('beds')->latest()->get(['id', 'name', 'slug']);
+        $data['filter'] = $request;
         $data['total_bed_count'] = Bed::count();
 
-        return inertia('Receptionist/Bed/Index',$data);
+        return inertia('Receptionist/Bed/Index', $data);
     }
 
-     /**
+    /**
      * Store a newly created resource in storage.
      *
-     * @param  BedCreateRequest $request
      * @return \Illuminate\Http\Response
      */
     public function store(BedCreateRequest $request)
     {
-        (new CreateBedService())->execute($request);
+        (new CreateBedService)->execute($request);
 
         $this->flashSuccess('Bed created successfully');
+
         return back();
     }
 
@@ -79,22 +78,20 @@ class BedController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  BedUpdateRequest $request
-     * @param  Bed $bed
      * @return \Illuminate\Http\Response
      */
     public function update(BedUpdateRequest $request, Bed $bed)
     {
-        (new UpdateBedService())->execute($request, $bed);
+        (new UpdateBedService)->execute($request, $bed);
 
         $this->flashSuccess('Bed updated successfully');
+
         return back();
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Bed $bed
      * @return \Illuminate\Http\Response
      */
     public function destroy(Bed $bed)
@@ -102,16 +99,18 @@ class BedController extends Controller
         $bed->delete();
 
         $this->flashSuccess('Bed deleted successfully');
+
         return back();
     }
 
-     /**
+    /**
      * Fetch bedtype wise beds collection
      *
-     * @param  string $slug
+     * @param  string  $slug
      * @return \Illuminate\Http\Response
      */
-    public function bedTypeWiseBeds(Request $request){
+    public function bedTypeWiseBeds(Request $request)
+    {
         if ($request->type && $request->type != 'all') {
             $type = BedType::whereSlug($request->type)->firstOrFail();
             $beds = $type->beds()->with('bedType:id,name')->latest()->paginate(20)->withQueryString();

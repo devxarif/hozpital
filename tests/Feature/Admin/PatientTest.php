@@ -1,13 +1,13 @@
 <?php
 
-use App\Models\User;
 use App\Models\Patient;
+use App\Models\User;
 
-beforeEach(function(){
+beforeEach(function () {
     $this->user = createUser();
 });
 
-test('patient create validation redirect back to form', function(){
+test('patient create validation redirect back to form', function () {
     actingAs($this->user)
     ->post(route('admin.patient.store'), [
         'name' => '',
@@ -15,14 +15,13 @@ test('patient create validation redirect back to form', function(){
         'password' => '',
     ])
     ->assertStatus(302)
-    ->assertSessionHasErrors(['name','email','password'])
-    ->assertInvalid(['name','email','password']);
+    ->assertSessionHasErrors(['name', 'email', 'password'])
+    ->assertInvalid(['name', 'email', 'password']);
 });
 
-test('patient create unique validation redirect back to form', function(){
+test('patient create unique validation redirect back to form', function () {
     $user = User::factory()->create(['email' => 'patient@mail.com']);
     Patient::factory()->create(['user_id' => $user->id]);
-
 
    actingAs($this->user)
     ->post(route('admin.patient.store'), [
@@ -32,7 +31,7 @@ test('patient create unique validation redirect back to form', function(){
 });
 
 test('admin can create a patient', function () {
-    $patient  = ['name' => 'Patient', 'email' => 'patient@mail.com', 'password' => 'password'];
+    $patient = ['name' => 'Patient', 'email' => 'patient@mail.com', 'password' => 'password'];
 
    actingAs($this->user)
     ->post(route('admin.patient.store'), $patient)
@@ -45,34 +44,34 @@ test('admin can create a patient', function () {
     expect($lastpatient->user->email)->toBe($patient['email']);
 });
 
-test('patient update validation redirect back to form', function(){
-    $patient  = Patient::factory()->create();
+test('patient update validation redirect back to form', function () {
+    $patient = Patient::factory()->create();
 
    actingAs($this->user)
-    ->put(route('admin.patient.update', $patient->id),[
+    ->put(route('admin.patient.update', $patient->id), [
         'name' => '',
         'email' => '',
         'password' => '',
     ])
     ->assertStatus(302)
-    ->assertSessionHasErrors(['name','email'])
-    ->assertInvalid(['name','email']);
+    ->assertSessionHasErrors(['name', 'email'])
+    ->assertInvalid(['name', 'email']);
 });
 
-test('patient update unique validation redirect back to form', function(){
+test('patient update unique validation redirect back to form', function () {
     User::factory()->create(['email' => 'patient@mail.com', 'role' => 'patient']);
     $patient = Patient::factory()->create();
 
     actingAs($this->user)
     ->put(route('admin.patient.update', $patient->id), [
         'name' => 'Patient',
-        'email' => 'patient@mail.com'
+        'email' => 'patient@mail.com',
     ])
     ->assertStatus(302);
 });
 
 test('admin can update a patient', function () {
-    $patient  = Patient::factory()->create();
+    $patient = Patient::factory()->create();
 
    actingAs($this->user)
     ->put(route('admin.patient.update', $patient->id), [
@@ -83,12 +82,12 @@ test('admin can update a patient', function () {
 });
 
 test('admin can delete a patient', function () {
-    $patient  = Patient::factory()->create();
+    $patient = Patient::factory()->create();
 
    actingAs($this->user)
     ->delete(route('admin.patient.destroy', $patient->id))
     ->assertStatus(302);
 
     $this->assertDatabaseMissing('patients', $patient->toArray());
-    $this->assertDatabaseCount('patients',0);
+    $this->assertDatabaseCount('patients', 0);
 });

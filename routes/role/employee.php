@@ -1,9 +1,9 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Employee\ReportController;
 use App\Http\Controllers\Employee\EmployeeController;
 use App\Http\Controllers\Employee\LeaveRequestController;
+use App\Http\Controllers\Employee\ReportController;
+use Illuminate\Support\Facades\Route;
 
 // // Route::middleware(['auth','check.employee.role'])->prefix('employee')->name('employee.')->group(function () {
 // Route::middleware(['auth'])->prefix('employee')->name('employee.')->group(function () {

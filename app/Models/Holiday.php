@@ -2,11 +2,9 @@
 
 namespace App\Models;
 
-use App\Models\User;
-use App\Models\Organization;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Znck\Eloquent\Traits\BelongsToThrough;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Holiday extends Model
 {
@@ -18,7 +16,7 @@ class Holiday extends Model
         'start',
         'end',
         'color',
-        'days'
+        'days',
     ];
 
     public function user()

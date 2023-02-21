@@ -22,10 +22,10 @@ class BedFactory extends Factory
         return [
             'bed_type_id' => BedType::inRandomOrder()->value('id'),
             'bed_floor_id' => BedFloor::inRandomOrder()->value('id'),
-            'charge' => rand(100,1000),
-            'number' => rand(444,999),
-            'status' => Arr::random(['alloted','unalloted']),
-            'description' => fake()->sentence
+            'charge' => rand(100, 1000),
+            'number' => rand(444, 999),
+            'status' => Arr::random(['alloted', 'unalloted']),
+            'description' => fake()->sentence,
         ];
     }
 }

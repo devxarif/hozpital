@@ -2,7 +2,6 @@
 
 namespace App\Traits\Organization;
 
-use App\Models\User;
 use App\Models\Country;
 use App\Traits\HasCountry;
 
@@ -10,7 +9,8 @@ trait HasAccountSetup
 {
     use HasCountry;
 
-    public function saveStep1($request){
+    public function saveStep1($request)
+    {
         $request->validate([
             'organization_name' => 'required',
             'organization_email' => 'required|unique:companies,organization_email',
@@ -38,7 +38,8 @@ trait HasAccountSetup
         }
     }
 
-    public function saveStep2($request){
+    public function saveStep2($request)
+    {
         $request->validate([
             'names.*' => 'required',
         ]);
@@ -58,7 +59,8 @@ trait HasAccountSetup
 
     }
 
-    public function saveStep3($request){
+    public function saveStep3($request)
+    {
         $request->validate([
             'emails.*' => 'required',
             'teams.*' => 'required',
@@ -71,22 +73,23 @@ trait HasAccountSetup
         if ($emails && $teams) {
             foreach ($emails as $key => $email) {
                 if ($email && $teams[$key]) {
-                    sendInvite($company->id,$email, $teams[$key]);
+                    sendInvite($company->id, $email, $teams[$key]);
                 }
             }
         }
     }
 
-    public function saveStep4($request){
+    public function saveStep4($request)
+    {
         $company = currentCompany();
         $company->workingDays()->update([
-            "monday" => $request->monday ? true : false,
-            "tuesday" => $request->tuesday ? true : false,
-            "wednesday" => $request->wednesday ? true : false,
-            "thursday" => $request->thursday ? true : false,
-            "friday" => $request->friday ? true : false,
-            "saturday" => $request->saturday ? true : false,
-            "sunday" => $request->sunday ? true : false,
+            'monday' => $request->monday ? true : false,
+            'tuesday' => $request->tuesday ? true : false,
+            'wednesday' => $request->wednesday ? true : false,
+            'thursday' => $request->thursday ? true : false,
+            'friday' => $request->friday ? true : false,
+            'saturday' => $request->saturday ? true : false,
+            'sunday' => $request->sunday ? true : false,
         ]);
     }
 }

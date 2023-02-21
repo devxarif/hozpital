@@ -50,7 +50,7 @@ trait HasEmployeeReport
 
     public function getEmployeeLeaveHistoryReport($request)
     {
-        $leaveRequest = new LeaveRequest();
+        $leaveRequest = new LeaveRequest;
         $organization_id = currentCompany()->id;
         $employee_id = $request->employee;
 
@@ -113,7 +113,7 @@ trait HasEmployeeReport
 
     public function getTeamLeaveHistoryReport($request)
     {
-        $leaveRequest = new LeaveRequest();
+        $leaveRequest = new LeaveRequest;
         $organization_id = currentCompany()->id;
         $team_id = $request->team;
 

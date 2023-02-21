@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers\Payment;
 
-use Razorpay\Api\Api;
-use Illuminate\Http\Request;
-use Modules\Plan\Entities\Plan;
-use App\Traits\PaymentAble;
 use App\Http\Controllers\Controller;
-use App\Notifications\MembershipUpgradeNotification;
+use App\Traits\PaymentAble;
+use Illuminate\Http\Request;
+use Razorpay\Api\Api;
 
 class RazorpayController extends Controller
 {
@@ -21,9 +19,9 @@ class RazorpayController extends Controller
 
         session(['order_payment' => [
             'payment_provider' => 'razorpay',
-            'amount' =>  $amount,
+            'amount' => $amount,
             'currency_symbol' => '₹',
-            'usd_amount' =>  $converted_amount,
+            'usd_amount' => $converted_amount,
         ]]);
 
         $input = $request->all();
@@ -31,15 +29,16 @@ class RazorpayController extends Controller
 
         $payment = $api->payment->fetch($input['razorpay_payment_id']);
 
-        if (count($input)  && !empty($input['razorpay_payment_id'])) {
+        if (count($input) && ! empty($input['razorpay_payment_id'])) {
             try {
-                $payment->capture(array('amount' => $payment['amount']));
+                $payment->capture(['amount' => $payment['amount']]);
 
                 session(['transaction_id' => $input['razorpay_payment_id'] ?? null]);
                 $this->orderPlacing();
             } catch (\Exception $e) {
                 return $e->getMessage();
                 session()->put('error', $e->getMessage());
+
                 return redirect()->back();
             }
         }

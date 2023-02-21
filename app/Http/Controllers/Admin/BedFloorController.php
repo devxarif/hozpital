@@ -2,17 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\BedFloor;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Bed\BedFloorCreateRequest;
 use App\Http\Requests\Admin\Bed\BedFloorUpdateRequest;
+use App\Models\BedFloor;
 use App\Services\Admin\BedFloor\CreateBedFloorService;
 use App\Services\Admin\BedFloor\UpdateBedFloorService;
 
 class BedFloorController extends Controller
 {
-     /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -21,7 +20,7 @@ class BedFloorController extends Controller
     {
         $bed_floors = BedFloor::all();
 
-        return inertia('Admin/BedFloor/Index',compact('bed_floors'));
+        return inertia('Admin/BedFloor/Index', compact('bed_floors'));
     }
 
     /**
@@ -37,14 +36,14 @@ class BedFloorController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  BedFloorCreateRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(BedFloorCreateRequest $request)
     {
-        (new CreateBedFloorService())->execute($request);
+        (new CreateBedFloorService)->execute($request);
 
         $this->flashSuccess('Bed floor created successfully');
+
         return back();
     }
 
@@ -73,15 +72,14 @@ class BedFloorController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param BedFloorUpdateRequest  $request
-     * @param BedFloor  $bedFloor
      * @return \Illuminate\Http\Response
      */
     public function update(BedFloorUpdateRequest $request, BedFloor $bedFloor)
     {
-        (new UpdateBedFloorService())->execute($request,$bedFloor);
+        (new UpdateBedFloorService)->execute($request, $bedFloor);
 
         $this->flashSuccess('Bed floor updated successfully');
+
         return back();
     }
 
@@ -96,6 +94,7 @@ class BedFloorController extends Controller
         $bedFloor->delete();
 
         $this->flashSuccess('Bed floor deleted successfully');
+
         return back();
     }
 }

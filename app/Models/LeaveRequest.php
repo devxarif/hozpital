@@ -2,11 +2,8 @@
 
 namespace App\Models;
 
-use App\Models\Employee;
-use App\Models\LeaveType;
-use App\Models\Organization;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
 class LeaveRequest extends Model
 {
@@ -21,7 +18,6 @@ class LeaveRequest extends Model
         'reason',
         'status',
     ];
-
 
     public function user()
     {
@@ -88,9 +84,7 @@ class LeaveRequest extends Model
 
     public function scopeCustomRangeDate($query, $start_date, $end_date)
     {
-        return $query->whereDate('created_at', '>=',$start_date)
-        ->whereDate('created_at', '<=',$end_date);
+        return $query->whereDate('created_at', '>=', $start_date)
+        ->whereDate('created_at', '<=', $end_date);
     }
 }
-
-

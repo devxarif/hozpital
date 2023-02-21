@@ -2,15 +2,14 @@
 
 namespace App\Http\Controllers\Organization;
 
-use App\Models\Organization;
-use App\Models\Country;
-use App\Models\Holiday;
-use App\Traits\HasCountry;
-use Illuminate\Http\Request;
-use App\Models\HolidayRequest;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\HolidaySaveRequest;
-use App\Notifications\Organization\NewHolidayRequest;
+use App\Models\Country;
+use App\Models\Holiday;
+use App\Models\HolidayRequest;
+use App\Models\Organization;
+use App\Traits\HasCountry;
+use Illuminate\Http\Request;
 
 class HolidayController extends Controller
 {
@@ -23,6 +22,7 @@ class HolidayController extends Controller
         $holidays = Holiday::where('organization_id', $organization->id)->oldest('start')->get()->transform(function ($date) {
             $date->format_start_date = formatTime($date->start, 'D d M');
             $date->format_end_date = formatTime($date->end, 'D d M');
+
             return $date;
         });
 
@@ -41,10 +41,11 @@ class HolidayController extends Controller
             'start' => $request->start,
             'end' => $request->end,
             'days' => diffBetweenDays($request->start, $request->end),
-            'color' =>  "#ff0000",
+            'color' => '#ff0000',
         ]);
 
         session()->flash('success', 'Official holiday created successfully!');
+
         return back();
     }
 
@@ -55,10 +56,11 @@ class HolidayController extends Controller
             'start' => $request->start,
             'end' => $request->end,
             'days' => diffBetweenDays($request->start, $request->end),
-            'color' =>  "#ff0000",
+            'color' => '#ff0000',
         ]);
 
         session()->flash('success', 'Official holiday updated successfully!');
+
         return back();
     }
 
@@ -67,6 +69,7 @@ class HolidayController extends Controller
         $holiday->delete();
 
         session()->flash('success', 'Holiday deleted successfully!');
+
         return back();
     }
 
@@ -75,6 +78,7 @@ class HolidayController extends Controller
         currentOrganization()->holidays()->delete();
 
         session()->flash('success', 'All holidays deleted successfully!');
+
         return back();
     }
 
@@ -96,6 +100,7 @@ class HolidayController extends Controller
         }
 
         session()->flash('success', 'Holidays imported successfully!');
+
         return back();
     }
 
@@ -123,12 +128,13 @@ class HolidayController extends Controller
             'start' => $request_holiday->start,
             'end' => $request_holiday->end,
             'days' => diffBetweenDays($request_holiday->start, $request_holiday->end),
-            'color' =>  "#ff0000",
+            'color' => '#ff0000',
         ]);
 
         $request_holiday->delete();
 
         session()->flash('success', 'Holiday request accepted successfully!');
+
         return back();
     }
 
@@ -137,6 +143,7 @@ class HolidayController extends Controller
         $holiday->delete();
 
         session()->flash('success', 'Holiday request rejected successfully!');
+
         return back();
     }
 }

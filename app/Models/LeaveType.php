@@ -2,11 +2,9 @@
 
 namespace App\Models;
 
-use App\Models\LeaveBalance;
-use App\Models\Organization;
 use App\Http\Traits\Sluggable;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
 class LeaveType extends Model
 {

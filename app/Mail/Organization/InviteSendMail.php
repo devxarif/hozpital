@@ -11,7 +11,11 @@ class InviteSendMail extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
 
-    public $url, $company, $team;
+    public $url;
+
+    public $company;
+
+    public $team;
 
     /**
      * Create a new message instance.
@@ -32,7 +36,7 @@ class InviteSendMail extends Mailable implements ShouldQueue
      */
     public function build()
     {
-        return $this->subject('Invite to join ' . $this->company->organization_name)
+        return $this->subject('Invite to join '.$this->company->organization_name)
             ->from(config('mail.from.address'), config('mail.from.name'))
             ->markdown('mails.organization.invite_send_mail');
     }

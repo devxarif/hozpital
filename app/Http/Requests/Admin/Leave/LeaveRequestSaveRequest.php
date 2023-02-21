@@ -2,8 +2,8 @@
 
 namespace App\Http\Requests\Admin\Leave;
 
-use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class LeaveRequestSaveRequest extends FormRequest
 {
@@ -26,7 +26,7 @@ class LeaveRequestSaveRequest extends FormRequest
     {
         return [
             'leave_type' => 'required|exists:leave_types,id',
-            'user' => [Rule::requiredIf(!empty($this->request_for && $this->request_for != 'me'), 'required|exists:users,id')],
+            'user' => [Rule::requiredIf(! empty($this->request_for && $this->request_for != 'me'), 'required|exists:users,id')],
             'start' => 'required|date',
             'end' => 'required|date',
             'reason' => 'required',

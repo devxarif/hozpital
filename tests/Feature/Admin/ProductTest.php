@@ -4,11 +4,11 @@ use App\Models\Manufacture;
 use App\Models\Product;
 use App\Models\ProductCategory;
 
-beforeEach(function(){
+beforeEach(function () {
     $this->user = createUser();
 });
 
-test('product create validation redirect back to form', function(){
+test('product create validation redirect back to form', function () {
     actingAs($this->user)
     ->post(route('admin.product.store'), [
         'product_category' => '',
@@ -18,11 +18,11 @@ test('product create validation redirect back to form', function(){
         'quantity' => '',
     ])
     ->assertStatus(302)
-    ->assertSessionHasErrors(['product_category','manufacture','name','selling_price','quantity'])
-    ->assertInvalid(['product_category','manufacture','name','selling_price','quantity']);
+    ->assertSessionHasErrors(['product_category', 'manufacture', 'name', 'selling_price', 'quantity'])
+    ->assertInvalid(['product_category', 'manufacture', 'name', 'selling_price', 'quantity']);
 });
 
-test('product create unique validation redirect back to form', function(){
+test('product create unique validation redirect back to form', function () {
     Manufacture::factory()->create();
     ProductCategory::factory()->create();
     Product::factory()->create(['name' => 'Maxpro']);
@@ -43,7 +43,7 @@ test('admin can create a product', function () {
     $Manufacture = Manufacture::factory()->create();
     $product = [
         'product_category' => $product_categoty->id,
-        'manufacture' => $Manufacture ->id,
+        'manufacture' => $Manufacture->id,
         'name' => 'Maxpro',
         'selling_price' => 20.00,
         'quantity' => 1,
@@ -53,9 +53,9 @@ test('admin can create a product', function () {
     ->post(route('admin.product.store'), $product)
     ->assertStatus(302);
 
-    $this->assertDatabaseHas('products',  [
+    $this->assertDatabaseHas('products', [
         'product_category_id' => $product_categoty->id,
-        'manufacture_id' => $Manufacture ->id,
+        'manufacture_id' => $Manufacture->id,
         'name' => 'Maxpro',
         'selling_price' => 20.00,
         'quantity' => 1,
@@ -69,7 +69,7 @@ test('admin can create a product', function () {
     expect($lastItem->quantity)->toBe($product['quantity']);
 });
 
-test('product update validation redirect back to form', function(){
+test('product update validation redirect back to form', function () {
     ProductCategory::factory()->create();
     Manufacture::factory()->create();
     $product = Product::factory()->create();
@@ -83,18 +83,18 @@ test('product update validation redirect back to form', function(){
         'quantity' => '',
     ])
     ->assertStatus(302)
-    ->assertSessionHasErrors(['product_category','manufacture','name','selling_price','quantity'])
-    ->assertInvalid(['product_category','manufacture','name','selling_price','quantity']);
+    ->assertSessionHasErrors(['product_category', 'manufacture', 'name', 'selling_price', 'quantity'])
+    ->assertInvalid(['product_category', 'manufacture', 'name', 'selling_price', 'quantity']);
 });
 
-test('product update unique validation redirect back to form', function(){
+test('product update unique validation redirect back to form', function () {
     ProductCategory::factory()->create();
     Manufacture::factory()->create();
     Product::factory()->create(['name' => 'Maxpro']);
-    $product  = product::factory()->create();
+    $product = product::factory()->create();
 
    actingAs($this->user)
-    ->put(route('admin.product.update', $product->id),[
+    ->put(route('admin.product.update', $product->id), [
         'product_category' => 1,
         'manufacture' => 1,
         'name' => 'Maxpro',
@@ -132,5 +132,5 @@ test('admin can delete a product', function () {
     ->assertStatus(302);
 
     $this->assertDatabaseMissing('products', $product->toArray());
-    $this->assertDatabaseCount('products',0);
+    $this->assertDatabaseCount('products', 0);
 });

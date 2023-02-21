@@ -3,7 +3,6 @@
 namespace App\Notifications\Company;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
@@ -11,14 +10,16 @@ class NewLeaveRequest extends Notification
 {
     use Queueable;
 
-    public $leaveRequest,$organization_id;
+    public $leaveRequest;
+
+    public $organization_id;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($leaveRequest,$organization_id)
+    public function __construct($leaveRequest, $organization_id)
     {
         $this->leaveRequest = $leaveRequest;
         $this->organization_id = $organization_id;
@@ -33,8 +34,8 @@ class NewLeaveRequest extends Notification
     public function via($notifiable)
     {
         if (checkMailConfig()) {
-            return ['database','mail'];
-        }else{
+            return ['database', 'mail'];
+        }else {
             return ['database'];
         }
     }
@@ -49,7 +50,7 @@ class NewLeaveRequest extends Notification
     {
         return (new MailMessage)
             ->line(auth()->user()->name.' send a leave request')
-            ->action('View Request', route('organization.leaveRequests.index',  ['id' => $this->leaveRequest->id]))
+            ->action('View Request', route('organization.leaveRequests.index', ['id' => $this->leaveRequest->id]))
             ->line('Thank you for using our application!');
     }
 
@@ -63,7 +64,7 @@ class NewLeaveRequest extends Notification
     {
         return [
             'message' => auth()->user()->name.' send a leave request',
-            'url' => route('organization.leaveRequests.index',  ['id' => $this->leaveRequest->id]),
+            'url' => route('organization.leaveRequests.index', ['id' => $this->leaveRequest->id]),
             'organization_id' => $this->organization_id,
         ];
     }

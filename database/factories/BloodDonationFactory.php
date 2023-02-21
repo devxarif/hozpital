@@ -19,7 +19,7 @@ class BloodDonationFactory extends Factory
     {
         return [
             'blood_donor_id' => BloodDonor::inRandomOrder()->value('id'),
-            'bags' => rand(1,10),
+            'bags' => rand(1, 10),
         ];
     }
 }

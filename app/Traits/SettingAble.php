@@ -3,9 +3,9 @@
 namespace App\Traits;
 
 use App\Models\Cms;
+use App\Models\Currency;
 use App\Models\Seo;
 use App\Models\Setting;
-use App\Models\Currency;
 
 trait SettingAble
 {
@@ -47,7 +47,7 @@ trait SettingAble
             case 'mollie':
                 return [
                     'mollie_key' => config('kodebazar.mollie_key'),
-                    'mollie_active' => config('kodebazar.mollie_active')
+                    'mollie_active' => config('kodebazar.mollie_active'),
                 ];
                 break;
             case 'paystack':
@@ -193,6 +193,7 @@ trait SettingAble
     public function getSeo()
     {
         $seo = Seo::all();
+
         return $seo;
     }
 
@@ -359,7 +360,7 @@ trait SettingAble
                 break;
 
             default:
-                # code...
+                // code...
                 break;
         }
     }

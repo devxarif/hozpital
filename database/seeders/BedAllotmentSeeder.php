@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\BedAllotment;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class BedAllotmentSeeder extends Seeder
@@ -16,7 +15,7 @@ class BedAllotmentSeeder extends Seeder
     public function run()
     {
         $allotments = BedAllotment::factory(500)->make();
-        $allotments->chunk(100)->each(function($chunk){
+        $allotments->chunk(100)->each(function ($chunk) {
             BedAllotment::insert($chunk->toArray());
         });
     }

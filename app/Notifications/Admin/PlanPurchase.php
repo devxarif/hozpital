@@ -3,7 +3,6 @@
 namespace App\Notifications\Admin;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
@@ -11,7 +10,13 @@ class PlanPurchase extends Notification
 {
     use Queueable;
 
-    public $admin_name, $organization_name, $plan_name, $order_id;
+    public $admin_name;
+
+    public $organization_name;
+
+    public $plan_name;
+
+    public $order_id;
 
     /**
      * Create a new notification instance.
@@ -46,9 +51,9 @@ class PlanPurchase extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->subject(ucfirst($this->organization_name) . ' has been subscribed the ' . ucfirst($this->plan_name) . ' plan!')
-            ->greeting('Hello, ' . $this->admin_name)
-            ->line(ucfirst($this->organization_name) . ' has subscribed the ' . ucfirst($this->plan_name) . ' Plan!')
+            ->subject(ucfirst($this->organization_name).' has been subscribed the '.ucfirst($this->plan_name).' plan!')
+            ->greeting('Hello, '.$this->admin_name)
+            ->line(ucfirst($this->organization_name).' has subscribed the '.ucfirst($this->plan_name).' Plan!')
             ->action('View Order', route('orders.show', $this->order_id))
             ->line('Regards,')
             ->salutation(config('app.name'));
@@ -63,7 +68,7 @@ class PlanPurchase extends Notification
     public function toArray($notifiable)
     {
         return [
-            'message' => ucfirst($this->organization_name) . ' has been purchased the ' . ucfirst($this->plan_name) . ' plan!',
+            'message' => ucfirst($this->organization_name).' has been purchased the '.ucfirst($this->plan_name).' plan!',
             'url' => route('orders.show', $this->order_id),
         ];
     }

@@ -2,62 +2,71 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\BedType;
-use App\Models\Country;
-use App\Models\BedFloor;
-use App\Models\TeamSize;
-use App\Models\LeaveType;
-use App\Models\BloodDonor;
-use App\Models\Department;
-use App\Models\LeaveBalance;
-use App\Models\Organization;
-use Illuminate\Http\Request;
-use App\Models\ContactMessage;
 use App\Http\Controllers\Controller;
+use App\Models\BedFloor;
+use App\Models\BedType;
+use App\Models\BloodDonor;
+use App\Models\ContactMessage;
+use App\Models\Country;
+use App\Models\Department;
 use App\Models\IncomeCategory;
+use App\Models\LeaveBalance;
+use App\Models\LeaveType;
 use App\Models\Manufacture;
 use App\Models\Patient;
 use App\Models\ProductCategory;
+use App\Models\TeamSize;
+use Illuminate\Http\Request;
 
 class GlobalController extends Controller
 {
-    public function fetchPatients(){
+    public function fetchPatients()
+    {
         return Patient::with('user:id,name')->latest()->get();
     }
 
-    public function fetchDepartments(){
-        return Department::select('id','name')->latest()->get();
+    public function fetchDepartments()
+    {
+        return Department::select('id', 'name')->latest()->get();
     }
 
-    public function fetchProductCategories(){
-        return ProductCategory::latest()->get(['id','name']);
+    public function fetchProductCategories()
+    {
+        return ProductCategory::latest()->get(['id', 'name']);
     }
 
-    public function fetchManufactures(){
-        return Manufacture::latest()->get(['id','name','email','phone']);
+    public function fetchManufactures()
+    {
+        return Manufacture::latest()->get(['id', 'name', 'email', 'phone']);
     }
 
-    public function fetchBedTypes(){
-        return BedType::withCount('beds')->latest()->get(['id','name']);
+    public function fetchBedTypes()
+    {
+        return BedType::withCount('beds')->latest()->get(['id', 'name']);
     }
 
-    public function fetchBedFloors(){
-        return BedFloor::latest()->get(['id','name']);
+    public function fetchBedFloors()
+    {
+        return BedFloor::latest()->get(['id', 'name']);
     }
 
-    public function bloodDonors(){
-        return BloodDonor::latest()->get(['id','name','blood_group','email']);
+    public function bloodDonors()
+    {
+        return BloodDonor::latest()->get(['id', 'name', 'blood_group', 'email']);
     }
 
-    public function incomeCategories(){
-        return IncomeCategory::latest()->get(['id','name']);
+    public function incomeCategories()
+    {
+        return IncomeCategory::latest()->get(['id', 'name']);
     }
 
-    public function expenseCategories(){
-        return IncomeCategory::latest()->get(['id','name']);
+    public function expenseCategories()
+    {
+        return IncomeCategory::latest()->get(['id', 'name']);
     }
 
-    public function fetchLeaveTypesBalance(Request $request){
+    public function fetchLeaveTypesBalance(Request $request)
+    {
         $user_id = $request->user_id ?? auth()->id();
 
         return LeaveBalance::with('leaveType:id,name,slug')->where('user_id', $user_id)->latest()->get();
@@ -70,20 +79,6 @@ class GlobalController extends Controller
 
         return sumDaysBetweenDates($start, $end);
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     public function contactMessages()
     {
@@ -99,6 +94,7 @@ class GlobalController extends Controller
         $message->delete();
 
         session()->flash('success', 'Message deleted successfully.');
+
         return back();
     }
 
@@ -153,13 +149,14 @@ class GlobalController extends Controller
 
     public function fetchOrganizationsLeaveTypes($organization_id)
     {
-        $leave_types = LeaveType::with(['leaveBalances' => function($q){
+        $leave_types = LeaveType::with(['leaveBalances' => function ($q) {
             $q->where('employee_id', currentEmployee('id'));
         }])->where('organization_id', $organization_id)
         ->get()
         ->transform(function ($data) {
             $data->remaining_days = $data->leaveBalances[0]->remaining_days;
             $data->used_days = $data->leaveBalances[0]->used_days;
+
             return $data;
         });
 

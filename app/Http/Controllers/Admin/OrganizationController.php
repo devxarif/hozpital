@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\User;
+use App\Http\Controllers\Controller;
+use App\Models\Country;
 use App\Models\Order;
 use App\Models\Organization;
-use App\Models\Country;
-use App\Http\Controllers\Controller;
+use App\Models\User;
 
 class OrganizationController extends Controller
 {
@@ -22,8 +22,8 @@ class OrganizationController extends Controller
 
         $companies = Organization::with('country')
         ->where(function ($query) use ($search) {
-            $query->where('organization_name', 'LIKE', '%' . $search . '%')
-                ->orWhere('organization_email', 'LIKE', '%' . $search . '%');
+            $query->where('organization_name', 'LIKE', '%'.$search.'%')
+                ->orWhere('organization_email', 'LIKE', '%'.$search.'%');
         })
         ->when($country, function ($query, $country) {
             $query->where('country_id', $country);
@@ -34,8 +34,8 @@ class OrganizationController extends Controller
         // ->get()
         ->through(fn ($organization) => [
             'id' => $organization->id,
-            'name' => $search ? preg_replace('/(' . $search . ')/i', "<b class='bg-warning'>$1</b>", $organization->organization_name) : $organization->organization_name,
-            'email' => $search ? preg_replace('/(' . $search . ')/i', "<b class='bg-warning'>$1</b>", $organization->organization_email) : $organization->organization_email,
+            'name' => $search ? preg_replace('/('.$search.')/i', "<b class='bg-warning'>$1</b>", $organization->organization_name) : $organization->organization_name,
+            'email' => $search ? preg_replace('/('.$search.')/i', "<b class='bg-warning'>$1</b>", $organization->organization_email) : $organization->organization_email,
             'organization_logo' => $organization->organization_logo,
             'organization_logo_url' => $organization->organization_logo_url,
             'country' => $organization->country->name ?? '',
@@ -74,9 +74,9 @@ class OrganizationController extends Controller
             'total_employees' => $organization->employees()->count(),
             'total_holidays' => $organization->holidays()->count(),
             'total_leave_types' => $organization->leaveTypes()->count(),
-            'total_rejected_leave_requests' => $leave_requests->where('status','rejected')->count(),
-            'total_pending_leave_requests' => $leave_requests->where('status','pending')->count(),
-            'total_approved_leave_requests' => $leave_requests->where('status','approved')->count(),
+            'total_rejected_leave_requests' => $leave_requests->where('status', 'rejected')->count(),
+            'total_pending_leave_requests' => $leave_requests->where('status', 'pending')->count(),
+            'total_approved_leave_requests' => $leave_requests->where('status', 'approved')->count(),
         ];
 
         // Currently Subscription

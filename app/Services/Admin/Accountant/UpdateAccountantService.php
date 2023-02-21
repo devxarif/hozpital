@@ -6,8 +6,7 @@ use App\Models\Accountant;
 
 class UpdateAccountantService
 {
-
-    public function execute(object $request,  object $accountant): Accountant
+    public function execute(object $request, object $accountant): Accountant
     {
         $this->UpdateUser($request, $accountant);
 
@@ -19,7 +18,8 @@ class UpdateAccountantService
         return $accountant;
     }
 
-    protected function UpdateUser($request, $accountant){
+    protected function UpdateUser($request, $accountant)
+    {
         return $accountant->user()->update([
             'name' => $request->name,
             'email' => $request->email,

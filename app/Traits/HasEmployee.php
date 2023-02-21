@@ -3,16 +3,14 @@
 namespace App\Traits;
 
 use App\Models\Holiday;
-use App\Models\LeaveRequest;
-use Illuminate\Http\Request;
 
 trait HasEmployee
 {
-    function employeeDashboardSummary($employee,  $all_leave_requests)
+    public function employeeDashboardSummary($employee, $all_leave_requests)
     {
         $company = $employee->company;
-        $approved_leave_request =  $all_leave_requests->where('status', 'approved')->count();
-        $pending_leave_request =  $all_leave_requests->where('status', 'pending')->count();
+        $approved_leave_request = $all_leave_requests->where('status', 'approved')->count();
+        $pending_leave_request = $all_leave_requests->where('status', 'pending')->count();
         $total_leave_types = $company->leaveTypes->count();
 
         return [
@@ -23,7 +21,7 @@ trait HasEmployee
         ];
     }
 
-    function employeeDashboardHolidays($employee)
+    public function employeeDashboardHolidays($employee)
     {
         return Holiday::where('organization_id', $employee->organization_id)
             ->get()
@@ -37,7 +35,7 @@ trait HasEmployee
             });
     }
 
-    function employeeDashboardLeaveBalance($employee)
+    public function employeeDashboardLeaveBalance($employee)
     {
         return $employee->leaveBalances->load('leaveType:id,name')->transform(function ($leaveBalance) {
             $total_days = $leaveBalance->total_days;

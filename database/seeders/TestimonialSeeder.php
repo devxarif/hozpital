@@ -4,11 +4,10 @@ namespace Database\Seeders;
 
 use App\Models\Testimonial;
 use Illuminate\Database\Seeder;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class TestimonialSeeder extends Seeder
 {
-     /**
+    /**
      * Run the database seeds.
      *
      * @return void
@@ -33,9 +32,8 @@ class TestimonialSeeder extends Seeder
                 'position' => 'Product Manager',
                 'avatar' => asset('website/images/testimonial/image3.jpg'),
                 'description' => 'Their support is very fast and they try to solve all your issues. Also the application is very good with simple user friendly admin panel. Wish you all the best, please keep the good work',
-            ]
+            ],
         ];
-
 
         foreach ($testimonials as $testimonial) {
             Testimonial::create($testimonial);

@@ -2,11 +2,11 @@
 
 use App\Models\BedType;
 
-beforeEach(function(){
+beforeEach(function () {
     $this->user = createUser();
 });
 
-test('bed type create validation redirect back to form', function(){
+test('bed type create validation redirect back to form', function () {
     actingAs($this->user)
     ->post(route('admin.bedType.store'), [
         'name' => '',
@@ -16,7 +16,7 @@ test('bed type create validation redirect back to form', function(){
     ->assertInvalid(['name']);
 });
 
-test('bed type create unique validation redirect back to form', function(){
+test('bed type create unique validation redirect back to form', function () {
     BedType::create(['name' => 'ICU']);
 
     actingAs($this->user)
@@ -40,7 +40,7 @@ test('admin can create a bed type', function () {
     expect($lastProduct->description)->toBe($bed_type['description']);
 });
 
-test('bed type update validation redirect back to form', function(){
+test('bed type update validation redirect back to form', function () {
     $bed_type = BedType::create(['name' => 'Male Ward']);
 
     actingAs($this->user)
@@ -52,7 +52,7 @@ test('bed type update validation redirect back to form', function(){
     ->assertInvalid(['name']);
 });
 
-test('bed type update unique validation redirect back to form', function(){
+test('bed type update unique validation redirect back to form', function () {
     $bed_type = BedType::create(['name' => 'Female Ward']);
     BedType::create(['name' => 'Male Ward']);
 
@@ -65,7 +65,7 @@ test('bed type update unique validation redirect back to form', function(){
 
 test('admin can update a bed type', function () {
     $data = ['name' => 'ICU', 'description' => 'any description'];
-    $bed_type = BedType::create($data );
+    $bed_type = BedType::create($data);
 
     actingAs($this->user)
     ->put(route('admin.bedType.update', $bed_type->id), [
@@ -77,13 +77,12 @@ test('admin can update a bed type', function () {
 
 test('admin can delete a bed type', function () {
     $data = ['name' => 'ICU', 'description' => 'any description'];
-    $bed_type = BedType::create($data );
+    $bed_type = BedType::create($data);
 
     actingAs($this->user)
     ->delete(route('admin.bedType.destroy', $bed_type->id))
     ->assertStatus(302);
 
     $this->assertDatabaseMissing('bed_types', $bed_type->toArray());
-    $this->assertDatabaseCount('bed_types',0);
+    $this->assertDatabaseCount('bed_types', 0);
 });
-

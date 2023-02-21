@@ -16,7 +16,7 @@ class LaboratoristExport implements FromCollection
     public function headings(): array
     {
         return [
-            'Name', 'Email', 'Phone',"Address"
+            'Name', 'Email', 'Phone', 'Address',
         ];
     }
 }

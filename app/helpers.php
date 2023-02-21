@@ -1,35 +1,34 @@
 <?php
 
-use Carbon\Carbon;
-use App\Models\Seo;
-use App\Models\Theme;
-use App\Models\Invite;
 use AmrShawky\Currency;
-use App\Models\Holiday;
-use App\Models\Setting;
+use App\Mail\Organization\InviteSendMail;
 use App\Models\Employee;
-use Carbon\CarbonPeriod;
-use App\Models\WorkingDay;
-use Illuminate\Support\Str;
-use msztorc\LaravelEnv\Env;
+use App\Models\Holiday;
+use App\Models\Invite;
 use App\Models\Organization;
-use Nexmo\Client as NexmoClient;
+use App\Models\Seo;
+use App\Models\Setting;
+use App\Models\Theme;
+use App\Models\WorkingDay;
+use Carbon\Carbon;
+use Carbon\CarbonPeriod;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
-use Vonage\Client\Credentials\Basic;
-use Illuminate\Support\Facades\Artisan;
-use Twilio\Rest\Client as TwilioClient;
-use App\Mail\Organization\InviteSendMail;
-use Stichoza\GoogleTranslate\GoogleTranslate;
+use Illuminate\Support\Str;
+use msztorc\LaravelEnv\Env;
+use Nexmo\Client as NexmoClient;
 use sirajcse\UniqueIdGenerator\UniqueIdGenerator;
+use Stichoza\GoogleTranslate\GoogleTranslate;
+use Twilio\Rest\Client as TwilioClient;
+use Vonage\Client\Credentials\Basic;
 
-
-if (!function_exists('uploadFileToPublic')) {
+if (! function_exists('uploadFileToPublic')) {
     function uploadFileToPublic(string $path, $file)
     {
         if ($file && $path) {
-            $url = $file->move('uploads/' . $path, $file->hashName());
+            $url = $file->move('uploads/'.$path, $file->hashName());
         } else {
             $url = null;
         }
@@ -38,7 +37,7 @@ if (!function_exists('uploadFileToPublic')) {
     }
 }
 
-if (!function_exists('deleteImage')) {
+if (! function_exists('deleteImage')) {
     function deleteImage(?string $image)
     {
         $imageExists = file_exists($image);
@@ -49,56 +48,56 @@ if (!function_exists('deleteImage')) {
     }
 }
 
-if (!function_exists('currentUser')) {
+if (! function_exists('currentUser')) {
     function currentDoctor()
     {
         return auth()->user()->doctor;
     }
 }
 
-if (!function_exists('currentUser')) {
+if (! function_exists('currentUser')) {
     function currentPatient()
     {
         return auth()->user()->patient;
     }
 }
 
-if (!function_exists('currentUser')) {
+if (! function_exists('currentUser')) {
     function currentUser()
     {
         return auth()->user();
     }
 }
 
-if (!function_exists('currentUserRole')) {
+if (! function_exists('currentUserRole')) {
     function currentUserRole()
     {
         return auth()->user()->role;
     }
 }
 
-if (!function_exists('currentUserId')) {
+if (! function_exists('currentUserId')) {
     function currentUserId()
     {
         return auth()->id();
     }
 }
 
-if (!function_exists('currentOrganization')) {
+if (! function_exists('currentOrganization')) {
     function currentOrganization()
     {
        return Organization::find(auth()->user()->current_organization_id);
     }
 }
 
-if (!function_exists('currentOrganization')) {
+if (! function_exists('currentOrganization')) {
     function ownerOrganizations()
     {
        return Organization::find(auth()->user()->current_organization_id);
     }
 }
 
-if (!function_exists('currentEmployee')) {
+if (! function_exists('currentEmployee')) {
     function currentEmployee($field = null)
     {
         if ($field) {
@@ -110,80 +109,82 @@ if (!function_exists('currentEmployee')) {
     }
 }
 
-if (!function_exists('getOrganizationUserByEmployeeUser')) {
+if (! function_exists('getOrganizationUserByEmployeeUser')) {
     function getOrganizationUserByEmployeeUser($user_id)
     {
         $organization_id = Employee::where('user_id', $user_id)->value('organization_id');
+
         return Organization::findOrFail($organization_id)->user;
     }
 }
 
-if (!function_exists('getOrganization')) {
+if (! function_exists('getOrganization')) {
     function getOrganization($user_id)
     {
         return Organization::where('user_id', $user_id)->firstOrFail();
     }
 }
 
-if (!function_exists('getEmployee')) {
+if (! function_exists('getEmployee')) {
     function getEmployee($user_id)
     {
         return Employee::where('user_id', $user_id)->firstOrFail();
     }
 }
 
-if (!function_exists('getUserByOrganizationId')) {
+if (! function_exists('getUserByOrganizationId')) {
     function getUserByOrganizationId($id)
     {
         return Organization::where('id', $id)->firstOrFail()->user;
     }
 }
 
-if (!function_exists('getUserByEmployeeId')) {
+if (! function_exists('getUserByEmployeeId')) {
     function getUserByEmployeeId($id)
     {
         return Employee::where('id', $id)->firstOrFail()->user;
     }
 }
 
-if (!function_exists('strSlug')) {
+if (! function_exists('strSlug')) {
     function strSlug($name)
     {
         return Str::slug($name);
     }
 }
 
-if (!function_exists('redirect_to')) {
+if (! function_exists('redirect_to')) {
     function redirect_to($name)
     {
         return redirect()->route($name);
     }
 }
 
-if (!function_exists('addDays')) {
+if (! function_exists('addDays')) {
     function addDays($date, $days, $format = 'Y-m-d')
     {
         $date = Carbon::createFromFormat($format, $date);
         $daysToAdd = $days;
+
         return $date->addDays($daysToAdd)->format($format);
     }
 }
 
-if (!function_exists('formatDateTime')) {
+if (! function_exists('formatDateTime')) {
     function formatDateTime($date, $format = 'Y-m-d')
     {
         return Carbon::createFromFormat($format, $date);
     }
 }
 
-if (!function_exists('changeCurrentYear')) {
+if (! function_exists('changeCurrentYear')) {
     function changeCurrentYear($date, $format = 'Y-m-d')
     {
         return Carbon::parse($date)->year(now()->format('Y'))->format($format);
     }
 }
 
-if (!function_exists('getHolidays')) {
+if (! function_exists('getHolidays')) {
     function getHolidays($country_code = 'bd')
     {
         $api = config('kodebazar.google_api');
@@ -199,7 +200,7 @@ if (!function_exists('getHolidays')) {
                 $current_year_holidays[] = [
                     'title' => $holiday['summary'],
                     'start' => $holiday['start']['date'],
-                    'end' => subDays($holiday['end']['date'])
+                    'end' => subDays($holiday['end']['date']),
                 ];
             }
         }
@@ -208,7 +209,7 @@ if (!function_exists('getHolidays')) {
     }
 }
 
-if (!function_exists('currentYearData')) {
+if (! function_exists('currentYearData')) {
     function currentYearData($data, $format = 'Y-m-d')
     {
         $date = Carbon::createFromFormat($format, $data)->format('Y');
@@ -217,27 +218,28 @@ if (!function_exists('currentYearData')) {
     }
 }
 
-if (!function_exists('translations')) {
+if (! function_exists('translations')) {
     function translations($json)
     {
-        if (!file_exists($json)) {
+        if (! file_exists($json)) {
             return [];
         }
+
         return json_decode(file_get_contents($json), true);
     }
 }
 
-if (!function_exists('translateIt')) {
-    function translateIt(String $text, $code)
+if (! function_exists('translateIt')) {
+    function translateIt(string $text, $code)
     {
         return GoogleTranslate::trans($text, $code, 'en');
     }
 }
 
-if (!function_exists('getAdminTheme')) {
+if (! function_exists('getAdminTheme')) {
     function getAdminTheme()
     {
-        if (!session()->has('theme')) {
+        if (! session()->has('theme')) {
             $theme = Theme::first();
             session(['theme' => $theme]);
         }
@@ -246,13 +248,13 @@ if (!function_exists('getAdminTheme')) {
     }
 }
 
-if (!function_exists('storeOrganizationCurrentSubscription')) {
+if (! function_exists('storeOrganizationCurrentSubscription')) {
     function storeOrganizationCurrentSubscription()
     {
         session()->forget('current_subscription');
 
         if (auth()->check() && auth()->user()->role == 'owner') {
-            if (!function_exists('get_file_size')) {
+            if (! function_exists('get_file_size')) {
                 $subscription = currentOrganization()->subscription->load(['plan' => function ($query) {
                     $query->with('planFeatures');
                 }]) ?? [];
@@ -263,12 +265,12 @@ if (!function_exists('storeOrganizationCurrentSubscription')) {
     }
 }
 
-if (!function_exists('getCurrentSubscription')) {
+if (! function_exists('getCurrentSubscription')) {
     function getCurrentSubscription()
     {
         // session()->forget('current_subscription');
         if (auth()->check() && auth()->user()->role == 'owner') {
-            if (!session()->has('current_subscription')) {
+            if (! session()->has('current_subscription')) {
                 storeOrganizationCurrentSubscription();
             }
 
@@ -277,14 +279,14 @@ if (!function_exists('getCurrentSubscription')) {
     }
 }
 
-if (!function_exists('getCurrentSubscriptionFeatures')) {
+if (! function_exists('getCurrentSubscriptionFeatures')) {
     function getCurrentSubscriptionFeatures()
     {
         return getCurrentSubscription()->plan->planFeatures ?? [];
     }
 }
 
-if (!function_exists('currencyConversion')) {
+if (! function_exists('currencyConversion')) {
     function currencyConversion($amount, $from = null, $to = null, $round = 2)
     {
         $from = $from ?? config('kodebazar.currency');
@@ -299,7 +301,7 @@ if (!function_exists('currencyConversion')) {
     }
 }
 
-if (!function_exists('currencyPosition')) {
+if (! function_exists('currencyPosition')) {
 
     function currencyPosition($amount)
     {
@@ -307,16 +309,16 @@ if (!function_exists('currencyPosition')) {
         $position = config('kodebazar.currency_symbol_position');
 
         if ($position == 'left') {
-            return $symbol . ' ' . $amount;
+            return $symbol.' '.$amount;
         } else {
-            return $amount . ' ' . $symbol;
+            return $amount.' '.$symbol;
         }
 
         return $amount;
     }
 }
 
-if (!function_exists('checkMailConfig')) {
+if (! function_exists('checkMailConfig')) {
     function checkMailConfig()
     {
         $status = config('mail.mailers.smtp.transport') && config('mail.mailers.smtp.host') && config('mail.mailers.smtp.port') && config('mail.mailers.smtp.username') && config('mail.mailers.smtp.password') && config('mail.mailers.smtp.encryption') && config('mail.from.address') && config('mail.from.name');
@@ -325,7 +327,7 @@ if (!function_exists('checkMailConfig')) {
     }
 }
 
-if (!function_exists('setting')) {
+if (! function_exists('setting')) {
     function setting($fields = null, $append = false)
     {
         if ($fields) {
@@ -348,23 +350,23 @@ if (!function_exists('setting')) {
     }
 }
 
-if (!function_exists('sendSms')) {
+if (! function_exists('sendSms')) {
     function sendSms($provider, $to, $message)
     {
         if ($provider == 'vonage' && config('kodebazar.vonage_active') && $to && $message) {
             try {
-                $basic  = new Basic(config('kodebazar.vonage_key'), config('kodebazar.vonage_secret'));
+                $basic = new Basic(config('kodebazar.vonage_key'), config('kodebazar.vonage_secret'));
                 $client = new NexmoClient($basic);
 
                 $message = $client->message()->send([
                     'to' => $to,
                     'from' => config('kodebazar.vonage_from_name'),
-                    'text' => $message
+                    'text' => $message,
                 ]);
             } catch (Exception $e) {
-                dd("Error: " . $e->getMessage());
+                dd('Error: '.$e->getMessage());
             }
-        } else if ($provider == 'twilio' && config('kodebazar.twilio_active') && $to && $message) {
+        } elseif ($provider == 'twilio' && config('kodebazar.twilio_active') && $to && $message) {
             try {
                 $account_sid = config('kodebazar.twilio_secret');
                 $auth_token = config('kodebazar.twilio_token');
@@ -372,31 +374,31 @@ if (!function_exists('sendSms')) {
 
                 $client = new TwilioClient($account_sid, $auth_token);
                 $client->messages->create($to, [
-                    'from' => '+' . $twilio_number,
-                    'body' => $message
+                    'from' => '+'.$twilio_number,
+                    'body' => $message,
                 ]);
             } catch (Exception $e) {
-                dd("Error: " . $e->getMessage());
+                dd('Error: '.$e->getMessage());
             }
         }
     }
 }
 
-if (!function_exists('setEnv')) {
+if (! function_exists('setEnv')) {
     function setEnv($key, $value)
     {
         if ($key && $value) {
-            $env = new Env();
+            $env = new Env;
             $env->setValue($key, $value);
         }
 
         if (file_exists(App::getCachedConfigPath())) {
-            Artisan::call("config:cache");
+            Artisan::call('config:cache');
         }
     }
 }
 
-if (!function_exists('checkSetEnv')) {
+if (! function_exists('checkSetEnv')) {
     function checkSetEnv($key, $value)
     {
         if ((env($key) != $value)) {
@@ -405,14 +407,14 @@ if (!function_exists('checkSetEnv')) {
     }
 }
 
-if (!function_exists('metaContent')) {
+if (! function_exists('metaContent')) {
     function metaContent($page)
     {
         return Seo::where('page_slug', $page)->first();
     }
 }
 
-if (!function_exists('importHolidays')) {
+if (! function_exists('importHolidays')) {
     function importHolidays($organization_id, $country_code)
     {
         try {
@@ -443,37 +445,39 @@ if (!function_exists('importHolidays')) {
     }
 }
 
-if (!function_exists('diffBetweenDays')) {
+if (! function_exists('diffBetweenDays')) {
     function diffBetweenDays($start_date, $end_date)
     {
         $days = CarbonPeriod::since($start_date)->days(1)->until($end_date);
+
         return count($days);
     }
 }
 
-if (!function_exists('daysPeriods')) {
+if (! function_exists('daysPeriods')) {
     function daysPeriods($start_date, $end_date)
     {
         $days_periods = CarbonPeriod::create($start_date, $end_date)->map(fn ($date) => $date->toDateString());
+
         return iterator_to_array($days_periods);
     }
 }
 
-if (!function_exists('subDays')) {
+if (! function_exists('subDays')) {
     function subDays($date, $days = 1, $format = 'Y-m-d')
     {
         return Carbon::parse($date)->subDay($days)->format($format);
     }
 }
 
-if (!function_exists('formatTime')) {
+if (! function_exists('formatTime')) {
     function formatTime($date, $format = 'Y-m-d')
     {
         return Carbon::parse($date)->format($format);
     }
 }
 
-if (!function_exists('weekly_holidays')) {
+if (! function_exists('weekly_holidays')) {
     function weekly_holidays($organization_holidays)
     {
         $week_days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
@@ -482,7 +486,7 @@ if (!function_exists('weekly_holidays')) {
 
         if ($week_days && $organization_holidays) {
             foreach ($week_days as $week_day) {
-                if (!$organization_holidays->$week_day) {
+                if (! $organization_holidays->$week_day) {
                     $weekly_holidays[] = $week_day;
                 }
             }
@@ -492,7 +496,7 @@ if (!function_exists('weekly_holidays')) {
     }
 }
 
-if (!function_exists('official_holidays')) {
+if (! function_exists('official_holidays')) {
     function official_holidays($start_date, $end_date)
     {
         $holidays = [];
@@ -510,7 +514,7 @@ if (!function_exists('official_holidays')) {
     }
 }
 
-if (!function_exists('sumWeekendDays')) {
+if (! function_exists('sumWeekendDays')) {
     function sumWeekendDays($days_periods, $weekly_holidays)
     {
         $total_days = 0;
@@ -527,7 +531,7 @@ if (!function_exists('sumWeekendDays')) {
     }
 }
 
-if (!function_exists('sumOfficialHolidays')) {
+if (! function_exists('sumOfficialHolidays')) {
     function sumOfficialHolidays($days_periods, $holidays)
     {
         $total_days = 0;
@@ -542,7 +546,7 @@ if (!function_exists('sumOfficialHolidays')) {
     }
 }
 
-if (!function_exists('sumDaysBetweenDates')) {
+if (! function_exists('sumDaysBetweenDates')) {
     function sumDaysBetweenDates($start_date, $end_date)
     {
         $start_date = $start_date;
@@ -568,7 +572,7 @@ if (!function_exists('sumDaysBetweenDates')) {
     }
 }
 
-if (!function_exists('sumFinalDays')) {
+if (! function_exists('sumFinalDays')) {
     function sumFinalDays($start_date, $end_date)
     {
         $start_date = $start_date;
@@ -589,22 +593,22 @@ if (!function_exists('sumFinalDays')) {
     }
 }
 
-if (!function_exists('currentLanguage')) {
+if (! function_exists('currentLanguage')) {
     function currentLanguage()
     {
         return session('current_lang');
     }
 }
 
-if (!function_exists('sendInvite')) {
-    function sendInvite($organization_id,$email, $team_id)
+if (! function_exists('sendInvite')) {
+    function sendInvite($organization_id, $email, $team_id)
     {
         $data['token'] = Str::random(60);
         $data['organization_id'] = $organization_id;
         $data['team_id'] = $team_id;
         $data['email'] = $email;
 
-        if (!Invite::whereToken($data['token'])->exists()) {
+        if (! Invite::whereToken($data['token'])->exists()) {
             $invite = Invite::create($data);
         } else {
             $data['token'] = Str::random(100);
@@ -616,8 +620,9 @@ if (!function_exists('sendInvite')) {
     }
 }
 
-if (!function_exists('idGenerator')) {
-    function idGenerator($length = 6, $prefix = 'EMP'){
+if (! function_exists('idGenerator')) {
+    function idGenerator($length = 6, $prefix = 'EMP')
+    {
         $id = UniqueIdGenerator::generate([
             'table' => 'employees',
             'field' => 'employee_id',
@@ -625,6 +630,7 @@ if (!function_exists('idGenerator')) {
             'prefix' => $prefix,
             // 'suffix' => 'EMP'
         ]);
+
         return $id;
     }
 }
@@ -632,10 +638,10 @@ if (!function_exists('idGenerator')) {
 /**
  * user permission check
  *
- * @param string $permission
- * @return boolean
+ * @param  string  $permission
+ * @return bool
  */
-if (!function_exists('userCan')) {
+if (! function_exists('userCan')) {
     function userCan($permission)
     {
         return auth()->user()->can($permission);
@@ -645,10 +651,10 @@ if (!function_exists('userCan')) {
 /**
  * Get youtube id from url
  *
- * @param string $link
+ * @param  string  $link
  * @return void
  */
-if (!function_exists('youtubeId')) {
+if (! function_exists('youtubeId')) {
     function youtubeId($link)
     {
         try {
@@ -659,68 +665,67 @@ if (!function_exists('youtubeId')) {
             }
 
             // Not found
-            return null;
+            return;
 
         } catch (\Throwable $th) {
             // throw $th;
-            return null;
+            return;
         }
     }
 }
-
 
 /**
  * Encrypt data
  *
  * We don't want to use default laravel encryption
- * @param string $data
+ *
+ * @param  string  $data
  * @return string
  */
-if (!function_exists('safeEncrypt')) {
+if (! function_exists('safeEncrypt')) {
     function safeEncrypt($data)
     {
-        $output         = false;
+        $output = false;
 
         $encrypt_method = 'AES-256-CBC';
-        $secret_key     = 'WU9AHAl#Ra--WWre';
-        $secret_iv      = 'M43Sy96JuvJ5N6jY';
+        $secret_key = 'WU9AHAl#Ra--WWre';
+        $secret_iv = 'M43Sy96JuvJ5N6jY';
 
         // hash
-        $key            = hash('sha256', $secret_key);
+        $key = hash('sha256', $secret_key);
 
         // iv - encrypt method AES-256-CBC expects 16 bytes - else you will get a warning
-        $iv             = substr(hash('sha256', $secret_iv), 0, 16);
+        $iv = substr(hash('sha256', $secret_iv), 0, 16);
 
-        $output         = openssl_encrypt($data, $encrypt_method, $key, 0, $iv);
-        $output         = base64_encode($output);
+        $output = openssl_encrypt($data, $encrypt_method, $key, 0, $iv);
+        $output = base64_encode($output);
 
         return $output;
     }
 }
 
-
 /**
  * decrypted encrypted data
  *
- * @param string $encrypted
+ * @param  string  $encrypted
  * @return string
  */
-if (!function_exists('safeDecrypt')) {
+if (! function_exists('safeDecrypt')) {
     function safeDecrypt($encrypted)
     {
-        $output         = false;
+        $output = false;
 
         $encrypt_method = 'AES-256-CBC';
-        $secret_key     = 'WU9AHAl#Ra--WWre';
-        $secret_iv      = 'M43Sy96JuvJ5N6jY';
+        $secret_key = 'WU9AHAl#Ra--WWre';
+        $secret_iv = 'M43Sy96JuvJ5N6jY';
 
         // hash
-        $key            = hash('sha256', $secret_key);
+        $key = hash('sha256', $secret_key);
 
         // iv - encrypt method AES-256-CBC expects 16 bytes - else you will get a warning
-        $iv             = substr(hash('sha256', $secret_iv), 0, 16);
+        $iv = substr(hash('sha256', $secret_iv), 0, 16);
 
-        $output         = openssl_decrypt(base64_decode($encrypted), $encrypt_method, $key, 0, $iv);
+        $output = openssl_decrypt(base64_decode($encrypted), $encrypt_method, $key, 0, $iv);
 
         return $output;
     }

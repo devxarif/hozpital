@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Employee;
 
+use App\Http\Controllers\Controller;
 use App\Models\LeaveRequest;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
 class ReportController extends Controller
 {
@@ -15,7 +15,7 @@ class ReportController extends Controller
 
     public function details(Request $request)
     {
-        $leaveRequest = new LeaveRequest();
+        $leaveRequest = new LeaveRequest;
         $employee_id = currentEmployee()->id;
 
         $request->validate([

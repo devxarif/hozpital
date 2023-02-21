@@ -2,7 +2,6 @@
 
 namespace App\Traits;
 
-use App\Models\Company;
 use App\Models\LeaveBalance;
 use App\Models\User;
 

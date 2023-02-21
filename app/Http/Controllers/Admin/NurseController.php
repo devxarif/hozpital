@@ -3,16 +3,16 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Exports\NurseExport;
-use App\Models\Nurse;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Requests\Admin\NurseCreateRequest;
 use App\Http\Requests\Admin\NurseUpdateRequest;
 use App\Imports\NurseImport;
+use App\Models\Nurse;
 use App\Services\Admin\Nurse\CreateNurseService;
 use App\Services\Admin\Nurse\DeleteNurseService;
 use App\Services\Admin\Nurse\UpdateNurseService;
+use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class NurseController extends Controller
 {
@@ -25,15 +25,15 @@ class NurseController extends Controller
     {
         $query = Nurse::query();
 
-        if($request->has('keyword') && $request->filled('keyword')){
-            $query->whereLike(['user.name', 'user.email'],  $request->keyword);
+        if($request->has('keyword') && $request->filled('keyword')) {
+            $query->whereLike(['user.name', 'user.email'], $request->keyword);
         }
 
         $nurses = $query->with('user:id,name,email')->latest()->paginate(20)->withQueryString();
 
-        return inertia('Admin/Nurse/Index',[
+        return inertia('Admin/Nurse/Index', [
             'nurses' => $nurses,
-            'filter' => $request
+            'filter' => $request,
         ]);
     }
 
@@ -47,17 +47,17 @@ class NurseController extends Controller
         //
     }
 
-        /**
+    /**
      * Store a newly created resource in storage.
      *
-     * @param  NurseCreateRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(NurseCreateRequest $request)
     {
-        (new CreateNurseService())->execute($request);
+        (new CreateNurseService)->execute($request);
 
         $this->flashSuccess('Nurse created successfully');
+
         return back();
     }
 
@@ -86,15 +86,15 @@ class NurseController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  NurseUpdateRequest  $request
      * @param  Doctor  $doctor
      * @return \Illuminate\Http\Response
      */
     public function update(NurseUpdateRequest $request, Nurse $nurse)
     {
-        (new UpdateNurseService())->execute($request,$nurse);
+        (new UpdateNurseService)->execute($request, $nurse);
 
         $this->flashSuccess('Nurse updated successfully');
+
         return back();
     }
 
@@ -106,9 +106,10 @@ class NurseController extends Controller
      */
     public function destroy(Nurse $nurse)
     {
-        (new DeleteNurseService())->execute($nurse);
+        (new DeleteNurseService)->execute($nurse);
 
         $this->flashSuccess('Nurse deleted successfully');
+
         return back();
     }
 
@@ -125,6 +126,7 @@ class NurseController extends Controller
             return Excel::download(new NurseExport, $name);
         } catch (\Throwable $th) {
             $this->flashError($th->getMessage());
+
             return back();
         }
     }
@@ -137,7 +139,7 @@ class NurseController extends Controller
     public function import(Request $request)
     {
         $request->validate([
-            'file' => 'required|mimes:csv,xlsx,xls'
+            'file' => 'required|mimes:csv,xlsx,xls',
         ]);
         try {
             Excel::import(new NurseImport, $request->file);

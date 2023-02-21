@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers\Payment;
 
+use App\Http\Controllers\Controller;
 use App\Traits\PaymentAble;
 use Illuminate\Http\Request;
 use Mollie\Laravel\Facades\Mollie;
-use App\Http\Controllers\Controller;
 
 class MollieController extends Controller
 {
     use PaymentAble;
 
-    public function  __construct()
+    public function __construct()
     {
         Mollie::api()->setApiKey(config('kodebazar.mollie_key')); // your mollie test api key
     }
@@ -29,20 +29,20 @@ class MollieController extends Controller
 
         session(['order_payment' => [
             'payment_provider' => 'mollie',
-            'amount' =>  $amount,
+            'amount' => $amount,
             'currency_symbol' => '€',
-            'usd_amount' =>  $converted_amount,
+            'usd_amount' => $converted_amount,
         ]]);
 
         $amount = $request->amount;
-        $decimal_amount =  number_format((float)$amount, 2, '.', '');
+        $decimal_amount = number_format((float) $amount, 2, '.', '');
 
         $payment = Mollie::api()->payments()->create([
             'amount' => [
                 'currency' => 'EUR', // Type of currency you want to send
                 'value' => $decimal_amount, // You must send the correct number of decimals, thus we enforce the use of strings
             ],
-            'description' => 'Payment By ' . auth()->user()->name . ' for the subscription',
+            'description' => 'Payment By '.auth()->user()->name.' for the subscription',
             'redirectUrl' => route('mollie.success'), // after the payment completion where you to redirect
         ]);
 

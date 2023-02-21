@@ -1,18 +1,18 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\OrderController;
-use App\Http\Controllers\Organization\TeamController;
-use App\Http\Controllers\Organization\InviteController;
-use App\Http\Controllers\Organization\ReportController;
-use App\Http\Controllers\Organization\HolidayController;
-use App\Http\Controllers\Organization\SettingController;
-use App\Http\Controllers\Organization\EmployeeController;
-use App\Http\Controllers\Organization\LeaveTypeController;
-use App\Http\Controllers\Organization\DepartmentController;
 use App\Http\Controllers\Organization\AccountSetupController;
+use App\Http\Controllers\Organization\DepartmentController;
+use App\Http\Controllers\Organization\EmployeeController;
+use App\Http\Controllers\Organization\HolidayController;
+use App\Http\Controllers\Organization\InviteController;
 use App\Http\Controllers\Organization\LeaveRequestController;
+use App\Http\Controllers\Organization\LeaveTypeController;
 use App\Http\Controllers\Organization\OrganizationController;
+use App\Http\Controllers\Organization\ReportController;
+use App\Http\Controllers\Organization\SettingController;
+use App\Http\Controllers\Organization\TeamController;
+use Illuminate\Support\Facades\Route;
 
 // Route::middleware(['auth'])->prefix('organization')->name('organization.')->group(function () {
 // // Route::middleware(['auth', 'check.owner.role','check.organization.setup'])->prefix('organization')->name('organization.')->group(function () {

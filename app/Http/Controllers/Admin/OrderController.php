@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Plan;
+use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Models\Organization;
+use App\Models\Plan;
 use App\Models\Setting;
 use Barryvdh\DomPDF\Facade\Pdf;
-use App\Http\Controllers\Controller;
 
 class OrderController extends Controller
 {
@@ -20,8 +20,8 @@ class OrderController extends Controller
 
         $orders = Order::with('organization.user', 'plan.planFeatures')
         ->where(function ($query) use ($search) {
-            $query->where('order_id', 'LIKE', '%' . $search . '%')
-                ->orWhere('transaction_id', 'LIKE', '%' . $search . '%');
+            $query->where('order_id', 'LIKE', '%'.$search.'%')
+                ->orWhere('transaction_id', 'LIKE', '%'.$search.'%');
         })
         ->when($plan, function ($query, $plan) {
             $query->where('plan_id', $plan);
@@ -37,8 +37,8 @@ class OrderController extends Controller
         ->withQueryString()
         ->through(fn ($order) => [
             'id' => $order->id,
-            'order_id' => $search ? preg_replace('/(' . $search . ')/i', '<span style="background: yellow !important;">$1</span>', $order->order_id) : $order->order_id,
-            'transaction_id' => $search ? preg_replace('/(' . $search . ')/i', '<span style="background: yellow !important;">$1</span>', $order->transaction_id) : $order->transaction_id,
+            'order_id' => $search ? preg_replace('/('.$search.')/i', '<span style="background: yellow !important;">$1</span>', $order->order_id) : $order->order_id,
+            'transaction_id' => $search ? preg_replace('/('.$search.')/i', '<span style="background: yellow !important;">$1</span>', $order->transaction_id) : $order->transaction_id,
             'organization_name' => $order->organization->organization_name,
             'organization_email' => $order->organization->organization_email,
             'organization_logo' => $order->organization->organization_logo,
@@ -50,7 +50,7 @@ class OrderController extends Controller
             'plan' => $order->plan,
         ]);
 
-        $organizations = Organization::get(['id','organization_name']);
+        $organizations = Organization::get(['id', 'organization_name']);
 
         $plans = Plan::all(['id', 'name']);
 
@@ -67,18 +67,20 @@ class OrderController extends Controller
         ]);
     }
 
-    public function orderDetails(Order $order){
-        abort_if(currentUserRole() != 'admin' && currentOrganization()->id != $order->organization_id,404);
+    public function orderDetails(Order $order)
+    {
+        abort_if(currentUserRole() != 'admin' && currentOrganization()->id != $order->organization_id, 404);
 
         $organization = $order->organization->load('country:id,name', 'user');
         $subscribed_plan = $organization->subscription->load('plan.planFeatures');
         $setting = Setting::first();
 
-        return inertia('Admin/Order/Show', compact('subscribed_plan','order','setting','organization'));
+        return inertia('Admin/Order/Show', compact('subscribed_plan', 'order', 'setting', 'organization'));
     }
 
-    public function orderPdfDownload(Order $order){
-        abort_if(currentUserRole() != 'admin' && currentOrganization()->id != $order->organization_id,404);
+    public function orderPdfDownload(Order $order)
+    {
+        abort_if(currentUserRole() != 'admin' && currentOrganization()->id != $order->organization_id, 404);
 
         $data['order'] = $order;
         $data['organization'] = $data['order']->organization->load('country:id,name', 'user');

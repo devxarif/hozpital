@@ -1,10 +1,10 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\Auth\SocialLoginController;
 use App\Http\Controllers\Auth\ForgetPasswordController;
+use App\Http\Controllers\Auth\SocialLoginController;
+use App\Http\Controllers\DashboardController;
+use Illuminate\Support\Facades\Route;
 
 Route::controller(AuthController::class)->group(function () {
     Route::get('/login', 'showLoginForm')->name('login');
@@ -12,11 +12,11 @@ Route::controller(AuthController::class)->group(function () {
     Route::post('/logout', 'logout')->name('logout');
 });
 
-Route::middleware('auth')->group(function(){
+Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
 });
 
-Route::controller(SocialLoginController::class)->group(function(){
+Route::controller(SocialLoginController::class)->group(function () {
     Route::get('/auth/{provider}/callback', 'callback')->where('provider', 'google|facebook|github|twitter|linkedin');
     Route::get('/auth/{provider}/redirect', 'redirect')->where('provider', 'google|facebook|github|twitter|linkedin')->name('social.login');
 });

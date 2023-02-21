@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Organization;
 
-use App\Models\LeaveType;
-use App\Models\LeaveBalance;
-use Illuminate\Http\Request;
-use App\Traits\HasSubscription;
 use App\Http\Controllers\Controller;
+use App\Models\LeaveBalance;
+use App\Models\LeaveType;
 use App\Traits\Employee\HasLeaveBalance;
+use App\Traits\HasSubscription;
+use Illuminate\Http\Request;
 
 class LeaveTypeController extends Controller
 {
@@ -37,7 +37,7 @@ class LeaveTypeController extends Controller
 
         $request->validate([
             'name' => 'required|string|max:255',
-            'color' => 'required|string'
+            'color' => 'required|string',
         ]);
 
         $organization = currentOrganization();
@@ -54,6 +54,7 @@ class LeaveTypeController extends Controller
         $this->attachLeaveTypeToAllEmployees($organization, $leave_type);
 
         session()->flash('success', 'Leave type created successfully!');
+
         return back();
     }
 
@@ -87,6 +88,7 @@ class LeaveTypeController extends Controller
         }
 
         session()->flash('success', 'Leave type updated successfully!');
+
         return redirect_to('organization.leaveTypes.index');
     }
 
@@ -95,6 +97,7 @@ class LeaveTypeController extends Controller
         $leaveType->delete();
 
         session()->flash('success', 'Leave type deleted successfully!');
+
         return redirect_to('organization.leaveTypes.index');
     }
 

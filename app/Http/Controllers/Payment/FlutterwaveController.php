@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Payment;
 
-use Illuminate\Http\Request;
-use App\Traits\PaymentAble;
 use App\Http\Controllers\Controller;
+use App\Traits\PaymentAble;
+use Illuminate\Http\Request;
 use KingFlamez\Rave\Facades\Rave as Flutterwave;
 
 class FlutterwaveController extends Controller
@@ -13,6 +13,7 @@ class FlutterwaveController extends Controller
 
     /**
      * Initialize Rave payment process
+     *
      * @return void
      */
     public function initialize(Request $request)
@@ -25,7 +26,7 @@ class FlutterwaveController extends Controller
             'payment_provider' => 'flutterwave',
             'amount' => $amount,
             'currency_symbol' => '₦',
-            'usd_amount' =>  $converted_amount,
+            'usd_amount' => $converted_amount,
         ]]);
 
         //This generates a payment reference
@@ -41,18 +42,17 @@ class FlutterwaveController extends Controller
             'redirect_url' => route('flutterwave.callback'),
             'customer' => [
                 'email' => auth()->user()->email,
-                "phone_number" => '123456789',
-                "name" => auth()->user()->name,
+                'phone_number' => '123456789',
+                'name' => auth()->user()->name,
             ],
 
-            "customizations" => [
-                "title" => "payment for the subscription",
-                "description" => date('Y-m-d H:i:s'),
-            ]
+            'customizations' => [
+                'title' => 'payment for the subscription',
+                'description' => date('Y-m-d H:i:s'),
+            ],
         ];
 
         $payment = Flutterwave::initializePayment($data);
-
 
         if ($payment['status'] !== 'success') {
             // notify something went wrong
@@ -64,6 +64,7 @@ class FlutterwaveController extends Controller
 
     /**
      * Obtain Rave callback information
+     *
      * @return void
      */
     public function callback()
@@ -71,14 +72,14 @@ class FlutterwaveController extends Controller
         $status = request()->status;
 
         //if payment is successful
-        if ($status ==  'successful') {
+        if ($status == 'successful') {
 
             $transactionID = Flutterwave::getTransactionIDFromCallback();
             $data = Flutterwave::verifyTransaction($transactionID);
 
             session(['transaction_id' => $transactionID ?? null]);
             $this->orderPlacing();
-        } elseif ($status ==  'cancelled') {
+        } elseif ($status == 'cancelled') {
             return back()->with('error', 'Payment was cancelled');
             //Put desired action/code after transaction has been cancelled here
         } else {

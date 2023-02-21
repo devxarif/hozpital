@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
-use Spatie\Permission\Models\Role;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 class RoleController extends Controller
 {
@@ -16,7 +16,7 @@ class RoleController extends Controller
         $roles = Role::with('permissions')->paginate(10);
         $permissions = Permission::get()->groupBy('group_name');
 
-        return inertia('Admin/Role/Index', compact('roles','permissions'));
+        return inertia('Admin/Role/Index', compact('roles', 'permissions'));
     }
 
     public function create()
@@ -37,8 +37,8 @@ class RoleController extends Controller
             'role_permissions' => 'required|array',
             'color' => 'required',
             'description' => 'required',
-        ],[
-            'role_permissions.required' => 'The permissions field is required'
+        ], [
+            'role_permissions.required' => 'The permissions field is required',
         ]);
 
         $role = Role::create([
@@ -50,6 +50,7 @@ class RoleController extends Controller
         $role->syncPermissions($request->role_permissions);
 
         session()->flash('success', 'Role created successfully');
+
         return back();
     }
 
@@ -62,7 +63,7 @@ class RoleController extends Controller
 
         return [
             'role' => $role,
-            'permissions' => $permissions
+            'permissions' => $permissions,
         ];
     }
 
@@ -71,7 +72,7 @@ class RoleController extends Controller
         // abort_if(!userCan('roles.update'), 403);
 
         $request->validate([
-            'name' => 'required|unique:roles,name,' . $role->id,
+            'name' => 'required|unique:roles,name,'.$role->id,
             'role_permissions' => 'required|array',
             'color' => 'required',
             'description' => 'required',
@@ -81,6 +82,7 @@ class RoleController extends Controller
         $role->syncPermissions($request->role_permissions);
 
         session()->flash('success', 'Role updated successfully');
+
         return back();
     }
 
@@ -91,6 +93,7 @@ class RoleController extends Controller
         $role->delete();
 
         session()->flash('success', 'Role deleted successfully');
+
         return back();
     }
 }

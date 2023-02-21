@@ -28,7 +28,7 @@ class DoctorCreateRequest extends FormRequest
             'email' => 'required|email|max:255|unique:users,email',
             'password' => 'required|min:4',
             'avatar' => 'nullable|image|mimes:png,jpg,jpeg,svg|max:5120',
-            'department' => 'required|exists:departments,id'
+            'department' => 'required|exists:departments,id',
         ];
     }
 }

@@ -3,7 +3,6 @@
 namespace App\Notifications\Admin;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
@@ -57,8 +56,8 @@ class NewCompanyJoined extends Notification
     public function toArray($notifiable)
     {
         return [
-            'message' => $this->company->organization_name .' has joined as a company',
-            'url' => route('companies.show',$this->company->id),
+            'message' => $this->company->organization_name.' has joined as a company',
+            'url' => route('companies.show', $this->company->id),
         ];
     }
 }

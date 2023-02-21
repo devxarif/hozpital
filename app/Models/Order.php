@@ -2,16 +2,12 @@
 
 namespace App\Models;
 
-use App\Models\Plan;
-use App\Models\Organization;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
     use HasFactory;
-
-
 
     public function plan()
     {
@@ -65,7 +61,7 @@ class Order extends Model
 
     public function scopeCustomRangeDate($query, $start_date, $end_date)
     {
-        return $query->whereDate('created_at', '>=',$start_date)
-        ->whereDate('created_at', '<=',$end_date);
+        return $query->whereDate('created_at', '>=', $start_date)
+        ->whereDate('created_at', '<=', $end_date);
     }
 }

@@ -24,8 +24,8 @@ class BloodDonationSaveRequest extends FormRequest
     public function rules()
     {
         return [
-            'blood_donor' =>'required|exists:blood_donors,id',
-            'bags' => 'required|numeric'
+            'blood_donor' => 'required|exists:blood_donors,id',
+            'bags' => 'required|numeric',
         ];
     }
 }

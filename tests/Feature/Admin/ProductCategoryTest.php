@@ -1,14 +1,12 @@
 <?php
 
-use App\Models\Department;
-use App\Models\Manufacture;
 use App\Models\ProductCategory;
 
-beforeEach(function(){
+beforeEach(function () {
     $this->user = createUser();
 });
 
-test('product categoty create validation redirect back to form', function(){
+test('product categoty create validation redirect back to form', function () {
     actingAs($this->user)
     ->post(route('admin.productCategory.store'), [
         'name' => '',
@@ -18,7 +16,7 @@ test('product categoty create validation redirect back to form', function(){
     ->assertInvalid(['name']);
 });
 
-test('product category create unique validation redirect back to form', function(){
+test('product category create unique validation redirect back to form', function () {
     ProductCategory::factory()->create(['name' => 'Fever']);
 
    actingAs($this->user)
@@ -41,7 +39,7 @@ test('admin can create a product category', function () {
     expect($lastItem->name)->toBe($product_categoty['name']);
 });
 
-test('product categoty update validation redirect back to form', function(){
+test('product categoty update validation redirect back to form', function () {
     $product_categoty = ProductCategory::factory()->create();
 
     actingAs($this->user)
@@ -54,12 +52,12 @@ test('product categoty update validation redirect back to form', function(){
     ->assertInvalid(['name']);
 });
 
-test('product cateogry update unique validation redirect back to form', function(){
+test('product cateogry update unique validation redirect back to form', function () {
     ProductCategory::factory()->create(['name' => 'Fever']);
-    $product_categoty  = ProductCategory::factory()->create();
+    $product_categoty = ProductCategory::factory()->create();
 
    actingAs($this->user)
-    ->put(route('admin.productCategory.update', $product_categoty->id),[
+    ->put(route('admin.productCategory.update', $product_categoty->id), [
         'name' => 'Fever',
         'description' => 'any description',
     ])
@@ -89,5 +87,5 @@ test('admin can delete a manufacture', function () {
     ->assertStatus(302);
 
     $this->assertDatabaseMissing('product_categories', $product_categoty->toArray());
-    $this->assertDatabaseCount('product_categories',0);
+    $this->assertDatabaseCount('product_categories', 0);
 });

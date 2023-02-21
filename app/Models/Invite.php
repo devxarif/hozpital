@@ -2,16 +2,15 @@
 
 namespace App\Models;
 
-use App\Models\Team;
-use App\Models\Organization;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
 class Invite extends Model
 {
     use HasFactory;
 
     public const STATUS_ACCEPTED = 'accepted';
+
     public const STATUS_PENDING = 'pending';
 
     protected $fillable = [

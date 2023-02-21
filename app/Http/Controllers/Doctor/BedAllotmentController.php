@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Doctor;
 
-use App\Models\Bed;
-use App\Models\BedType;
-use App\Models\BedAllotment;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Bed;
+use App\Models\BedAllotment;
 use App\Models\BedFloor;
+use App\Models\BedType;
+use Illuminate\Http\Request;
 
 class BedAllotmentController extends Controller
 {
@@ -33,10 +33,9 @@ class BedAllotmentController extends Controller
 
     //     $data['filter'] = $request;
 
-
-        $data['beds'] = Bed::with('bedType:id,name','floor:id,name')->get()->groupBy(['bed_floor_id','bed_type_id']);
-        $data['floors'] = BedFloor::all(['id','name']);
-        $data['types'] = BedType::all(['id','name']);
+        $data['beds'] = Bed::with('bedType:id,name', 'floor:id,name')->get()->groupBy(['bed_floor_id', 'bed_type_id']);
+        $data['floors'] = BedFloor::all(['id', 'name']);
+        $data['types'] = BedType::all(['id', 'name']);
 
         return inertia('Doctor/BedAllotment/Index', $data);
     }

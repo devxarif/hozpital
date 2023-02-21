@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
+use App\Mail\Admin\SmtpTestMail;
+use App\Models\Cms;
+use App\Models\Currency;
 use App\Models\Seo;
 use App\Models\Setting;
 use App\Traits\SettingAble;
 use Illuminate\Http\Request;
-use App\Mail\Admin\SmtpTestMail;
-use App\Http\Controllers\Controller;
-use App\Models\Cms;
-use App\Models\Currency;
 use Illuminate\Support\Facades\Mail;
-use ZipArchive;
 use Illuminate\Support\Facades\Storage;
+use ZipArchive;
 
 class SettingController extends Controller
 {
@@ -41,11 +41,13 @@ class SettingController extends Controller
 
             default:
                 session()->flash('error', 'Something went wrong!');
+
                 return back();
                 break;
         }
 
         session()->flash('success', 'Setting updated successfully!');
+
         return back();
     }
 
@@ -62,9 +64,11 @@ class SettingController extends Controller
 
         if ($update) {
             session()->flash('success', 'CMS content updated successfully');
+
             return back();
         } else {
             session()->flash('error', 'Something went wrong');
+
             return back();
         }
     }
@@ -81,6 +85,7 @@ class SettingController extends Controller
         $this->storeCurrencyData($request);
 
         session()->flash('success', 'Currency added successfully');
+
         return back();
     }
 
@@ -89,6 +94,7 @@ class SettingController extends Controller
         $this->updateCurrencyData($request, $currency);
 
         session()->flash('success', 'Currency updated successfully');
+
         return back();
     }
 
@@ -97,6 +103,7 @@ class SettingController extends Controller
         $this->deleteCurrencyData($currency);
 
         session()->flash('success', 'Currency deleted successfully');
+
         return back();
     }
 
@@ -105,6 +112,7 @@ class SettingController extends Controller
         $this->statusUpdateCurrencyData($currency);
 
         session()->flash('success', 'Currency status updated successfully.');
+
         return back();
     }
 
@@ -113,6 +121,7 @@ class SettingController extends Controller
         $this->setDefaultCurrency($currency);
 
         session()->flash('success', 'Currency default set successfully.');
+
         return back();
     }
 
@@ -132,9 +141,11 @@ class SettingController extends Controller
 
         if ($update) {
             session()->flash('success', 'Payment data updated successfully');
+
             return back();
         } else {
             session()->flash('error', 'Something went wrong');
+
             return back();
         }
     }
@@ -144,7 +155,7 @@ class SettingController extends Controller
         $seo_data = $this->getSeo();
 
         return inertia('Admin/Setting/Seo', [
-            'seo_data' => $seo_data
+            'seo_data' => $seo_data,
         ]);
     }
 
@@ -154,9 +165,11 @@ class SettingController extends Controller
 
         if ($seo_data) {
             session()->flash('success', 'Seo content updated successfully');
+
             return back();
         } else {
             session()->flash('error', 'Something went wrong');
+
             return back();
         }
     }
@@ -190,7 +203,6 @@ class SettingController extends Controller
             'password' => 'required',
         ]);
 
-
         checkSetEnv('MAIL_HOST', $request->host);
         checkSetEnv('MAIL_PORT', $request->port);
         checkSetEnv('MAIL_USERNAME', $request->username);
@@ -200,6 +212,7 @@ class SettingController extends Controller
         checkSetEnv('MAIL_FROM_ADDRESS', $request->from_address);
 
         session()->flash('success', 'SMTP updated successfully');
+
         return back();
     }
 
@@ -234,15 +247,15 @@ class SettingController extends Controller
 
                 // Create update directory.
                 $dir = 'updates';
-                if (!is_dir($dir))
+                if (! is_dir($dir))
                     mkdir($dir, 0777, true);
 
                 $path = Storage::disk('local')->put('updates', $request->upgrade_zip);
                 uploadFileToPublic('system', $request->upgrade_zip);
 
                 //Unzip uploaded update file and remove zip file.
-                $zip = new ZipArchive();
-                $res = $zip->open(storage_path('app/' . $path));
+                $zip = new ZipArchive;
+                $res = $zip->open(storage_path('app/'.$path));
 
                 if ($res === true) {
                     $res = $zip->extractTo(base_path());
@@ -250,35 +263,41 @@ class SettingController extends Controller
                     $zip->close();
 
                     // Delete zip file.
-                    if (file_exists(storage_path('app/' . $path))) {
-                        unlink(storage_path('app/' . $path));
+                    if (file_exists(storage_path('app/'.$path))) {
+                        unlink(storage_path('app/'.$path));
                     }
 
                     $time_end = microtime(true);
                     $execution_time = ($time_end - $time_start);
-                    info('Execution time: ' . $execution_time . ' seconds');
+                    info('Execution time: '.$execution_time.' seconds');
 
                     if ($res) {
                         session()->flash('success', 'Update successfully installed.');
+
                         return back();
                     } else {
                         session()->flash('error', 'Something went wrong.');
+
                         return back();
                     }
                 } else {
                     session()->flash('error', 'Could not open the updates zip file');
+
                     return back();
                 }
 
                 session()->flash('error', 'Something went wrong.');
+
                 return back();
             } else {
                 session()->flash('error', 'Please enable ZipArchive extension from server');
+
                 return back();
             }
         }
 
         session()->flash('error', 'no file selected');
+
         return back();
     }
 }

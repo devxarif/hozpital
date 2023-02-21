@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers\Organization;
 
-use App\Models\Team;
-use App\Models\Invite;
-use App\Models\Employee;
-use Illuminate\Support\Str;
-use Illuminate\Http\Request;
-use App\Traits\HasSubscription;
 use App\Http\Controllers\Controller;
 use App\Mail\Organization\InviteSendMail;
+use App\Models\Employee;
+use App\Models\Invite;
+use App\Models\Team;
+use App\Traits\HasSubscription;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 
 class TeamController extends Controller
 {
@@ -34,6 +34,7 @@ class TeamController extends Controller
         // Check if the user is limited to create employees
         if ($this->checkTeamLimitation()) {
             session()->flash('error', __('You have reached the maximum number of teams'));
+
             return back();
         }
 
@@ -44,6 +45,7 @@ class TeamController extends Controller
 
         if (Team::where('organization_id', $organization->id)->where('name', $request->name)->exists()) {
             session()->flash('error', 'Team already exists!');
+
             return back();
         }
 
@@ -57,7 +59,7 @@ class TeamController extends Controller
                 if ($email != null) {
                     $token = Str::random(60);
 
-                    if (!Invite::whereToken($token)->exists()) {
+                    if (! Invite::whereToken($token)->exists()) {
                         $invite = Invite::create([
                             'team_id' => $team->id,
                             'email' => $email,
@@ -81,6 +83,7 @@ class TeamController extends Controller
         }
 
         session()->flash('success', 'Team created successfully!');
+
         return back();
     }
 
@@ -93,6 +96,7 @@ class TeamController extends Controller
 
         if (Team::where('organization_id', $organization->id)->whereName($request->name)->where('id', '!=', $team->id)->exists()) {
             session()->flash('error', 'Team already exists!');
+
             return back();
         }
 
@@ -101,6 +105,7 @@ class TeamController extends Controller
         ]);
 
         session()->flash('success', 'Team updated successfully!');
+
         return back();
     }
 
@@ -109,6 +114,7 @@ class TeamController extends Controller
         $team->delete();
 
         session()->flash('success', 'Team deleted successfully!');
+
         return back();
     }
 

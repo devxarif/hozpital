@@ -2,8 +2,8 @@
 
 namespace Database\Factories;
 
-use App\Models\Plan;
 use App\Models\Organization;
+use App\Models\Plan;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -21,7 +21,7 @@ class OrderFactory extends Factory
         return [
             'order_id' => uniqid(),
             'transaction_id' => uniqid('tr_'),
-            'payment_provider' => fake()->randomElement(['flutterwave', 'mollie', 'midtrans', 'paypal', 'paystack', 'razorpay','stripe', 'instamojo']),
+            'payment_provider' => fake()->randomElement(['flutterwave', 'mollie', 'midtrans', 'paypal', 'paystack', 'razorpay', 'stripe', 'instamojo']),
             'amount' => rand(100, 1000),
             'currency_symbol' => fake()->randomElement(['$', '₦', '₹', '€', '£']),
             'usd_amount' => rand(100, 1000),

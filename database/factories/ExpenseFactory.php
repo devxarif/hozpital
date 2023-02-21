@@ -2,8 +2,6 @@
 
 namespace Database\Factories;
 
-use App\Models\Invoice;
-use Illuminate\Support\Arr;
 use App\Models\ExpenseCategory;
 use Illuminate\Database\Eloquent\Factories\Factory;
 

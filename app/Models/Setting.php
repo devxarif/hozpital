@@ -9,9 +9,7 @@ class Setting extends Model
 {
     use HasFactory;
 
-
-
-    protected $appends = ['app_name','app_default_language','app_timezone','app_currency','app_currency_symbol','app_currency_symbol_position'];
+    protected $appends = ['app_name', 'app_default_language', 'app_timezone', 'app_currency', 'app_currency_symbol', 'app_currency_symbol_position'];
 
     public function getAppNameAttribute()
     {

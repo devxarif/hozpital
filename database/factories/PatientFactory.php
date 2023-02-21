@@ -30,10 +30,9 @@ class PatientFactory extends Factory
             'address' => fake()->paragraph,
             'phone' => fake()->phoneNumber,
             'birth_date' => fake()->date(),
-            'age' => rand(10,50),
+            'age' => rand(10, 50),
             'gender' => Arr::random(['male', 'female']),
-            'blood_group' => Arr::random(['A+', 'B+','AB+','O+','A-', 'B-','AB-','O-']),
+            'blood_group' => Arr::random(['A+', 'B+', 'AB+', 'O+', 'A-', 'B-', 'AB-', 'O-']),
         ];
     }
-
 }

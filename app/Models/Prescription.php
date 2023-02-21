@@ -37,6 +37,5 @@ class Prescription extends Model
             return formatTime($this->date, 'd M Y');
         }
 
-        return null;
     }
 }

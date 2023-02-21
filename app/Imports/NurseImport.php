@@ -2,8 +2,8 @@
 
 namespace App\Imports;
 
-use App\Models\User;
 use App\Models\Nurse;
+use App\Models\User;
 use App\Traits\HasUserUniqueEmail;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithStartRow;

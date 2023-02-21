@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Doctor;
-use App\Models\Department;
-use Illuminate\Http\Request;
 use App\Exports\DoctorExport;
-use App\Imports\DoctorImport;
 use App\Http\Controllers\Controller;
-use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Requests\Admin\DoctorCreateRequest;
 use App\Http\Requests\Admin\DoctorUpdateRequest;
+use App\Imports\DoctorImport;
+use App\Models\Department;
+use App\Models\Doctor;
 use App\Services\Admin\Doctor\CreateDoctorService;
 use App\Services\Admin\Doctor\DeleteDoctorService;
 use App\Services\Admin\Doctor\UpdateDoctorService;
+use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class DoctorController extends Controller
 {
@@ -26,21 +26,21 @@ class DoctorController extends Controller
     {
         $query = Doctor::query();
 
-        if($request->has('keyword') && $request->filled('keyword')){
-            $query->whereLike(['user.name', 'user.email'],  $request->keyword);
+        if($request->has('keyword') && $request->filled('keyword')) {
+            $query->whereLike(['user.name', 'user.email'], $request->keyword);
         }
-        if($request->has('department') && $request->filled('department')){
-            $query->whereHas('department', function($q) use ($request){
+        if($request->has('department') && $request->filled('department')) {
+            $query->whereHas('department', function ($q) use ($request) {
                 $q->where('id', $request->department);
             });
         }
 
-        $doctors = $query->with('user:id,name,email','department:id,name')->latest()->paginate(20)->withQueryString();
+        $doctors = $query->with('user:id,name,email', 'department:id,name')->latest()->paginate(20)->withQueryString();
 
-        return inertia('Admin/Doctor/Index',[
+        return inertia('Admin/Doctor/Index', [
             'doctors' => $doctors,
-            'departments' => Department::select('id','name')->get(),
-            'filter' => $request
+            'departments' => Department::select('id', 'name')->get(),
+            'filter' => $request,
         ]);
     }
 
@@ -57,14 +57,14 @@ class DoctorController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  DoctorCreateRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(DoctorCreateRequest $request)
     {
-        (new CreateDoctorService())->execute($request);
+        (new CreateDoctorService)->execute($request);
 
         $this->flashSuccess('Doctor created successfully');
+
         return back();
     }
 
@@ -93,15 +93,14 @@ class DoctorController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  DoctorUpdateRequest  $request
-     * @param  Doctor  $doctor
      * @return \Illuminate\Http\Response
      */
     public function update(DoctorUpdateRequest $request, Doctor $doctor)
     {
-        (new UpdateDoctorService())->execute($request,$doctor);
+        (new UpdateDoctorService)->execute($request, $doctor);
 
         $this->flashSuccess('Doctor updated successfully');
+
         return back();
     }
 
@@ -113,9 +112,10 @@ class DoctorController extends Controller
      */
     public function destroy(Doctor $doctor)
     {
-        (new DeleteDoctorService())->execute($doctor);
+        (new DeleteDoctorService)->execute($doctor);
 
         $this->flashSuccess('Doctor deleted successfully');
+
         return back();
     }
 
@@ -132,6 +132,7 @@ class DoctorController extends Controller
             return Excel::download(new DoctorExport, $name);
         } catch (\Throwable $th) {
             $this->flashError($th->getMessage());
+
             return back();
         }
     }
@@ -144,7 +145,7 @@ class DoctorController extends Controller
     public function import(Request $request)
     {
         $request->validate([
-            'file' => 'required|mimes:csv,xlsx,xls'
+            'file' => 'required|mimes:csv,xlsx,xls',
         ]);
 
         try {

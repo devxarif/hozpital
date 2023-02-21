@@ -2,18 +2,17 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Team;
-use App\Models\User;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Leave\LeaveRequestSaveRequest;
 use App\Models\Employee;
-use App\Models\LeaveType;
 use App\Models\LeaveBalance;
 use App\Models\LeaveRequest;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\Notifications\Employee\PendingLeaveRequest;
+use App\Models\LeaveType;
+use App\Models\User;
 use App\Notifications\Employee\ApprovedLeaveRequest;
+use App\Notifications\Employee\PendingLeaveRequest;
 use App\Notifications\Employee\RejectedLeaveRequest;
-use App\Http\Requests\Admin\Leave\LeaveRequestSaveRequest;
+use Illuminate\Http\Request;
 
 class LeaveRequestController extends Controller
 {
@@ -29,7 +28,7 @@ class LeaveRequestController extends Controller
 
         $leave_requests = $leave_requests_query->with(['user:id,name,role', 'leaveType'])
             ->when($request->keyword, function ($query, $keyword) {
-                $query->whereLike(['user.name', 'user.email'],  $keyword);
+                $query->whereLike(['user.name', 'user.email'], $keyword);
             })
             ->when($request->status, function ($query, $status) {
                 if ($status != 'all') {
@@ -44,8 +43,9 @@ class LeaveRequestController extends Controller
             ->withQueryString();
 
         $leave_types = LeaveType::latest()->get(['id', 'name']);
-        $users = User::where('role','!=','admin')->get()->map(function($user){
+        $users = User::where('role', '!=', 'admin')->get()->map(function ($user) {
             $user->name = $user->name.' ('.ucfirst($user->role).')';
+
             return $user;
         });
 
@@ -59,7 +59,7 @@ class LeaveRequestController extends Controller
                 'pending' => $all_requests->where('status', 'pending')->count() ?? 0,
                 'rejected' => $all_requests->where('status', 'rejected')->count() ?? 0,
                 'approved' => $all_requests->where('status', 'approved')->count() ?? 0,
-            ]
+            ],
         ]);
     }
 
@@ -83,7 +83,6 @@ class LeaveRequestController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  LeaveRequestSaveRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(LeaveRequestSaveRequest $request)
@@ -128,13 +127,13 @@ class LeaveRequestController extends Controller
         // sendSms('vonage', $to, $message);
 
         $this->flashSuccess('Leave request created successfully!');
+
         return back();
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  LeaveRequestSaveRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -180,6 +179,7 @@ class LeaveRequestController extends Controller
         // sendSms('vonage', $to, $message);
 
         session()->flash('success', 'Leave request updated successfully!');
+
         return back();
     }
 
@@ -215,8 +215,9 @@ class LeaveRequestController extends Controller
         // sendSms('twilio', $to, $message);
         // sendSms('vonage', $to, $message);
 
-        $message = 'Leave request ' . $request->status . ' successfully';
+        $message = 'Leave request '.$request->status.' successfully';
         session()->flash('success', $message);
+
         return back();
     }
 }

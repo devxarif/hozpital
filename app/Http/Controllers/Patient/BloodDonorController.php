@@ -2,13 +2,9 @@
 
 namespace App\Http\Controllers\Patient;
 
+use App\Http\Controllers\Controller;
 use App\Models\BloodDonor;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\Services\Admin\BloodDonor\CreateBloodDonorService;
-use App\Services\Admin\BloodDonor\UpdateBloodDonorService;
-use App\Http\Requests\Admin\BloodBank\BloodDonorCreateRequest;
-use App\Http\Requests\Admin\BloodBank\BloodDonorUpdateRequest;
 
 class BloodDonorController extends Controller
 {
@@ -21,21 +17,21 @@ class BloodDonorController extends Controller
     {
         $query = BloodDonor::query();
 
-        if($request->has('keyword') && $request->filled('keyword')){
-            $query->whereLike(['name', 'phone','email','age'],  $request->keyword);
+        if($request->has('keyword') && $request->filled('keyword')) {
+            $query->whereLike(['name', 'phone', 'email', 'age'], $request->keyword);
         }
-        if($request->has('gender') && $request->filled('gender')){
-            $query->whereLike(['gender'],  $request->gender);
+        if($request->has('gender') && $request->filled('gender')) {
+            $query->whereLike(['gender'], $request->gender);
         }
-        if($request->has('blood_group') && $request->filled('blood_group')){
-            $query->whereLike(['blood_group'],  $request->blood_group);
+        if($request->has('blood_group') && $request->filled('blood_group')) {
+            $query->whereLike(['blood_group'], $request->blood_group);
         }
 
         $blood_donors = $query->latest()->paginate(20)->withQueryString();
 
-        return inertia('Patient/BloodDonor/Index',[
+        return inertia('Patient/BloodDonor/Index', [
             'blood_donors' => $blood_donors,
-            'filter' => $request
+            'filter' => $request,
         ]);
     }
 }

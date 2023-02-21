@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Doctor;
 
-use App\Models\BloodDonor;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Services\Admin\BloodDonor\CreateBloodDonorService;
-use App\Services\Admin\BloodDonor\UpdateBloodDonorService;
 use App\Http\Requests\Admin\BloodBank\BloodDonorCreateRequest;
 use App\Http\Requests\Admin\BloodBank\BloodDonorUpdateRequest;
+use App\Models\BloodDonor;
+use App\Services\Admin\BloodDonor\CreateBloodDonorService;
+use App\Services\Admin\BloodDonor\UpdateBloodDonorService;
+use Illuminate\Http\Request;
 
 class BloodDonorController extends Controller
 {
@@ -21,21 +21,21 @@ class BloodDonorController extends Controller
     {
         $query = BloodDonor::query();
 
-        if($request->has('keyword') && $request->filled('keyword')){
-            $query->whereLike(['name', 'phone','email','age'],  $request->keyword);
+        if($request->has('keyword') && $request->filled('keyword')) {
+            $query->whereLike(['name', 'phone', 'email', 'age'], $request->keyword);
         }
-        if($request->has('gender') && $request->filled('gender')){
-            $query->whereLike(['gender'],  $request->gender);
+        if($request->has('gender') && $request->filled('gender')) {
+            $query->whereLike(['gender'], $request->gender);
         }
-        if($request->has('blood_group') && $request->filled('blood_group')){
-            $query->whereLike(['blood_group'],  $request->blood_group);
+        if($request->has('blood_group') && $request->filled('blood_group')) {
+            $query->whereLike(['blood_group'], $request->blood_group);
         }
 
         $blood_donors = $query->latest()->paginate(20)->withQueryString();
 
-        return inertia('Doctor/BloodDonor/Index',[
+        return inertia('Doctor/BloodDonor/Index', [
             'blood_donors' => $blood_donors,
-            'filter' => $request
+            'filter' => $request,
         ]);
     }
 
@@ -49,17 +49,17 @@ class BloodDonorController extends Controller
         //
     }
 
-       /**
+    /**
      * Store a newly created resource in storage.
      *
-     * @param  BloodDonorCreateRequest $request
      * @return \Illuminate\Http\Response
      */
     public function store(BloodDonorCreateRequest $request)
     {
-        (new CreateBloodDonorService())->execute($request);
+        (new CreateBloodDonorService)->execute($request);
 
         $this->flashSuccess('Blood donor created successfully');
+
         return back();
     }
 
@@ -88,22 +88,20 @@ class BloodDonorController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  BloodDonorUpdateRequest $request
-     * @param  BloodDonor $bloodDonor
      * @return \Illuminate\Http\Response
      */
     public function update(BloodDonorUpdateRequest $request, BloodDonor $bloodDonor)
     {
-        (new UpdateBloodDonorService())->execute($request, $bloodDonor);
+        (new UpdateBloodDonorService)->execute($request, $bloodDonor);
 
         $this->flashSuccess('Blood donor updated successfully');
+
         return back();
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  BloodDonor $bloodDonor
      * @return \Illuminate\Http\Response
      */
     public function destroy(BloodDonor $bloodDonor)
@@ -111,6 +109,7 @@ class BloodDonorController extends Controller
         $bloodDonor->delete();
 
         $this->flashSuccess('Blood donor deleted successfully');
+
         return back();
     }
 }

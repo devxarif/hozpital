@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Manufacture;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Product\ManufactureSaveRequest;
+use App\Models\Manufacture;
 use App\Services\Admin\Manufacture\CreateManufactureService;
 use App\Services\Admin\Manufacture\UpdateManufactureService;
+use Illuminate\Http\Request;
 
 class ManufactureController extends Controller
 {
@@ -20,29 +20,29 @@ class ManufactureController extends Controller
     {
         $query = Manufacture::query();
 
-        if($request->has('keyword') && $request->filled('keyword')){
-            $query->whereLike(['name', 'phone','email'],  $request->keyword);
+        if($request->has('keyword') && $request->filled('keyword')) {
+            $query->whereLike(['name', 'phone', 'email'], $request->keyword);
         }
 
         $manufactures = $query->latest()->paginate(20)->withQueryString();
 
-        return inertia('Admin/Manufacture/Index',[
+        return inertia('Admin/Manufacture/Index', [
             'manufactures' => $manufactures,
-            'filter' => $request
+            'filter' => $request,
         ]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  ManufactureSaveRequest $request
      * @return \Illuminate\Http\Response
      */
     public function store(ManufactureSaveRequest $request)
     {
-        (new CreateManufactureService())->execute($request);
+        (new CreateManufactureService)->execute($request);
 
         $this->flashSuccess('Manufacture created successfully');
+
         return back();
     }
 
@@ -71,22 +71,20 @@ class ManufactureController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  ManufactureSaveRequest $request
-     * @param  Manufacture $manufacture
      * @return \Illuminate\Http\Response
      */
     public function update(ManufactureSaveRequest $request, Manufacture $manufacture)
     {
-        (new UpdateManufactureService())->execute($request, $manufacture);
+        (new UpdateManufactureService)->execute($request, $manufacture);
 
         $this->flashSuccess('Manufacture updated successfully');
+
         return back();
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Manufacture $manufacture
      * @return \Illuminate\Http\Response
      */
     public function destroy(Manufacture $manufacture)
@@ -94,6 +92,7 @@ class ManufactureController extends Controller
         $manufacture->delete();
 
         $this->flashSuccess('Manufacture deleted successfully');
+
         return back();
     }
 }

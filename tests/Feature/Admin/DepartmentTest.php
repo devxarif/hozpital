@@ -2,11 +2,11 @@
 
 use App\Models\Department;
 
-beforeEach(function(){
+beforeEach(function () {
     $this->user = createUser();
 });
 
-test('department create validation redirect back to form', function(){
+test('department create validation redirect back to form', function () {
     actingAs($this->user)
     ->post(route('admin.department.store'), [
         'name' => '',
@@ -16,7 +16,7 @@ test('department create validation redirect back to form', function(){
     ->assertInvalid(['name']);
 });
 
-test('department create unique validation redirect back to form', function(){
+test('department create unique validation redirect back to form', function () {
     Department::factory()->create(['name' => 'Department']);
 
     actingAs($this->user)
@@ -40,7 +40,7 @@ test('admin can create a department', function () {
     expect($lastProduct->description)->toBe($department['description']);
 });
 
-test('department update validation redirect back to form', function(){
+test('department update validation redirect back to form', function () {
     $department = Department::factory()->create();
 
     actingAs($this->user)
@@ -52,7 +52,7 @@ test('department update validation redirect back to form', function(){
     ->assertInvalid(['name']);
 });
 
-test('department update unique validation redirect back to form', function(){
+test('department update unique validation redirect back to form', function () {
     $department = Department::factory()->create(['name' => 'Department']);
     Department::factory()->create(['name' => 'Department 2']);
 
@@ -65,7 +65,7 @@ test('department update unique validation redirect back to form', function(){
 
 test('admin can update a department', function () {
     $data = ['name' => 'Test Department', 'description' => 'any description'];
-    $department = Department::create($data );
+    $department = Department::create($data);
 
     actingAs($this->user)
     ->put(route('admin.department.update', $department->id), [
@@ -83,5 +83,5 @@ test('admin can delete a department', function () {
     ->assertStatus(302);
 
     $this->assertDatabaseMissing('departments', $department->toArray());
-    $this->assertDatabaseCount('departments',0);
+    $this->assertDatabaseCount('departments', 0);
 });

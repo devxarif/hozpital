@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers\Organization;
 
-use App\Models\User;
-use App\Models\Invite;
-use Illuminate\Http\Request;
-use App\Traits\HasSubscription;
 use App\Http\Controllers\Controller;
+use App\Models\Invite;
 use App\Models\Organization;
-use Illuminate\Support\Facades\Auth;
-use App\Traits\HasLeaveBalance;
+use App\Models\User;
 use App\Notifications\Organization\NewEmployeeJoined;
+use App\Traits\HasLeaveBalance;
+use App\Traits\HasSubscription;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class InviteController extends Controller
 {
@@ -21,6 +21,7 @@ class InviteController extends Controller
         // Check if the user is limited to create employees
         if ($this->checkEmployeesLimitation(count($request->emails))) {
             session()->flash('error', __('You have reached the maximum number of employees'));
+
             return back();
         }
 
@@ -28,6 +29,7 @@ class InviteController extends Controller
 
         if ($organization->leaveTypes->count() == 0) {
             session()->flash('error', 'Please add leave types first');
+
             return redirect_to(route('leaveTypes.create'));
         }
 
@@ -42,12 +44,13 @@ class InviteController extends Controller
         if ($emails && $teams) {
             foreach ($emails as $key => $email) {
                 if ($email && $teams[$key]) {
-                    sendInvite($organization->id,$email, $teams[$key]);
+                    sendInvite($organization->id, $email, $teams[$key]);
                 }
             }
         }
 
         session()->flash('success', 'Invite sent successfully');
+
         return back();
     }
 
@@ -57,6 +60,7 @@ class InviteController extends Controller
 
         if ($invite->status == Invite::STATUS_ACCEPTED) {
             session()->flash('error', 'This invite has already been accepted.');
+
             return redirect()->route('login');
         }
 
@@ -79,12 +83,14 @@ class InviteController extends Controller
          // Check if the user is limited to create employees
          if ($this->checkEmployeesLimitation(null, $organization)) {
              session()->flash('error', __('You cannot create account because of limited number of employees'));
+
              return back();
         }
 
         // check if the invite has already been accepted
         if (User::whereEmail($invite->email)->exists()) {
             session()->flash('error', 'This email is already registered.Please login.');
+
             return redirect()->route('login');
         }
 
@@ -116,6 +122,7 @@ class InviteController extends Controller
             $request->session()->regenerate();
 
             session()->flash('success', 'Account has been created successfully and your are now logged in!');
+
             return redirect()->intended('/user/dashboard');
         }
     }

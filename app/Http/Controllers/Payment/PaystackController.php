@@ -2,12 +2,9 @@
 
 namespace App\Http\Controllers\Payment;
 
-use Illuminate\Http\Request;
-use Modules\Plan\Entities\Plan;
-use App\Traits\PaymentAble;
 use App\Http\Controllers\Controller;
-use AmrShawky\LaravelCurrency\Facade\Currency;
-use App\Notifications\MembershipUpgradeNotification;
+use App\Traits\PaymentAble;
+use Illuminate\Http\Request;
 
 class PaystackController extends Controller
 {
@@ -15,6 +12,7 @@ class PaystackController extends Controller
 
     /**
      * Redirect the User to Paystack Payment Page
+     *
      * @return Url
      */
     public function redirectToGateway(Request $request)
@@ -27,28 +25,28 @@ class PaystackController extends Controller
             'payment_provider' => 'paystack',
             'amount' => $amount,
             'currency_symbol' => '₦',
-            'usd_amount' =>  $converted_amount,
+            'usd_amount' => $converted_amount,
         ]]);
 
         $secret_key = config('kodebazar.paystack_key');
         $curl = curl_init();
         $callback_url = route('paystack.success'); // url to go to after payment
 
-        curl_setopt_array($curl, array(
-            CURLOPT_URL => "https://api.paystack.co/transaction/initialize",
+        curl_setopt_array($curl, [
+            CURLOPT_URL => 'https://api.paystack.co/transaction/initialize',
             CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_CUSTOMREQUEST => "POST",
+            CURLOPT_CUSTOMREQUEST => 'POST',
             CURLOPT_POSTFIELDS => json_encode([
                 'amount' => $amount * 100,
                 'email' => auth()->user()->email,
                 'callback_url' => $callback_url,
             ]),
             CURLOPT_HTTPHEADER => [
-                "authorization: Bearer " . $secret_key, //replace this with your own test key
-                "content-type: application/json",
-                "cache-control: no-cache"
+                'authorization: Bearer '.$secret_key, //replace this with your own test key
+                'content-type: application/json',
+                'cache-control: no-cache',
             ],
-        ));
+        ]);
 
         $response = curl_exec($curl);
         $err = curl_error($curl);
@@ -57,14 +55,16 @@ class PaystackController extends Controller
         }
 
         $tranx = json_decode($response, true);
-        if (!$tranx['status']) {
-            return redirect()->back()->with("error", $tranx['message']);
+        if (! $tranx['status']) {
+            return redirect()->back()->with('error', $tranx['message']);
         }
+
         return redirect($tranx['data']['authorization_url']);
     }
 
     /**
      * Obtain Paystack payment information
+     *
      * @return void
      */
     public function successPaystack(Request $request)
@@ -76,6 +76,7 @@ class PaystackController extends Controller
         }
 
         session()->flash('error', 'Something went wrong.');
+
         return back();
     }
 }

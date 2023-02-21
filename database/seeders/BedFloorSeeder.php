@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\BedFloor;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class BedFloorSeeder extends Seeder

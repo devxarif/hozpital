@@ -55,7 +55,6 @@ class CreateCmsTable extends Migration
             $table->longText('terms_description');
             $table->longText('privacy_description');
 
-
             $table->timestamps();
         });
     }
