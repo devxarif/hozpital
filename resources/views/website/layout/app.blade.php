@@ -7,7 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Home Page</title>
 
-    {{-- <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    {{--
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script> --}}
     @vite('resources/css/app.css')
     @livewireStyles
@@ -119,7 +120,7 @@
                 <div class="mx-auto max-w-7xl px-6">
                     <div class="flex items-center justify-between py-6 md:justify-start md:space-x-10">
                         <div class="flex justify-start lg:w-0 lg:flex-1">
-                            <a href="#">
+                            <a href="{{ route('website.home') }}">
                                 <span class="sr-only">Your Company</span>
                                 <img class="h-14 w-auto" src="{{ asset('admin/img/hozpital_red_logo.svg') }}" alt="">
                             </a>
@@ -298,6 +299,7 @@
 
     <script src="/admin/preline/hs-ui.bundle.js"></script>
     @livewireScripts
+    @yield('script')
 </body>
 
 </html>

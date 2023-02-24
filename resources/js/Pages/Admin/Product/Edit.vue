@@ -135,6 +135,10 @@
                                         <ErrorMessage :name="form.errors.image"/>
                                     </div>
                                     <div class="mb-4">
+                                        <Label :name="__('Short Description')" id="short_description" :hasError="form.errors.description" :required="false"/>
+                                        <BaseTextarea v-model="form.short_description" placeholder="Short Description" id="short_description" :hasError="form.errors.short_description"/>
+                                    </div>
+                                    <div class="mb-4">
                                         <Label :name="__('Description')" id="productCategory_description" :hasError="form.errors.description" :required="false"/>
                                         <QuillEditor theme="snow" v-model:content="form.description" contentType="html" class="h-60 rounded-md"/>
                                     </div>
@@ -187,6 +191,7 @@ export default {
                 name: this.product.name,
                 image: '',
                 description: this.product.description,
+                short_description: this.product.short_description,
                 _method: 'PUT'
             }),
 
@@ -208,6 +213,7 @@ export default {
                 this.form.expire_date = this.product.expire_date
                 this.form.name = this.product.name
                 this.form.description = this.product.description
+                this.form.short_description = this.product.short_description
             },
             deep: true,
         }

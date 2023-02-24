@@ -181,6 +181,7 @@ export default {
                 expire_date: '',
                 name: '',
                 description: "",
+                short_description: "",
                 image: '',
             }),
 

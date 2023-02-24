@@ -110,9 +110,15 @@ class WebsiteController extends Controller
         return view('website.home', compact('faqs', 'features', 'testimonials', 'plans'));
     }
 
-    public function productDetails()
+    public function productDetails(Product $product)
     {
-        return view('website.pages.product_details');
+        $product->load('galleries:id,product_id,image');
+        $related_products = Product::with('productCategory:id,name')->where('product_category_id', $product->product_category_id)
+                ->latest()
+                ->take(4)
+                ->get();
+
+        return view('website.pages.product_details', compact('product','related_products'));
     }
 
     public function bags()

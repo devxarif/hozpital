@@ -23,7 +23,8 @@ class ProductFactory extends Factory
             'buying_price' => rand(100, 200),
             'selling_price' => rand(200, 400),
             'quantity' => rand(200, 500),
-            'description' => fake()->sentence,
+            'short_description' => fake()->sentence,
+            'description' => fake()->paragraph(200),
             'type' => Arr::random(['medicine', 'others']),
             'expire_date' => $this->faker->dateTimeBetween('', '+2 years'),
         ];

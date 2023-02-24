@@ -12,7 +12,7 @@ Route::controller(WebsiteController::class)->group(function () {
     Route::get('/departments', 'department')->name('website.department');
     Route::get('/doctors', 'doctor')->name('website.doctor');
     Route::get('/products', 'products')->name('website.products');
-    Route::get('/product/details', 'productDetails')->name('website.product.details');
+    Route::get('/product/{product:slug}', 'productDetails')->name('website.product.details');
     Route::get('/bags', 'bags')->name('website.bag');
     Route::get('/checkout', 'checkout')->name('website.checkout');
     Route::get('/shipping', 'shipping')->name('website.shipping');

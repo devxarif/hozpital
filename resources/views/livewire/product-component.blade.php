@@ -68,9 +68,9 @@
         </div>
         <div class="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-x-3 lg:gap-x-5 xl:gap-x-7 gap-y-3 xl:gap-y-5 2xl:gap-y-8 ">
             @foreach ($products as $product)
-                <a href="{{ route('website.product.details') }}" class="releative group box-border overflow-hidden flex rounded-md cursor-pointer pe-0 pb-2 lg:pb-3 flex-col items-start transition duration-200 ease-in-out transform hover:-translate-y-1 md:hover:-translate-y-1.5 hover:shadow-product bg-white">
+                <a href="{{ route('website.product.details', $product->slug) }}" class="releative group box-border overflow-hidden flex rounded-md cursor-pointer pe-0 pb-2 lg:pb-3 flex-col items-start transition duration-200 ease-in-out transform hover:-translate-y-1 md:hover:-translate-y-1.5 hover:shadow-product bg-white">
                     <div class="flex mb-3 md:mb-3.5">
-                        <img alt="" src="{{ $product->image }}">
+                        <img alt="{{ $product->name }}" src="{{ $product->image }}">
                     </div>
                     <div class="w-full overflow-hidden p-2 md:px-2.5 xl:px-4">
                         <h2 class="truncate mb-1 text-sm md:text-base font-semibold text-heading">{{ $product->name }}</h2>

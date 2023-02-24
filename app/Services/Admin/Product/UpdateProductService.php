@@ -19,6 +19,7 @@ class UpdateProductService
             'name' => $request->name,
             'buying_price' => $request->buying_price ?? 0,
             'selling_price' => $request->selling_price,
+            'short_description' => $request->short_description,
             'image' => $url ?? $product->image,
             'quantity' => $request->quantity,
             'description' => $request->description,

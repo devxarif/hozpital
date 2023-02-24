@@ -16,7 +16,7 @@ class ProductSeeder extends Seeder
     public function run()
     {
         Product::factory(200)->create()->each(function (Product $product) {
-            for ($i = 0; $i < 5; $i++) {
+            for ($i = 0; $i < 3; $i++) {
                 ProductGallery::create([
                     'product_id' => $product->id,
                     'image' => fake()->imageUrl(),

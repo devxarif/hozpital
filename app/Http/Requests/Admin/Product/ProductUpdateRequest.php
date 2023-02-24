@@ -29,6 +29,7 @@ class ProductUpdateRequest extends FormRequest
             'name' => "required|max:255|unique:products,name,{$this->product->id}",
             'buying_price' => 'nullable',
             'selling_price' => 'required',
+            'short_description' => 'nullable',
             'quantity' => 'required|numeric',
             'image' => 'nullable|image|mimes:png,jpg,jpeg,svg,svg|max:5120',
             'description' => 'nullable',

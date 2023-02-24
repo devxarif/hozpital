@@ -19,6 +19,7 @@ class CreateProductService
             'name' => $request->name,
             'buying_price' => $request->buying_price ?? 0,
             'selling_price' => $request->selling_price,
+            'short_description' => $request->short_description,
             'image' => $url ?? null,
             'quantity' => $request->quantity,
             'description' => $request->description ?? null,

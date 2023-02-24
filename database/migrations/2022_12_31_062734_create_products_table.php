@@ -26,6 +26,7 @@ return new class extends Migration
             $table->float('selling_price')->default(0);
             $table->unsignedInteger('quantity')->default(0);
             $table->string('image')->nullable();
+            $table->text('short_description')->nullable();
             $table->longText('description')->nullable();
             $table->date('expire_date')->nullable();
             $table->timestamps();

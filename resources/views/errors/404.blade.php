@@ -174,7 +174,7 @@
                 </li>
               </ul>
               <div class="mt-8">
-                <a href="#" class="text-base font-medium text-blue-600 hover:text-blue-500">
+                <a href="/" class="text-base font-medium text-blue-600 hover:text-blue-500">
                   Or go back home
                   <span aria-hidden="true"> &rarr;</span>
                 </a>
