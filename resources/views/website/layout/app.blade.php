@@ -10,7 +10,7 @@
     {{-- <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script> --}}
     @vite('resources/css/app.css')
-
+    @livewireStyles
     {{-- <link rel="stylesheet" href="{{ asset('admin/css/tailwind.output.css') }}"> --}}
 </head>
 
@@ -297,6 +297,7 @@
     {{-- <div class="text-center p-5 bg-white text-sm flex-row justify-center items-center font-medium fixed bottom-0 w-full z-30 transition-all duration-300 ease-out shadow-cookies transform translate-y-0 opacity-100"><span class="inline-block mb:block mb-3.5 leading-6">This site uses cookies to improve your experience. By clicking, you agree to our Privacy Policy.</span><span class="inline-block md:ms-3"></span><button class="text-[13px] md:text-sm leading-4 inline-flex items-center cursor-pointer transition ease-in-out duration-300 font-semibold font-body text-center justify-center border-0 border-transparent placeholder-white focus-visible:outline-none focus:outline-none rounded-md  h-11 md:h-12 px-5 bg-blue-500 text-white py-2 transform-none normal-case hover:text-white hover:bg-gray-600 hover:shadow-cart">Accept cookies</button></div> --}}
 
     <script src="/admin/preline/hs-ui.bundle.js"></script>
+    @livewireScripts
 </body>
 
 </html>
