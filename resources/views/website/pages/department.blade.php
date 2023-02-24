@@ -17,7 +17,7 @@
           </div>
           <div class="flex flex-1 flex-col justify-between bg-white p-6">
             <div class="flex-1">
-              <p class="text-sm font-medium text-indigo-600">
+              <p class="text-sm font-medium text-blue-600">
                 <a href="#" class="hover:underline">Article</a>
               </p>
               <a href="#" class="mt-2 block">
@@ -52,7 +52,7 @@
           </div>
           <div class="flex flex-1 flex-col justify-between bg-white p-6">
             <div class="flex-1">
-              <p class="text-sm font-medium text-indigo-600">
+              <p class="text-sm font-medium text-blue-600">
                 <a href="#" class="hover:underline">Video</a>
               </p>
               <a href="#" class="mt-2 block">
@@ -87,7 +87,7 @@
           </div>
           <div class="flex flex-1 flex-col justify-between bg-white p-6">
             <div class="flex-1">
-              <p class="text-sm font-medium text-indigo-600">
+              <p class="text-sm font-medium text-blue-600">
                 <a href="#" class="hover:underline">Case Study</a>
               </p>
               <a href="#" class="mt-2 block">

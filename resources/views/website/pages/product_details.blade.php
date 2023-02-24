@@ -16,7 +16,7 @@
                   <span class="absolute inset-0 overflow-hidden rounded-md">
                     <img src="https://tailwindui.com/img/ecommerce-images/product-page-03-product-01.jpg" alt="" class="h-full w-full object-cover object-center">
                   </span>
-                  <span class="pointer-events-none absolute inset-0 rounded-md ring-2 ring-offset-2 ring-transparent" aria-hidden="true" x-state:on="Selected" x-state:off="Not Selected" :class="{ 'ring-indigo-500': selected, 'ring-transparent': !(selected) }"></span>
+                  <span class="pointer-events-none absolute inset-0 rounded-md ring-2 ring-offset-2 ring-transparent" aria-hidden="true" x-state:on="Selected" x-state:off="Not Selected" :class="{ 'ring-blue-500': selected, 'ring-transparent': !(selected) }"></span>
                 </button>
 
                 <button id="tabs-2-tab-2" class="relative flex h-24 cursor-pointer items-center justify-center rounded-md bg-white text-sm font-medium uppercase text-gray-900 hover:bg-gray-50 focus:outline-none focus:ring focus:ring-opacity-50 focus:ring-offset-4" x-data="Components.tab(0)" aria-controls="tabs-2-panel-2" role="tab" x-init="init()" @click="onClick" @keydown="onKeydown" @tab-select.window="onTabSelect" :tabindex="selected ? 0 : -1" :aria-selected="selected ? 'true' : 'false'" type="button" tabindex="-1" aria-selected="false">
@@ -24,7 +24,7 @@
                   <span class="absolute inset-0 overflow-hidden rounded-md">
                     <img src="https://tailwindui.com/img/ecommerce-images/product-page-03-product-02.jpg" alt="" class="h-full w-full object-cover object-center">
                   </span>
-                  <span class="pointer-events-none absolute inset-0 rounded-md ring-2 ring-offset-2 ring-transparent" aria-hidden="true" x-state:on="Selected" x-state:off="Not Selected" :class="{ 'ring-indigo-500': selected, 'ring-transparent': !(selected) }"></span>
+                  <span class="pointer-events-none absolute inset-0 rounded-md ring-2 ring-offset-2 ring-transparent" aria-hidden="true" x-state:on="Selected" x-state:off="Not Selected" :class="{ 'ring-blue-500': selected, 'ring-transparent': !(selected) }"></span>
                 </button>
 
                 <button id="tabs-2-tab-3" class="relative flex h-24 cursor-pointer items-center justify-center rounded-md bg-white text-sm font-medium uppercase text-gray-900 hover:bg-gray-50 focus:outline-none focus:ring focus:ring-opacity-50 focus:ring-offset-4" x-data="Components.tab(0)" aria-controls="tabs-2-panel-3" role="tab" x-init="init()" @click="onClick" @keydown="onKeydown" @tab-select.window="onTabSelect" :tabindex="selected ? 0 : -1" :aria-selected="selected ? 'true' : 'false'" type="button" tabindex="-1" aria-selected="false">
@@ -32,7 +32,7 @@
                   <span class="absolute inset-0 overflow-hidden rounded-md">
                     <img src="https://tailwindui.com/img/ecommerce-images/product-page-03-product-03.jpg" alt="" class="h-full w-full object-cover object-center">
                   </span>
-                  <span class="pointer-events-none absolute inset-0 rounded-md ring-2 ring-offset-2 ring-transparent" aria-hidden="true" x-state:on="Selected" x-state:off="Not Selected" :class="{ 'ring-indigo-500': selected, 'ring-transparent': !(selected) }"></span>
+                  <span class="pointer-events-none absolute inset-0 rounded-md ring-2 ring-offset-2 ring-transparent" aria-hidden="true" x-state:on="Selected" x-state:off="Not Selected" :class="{ 'ring-blue-500': selected, 'ring-transparent': !(selected) }"></span>
                 </button>
 
                 <button id="tabs-2-tab-4" class="relative flex h-24 cursor-pointer items-center justify-center rounded-md bg-white text-sm font-medium uppercase text-gray-900 hover:bg-gray-50 focus:outline-none focus:ring focus:ring-opacity-50 focus:ring-offset-4" x-data="Components.tab(0)" aria-controls="tabs-2-panel-4" role="tab" x-init="init()" @click="onClick" @keydown="onKeydown" @tab-select.window="onTabSelect" :tabindex="selected ? 0 : -1" :aria-selected="selected ? 'true' : 'false'" type="button" tabindex="0" aria-selected="true">
@@ -40,7 +40,7 @@
                   <span class="absolute inset-0 overflow-hidden rounded-md">
                     <img src="https://tailwindui.com/img/ecommerce-images/product-page-03-product-04.jpg" alt="" class="h-full w-full object-cover object-center">
                   </span>
-                  <span class="pointer-events-none absolute inset-0 rounded-md ring-2 ring-offset-2 ring-indigo-500" aria-hidden="true" x-state:on="Selected" x-state:off="Not Selected" :class="{ 'ring-indigo-500': selected, 'ring-transparent': !(selected) }"></span>
+                  <span class="pointer-events-none absolute inset-0 rounded-md ring-2 ring-offset-2 ring-blue-500" aria-hidden="true" x-state:on="Selected" x-state:off="Not Selected" :class="{ 'ring-blue-500': selected, 'ring-transparent': !(selected) }"></span>
                 </button>
 
             </div>
@@ -82,23 +82,23 @@
             <div class="flex items-center">
               <div class="flex items-center">
 
-                  <svg class="h-5 w-5 flex-shrink-0 text-indigo-500" x-state:on="Active" x-state:off="Inactive" x-state-description="Active: &quot;text-indigo-500&quot;, Inactive: &quot;text-gray-300&quot;" x-description="Heroicon name: mini/star" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <svg class="h-5 w-5 flex-shrink-0 text-blue-500" x-state:on="Active" x-state:off="Inactive" x-state-description="Active: &quot;text-blue-500&quot;, Inactive: &quot;text-gray-300&quot;" x-description="Heroicon name: mini/star" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
 <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd"></path>
 </svg>
 
-                  <svg class="h-5 w-5 flex-shrink-0 text-indigo-500" x-state-description="undefined: &quot;text-indigo-500&quot;, undefined: &quot;text-gray-300&quot;" x-description="Heroicon name: mini/star" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <svg class="h-5 w-5 flex-shrink-0 text-blue-500" x-state-description="undefined: &quot;text-blue-500&quot;, undefined: &quot;text-gray-300&quot;" x-description="Heroicon name: mini/star" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
 <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd"></path>
 </svg>
 
-                  <svg class="h-5 w-5 flex-shrink-0 text-indigo-500" x-state-description="undefined: &quot;text-indigo-500&quot;, undefined: &quot;text-gray-300&quot;" x-description="Heroicon name: mini/star" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <svg class="h-5 w-5 flex-shrink-0 text-blue-500" x-state-description="undefined: &quot;text-blue-500&quot;, undefined: &quot;text-gray-300&quot;" x-description="Heroicon name: mini/star" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
 <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd"></path>
 </svg>
 
-                  <svg class="h-5 w-5 flex-shrink-0 text-indigo-500" x-state-description="undefined: &quot;text-indigo-500&quot;, undefined: &quot;text-gray-300&quot;" x-description="Heroicon name: mini/star" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <svg class="h-5 w-5 flex-shrink-0 text-blue-500" x-state-description="undefined: &quot;text-blue-500&quot;, undefined: &quot;text-gray-300&quot;" x-description="Heroicon name: mini/star" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
 <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd"></path>
 </svg>
 
-                  <svg class="h-5 w-5 flex-shrink-0 text-gray-300" x-state-description="undefined: &quot;text-indigo-500&quot;, undefined: &quot;text-gray-300&quot;" x-description="Heroicon name: mini/star" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <svg class="h-5 w-5 flex-shrink-0 text-gray-300" x-state-description="undefined: &quot;text-blue-500&quot;, undefined: &quot;text-gray-300&quot;" x-description="Heroicon name: mini/star" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
 <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd"></path>
 </svg>
 
@@ -147,7 +147,7 @@
             </div>
 
             <div class="mt-10 flex">
-              <button type="submit" class="flex max-w-xs flex-1 items-center justify-center rounded-md border border-transparent bg-indigo-600 py-3 px-8 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50 sm:w-full">Add to bag</button>
+              <button type="submit" class="flex max-w-xs flex-1 items-center justify-center rounded-md border border-transparent bg-blue-600 py-3 px-8 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-50 sm:w-full">Add to bag</button>
 
               <button type="button" class="ml-4 flex items-center justify-center rounded-md py-3 px-3 text-gray-400 hover:bg-gray-100 hover:text-gray-500">
                 <svg class="h-6 w-6 flex-shrink-0" x-description="Heroicon name: outline/heart" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
@@ -166,12 +166,12 @@
                 <div x-data="{ open: true }">
                   <h3>
                     <button type="button" x-description="Expand/collapse question button" class="group relative flex w-full items-center justify-between py-6 text-left" aria-controls="disclosure-1" @click="open = !open" aria-expanded="false" x-bind:aria-expanded="open.toString()">
-                      <span class="text-sm font-medium text-gray-900" x-state:on="Open" x-state:off="Closed" :class="{ 'text-indigo-600': open, 'text-gray-900': !(open) }">Features</span>
+                      <span class="text-sm font-medium text-gray-900" x-state:on="Open" x-state:off="Closed" :class="{ 'text-blue-600': open, 'text-gray-900': !(open) }">Features</span>
                       <span class="ml-6 flex items-center">
                         <svg class="h-6 w-6 text-gray-400 group-hover:text-gray-500 block" x-state:on="Open" x-state:off="Closed" :class="{ 'hidden': open, 'block': !(open) }" x-description="Heroicon name: outline/plus" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
 <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"></path>
 </svg>
-                        <svg class="h-6 w-6 text-indigo-400 group-hover:text-indigo-500 hidden" x-state:on="Open" x-state:off="Closed" :class="{ 'block': open, 'hidden': !(open) }" x-description="Heroicon name: outline/minus" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                        <svg class="h-6 w-6 text-blue-400 group-hover:text-blue-500 hidden" x-state:on="Open" x-state:off="Closed" :class="{ 'block': open, 'hidden': !(open) }" x-description="Heroicon name: outline/minus" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
 <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15"></path>
 </svg>
                       </span>
@@ -201,12 +201,12 @@
                 <div x-data="{ open: false }">
                   <h3>
                     <button type="button" x-description="Expand/collapse question button" class="group relative flex w-full items-center justify-between py-6 text-left" aria-controls="disclosure-1" @click="open = !open" aria-expanded="false" x-bind:aria-expanded="open.toString()">
-                      <span class="text-sm font-medium text-gray-900" x-state:on="Open" x-state:off="Closed" :class="{ 'text-indigo-600': open, 'text-gray-900': !(open) }">Care</span>
+                      <span class="text-sm font-medium text-gray-900" x-state:on="Open" x-state:off="Closed" :class="{ 'text-blue-600': open, 'text-gray-900': !(open) }">Care</span>
                       <span class="ml-6 flex items-center">
                         <svg class="h-6 w-6 text-gray-400 group-hover:text-gray-500 block" x-state:on="Open" x-state:off="Closed" :class="{ 'hidden': open, 'block': !(open) }" x-description="Heroicon name: outline/plus" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
 <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"></path>
 </svg>
-                        <svg class="h-6 w-6 text-indigo-400 group-hover:text-indigo-500 hidden" x-state:on="Open" x-state:off="Closed" :class="{ 'block': open, 'hidden': !(open) }" x-description="Heroicon name: outline/minus" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                        <svg class="h-6 w-6 text-blue-400 group-hover:text-blue-500 hidden" x-state:on="Open" x-state:off="Closed" :class="{ 'block': open, 'hidden': !(open) }" x-description="Heroicon name: outline/minus" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
 <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15"></path>
 </svg>
                       </span>
@@ -230,12 +230,12 @@
                 <div x-data="{ open: false }">
                   <h3>
                     <button type="button" x-description="Expand/collapse question button" class="group relative flex w-full items-center justify-between py-6 text-left" aria-controls="disclosure-1" @click="open = !open" aria-expanded="true" x-bind:aria-expanded="open.toString()">
-                      <span class="text-sm font-medium text-indigo-600" x-state:on="Open" x-state:off="Closed" :class="{ 'text-indigo-600': open, 'text-gray-900': !(open) }">Shipping</span>
+                      <span class="text-sm font-medium text-blue-600" x-state:on="Open" x-state:off="Closed" :class="{ 'text-blue-600': open, 'text-gray-900': !(open) }">Shipping</span>
                       <span class="ml-6 flex items-center">
                         <svg class="h-6 w-6 text-gray-400 group-hover:text-gray-500 hidden" x-state:on="Open" x-state:off="Closed" :class="{ 'hidden': open, 'block': !(open) }" x-description="Heroicon name: outline/plus" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
 <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"></path>
 </svg>
-                        <svg class="h-6 w-6 text-indigo-400 group-hover:text-indigo-500 block" x-state:on="Open" x-state:off="Closed" :class="{ 'block': open, 'hidden': !(open) }" x-description="Heroicon name: outline/minus" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                        <svg class="h-6 w-6 text-blue-400 group-hover:text-blue-500 block" x-state:on="Open" x-state:off="Closed" :class="{ 'block': open, 'hidden': !(open) }" x-description="Heroicon name: outline/minus" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
 <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15"></path>
 </svg>
                       </span>
@@ -259,12 +259,12 @@
                 <div x-data="{ open: false }">
                   <h3>
                     <button type="button" x-description="Expand/collapse question button" class="group relative flex w-full items-center justify-between py-6 text-left" aria-controls="disclosure-1" @click="open = !open" aria-expanded="true" x-bind:aria-expanded="open.toString()">
-                      <span class="text-sm font-medium text-indigo-600" x-state:on="Open" x-state:off="Closed" :class="{ 'text-indigo-600': open, 'text-gray-900': !(open) }">Returns</span>
+                      <span class="text-sm font-medium text-blue-600" x-state:on="Open" x-state:off="Closed" :class="{ 'text-blue-600': open, 'text-gray-900': !(open) }">Returns</span>
                       <span class="ml-6 flex items-center">
                         <svg class="h-6 w-6 text-gray-400 group-hover:text-gray-500 hidden" x-state:on="Open" x-state:off="Closed" :class="{ 'hidden': open, 'block': !(open) }" x-description="Heroicon name: outline/plus" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
 <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"></path>
 </svg>
-                        <svg class="h-6 w-6 text-indigo-400 group-hover:text-indigo-500 block" x-state:on="Open" x-state:off="Closed" :class="{ 'block': open, 'hidden': !(open) }" x-description="Heroicon name: outline/minus" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                        <svg class="h-6 w-6 text-blue-400 group-hover:text-blue-500 block" x-state:on="Open" x-state:off="Closed" :class="{ 'block': open, 'hidden': !(open) }" x-description="Heroicon name: outline/minus" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
 <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15"></path>
 </svg>
                       </span>

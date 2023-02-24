@@ -8,7 +8,7 @@
                 <h1
                     class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl">
                     <span class="block xl:inline">Data to enrich your</span>
-                    <span class="block text-indigo-600 xl:inline">online business</span>
+                    <span class="block text-blue-600 xl:inline">online business</span>
                 </h1>
                 <p class="mx-auto mt-3 max-w-md text-lg text-gray-500 sm:text-xl md:mt-5 md:max-w-3xl">Anim
                     aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo.
@@ -16,12 +16,12 @@
                 <div class="mt-10 sm:flex sm:justify-center lg:justify-start">
                     <div class="rounded-md shadow">
                         <a href="#"
-                            class="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 md:py-4 md:px-10 md:text-lg">Get
+                            class="flex w-full items-center justify-center rounded-md border border-transparent bg-blue-600 px-8 py-3 text-base font-medium text-white hover:bg-blue-700 md:py-4 md:px-10 md:text-lg">Get
                             started</a>
                     </div>
                     <div class="mt-3 rounded-md shadow sm:mt-0 sm:ml-3">
                         <a href="#"
-                            class="flex w-full items-center justify-center rounded-md border border-transparent bg-white px-8 py-3 text-base font-medium text-indigo-600 hover:bg-gray-50 md:py-4 md:px-10 md:text-lg">Live
+                            class="flex w-full items-center justify-center rounded-md border border-transparent bg-white px-8 py-3 text-base font-medium text-blue-600 hover:bg-gray-50 md:py-4 md:px-10 md:text-lg">Live
                             demo</a>
                     </div>
                 </div>
@@ -80,7 +80,7 @@
                       <div class="flow-root rounded-lg bg-gray-50 px-6 pb-8">
                         <div class="-mt-6">
                           <div>
-                            <span class="inline-flex items-center justify-center rounded-xl bg-indigo-500 p-3 shadow-lg">
+                            <span class="inline-flex items-center justify-center rounded-xl bg-blue-500 p-3 shadow-lg">
                               <svg class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z" />
                               </svg>
@@ -96,7 +96,7 @@
                       <div class="flow-root rounded-lg bg-gray-50 px-6 pb-8">
                         <div class="-mt-6">
                           <div>
-                            <span class="inline-flex items-center justify-center rounded-xl bg-indigo-500 p-3 shadow-lg">
+                            <span class="inline-flex items-center justify-center rounded-xl bg-blue-500 p-3 shadow-lg">
                               <svg class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
                               </svg>
@@ -112,7 +112,7 @@
                       <div class="flow-root rounded-lg bg-gray-50 px-6 pb-8">
                         <div class="-mt-6">
                           <div>
-                            <span class="inline-flex items-center justify-center rounded-xl bg-indigo-500 p-3 shadow-lg">
+                            <span class="inline-flex items-center justify-center rounded-xl bg-blue-500 p-3 shadow-lg">
                               <svg class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
                               </svg>
@@ -128,7 +128,7 @@
                       <div class="flow-root rounded-lg bg-gray-50 px-6 pb-8">
                         <div class="-mt-6">
                           <div>
-                            <span class="inline-flex items-center justify-center rounded-xl bg-indigo-500 p-3 shadow-lg">
+                            <span class="inline-flex items-center justify-center rounded-xl bg-blue-500 p-3 shadow-lg">
                               <svg class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
                               </svg>
@@ -144,7 +144,7 @@
                       <div class="flow-root rounded-lg bg-gray-50 px-6 pb-8">
                         <div class="-mt-6">
                           <div>
-                            <span class="inline-flex items-center justify-center rounded-xl bg-indigo-500 p-3 shadow-lg">
+                            <span class="inline-flex items-center justify-center rounded-xl bg-blue-500 p-3 shadow-lg">
                               <svg class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12a7.5 7.5 0 0015 0m-15 0a7.5 7.5 0 1115 0m-15 0H3m16.5 0H21m-1.5 0H12m-8.457 3.077l1.41-.513m14.095-5.13l1.41-.513M5.106 17.785l1.15-.964m11.49-9.642l1.149-.964M7.501 19.795l.75-1.3m7.5-12.99l.75-1.3m-6.063 16.658l.26-1.477m2.605-14.772l.26-1.477m0 17.726l-.26-1.477M10.698 4.614l-.26-1.477M16.5 19.794l-.75-1.299M7.5 4.205L12 12m6.894 5.785l-1.149-.964M6.256 7.178l-1.15-.964m15.352 8.864l-1.41-.513M4.954 9.435l-1.41-.514M12.002 12l-3.75 6.495" />
                               </svg>
@@ -160,7 +160,7 @@
                       <div class="flow-root rounded-lg bg-gray-50 px-6 pb-8">
                         <div class="-mt-6">
                           <div>
-                            <span class="inline-flex items-center justify-center rounded-xl bg-indigo-500 p-3 shadow-lg">
+                            <span class="inline-flex items-center justify-center rounded-xl bg-blue-500 p-3 shadow-lg">
                               <svg class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 17.25v-.228a4.5 4.5 0 00-.12-1.03l-2.268-9.64a3.375 3.375 0 00-3.285-2.602H7.923a3.375 3.375 0 00-3.285 2.602l-2.268 9.64a4.5 4.5 0 00-.12 1.03v.228m19.5 0a3 3 0 01-3 3H5.25a3 3 0 01-3-3m19.5 0a3 3 0 00-3-3H5.25a3 3 0 00-3 3m16.5 0h.008v.008h-.008v-.008zm-3 0h.008v.008h-.008v-.008z" />
                               </svg>
@@ -188,7 +188,7 @@
                     <h2 class="text-5xl font-bold tracking-tight text-gray-900 sm:text-4xl">Our Departments</h2>
                     <p class="mx-auto mt-3 max-w-2xl text-xl text-gray-500 sm:mt-4">Our hospital has all kinds of departments, so you can get all kinds of treatment</p>
                 </div>
-                <a href="#" class="text-md font-semibold text-indigo-600 hover:text-indigo-500 sm:block">
+                <a href="#" class="text-md font-semibold text-blue-600 hover:text-blue-500 sm:block">
                   View All
                     {{-- <span>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -227,7 +227,7 @@
                     <h2 class="text-5xl font-bold tracking-tight text-gray-900 sm:text-4xl">Our Specialists</h2>
                     <p class="mx-auto mt-3 max-w-2xl text-xl text-gray-500 sm:mt-4">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa libero labore natus atque, ducimus sed</p>
                 </div>
-                <a href="#" class="text-md font-semibold text-indigo-600 hover:text-indigo-500 sm:block">
+                <a href="#" class="text-md font-semibold text-blue-600 hover:text-blue-500 sm:block">
                     View All
                 </a>
             </div>
@@ -242,7 +242,7 @@
                             <div class="space-y-2">
                                 <div class="space-y-1 text-lg font-medium leading-6">
                                     <h3>Glenn Arredondo</h3>
-                                    <p class="text-indigo-600">Family Physicians</p>
+                                    <p class="text-blue-600">Family Physicians</p>
                                 </div>
                                 <ul role="list" class="flex justify-center space-x-5">
                                     <li>
@@ -278,7 +278,7 @@
                             <div class="space-y-2">
                                 <div class="space-y-1 text-lg font-medium leading-6">
                                     <h3>Glenn Arredondo</h3>
-                                    <p class="text-indigo-600">Family Physicians</p>
+                                    <p class="text-blue-600">Family Physicians</p>
                                 </div>
                                 <ul role="list" class="flex justify-center space-x-5">
                                     <li>
@@ -314,7 +314,7 @@
                             <div class="space-y-2">
                                 <div class="space-y-1 text-lg font-medium leading-6">
                                     <h3>Glenn Arredondo</h3>
-                                    <p class="text-indigo-600">Family Physicians</p>
+                                    <p class="text-blue-600">Family Physicians</p>
                                 </div>
                                 <ul role="list" class="flex justify-center space-x-5">
                                     <li>
@@ -350,7 +350,7 @@
                             <div class="space-y-2">
                                 <div class="space-y-1 text-lg font-medium leading-6">
                                     <h3>Glenn Arredondo</h3>
-                                    <p class="text-indigo-600">Family Physicians</p>
+                                    <p class="text-blue-600">Family Physicians</p>
                                 </div>
                                 <ul role="list" class="flex justify-center space-x-5">
                                     <li>
@@ -391,7 +391,7 @@
                     <h2 class="text-5xl font-bold tracking-tight text-gray-900 sm:text-4xl">Shop by Category</h2>
                     <p class="mx-auto mt-3 max-w-2xl text-xl text-gray-500 sm:mt-4">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa libero labore natus atque, ducimus sed</p>
                 </div>
-                <a href="#" class="text-md font-semibold text-indigo-600 hover:text-indigo-500 sm:block">
+                <a href="#" class="text-md font-semibold text-blue-600 hover:text-blue-500 sm:block">
                     Browse all categories
                 </a>
             </div>
@@ -456,7 +456,7 @@
                     <h2 class="text-5xl font-bold tracking-tight text-gray-900 sm:text-4xl">Shop by Category</h2>
                     <p class="mx-auto mt-3 max-w-2xl text-xl text-gray-500 sm:mt-4">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa libero labore natus atque, ducimus sed</p>
                 </div>
-                <a href="#" class="text-md font-semibold text-indigo-600 hover:text-indigo-500 sm:block">
+                <a href="#" class="text-md font-semibold text-blue-600 hover:text-blue-500 sm:block">
                     Browse all categories
                 </a>
             </div>

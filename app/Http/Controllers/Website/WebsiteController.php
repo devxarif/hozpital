@@ -8,6 +8,8 @@ use App\Models\Faq;
 use App\Models\Feature;
 use App\Models\Plan;
 use App\Models\Post;
+use App\Models\Product;
+use App\Models\ProductCategory;
 use App\Models\Seo;
 use App\Models\Testimonial;
 use App\Services\Midtrans\CreateSnapTokenService;
@@ -86,8 +88,10 @@ class WebsiteController extends Controller
 
     public function products()
     {
+        $data['products'] = Product::with('productCategory:id,name')->paginate(15);
+        $data['categorises'] = ProductCategory::select('id','name')->get();
 
-        return view('website.pages.products');
+        return view('website.pages.products', $data);
 
         $content = metaContent('home');
         $this->seo()->setTitle($content->title);

@@ -49,7 +49,6 @@ class AppointmentSeeder extends Seeder
                     'doctor_id' => $doctor->id,
                     'patient_id' => Patient::inRandomOrder()->value('id'),
                     'problem' => fake()->realText,
-                    'serial_no' => rand(1, 500),
                     'date' => $dateRange[$index],
                     'start_time' => $start_time,
                     'end_time' => $end_time,
@@ -59,17 +58,5 @@ class AppointmentSeeder extends Seeder
                 ]);
             }
         }
-
-        // $table->foreignIdFor(Doctor::class)->constrained()->cascadeOnDelete();
-        // $table->foreignIdFor(Patient::class)->constrained()->cascadeOnDelete();
-        // $table->string('problem');
-        // $table->string('serial_no');
-        // $table->date('date');
-        // $table->date('start_time');
-        // $table->date('end_time');
-        // $table->string('slot');
-        // $table->enum('status', ['approved', 'pending','cancelled','completed']);
-        // $table->enum('type', ['online', 'offline'])->default('offline');
-
     }
 }

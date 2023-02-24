@@ -50,7 +50,7 @@
     <div class="bg-white">
         <main class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
           <div class="flex-shrink-0 pt-16">
-            <img class="mx-auto h-12 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="Your Company">
+            <img class="mx-auto h-12 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=blue&shade=600" alt="Your Company">
           </div>
           <div class="mx-auto max-w-xl py-16 sm:py-24">
             <div class="text-center">
@@ -63,16 +63,16 @@
               <ul role="list" class="mt-4 divide-y divide-gray-200 border-t border-b border-gray-200">
                 <li class="relative flex items-start space-x-4 py-6">
                   <div class="flex-shrink-0">
-                    <span class="flex h-12 w-12 items-center justify-center rounded-lg bg-indigo-50">
+                    <span class="flex h-12 w-12 items-center justify-center rounded-lg bg-blue-50">
                       <!-- Heroicon name: outline/book-open -->
-                      <svg class="h-6 w-6 text-indigo-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                      <svg class="h-6 w-6 text-blue-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
                       </svg>
                     </span>
                   </div>
                   <div class="min-w-0 flex-1">
                     <h3 class="text-base font-medium text-gray-900">
-                      <span class="rounded-sm focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2">
+                      <span class="rounded-sm focus-within:ring-2 focus-within:ring-blue-500 focus-within:ring-offset-2">
                         <a href="#" class="focus:outline-none">
                           <span class="absolute inset-0" aria-hidden="true"></span>
                           Documentation
@@ -91,16 +91,16 @@
 
                 <li class="relative flex items-start space-x-4 py-6">
                   <div class="flex-shrink-0">
-                    <span class="flex h-12 w-12 items-center justify-center rounded-lg bg-indigo-50">
+                    <span class="flex h-12 w-12 items-center justify-center rounded-lg bg-blue-50">
                       <!-- Heroicon name: outline/bars-4 -->
-                      <svg class="h-6 w-6 text-indigo-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                      <svg class="h-6 w-6 text-blue-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5" />
                       </svg>
                     </span>
                   </div>
                   <div class="min-w-0 flex-1">
                     <h3 class="text-base font-medium text-gray-900">
-                      <span class="rounded-sm focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2">
+                      <span class="rounded-sm focus-within:ring-2 focus-within:ring-blue-500 focus-within:ring-offset-2">
                         <a href="#" class="focus:outline-none">
                           <span class="absolute inset-0" aria-hidden="true"></span>
                           API Reference
@@ -119,16 +119,16 @@
 
                 <li class="relative flex items-start space-x-4 py-6">
                   <div class="flex-shrink-0">
-                    <span class="flex h-12 w-12 items-center justify-center rounded-lg bg-indigo-50">
+                    <span class="flex h-12 w-12 items-center justify-center rounded-lg bg-blue-50">
                       <!-- Heroicon name: outline/bookmark-square -->
-                      <svg class="h-6 w-6 text-indigo-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                      <svg class="h-6 w-6 text-blue-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 3.75V16.5L12 14.25 7.5 16.5V3.75m9 0H18A2.25 2.25 0 0120.25 6v12A2.25 2.25 0 0118 20.25H6A2.25 2.25 0 013.75 18V6A2.25 2.25 0 016 3.75h1.5m9 0h-9" />
                       </svg>
                     </span>
                   </div>
                   <div class="min-w-0 flex-1">
                     <h3 class="text-base font-medium text-gray-900">
-                      <span class="rounded-sm focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2">
+                      <span class="rounded-sm focus-within:ring-2 focus-within:ring-blue-500 focus-within:ring-offset-2">
                         <a href="#" class="focus:outline-none">
                           <span class="absolute inset-0" aria-hidden="true"></span>
                           Guides
@@ -147,16 +147,16 @@
 
                 <li class="relative flex items-start space-x-4 py-6">
                   <div class="flex-shrink-0">
-                    <span class="flex h-12 w-12 items-center justify-center rounded-lg bg-indigo-50">
+                    <span class="flex h-12 w-12 items-center justify-center rounded-lg bg-blue-50">
                       <!-- Heroicon name: outline/rss -->
-                      <svg class="h-6 w-6 text-indigo-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                      <svg class="h-6 w-6 text-blue-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M12.75 19.5v-.75a7.5 7.5 0 00-7.5-7.5H4.5m0-6.75h.75c7.87 0 14.25 6.38 14.25 14.25v.75M6 18.75a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
                       </svg>
                     </span>
                   </div>
                   <div class="min-w-0 flex-1">
                     <h3 class="text-base font-medium text-gray-900">
-                      <span class="rounded-sm focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2">
+                      <span class="rounded-sm focus-within:ring-2 focus-within:ring-blue-500 focus-within:ring-offset-2">
                         <a href="#" class="focus:outline-none">
                           <span class="absolute inset-0" aria-hidden="true"></span>
                           Blog
@@ -174,7 +174,7 @@
                 </li>
               </ul>
               <div class="mt-8">
-                <a href="#" class="text-base font-medium text-blue-600 hover:text-indigo-500">
+                <a href="#" class="text-base font-medium text-blue-600 hover:text-blue-500">
                   Or go back home
                   <span aria-hidden="true"> &rarr;</span>
                 </a>

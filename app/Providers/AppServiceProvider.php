@@ -31,7 +31,7 @@ class AppServiceProvider extends ServiceProvider
         Model::unguard();
         Model::preventLazyLoading(! app()->isProduction());
 
-        Paginator::useBootstrap();
+        Paginator::useTailwind();
 
         if (! app()->runningInConsole()) {
             // Setting

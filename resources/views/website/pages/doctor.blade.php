@@ -18,7 +18,7 @@
               <div class="space-y-2">
                 <div class="space-y-1 text-lg font-medium leading-6">
                   <h3>Glenn Arredondo</h3>
-                  <p class="text-indigo-600">Family Physicians</p>
+                  <p class="text-blue-600">Family Physicians</p>
                 </div>
                 <ul role="list" class="flex space-x-5">
                   <li>
@@ -50,7 +50,7 @@
               <div class="space-y-2">
                 <div class="space-y-1 text-lg font-medium leading-6">
                   <h3>Glenn Arredondo</h3>
-                  <p class="text-indigo-600">Family Physicians</p>
+                  <p class="text-blue-600">Family Physicians</p>
                 </div>
                 <ul role="list" class="flex space-x-5">
                   <li>

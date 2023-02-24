@@ -195,10 +195,10 @@
                 <!--
                   Always include: "mx-auto flex h-8 w-8 items-center justify-center rounded-full"
                   Is selected, include: "text-white"
-                  Is not selected and is today, include: "text-indigo-600"
+                  Is not selected and is today, include: "text-blue-600"
                   Is not selected and is not today and is current month, include: "text-gray-900"
                   Is not selected and is not today and is not current month, include: "text-gray-400"
-                  Is selected and is today, include: "bg-indigo-600"
+                  Is selected and is today, include: "bg-blue-600"
                   Is selected and is not today, include: "bg-gray-900"
                   Is not selected, include: "hover:bg-gray-200"
                   Is selected or is today, include: "font-semibold"
@@ -283,7 +283,7 @@
                 </button>
               </div>
               <div class="border-t border-gray-200 py-2">
-                <button type="button" class="mx-auto flex h-8 w-8 items-center justify-center rounded-full font-semibold text-indigo-600 hover:bg-gray-200">
+                <button type="button" class="mx-auto flex h-8 w-8 items-center justify-center rounded-full font-semibold text-blue-600 hover:bg-gray-200">
                   <time datetime="2022-01-12">12</time>
                 </button>
               </div>

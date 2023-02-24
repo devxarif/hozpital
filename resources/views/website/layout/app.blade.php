@@ -38,7 +38,7 @@
                         </div>
                         <div class="ml-auto flex items-center">
                             <div class="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
-                                <a href="#" class="text-sm font-medium text-gray-700 hover:text-gray-800">Sign in</a>
+                                <a href="{{ route('login') }}" class="text-sm font-medium text-gray-700 hover:text-gray-800">Sign in</a>
                                 <span class="h-6 w-px bg-gray-200" aria-hidden="true"></span>
                                 <a href="#" class="text-sm font-medium text-gray-700 hover:text-gray-800">Create account</a>
                             </div>
@@ -121,13 +121,12 @@
                         <div class="flex justify-start lg:w-0 lg:flex-1">
                             <a href="#">
                                 <span class="sr-only">Your Company</span>
-                                <img class="h-8 w-auto sm:h-10"
-                                    src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="">
+                                <img class="h-14 w-auto" src="{{ asset('admin/img/hozpital_red_logo.svg') }}" alt="">
                             </a>
                         </div>
                         <div class="-my-2 -mr-2 md:hidden">
                             <button type="button"
-                                class="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+                                class="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500"
                                 aria-expanded="false">
                                 <span class="sr-only">Open menu</span>
                                 <!-- Heroicon name: outline/bars-3 -->
@@ -147,7 +146,7 @@
                         </nav>
                         <div class="hidden items-center justify-end md:flex md:flex-1 lg:w-0">
                             <a href="{{ route('website.appointment') }}"
-                                class="ml-8 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700">Book Appointment</a>
+                                class="ml-8 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-blue-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-blue-700">Book Appointment</a>
                         </div>
                     </div>
                 </div>
@@ -158,12 +157,12 @@
                             <div class="flex items-center justify-between">
                                 <div>
                                     <img class="h-8 w-auto"
-                                        src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+                                        src="https://tailwindui.com/img/logos/mark.svg?color=blue&shade=600"
                                         alt="Your Company">
                                 </div>
                                 <div class="-mr-2">
                                     <button type="button"
-                                        class="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                                        class="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500">
                                         <span class="sr-only">Close menu</span>
                                         <!-- Heroicon name: outline/x-mark -->
                                         <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -179,7 +178,7 @@
                                 <nav class="grid gap-y-8">
                                     <a href="#" class="-m-3 flex items-center rounded-md p-3 hover:bg-gray-50">
                                         <!-- Heroicon name: outline/chart-bar -->
-                                        <svg class="h-6 w-6 flex-shrink-0 text-indigo-600"
+                                        <svg class="h-6 w-6 flex-shrink-0 text-blue-600"
                                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                             stroke-width="1.5" stroke="currentColor" aria-hidden="true">
                                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -196,11 +195,11 @@
                                 <a href="#" class="text-base font-medium text-gray-900 hover:text-gray-700">Docs</a>
                                 <div>
                                     <a href="#"
-                                        class="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700">Sign
+                                        class="flex w-full items-center justify-center rounded-md border border-transparent bg-blue-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-blue-700">Sign
                                         up</a>
                                     <p class="mt-6 text-center text-base font-medium text-gray-500">
                                         Existing customer?
-                                        <a href="#" class="text-indigo-600 hover:text-indigo-500">Sign in</a>
+                                        <a href="#" class="text-blue-600 hover:text-blue-500">Sign in</a>
                                     </p>
                                 </div>
                             </div>
@@ -218,13 +217,13 @@
 
         <div class="bg-white">
             <div class="mx-auto max-w-7xl py-12 px-6 lg:py-16 lg:px-8">
-            <div class="rounded-3xl bg-indigo-700 py-10 px-6 sm:py-16 sm:px-12 lg:flex lg:items-center lg:p-20 flex justify-between">
+            <div class="rounded-3xl bg-blue-700 py-10 px-6 sm:py-16 sm:px-12 lg:flex lg:items-center lg:p-20 flex justify-between">
                 <div class="lg:w-0 lg:flex-1">
                     <h2 class="text-3xl font-bold tracking-tight text-white">Knock us out today to get medical services</h2>
-                    <p class="mt-2 max-w-3xl text-xm text-indigo-100">Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui Lorem cupidatat commodo. Elit sunt amet fugiat.</p>
+                    <p class="mt-2 max-w-3xl text-xm text-blue-100">Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui Lorem cupidatat commodo. Elit sunt amet fugiat.</p>
                 </div>
                 <div class="mt-12 sm:w-full sm:max-w-md lg:mt-0 lg:ml-8 lg:flex-1 flex justify-end">
-                    <a href="{{ route('website.appointment') }}" class="mt-3 flex w-full rounded-md border border-transparent bg-indigo-500 px-5 py-3 text-base font-medium text-white hover:bg-indigo-400 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-indigo-700 sm:mt-0 sm:ml-3 sm:w-auto">Book Appointment</a>
+                    <a href="{{ route('website.appointment') }}" class="mt-3 flex w-full rounded-md border border-transparent bg-blue-500 px-5 py-3 text-base font-medium text-white hover:bg-blue-400 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-700 sm:mt-0 sm:ml-3 sm:w-auto">Book Appointment</a>
                 </div>
             </div>
             </div>

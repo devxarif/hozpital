@@ -78,7 +78,7 @@
                                                     <span class="text-gray-500 sm:text-sm">$</span>
                                                 </div>
 
-                                                <input v-model="form.buying_price" type="number" id="buying_price" class="block w-full border-gray-300 pl-7 pr-12 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm text-md p-2.5 bg-gray-50 border rounded-lg   " placeholder="0" min="0">
+                                                <input v-model="form.buying_price" type="number" id="buying_price" class="block w-full border-gray-300 pl-7 pr-12 focus:border-blue-500 focus:ring-blue-500 sm:text-sm text-md p-2.5 bg-gray-50 border rounded-lg   " placeholder="0" min="0">
 
                                                 <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
                                                     <span class="text-gray-500 sm:text-sm" id="price-currency">USD</span>
@@ -93,7 +93,7 @@
                                                     <span class="text-gray-500 sm:text-sm">$</span>
                                                 </div>
 
-                                                <input v-model="form.selling_price" type="number" id="selling_price" class="block w-full border-gray-300 pl-7 pr-12 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm  text-md p-2.5 bg-gray-50 border rounded-lg   " placeholder="0" min="0">
+                                                <input v-model="form.selling_price" type="number" id="selling_price" class="block w-full border-gray-300 pl-7 pr-12 focus:border-blue-500 focus:ring-blue-500 sm:text-sm  text-md p-2.5 bg-gray-50 border rounded-lg   " placeholder="0" min="0">
 
                                                 <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
                                                     <span class="text-gray-500 sm:text-sm" id="price-currency">USD</span>

@@ -5,14 +5,14 @@
     <div class="space-y-2 px-4 sm:flex sm:items-baseline sm:justify-between sm:space-y-0 sm:px-0">
         <div class="flex sm:items-baseline sm:space-x-4">
             <h1 class="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">Order #54879</h1>
-            <a href="#" class="hidden text-sm font-medium text-indigo-600 hover:text-indigo-500 sm:block">
+            <a href="#" class="hidden text-sm font-medium text-blue-600 hover:text-blue-500 sm:block">
                 View invoice
                 <span aria-hidden="true"> →</span>
             </a>
         </div>
         <p class="text-sm text-gray-600">Order placed <time datetime="2021-03-22"
                 class="font-medium text-gray-900">March 22, 2021</time></p>
-        <a href="#" class="text-sm font-medium text-indigo-600 hover:text-indigo-500 sm:hidden">
+        <a href="#" class="text-sm font-medium text-blue-600 hover:text-blue-500 sm:hidden">
             View invoice
             <span aria-hidden="true"> →</span>
         </a>
@@ -60,7 +60,7 @@
                                     <p>f•••@example.com</p>
                                     <p>1•••••••••40</p>
                                     <button type="button"
-                                        class="font-medium text-indigo-600 hover:text-indigo-500">Edit</button>
+                                        class="font-medium text-blue-600 hover:text-blue-500">Edit</button>
                                 </dd>
                             </div>
                         </dl>
@@ -73,12 +73,12 @@
                             24, 2021</time></p>
                     <div class="mt-6" aria-hidden="true">
                         <div class="overflow-hidden rounded-full bg-gray-200">
-                            <div class="h-2 rounded-full bg-indigo-600" style="width: calc((1 * 2 + 1) / 8 * 100%);">
+                            <div class="h-2 rounded-full bg-blue-600" style="width: calc((1 * 2 + 1) / 8 * 100%);">
                             </div>
                         </div>
                         <div class="mt-6 hidden grid-cols-4 text-sm font-medium text-gray-600 sm:grid">
-                            <div class="text-indigo-600">Order placed</div>
-                            <div class="text-center text-indigo-600">Processing</div>
+                            <div class="text-blue-600">Order placed</div>
+                            <div class="text-center text-blue-600">Processing</div>
                             <div class="text-center ">Shipped</div>
                             <div class="text-right ">Delivered</div>
                         </div>
@@ -122,7 +122,7 @@
                                     <p>f•••@example.com</p>
                                     <p>1•••••••••40</p>
                                     <button type="button"
-                                        class="font-medium text-indigo-600 hover:text-indigo-500">Edit</button>
+                                        class="font-medium text-blue-600 hover:text-blue-500">Edit</button>
                                 </dd>
                             </div>
                         </dl>
@@ -135,11 +135,11 @@
                             2021</time></p>
                     <div class="mt-6" aria-hidden="true">
                         <div class="overflow-hidden rounded-full bg-gray-200">
-                            <div class="h-2 rounded-full bg-indigo-600" style="width: calc((0 * 2 + 1) / 8 * 100%);">
+                            <div class="h-2 rounded-full bg-blue-600" style="width: calc((0 * 2 + 1) / 8 * 100%);">
                             </div>
                         </div>
                         <div class="mt-6 hidden grid-cols-4 text-sm font-medium text-gray-600 sm:grid">
-                            <div class="text-indigo-600">Order placed</div>
+                            <div class="text-blue-600">Order placed</div>
                             <div class="text-center ">Processing</div>
                             <div class="text-center ">Shipped</div>
                             <div class="text-right ">Delivered</div>
@@ -201,7 +201,7 @@
                 </div>
                 <div class="flex items-center justify-between pt-4">
                     <dt class="font-medium text-gray-900">Order total</dt>
-                    <dd class="font-medium text-indigo-600">$83.16</dd>
+                    <dd class="font-medium text-blue-600">$83.16</dd>
                 </div>
             </dl>
         </div>
