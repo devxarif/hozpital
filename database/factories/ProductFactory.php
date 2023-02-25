@@ -20,6 +20,7 @@ class ProductFactory extends Factory
             'product_category_id' => ProductCategory::inRandomOrder()->value('id'),
             'manufacture_id' => Manufacture::inRandomOrder()->value('id'),
             'name' => fake()->name,
+            'image' => fake()->imageUrl(),
             'buying_price' => rand(100, 200),
             'selling_price' => rand(200, 400),
             'quantity' => rand(200, 500),

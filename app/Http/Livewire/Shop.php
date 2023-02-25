@@ -2,11 +2,11 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Product;
 use Livewire\Component;
 use App\Models\ProductCategory;
+use App\Models\Product;
 
-class ProductComponent extends Component
+class Shop extends Component
 {
     public $search, $categories;
 
@@ -20,7 +20,7 @@ class ProductComponent extends Component
                 ->with('productCategory:id,name')
                 ->paginate(15);
 
-        return view('livewire.product-component', $data);
+        return view('livewire.shop', $data);
     }
 
     public function updatedCategories(){

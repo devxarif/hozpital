@@ -48,6 +48,17 @@ use sirajcse\UniqueIdGenerator\UniqueIdGenerator;
 // })->middleware('set_lang');
 
 Route::get('/test', function () {
+
+   return $cart_items = \Cart::getContent();
+    return \Cart::getTotalQuantity();
+    $total = \Cart::getTotal();
+    $subtotal = \Cart::getSubTotal();
+
+    return [
+        $cart_items,
+        $total,
+        $subtotal
+    ];
     // $user = User::create([
     //     'name' => $row[0] ?? fake()->name,
     //     'email' => $row[1] ?? fake()->safeEmail,

@@ -12,7 +12,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script> --}}
     @vite('resources/css/app.css')
     @livewireStyles
-    {{-- <link rel="stylesheet" href="{{ asset('admin/css/tailwind.output.css') }}"> --}}
+    <link rel="stylesheet" href="{{ asset('website/toastr/toastr.min.css') }}">
 </head>
 
 <body>
@@ -54,64 +54,7 @@
                             </div>
 
                             <!-- Cart -->
-                            <div class="ml-4 flow-root lg:ml-6 relative">
-                                <a href="{{ route('website.bag') }}" class="group -m-2 flex items-center p-2">
-                                    <svg class="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
-                                        x-description="Heroicon name: outline/shopping-bag"
-                                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                        stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z">
-                                        </path>
-                                    </svg>
-                                    <span class="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">0</span>
-                                    <span class="sr-only">items in cart, view bag</span>
-                                </a>
-
-                                <div x-show="open" x-transition:enter="transition ease-out duration-200"
-                                    x-transition:enter-start="transform opacity-0 scale-95"
-                                    x-transition:enter-end="transform opacity-100 scale-100"
-                                    x-transition:leave="transition ease-in duration-75"
-                                    x-transition:leave-start="transform opacity-100 scale-100"
-                                    x-transition:leave-end="transform opacity-0 scale-95"
-                                    class="hidden absolute z-50 mt-2 w-80 rounded-md shadow-lg origin-top-right right-0">
-                                    <div class="rounded-md ring-1 ring-black ring-opacity-5 py-1 bg-white">
-                                        <div class="px-4 mt-px pb-6">
-                                            <h2 class="sr-only">Shopping Cart</h2>
-                                            <ul role="list" class="divide-y divide-gray-200">
-                                                <li class="py-6 flex">
-                                                    <img src="
-                                                                                                                                                                    https://demo.cartify.dev/storage/media/540/conversions/insulated-travel-mug-18-oz-white-1-thumb.jpg
-                                                                                                                                                            "
-                                                        alt="Insulated Travel Mug 18 Oz."
-                                                        class="flex-none w-16 rounded-md border border-gray-200">
-                                                    <div class="ml-4 flex flex-auto flex-col justify-between">
-                                                        <h3 class="font-medium text-gray-900">
-                                                            <a href="https://demo.cartify.dev/products/insulated-travel-mug-18-oz"
-                                                                class="line-clamp-2">
-                                                                Insulated Travel Mug 18 Oz.
-                                                            </a>
-                                                        </h3>
-                                                        <p class="text-gray-500">
-                                                            x1
-                                                        </p>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                            <a class="inline-flex items-center justify-center px-4 py-2 bg-blue-600 border border-transparent rounded-md font-medium text-white hover:bg-blue-500 focus:outline-none focus:border-blue-700 focus:ring focus:ring-blue-200 active:bg-blue-600 transition block w-full text-sm"
-                                                href="https://demo.cartify.dev/checkout">
-                                                Checkout
-                                            </a>
-                                            <p class="mt-6 text-center">
-                                                <a href="https://demo.cartify.dev/cart"
-                                                    class="text-sm font-medium text-blue-600 hover:text-blue-500">
-                                                    View Shopping Cart
-                                                </a>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <livewire:cart-counter />
                         </div>
                     </div>
                 </div>
@@ -140,14 +83,12 @@
                         </div>
                         <nav class="hidden space-x-10 md:flex">
                             <a href="{{ route('website.home') }}" class="text-base font-medium text-gray-500 hover:text-gray-900">Home</a>
-                            <a href="{{ route('website.products') }}" class="text-base font-medium text-gray-500 hover:text-gray-900">Pharmacy &
-                                Store</a>
+                            <a href="{{ route('website.products') }}" class="text-base font-medium text-gray-500 hover:text-gray-900">Pharmacy & Store</a>
                             <a href="{{ route('website.department') }}" class="text-base font-medium text-gray-500 hover:text-gray-900">Departments</a>
                             <a href="{{ route('website.doctor') }}" class="text-base font-medium text-gray-500 hover:text-gray-900">Doctors</a>
                         </nav>
                         <div class="hidden items-center justify-end md:flex md:flex-1 lg:w-0">
-                            <a href="{{ route('website.appointment') }}"
-                                class="ml-8 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-blue-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-blue-700">Book Appointment</a>
+                            <a href="{{ route('website.appointment') }}" class="ml-8 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-blue-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-blue-700">Book Appointment</a>
                         </div>
                     </div>
                 </div>
@@ -207,9 +148,7 @@
                         </div>
                     </div>
                 </div>
-
             </div>
-
         </header>
 
         <main>
@@ -298,6 +237,17 @@
     {{-- <div class="text-center p-5 bg-white text-sm flex-row justify-center items-center font-medium fixed bottom-0 w-full z-30 transition-all duration-300 ease-out shadow-cookies transform translate-y-0 opacity-100"><span class="inline-block mb:block mb-3.5 leading-6">This site uses cookies to improve your experience. By clicking, you agree to our Privacy Policy.</span><span class="inline-block md:ms-3"></span><button class="text-[13px] md:text-sm leading-4 inline-flex items-center cursor-pointer transition ease-in-out duration-300 font-semibold font-body text-center justify-center border-0 border-transparent placeholder-white focus-visible:outline-none focus:outline-none rounded-md  h-11 md:h-12 px-5 bg-blue-500 text-white py-2 transform-none normal-case hover:text-white hover:bg-gray-600 hover:shadow-cart">Accept cookies</button></div> --}}
 
     <script src="/admin/preline/hs-ui.bundle.js"></script>
+    <script src="{{ asset('website/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('website/toastr/toastr.min.js') }}"></script>
+    <script>
+        window.addEventListener('alert', event => {
+            toastr[event.detail.type](event.detail.message,
+            event.detail.title ?? ''), toastr.options = {
+                "closeButton": true,
+                "progressBar": true,
+            }
+        });
+    </script>
     @livewireScripts
     @yield('script')
 </body>
