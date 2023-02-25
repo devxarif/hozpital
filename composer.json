@@ -9,6 +9,7 @@
         "amrshawky/laravel-currency": "^5.0",
         "artesaos/seotools": "^0.23.0",
         "barryvdh/laravel-dompdf": "^2.0",
+        "darryldecode/cart": "^4.2",
         "doctrine/dbal": "^3.4",
         "guzzlehttp/guzzle": "^7.2",
         "inertiajs/inertia-laravel": "^0.6.3",
