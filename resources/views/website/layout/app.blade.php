@@ -180,7 +180,7 @@
                     <a href="{{ route('website.about') }}" class="text-sm leading-6 text-gray-600 hover:text-gray-900">About</a>
                 </div>
                 <div class="pb-6">
-                    <a href="{{ route('website.about') }}" class="text-sm leading-6 text-gray-600 hover:text-gray-900">Pharmacy & Store</a>
+                    <a href="{{ route('website.products') }}" class="text-sm leading-6 text-gray-600 hover:text-gray-900">Pharmacy & Store</a>
                 </div>
                 <div class="pb-6">
                     <a href="{{ route('website.policy') }}" class="text-sm leading-6 text-gray-600 hover:text-gray-900">Privacy Policy</a>

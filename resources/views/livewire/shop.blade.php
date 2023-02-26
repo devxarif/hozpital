@@ -3,7 +3,7 @@
         <div>
             <div class="mb-6">
                 <div class="flex justify-between">
-                    <h4 class="font-medium text-md lg:text-lg text-dark capitalize mb-10">Search</h4>
+                    <h4 class="font-medium text-md lg:text-lg text-dark capitalize mb-5">Search</h4>
 
                     <div role="status" wire:loading>
                         <svg aria-hidden="true" class="w-8 h-8 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -12,7 +12,7 @@
                         </svg>
                     </div>
                 </div>
-                <div class="pro-sidebar-search mb-50 mt-25">
+                <div class="pro-sidebar-search mb-50">
                     <form class="border-transparent" action="#" method="get">
                         <div class="relative">
                             <input wire:model.debounce.500ms="search" class="border border-gray-300 shadow-sm  w-full h-12 text-sm py-4 pl-4 bg-white text-dark focus:outline-none" type="search" name="search" placeholder="Search">

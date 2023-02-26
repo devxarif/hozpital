@@ -40,32 +40,25 @@
         <!-- Product info -->
         <div class="mt-10 px-4 sm:mt-16 sm:px-0 lg:mt-0">
           <h1 class="text-3xl font-bold tracking-tight text-gray-900">{{ $product->name }}</h1>
-
           <div class="mt-3">
             <h2 class="sr-only">Product information</h2>
             <p class="text-3xl tracking-tight text-gray-900">$140</p>
           </div>
           <div class="mt-6">
             <h3 class="sr-only">Short Description</h3>
-
             <div class="space-y-6 text-base text-gray-700">
                 <p>{{ $product->short_description }}</p>
             </div>
           </div>
 
-          <form class="mt-6">
-            <div class="mt-10 flex">
-              <button type="submit" class="flex max-w-xs flex-1 items-center justify-center rounded-md border border-transparent bg-blue-600 py-3 px-8 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-50 sm:w-full">Add to bag</button>
-            </div>
-          </form>
-
+            <livewire:details-cart :product="$product"/>
         </div>
       </div>
       <div class="space-y-6 text-base text-gray-700 mt-20">
         <h1 class="text-2xl font-bold tracking-tight text-gray-900">Description</h1>
         <p>{{ $product->description }}</p>
       </div>
-      <section aria-labelledby="related-heading" class="mt-10 border-t border-gray-200 py-16 px-4 sm:px-0">
+      <section class="mt-10 border-t border-gray-200 py-16 px-4 sm:px-0">
         <h2 id="related-heading" class="text-xl font-bold text-gray-900">Related Products</h2>
         <div class="mt-8 grid grid-cols-1 gap-y-12 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8">
             @foreach ($related_products as $product)
