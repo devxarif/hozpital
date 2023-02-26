@@ -5,10 +5,16 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use App\Models\ProductCategory;
 use App\Models\Product;
+use Livewire\WithPagination;
 
 class Shop extends Component
 {
+    use WithPagination;
+
     public $search, $categories;
+
+    // protected $queryString = ['search' => ['except' => '']];
+    // protected $queryString = ['search'];
 
     public function render()
     {
