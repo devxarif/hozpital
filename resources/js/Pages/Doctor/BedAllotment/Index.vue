@@ -1,7 +1,5 @@
 <template>
-
-    <Head :title="__('Bed Allotment')" />
-    <AppLayout>
+    <AppLayout title="Bed Allotment">
 
         <!-- Header Part  -->
         <nav class="flex mb-2" aria-label="Breadcrumb">
@@ -72,11 +70,11 @@
         </div>
         <div>
              <span class="mr-5"><AllotedBedIcon class="h-12 w-12 inline"/> = Alloted</span>
-             <span><UnallotedBedIcon class="h-12 w-12 inline"/> = Unlloted</span>
+             <span><UnallotedBedIcon class="h-12 w-12 inline"/> = Unalloted</span>
         </div>
 
         <div class="mt-5">
-            <span v-for="(bed_floors, i) in beds" :key="i" class="mb-3 block p-4 bg-slate-100 rounded-lg border border-slate-500    ">
+            <span v-for="(bed_floors, i) in beds" :key="i" class="mb-3 block p-4 bg-slate-100 rounded-lg border">
                 <h2 class="text-2xl font-bold tracking-tight text-gray-900  mb-5">{{ getBedFloor(i).name }}</h2>
 
                 <div v-for="(bed_types, j) in bed_floors" :key="j" class="mb-2 block p-4 bg-white rounded-lg border border-gray-200   ">

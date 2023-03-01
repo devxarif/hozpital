@@ -1,7 +1,5 @@
 <template>
-
-    <Head :title="__('Doctor')" />
-    <AppLayout>
+    <AppLayout title="Doctor">
 
         <!-- Header Part  -->
         <nav class="flex mb-2" aria-label="Breadcrumb">
@@ -169,7 +167,7 @@
                 <div class="inline-block py-2 align-middle md:px-6 lg:px-8">
                     <div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
                         <table class="w-full divide-y divide-gray-300 table-fixed">
-                            <thead class="bg-gray-50">
+                            <thead class="bg-gray-200">
                             <tr class="divide-x divide-gray-200">
                                 <th class="py-3.5 pl-4 pr-4 text-left text-sm font-semibold text-gray-900 sm:pl-6">Name</th>
                                 <th class="py-3.5 pl-4 pr-4 text-left text-sm font-semibold text-gray-900 sm:pl-6">Email</th>

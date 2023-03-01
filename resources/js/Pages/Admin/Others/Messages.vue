@@ -1,7 +1,5 @@
 <template>
-    <Head :title="__('Contact Messages')"/>
-
-    <AppLayout>
+    <AppLayout title="Contact Messages">
         <div class="md:flex md:items-center md:justify-between">
             <div class="flex-1 min-w-0">
                 <h2 class="text-3xl font-semibold leading-7 text-gray-900 sm:text-3xl sm:truncate">

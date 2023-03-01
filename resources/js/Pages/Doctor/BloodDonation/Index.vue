@@ -1,7 +1,5 @@
 <template>
-
-    <Head :title="__('Blood Donation')" />
-    <AppLayout>
+    <AppLayout title="Blood Donation">
 
         <!-- Header Part  -->
         <nav class="flex mb-2" aria-label="Breadcrumb">

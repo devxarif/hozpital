@@ -1,7 +1,5 @@
 <template>
-
-    <Head :title="__('Leave Type')" />
-    <AppLayout>
+    <AppLayout title="Leave Type">
 
         <!-- Header Part  -->
         <nav class="flex mb-2" aria-label="Breadcrumb">

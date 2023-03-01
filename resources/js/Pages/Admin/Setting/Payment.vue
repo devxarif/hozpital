@@ -1,8 +1,5 @@
 <template>
-
-    <Head :title="__('Application')" />
-
-    <SettingLayout>
+    <SettingLayout title="Application">
         <div class="grid gap-6 md:grid-cols-1 xl:grid-cols-12 mt-6">
             <div class="col-span-4 bg-white w-full p-6 rounded-lg border border-gray-8  ">
                 <div class="overflow-hidden bg-white shadow sm:rounded-md">

@@ -2,7 +2,7 @@
 
     <Head title="Dashboard" />
 
-    <AppLayout>
+    <AppLayout title="Announcement">
         <AdminDashboard v-if="role == 'admin'"/>
         <OwnerDashboard v-else-if="role == 'owner'"/>
         <EmployeeDashboard v-else/>

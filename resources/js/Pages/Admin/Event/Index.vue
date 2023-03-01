@@ -1,7 +1,5 @@
 <template>
-
-    <Head :title="__('Event')" />
-    <AppLayout>
+    <AppLayout title="Event">
 
         <!-- Header Part  -->
         <nav class="flex mb-2" aria-label="Breadcrumb">

@@ -1,7 +1,5 @@
 <template>
-    <Head :title="__('SMTP')" />
-
-    <SettingLayout>
+    <SettingLayout title="SMTP">
         <div class="grid gap-6 md:grid-cols-1 xl:grid-cols-1 mt-6">
             <div
                 class="bg-white w-full p-6 rounded-lg border border-gray-8  ">

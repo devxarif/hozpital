@@ -522,7 +522,7 @@
                             <div class="inline-block py-2 min-w-full sm:px-6 lg:px-8">
                                 <div class="overflow-hidden">
                                     <table class="min-w-full">
-                                        <thead class="bg-gray-50">
+                                        <thead class="bg-gray-200">
                                             <tr>
                                                 <th scope="col"
                                                     class="p-3 text-xs font-medium tracking-wider text-left text-gray-700 uppercase">
@@ -661,7 +661,7 @@
                             <div class="inline-block py-2 min-w-full sm:px-6 lg:px-8">
                                 <div class="overflow-hidden">
                                     <table class="min-w-full">
-                                        <thead class="bg-gray-50">
+                                        <thead class="bg-gray-200">
                                             <tr>
                                                 <th scope="col"
                                                     class="p-3 text-xs font-medium tracking-wider text-left text-gray-700 uppercase">

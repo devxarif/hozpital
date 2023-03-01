@@ -1,7 +1,5 @@
 <template>
-
-    <Head :title="__('Product')" />
-    <AppLayout>
+    <AppLayout title="Product">
         <!-- Header Part  -->
         <nav class="flex mb-2" aria-label="Breadcrumb">
             <ol class="inline-flex items-center space-x-1 md:space-x-2">

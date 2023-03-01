@@ -1,5 +1,5 @@
 <template>
-<AppLayout>
+<AppLayout title="Announcement">
     About Page
 </AppLayout>
 </template>

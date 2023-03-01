@@ -1,4 +1,6 @@
 <template>
+    <Head :title="__(title)" v-if="title" />
+
     <div class="min-h-full">
         <div class="relative z-40 lg:hidden" role="dialog" aria-modal="true">
             <div class="fixed inset-0 bg-gray-600 bg-opacity-75"></div>
@@ -179,6 +181,12 @@
     import Sidebar from "../Partials/Sidebar/Sidebar.vue";
 
     export default {
+        props:{
+            title: {
+                type: String,
+                default: ""
+            }
+        },
         components: {
             Header,
             Sidebar,

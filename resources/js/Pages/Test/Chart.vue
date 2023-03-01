@@ -1,5 +1,5 @@
 <template>
-    <AppLayout>
+    <AppLayout title="Announcement">
         <h1>Role Permission</h1>
 
         <div class="mb-4">

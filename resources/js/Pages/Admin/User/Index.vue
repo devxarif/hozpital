@@ -1,6 +1,5 @@
 <template>
-    <Head :title="__('Admin List')"/>
-    <AppLayout>
+    <AppLayout title="Admin List">
         <div class="md:flex md:items-center md:justify-between">
             <div class="flex-1 min-w-0">
                 <h2 class="text-3xl font-semibold leading-7 text-gray-900 sm:text-3xl sm:truncate">

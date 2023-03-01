@@ -1,6 +1,6 @@
 <template>
     <Head :title="__('Admin List')"/>
-    <AppLayout>
+    <AppLayout title="Announcement">
 
 
         <!-- <button type="button"

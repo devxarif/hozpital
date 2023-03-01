@@ -1,8 +1,5 @@
 <template>
-
-    <Head :title="__('Order List')" />
-
-    <AppLayout>
+    <AppLayout title="Order List">
         <div class="page-header mb-[1.875rem]">
             <div class="flex items-center justify-between">
                 <div>

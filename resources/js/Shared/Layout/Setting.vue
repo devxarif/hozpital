@@ -1,5 +1,5 @@
 <template>
-    <AppLayout>
+    <AppLayout :title="title">
         <nav class="flex mb-2" aria-label="Breadcrumb">
             <ol class="inline-flex items-center space-x-1 md:space-x-2">
                 <li class="inline-flex items-center">
@@ -60,6 +60,12 @@
 
 <script>
 export default {
+    props:{
+        title: {
+            type: String,
+            default: ""
+        }
+    },
     data() {
         return {
 

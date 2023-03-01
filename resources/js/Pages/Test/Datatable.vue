@@ -1,5 +1,5 @@
 <template>
-    <AppLayout>
+    <AppLayout title="Announcement">
         <div class="grid grid-cols-1 gap-4 mt-5">
             <div class="block p-6 rounded-lg shadow-lg bg-white">
                 <h2 class="text-gray-900 text-3xl leading-tight font-medium mb-2">Contact Messages</h2>

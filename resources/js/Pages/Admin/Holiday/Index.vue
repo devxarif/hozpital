@@ -1,7 +1,5 @@
 <template>
-
-    <Head :title="__('Holiday')" />
-    <AppLayout>
+    <AppLayout title="Holiday">
 
         <!-- Header Part  -->
         <nav class="flex mb-2" aria-label="Breadcrumb">
