@@ -53,6 +53,8 @@ import BaseTextarea from "@/Shared/Forms/BaseTextarea.vue";
 import BaseButton from "@/Shared/Forms/BaseButton.vue";
 import NothingFound from "@/Shared/NothingFound.vue";
 import Pagination from "@/Shared/Pagination.vue";
+import Breadcrumb from "@/Shared/Breadcrumb.vue";
+import BreadcrumbLink from "@/Shared/BreadcrumbLink.vue";
 
 // Icons
 import LoadingIcon from "@/Shared/Icons/LoadingIcon.vue";
@@ -102,6 +104,8 @@ createInertiaApp({
                 MenuItems,
                 Multiselect,
                 Datepicker,
+                Breadcrumb,
+                BreadcrumbLink,
                 dayjs
             },
             methods:{

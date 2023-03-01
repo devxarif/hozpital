@@ -3,7 +3,7 @@
         <div class="p-6 bg-white block sm:flex items-center justify-between border-b-2 border-gray-200 lg:mt-1.5">
             <div class="mb-1 w-full">
                 <div class="mb-4">
-                    <nav class="flex mb-5" aria-label="Breadcrumb">
+                    <nav class="flex mb-5" >
                         <ol class="inline-flex items-center space-x-1 md:space-x-2">
                             <li class="inline-flex items-center">
                                 <a href="#" class="text-gray-700 hover:text-gray-900 inline-flex items-center">

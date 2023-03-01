@@ -2,7 +2,10 @@
     <AppLayout title="Blood Bank">
 
         <!-- Header Part  -->
-        <nav class="flex mb-2" aria-label="Breadcrumb">
+        <Breadcrumb>
+            <BreadcrumbLink title="Patient"/>
+        </Breadcrumb>
+        <nav class="flex mb-2" >
             <ol class="inline-flex items-center space-x-1 md:space-x-2">
                 <li class="inline-flex items-center">
                     <a href="#" class="text-gray-700 hover:text-gray-900 inline-flex items-center">

@@ -2,23 +2,9 @@
     <AppLayout title="Doctor">
 
         <!-- Header Part  -->
-        <nav class="flex mb-2" aria-label="Breadcrumb">
-            <ol class="inline-flex items-center space-x-1 md:space-x-2">
-                <li class="inline-flex items-center">
-                    <a href="#" class="text-gray-700 hover:text-gray-900 inline-flex items-center">
-                        <font-awesome-icon icon="fa-solid fa-home" class="w-4.5 h-4.5 mr-2.5" />
-                        Dashboard
-                    </a>
-                </li>
-                <li>
-                    <div class="flex items-center">
-                        <font-awesome-icon icon="fa-solid fa-chevron-right" class="w-3 h-3 text-gray-400" />
-                        <a href="#"
-                            class="text-gray-700 hover:text-gray-900 ml-1 md:ml-2 text-sm font-medium">Nurse</a>
-                    </div>
-                </li>
-            </ol>
-        </nav>
+        <Breadcrumb>
+            <BreadcrumbLink title="Nurse"/>
+        </Breadcrumb>
 
         <div class="mb-4 flex justify-between">
             <h2 class="text-3xl font-semibold leading-7 text-gray-900  sm:text-3xl sm:truncate">
