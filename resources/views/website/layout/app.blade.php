@@ -82,10 +82,10 @@
                             </button>
                         </div>
                         <nav class="hidden space-x-10 md:flex">
-                            <a href="{{ route('website.home') }}" class="text-base font-medium text-gray-500 hover:text-gray-900">Home</a>
-                            <a href="{{ route('website.products') }}" class="text-base font-medium text-gray-500 hover:text-gray-900">Pharmacy & Store</a>
-                            <a href="{{ route('website.department') }}" class="text-base font-medium text-gray-500 hover:text-gray-900">Departments</a>
-                            <a href="{{ route('website.doctor') }}" class="text-base font-medium text-gray-500 hover:text-gray-900">Doctors</a>
+                            <a href="{{ route('website.home') }}" class="{{ request()->routeIs('website.home') ? 'text-blue-500':'text-gray-500' }} text-base font-medium hover:text-gray-900">Home</a>
+                            <a href="{{ route('website.products') }}" class="{{ request()->routeIs('website.products') ? 'text-blue-500':'text-gray-500' }} text-base font-medium text-gray-500 hover:text-gray-900">Pharmacy & Store</a>
+                            <a href="{{ route('website.department') }}" class="{{ request()->routeIs('website.department') ? 'text-blue-500':'text-gray-500' }} text-base font-medium text-gray-500 hover:text-gray-900">Departments</a>
+                            <a href="{{ route('website.doctor') }}" class="{{ request()->routeIs('website.doctor') ? 'text-blue-500':'text-gray-500' }} text-base font-medium text-gray-500 hover:text-gray-900">Doctors</a>
                         </nav>
                         <div class="hidden items-center justify-end md:flex md:flex-1 lg:w-0">
                             <a href="{{ route('website.appointment') }}" class="ml-8 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-blue-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-blue-700">Book Appointment</a>
