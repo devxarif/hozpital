@@ -26,7 +26,7 @@
                         aria-label="Sidebar">
                         <div class="space-y-1 px-2">
 
-                            <a href="#"
+                            <a href="javascript:void(0)"
                                 class="ext-white hover:text-white hover:bg-gray-600 group flex items-center px-2 py-2 text-base font-medium rounded-md"
                                 aria-current="page">
 
@@ -39,7 +39,7 @@
                                 Home
                             </a>
 
-                            <a href="#"
+                            <a href="javascript:void(0)"
                                 class="text-white hover:text-white hover:bg-gray-600 group flex items-center px-2 py-2 text-base font-medium rounded-md">
                                 <svg class="mr-4 h-6 w-6 flex-shrink-0 text-white" xmlns="http://www.w3.org/2000/svg"
                                     fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
@@ -52,7 +52,7 @@
                         </div>
                         <div class="mt-6 pt-6">
                             <div class="space-y-1 px-2">
-                                <a href="#"
+                                <a href="javascript:void(0)"
                                     class="group flex items-center rounded-md px-2 py-2 text-base font-medium text-white hover:bg-gray-600 hover:text-white">
                                     <svg class="mr-4 h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none"
                                         viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">

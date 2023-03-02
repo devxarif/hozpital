@@ -22,7 +22,7 @@
                 <div class="min-w-0 flex-1">
                   <h3 class="text-base font-medium text-gray-900">
                     <span class="rounded-sm focus-within:ring-2 focus-within:ring-blue-500 focus-within:ring-offset-2">
-                      <a href="#" class="focus:outline-none">
+                      <a href="javascript:void(0)" class="focus:outline-none">
                         <span class="absolute inset-0" aria-hidden="true" />
                         {{ link.title }}
                       </a>
@@ -36,7 +36,7 @@
               </li>
             </ul>
             <div class="mt-8">
-              <a href="#" class="text-base font-medium text-blue-600 hover:text-blue-500">
+              <a href="javascript:void(0)" class="text-base font-medium text-blue-600 hover:text-blue-500">
                 Or go back home
                 <span aria-hidden="true"> &rarr;</span>
               </a>

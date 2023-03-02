@@ -291,7 +291,7 @@
                                         <tr>
                                             <td width="30%">{{ __('Name') }}</td>
                                             <td width="70%">
-                                                <a href="#">
+                                                <a href="javascript:void(0)">
                                                     <span :style="{ background: form.color, border: '2px solid '+form.color }" class="leave-type-color">
                                                     {{ form.type }}
                                                     </span>

@@ -85,7 +85,7 @@
                                             <td
                                                 class="px-4 sm:px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                                                 <span class="absolute inset-0"></span>
-                                                <Link href="#"
+                                                <Link href="javascript:void(0)"
                                                     v-tooltip="__('Order Details')">
                                                 #<span>1</span>
                                                 </Link>

@@ -19,7 +19,7 @@
                             <Link :href="link.url" v-html="link.label" :class="['relative inline-flex items-center border py-2 px-4 focus:z-20 text-sm font-medium', link.active ? 'bg-blue-50 text-blue-600 ' : 'border-gray-300 bg-white text-gray-500 hover:bg-gray-50 focus:z-20']" class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20"/>
                         </template>
                         <template v-else>
-                            <a href="#" v-html="link.label" class="cursor-not-allowed relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20"></a>
+                            <a href="javascript:void(0)" v-html="link.label" class="cursor-not-allowed relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20"></a>
                         </template>
                     </template>
                 </nav>

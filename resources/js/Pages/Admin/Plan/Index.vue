@@ -7,7 +7,7 @@
                     <nav class="flex mb-5" >
                         <ol class="inline-flex items-center space-x-1 md:space-x-2">
                             <li class="inline-flex items-center">
-                                <a href="#" class="text-gray-700 hover:text-gray-900 inline-flex items-center">
+                                <a href="javascript:void(0)" class="text-gray-700 hover:text-gray-900 inline-flex items-center">
                                     <svg class="w-5 h-5 mr-2.5" fill="currentColor" viewBox="0 0 20 20"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -25,7 +25,7 @@
                                             d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
                                             clip-rule="evenodd"></path>
                                     </svg>
-                                    <a href="#"
+                                    <a href="javascript:void(0)"
                                         class="text-gray-700 hover:text-gray-900 ml-1 md:ml-2 text-sm font-medium">Users</a>
                                 </div>
                             </li>
@@ -58,7 +58,7 @@
                             </div>
                         </form>
                         <div class="flex space-x-1 pl-0 sm:pl-2 mt-3 sm:mt-0">
-                            <a href="#"
+                            <a href="javascript:void(0)"
                                 class="text-gray-500 hover:text-gray-900 cursor-pointer p-1 hover:bg-gray-100 rounded inline-flex justify-center">
                                 <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -67,7 +67,7 @@
                                         clip-rule="evenodd"></path>
                                 </svg>
                             </a>
-                            <a href="#"
+                            <a href="javascript:void(0)"
                                 class="text-gray-500 hover:text-gray-900 cursor-pointer p-1 hover:bg-gray-100 rounded inline-flex justify-center">
                                 <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -76,7 +76,7 @@
                                         clip-rule="evenodd"></path>
                                 </svg>
                             </a>
-                            <a href="#"
+                            <a href="javascript:void(0)"
                                 class="text-gray-500 hover:text-gray-900 cursor-pointer p-1 hover:bg-gray-100 rounded inline-flex justify-center">
                                 <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -85,7 +85,7 @@
                                         clip-rule="evenodd"></path>
                                 </svg>
                             </a>
-                            <a href="#"
+                            <a href="javascript:void(0)"
                                 class="text-gray-500 hover:text-gray-900 cursor-pointer p-1 hover:bg-gray-100 rounded inline-flex justify-center">
                                 <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -107,7 +107,7 @@
                             </svg>
                             Add user
                         </button>
-                        <a href="#"
+                        <a href="javascript:void(0)"
                             class="w-1/2 text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-blue-200 font-medium inline-flex items-center justify-center rounded-lg text-sm px-3 py-2 text-center sm:w-auto">
                             <svg class="-ml-1 mr-2 h-6 w-6" fill="currentColor" viewBox="0 0 20 20"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -236,7 +236,7 @@
                         </a>
                     </div>
                     <a @click="showCreateDrawer = true" class="inline-flex items-center justify-center px-4 py-2 bg-blue-600 border border-transparent font-medium text-white hover:bg-blue-500 focus:outline-none focus:border-blue-700 focus:ring focus:ring-blue-200 active:bg-blue-600 transition sm:text-sm rounded-full"
-                        href="#">
+                        href="javascript:void(0)">
                         <span class="mr-3">
                             <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24"
                                 stroke-linecap="round" stroke-linejoin="round" height="1em" width="1em"

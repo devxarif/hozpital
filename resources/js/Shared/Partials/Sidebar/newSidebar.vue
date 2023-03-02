@@ -2,7 +2,7 @@
     <nav class="mt-5 flex flex-1 flex-col divide-y divide-slate-100 overflow-y-auto" aria-label="Sidebar">
                     <div class="space-y-1 px-2">
                         <!-- Current: "bg-gray-800 text-white", Default: "text-white hover:text-white hover:bg-gray-600" -->
-                        <a href="#"
+                        <a href="javascript:void(0)"
                             class="bg-gray-900 group
           text-white hover:text-white hover:bg-gray-600 group flex items-center px-2 py-2 text-sm leading-6 font-medium rounded-md"
                             aria-current="page">
@@ -10,7 +10,7 @@
                             Home
                         </a>
 
-                        <a href="#"
+                        <a href="javascript:void(0)"
                             class="text-white hover:text-white hover:bg-gray-600 group flex items-center px-2 py-2 text-sm leading-6 font-medium rounded-md">
                             <!-- Heroicon name: outline/clock -->
                             <svg class="mr-4 h-6 w-6 flex-shrink-0 text-white" xmlns="http://www.w3.org/2000/svg"
@@ -24,7 +24,7 @@
                     </div>
                     <div class="mt-6 pt-6">
                         <div class="space-y-1 px-2">
-                            <a href="#"
+                            <a href="javascript:void(0)"
                                 class="group flex items-center rounded-md px-2 py-2 text-sm font-medium leading-6 text-white hover:bg-gray-600 hover:text-white">
                                 <!-- Heroicon name: outline/cog -->
                                 <svg class="mr-4 h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -35,7 +35,7 @@
                                 Settings
                             </a>
 
-                            <a href="#"
+                            <a href="javascript:void(0)"
                                 class="group flex items-center rounded-md px-2 py-2 text-sm font-medium leading-6 text-white hover:bg-gray-600 hover:text-white">
                                 <!-- Heroicon name: outline/question-mark-circle -->
                                 <svg class="mr-4 h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -46,7 +46,7 @@
                                 Help
                             </a>
 
-                            <a href="#"
+                            <a href="javascript:void(0)"
                                 class="group flex items-center rounded-md px-2 py-2 text-sm font-medium leading-6 text-white hover:bg-gray-600 hover:text-white">
                                 <!-- Heroicon name: outline/shield-check -->
                                 <svg class="mr-4 h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none"

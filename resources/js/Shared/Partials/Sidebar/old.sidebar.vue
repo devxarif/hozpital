@@ -2,7 +2,7 @@
     <!-- Desktop sidebar -->
         <aside class="z-20 hidden w-64 overflow-y-auto bg-white  md:block flex-shrink-0">
             <div class="py-4 text-gray-500 ">
-                <a class="flex ml-6 text-lg font-bold text-gray-800 " href="#">
+                <a class="flex ml-6 text-lg font-bold text-gray-800 " href="javascript:void(0)">
                     <img src="https://leaving.devarif.co/admin/img/leaving-dark.png" alt="">
                 </a>
                 <ul class="mt-6">
@@ -181,7 +181,7 @@
         </div>
         <aside class="z-10 inset-y-0 flex-shrink-0 w-64 mt-16 overflow-y-auto bg-white  md:hidden">
             <div class="py-4 text-gray-500 ">
-                <a class="ml-6 text-lg font-bold text-gray-800 " href="#">
+                <a class="ml-6 text-lg font-bold text-gray-800 " href="javascript:void(0)">
                     Windmill
                 </a>
                 <ul class="mt-6">

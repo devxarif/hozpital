@@ -8,7 +8,7 @@
         <nav class="flex mb-2" >
             <ol class="inline-flex items-center space-x-1 md:space-x-2">
                 <li class="inline-flex items-center">
-                    <a href="#" class="text-gray-700 hover:text-gray-900 inline-flex items-center">
+                    <a href="javascript:void(0)" class="text-gray-700 hover:text-gray-900 inline-flex items-center">
                         <font-awesome-icon icon="fa-solid fa-home" class="w-4.5 h-4.5 mr-2.5" />
                         Dashboard
                     </a>
@@ -16,7 +16,7 @@
                 <li>
                     <div class="flex items-center">
                         <font-awesome-icon icon="fa-solid fa-chevron-right" class="w-3 h-3 text-gray-400" />
-                        <a href="#"
+                        <a href="javascript:void(0)"
                             class="text-gray-700 hover:text-gray-900 ml-1 md:ml-2 text-sm font-medium">Bed Allotment</a>
                     </div>
                 </li>
@@ -32,7 +32,7 @@
                     <div>
                         <MenuButton class="flex items-center rounded-lg text-gray-400 hover:text-gray-600 focus:outline-none">
                             <span class="sr-only">Open options</span>
-                            <button href="#" class="w-1/2 text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 font-medium inline-flex items-center justify-center rounded-lg text-sm px-3 py-2 text-center sm:w-auto focus:outline-none">
+                            <button href="javascript:void(0)" class="w-1/2 text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 font-medium inline-flex items-center justify-center rounded-lg text-sm px-3 py-2 text-center sm:w-auto focus:outline-none">
                                 <svg class="mr-2 h-6 w-6" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
                                 Export
                             </button>

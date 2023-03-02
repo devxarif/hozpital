@@ -14,7 +14,7 @@
 
             <div class="mt-1 grid grid-cols-4 gap-2">
                 <div>
-                    <a href="#" class="inline-flex w-full justify-center rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium text-gray-500 shadow-sm hover:bg-gray-50">
+                    <a href="javascript:void(0)" class="inline-flex w-full justify-center rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium text-gray-500 shadow-sm hover:bg-gray-50">
                     <span class="sr-only">Sign in with Google</span>
                     <svg width="20" height="20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -33,7 +33,7 @@
                     </a>
               </div>
               <div>
-                <a href="#" class="inline-flex w-full justify-center rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium text-gray-500 shadow-sm hover:bg-gray-50">
+                <a href="javascript:void(0)" class="inline-flex w-full justify-center rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium text-gray-500 shadow-sm hover:bg-gray-50">
                   <span class="sr-only">Sign in with Facebook</span>
                   <svg width="20" height="20" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M9.995 1.67a8.325 8.325 0 1 0 0 16.65 8.325 8.325 0 0 0 0-16.65Z"
@@ -47,7 +47,7 @@
               </div>
 
               <div>
-                <a href="#" class="inline-flex w-full justify-center rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium text-gray-500 shadow-sm hover:bg-gray-50">
+                <a href="javascript:void(0)" class="inline-flex w-full justify-center rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium text-gray-500 shadow-sm hover:bg-gray-50">
                   <span class="sr-only">Sign in with Twitter</span>
                   <svg fill="#1da1f2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 27" width="20px"
                                     height="20px">
@@ -58,7 +58,7 @@
                 </a>
               </div>
               <div>
-                <a href="#" class="inline-flex w-full justify-center rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium text-gray-500 shadow-sm hover:bg-gray-50">
+                <a href="javascript:void(0)" class="inline-flex w-full justify-center rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium text-gray-500 shadow-sm hover:bg-gray-50">
                   <span class="sr-only">Sign in with Linkedin</span>
                   <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20"
                                     viewBox="0 0 48 48" style=" fill:#000000;">
@@ -133,7 +133,7 @@
                     <span v-else>Sign in</span>
                 </button>
                 <p class="text-sm font-light text-gray-500 ">Don’t have an account yet?
-                    <a href="#" class="font-medium text-blue-600 hover:underline ">Sign up as patient</a>
+                    <a href="javascript:void(0)" class="font-medium text-blue-600 hover:underline ">Sign up as patient</a>
                 </p>
             </form>
         </div>

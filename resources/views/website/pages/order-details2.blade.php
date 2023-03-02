@@ -5,14 +5,14 @@
     <div class="space-y-2 px-4 sm:flex sm:items-baseline sm:justify-between sm:space-y-0 sm:px-0">
         <div class="flex sm:items-baseline sm:space-x-4">
             <h1 class="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">Order #54879</h1>
-            <a href="#" class="hidden text-sm font-medium text-blue-600 hover:text-blue-500 sm:block">
+            <a href="javascript:void(0)" class="hidden text-sm font-medium text-blue-600 hover:text-blue-500 sm:block">
                 View invoice
                 <span aria-hidden="true"> →</span>
             </a>
         </div>
         <p class="text-sm text-gray-600">Order placed <time datetime="2021-03-22"
                 class="font-medium text-gray-900">March 22, 2021</time></p>
-        <a href="#" class="text-sm font-medium text-blue-600 hover:text-blue-500 sm:hidden">
+        <a href="javascript:void(0)" class="text-sm font-medium text-blue-600 hover:text-blue-500 sm:hidden">
             View invoice
             <span aria-hidden="true"> →</span>
         </a>
@@ -36,7 +36,7 @@
 
                         <div class="mt-6 sm:mt-0 sm:ml-6">
                             <h3 class="text-base font-medium text-gray-900">
-                                <a href="#">Nomad Tumbler</a>
+                                <a href="javascript:void(0)">Nomad Tumbler</a>
                             </h3>
                             <p class="mt-2 text-sm font-medium text-gray-900">$35.00</p>
                             <p class="mt-3 text-sm text-gray-500">This durable and portable insulated tumbler will keep
@@ -98,7 +98,7 @@
 
                         <div class="mt-6 sm:mt-0 sm:ml-6">
                             <h3 class="text-base font-medium text-gray-900">
-                                <a href="#">Minimalist Wristwatch</a>
+                                <a href="javascript:void(0)">Minimalist Wristwatch</a>
                             </h3>
                             <p class="mt-2 text-sm font-medium text-gray-900">$149.00</p>
                             <p class="mt-3 text-sm text-gray-500">This contemporary wristwatch has a clean, minimalist

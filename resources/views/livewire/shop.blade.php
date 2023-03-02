@@ -3,8 +3,7 @@
         <div>
             <div class="mb-6">
                 <div class="flex justify-between">
-                    <h4 class="font-medium text-md lg:text-lg text-dark capitalize mb-5">Search</h4>
-
+                    <h4 class="font-medium text-md lg:text-lg text-dark capitalize mb-3">Search</h4>
                     <div role="status" wire:loading>
                         <svg aria-hidden="true" class="w-8 h-8 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
@@ -20,16 +19,14 @@
                     </form>
                 </div>
             </div>
-
-
             <div class="mb-6">
-                <h4 class="font-medium text-md lg:text-lg text-dark capitalize mb-5">Categories</h4>
+                <h4 class="font-medium text-md lg:text-lg text-dark capitalize mb-3">Categories</h4>
                 <ul>
                     @foreach ($product_categories as $category)
                         <li class="mb-5 flex justify-between items-center transition-all hover:text-orange">
                             <div class="flex items-center">
-                                <input wire:model="categories.{{ $category->id }}" id="category_{{ $category->id }}" name="color[]" value="{{ $category->id }}" type="checkbox" class="h-5 w-5 rounded border-gray-300 text-blue-600 focus:outline-none">
-                                <label for="category_{{ $category->id }}" class="ml-3 text-md font-semibold text-gray-600 focus:outline-none">{{ $category->name }}</label>
+                                <input wire:model="categories.{{ $category->id }}" id="category_{{ $category->id }}" name="color[]" value="{{ $category->id }}" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:outline-none">
+                                <label for="category_{{ $category->id }}" class="ml-2 text-sm font-medium text-gray-600 focus:outline-none">{{ $category->name }}</label>
                             </div>
                         </li>
                     @endforeach

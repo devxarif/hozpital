@@ -9,7 +9,7 @@
                 </div>
                 <div class="flex items-center">
                     <a @click="showCreateDrawer = true" class="inline-flex items-center justify-center px-4 py-2 bg-blue-600 border border-transparent font-medium text-white hover:bg-blue-500 focus:outline-none focus:border-blue-700 focus:ring focus:ring-blue-200 active:bg-blue-600 transition sm:text-sm rounded-full"
-                        href="#">
+                        href="javascript:void(0)">
                         <span class="mr-3">
                             <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24"
                                 stroke-linecap="round" stroke-linejoin="round" height="1em" width="1em"
@@ -120,7 +120,7 @@
                                 aria-label="submenu">
                                 <li class="flex"><a
                                         class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800  "
-                                        href="#"><svg class="w-4 h-4 mr-3" aria-hidden="true" fill="none"
+                                        href="javascript:void(0)"><svg class="w-4 h-4 mr-3" aria-hidden="true" fill="none"
                                             stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             viewBox="0 0 24 24" stroke="currentColor">
                                             <path
@@ -129,7 +129,7 @@
                                         </svg><span>Profile</span></a></li>
                                 <li class="flex"><a
                                         class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800  "
-                                        href="#"><svg class="w-4 h-4 mr-3" aria-hidden="true" fill="none"
+                                        href="javascript:void(0)"><svg class="w-4 h-4 mr-3" aria-hidden="true" fill="none"
                                             stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             viewBox="0 0 24 24" stroke="currentColor">
                                             <path

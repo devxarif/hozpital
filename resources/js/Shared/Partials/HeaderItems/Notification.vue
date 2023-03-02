@@ -26,7 +26,7 @@
                                 </div>
                                 <div class="flex justify-start">
                                     <div class="divide-y divide-gray-100">
-                                        <a href="#" class="flex py-3 px-4 hover:bg-gray-100">
+                                        <a href="javascript:void(0)" class="flex py-3 px-4 hover:bg-gray-100">
                                             <div class="flex-shrink-0">
                                                 <img class="w-11 h-11 rounded-full"
                                                     src="https://flowbite.com/docs/images/people/profile-picture-1.jpg"
@@ -55,7 +55,7 @@
                                                     moments ago</div>
                                             </div>
                                         </a>
-                                        <a href="#" class="flex py-3 px-4 hover:bg-gray-100">
+                                        <a href="javascript:void(0)" class="flex py-3 px-4 hover:bg-gray-100">
                                             <div class="flex-shrink-0">
                                                 <img class="w-11 h-11 rounded-full"
                                                     src="https://flowbite.com/docs/images/people/profile-picture-1.jpg"
@@ -81,7 +81,7 @@
                                                     ago</div>
                                             </div>
                                         </a>
-                                        <a href="#" class="flex py-3 px-4 hover:bg-gray-100">
+                                        <a href="javascript:void(0)" class="flex py-3 px-4 hover:bg-gray-100">
                                             <div class="flex-shrink-0">
                                                 <img class="w-11 h-11 rounded-full"
                                                     src="https://flowbite.com/docs/images/people/profile-picture-1.jpg"
@@ -108,7 +108,7 @@
                                                     ago</div>
                                             </div>
                                         </a>
-                                        <a href="#" class="flex py-3 px-4 hover:bg-gray-100">
+                                        <a href="javascript:void(0)" class="flex py-3 px-4 hover:bg-gray-100">
                                             <div class="flex-shrink-0">
                                                 <img class="w-11 h-11 rounded-full"
                                                     src="https://flowbite.com/docs/images/people/profile-picture-1.jpg"
@@ -128,13 +128,13 @@
                                                 <div class="text-gray-500 text-sm mb-1.5">
                                                     <span class="font-semibold text-gray-900">Leslie
                                                         Livingston</span> mentioned you in a comment: <span
-                                                        class="font-medium text-blue-500" href="#">@bonnie.green</span>
+                                                        class="font-medium text-blue-500" href="javascript:void(0)">@bonnie.green</span>
                                                     what do you say?</div>
                                                 <div class="text-xs text-blue-600">1 hour ago
                                                 </div>
                                             </div>
                                         </a>
-                                        <a href="#" class="flex py-3 px-4 hover:bg-gray-100">
+                                        <a href="javascript:void(0)" class="flex py-3 px-4 hover:bg-gray-100">
                                             <div class="flex-shrink-0">
                                                 <img class="w-11 h-11 rounded-full"
                                                     src="https://flowbite.com/docs/images/people/profile-picture-1.jpg"

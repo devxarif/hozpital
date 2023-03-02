@@ -1,7 +1,7 @@
 <template>
         <section class="bg-gray-100 ">
         <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-            <a href="#" class="flex items-center mb-6 text-2xl font-semibold text-gray-900 ">
+            <a href="javascript:void(0)" class="flex items-center mb-6 text-2xl font-semibold text-gray-900 ">
                 <img class="w-8 h-8 mr-2" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg"
                     alt="logo">
                 Tracking
@@ -145,7 +145,7 @@
                         </button>
                     </form>
                     <p class="text-sm font-light text-gray-500 ">
-                        Don’t have an account yet? <a href="#"
+                        Don’t have an account yet? <a href="javascript:void(0)"
                             class="font-medium text-blue-600 hover:underline ">Sign up</a>
                     </p>
                 </div>
@@ -198,19 +198,19 @@
             </span>
             <ul class="flex flex-wrap items-center mt-3 text-sm text-gray-500  sm:mt-0">
                 <li>
-                    <a href="#" class="mr-4 hover:underline md:mr-6 ">Help</a>
+                    <a href="javascript:void(0)" class="mr-4 hover:underline md:mr-6 ">Help</a>
                 </li>
                 <li>
-                    <a href="#" class="mr-4 hover:underline md:mr-6">Cookie Policy</a>
+                    <a href="javascript:void(0)" class="mr-4 hover:underline md:mr-6">Cookie Policy</a>
                 </li>
                 <li>
-                    <a href="#" class="mr-4 hover:underline md:mr-6">Privacy Policy</a>
+                    <a href="javascript:void(0)" class="mr-4 hover:underline md:mr-6">Privacy Policy</a>
                 </li>
                 <li>
-                    <a href="#" class="mr-4 hover:underline md:mr-6">Terms & Condition</a>
+                    <a href="javascript:void(0)" class="mr-4 hover:underline md:mr-6">Terms & Condition</a>
                 </li>
                 <li>
-                    <a href="#" class="hover:underline">Contact</a>
+                    <a href="javascript:void(0)" class="hover:underline">Contact</a>
                 </li>
             </ul>
         </footer>

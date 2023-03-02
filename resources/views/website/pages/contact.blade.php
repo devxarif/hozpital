@@ -55,7 +55,7 @@
           </dl>
           <p class="mt-6 text-base text-gray-500">
             Looking for careers?
-            <a href="#" class="font-medium text-gray-700 underline">View all job openings</a>.
+            <a href="javascript:void(0)" class="font-medium text-gray-700 underline">View all job openings</a>.
           </p>
         </div>
       </div>

@@ -11,20 +11,12 @@
                     <span class="absolute inset-0 overflow-hidden rounded-md">
                         <img src="{{ $product->image }}" alt="" class="h-full w-full object-cover object-center">
                     </span>
-                    {{-- <span class="pointer-events-none absolute inset-0 rounded-md ring-2 ring-offset-2 ring-transparent"
-                    :class="imageUrl == $product->image ? 'ring-blue-500':'ring-transparent'"></span> --}}
-
-                    {{-- <span class="pointer-events-none absolute inset-0 rounded-md ring-2 ring-offset-2 ring-transparent"
-                    :class="{ 'ring-blue-500': selected, 'ring-transparent': !(selected) }"></span> --}}
                 </button>
                 @foreach ($product->galleries as $gallery)
                     <button @click="imageUrl = '{{ $gallery->image }}'" class="relative flex h-24 cursor-pointer items-center justify-center rounded-md bg-white text-sm font-medium uppercase text-gray-900 hover:bg-gray-50 focus:outline-none focus:ring focus:ring-opacity-50 focus:ring-offset-4" type="button">
-                    <span class="absolute inset-0 overflow-hidden rounded-md">
-                        <img src="{{ $gallery->image }}" alt="" class="h-full w-full object-cover object-center">
-                    </span>
-                    {{-- <span class="pointer-events-none absolute inset-0 rounded-md ring-2 ring-offset-2 ring-transparent"
-                    :class="imageUrl == $gallery->image ? 'ring-blue-500':'ring-transparent'"></span> --}}
-                    {{-- <span class="pointer-events-none absolute inset-0 rounded-md ring-2 ring-offset-2 ring-transparent" :class="{ 'ring-blue-500': selected, 'ring-transparent': !(selected) }"></span> --}}
+                        <span class="absolute inset-0 overflow-hidden rounded-md">
+                            <img src="{{ $gallery->image }}" alt="" class="h-full w-full object-cover object-center">
+                        </span>
                     </button>
                 @endforeach
             </div>

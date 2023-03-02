@@ -13,7 +13,7 @@
             <div class="">
                 <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=white" alt="Your Company">
             </div>
-            <a class="flex text-lg font-bold text-gray-800 " href="#">
+            <a class="flex text-lg font-bold text-gray-800 " href="javascript:void(0)">
                 <img src="https://leaving.devarif.co/admin/img/leaving-dark.png" alt="">
             </a>
             <div class="flex justify-center flex-1 lg:mr-32">
@@ -39,7 +39,7 @@
                             aria-label="submenu">
                         <li class="flex">
                             <a class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800  "
-                                href="#">
+                                href="javascript:void(0)">
                                 <div class="py-3 px-4 text-sm text-gray-900 ">
                                     <div>{{ $page.props.authenticatedUser.name }}</div>
                                     <div class="font-medium truncate">{{ $page.props.authenticatedUser.email }}</div>
@@ -48,14 +48,14 @@
                         </li>
                         <li class="flex">
                             <a class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800  "
-                                href="#">
+                                href="javascript:void(0)">
                                 <img class="object-cover w-6 h-6 mr-2" src="http://offday.test/admin/img/default-user.png" alt="" aria-hidden="true">
                                 <span class="text-md">Profile</span>
                             </a>
                         </li>
                         <li class="flex">
                             <a class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800  "
-                                href="#">
+                                href="javascript:void(0)">
                                 <svg class="w-4 h-4 mr-3" aria-hidden="true" fill="none" stroke-linecap="round"
                                     stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"
                                     stroke="currentColor">
@@ -92,25 +92,25 @@
 
                             <li class="flex hover:bg-gray-100 hover:text-gray-800  ">
                                 <a class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md"
-                                    href="#">
+                                    href="javascript:void(0)">
                                     <span>Help</span>
                                 </a>
                             </li>
                             <li class="flex hover:bg-gray-100 hover:text-gray-800  ">
                                 <a class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md"
-                                    href="#">
+                                    href="javascript:void(0)">
                                     <span>Documentation</span>
                                 </a>
                             </li>
                             <li class="flex hover:bg-gray-100 hover:text-gray-800  ">
                                 <a class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md"
-                                    href="#">
+                                    href="javascript:void(0)">
                                     <span>FAQ</span>
                                 </a>
                             </li>
                             <li class="flex hover:bg-gray-100 hover:text-gray-800  ">
                                 <a class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md"
-                                    href="#">
+                                    href="javascript:void(0)">
                                     <span>Contact Support</span>
                                 </a>
                             </li>
@@ -152,7 +152,7 @@
                                                     </div>
                                                     <div class="flex justify-start">
                                                         <div class="divide-y divide-gray-100 ">
-                                                            <a href="#" class="flex py-3 px-4 hover:bg-gray-100 ">
+                                                            <a href="javascript:void(0)" class="flex py-3 px-4 hover:bg-gray-100 ">
                                                             <div class="flex-shrink-0">
                                                                 <img class="w-11 h-11 rounded-full" src="https://flowbite.com/docs/images/people/profile-picture-1.jpg" alt="Jese image">
                                                                 <div class="flex absolute justify-center items-center ml-6 -mt-5 w-5 h-5 bg-blue-600 rounded-full border border-white-gray-800">
@@ -164,7 +164,7 @@
                                                                 <div class="text-xs text-blue-600 ">a few moments ago</div>
                                                             </div>
                                                             </a>
-                                                            <a href="#" class="flex py-3 px-4 hover:bg-gray-100 ">
+                                                            <a href="javascript:void(0)" class="flex py-3 px-4 hover:bg-gray-100 ">
                                                             <div class="flex-shrink-0">
                                                                 <img class="w-11 h-11 rounded-full" src="https://flowbite.com/docs/images/people/profile-picture-1.jpg" alt="Joseph image">
                                                                 <div class="flex absolute justify-center items-center ml-6 -mt-5 w-5 h-5 bg-gray-900 rounded-full border border-white-gray-800">
@@ -176,7 +176,7 @@
                                                                 <div class="text-xs text-blue-600 ">10 minutes ago</div>
                                                             </div>
                                                             </a>
-                                                            <a href="#" class="flex py-3 px-4 hover:bg-gray-100 ">
+                                                            <a href="javascript:void(0)" class="flex py-3 px-4 hover:bg-gray-100 ">
                                                             <div class="flex-shrink-0">
                                                                 <img class="w-11 h-11 rounded-full" src="https://flowbite.com/docs/images/people/profile-picture-1.jpg" alt="Bonnie image">
                                                                 <div class="flex absolute justify-center items-center ml-6 -mt-5 w-5 h-5 bg-red-600 rounded-full border border-white-gray-800">
@@ -188,7 +188,7 @@
                                                                 <div class="text-xs text-blue-600 ">44 minutes ago</div>
                                                             </div>
                                                             </a>
-                                                            <a href="#" class="flex py-3 px-4 hover:bg-gray-100 ">
+                                                            <a href="javascript:void(0)" class="flex py-3 px-4 hover:bg-gray-100 ">
                                                             <div class="flex-shrink-0">
                                                                 <img class="w-11 h-11 rounded-full" src="https://flowbite.com/docs/images/people/profile-picture-1.jpg" alt="Leslie image">
                                                                 <div class="flex absolute justify-center items-center ml-6 -mt-5 w-5 h-5 bg-green-400 rounded-full border border-white-gray-800">
@@ -196,11 +196,11 @@
                                                                 </div>
                                                             </div>
                                                             <div class="pl-3 w-full">
-                                                                <div class="text-gray-500 text-sm mb-1.5 "><span class="font-semibold text-gray-900 ">Leslie Livingston</span> mentioned you in a comment: <span class="font-medium text-blue-500" href="#">@bonnie.green</span> what do you say?</div>
+                                                                <div class="text-gray-500 text-sm mb-1.5 "><span class="font-semibold text-gray-900 ">Leslie Livingston</span> mentioned you in a comment: <span class="font-medium text-blue-500" href="javascript:void(0)">@bonnie.green</span> what do you say?</div>
                                                                 <div class="text-xs text-blue-600 ">1 hour ago</div>
                                                             </div>
                                                             </a>
-                                                            <a href="#" class="flex py-3 px-4 hover:bg-gray-100 ">
+                                                            <a href="javascript:void(0)" class="flex py-3 px-4 hover:bg-gray-100 ">
                                                             <div class="flex-shrink-0">
                                                                 <img class="w-11 h-11 rounded-full" src="https://flowbite.com/docs/images/people/profile-picture-1.jpg" alt="Robert image">
                                                                 <div class="flex absolute justify-center items-center ml-6 -mt-5 w-5 h-5 bg-blue-500 rounded-full border border-white-gray-800">
@@ -237,7 +237,7 @@
                         <ul v-click-outside="()=> toggleProfileMenu =false" class="absolute right-0 w-60 p-2 mt-2 space-y-2 text-gray-600 bg-white border border-gray-100 rounded-md shadow-md   "
                             aria-label="submenu">
                             <li class="flex hover:bg-gray-100 hover:text-gray-800   ">
-                                <span class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md" href="#">
+                                <span class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md" href="javascript:void(0)">
                                     <div class="py-3 px-4 text-md font-bold text-gray-900 ">
                                         <div>{{ $page.props.authenticatedUser.name }}</div>
                                         <div class="font-medium truncate">{{ $page.props.authenticatedUser.email }}</div>
@@ -246,14 +246,14 @@
                             </li>
                             <li class="flex hover:bg-gray-100 hover:text-gray-800  ">
                                 <a class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md"
-                                    href="#">
+                                    href="javascript:void(0)">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mr-3" fill="#4b5563" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><circle cx="128" cy="96" r="64" fill="none" stroke="#4b5563" stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></circle><path d="M31,216a112,112,0,0,1,194,0" fill="none" stroke="#4b5563" stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></path></svg>
                                     <span class="text-md font-bold transition-colors duration-150 hover:text-gray-800 ">Profile</span>
                                 </a>
                             </li>
                             <li class="flex hover:bg-gray-100 hover:text-gray-800  ">
                                 <a class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md"
-                                    href="#">
+                                    href="javascript:void(0)">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mr-3" fill="#4b5563" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><circle cx="128" cy="128" r="44" fill="none" stroke="#4b5563" stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></circle><path d="M183.7,65.1q3.8,3.5,7.2,7.2l27.3,3.9a103.2,103.2,0,0,1,10.2,24.6l-16.6,22.1s.3,6.8,0,10.2l16.6,22.1a102.2,102.2,0,0,1-10.2,24.6l-27.3,3.9s-4.7,4.9-7.2,7.2l-3.9,27.3a103.2,103.2,0,0,1-24.6,10.2l-22.1-16.6a57.9,57.9,0,0,1-10.2,0l-22.1,16.6a102.2,102.2,0,0,1-24.6-10.2l-3.9-27.3q-3.7-3.5-7.2-7.2l-27.3-3.9a103.2,103.2,0,0,1-10.2-24.6l16.6-22.1s-.2-6.8,0-10.2L27.6,100.8A102.2,102.2,0,0,1,37.8,76.2l27.3-3.9q3.5-3.7,7.2-7.2l3.9-27.3a103.2,103.2,0,0,1,24.6-10.2l22.1,16.6a57.9,57.9,0,0,1,10.2,0l22.1-16.6a102.2,102.2,0,0,1,24.6,10.2Z" fill="none" stroke="#4b5563" stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></path></svg>
                                     <span class="text-md font-bold transition-colors duration-150 hover:text-gray-800 ">Settings</span>
                                 </a>

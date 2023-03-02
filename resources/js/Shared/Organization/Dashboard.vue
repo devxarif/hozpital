@@ -5,7 +5,7 @@
                 <nav class="flex mb-5" >
                     <ol class="inline-flex items-center space-x-1 md:space-x-2">
                         <li class="inline-flex items-center">
-                            <a href="#" class="text-gray-700 hover:text-gray-900 inline-flex items-center">
+                            <a href="javascript:void(0)" class="text-gray-700 hover:text-gray-900 inline-flex items-center">
                                 <svg class="w-5 h-5 mr-2.5" fill="currentColor" viewBox="0 0 20 20"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -2106,7 +2106,7 @@
                                         </tr>
                                         <tr>
                                             <td width="30%">{{ __('Leave Type') }}</td>
-                                            <td width="70%"><a href="#">
+                                            <td width="70%"><a href="javascript:void(0)">
                                                  <span :style="{ background: form.color, border: '2px solid '+form.color }" class="leave-type-color">
                                             {{ form.type }}
                                         </span>

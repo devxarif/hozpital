@@ -15,12 +15,12 @@
                     Elit sunt amet fugiat veniam occaecat fugiat aliqua.</p>
                 <div class="mt-10 sm:flex sm:justify-center lg:justify-start">
                     <div class="rounded-md shadow">
-                        <a href="#"
+                        <a href="javascript:void(0)"
                             class="flex w-full items-center justify-center rounded-md border border-transparent bg-blue-600 px-8 py-3 text-base font-medium text-white hover:bg-blue-700 md:py-4 md:px-10 md:text-lg">Get
                             started</a>
                     </div>
                     <div class="mt-3 rounded-md shadow sm:mt-0 sm:ml-3">
-                        <a href="#"
+                        <a href="javascript:void(0)"
                             class="flex w-full items-center justify-center rounded-md border border-transparent bg-white px-8 py-3 text-base font-medium text-blue-600 hover:bg-gray-50 md:py-4 md:px-10 md:text-lg">Live
                             demo</a>
                     </div>
@@ -188,7 +188,7 @@
                     <h2 class="text-5xl font-bold tracking-tight text-gray-900 sm:text-4xl">Our Departments</h2>
                     <p class="mx-auto mt-3 max-w-2xl text-xl text-gray-500 sm:mt-4">Our hospital has all kinds of departments, so you can get all kinds of treatment</p>
                 </div>
-                <a href="#" class="text-md font-semibold text-blue-600 hover:text-blue-500 sm:block">
+                <a href="javascript:void(0)" class="text-md font-semibold text-blue-600 hover:text-blue-500 sm:block">
                   View All
                     {{-- <span>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -207,7 +207,7 @@
                         </div>
                         <div class="flex flex-1 flex-col justify-between bg-white p-6">
                             <div class="flex-1">
-                                <a href="#" class="mt-2 block">
+                                <a href="javascript:void(0)" class="mt-2 block">
                                     <p class="text-xl font-semibold text-gray-900">{{ $department->name }}</p>
                                     <p class="mt-3 text-base text-gray-500">{{ $department->description }}</p>
                                 </a>
@@ -227,7 +227,7 @@
                     <h2 class="text-5xl font-bold tracking-tight text-gray-900 sm:text-4xl">Our Specialists</h2>
                     <p class="mx-auto mt-3 max-w-2xl text-xl text-gray-500 sm:mt-4">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa libero labore natus atque, ducimus sed</p>
                 </div>
-                <a href="#" class="text-md font-semibold text-blue-600 hover:text-blue-500 sm:block">
+                <a href="javascript:void(0)" class="text-md font-semibold text-blue-600 hover:text-blue-500 sm:block">
                     View All
                 </a>
             </div>
@@ -246,7 +246,7 @@
                                 </div>
                                 <ul role="list" class="flex justify-center space-x-5">
                                     <li>
-                                        <a href="#" class="text-gray-400 hover:text-gray-500">
+                                        <a href="javascript:void(0)" class="text-gray-400 hover:text-gray-500">
                                             <span class="sr-only">Twitter</span>
                                             <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20"
                                                 aria-hidden="true">
@@ -256,7 +256,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#" class="text-gray-400 hover:text-gray-500">
+                                        <a href="javascript:void(0)" class="text-gray-400 hover:text-gray-500">
                                             <span class="sr-only">LinkedIn</span>
                                             <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20"
                                                 aria-hidden="true">
@@ -282,7 +282,7 @@
                                 </div>
                                 <ul role="list" class="flex justify-center space-x-5">
                                     <li>
-                                        <a href="#" class="text-gray-400 hover:text-gray-500">
+                                        <a href="javascript:void(0)" class="text-gray-400 hover:text-gray-500">
                                             <span class="sr-only">Twitter</span>
                                             <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20"
                                                 aria-hidden="true">
@@ -292,7 +292,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#" class="text-gray-400 hover:text-gray-500">
+                                        <a href="javascript:void(0)" class="text-gray-400 hover:text-gray-500">
                                             <span class="sr-only">LinkedIn</span>
                                             <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20"
                                                 aria-hidden="true">
@@ -318,7 +318,7 @@
                                 </div>
                                 <ul role="list" class="flex justify-center space-x-5">
                                     <li>
-                                        <a href="#" class="text-gray-400 hover:text-gray-500">
+                                        <a href="javascript:void(0)" class="text-gray-400 hover:text-gray-500">
                                             <span class="sr-only">Twitter</span>
                                             <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20"
                                                 aria-hidden="true">
@@ -328,7 +328,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#" class="text-gray-400 hover:text-gray-500">
+                                        <a href="javascript:void(0)" class="text-gray-400 hover:text-gray-500">
                                             <span class="sr-only">LinkedIn</span>
                                             <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20"
                                                 aria-hidden="true">
@@ -354,7 +354,7 @@
                                 </div>
                                 <ul role="list" class="flex justify-center space-x-5">
                                     <li>
-                                        <a href="#" class="text-gray-400 hover:text-gray-500">
+                                        <a href="javascript:void(0)" class="text-gray-400 hover:text-gray-500">
                                             <span class="sr-only">Twitter</span>
                                             <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20"
                                                 aria-hidden="true">
@@ -364,7 +364,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#" class="text-gray-400 hover:text-gray-500">
+                                        <a href="javascript:void(0)" class="text-gray-400 hover:text-gray-500">
                                             <span class="sr-only">LinkedIn</span>
                                             <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20"
                                                 aria-hidden="true">
@@ -391,7 +391,7 @@
                     <h2 class="text-5xl font-bold tracking-tight text-gray-900 sm:text-4xl">Shop by Category</h2>
                     <p class="mx-auto mt-3 max-w-2xl text-xl text-gray-500 sm:mt-4">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa libero labore natus atque, ducimus sed</p>
                 </div>
-                <a href="#" class="text-md font-semibold text-blue-600 hover:text-blue-500 sm:block">
+                <a href="javascript:void(0)" class="text-md font-semibold text-blue-600 hover:text-blue-500 sm:block">
                     Browse all categories
                 </a>
             </div>
@@ -401,7 +401,7 @@
                     <div class="relative box-content h-80 overflow-x-auto py-2 xl:overflow-visible">
                         <div class="min-w-screen-xl absolute flex space-x-8 px-4 sm:px-6 lg:px-8 xl:relative xl:grid xl:grid-cols-5 xl:gap-x-8 xl:space-x-0 xl:px-0">
 
-                            <a href="#" class="relative flex h-80 w-56 flex-col overflow-hidden rounded-lg p-6 hover:opacity-75 xl:w-auto">
+                            <a href="javascript:void(0)" class="relative flex h-80 w-56 flex-col overflow-hidden rounded-lg p-6 hover:opacity-75 xl:w-auto">
                             <span aria-hidden="true" class="absolute inset-0">
                                 <img src="https://tailwindui.com/img/ecommerce-images/home-page-01-category-01.jpg" alt="" class="h-full w-full object-cover object-center">
                             </span>
@@ -409,7 +409,7 @@
                             <span class="relative mt-auto text-center text-xl font-bold text-white">New Arrivals</span>
                             </a>
 
-                            <a href="#" class="relative flex h-80 w-56 flex-col overflow-hidden rounded-lg p-6 hover:opacity-75 xl:w-auto">
+                            <a href="javascript:void(0)" class="relative flex h-80 w-56 flex-col overflow-hidden rounded-lg p-6 hover:opacity-75 xl:w-auto">
                             <span aria-hidden="true" class="absolute inset-0">
                                 <img src="https://tailwindui.com/img/ecommerce-images/home-page-01-category-02.jpg" alt="" class="h-full w-full object-cover object-center">
                             </span>
@@ -417,7 +417,7 @@
                             <span class="relative mt-auto text-center text-xl font-bold text-white">Productivity</span>
                             </a>
 
-                            <a href="#" class="relative flex h-80 w-56 flex-col overflow-hidden rounded-lg p-6 hover:opacity-75 xl:w-auto">
+                            <a href="javascript:void(0)" class="relative flex h-80 w-56 flex-col overflow-hidden rounded-lg p-6 hover:opacity-75 xl:w-auto">
                             <span aria-hidden="true" class="absolute inset-0">
                                 <img src="https://tailwindui.com/img/ecommerce-images/home-page-01-category-04.jpg" alt="" class="h-full w-full object-cover object-center">
                             </span>
@@ -425,7 +425,7 @@
                             <span class="relative mt-auto text-center text-xl font-bold text-white">Workspace</span>
                             </a>
 
-                            <a href="#" class="relative flex h-80 w-56 flex-col overflow-hidden rounded-lg p-6 hover:opacity-75 xl:w-auto">
+                            <a href="javascript:void(0)" class="relative flex h-80 w-56 flex-col overflow-hidden rounded-lg p-6 hover:opacity-75 xl:w-auto">
                             <span aria-hidden="true" class="absolute inset-0">
                                 <img src="https://tailwindui.com/img/ecommerce-images/home-page-01-category-05.jpg" alt="" class="h-full w-full object-cover object-center">
                             </span>
@@ -433,7 +433,7 @@
                             <span class="relative mt-auto text-center text-xl font-bold text-white">Accessories</span>
                             </a>
 
-                            <a href="#" class="relative flex h-80 w-56 flex-col overflow-hidden rounded-lg p-6 hover:opacity-75 xl:w-auto">
+                            <a href="javascript:void(0)" class="relative flex h-80 w-56 flex-col overflow-hidden rounded-lg p-6 hover:opacity-75 xl:w-auto">
                             <span aria-hidden="true" class="absolute inset-0">
                                 <img src="https://tailwindui.com/img/ecommerce-images/home-page-01-category-03.jpg" alt="" class="h-full w-full object-cover object-center">
                             </span>
@@ -456,7 +456,7 @@
                     <h2 class="text-5xl font-bold tracking-tight text-gray-900 sm:text-4xl">Shop by Category</h2>
                     <p class="mx-auto mt-3 max-w-2xl text-xl text-gray-500 sm:mt-4">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa libero labore natus atque, ducimus sed</p>
                 </div>
-                <a href="#" class="text-md font-semibold text-blue-600 hover:text-blue-500 sm:block">
+                <a href="javascript:void(0)" class="text-md font-semibold text-blue-600 hover:text-blue-500 sm:block">
                     Browse all categories
                 </a>
             </div>
@@ -477,7 +477,7 @@
                             </div>
                         </div>
                         <div class="mt-6">
-                            <a href="#" class="relative flex items-center justify-center rounded-md border border-transparent bg-gray-100 py-2 px-8 text-sm font-medium text-gray-900 hover:bg-gray-200">Add to bag<span class="sr-only">, Zip Tote Basket</span></a>
+                            <a href="javascript:void(0)" class="relative flex items-center justify-center rounded-md border border-transparent bg-gray-100 py-2 px-8 text-sm font-medium text-gray-900 hover:bg-gray-200">Add to cart<span class="sr-only">, Zip Tote Basket</span></a>
                         </div>
                     </div>
 

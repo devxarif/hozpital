@@ -16,7 +16,7 @@
                     <font-awesome-icon icon="fa-solid fa-plus" class="h-4 w-4 mr-2"/>
                    {{ __('Add Bed Type') }}
                 </button>
-                <a href="#"
+                <a href="javascript:void(0)"
                     class="w-1/2 text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 font-medium inline-flex items-center justify-center rounded-lg text-sm px-3 py-2 text-center sm:w-auto focus:outline-none">
                     <svg class="-ml-1 mr-2 h-6 w-6" fill="currentColor" viewBox="0 0 20 20"
                         xmlns="http://www.w3.org/2000/svg">

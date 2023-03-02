@@ -49,6 +49,27 @@ use sirajcse\UniqueIdGenerator\UniqueIdGenerator;
 
 Route::get('/test', function () {
 
+
+    $id = 1;
+
+
+    \Cart::update($id, array(
+        'quantity' => array(
+            'relative' => true,
+            'value' => 5
+        )
+    ));
+
+        return [
+            'quantity' => \Cart::getTotalQuantity(),
+            'total' => \Cart::getTotal(),
+            'sub_total' => \Cart::getSubTotal(),
+            'items' => \Cart::getContent(),
+        ];
+
+
+
+
    return $cart_items = \Cart::getContent();
     return \Cart::getTotalQuantity();
     $total = \Cart::getTotal();

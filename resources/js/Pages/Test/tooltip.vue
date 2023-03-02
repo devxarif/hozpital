@@ -6,7 +6,7 @@
         class="inline-block z-10 w-64 text-sm font-light text-gray-500 bg-white rounded-lg border border-gray-200 shadow-sm transition-opacity duration-300">
         <div class="p-3">
             <div class="flex justify-between items-center mb-2">
-                <a href="#">
+                <a href="javascript:void(0)">
                     <img class="w-10 h-10 rounded-full" src="/docs/images/people/profile-picture-1.jpg" alt="Jese Leos">
                 </a>
                 <div>
@@ -15,23 +15,23 @@
                 </div>
             </div>
             <p class="text-base font-semibold leading-none text-gray-900">
-                <a href="#">Jese Leos</a>
+                <a href="javascript:void(0)">Jese Leos</a>
             </p>
             <p class="mb-3 text-sm font-normal">
-                <a href="#" class="hover:underline">@jeseleos</a>
+                <a href="javascript:void(0)" class="hover:underline">@jeseleos</a>
             </p>
-            <p class="mb-4 text-sm font-light">Open-source contributor. Building <a href="#"
+            <p class="mb-4 text-sm font-light">Open-source contributor. Building <a href="javascript:void(0)"
                     class="text-blue-600 hover:underline">flowbite.com</a>.</p>
             <ul class="flex text-sm font-light">
                 <li class="mr-2">
-                    <a href="#" class="hover:underline">
+                    <a href="javascript:void(0)" class="hover:underline">
                         <span class="font-semibold text-gray-900">799</span>
                         <spa>Following
                         </spa>
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="hover:underline">
+                    <a href="javascript:void(0)" class="hover:underline">
                         <span class="font-semibold text-gray-900">3,758</span>
                         <span>Followers</span>
                     </a>
@@ -76,7 +76,7 @@
                                 </g>
                             </g>
                         </svg>
-                        <a href="#">
+                        <a href="javascript:void(0)">
                             <img class="w-10 h-10 rounded-full"
                                 src="https://flowbite.com/docs/images/people/profile-picture-1.jpg" alt="Jese Leos">
                         </a>
@@ -95,7 +95,7 @@
 
                         <!-- <div class="p-3">
                             <div class="flex justify-between items-center mb-2">
-                                <a href="#">
+                                <a href="javascript:void(0)">
                                     <img class="w-10 h-10 rounded-full" src="https://flowbite.com/docs/images/people/profile-picture-1.jpg" alt="Jese Leos">
                                 </a>
                                 <div>
@@ -103,12 +103,12 @@
                                 </div>
                             </div>
                             <p class="text-base font-semibold leading-none text-gray-900">
-                                <a href="#">Jese Leos</a>
+                                <a href="javascript:void(0)">Jese Leos</a>
                             </p>
                             <p class="mb-3 text-sm font-normal">
-                                <a href="#" class="hover:underline">@jeseleos</a>
+                                <a href="javascript:void(0)" class="hover:underline">@jeseleos</a>
                             </p>
-                            <p class="mb-4 text-sm font-light">Open-source contributor. Building <a href="#" class="text-blue-600 hover:underline">flowbite.com</a>.</p>
+                            <p class="mb-4 text-sm font-light">Open-source contributor. Building <a href="javascript:void(0)" class="text-blue-600 hover:underline">flowbite.com</a>.</p>
 
                         </div> -->
                     </div>
