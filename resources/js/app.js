@@ -55,6 +55,7 @@ import NothingFound from "@/Shared/NothingFound.vue";
 import Pagination from "@/Shared/Pagination.vue";
 import Breadcrumb from "@/Shared/Breadcrumb.vue";
 import BreadcrumbLink from "@/Shared/BreadcrumbLink.vue";
+import BaseTable from "@/Shared/BaseTable.vue";
 
 // Icons
 import LoadingIcon from "@/Shared/Icons/LoadingIcon.vue";
@@ -106,6 +107,7 @@ createInertiaApp({
                 Datepicker,
                 Breadcrumb,
                 BreadcrumbLink,
+                BaseTable,
                 dayjs
             },
             methods:{

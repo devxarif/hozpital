@@ -34,7 +34,7 @@
                     Clear Filter
                 </BaseButton>
 
-                <BaseButton @click="toggleFilter" class="text-whittext-gray-900 bg-white border border-gray-300 hover:bg-gray-100 px-3 py-2">
+                <BaseButton @click="toggleFilter" class="text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 px-3 py-2">
                     <svg class="mr-2 h-6 w-6" stroke="currentColor" fill="none" stroke-width="0" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"></path></svg>
                     {{ showFilter ? 'Hide Filter':'Filter' }}
                 </BaseButton>
@@ -218,96 +218,87 @@
        </template>
 
         <!-- Table View  -->
-        <div class="flex flex-col mb-5 shadow-lg" v-else-if="!loading && appointments && appointments.data.length && viewType == 'table'">
-            <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
-                <div class="inline-block py-2 align-middle md:px-6 lg:px-8">
-                    <div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
-                        <table class="w-full divide-y divide-gray-300 table-fixed">
-                            <thead class="bg-gray-200">
-                            <tr class="divide-x divide-gray-200">
-                                <th class="py-3.5 pl-4 pr-4 text-left text-sm font-semibold text-gray-900 sm:pl-6">Patient</th>
-                                <th class="px-4 py-3.5 text-left text-sm font-semibold text-gray-900 break-words">Problem</th>
-                                <th width="20%" class="px-4 py-3.5 text-left text-sm font-semibold text-gray-900 break-words">Time</th>
-                                <th width="10%" class="px-4 py-3.5 text-left text-sm font-semibold text-gray-900 break-words">Status</th>
-                                <th width="80px" class="py-3.5 pl-4 pr-4 text-left text-sm font-semibold text-gray-900 sm:pr-6">Action</th>
-                            </tr>
-                            </thead>
-                            <tbody class="divide-y divide-gray-200 bg-white">
-                                <tr v-for="appointment in appointments.data" :key="appointment.id" class="divide-x divide-gray-200">
-                                    <td class="py-4 pl-4 pr-4 text-sm font-medium text-gray-900 sm:pl-6">
-                                        <div class="flex items-center" v-if="appointment.patient && appointment.patient.user">
-                                            <div class="h-10 w-10 flex-shrink-0">
-                                                <img class="h-10 w-10 rounded-md" :src="appointment.patient.user.avatar_url" alt="">
-                                            </div>
-                                            <div class="ml-4">
-                                                <div class="font-medium text-gray-900">{{ appointment.patient.user.name }}</div>
-                                                <div class="text-gray-500">{{ appointment.patient.user.email }}</div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="p-4 text-sm text-gray-500 break-all">
-                                        {{ appointment.problem }}
-                                    </td>
-                                    <td class="p-4 text-sm text-gray-500 break-all">
-                                        <p class="text-md font-extrabold">Sat 25 Feb 2023</p>
-                                        <span class="block">{{ appointment.slot }}</span>
-                                    </td>
-                                    <td class="p-4 text-sm text-gray-500 break-all">
-                                        <div class="mt-5">
-                                            <span :class="getAppointmentStatusClass(appointment.status)" class="text-white text-sm font-medium mr-2 px-3 py-2 rounded-full   capitalize">
-                                                {{ appointment.status }}
-                                            </span>
-                                        </div>
-                                    </td>
-                                    <td class="py-4 pl-4 pr-4 text-sm text-gray-500 sm:pr-6">
-                                        <Menu as="div" class="inline-block text-left">
-                                            <div>
-                                                <MenuButton class="flex items-center rounded-full text-gray-400 hover:text-gray-600 focus:outline-none">
-                                                    <span class="sr-only">Open options</span>
-                                                    <font-awesome-icon icon="fa-solid fa-ellipsis-vertical" class="h-6 w-6"/>
-                                                </MenuButton>
-                                            </div>
+        <BaseTable v-else-if="!loading && appointments && appointments.data.length && viewType == 'table'" :items="appointments">
+            <template v-slot:head>
+                <tr class="divide-x divide-gray-200">
+                    <th class="py-3.5 pl-4 pr-4 text-left text-sm font-semibold text-gray-900 sm:pl-6">Patient</th>
+                    <th class="px-4 py-3.5 text-left text-sm font-semibold text-gray-900 break-words">Problem</th>
+                    <th width="20%" class="px-4 py-3.5 text-left text-sm font-semibold text-gray-900 break-words">Time</th>
+                    <th width="10%" class="px-4 py-3.5 text-left text-sm font-semibold text-gray-900 break-words">Status</th>
+                    <th width="80px" class="py-3.5 pl-4 pr-4 text-left text-sm font-semibold text-gray-900 sm:pr-6">Action</th>
+                </tr>
+            </template>
+            <template v-slot:body>
+                <tr v-for="appointment in appointments.data" :key="appointment.id" class="divide-x divide-gray-200">
+                    <td class="py-4 pl-4 pr-4 text-sm font-medium text-gray-900 sm:pl-6">
+                        <div class="flex items-center" v-if="appointment.patient && appointment.patient.user">
+                            <div class="h-10 w-10 flex-shrink-0">
+                                <img class="h-10 w-10 rounded-md" :src="appointment.patient.user.avatar_url" alt="">
+                            </div>
+                            <div class="ml-4">
+                                <div class="font-medium text-gray-900">{{ appointment.patient.user.name }}</div>
+                                <div class="text-gray-500">{{ appointment.patient.user.email }}</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="p-4 text-sm text-gray-500 break-all">
+                        {{ appointment.problem }}
+                    </td>
+                    <td class="p-4 text-sm text-gray-500 break-all">
+                        <p class="text-md font-extrabold">Sat 25 Feb 2023</p>
+                        <span class="block">{{ appointment.slot }}</span>
+                    </td>
+                    <td class="p-4 text-sm text-gray-500 break-all">
+                        <div class="mt-5">
+                            <span :class="getAppointmentStatusClass(appointment.status)" class="text-white text-sm font-medium mr-2 px-3 py-2 rounded-full   capitalize">
+                                {{ appointment.status }}
+                            </span>
+                        </div>
+                    </td>
+                    <td class="py-4 pl-4 pr-4 text-sm text-gray-500 sm:pr-6">
+                        <Menu as="div" class="inline-block text-left">
+                            <div>
+                                <MenuButton class="flex items-center rounded-full text-gray-400 hover:text-gray-600 focus:outline-none">
+                                    <span class="sr-only">Open options</span>
+                                    <font-awesome-icon icon="fa-solid fa-ellipsis-vertical" class="h-6 w-6"/>
+                                </MenuButton>
+                            </div>
 
-                                            <transition enter-active-class="transition ease-out duration-100" enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100" leave-active-class="transition ease-in duration-75" leave-from-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
-                                                <MenuItems class="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                                                    <div class="py-1 text-sm">
-                                                        <MenuItem v-slot="{ active }" v-if="appointment.status == 'pending'">
-                                                            <a href="javascript:void(0)" @click.prevent="markStatus(appointment.id, 'approved')" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
-                                                                <font-awesome-icon icon="fa-solid fa-check" class="mr-3 h-5 w-5 text-green-500 group-hover:text-green-500"/>
-                                                                Mark as approved
-                                                            </a>
-                                                        </MenuItem>
-                                                        <MenuItem v-slot="{ active }" v-if="appointment.status == 'approved'">
-                                                            <a href="javascript:void(0)" @click.prevent="markStatus(appointment.id, 'completed')" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
-                                                                <font-awesome-icon icon="fa-solid fa-check" class="mr-3 h-5 w-5 text-green-500 group-hover:text-green-500"/>
-                                                                Mark as completed
-                                                            </a>
-                                                        </MenuItem>
-                                                        <MenuItem v-slot="{ active }" v-if="appointment.status == 'pending' || appointment.status == 'approved'">
-                                                            <a href="javascript:void(0)" @click.prevent="markStatus(appointment.id, 'cancelled')" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
-                                                                <font-awesome-icon icon="fa-solid fa-xmark" class="mr-3 h-5 w-5 text-red-500 group-hover:text-red-500"/>
-                                                                Mark as cancelled
-                                                            </a>
-                                                        </MenuItem>
-                                                        <MenuItem v-slot="{ active }">
-                                                            <a href="javascript:void(0)" @click.prevent="editData(appointment)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
-                                                                <font-awesome-icon icon="fa-solid fa-eye" class="mr-3 h-5 w-5 text-sky-500 group-hover:text-sky-500"/>
-                                                                Details
-                                                            </a>
-                                                        </MenuItem>
-                                                    </div>
-                                                </MenuItems>
-                                            </transition>
-                                        </Menu>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <Pagination :data="appointments" v-if="appointments && appointments.data.length && appointments.total > 20" class="mt-5"/>
-                    </div>
-                </div>
-            </div>
-        </div>
+                            <transition enter-active-class="transition ease-out duration-100" enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100" leave-active-class="transition ease-in duration-75" leave-from-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
+                                <MenuItems class="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                                    <div class="py-1 text-sm">
+                                        <MenuItem v-slot="{ active }" v-if="appointment.status == 'pending'">
+                                            <a href="javascript:void(0)" @click.prevent="markStatus(appointment.id, 'approved')" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
+                                                <font-awesome-icon icon="fa-solid fa-check" class="mr-3 h-5 w-5 text-green-500 group-hover:text-green-500"/>
+                                                Mark as approved
+                                            </a>
+                                        </MenuItem>
+                                        <MenuItem v-slot="{ active }" v-if="appointment.status == 'approved'">
+                                            <a href="javascript:void(0)" @click.prevent="markStatus(appointment.id, 'completed')" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
+                                                <font-awesome-icon icon="fa-solid fa-check" class="mr-3 h-5 w-5 text-green-500 group-hover:text-green-500"/>
+                                                Mark as completed
+                                            </a>
+                                        </MenuItem>
+                                        <MenuItem v-slot="{ active }" v-if="appointment.status == 'pending' || appointment.status == 'approved'">
+                                            <a href="javascript:void(0)" @click.prevent="markStatus(appointment.id, 'cancelled')" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
+                                                <font-awesome-icon icon="fa-solid fa-xmark" class="mr-3 h-5 w-5 text-red-500 group-hover:text-red-500"/>
+                                                Mark as cancelled
+                                            </a>
+                                        </MenuItem>
+                                        <MenuItem v-slot="{ active }">
+                                            <a href="javascript:void(0)" @click.prevent="editData(appointment)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
+                                                <font-awesome-icon icon="fa-solid fa-eye" class="mr-3 h-5 w-5 text-sky-500 group-hover:text-sky-500"/>
+                                                Details
+                                            </a>
+                                        </MenuItem>
+                                    </div>
+                                </MenuItems>
+                            </transition>
+                        </Menu>
+                    </td>
+                </tr>
+            </template>
+        </BaseTable>
 
        <NothingFound v-else>
             <BaseButton @click="showCreateDrawer = true" class="text-white bg-blue-600 hover:bg-blue-700 px-4 py-2">
