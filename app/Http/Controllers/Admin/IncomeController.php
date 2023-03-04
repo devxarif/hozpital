@@ -30,7 +30,7 @@ class IncomeController extends Controller
 
         $incomes = $query->with('incomeCategory:id,name')->latest()->paginate(20)->withQueryString();
 
-        return inertia('Admin/Finance/Income/Index', [
+        return inertia('Admin/Finances/Income/Index', [
             'incomes' => $incomes,
             'incomes_categories' => IncomeCategory::latest()->get(['id', 'name']),
             'filter' => $request,

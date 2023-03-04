@@ -47,7 +47,7 @@ class BedController extends Controller
         $data['filter'] = $request;
         $data['total_bed_count'] = Bed::count();
 
-        return inertia('Admin/Bed/Index', $data);
+        return inertia('Admin/Beds/Bed/Index', $data);
     }
 
     /**

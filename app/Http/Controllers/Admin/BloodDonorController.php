@@ -33,7 +33,7 @@ class BloodDonorController extends Controller
 
         $blood_donors = $query->latest()->paginate(20)->withQueryString();
 
-        return inertia('Admin/BloodDonor/Index', [
+        return inertia('Admin/Bloods/BloodDonor/Index', [
             'blood_donors' => $blood_donors,
             'filter' => $request,
         ]);

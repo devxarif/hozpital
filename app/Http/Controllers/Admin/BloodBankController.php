@@ -17,7 +17,7 @@ class BloodBankController extends Controller
     {
         $blood_banks = BloodBank::latest()->get();
 
-        return inertia('Admin/BloodBank/Index', compact('blood_banks'));
+        return inertia('Admin/Bloods/BloodBank/Index', compact('blood_banks'));
     }
 
     /**

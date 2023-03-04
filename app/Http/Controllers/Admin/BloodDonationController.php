@@ -20,7 +20,7 @@ class BloodDonationController extends Controller
     {
         $blood_donations = BloodDonation::with('bloodDonor')->latest()->paginate(20)->withQueryString();
 
-        return inertia('Admin/BloodDonation/Index', [
+        return inertia('Admin/Bloods/BloodDonation/Index', [
             'blood_donations' => $blood_donations,
             'filter' => $request,
         ]);

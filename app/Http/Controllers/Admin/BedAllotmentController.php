@@ -46,7 +46,7 @@ class BedAllotmentController extends Controller
         $data['floors'] = BedFloor::all(['id', 'name']);
         $data['types'] = BedType::all(['id', 'name']);
 
-        return inertia('Admin/BedAllotment/Index', $data);
+        return inertia('Admin/Beds/BedAllotment/Index', $data);
     }
 
     /**

@@ -21,7 +21,7 @@ class BedTypeController extends Controller
     {
         $bed_types = BedType::latest()->paginate(20)->withQueryString();
 
-        return inertia('Admin/BedType/Index', [
+        return inertia('Admin/Beds/BedType/Index', [
             'bed_types' => $bed_types,
             'filter' => $request,
         ]);

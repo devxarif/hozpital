@@ -20,7 +20,7 @@ class BedFloorController extends Controller
     {
         $bed_floors = BedFloor::all();
 
-        return inertia('Admin/BedFloor/Index', compact('bed_floors'));
+        return inertia('Admin/Beds/BedFloor/Index', compact('bed_floors'));
     }
 
     /**
