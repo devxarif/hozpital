@@ -27,7 +27,7 @@ class IncomeCategoryController extends Controller
 
         $income_categories = $query->latest()->paginate(20)->withQueryString();
 
-        return inertia('Admin/IncomeCategory/Index', [
+        return inertia('Admin/Finance/IncomeCategory/Index', [
             'income_categories' => $income_categories,
             'filter' => $request,
         ]);

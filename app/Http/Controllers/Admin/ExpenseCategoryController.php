@@ -27,7 +27,7 @@ class ExpenseCategoryController extends Controller
 
         $expense_categories = $query->latest()->paginate(20)->withQueryString();
 
-        return inertia('Admin/ExpenseCategory/Index', [
+        return inertia('Admin/Finance/ExpenseCategory/Index', [
             'expense_categories' => $expense_categories,
             'filter' => $request,
         ]);

@@ -28,7 +28,7 @@ class AccountantController extends Controller
 
         $accountants = $query->with('user:id,name,email')->latest()->paginate(20)->withQueryString();
 
-        return inertia('Admin/Accountant/Index', [
+        return inertia('Admin/Users/Accountant/Index', [
             'accountants' => $accountants,
             'filter' => $request,
         ]);

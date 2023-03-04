@@ -31,7 +31,7 @@ class PharmacistController extends Controller
 
         $pharmacists = $query->with('user:id,name,email')->latest()->paginate(20)->withQueryString();
 
-        return inertia('Admin/Pharmacist/Index', [
+        return inertia('Admin/Users/Pharmacist/Index', [
             'pharmacists' => $pharmacists,
             'filter' => $request,
         ]);

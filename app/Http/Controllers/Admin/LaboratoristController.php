@@ -31,7 +31,7 @@ class LaboratoristController extends Controller
 
         $laboratorists = $query->with('user:id,name,email')->latest()->paginate(20)->withQueryString();
 
-        return inertia('Admin/Laboratorist/Index', [
+        return inertia('Admin/Users/Laboratorist/Index', [
             'laboratorists' => $laboratorists,
             'filter' => $request,
         ]);

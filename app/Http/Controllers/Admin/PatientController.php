@@ -25,7 +25,7 @@ class PatientController extends Controller
     {
         $patients = Patient::with('user:id,name,email')->latest()->paginate(20)->withQueryString();
 
-        return inertia('Admin/Patient/Index', [
+        return inertia('Admin/Users/Patient/Index', [
             'patients' => $patients,
             'filter' => $request,
         ]);

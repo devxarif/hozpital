@@ -31,7 +31,7 @@ class NurseController extends Controller
 
         $nurses = $query->with('user:id,name,email')->latest()->paginate(20)->withQueryString();
 
-        return inertia('Admin/Nurse/Index', [
+        return inertia('Admin/Users/Nurse/Index', [
             'nurses' => $nurses,
             'filter' => $request,
         ]);

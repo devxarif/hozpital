@@ -31,7 +31,7 @@ class ReceptionistController extends Controller
 
         $receptionists = $query->with('user:id,name,email')->latest()->paginate(20)->withQueryString();
 
-        return inertia('Admin/Receptionist/Index', [
+        return inertia('Admin/Users/Receptionist/Index', [
             'receptionists' => $receptionists,
             'filter' => $request,
         ]);

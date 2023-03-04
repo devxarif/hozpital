@@ -37,7 +37,7 @@ class DoctorController extends Controller
 
         $doctors = $query->with('user:id,name,email', 'department:id,name')->latest()->paginate(20)->withQueryString();
 
-        return inertia('Admin/Doctor/Index', [
+        return inertia('Admin/Users/Doctor/Index', [
             'doctors' => $doctors,
             'departments' => Department::select('id', 'name')->get(),
             'filter' => $request,
