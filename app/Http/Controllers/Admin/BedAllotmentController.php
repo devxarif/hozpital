@@ -37,7 +37,12 @@ class BedAllotmentController extends Controller
 
     //     $data['filter'] = $request;
 
-        $data['beds'] = Bed::with('bedType:id,name', 'floor:id,name')->get()->groupBy(['bed_floor_id', 'bed_type_id']);
+        // $data['beds'] = Bed::with('bedType:id,name', 'floor:id,name')->get()->groupBy(['bed_floor_id', 'bed_type_id']);
+        $data['beds'] = Bed::with(['bedType:id,name', 'floor:id,name','bedAllotment' => function($q){
+            return $q->with('patient:id,user_id', 'patient.user:id,name')->whereStatus(1)->first();
+        }])
+            ->get()
+            ->groupBy(['bed_floor_id', 'bed_type_id']);;
         $data['floors'] = BedFloor::all(['id', 'name']);
         $data['types'] = BedType::all(['id', 'name']);
 

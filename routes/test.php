@@ -49,6 +49,13 @@ use sirajcse\UniqueIdGenerator\UniqueIdGenerator;
 
 Route::get('/test', function () {
 
+    return Bed::with(['bedType:id,name', 'floor:id,name','bedAllotment' => function($q){
+        return $q->with('patient:id,user_id', 'patient.user:id,name')->whereStatus(1)->first();
+    }])
+            ->get()
+            ->groupBy(['bed_floor_id', 'bed_type_id']);
+
+    return Bed::with('bedAllotment')->get();
 
     $id = 1;
 

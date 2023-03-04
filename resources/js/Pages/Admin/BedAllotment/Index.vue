@@ -61,7 +61,7 @@
 
         <div class="mt-5">
             <span v-for="(bed_floors, i) in beds" :key="i" class="mb-3 block p-4 bg-gray-100 rounded-lg border">
-                <h2 class="text-2xl font-bold tracking-tight text-gray-900  mb-5">{{ getBedFloor(i).name }}</h2>
+                <h2 class="text-2xl font-bold tracking-tight text-gray-900  mb-3">{{ getBedFloor(i).name }}</h2>
 
                 <div v-for="(bed_types, j) in bed_floors" :key="j" class="mb-2 block p-4 bg-white rounded-lg border border-gray-200">
                     <h2 class="text-2xl font-bold tracking-tight text-gray-900 ">{{ getBedType(j).name }}</h2>
@@ -110,7 +110,10 @@
                             <!-- <span class="text-xs font-semibold px-2 py-1 rounded bg-green-100 text-green-800   capitalize">
                                 {{ bed.status }}
                             </span> -->
-                            <p v-if="bed.status == 'alloted'">Patient: Ariful Islam</p>
+                            <!-- <pre>
+                                {{ bed?.bed_allotment?.patient?.user?.name ?? '' }}
+                            </pre> -->
+                            <p v-if="bed.status == 'alloted'">Patient: {{ bed?.bed_allotment?.patient?.user?.name ?? '' }}</p>
                         </span>
                     </div>
                 </div>

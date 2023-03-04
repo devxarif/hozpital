@@ -24,6 +24,7 @@ return new class extends Migration
             $table->timestamp('allotment_time');
             $table->timestamp('discharge_time')->nullable();
             $table->text('description')->nullable();
+            $table->boolean('status')->default(0);
             $table->timestamps();
         });
     }
