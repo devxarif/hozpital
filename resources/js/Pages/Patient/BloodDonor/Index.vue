@@ -137,6 +137,8 @@
                     </div>
                     <h2 class="mb-2 text-xl font-bold tracking-tight text-gray-900 ">{{ blood_donor.blood_group }}</h2>
                     <div class="mb-3 font-normal text-gray-700 ">
+                        <p v-if="blood_donor.email">Email: {{ blood_donor.email }}</p>
+                        <p v-if="blood_donor.phone">Phone: {{ blood_donor.phone }}</p>
                         <p>Gender: <span class="capitalize">{{ blood_donor.gender }}</span></p>
                         <p>Age: {{ blood_donor.age }} Years old</p>
                     </div>
