@@ -9,7 +9,7 @@
         <div class="flex">
             <div class="mr-3 shrink-0">
                 <!-- <a href="javascript:void(0)" class="block p-2 bg-gray-100 rounded-lg ">
-                <img class="w-8 h-8 rounded-full" src="https://flowbite.com/docs/images/logo.svg" alt="Flowbite logo">
+                <img class="w-8 h-8 rounded-full" src="https://flowbite.com/docs/images/logo.svg" alt="app logo">
             </a> -->
             </div>
             <div>
