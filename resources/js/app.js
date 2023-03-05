@@ -60,6 +60,8 @@ import BaseTable from "@/Shared/BaseTable.vue";
 // Icons
 import LoadingIcon from "@/Shared/Icons/LoadingIcon.vue";
 import HomeIcon from "@/Shared/Icons/HomeIcon.vue";
+import GridIcon from "@/Shared/Icons/GridIcon.vue";
+import ListIcon from "@/Shared/Icons/ListIcon.vue";
 import { ChevronDownIcon } from '@heroicons/vue/20/solid'
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
 import { faHome, faPenToSquare, faEye, faTrashCan, faPlus, faChevronRight, faEllipsisVertical, faSearch, faFilePdf, faFileCsv, faFileExcel, faUpload } from '@fortawesome/free-solid-svg-icons'
@@ -96,6 +98,8 @@ createInertiaApp({
                 Pagination,
                 LoadingIcon,
                 HomeIcon,
+                GridIcon,
+                ListIcon,
                 ChevronDownIcon,
                 Popper,
                 FontAwesomeIcon,
