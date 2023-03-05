@@ -257,6 +257,7 @@ export default {
     methods: {
         changeViewType(type){
             this.viewType = type
+            localStorage.setItem("adminDepartment", this.viewType);
         },
         deleteData(id) {
             this.$swal({
@@ -296,6 +297,7 @@ export default {
     },
     created() {
         this.showFilter = localStorage.getItem("adminDepartment") == "true" ? true: false;
+        this.viewType = localStorage.getItem("adminDepartment") == "card" ? 'card': 'table';
     },
 };
 </script>
