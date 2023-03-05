@@ -30,7 +30,8 @@ class AuthController extends Controller
             $type = 'username';
         }
 
-        if (Auth::attempt([$type => $request->username, 'password' => $request->password])) {
+        $remember = $request->remember ? true : false;
+        if (Auth::attempt([$type => $request->username, 'password' => $request->password], $remember)) {
             $request->session()->regenerate();
 
             session()->flash('success', 'Logged in successfully!');
