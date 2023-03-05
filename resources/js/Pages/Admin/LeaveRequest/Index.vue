@@ -12,6 +12,15 @@
             </h2>
 
             <div class="flex items-center space-x-2 sm:space-x-3 ml-auto">
+                <div class="ml-6 hidden items-center rounded-lg bg-gray-100 p-0.5 sm:flex">
+                    <button @click="changeViewType('table')" type="button" class="rounded-md p-1.5 focus:outline-none text-gray-600 hover:bg-white hover:shadow-sm shadow-sm" :class="viewType == 'table' ? 'bg-white':''">
+                        <ListIcon/>
+                    </button>
+                    <button @click="changeViewType('card')" type="button" class="rounded-md p-1.5 focus:outline-none ml-0.5 text-gray-600 hover:bg-white hover:shadow-sm shadow-sm" :class="viewType == 'card' ? 'bg-white':''">
+                        <GridIcon/>
+                    </button>
+                </div>
+
                 <!-- Clear Filter -->
                 <ClearFilter v-if="filter.keyword && filter.keyword.length"  :href="route('admin.leaveRequest.index')"/>
 
@@ -54,7 +63,7 @@
             </div>
         </transition>
 
-        <div>
+        <div class="mb-5">
             <div class="hidden sm:block">
                 <div class="border-b border-gray-200">
                     <nav class="-mb-px flex space-x-8" aria-label="Tabs">
@@ -91,8 +100,9 @@
         <!-- Body Part  -->
        <CardSkeleton :show="loading" v-if="loading"/>
 
-       <template v-else-if="!loading && leave_requests && leave_requests.data.length">
-            <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-4 mt-5 mb-60">
+        <!-- Card View  -->
+       <template v-else-if="!loading && leave_requests && leave_requests.data.length && viewType == 'card'">
+            <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-4 mb-60">
                <span v-for="(leave_request, index) in leave_requests.data" :key="index" class="block p-6 bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100   ">
                    <div class="flex flex-wrap justify-between items-start">
                         <div class="flex items-center mb-5">
@@ -145,11 +155,11 @@
                     <div class="mt-5">
                         <template v-if="leave_request.status == 'pending'">
                             <div class="flex gap-3 text-white">
-                                <BaseButton @click.prevent="changeStatus(leave_request.id, 'approved')" class="text-gray-900 bg-green-500 border border-green-500 hover:bg-green-600 px-3 py-2">
+                                <BaseButton @click.prevent="changeStatus(leave_request.id, 'approved')" class="text-white bg-green-500 border border-green-500 hover:bg-green-600 px-3 py-2">
                                     <CheckIcon class="h-5 w-5 mr-2"/>
                                     Approve
                                 </BaseButton>
-                                <BaseButton @click.prevent="changeStatus(leave_request.id, 'rejected')" class="text-gray-900 bg-red-500 border border-red-500 hover:bg-red-600 px-3 py-2">
+                                <BaseButton @click.prevent="changeStatus(leave_request.id, 'rejected')" class="text-white bg-red-500 border border-red-500 hover:bg-red-600 px-3 py-2">
                                     <XMarkIcon class="h-5 w-5 mr-2"/>
                                     Reject
                                 </BaseButton>
@@ -171,6 +181,127 @@
            <Pagination :data="leave_requests" v-if="leave_requests && leave_requests.data.length && leave_requests.total > 20" class="mt-5"/>
        </template>
 
+         <!-- Table View  -->
+        <BaseTable v-else-if="!loading && leave_requests && leave_requests.data.length && viewType == 'table'" :items="leave_requests">
+            <template v-slot:head>
+                <tr class="divide-x divide-gray-200">
+                    <th class="py-3.5 pl-4 pr-4 text-left text-sm font-semibold text-gray-900 sm:pl-6">User</th>
+                    <th class="py-3.5 pl-4 pr-4 text-left text-sm font-semibold text-gray-900 sm:pl-6">Leave Type</th>
+                    <th class="py-3.5 pl-4 pr-4 text-left text-sm font-semibold text-gray-900 sm:pl-6">Period</th>
+                    <th class="py-3.5 pl-4 pr-4 text-left text-sm font-semibold text-gray-900 sm:pl-6">Status</th>
+                    <th class="py-3.5 pl-4 pr-4 text-left text-sm font-semibold text-gray-900 sm:pr-6">Action</th>
+                </tr>
+            </template>
+
+
+                    <!-- <div class="mt-5">
+                        <template v-if="leave_request.status == 'pending'">
+                            <div class="flex gap-3 text-white">
+                                <BaseButton @click.prevent="changeStatus(leave_request.id, 'approved')" class="text-gray-900 bg-green-500 border border-green-500 hover:bg-green-600 px-3 py-2">
+                                    <CheckIcon class="h-5 w-5 mr-2"/>
+                                    Approve
+                                </BaseButton>
+                                <BaseButton @click.prevent="changeStatus(leave_request.id, 'rejected')" class="text-gray-900 bg-red-500 border border-red-500 hover:bg-red-600 px-3 py-2">
+                                    <XMarkIcon class="h-5 w-5 mr-2"/>
+                                    Reject
+                                </BaseButton>
+                            </div>
+                        </template>
+                        <template v-else-if="leave_request.status == 'approved'">
+                            <span class="bg-green-500 text-white text-sm font-medium mr-2 px-3 py-2 rounded-full  ">
+                                Approved
+                            </span>
+                        </template>
+                        <template v-else>
+                            <span class="bg-red-500 text-white text-sm font-medium mr-2 px-3 py-2 rounded-full  ">
+                                Rejected
+                            </span>
+                        </template>
+                    </div> -->
+
+
+            <template v-slot:body>
+                <tr v-for="leave_request in leave_requests.data" :key="leave_request.id" class="divide-x divide-gray-200">
+                    <td class="py-4 pl-4 pr-4 text-sm font-medium text-gray-900 sm:pl-6">
+                        <div class="flex items-center">
+                            <img class="h-16 w-16 rounded-md object-cover" :src="leave_request?.user?.avatar_url" :alt="leave_request?.user?.name">
+                            <div class="ml-4">
+                                <div class="font-medium text-gray-900">
+                                    {{ leave_request?.user?.name ?? '-' }}
+                                </div>
+                                <div class="text-gray-600 font-bold capitalize">
+                                    {{ leave_request?.user?.role ?? '-' }}
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="p-4 text-sm text-gray-500 break-all">
+                        {{ leave_request?.leave_type?.name ?? '-' }}
+                    </td>
+                    <td class="p-4 text-sm text-gray-500 break-all">
+                        <h2 class="mb-2 text-xl font-bold tracking-tight text-gray-900 ">{{ leave_request.days }} {{ pluralize(leave_request.days, 'Day') }}</h2>
+                        <p>{{ formateDate(leave_request.start, 'MMMM D') }} - {{ formateDate(leave_request.end, 'MMMM D YYYY') }}</p>
+                    </td>
+                    <td class="p-4 text-sm text-gray-500 break-all">
+                        <span class="capitalize text-white text-sm font-medium mr-2 px-3 py-2 rounded-full" :class="leave_request.status == 'pending' ? 'bg-yellow-500':(leave_request.status == 'approved' ? 'bg-green-500':'bg-red-500')">
+                            {{ leave_request.status }}
+                        </span>
+                    </td>
+                    <td class="py-4 pl-4 pr-4 text-sm text-gray-500 sm:pr-6 flex gap-3  ">
+                        <template v-if="leave_request.status == 'pending'">
+                            <div class="flex gap-3 text-white">
+                                <BaseButton @click.prevent="changeStatus(leave_request.id, 'approved')" class="text-white bg-green-500 border border-green-500 hover:bg-green-600 p-2">
+                                    <CheckIcon class="h-5 w-5 mr-2"/>
+                                    Approve
+                                </BaseButton>
+                                <BaseButton @click.prevent="changeStatus(leave_request.id, 'rejected')" class="text-white bg-red-500 border border-red-500 hover:bg-red-600 px-3 py-2">
+                                    <XMarkIcon class="h-5 w-5 mr-2"/>
+                                    Reject
+                                </BaseButton>
+                            </div>
+                        </template>
+                        <BaseButton @click.prevent="changeStatus(leave_request.id, 'rejected')" class="text-white bg-purple-500 border border-purple-500 hover:bg-purple-600 p-2">
+                            <EyeIcon class="h-5 w-5 mr-2"/>
+                            Details
+                        </BaseButton>
+                        <!-- <Menu as="div" class=" relative inline-block text-left">
+                            <div>
+                                <MenuButton class="flex items-center rounded-full text-gray-400 hover:text-gray-600 focus:outline-none">
+                                    <span class="sr-only">Open options</span>
+                                    <font-awesome-icon icon="fa-solid fa-ellipsis-vertical" class="h-6 w-6"/>
+                                </MenuButton>
+                            </div>
+
+                            <transition enter-active-class="transition ease-out duration-100" enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100" leave-active-class="transition ease-in duration-75" leave-from-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
+                                <MenuItems class="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                                    <div class="py-1 text-sm">
+                                    <MenuItem v-slot="{ active }">
+                                        <a href="javascript:void(0)" @click.prevent="editData(leave_request)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
+                                            <font-awesome-icon icon="fa-solid fa-pen-to-square" class="mr-3 h-5 w-5 text-blue-500 group-hover:text-blue-500"/>
+                                            Edit
+                                        </a>
+                                    </MenuItem>
+                                    <MenuItem v-slot="{ active }">
+                                        <a href="javascript:void(0)" @click.prevent="editData(leave_request)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
+                                            <font-awesome-icon icon="fa-solid fa-eye" class="mr-3 h-5 w-5 text-sky-500 group-hover:text-sky-500"/>
+                                            Details
+                                        </a>
+                                    </MenuItem>
+                                    <MenuItem v-slot="{ active }">
+                                        <a href="javascript:void(0)" @click.prevent="deleteData(leave_request.id)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
+                                            <font-awesome-icon icon="fa-solid fa-trash-can" class="mr-3 h-5 w-5 text-red-500 group-hover:text-red-500"/>
+                                            Delete
+                                        </a>
+                                    </MenuItem>
+                                    </div>
+                                </MenuItems>
+                            </transition>
+                        </Menu> -->
+                    </td>
+                </tr>
+            </template>
+        </BaseTable>
+
        <NothingFound v-else>
             <BaseButton @click="showCreateDrawer = true" class="text-white bg-blue-600 hover:bg-blue-700 px-4 py-2">
                 <font-awesome-icon icon="fa-solid fa-plus" class="h-4 w-4 mr-2"/>
@@ -187,17 +318,18 @@
 import CreateLeaveRequest from "./Create.vue";
 import EditLeaveRequest from "./Edit.vue";
 import CardSkeleton from "@/Shared/Skeleton/CardSkeleton.vue";
-import { CheckIcon, XMarkIcon, ChevronDownIcon } from '@heroicons/vue/24/outline'
+import { CheckIcon, XMarkIcon, ChevronDownIcon, EyeIcon } from '@heroicons/vue/24/outline'
 
 export default {
     components: {
-        CreateLeaveRequest,
-        EditLeaveRequest,
-        CardSkeleton,
-        CheckIcon,
-        XMarkIcon,
-        ChevronDownIcon,
-    },
+    CreateLeaveRequest,
+    EditLeaveRequest,
+    CardSkeleton,
+    CheckIcon,
+    XMarkIcon,
+    ChevronDownIcon,
+    EyeIcon
+},
     props: {
         leave_requests:{
             type: Array,
@@ -222,6 +354,7 @@ export default {
     },
     data() {
         return {
+            viewType: 'card',
             showCreateDrawer: false,
             showEditDrawer: false,
             editLeaveRequest: '',
@@ -237,6 +370,10 @@ export default {
         }
     },
     methods: {
+        changeViewType(type){
+            this.viewType = type
+            localStorage.setItem("adminLeaveTable", this.viewType);
+        },
         deleteData(id) {
             this.$swal({
                 title: "Are you sure?",
@@ -296,6 +433,7 @@ export default {
     },
     created() {
         this.showFilter = localStorage.getItem("adminLeaveRequest") == "true" ? true: false;
+        this.viewType = localStorage.getItem("adminLeaveTable") == "card" ? 'card': 'table';
     },
 };
 </script>
