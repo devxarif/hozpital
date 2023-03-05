@@ -11,6 +11,21 @@
             </h2>
 
             <div class="flex items-center space-x-2 sm:space-x-3 ml-auto">
+                <div class="ml-6 hidden items-center rounded-lg bg-gray-100 p-0.5 sm:flex">
+                    <button @click="changeViewType('table')" type="button" class="rounded-md p-1.5 focus:outline-none text-gray-600 hover:bg-white hover:shadow-sm shadow-sm" :class="viewType == 'table' ? 'bg-white':''">
+                        <svg class="h-5 w-5" x-description="Heroicon name: mini/bars-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M2 3.75A.75.75 0 012.75 3h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 3.75zm0 4.167a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75a.75.75 0 01-.75-.75zm0 4.166a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75a.75.75 0 01-.75-.75zm0 4.167a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75a.75.75 0 01-.75-.75z" clip-rule="evenodd"></path>
+                        </svg>
+                        <span class="sr-only">Use list view</span>
+                    </button>
+                    <button @click="changeViewType('card')" type="button" class="rounded-md p-1.5 focus:outline-none ml-0.5 text-gray-600 hover:bg-white hover:shadow-sm shadow-sm" :class="viewType == 'card' ? 'bg-white':''">
+                        <svg class="h-5 w-5" x-description="Heroicon name: mini/squares-2x2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M4.25 2A2.25 2.25 0 002 4.25v2.5A2.25 2.25 0 004.25 9h2.5A2.25 2.25 0 009 6.75v-2.5A2.25 2.25 0 006.75 2h-2.5zm0 9A2.25 2.25 0 002 13.25v2.5A2.25 2.25 0 004.25 18h2.5A2.25 2.25 0 009 15.75v-2.5A2.25 2.25 0 006.75 11h-2.5zm9-9A2.25 2.25 0 0011 4.25v2.5A2.25 2.25 0 0013.25 9h2.5A2.25 2.25 0 0018 6.75v-2.5A2.25 2.25 0 0015.75 2h-2.5zm0 9A2.25 2.25 0 0011 13.25v2.5A2.25 2.25 0 0013.25 18h2.5A2.25 2.25 0 0018 15.75v-2.5A2.25 2.25 0 0015.75 11h-2.5z" clip-rule="evenodd"></path>
+                            </svg>
+                        <span class="sr-only">Use grid view</span>
+                    </button>
+                </div>
+
                 <BaseButton v-if="filter.keyword && filter.keyword.length" as="link" :href="route('admin.product.index')" class="text-white bg-red-600 hover:bg-red-700 px-3 py-2">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -92,7 +107,7 @@
             </div>
         </transition>
 
-        <div>
+        <div class="mb-5">
             <div class="hidden sm:block">
                 <div class="border-b border-gray-200">
                     <nav class="-mb-px flex space-x-8" aria-label="Tabs">
@@ -122,8 +137,9 @@
         <!-- Body Part  -->
        <CardSkeleton :show="loading" v-if="loading"/>
 
-       <template v-else-if="!loading && products && products.data.length">
-           <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-4 mt-5">
+        <!-- Card View  -->
+       <template v-else-if="!loading && products && products.data.length && viewType == 'card'">
+           <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
                <span v-for="product in products.data" :key="product.id" class="block p-6 bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100   ">
                    <div class="flex flex-wrap justify-between items-start">
                        <div class="relative mb-5">
@@ -172,7 +188,7 @@
                         <p v-if="product.selling_price"><b>Selling Price:</b> {{ product.selling_price }}</p>
                     </div>
                     <p v-if="product.quantity"><b>Quantity:</b> {{ product.quantity }}</p>
-                    <p v-if="product.expire_date"><b>Expire Date:</b> {{ formateDate(product.expire_date, 'MMMM D') }}</p>
+                    <p v-if="product.expire_date"><b>Expire Date:</b> {{ formateDate(product.expire_date) }}</p>
                     <div class="mt-5">
                         <span :class="product.type == 'medicine' ? 'bg-green-500':'bg-cyan-500'" class="text-white text-sm font-medium mr-2 px-3 py-2 rounded-full   capitalize">
                             {{ product.type }}
@@ -182,6 +198,102 @@
            </div>
            <Pagination :data="products" v-if="products && products.data.length && products.total > 20" class="my-5"/>
        </template>
+
+        <!-- Table View  -->
+        <BaseTable v-else-if="!loading && products && products.data.length && viewType == 'table'" :items="products">
+            <template v-slot:head>
+                <tr class="divide-x divide-gray-200">
+                    <th class="py-3.5 pl-4 pr-4 text-left text-sm font-semibold text-gray-900 sm:pl-6">Name</th>
+                    <th class="px-4 py-3.5 text-left text-sm font-semibold text-gray-900 break-words">Category</th>
+                    <th class="px-4 py-3.5 text-left text-sm font-semibold text-gray-900 break-words">Price</th>
+                    <th class="px-4 py-3.5 text-left text-sm font-semibold text-gray-900 break-words">Type</th>
+                    <th class="px-4 py-3.5 text-left text-sm font-semibold text-gray-900 break-words">Expire Date</th>
+                    <th width="80px" class="py-3.5 pl-4 pr-4 text-left text-sm font-semibold text-gray-900 sm:pr-6">Action</th>
+                </tr>
+            </template>
+            <template v-slot:body>
+                <tr v-for="product in products.data" :key="product.id" class="divide-x divide-gray-200">
+                    <td class="py-4 pl-4 pr-4 text-sm font-medium text-gray-900 sm:pl-6">
+                        <div class="flex items-center">
+                            <img class="h-16 w-16 rounded-md object-cover" :src="product.image" alt="">
+                            <div class="ml-4">
+                                <div class="font-medium text-gray-900">{{ product.name }}</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="p-4 text-sm text-gray-500 break-all">
+                        <a href="">
+                            {{ product.product_category.name }}
+                        </a>
+                    </td>
+                    <td class="p-4 text-sm text-gray-500 break-all">
+                        <p v-if="product.buying_price"><b>Buying Price:</b> {{ product.buying_price }}</p>
+                        <p v-if="product.selling_price"><b>Selling Price:</b> {{ product.selling_price }}</p>
+                        <p v-if="product.selling_price"><b>Available Quantity:</b> {{ product.quantity }}</p>
+                    </td>
+                    <td class="p-4 text-sm text-gray-500 break-all">
+                        <span :class="product.type == 'medicine' ? 'bg-green-500':'bg-cyan-500'" class="text-white text-sm font-medium mr-2 px-3 py-2 rounded-full   capitalize">
+                            {{ product.type }}
+                        </span>
+                    </td>
+                    <td class="p-4 text-sm text-gray-500 break-all">
+                        {{ formateDate(product.expire_date) }}
+                    </td>
+
+
+
+                    <!-- <div class="flex justify-between">
+                        <p v-if="product.buying_price"><b>Buying Price:</b> {{ product.buying_price }}</p>
+                        <p v-if="product.selling_price"><b>Selling Price:</b> {{ product.selling_price }}</p>
+                    </div>
+                    <p v-if="product.quantity"><b>Quantity:</b> {{ product.quantity }}</p>
+                    <p v-if="product.expire_date"><b>Expire Date:</b> {{ formateDate(product.expire_date) }}</p>
+                    <div class="mt-5">
+                        <span :class="product.type == 'medicine' ? 'bg-green-500':'bg-cyan-500'" class="text-white text-sm font-medium mr-2 px-3 py-2 rounded-full   capitalize">
+                            {{ product.type }}
+                        </span>
+                    </div> -->
+
+
+
+                    <td class="py-4 pl-4 pr-4 text-sm text-gray-500 sm:pr-6">
+                        <Menu as="div" class="inline-block text-left">
+                            <div>
+                                <MenuButton class="flex items-center rounded-full text-gray-400 hover:text-gray-600 focus:outline-none">
+                                    <span class="sr-only">Open options</span>
+                                    <font-awesome-icon icon="fa-solid fa-ellipsis-vertical" class="h-6 w-6"/>
+                                </MenuButton>
+                            </div>
+
+                            <transition enter-active-class="transition ease-out duration-100" enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100" leave-active-class="transition ease-in duration-75" leave-from-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
+                                <MenuItems class="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                                    <div class="py-1 text-sm">
+                                    <MenuItem v-slot="{ active }">
+                                        <a href="javascript:void(0)" @click.prevent="editData(product)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
+                                            <font-awesome-icon icon="fa-solid fa-pen-to-square" class="mr-3 h-5 w-5 text-blue-500 group-hover:text-blue-500"/>
+                                            Edit
+                                        </a>
+                                    </MenuItem>
+                                    <MenuItem v-slot="{ active }">
+                                        <a href="javascript:void(0)" @click.prevent="editData(product)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
+                                            <font-awesome-icon icon="fa-solid fa-eye" class="mr-3 h-5 w-5 text-sky-500 group-hover:text-sky-500"/>
+                                            Details
+                                        </a>
+                                    </MenuItem>
+                                    <MenuItem v-slot="{ active }">
+                                        <a href="javascript:void(0)" @click.prevent="deleteData(product.id)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
+                                            <font-awesome-icon icon="fa-solid fa-trash-can" class="mr-3 h-5 w-5 text-red-500 group-hover:text-red-500"/>
+                                            Delete
+                                        </a>
+                                    </MenuItem>
+                                    </div>
+                                </MenuItems>
+                            </transition>
+                        </Menu>
+                    </td>
+                </tr>
+            </template>
+        </BaseTable>
 
        <NothingFound v-else>
             <BaseButton @click="showCreateDrawer = true" class="text-white bg-blue-600 hover:bg-blue-700 px-4 py-2">
@@ -226,6 +338,7 @@ export default {
     },
     data() {
         return {
+            viewType: 'card',
             showCreateDrawer: false,
             showEditDrawer: false,
             editProduct: '',
@@ -241,6 +354,10 @@ export default {
         }
     },
     methods: {
+        changeViewType(type){
+            this.viewType = type
+            localStorage.setItem("adminProductView", this.viewType);
+        },
         deleteData(id) {
             this.$swal({
                 title: "Are you sure?",
@@ -283,6 +400,7 @@ export default {
     },
     created() {
         this.showFilter = localStorage.getItem("adminProduct") == "true" ? true: false;
+        this.viewType = localStorage.getItem("adminProductView") == "card" ? 'card': 'table';
     },
 };
 </script>
