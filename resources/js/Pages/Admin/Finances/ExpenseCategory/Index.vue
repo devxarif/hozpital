@@ -12,12 +12,8 @@
             </h2>
 
             <div class="flex items-center space-x-2 sm:space-x-3 ml-auto">
-                <BaseButton v-if="filter.keyword && filter.keyword.length" as="link" :href="route('admin.expenseCategory.index')" class="text-white bg-red-600 hover:bg-red-700 px-3 py-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                    Clear Filter
-                </BaseButton>
+                <!-- Clear Filter -->
+                <ClearFilter v-if="filter.keyword && filter.keyword.length"  :href="route('admin.expenseCategory.index')"/>
 
                 <BaseButton @click="toggleFilter" class="text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 px-3 py-2">
                     <svg class="mr-2 h-6 w-6" stroke="currentColor" fill="none" stroke-width="0" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"></path></svg>
@@ -59,7 +55,7 @@
                         </MenuItems>
                     </transition>
                 </Menu>
-                <BaseButton as="link" :href="route('admin.expense.index')" class="text-white bg-green-500 hover:bg-green-700 px-4 py-2.5">
+                <BaseButton  :href="route('admin.expense.index')" class="text-white bg-green-500 hover:bg-green-700 px-4 py-2.5">
                     <font-awesome-icon icon="fa-solid fa-plus" class="h-4 w-4 mr-2"/>
                     {{ __('Expense List') }}
                 </BaseButton>

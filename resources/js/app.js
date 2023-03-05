@@ -56,6 +56,7 @@ import Pagination from "@/Shared/Pagination.vue";
 import Breadcrumb from "@/Shared/Breadcrumb.vue";
 import BreadcrumbLink from "@/Shared/BreadcrumbLink.vue";
 import BaseTable from "@/Shared/BaseTable.vue";
+import ClearFilter from "@/Shared/ClearFilter.vue";
 
 // Icons
 import LoadingIcon from "@/Shared/Icons/LoadingIcon.vue";
@@ -112,6 +113,7 @@ createInertiaApp({
                 Breadcrumb,
                 BreadcrumbLink,
                 BaseTable,
+                ClearFilter,
                 dayjs
             },
             methods:{
