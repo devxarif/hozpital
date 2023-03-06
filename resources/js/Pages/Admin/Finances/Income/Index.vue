@@ -14,10 +14,10 @@
             <div class="flex items-center space-x-2 sm:space-x-3 ml-auto">
                 <div class="ml-6 hidden items-center rounded-lg bg-gray-100 p-0.5 sm:flex">
                     <button @click="changeViewType('table')" type="button" class="rounded-md p-1.5 focus:outline-none text-gray-600 hover:bg-white hover:shadow-sm shadow-sm" :class="viewType == 'table' ? 'bg-white':''">
-                        <GridIcon/>
+                        <ListIcon/>
                     </button>
                     <button @click="changeViewType('card')" type="button" class="rounded-md p-1.5 focus:outline-none ml-0.5 text-gray-600 hover:bg-white hover:shadow-sm shadow-sm" :class="viewType == 'card' ? 'bg-white':''">
-                        <ListIcon/>
+                        <GridIcon/>
                     </button>
                 </div>
 

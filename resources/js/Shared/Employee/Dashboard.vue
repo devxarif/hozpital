@@ -17,10 +17,10 @@
                     <div class="view-icons mr-[10px]">
                         <div class="ml-6 hidden items-center rounded-lg bg-gray-100 p-0.5 sm:flex">
                             <button type="button" class="rounded-md p-1.5 text-gray-600 hover:bg-white hover:shadow-sm focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500">
-                                <GridIcon/>
+                                <ListIcon/>
                             </button>
                             <button type="button" class="ml-0.5 rounded-md bg-white p-1.5 text-gray-600 shadow-sm focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500">
-                                <ListIcon/>
+                                <GridIcon/>
                             </button>
                         </div>
                         <!-- <a href="employees.html"
