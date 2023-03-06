@@ -1,11 +1,11 @@
 @if ($cart_items && count($cart_items))
     <div class="max-w-4xl mx-auto">
-        <h1 class="text-3xl font-extrabold tracking-tight text-gray-900">Shopping Cart</h1>
+        <h1 class="text-3xl font-extrabold tracking-tight text-gray-900">Cart</h1>
 
         <form wire:submit.prevent="save" class="mt-12">
             <section aria-labelledby="cart-heading">
                 <h2 id="cart-heading" class="sr-only">
-                    Items in your shopping cart
+                    Items in your cart
                 </h2>
 
                 <ul role="list" class="border-t border-b border-gray-200 divide-y divide-gray-200">
@@ -129,7 +129,7 @@
                     Your cart is currently empty
                 </h1>
                 <p class="mt-2 text-gray-700">
-                    Before proceed to checkout you must add some products to your shopping cart.
+                    Before proceed to checkout you must add some products to your cart.
                 </p>
                 <a class="inline-flex items-center justify-center px-4 py-2 bg-blue-600 border border-transparent rounded-md font-medium text-white hover:bg-blue-500 focus:outline-none focus:border-blue-700 focus:ring focus:ring-blue-200 active:bg-blue-600 transition mt-5 px-8 " href="{{ route('website.products') }}">
                     Browse Products

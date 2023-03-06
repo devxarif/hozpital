@@ -19,7 +19,7 @@
             },
             className: {
                 type: String,
-                default: "block mb-2 text-sm font-medium",
+                default: "flex mb-2 text-sm font-medium",
             },
             id: {
                 type: String,

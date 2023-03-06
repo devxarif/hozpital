@@ -28,57 +28,55 @@
 
                                 <form class="mb-4" @submit.prevent="saveData">
                                     <div class="mb-4">
-                                        <Label :name="__('Select Bed Type')" id="bed_type" :hasError="form.errors.bed_type"/>
-                                        <div class="grid grid-cols-3 gap-3 mx-auto">
-                                            <div class="relative" v-for="bed_type in bed_types" :key="bed_type.id">
-                                                <input :checked="bed_type.id == form.bed_type" @change="bedTypeChange" class="sr-only peer" type="radio" :value="bed_type.id" :id="bed_type.slug" v-model="form.bed_type">
-                                                <label class="flex p-2 bg-white border border-gray-300 rounded-lg cursor-pointer focus:outline-none hover:bg-gray-50 peer-checked:ring-blue-500 peer-checked:ring-2 peer-checked:border-transparent flex-col peer-checked:shadow-xl" :for="bed_type.slug">
-                                                    <span class="text-lg font-bold">{{ bed_type.name }}</span>
-                                                    <ul class="text-sm">
-                                                        <li><span class="text-md font-medium">Total Beds</span> : {{ bed_type.beds_count }}</li>
-                                                    </ul>
-                                                </label>
-                                            </div>
+                                        <Label :name="__('Available Beds')" id="bed_create" :hasError="form.errors.bed" className="flex mb-2 text-sm font-medium gap-1">
+                                            <InfoIcon className="w-4 h-4" v-tooltip="'Floor - Bed Type - Bed Number - Charge'"/>
+                                        </Label>
+                                        <div class="flex items-center">
+                                            <Multiselect id="bed_create" :close-on-select="true" :can-clear="true"
+                                            :searchable="true" v-model="form.bed" :create-option="false"
+                                            placeholder="Select Bed" :options="beds.map(item => ({
+                                                value: item.id, label: item?.floor?.name+' - '+item?.bed_type?.name+' - '+item.number+' - $'+item.charge
+                                            }))"  />
                                         </div>
-                                        <ErrorMessage :name="form.errors.bed_type"/>
+                                        <ErrorMessage :name="form.errors.bed"/>
                                     </div>
                                     <div class="grid grid-cols-2 gap-2">
                                         <div class="mb-4">
-                                            <Label :name="__('Floor')" id="bed_floor" :hasError="form.errors.floor"/>
-                                            <Multiselect id="bed_floor" :close-on-select="true" :can-clear="true"
-                                        :searchable="true" v-model="form.floor" :create-option="false"
-                                        placeholder="Select Floor" :options="floors.map(item => ({
-                                            value: item.id, label: item.name
-                                        }))"  />
-                                            <ErrorMessage :name="form.errors.floor"/>
+                                            <Label name="Available Patient" id="patient_create" :hasError="form.errors.patient" :required="false"/>
+                                            <Multiselect id="patient_create" :close-on-select="true" :can-clear="true"
+                                                :searchable="true" v-model="form.patient" :create-option="false"
+                                                placeholder="Select Patient" :options="patients.map(item => ({
+                                                    value: item.id, label: item?.user?.name
+                                                }))" /> 
+                                            <ErrorMessage :name="form.errors.patient"/>                                           
                                         </div>
                                         <div class="mb-4">
-                                            <Label :name="__('Bed Number')" id="bed_number" :hasError="form.errors.number"/>
-                                            <BaseInput v-model="form.number" placeholder="Number" id="bed_number" :hasError="form.errors.number"/>
+                                            <Label name="Doctor" id="doctor_create" :hasError="form.errors.doctor" :required="false"/>
+                                            <Multiselect id="doctor_create" :close-on-select="true" :can-clear="true"
+                                                :searchable="true" v-model="form.doctor" :create-option="false"
+                                                placeholder="Select Doctor" :options="doctors.map(item => ({
+                                                    value: item.id, label: item?.user?.name
+                                                }))" />  
+                                            <ErrorMessage :name="form.errors.doctor"/>                                          
                                         </div>
                                     </div>
                                     <div class="grid grid-cols-2 gap-2">
                                         <div class="mb-4">
-                                            <Label :name="__('Charge')+' ($)'" id="bed_charge" :hasError="form.errors.charge" :required="false" />
-                                            <BaseInput v-model="form.charge" placeholder="Bed Charge" id="bed_charge" :hasError="form.errors.charge"/>
+                                            <Label :name="__('Allotment Time')" id="start_date" :hasError="form.errors.allotment_time"/>
+                                            <Datepicker v-model="form.allotment_time" :enableTimePicker="true" class="border-none bg-gray-50 border text-md rounded-lg block w-full p-1 border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500    "
+                                                @update:modelValue="handleStartDate" :placeholder="__('Select Allotment Time')" :default-value="new Date()" />
+                                            <ErrorMessage :name="form.errors.allotment_time"/>
                                         </div>
                                         <div class="mb-4">
-                                            <Label :name="__('Status')" :hasError="form.errors.status" :required="false"/>
-                                            <div class="flex gap-2">
-                                                <label for="patient_male" class="w-full rounded-lg flex items-center pl-4 border border-gray-200  py-3 ml-2 text-sm font-medium text-gray-700 gap-2 focus:outline-none">
-                                                    <input id="patient_male" value="alloted" v-model="form.status" name="status" type="radio" class="h-4 w-4 border-gray-300 text-blue-600 focus:outline-none">
-                                                    <span>{{ __('Alloted') }}</span>
-                                                </label>
-                                                <label for="patient_female" class="w-full rounded-lg flex items-center pl-4 border border-gray-200  py-3 ml-2 text-sm font-medium text-gray-700 gap-2 focus:outline-none">
-                                                    <input id="patient_female" value="unalloted" v-model="form.status" name="status" type="radio" class="h-4 w-4 border-gray-300 text-blue-600 focus:outline-none">
-                                                    <span>{{ __('Unalloted') }}</span>
-                                                </label>
-                                            </div>
+                                            <Label :name="__('Discharge TIme')" id="end_date" :hasError="form.errors.discharge_time" :required="false"/>
+                                            <Datepicker v-model="form.discharge_time" :enableTimePicker="true" class="border-none bg-gray-50 border text-md rounded-lg block w-full p-1    border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500    "
+                                                @update:modelValue="handleEndDate" :placeholder="__('Select Discharge Time')" :default-value="new Date()" />
+                                            <ErrorMessage :name="form.errors.discharge_time"/>
                                         </div>
                                     </div>
                                     <div class="mb-4">
-                                        <Label :name="__('Description')" id="bed_description" :hasError="form.errors.description" :required="false"/>
-                                        <BaseTextarea v-model="form.description" placeholder="Description" id="bed_description" :hasError="form.errors.description"/>
+                                        <Label :name="__('Description')" id="bed_allotment_description" :hasError="form.errors.description" :required="false"/>
+                                        <BaseTextarea v-model="form.description" placeholder="Description" id="bed_allotment_description" :hasError="form.errors.description"/>
                                     </div>
                                     <button :disabled="form.processing"  type="submit"
                                         class="text-white justify-center flex items-center bg-blue-700 hover:bg-blue-800 w-full focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-md px-5 py-2.5 mb-2   focus:outline-none  mt-3">
@@ -99,49 +97,51 @@
 </template>
 
 <script>
+import InfoIcon from "@/Shared/Icons/InfoIcon.vue"
+
 export default {
     props: {
-        bed: {
-            type: Object,
-            required: true,
-        },
+        // bed: {
+        //     type: Object,
+        //     required: true,
+        // },
         show: {
             type: Boolean,
             default: false
-        }
+        },
+        doctors: {
+            type: Boolean,
+            default: false
+        },
+    },
+    components:{
+        InfoIcon
     },
     data() {
         return {
             form: this.$inertia.form({
-                bed_type: this.bed.bed_type_id,
-                description:  this.bed.description,
-                floor: this.bed.bed_floor_id,
-                number: this.bed.number,
-                charge: this.bed.charge,
-                status: this.bed.status,
+                bed: "",
+                patient: "",
+                doctor: "",
+                allotment_time: "",
+                discharge_time: "",
+                description: "",
             }),
 
-            bed_types: [],
-            floors: []
+            patients: [],
         };
     },
     watch: {
-        bed: {
-            handler() {
-                this.form.bed_type = this.bed.bed_type_id
-                this.form.description = this.bed.description
-                this.form.floor = this.bed.bed_floor_id
-                this.form.number = this.bed.number
-                this.form.charge = this.bed.charge
-                this.form.status = this.bed.status
+        'form.bed': {
+            async handler(val) {
+                let response = await axios.get(route('bed.availablePatients', val))
+                console.log(response.data)
+                this.patients = response.data
             },
             deep: true,
         },
     },
     methods: {
-        bedTypeChange(event) {
-            this.form.bed_type = event.target.value;
-        },
         saveData() {
             this.form.put(route("admin.bed.update", this.bed.id), {
                 onSuccess: () => {
@@ -150,19 +150,43 @@ export default {
                 },
             });
         },
-        async loadData(){
-            // Fetches bed types
-            let bed_type_response = await axios.get(route("fetch.bedTypes"));
-            this.bed_types = bed_type_response.data;
+        handleStartDate(startDate) {
+            const formatTime = this.formateDate(startDate, "YYYY-MM-DD HH:mm");
 
-            // Fetches bed floors
-            let bed_floor = await axios.get(route("fetch.bedFloors"));
-            this.floors = bed_floor.data;
+            if(this.form.discharge_time){
+                let dateCheck = this.checkDateValidity(formatTime, this.form.discharge_time);
+
+                if(!dateCheck){
+                    this.form.discharge_time = ''
+                    return this.toastError("Allotment date date must be grater than discharge date")
+                }
+            }
+
+            this.form.allotment_time = formatTime;
+        },
+        handleEndDate(endDate) {
+            const formatTime = this.formateDate(endDate, "YYYY-MM-DD HH:mm");
+
+            if(this.form.allotment_time){
+                let dateCheck = this.checkDateValidity(this.form.allotment_time, formatTime);
+
+                if(!dateCheck){
+                    this.form.discharge_time = ''
+                    return this.toastError("Allotment date date must be grater than discharge date")
+                }
+            }
+
+            this.form.discharge_time = formatTime;
+        },
+        async loadBeds(){
+            // Fetches bed beds
+            let bed = await axios.get(route("fetch.beds"));
+            this.beds = bed.data;
         },
     },
     created(){
         this.checkPagePermission('admin')
-        this.loadData()
+        this.loadBeds()
     }
 };
 </script>

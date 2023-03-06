@@ -49,7 +49,7 @@
                 </Menu>
                 <BaseButton @click="showCreateDrawer = true" class="text-white bg-blue-600 hover:bg-blue-700 px-4 py-2.5">
                     <font-awesome-icon icon="fa-solid fa-plus" class="h-4 w-4 mr-2"/>
-                   {{ __('Add Bed') }}
+                   {{ __('Add Bed Allotment') }}
                 </BaseButton>
             </div>
 
@@ -107,116 +107,32 @@
                                 </Menu>
                             </div>
                             <h2 class="my-1 font-bold text-lg tracking-tight text-gray-900 ">Bed Number: {{ bed.number }}</h2>
-                            <!-- <span class="text-xs font-semibold px-2 py-1 rounded bg-green-100 text-green-800   capitalize">
-                                {{ bed.status }}
-                            </span> -->
-                            <!-- <pre>
-                                {{ bed?.bed_allotment?.patient?.user?.name ?? '' }}
-                            </pre> -->
-                            <p v-if="bed.status == 'alloted'">Patient: {{ bed?.bed_allotment?.patient?.user?.name ?? '' }}</p>
+                            <p v-if="bed.status == 'alloted' && bed.bed_allotment && bed.bed_allotment.patient && bed.bed_allotment.patient.user">Patient: {{ bed?.bed_allotment?.patient?.user?.name ?? 'No Patient' }}</p>
+                            <span v-if="bed.status == 'unalloted'" class="text-xs font-semibold px-2 py-1 rounded bg-green-100 text-green-800   capitalize">
+                               Available
+                            </span>
                         </span>
                     </div>
                 </div>
             </span>
         </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <!-- Body Part  -->
-        <!-- <CardSkeleton :show="loading" v-if="loading"/>
-
-        <template v-else-if="!loading && beds">
-            <div class="mt-5" v-for="(bed_floors, index) in beds" :key="index">
-                <span class="block p-4 bg-white rounded-lg border border-gray-200    ">
-                    <h2 class="text-2xl font-bold tracking-tight text-gray-900 " v-if="bed_floors[0].floor">{{ bed_floors[0].floor?.name }}</h2>
-                    <div class="grid gap-6 md:grid-cols-4 xl:grid-cols-6 mt-2">
-                        <span v-for="bed in bed_floors" :key="bed.id" class="cursor-pointer block p-4 bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100   ">
-                            <div class="flex flex-wrap justify-between items-start">
-                                <AllotedBedIcon v-if="bed.status == 'alloted'"/>
-                                <UnallotedBedIcon v-else />
-
-                                <Menu as="div" class="relative inline-block text-left">
-                                    <div>
-                                        <MenuButton class="flex items-center rounded-full text-gray-400 hover:text-gray-600 focus:outline-none">
-                                            <span class="sr-only">Open options</span>
-                                            <font-awesome-icon icon="fa-solid fa-ellipsis-vertical" class="h-6 w-6"/>
-                                        </MenuButton>
-                                    </div>
-
-                                    <transition enter-active-class="transition ease-out duration-100" enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100" leave-active-class="transition ease-in duration-75" leave-from-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
-                                        <MenuItems class="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                                            <div class="py-1 text-sm">
-                                            <MenuItem v-slot="{ active }">
-                                                <a href="javascript:void(0)" @click.prevent="editData(bed)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
-                                                    <font-awesome-icon icon="fa-solid fa-pen-to-square" class="mr-3 h-5 w-5 text-blue-500 group-hover:text-blue-500"/>
-                                                    Edit
-                                                </a>
-                                            </MenuItem>
-                                            <MenuItem v-slot="{ active }">
-                                                <a href="javascript:void(0)" @click.prevent="editData(bed)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
-                                                    <font-awesome-icon icon="fa-solid fa-eye" class="mr-3 h-5 w-5 text-sky-500 group-hover:text-sky-500"/>
-                                                    Details
-                                                </a>
-                                            </MenuItem>
-                                            <MenuItem v-slot="{ active }">
-                                                <a href="javascript:void(0)" @click.prevent="deleteData(bed.id)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
-                                                    <font-awesome-icon icon="fa-solid fa-trash-can" class="mr-3 h-5 w-5 text-red-500 group-hover:text-red-500"/>
-                                                    Delete
-                                                </a>
-                                            </MenuItem>
-                                            </div>
-                                        </MenuItems>
-                                    </transition>
-                                </Menu>
-                            </div>
-                            <h2 class="my-1 font-bold text-lg tracking-tight text-gray-900 ">Bed Number: {{ bed.number }}</h2>
-                            <span class="text-xs font-semibold px-2 py-1 rounded bg-green-100 text-green-800   capitalize">
-                                {{ bed.status }}
-                            </span>
-                            <p v-if="bed.status == 'alloted'">Patient: Ariful Islam</p>
-                        </span>
-                    </div>
-                </span>
-            </div>
-        </template>
-
-        <NothingFound v-else>
-            <BaseButton @click="showCreateDrawer = true" class="text-white bg-blue-600 hover:bg-blue-700 px-4 py-2">
-                <font-awesome-icon icon="fa-solid fa-plus" class="h-4 w-4 mr-2"/>
-                {{ __('Add Bed') }}
-            </BaseButton>
-       </NothingFound> -->
-
-        <!-- <CreateBed :show="showCreateDrawer" @close-drawer="closeCreateDrawer"/>
-        <EditBed :show="showEditBed" @close-drawer="closeEditDrawer" :bed="editBed"/> -->
+        <CreateBedAllotment :show="showCreateDrawer" @close-drawer="closeCreateDrawer" :doctors="doctors"/>
+        <EditBedAllotment :show="showEditBedAllotment" @close-drawer="closeEditDrawer" :bed_allotment="editBedAllotment"/>
     </AppLayout>
 </template>
 
 <script>
-    // import CreateBed from "./Create.vue";
-    // import EditBed from "./Edit.vue";
+    import CreateBedAllotment from "./Create.vue";
+    import EditBedAllotment from "./Edit.vue";
     import CardSkeleton from "@/Shared/Skeleton/CardSkeleton.vue";
     import AllotedBedIcon from "@/Shared/Icons/AllotedBedIcon.vue";
     import UnallotedBedIcon from "@/Shared/Icons/UnallotedBedIcon.vue";
 
     export default {
         components: {
-            // CreateBed,
-            // EditBed,
+            CreateBedAllotment,
+            EditBedAllotment,
             CardSkeleton,
             AllotedBedIcon,
             UnallotedBedIcon,
@@ -233,13 +149,17 @@
             floors: {
                 type: Array,
                 default: () => []
-            }
+            },
+            doctors: {
+                type: Array,
+                default: () => []
+            },
         },
         data() {
             return {
                 showCreateDrawer: false,
-                showEditBed: false,
-                editBed: '',
+                showEditBedAllotment: false,
+                editBedAllotment: '',
 
                 beds: this.beds,
 
@@ -264,7 +184,7 @@
                 });
             },
             editData(bed){
-                this.showEditBed = true
+                this.showEditBedAllotment = true
                 this.editBed = bed
             },
             toggleFilter() {

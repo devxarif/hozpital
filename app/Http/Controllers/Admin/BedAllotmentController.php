@@ -2,16 +2,20 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Bed;
+use App\Models\Doctor;
+use App\Models\BedType;
+use App\Models\Patient;
+use App\Models\BedFloor;
+use App\Models\BedAllotment;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Bed\BedAllotmentCreateRequest;
+use App\Http\Requests\Admin\Bed\BedAllotmentUpdateRequest;
 use App\Http\Requests\Admin\Bed\BedCreateRequest;
 use App\Http\Requests\Admin\Bed\BedUpdateRequest;
-use App\Models\Bed;
-use App\Models\BedAllotment;
-use App\Models\BedFloor;
-use App\Models\BedType;
 use App\Services\Admin\BedAllotment\CreateBedAllotmentService;
 use App\Services\Admin\BedAllotment\UpdateBedAllotmentService;
-use Illuminate\Http\Request;
 
 class BedAllotmentController extends Controller
 {
@@ -22,41 +26,16 @@ class BedAllotmentController extends Controller
      */
     public function index(Request $request)
     {
-    //     $data['bed_types'] = BedType::withCount('beds')->latest()->get(['id','name','slug']);
-    //     // $beds = Bed::with('bedType:id,name','floor:id,name')->get()->groupBy(['bed_type_id', 'bed_floor_id']);
-
-    //     $query = Bed::query();
-
-    //     if($request->has('bed_type') && $request->filled('bed_type') && $request->bed_type != 'all'){
-    //         $query->whereHas('bedType', function($q) use ($request){
-    //             $q->where('slug', $request->bed_type);
-    //         });
-    //     }
-
-    // //    $data['beds'] = $query->with('bedType:id,name','floor:id,name')->latest()->get()->groupBy('bed_floor_id');
-
-    //     $data['filter'] = $request;
-
-        // $data['beds'] = Bed::with('bedType:id,name', 'floor:id,name')->get()->groupBy(['bed_floor_id', 'bed_type_id']);
         $data['beds'] = Bed::with(['bedType:id,name', 'floor:id,name','bedAllotment' => function($q){
-            return $q->with('patient:id,user_id', 'patient.user:id,name')->whereStatus(1)->first();
+            return $q->with('patient:id,user_id', 'patient.user:id,name')->first();
         }])
             ->get()
-            ->groupBy(['bed_floor_id', 'bed_type_id']);;
+            ->groupBy(['bed_floor_id', 'bed_type_id']);
         $data['floors'] = BedFloor::all(['id', 'name']);
         $data['types'] = BedType::all(['id', 'name']);
+        $data['doctors'] = Doctor::select('id','user_id')->with('user:id,name')->get();
 
         return inertia('Admin/Beds/BedAllotment/Index', $data);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
     }
 
     /**
@@ -64,12 +43,11 @@ class BedAllotmentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function store(BedCreateRequest $request)
+    public function store(BedAllotmentCreateRequest $request)
     {
         (new CreateBedAllotmentService)->execute($request);
 
         $this->flashSuccess('Bed allotment created successfully');
-
         return back();
     }
 
@@ -100,7 +78,7 @@ class BedAllotmentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function update(BedUpdateRequest $request, BedAllotment $bedAllotment)
+    public function update(BedAllotmentUpdateRequest $request, BedAllotment $bedAllotment)
     {
         (new UpdateBedAllotmentService)->execute($request, $bedAllotment);
 

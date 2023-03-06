@@ -14,4 +14,9 @@ class BedAllotment extends Model
     {
         return $this->belongsTo(Patient::class);
     }
+
+    public function bed(): BelongsTo
+    {
+        return $this->belongsTo(Bed::class);
+    }
 }

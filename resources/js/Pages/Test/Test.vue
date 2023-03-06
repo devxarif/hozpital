@@ -121,7 +121,7 @@
                     <div class="flex h-full flex-col bg-white shadow-xl">
                         <div class="flex-1 overflow-y-auto py-6 px-4 sm:px-6">
                             <div class="flex items-start justify-between rtl:flex-row-reverse">
-                                <h2 class="text-base tracking-wide font-extrabold text-gray-900"> My shopping cart </h2>
+                                <h2 class="text-base tracking-wide font-extrabold text-gray-900"> My cart </h2>
                                 <div class="ml-3 flex h-7 items-center">
                                     <button type="button" class="-m-2 p-2 text-gray-400 hover:text-gray-500" @click="open = false">
                                         <span class="sr-only">Close panel</span>
@@ -134,7 +134,7 @@
 
                                                             <div class="py-14 px-6 text-center sm:px-14 border-2 border-dashed mt-24">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto h-7 w-7 text-gray-400" viewBox="0 0 20 20" fill="currentColor"> <path fill-rule="evenodd" d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z" clip-rule="evenodd"></path></svg>
-                                    <p class="mt-4 font-semibold text-gray-900 text-base">Your shopping cart is empty</p>
+                                    <p class="mt-4 font-semibold text-gray-900 text-base">Your cart is empty</p>
                                     <p class="mt-2 text-gray-500 text-sm font-normal">Looks like you haven't added anything to your cart yet</p>
                                 </div>
 

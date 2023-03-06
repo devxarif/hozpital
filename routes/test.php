@@ -6,14 +6,17 @@ use App\Http\Controllers\TestController;
 use App\Imports\PatientImport;
 use App\Models\AppointmentSchedule;
 use App\Models\Bed;
+use App\Models\BedAllotment;
 use App\Models\ContactMessage;
 use App\Models\Department;
+use App\Models\Doctor;
 use App\Models\Employee;
 use App\Models\Holiday;
 use App\Models\Language;
 use App\Models\LeaveBalance;
 use App\Models\LeaveType;
 use App\Models\Order;
+use App\Models\Patient;
 use App\Models\Setting;
 // use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\User;
@@ -49,6 +52,46 @@ use sirajcse\UniqueIdGenerator\UniqueIdGenerator;
 
 Route::get('/test', function () {
 
+    return DB::getSchemaBuilder()->getColumnListing('users');
+
+
+    $alloted = BedAllotment::where(['bed_id' => 12, 'status' => 0])->first();
+    $patients = Patient::query();
+
+    if ($alloted) {
+        $patients->select('id','user_id')
+                ->with('user:id,name')
+                ->where('id', '!=', $alloted->patient_id);
+    }
+
+    return $patients->get();
+
+
+
+
+
+    return $available_beds = Bed::where('status', 'unalloted')->with('bedType:id,name', 'floor:id,name')->latest()->get();
+
+
+    $bed_allotment = BedAllotment::where('bed_id', 2)->update(['status' => 0]);
+    return BedAllotment::where('bed_id', 2)->get();
+
+    return Doctor::select('id','user_id')->with('user:id,name')->get();
+    return Patient::select('id','user_id')->with('user:id,name')->get();
+
+
+     $sorted = $available_beds->sortBy([
+        ['bed_floor_id','asc'],
+        ['bed_type_id','asc'],
+    ]);
+    //  $sorted = $available_beds->sortBy(['bed_floor_id', 'bed_type_id']);
+     return gettype($sorted->toArray());
+
+
+
+
+    $beds = Bed::where('status', 'unalloted')->get();
+    return $beds;
     return Bed::with(['bedType:id,name', 'floor:id,name','bedAllotment' => function($q){
         return $q->with('patient:id,user_id', 'patient.user:id,name')->whereStatus(1)->first();
     }])

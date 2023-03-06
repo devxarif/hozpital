@@ -2,21 +2,23 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Models\BedFloor;
+use App\Models\Bed;
 use App\Models\BedType;
-use App\Models\BloodDonor;
-use App\Models\ContactMessage;
 use App\Models\Country;
-use App\Models\Department;
-use App\Models\IncomeCategory;
-use App\Models\LeaveBalance;
-use App\Models\LeaveType;
-use App\Models\Manufacture;
 use App\Models\Patient;
-use App\Models\ProductCategory;
+use App\Models\BedFloor;
 use App\Models\TeamSize;
+use App\Models\LeaveType;
+use App\Models\BloodDonor;
+use App\Models\Department;
+use App\Models\Manufacture;
+use App\Models\BedAllotment;
+use App\Models\LeaveBalance;
 use Illuminate\Http\Request;
+use App\Models\ContactMessage;
+use App\Models\IncomeCategory;
+use App\Models\ProductCategory;
+use App\Http\Controllers\Controller;
 
 class GlobalController extends Controller
 {
@@ -40,6 +42,15 @@ class GlobalController extends Controller
         return Manufacture::latest()->get(['id', 'name', 'email', 'phone']);
     }
 
+    public function fetchBeds()
+    {
+        return Bed::select('id','bed_type_id','bed_floor_id','charge','number')
+                ->where('status', 'unalloted')
+                ->with('bedType:id,name', 'floor:id,name')
+                ->oldest('bed_floor_id')
+                ->get();
+    }
+
     public function fetchBedTypes()
     {
         return BedType::withCount('beds')->latest()->get(['id', 'name']);
@@ -48,6 +59,18 @@ class GlobalController extends Controller
     public function fetchBedFloors()
     {
         return BedFloor::latest()->get(['id', 'name']);
+    }
+
+    public function bedWiseAvailablePatient($bed_id)
+    {
+        $alloted = BedAllotment::where(['bed_id' => $bed_id, 'status' => 1])->first();
+        $patients = Patient::query();
+
+        if ($alloted) {
+            $patients->where('id', '!=', $alloted->patient_id);
+        }
+
+        return $patients->select('id','user_id')->with('user:id,name')->get();
     }
 
     public function bloodDonors()

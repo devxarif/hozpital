@@ -33,7 +33,7 @@
     class="absolute z-50 mt-2 w-80 rounded-md shadow-lg origin-top-right right-0">
     <div class="rounded-md ring-1 ring-black ring-opacity-5 py-1 bg-white">
         <div class="px-4 mt-px pb-6">
-            <h2 class="sr-only">Shopping Cart</h2>
+            <h2 class="sr-only">Cart</h2>
             <ul role="list" class="divide-y divide-gray-200">
                 @foreach ($cart_items as $item)
                     <li class="py-2 flex">
@@ -66,7 +66,7 @@
                 <p class="mt-6 text-center">
                     <a href="{{ route('website.bag') }}"
                         class="text-sm font-medium text-blue-600 hover:text-blue-500">
-                        View Shopping Cart
+                        View Cart
                     </a>
                 </p>
             @else
