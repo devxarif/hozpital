@@ -12,6 +12,15 @@
             </h2>
 
             <div class="flex items-center space-x-2 sm:space-x-3 ml-auto">
+                <div class="ml-6 hidden items-center rounded-lg bg-gray-100 p-0.5 sm:flex">
+                    <button @click="changeViewType('table')" type="button" class="rounded-md p-1.5 focus:outline-none text-gray-600 hover:bg-white hover:shadow-sm shadow-sm" :class="viewType == 'table' ? 'bg-white':''">
+                        <GridIcon/>
+                    </button>
+                    <button @click="changeViewType('card')" type="button" class="rounded-md p-1.5 focus:outline-none ml-0.5 text-gray-600 hover:bg-white hover:shadow-sm shadow-sm" :class="viewType == 'card' ? 'bg-white':''">
+                        <ListIcon/>
+                    </button>
+                </div>
+
                 <!-- Clear Filter -->
                 <ClearFilter v-if="filter.keyword && filter.keyword.length"  :href="route('admin.income.index')"/>
 
@@ -34,19 +43,19 @@
                         <MenuItems class="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                             <div class="py-1 text-sm">
                             <MenuItem v-slot="{ active }">
-                                <a href="javascript:void(0)" @click.prevent="editData(department)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
+                                <a href="javascript:void(0)" @click.prevent="editData(income)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
                                     <font-awesome-icon icon="fa-solid fa-plus" class="h-4 w-4 mr-2"/>
                                     As PDF
                                 </a>
                             </MenuItem>
                             <MenuItem v-slot="{ active }">
-                                <a href="javascript:void(0)" @click.prevent="editData(department)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
+                                <a href="javascript:void(0)" @click.prevent="editData(income)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
                                     <font-awesome-icon icon="fa-solid fa-trash-can" class="h-4 w-4 mr-2 "/>
                                     As Excel
                                 </a>
                             </MenuItem>
                             <MenuItem v-slot="{ active }">
-                                <a href="javascript:void(0)" @click.prevent="editData(department)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
+                                <a href="javascript:void(0)" @click.prevent="editData(income)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
                                     <font-awesome-icon icon="fa-solid fa-trash-can" class="h-4 w-4 mr-2 "/>
                                     As CSV
                                 </a>
@@ -94,7 +103,8 @@
         <!-- Body Part  -->
        <CardSkeleton :show="loading" v-if="loading"/>
 
-       <template v-else-if="!loading && incomes && incomes.data.length">
+        <!-- Card View  -->
+       <template v-else-if="!loading && incomes && incomes.data.length && viewType == 'card'">
            <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
                <span v-for="income in incomes.data" :key="income.id" class="block p-6 bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100   ">
                    <div class="flex flex-wrap justify-between items-start">
@@ -152,6 +162,78 @@
            <Pagination :data="incomes" v-if="incomes && incomes.data.length && incomes.total > 20" class="mt-5"/>
        </template>
 
+        <!-- Table View  -->
+        <BaseTable v-else-if="!loading && incomes && incomes.data.length && viewType == 'table'" :items="incomes">
+            <template v-slot:head>
+                <tr class="divide-x divide-gray-200">
+                    <th class="py-3.5 pl-4 pr-4 text-left text-sm font-semibold text-gray-900 sm:pl-6">Invoice No</th>
+                    <th class="py-3.5 pl-4 pr-4 text-left text-sm font-semibold text-gray-900 sm:pl-6">Title</th>
+                    <th class="px-4 py-3.5 text-left text-sm font-semibold text-gray-900 break-words">Category</th>
+                    <th class="px-4 py-3.5 text-left text-sm font-semibold text-gray-900 break-words">Amount</th>
+                    <th class="px-4 py-3.5 text-left text-sm font-semibold text-gray-900 break-words">Date</th>
+                    <th class="px-4 py-3.5 text-left text-sm font-semibold text-gray-900 break-words">Attachment</th>
+                    <th width="80px" class="py-3.5 pl-4 pr-4 text-left text-sm font-semibold text-gray-900 sm:pr-6">Action</th>
+                </tr>
+            </template>
+            <template v-slot:body>
+                <tr v-for="income in incomes.data" :key="income.id" class="divide-x divide-gray-200">
+                    <td class="p-4 text-sm text-gray-500 break-all">
+                        #{{ income.invoice_number }}
+                    </td>
+                    <td class="p-4 text-sm text-gray-500 break-all">
+                        {{ income.title }}
+                    </td>
+                    <td class="p-4 text-sm text-gray-500 break-all">
+                        {{ income.income_category?.name ?? '' }}
+                    </td>
+                    <td class="p-4 text-sm text-gray-500 break-all">
+                        {{ income.amount }}
+                    </td>
+                    <td class="p-4 text-sm text-gray-500 break-all">
+                        {{ income.date }}
+                    </td>
+                    <td class="p-4 text-sm text-gray-500 break-all">
+                        <a href="" class="underline cursor-pointer">{{ __('Download') }}</a>
+                    </td>
+                    <td class="py-4 pl-4 pr-4 text-sm text-gray-500 sm:pr-6">
+                        <Menu as="div" class="inline-block text-left">
+                            <div>
+                                <MenuButton class="flex items-center rounded-full text-gray-400 hover:text-gray-600 focus:outline-none">
+                                    <span class="sr-only">Open options</span>
+                                    <font-awesome-icon icon="fa-solid fa-ellipsis-vertical" class="h-6 w-6"/>
+                                </MenuButton>
+                            </div>
+
+                            <transition enter-active-class="transition ease-out duration-100" enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100" leave-active-class="transition ease-in duration-75" leave-from-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
+                                <MenuItems class="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                                    <div class="py-1 text-sm">
+                                    <MenuItem v-slot="{ active }">
+                                        <a href="javascript:void(0)" @click.prevent="editData(income)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
+                                            <font-awesome-icon icon="fa-solid fa-pen-to-square" class="mr-3 h-5 w-5 text-blue-500 group-hover:text-blue-500"/>
+                                            Edit
+                                        </a>
+                                    </MenuItem>
+                                    <MenuItem v-slot="{ active }">
+                                        <a href="javascript:void(0)" @click.prevent="editData(income)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
+                                            <font-awesome-icon icon="fa-solid fa-eye" class="mr-3 h-5 w-5 text-sky-500 group-hover:text-sky-500"/>
+                                            Details
+                                        </a>
+                                    </MenuItem>
+                                    <MenuItem v-slot="{ active }">
+                                        <a href="javascript:void(0)" @click.prevent="deleteData(income.id)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
+                                            <font-awesome-icon icon="fa-solid fa-trash-can" class="mr-3 h-5 w-5 text-red-500 group-hover:text-red-500"/>
+                                            Delete
+                                        </a>
+                                    </MenuItem>
+                                    </div>
+                                </MenuItems>
+                            </transition>
+                        </Menu>
+                    </td>
+                </tr>
+            </template>
+        </BaseTable>
+
        <NothingFound v-else>
             <BaseButton @click="showCreateDrawer = true" class="text-white bg-blue-600 hover:bg-blue-700 px-4 py-2">
                 <font-awesome-icon icon="fa-solid fa-plus" class="h-4 w-4 mr-2"/>
@@ -191,6 +273,7 @@ export default {
     },
     data() {
         return {
+            viewType: 'card',
             showCreateDrawer: false,
             showEditDrawer: false,
             editIncome: '',
@@ -205,6 +288,10 @@ export default {
         }
     },
     methods: {
+        changeViewType(type){
+            this.viewType = type
+            localStorage.setItem("adminIncomeViewType", this.viewType);
+        },
         deleteData(id) {
             this.$swal({
                 title: "Are you sure?",
@@ -243,6 +330,7 @@ export default {
     },
     created() {
         this.showFilter = localStorage.getItem("adminIncome") == "true" ? true: false;
+        this.viewType = localStorage.getItem("adminIncomeViewType") == "card" ? 'card': 'table';
     },
 };
 </script>
