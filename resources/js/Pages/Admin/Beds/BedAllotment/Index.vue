@@ -56,7 +56,7 @@
         </div>
         <div>
              <span class="mr-5"><AllotedBedIcon class="h-12 w-12 inline"/> = Alloted</span>
-             <span><UnallotedBedIcon class="h-12 w-12 inline"/> = Unalloted</span>
+             <span><FreeBedIcon class="h-12 w-12 inline"/> = Free</span>
         </div>
 
         <div class="mt-5">
@@ -70,7 +70,7 @@
                         <span v-for="(bed, k) in bed_types" :key="k" class="cursor-pointer block p-3 bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100">
                             <div class="flex flex-wrap justify-between items-start">
                                 <AllotedBedIcon v-if="bed.status == 'alloted'" class="h-12 w-12"/>
-                                <UnallotedBedIcon v-else class="h-12 w-12"/>
+                                <FreeBedIcon v-else class="h-12 w-12"/>
 
                                 <Menu as="div" class="relative inline-block text-left">
                                     <div>
@@ -114,7 +114,7 @@
                             </div>
                             <h2 class="my-1 font-bold text-lg tracking-tight text-gray-900 ">Bed Number: {{ bed.number }}</h2>
                             <p v-if="bed.status == 'alloted' && bed.bed_allotment && bed.bed_allotment.patient && bed.bed_allotment.patient.user">Patient: {{ bed?.bed_allotment?.patient?.user?.name ?? 'No Patient' }}</p>
-                            <span v-if="bed.status == 'unalloted'" class="text-xs font-semibold px-2 py-1 rounded bg-green-100 text-green-800   capitalize">
+                            <span v-if="bed.status == 'free'" class="text-xs font-semibold px-2 py-1 rounded bg-green-100 text-green-800   capitalize">
                                Available
                             </span>
                         </span>
@@ -133,7 +133,7 @@
     import EditBedAllotment from "./Edit.vue";
     import CardSkeleton from "@/Shared/Skeleton/CardSkeleton.vue";
     import AllotedBedIcon from "@/Shared/Icons/AllotedBedIcon.vue";
-    import UnallotedBedIcon from "@/Shared/Icons/UnallotedBedIcon.vue";
+    import FreeBedIcon from "@/Shared/Icons/FreeBedIcon.vue";
     import { library } from '@fortawesome/fontawesome-svg-core'
     import { faUserPlus } from '@fortawesome/free-solid-svg-icons'
     library.add(faUserPlus)
@@ -144,7 +144,7 @@
             EditBedAllotment,
             CardSkeleton,
             AllotedBedIcon,
-            UnallotedBedIcon,
+            FreeBedIcon,
             faUserPlus,
         },
         props: {

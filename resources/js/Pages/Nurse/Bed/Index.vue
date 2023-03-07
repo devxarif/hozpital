@@ -95,7 +95,7 @@
                     <div class="mt-1">
                         <Multiselect id="nurse_bed_status" :close-on-select="true" :can-clear="true"
                             :searchable="false" v-model="filterForm.status" :create-option="false"
-                            placeholder="Status" :options="[{ value: 'alloted', label: 'Alloted' },{ value: 'unalloted', label: 'Unalloted' },]"  />
+                            placeholder="Status" :options="[{ value: 'alloted', label: 'Alloted' },{ value: 'free', label: 'Free' },]"  />
                     </div>
                 </div>
                 <div>

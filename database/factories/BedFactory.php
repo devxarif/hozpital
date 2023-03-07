@@ -24,7 +24,7 @@ class BedFactory extends Factory
             'bed_floor_id' => BedFloor::inRandomOrder()->value('id'),
             'charge' => rand(100, 1000),
             'number' => rand(444, 999),
-            'status' => Arr::random(['alloted', 'unalloted']),
+            'status' => Arr::random(['alloted', 'free']),
             'description' => fake()->sentence,
         ];
     }

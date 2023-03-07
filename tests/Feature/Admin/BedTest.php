@@ -8,13 +8,6 @@ beforeEach(function () {
     $this->user = createUser();
 });
 
-// $table->foreignIdFor(BedType::class)->constrained()->cascadeOnDelete();
-// $table->foreignIdFor(BedFloor::class)->constrained()->cascadeOnDelete();
-// $table->string('number');
-// $table->float('charge')->nullable()->default(0);
-// $table->enum('status', ['alloted','unalloted'])->default('unalloted');
-// $table->text('description')->nullable();
-
 test('bed create validation redirect back to form', function () {
     actingAs($this->user)
     ->post(route('admin.bed.store'), [

@@ -70,7 +70,7 @@ Route::get('/test', function () {
 
 
 
-    return $available_beds = Bed::where('status', 'unalloted')->with('bedType:id,name', 'floor:id,name')->latest()->get();
+    return $available_beds = Bed::where('status', 'free')->with('bedType:id,name', 'floor:id,name')->latest()->get();
 
 
     $bed_allotment = BedAllotment::where('bed_id', 2)->update(['status' => 0]);
@@ -90,7 +90,7 @@ Route::get('/test', function () {
 
 
 
-    $beds = Bed::where('status', 'unalloted')->get();
+    $beds = Bed::where('status', 'free')->get();
     return $beds;
     return Bed::with(['bedType:id,name', 'floor:id,name','bedAllotment' => function($q){
         return $q->with('patient:id,user_id', 'patient.user:id,name')->whereStatus(1)->first();

@@ -45,7 +45,7 @@ class GlobalController extends Controller
     public function fetchBeds()
     {
         return Bed::select('id','bed_type_id','bed_floor_id','charge','number')
-                ->where('status', 'unalloted')
+                ->where('status', 'free')
                 ->with('bedType:id,name', 'floor:id,name')
                 ->oldest('bed_floor_id')
                 ->get();
