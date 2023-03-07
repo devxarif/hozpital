@@ -1,14 +1,14 @@
 <template>
-    <AppLayout title="Bed Allotment">
+    <AppLayout title="Bed Allocation">
 
         <!-- Header Part  -->
         <Breadcrumb>
-            <BreadcrumbLink title="Bed Allotment"/>
+            <BreadcrumbLink title="Bed Allocation"/>
         </Breadcrumb>
 
         <div class="flex justify-between">
             <h2 class="text-3xl font-semibold leading-7 text-gray-900  sm:text-3xl sm:truncate">
-                {{ __('Bed Attotment Status') }}
+                {{ __('Bed Allocation') }}
             </h2>
             <div class="flex items-center space-x-2 sm:space-x-3 ml-auto">
                 <Menu as="div" class="relative inline-block text-left">
@@ -49,7 +49,7 @@
                 </Menu>
                 <BaseButton @click="showCreateDrawer = true" class="text-white bg-blue-600 hover:bg-blue-700 px-4 py-2.5">
                     <font-awesome-icon icon="fa-solid fa-plus" class="h-4 w-4 mr-2"/>
-                   {{ __('Add Bed Allotment') }}
+                   {{ __('Add Bed Assign') }}
                 </BaseButton>
             </div>
 
@@ -83,6 +83,12 @@
                                     <transition enter-active-class="transition ease-out duration-100" enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100" leave-active-class="transition ease-in duration-75" leave-from-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
                                         <MenuItems class="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                                             <div class="py-1 text-sm">
+                                            <MenuItem v-slot="{ active }">
+                                                <a href="javascript:void(0)" @click.prevent="editData(bed)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
+                                                    <font-awesome-icon icon="fa-solid fa-user-plus" class="mr-3 h-5 w-5 text-purple-500 group-hover:text-purple-500"/>
+                                                    Assign to Patient
+                                                </a>
+                                            </MenuItem>
                                             <MenuItem v-slot="{ active }">
                                                 <a href="javascript:void(0)" @click.prevent="editData(bed)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
                                                     <font-awesome-icon icon="fa-solid fa-pen-to-square" class="mr-3 h-5 w-5 text-blue-500 group-hover:text-blue-500"/>
@@ -128,6 +134,9 @@
     import CardSkeleton from "@/Shared/Skeleton/CardSkeleton.vue";
     import AllotedBedIcon from "@/Shared/Icons/AllotedBedIcon.vue";
     import UnallotedBedIcon from "@/Shared/Icons/UnallotedBedIcon.vue";
+    import { library } from '@fortawesome/fontawesome-svg-core'
+    import { faUserPlus } from '@fortawesome/free-solid-svg-icons'
+    library.add(faUserPlus)
 
     export default {
         components: {
@@ -136,6 +145,7 @@
             CardSkeleton,
             AllotedBedIcon,
             UnallotedBedIcon,
+            faUserPlus,
         },
         props: {
             beds:{

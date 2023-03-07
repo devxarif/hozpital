@@ -1,14 +1,14 @@
 <template>
-    <AppLayout title="Bed Allotment">
+    <AppLayout title="Bed Allocation">
 
         <!-- Header Part  -->
         <Breadcrumb>
-            <BreadcrumbLink title="Bed Allotment"/>
+            <BreadcrumbLink title="Bed Allocation"/>
         </Breadcrumb>
 
         <div class="flex justify-between">
             <h2 class="text-3xl font-semibold leading-7 text-gray-900  sm:text-3xl sm:truncate">
-                {{ __('Bed Attotment Status') }}
+                {{ __('Bed Allocation') }}
             </h2>
             <div class="flex items-center space-x-2 sm:space-x-3 ml-auto">
                 <Menu as="div" class="relative inline-block text-left">

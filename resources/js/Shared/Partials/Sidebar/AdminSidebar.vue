@@ -68,7 +68,7 @@
                     <DropdownMenuItem title="Bed List" :href="route('admin.bed.index')" :active="route().current('admin.bed.index')"/>
                     <DropdownMenuItem title="Bed Type List" :href="route('admin.bedType.index')" :active="route().current('admin.bedType.index')"/>
                     <DropdownMenuItem title="Bed Floor List" :href="route('admin.bedFloor.index')" :active="route().current('admin.bedFloor.index')"/>
-                    <DropdownMenuItem title="Bed Allotment" :href="route('admin.bedAllotment.index')" :active="route().current('admin.bedAllotment.index')"/>
+                    <DropdownMenuItem title="Bed Allocation" :href="route('admin.bedAllotment.index')" :active="route().current('admin.bedAllotment.index')"/>
                 </DropdownMenu>
 
                 <!-- Human Resources  -->

@@ -54,7 +54,7 @@
                     <DropdownMenuItem title="Bed List" :href="route('nurse.bed.index')" :active="route().current('nurse.bed.index')"/>
                     <DropdownMenuItem title="Bed Type List" :href="route('nurse.bedType.index')" :active="route().current('nurse.bedType.index')"/>
                     <DropdownMenuItem title="Bed Floor List" :href="route('nurse.bedFloor.index')" :active="route().current('nurse.bedFloor.index')"/>
-                    <DropdownMenuItem title="Bed Allotment" :href="route('nurse.bedAllotment.index')" :active="route().current('admin.bedAllotment.index')"/>
+                    <DropdownMenuItem title="Bed Allocation" :href="route('nurse.bedAllotment.index')" :active="route().current('admin.bedAllotment.index')"/>
                 </DropdownMenu>
                 <DropdownMenu title="Blood Bank" :active="route().current('nurse.bloodBank.index') || route().current('nurse.bloodDonor.index') || route().current('nurse.bloodDonation.index') ">
                     <template v-slot:icon>

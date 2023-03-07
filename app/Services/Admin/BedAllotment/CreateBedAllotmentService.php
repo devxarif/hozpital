@@ -18,7 +18,7 @@ class CreateBedAllotmentService
             'status' => 1
         ]);
 
-        // Update bed allotment status
+        // Update bed allocation status
         BedAllotment::where('bed_id', $request->bed)->where('id', '!=', $bed_allotment->id)->update(['status' => 0]);
 
         // Update bed status

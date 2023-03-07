@@ -47,7 +47,7 @@ class BedAllotmentController extends Controller
     {
         (new CreateBedAllotmentService)->execute($request);
 
-        $this->flashSuccess('Bed allotment created successfully');
+        $this->flashSuccess('Bed allocation created successfully');
         return back();
     }
 
@@ -82,7 +82,7 @@ class BedAllotmentController extends Controller
     {
         (new UpdateBedAllotmentService)->execute($request, $bedAllotment);
 
-        $this->flashSuccess('Bed allotment updated successfully');
+        $this->flashSuccess('Bed allocation updated successfully');
 
         return back();
     }
@@ -96,7 +96,7 @@ class BedAllotmentController extends Controller
     {
         $bedAllotment->delete();
 
-        $this->flashSuccess('Bed allotment deleted successfully');
+        $this->flashSuccess('Bed allocation deleted successfully');
 
         return back();
     }

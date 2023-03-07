@@ -60,7 +60,7 @@
                     </template>
                     <DropdownMenuItem title="Bed List" :href="route('doctor.bed.index')" :active="route().current('doctor.bed.index')"/>
                     <DropdownMenuItem title="Bed Type List" :href="route('doctor.bedType.index')" :active="route().current('doctor.bedType.index')"/>
-                    <DropdownMenuItem title="Bed Allotment" :href="route('doctor.bedAllotment.index')" :active="route().current('admin.bedAllotment.index')"/>
+                    <DropdownMenuItem title="Bed Allocation" :href="route('doctor.bedAllotment.index')" :active="route().current('admin.bedAllotment.index')"/>
                 </DropdownMenu>
                 <DropdownMenu title="Blood Bank" :active="route().current('doctor.bloodBank.index') || route().current('doctor.bloodDonor.index') || route().current('doctor.bloodDonation.index') ">
                     <template v-slot:icon>

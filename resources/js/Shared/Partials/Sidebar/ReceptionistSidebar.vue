@@ -49,7 +49,7 @@
                     <DropdownMenuItem title="Bed List" :href="route('receptionist.bed.index')" :active="route().current('receptionist.bed.index')"/>
                     <DropdownMenuItem title="Bed Type List" :href="route('receptionist.bedType.index')" :active="route().current('receptionist.bedType.index')"/>
                     <DropdownMenuItem title="Bed Floor List" :href="route('receptionist.bedFloor.index')" :active="route().current('receptionist.bedFloor.index')"/>
-                    <DropdownMenuItem title="Bed Allotment" :href="route('receptionist.bedAllotment.index')" :active="route().current('receptionist.bedAllotment.index')"/>
+                    <DropdownMenuItem title="Bed Allocation" :href="route('receptionist.bedAllotment.index')" :active="route().current('receptionist.bedAllotment.index')"/>
                 </DropdownMenu>
                 <DropdownMenu title="Blood Bank" :active="route().current('receptionist.bloodBank.index') || route().current('receptionist.bloodDonor.index') || route().current('receptionist.bloodDonation.index') ">
                     <template v-slot:icon>

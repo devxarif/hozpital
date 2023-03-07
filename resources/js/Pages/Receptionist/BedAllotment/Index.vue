@@ -1,5 +1,5 @@
 <template>
-    <AppLayout title="Bed Allotment">
+    <AppLayout title="Bed Allocation">
 
         <!-- Header Part  -->
         <Breadcrumb>
@@ -17,7 +17,7 @@
                     <div class="flex items-center">
                         <font-awesome-icon icon="fa-solid fa-chevron-right" class="w-3 h-3 text-gray-400" />
                         <a href="javascript:void(0)"
-                            class="text-gray-700 hover:text-gray-900 ml-1 md:ml-2 text-sm font-medium">Bed Allotment</a>
+                            class="text-gray-700 hover:text-gray-900 ml-1 md:ml-2 text-sm font-medium">Bed Allocation</a>
                     </div>
                 </li>
             </ol>
@@ -25,7 +25,7 @@
 
         <div class="flex justify-between">
             <h2 class="text-3xl font-semibold leading-7 text-gray-900  sm:text-3xl sm:truncate">
-                {{ __('Bed Attotment Status') }}
+                {{ __('Bed Allocation') }}
             </h2>
             <div class="flex items-center space-x-2 sm:space-x-3 ml-auto">
                 <Menu as="div" class="relative inline-block text-left">

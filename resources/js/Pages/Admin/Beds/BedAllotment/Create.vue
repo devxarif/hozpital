@@ -10,7 +10,7 @@
                         <div class="flex-1 overflow-y-auto py-6 px-4 sm:px-6">
                             <div class="flex items-start justify-between rtl:flex-row-reverse mb-5">
                                 <h2 class="text-2xl tracking-wide font-bold text-gray-900">
-                                    {{ __('Bed Allotment Create') }}
+                                    {{ __('Bed Assign Create') }}
                                 </h2>
                                 <div class="ml-3 flex h-7 items-center">
                                     <button type="button" class="-m-2 p-2 text-gray-400 hover:text-gray-500 focus:outline-none"
@@ -45,8 +45,8 @@
                                             :searchable="true" v-model="form.patient" :create-option="false"
                                             placeholder="Select Patient" :options="patients.map(item => ({
                                                 value: item.id, label: item?.user?.name
-                                            }))" /> 
-                                        <ErrorMessage :name="form.errors.patient"/>                                           
+                                            }))" />
+                                        <ErrorMessage :name="form.errors.patient"/>
                                     </div>
                                     <div class="mb-4">
                                         <Label name="Doctor" id="doctor_create" :hasError="form.errors.doctor" :required="false"/>
@@ -54,8 +54,8 @@
                                             :searchable="true" v-model="form.doctor" :create-option="false"
                                             placeholder="Select Doctor" :options="doctors.map(item => ({
                                                 value: item.id, label: item?.user?.name
-                                            }))" />  
-                                        <ErrorMessage :name="form.errors.doctor"/>                                          
+                                            }))" />
+                                        <ErrorMessage :name="form.errors.doctor"/>
                                     </div>
                                 </div>
                                 <div class="grid grid-cols-2 gap-2">
