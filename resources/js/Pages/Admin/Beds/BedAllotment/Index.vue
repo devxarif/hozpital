@@ -83,8 +83,8 @@
                                     <transition enter-active-class="transition ease-out duration-100" enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100" leave-active-class="transition ease-in duration-75" leave-from-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
                                         <MenuItems class="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                                             <div class="py-1 text-sm">
-                                            <MenuItem v-slot="{ active }">
-                                                <a href="javascript:void(0)" @click.prevent="editData(bed)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
+                                            <MenuItem v-slot="{ active }" v-if="bed.status == 'free'">
+                                                <a href="javascript:void(0)" @click.prevent="assignBed(bed)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
                                                     <font-awesome-icon icon="fa-solid fa-user-plus" class="mr-3 h-5 w-5 text-purple-500 group-hover:text-purple-500"/>
                                                     Assign to Patient
                                                 </a>
@@ -123,7 +123,7 @@
             </span>
         </div>
 
-        <CreateBedAllotment :show="showCreateDrawer" @close-drawer="closeCreateDrawer" :doctors="doctors"/>
+        <CreateBedAllotment :show="showCreateDrawer" @close-drawer="closeCreateDrawer" :doctors="doctors" :bed_id="bed_id"/>
         <EditBedAllotment :show="showEditBedAllotment" @close-drawer="closeEditDrawer" :bed_allotment="editBedAllotment"/>
     </AppLayout>
 </template>
@@ -170,6 +170,7 @@
                 showCreateDrawer: false,
                 showEditBedAllotment: false,
                 editBedAllotment: '',
+                bed_id: '',
 
                 beds: this.beds,
 
@@ -201,6 +202,12 @@
                 this.showFilter = !this.showFilter;
                 localStorage.setItem("adminBed", this.showFilter);
             },
+            assignBed(bed){
+                if(bed.status == 'free'){
+                    this.bed_id = bed.id
+                    this.showCreateDrawer = true
+                }
+            },
             closeCreateDrawer(freeze){
                 if(!freeze){
                     this.showCreateDrawer = false
@@ -219,9 +226,8 @@
                 return this.types.find(type => type.id == id)
             },
             getBedFloor(id){
-                // return id;
                 return this.floors.find(floor => floor.id == id)
-            }
+            },
         },
         created() {
             this.showFilter = localStorage.getItem("adminBed") == "true" ? true: false;

@@ -33,7 +33,7 @@
                                         <Multiselect id="bed_create" :close-on-select="true" :can-clear="true"
                                         :searchable="true" v-model="form.bed" :create-option="false"
                                         placeholder="Select Bed" :options="beds.map(item => ({
-                                            value: item.id, label: item?.floor?.name+' - '+item?.bed_type?.name+' - '+item.number+' - $'+item.charge
+                                            value: item.id, label: item.id+' '+item?.floor?.name+' - '+item?.bed_type?.name+' - '+item.number+' - $'+item.charge
                                         }))"  />
                                     </div>
                                     <ErrorMessage :name="form.errors.bed"/>
@@ -110,11 +110,15 @@
                 type: Boolean,
                 default: false
             },
+            bed_id: {
+                type: Number,
+                default: ""
+            },
         },
         data() {
             return {
                 form: this.$inertia.form({
-                    bed: "",
+                    bed: this.bed_id || "",
                     patient: "",
                     doctor: "",
                     allotment_time: "",
@@ -131,6 +135,12 @@
                     let response = await axios.get(route('bed.availablePatients', val))
                     console.log(response.data)
                     this.patients = response.data
+                },
+                deep: true,
+            },
+            bed_id: {
+                async handler(val) {
+                    this.form.bed = val
                 },
                 deep: true,
             },
