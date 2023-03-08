@@ -27,7 +27,7 @@ class BedAllotmentController extends Controller
     public function index(Request $request)
     {
         $data['beds'] = Bed::with(['bedType:id,name', 'floor:id,name','bedAllotment' => function($q){
-            return $q->with('patient:id,user_id', 'patient.user:id,name')->first();
+            return $q->with('patient:id,user_id', 'patient.user:id,name')->whereStatus(1);
         }])
             ->get()
             ->groupBy(['bed_floor_id', 'bed_type_id']);

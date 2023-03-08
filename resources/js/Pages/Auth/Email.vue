@@ -14,11 +14,11 @@
                     <form class="space-y-4 md:space-y-6" @submit.prevent="sendCode">
                         <div>
                             <label for="username" class="block mb-2 text-sm font-medium text-gray-900 ">Account</label>
-                            <input v-model="form.username" type="text" id="username" :class="['border sm:text-sm text-gray-900 rounded-lg block w-full p-2.5', form.errors.username ? 'bg-white border-red-600 focus:ring-red-600 focus:border-red-600      ':'bg-white border-gray-300 focus:ring-blue-600 focus:border-blue-600      ']" placeholder="Username or Email Address">
+                            <input v-model="form.username" type="text" id="username" :class="['border sm:text-sm text-gray-900 rounded-lg block w-full p-2.5', form.errors.username ? 'bg-white border-red-600 focus:ring-red-600 focus:border-red-600      ':'bg-white border-gray-300 focus:ring-blue-600 focus:border-blue-600']" placeholder="Username or Email Address">
                             <ErrorMessage :name="form.errors.username" />
                         </div>
 
-                        <button :disabled="form.processing" type="submit" class="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-3 text-center   ">
+                        <button :disabled="form.processing" type="submit" class="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-3 text-center disabled:opacity-25 disabled:cursor-not-allowed">
                             <Loading v-if="form.processing" :messageShow="false" />
                             <span v-else>Send Reset Code</span>
                         </button>

@@ -42,13 +42,27 @@ class GlobalController extends Controller
         return Manufacture::latest()->get(['id', 'name', 'email', 'phone']);
     }
 
-    public function fetchBeds()
+    public function fetchBeds($type = 'all', $withoutBed = null)
     {
-        return Bed::select('id','bed_type_id','bed_floor_id','charge','number')
-                ->where('status', 'free')
+        $query = Bed::query();
+
+        if ($type == 'free') {
+            $query->where('status', 'free');
+        }elseif ($type == 'alloted') {
+            $query->where('status', 'alloted');
+        }
+
+        $beds = $query->select('id','bed_type_id','bed_floor_id','charge','number')
                 ->with('bedType:id,name', 'floor:id,name')
                 ->oldest('bed_floor_id')
                 ->get();
+
+        if ($withoutBed) {
+            $withoutBed = Bed::with('bedType:id,name', 'floor:id,name')->where('id',  $withoutBed)->get();
+            $beds = $beds->merge($withoutBed);
+        }
+
+        return $beds;
     }
 
     public function fetchBedTypes()

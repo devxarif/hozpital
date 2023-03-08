@@ -127,6 +127,7 @@
                 }),
 
                 patients: [],
+                beds: [],
             };
         },
         watch: {
@@ -184,7 +185,7 @@
             },
             async loadBeds(){
                 // Fetches bed beds
-                let bed = await axios.get(route("fetch.beds"));
+                let bed = await axios.get(route("fetch.beds", 'free'));
                 this.beds = bed.data;
             },
         },

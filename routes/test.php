@@ -52,6 +52,43 @@ use sirajcse\UniqueIdGenerator\UniqueIdGenerator;
 
 Route::get('/test', function () {
 
+    $type = 'free';
+    $withoutBed = 24;
+
+    $query = Bed::query();
+
+    if ($type == 'free') {
+        $query->where('status', 'free');
+    }elseif ($type == 'alloted') {
+        $query->where('status', 'alloted');
+    }
+
+    $beds = $query->select('id','bed_type_id','bed_floor_id','charge','number')
+            ->with('bedType:id,name', 'floor:id,name')
+            ->oldest('bed_floor_id')
+            ->get();
+
+    if ($withoutBed) {
+        $withoutBed = Bed::with('bedType:id,name', 'floor:id,name')->where('id',  $withoutBed)->get();
+        $beds = $beds->merge($withoutBed);
+    }
+
+
+    return $beds;
+
+
+
+
+
+
+    // return Bed::with('bedAllotment')->get();
+    return $data['beds'] = Bed::with(['bedType:id,name', 'floor:id,name','bedAllotment' => function($q){
+        return $q->with('patient:id,user_id', 'patient.user:id,name')->whereStatus(1);
+    }])
+        ->get()
+        ->groupBy(['bed_floor_id', 'bed_type_id']);
+
+
     return DB::getSchemaBuilder()->getColumnListing('users');
 
 

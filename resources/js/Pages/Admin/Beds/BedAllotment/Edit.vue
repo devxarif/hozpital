@@ -26,6 +26,13 @@
                                     </div>
                                 </div>
 
+                                {{ beds }}
+                                <pre>
+                                    {{ bed }}
+                                </pre>
+                                <pre>
+                                    {{ form }}
+                                </pre>
                                 <form class="mb-4" @submit.prevent="saveData">
                                     <div class="mb-4">
                                         <Label :name="__('Available Beds')" id="bed_create" :hasError="form.errors.bed" className="flex mb-2 text-sm font-medium gap-1">
@@ -47,8 +54,8 @@
                                                 :searchable="true" v-model="form.patient" :create-option="false"
                                                 placeholder="Select Patient" :options="patients.map(item => ({
                                                     value: item.id, label: item?.user?.name
-                                                }))" /> 
-                                            <ErrorMessage :name="form.errors.patient"/>                                           
+                                                }))" />
+                                            <ErrorMessage :name="form.errors.patient"/>
                                         </div>
                                         <div class="mb-4">
                                             <Label name="Doctor" id="doctor_create" :hasError="form.errors.doctor" :required="false"/>
@@ -56,8 +63,8 @@
                                                 :searchable="true" v-model="form.doctor" :create-option="false"
                                                 placeholder="Select Doctor" :options="doctors.map(item => ({
                                                     value: item.id, label: item?.user?.name
-                                                }))" />  
-                                            <ErrorMessage :name="form.errors.doctor"/>                                          
+                                                }))" />
+                                            <ErrorMessage :name="form.errors.doctor"/>
                                         </div>
                                     </div>
                                     <div class="grid grid-cols-2 gap-2">
@@ -101,10 +108,10 @@ import InfoIcon from "@/Shared/Icons/InfoIcon.vue"
 
 export default {
     props: {
-        // bed: {
-        //     type: Object,
-        //     required: true,
-        // },
+        bed: {
+            type: Object,
+            required: true,
+        },
         show: {
             type: Boolean,
             default: false
@@ -120,15 +127,16 @@ export default {
     data() {
         return {
             form: this.$inertia.form({
-                bed: "",
-                patient: "",
-                doctor: "",
-                allotment_time: "",
-                discharge_time: "",
-                description: "",
+                bed: this.bed.id ?? '',
+                patient: this.bed?.bed_allotment?.patient_id ?? '',
+                doctor: this.bed?.bed_allotment?.doctor_id ?? '',
+                allotment_time: this.bed?.bed_allotment?.allotment_time ?? '',
+                discharge_time: this.bed?.bed_allotment?.discharge_time ?? '',
+                description: this.bed?.bed_allotment?.description ?? '',
             }),
 
             patients: [],
+            beds: [],
         };
     },
     watch: {
@@ -137,6 +145,17 @@ export default {
                 let response = await axios.get(route('bed.availablePatients', val))
                 console.log(response.data)
                 this.patients = response.data
+            },
+            deep: true,
+        },
+        bed: {
+            async handler(bed) {
+                this.form.bed = this.bed.id ?? '',
+                this.form.patient = this.bed?.bed_allotment?.patient_id ?? '',
+                this.form.doctor = this.bed?.bed_allotment?.doctor_id ?? '',
+                this.form.allotment_time = this.bed?.bed_allotment?.allotment_time ?? '',
+                this.form.discharge_time = this.bed?.bed_allotment?.discharge_time ?? '',
+                this.form.description = this.bed?.bed_allotment?.description ?? ''
             },
             deep: true,
         },
@@ -180,13 +199,17 @@ export default {
         },
         async loadBeds(){
             // Fetches bed beds
-            let bed = await axios.get(route("fetch.beds"));
+            let bed = await axios.get(route("fetch.beds", 'free', this.bed.id));
+            console.log(bed.data)
             this.beds = bed.data;
         },
     },
     created(){
         this.checkPagePermission('admin')
-        this.loadBeds()
+
+        setTimeout(() => {
+            this.loadBeds()
+        }, 1000);
     }
 };
 </script>

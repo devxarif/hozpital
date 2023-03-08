@@ -64,7 +64,7 @@
                                 <label for="account" class="block mb-2 text-sm font-medium text-gray-900">
                                     Account
                                 </label>
-                                <input  v-model="form.username" type="email" id="account" placeholder="Username or Email Address" :class="['text-gray-900 bg-gray-50 block w-full p-2.5 border sm:text-sm rounded-lg', form.errors.username ? 'border-red-500 focus:ring-red-500 focus:border-red-500':'border-gray-300 focus:ring-blue-500 focus:border-blue-500']">
+                                <input v-model="form.username" type="text" id="account" placeholder="Username or Email Address" :class="['text-gray-900 bg-gray-50 block w-full p-2.5 border sm:text-sm rounded-lg', form.errors.username ? 'border-red-500 focus:ring-red-500 focus:border-red-500':'border-gray-300 focus:ring-blue-500 focus:border-blue-500']">
                                 <ErrorMessage :name="form.errors.username" />
                             </div>
                             <div class="mb-4">
@@ -92,7 +92,7 @@
                                 </div>
                                 <Link :href="route('password.email')" class="ml-auto text-sm text-blue-700  hover:underline">Forgot Password?</Link>
                             </div>
-                            <button :disabled="form.processing" class="text-white font-medium rounded-lg text-base px-5 py-3 w-full sm:w-auto text-center mb-6 bg-blue-700" type="submit">
+                            <button :disabled="form.processing || nullField" class="text-white font-medium rounded-lg text-base px-5 py-3 w-full sm:w-auto text-center mb-6 bg-blue-700 disabled:opacity-25 disabled:cursor-not-allowed" type="submit">
                                 <span class="flex justify-center items-center">
                                     <Loading v-if="form.processing" message="Signing in..." />
                                     <span v-else>Sign in to your account</span>
@@ -192,6 +192,12 @@
             },
             switchVisibility() {
                 this.passwordFieldType = this.passwordFieldType === "password" ? "text" : "password";
+            }
+        },
+        computed:{
+            nullField(){
+                return !this.form.username || !this.form.password;
+                return true;
             }
         },
         watch: {

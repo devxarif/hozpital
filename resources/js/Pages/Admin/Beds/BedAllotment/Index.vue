@@ -66,7 +66,7 @@
                 <div v-for="(bed_types, j) in bed_floors" :key="j" class="mb-2 block p-4 bg-white rounded-lg border border-gray-200">
                     <h2 class="text-2xl font-bold tracking-tight text-gray-900 ">{{ getBedType(j).name }}</h2>
 
-                    <div class="grid gap-6 md:grid-cols-4 xl:grid-cols-6 mt-2">
+                    <div class="grid gap-6 md:grid-cols-3 xl:grid-cols-5 mt-2">
                         <span v-for="(bed, k) in bed_types" :key="k" class="cursor-pointer block p-3 bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100">
                             <div class="flex flex-wrap justify-between items-start">
                                 <AllotedBedIcon v-if="bed.status == 'alloted'" class="h-12 w-12"/>
@@ -113,7 +113,22 @@
                                 </Menu>
                             </div>
                             <h2 class="my-1 font-bold text-lg tracking-tight text-gray-900 ">Bed Number: {{ bed.number }}</h2>
-                            <p v-if="bed.status == 'alloted' && bed.bed_allotment && bed.bed_allotment.patient && bed.bed_allotment.patient.user">Patient: {{ bed?.bed_allotment?.patient?.user?.name ?? 'No Patient' }}</p>
+                            <template v-if="bed.status == 'alloted'" >
+                                <p v-if="bed.bed && bed.bed.patient && bed.bed_allotment.patient.user">
+                                    Patient: <b>{{ bed?.bed_allotment?.patient?.user?.name ?? 'N/A' }}</b>
+                                </p>
+                                <p v-if="bed.bed_allotment && bed.bed_allotment.allotment_time">
+                                    Allotment Time: <b>{{ formateDate(bed?.bed_allotment?.allotment_time, 'MMMM D, YYYY HH:mm') }}</b>
+                                </p>
+                                <p v-if="bed.bed_allotment && bed.bed_allotment.discharge_time">
+                                    Discharge Time: <b>{{ formateDate(bed?.bed_allotment?.discharge_time, 'MMMM D, YYYY HH:mm') }}</b>
+                                </p>
+                            </template>
+
+
+
+
+
                             <span v-if="bed.status == 'free'" class="text-xs font-semibold px-2 py-1 rounded bg-green-100 text-green-800   capitalize">
                                Available
                             </span>
@@ -123,8 +138,8 @@
             </span>
         </div>
 
-        <CreateBedAllotment :show="showCreateDrawer" @close-drawer="closeCreateDrawer" :doctors="doctors" :bed_id="bed_id"/>
-        <EditBedAllotment :show="showEditBedAllotment" @close-drawer="closeEditDrawer" :bed_allotment="editBedAllotment"/>
+        <CreateBedAllotment :show="showCreateDrawer" @close-drawer="showCreateDrawer = false" :doctors="doctors" :bed_id="bed_id"/>
+        <EditBedAllotment :show="showEditDrawer && editBedAllotment" @close-drawer="showEditDrawer = false" :bed="editBedAllotment" :doctors="doctors"/>
     </AppLayout>
 </template>
 
@@ -168,7 +183,7 @@
         data() {
             return {
                 showCreateDrawer: false,
-                showEditBedAllotment: false,
+                showEditDrawer: false,
                 editBedAllotment: '',
                 bed_id: '',
 
@@ -195,8 +210,10 @@
                 });
             },
             editData(bed){
-                this.showEditBedAllotment = true
-                this.editBed = bed
+                // alert()
+                // console.log(bed)
+                this.editBedAllotment = bed
+                this.showEditDrawer = true
             },
             toggleFilter() {
                 this.showFilter = !this.showFilter;
@@ -206,20 +223,6 @@
                 if(bed.status == 'free'){
                     this.bed_id = bed.id
                     this.showCreateDrawer = true
-                }
-            },
-            closeCreateDrawer(freeze){
-                if(!freeze){
-                    this.showCreateDrawer = false
-                }else{
-                    this.showCreateDrawer = true
-                }
-            },
-            closeEditDrawer(freeze){
-                if(!freeze){
-                    this.showEditDoctor = false
-                }else{
-                    this.showEditDoctor = true
                 }
             },
             getBedType(id){
