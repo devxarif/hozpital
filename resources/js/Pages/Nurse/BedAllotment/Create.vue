@@ -80,8 +80,8 @@
                                                 <span>{{ __('Alloted') }}</span>
                                             </label>
                                             <label for="patient_female" class="w-full rounded-lg flex items-center pl-4 border border-gray-200  py-3 ml-2 text-sm font-medium text-gray-700 gap-2 focus:outline-none">
-                                                <input id="patient_female" value="free" v-model="form.status" name="status" type="radio" class="h-4 w-4 border-gray-300 text-blue-600 focus:outline-none">
-                                                <span>{{ __('Free') }}</span>
+                                                <input id="patient_female" value="available" v-model="form.status" name="status" type="radio" class="h-4 w-4 border-gray-300 text-blue-600 focus:outline-none">
+                                                <span>{{ __('Available') }}</span>
                                             </label>
                                         </div>
                                     </div>
@@ -132,7 +132,7 @@
                     floor: "",
                     number: "",
                     charge: "",
-                    status: "free",
+                    status: "available",
                     bed_type: ""
                 }),
 

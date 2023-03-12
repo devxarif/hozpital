@@ -52,13 +52,13 @@ use sirajcse\UniqueIdGenerator\UniqueIdGenerator;
 
 Route::get('/test', function () {
 
-    $type = 'free';
+    $type = 'available';
     $withoutBed = 24;
 
     $query = Bed::query();
 
-    if ($type == 'free') {
-        $query->where('status', 'free');
+    if ($type == 'available') {
+        $query->where('status', 'available');
     }elseif ($type == 'alloted') {
         $query->where('status', 'alloted');
     }
@@ -107,7 +107,7 @@ Route::get('/test', function () {
 
 
 
-    return $available_beds = Bed::where('status', 'free')->with('bedType:id,name', 'floor:id,name')->latest()->get();
+    return $available_beds = Bed::where('status', 'available')->with('bedType:id,name', 'floor:id,name')->latest()->get();
 
 
     $bed_allotment = BedAllotment::where('bed_id', 2)->update(['status' => 0]);
@@ -127,7 +127,7 @@ Route::get('/test', function () {
 
 
 
-    $beds = Bed::where('status', 'free')->get();
+    $beds = Bed::where('status', 'available')->get();
     return $beds;
     return Bed::with(['bedType:id,name', 'floor:id,name','bedAllotment' => function($q){
         return $q->with('patient:id,user_id', 'patient.user:id,name')->whereStatus(1)->first();
@@ -609,9 +609,10 @@ Route::get('/test', function () {
 })->name('test');
 
 Route::get('/test2', function () {
+    return inertia('Test/popover');
+    return view('test/test');
     return view('app');
 
-    return view('test/test');
 });
 
 // Route::get('/testt', [TestController::class, 'index']);

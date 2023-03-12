@@ -34,7 +34,7 @@
                                                 <Label :name="__('Plan Type')" :hasError="form.errors.type"/>
                                                 <BaseSelect v-model:value="form.type" :hasError="form.errors.type">
                                                     <option value="paid">{{ __('Paid') }}</option>
-                                                    <option value="free">{{ __('Free') }}</option>
+                                                    <option value="available">{{ __('Available') }}</option>
                                                 </BaseSelect>
                                             </div>
                                         </div>

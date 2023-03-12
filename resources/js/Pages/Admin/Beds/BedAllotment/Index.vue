@@ -6,7 +6,49 @@
             <BreadcrumbLink title="Bed Allocation"/>
         </Breadcrumb>
 
+        <span class="top-1 right-1">
+            <Popper arrow :hover="true" content="leave_type.description" >
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+            </Popper>
+        </span>
         <div class="flex justify-between">
+
+
+
+            <!-- invisible opacity-0 -->
+<!-- <button @mouseover="showDetails = true"
+    @mouseleave="showDetails = false" data-popover-target="popover-user-profile" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">User profile</button> -->
+
+    <!-- v-if="showDetails" -->
+<!-- <div v-if="showDetails" data-popover id="popover-user-profile" role="tooltip" class="left-5 absolute z-10  inline-block w-64 text-sm font-light text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm  dark:text-gray-400 dark:bg-gray-800 dark:border-gray-600">
+    <div class="p-3">
+        <p class="text-base font-semibold leading-none text-gray-900 dark:text-white">
+            <a href="#">Jese Leos</a>
+        </p>
+        <p class="mb-3 text-sm font-normal">
+            <a href="#" class="hover:underline">@jeseleos</a>
+        </p>
+        <p class="mb-4 text-sm font-light">Open-source contributor. Building <a href="#" class="text-blue-600 dark:text-blue-500 hover:underline">flowbite.com</a>.</p>
+        <ul class="flex text-sm font-light">
+            <li class="mr-2">
+                <a href="#" class="hover:underline">
+                    <span class="font-semibold text-gray-900 dark:text-white">799</span>
+                    <span>Following</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="hover:underline">
+                    <span class="font-semibold text-gray-900 dark:text-white">3,758</span>
+                    <span>Followers</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div data-popper-arrow></div>
+</div> -->
+
+
+
             <h2 class="text-3xl font-semibold leading-7 text-gray-900  sm:text-3xl sm:truncate">
                 {{ __('Bed Allocation') }}
             </h2>
@@ -56,7 +98,7 @@
         </div>
         <div>
              <span class="mr-5"><AllotedBedIcon class="h-12 w-12 inline"/> = Alloted</span>
-             <span><FreeBedIcon class="h-12 w-12 inline"/> = Free</span>
+             <span><AvailableBedIcon class="h-12 w-12 inline"/> = Available</span>
         </div>
 
         <div class="mt-5">
@@ -67,74 +109,15 @@
                     <h2 class="text-2xl font-bold tracking-tight text-gray-900 ">{{ getBedType(j).name }}</h2>
 
                     <div class="grid gap-6 md:grid-cols-3 xl:grid-cols-5 mt-2">
-                        <span v-for="(bed, k) in bed_types" :key="k" class="cursor-pointer block p-3 bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100">
-                            <div class="flex flex-wrap justify-between items-start">
-                                <AllotedBedIcon v-if="bed.status == 'alloted'" class="h-12 w-12"/>
-                                <FreeBedIcon v-else class="h-12 w-12"/>
-
-                                <Menu as="div" class="relative inline-block text-left">
-                                    <div>
-                                        <MenuButton class="flex items-center rounded-full text-gray-400 hover:text-gray-600 focus:outline-none">
-                                            <span class="sr-only">Open options</span>
-                                            <font-awesome-icon icon="fa-solid fa-ellipsis-vertical" class="h-6 w-6"/>
-                                        </MenuButton>
-                                    </div>
-
-                                    <transition enter-active-class="transition ease-out duration-100" enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100" leave-active-class="transition ease-in duration-75" leave-from-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
-                                        <MenuItems class="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                                            <div class="py-1 text-sm">
-                                            <MenuItem v-slot="{ active }" v-if="bed.status == 'free'">
-                                                <a href="javascript:void(0)" @click.prevent="assignBed(bed)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
-                                                    <font-awesome-icon icon="fa-solid fa-user-plus" class="mr-3 h-5 w-5 text-purple-500 group-hover:text-purple-500"/>
-                                                    Assign to Patient
-                                                </a>
-                                            </MenuItem>
-                                            <MenuItem v-slot="{ active }">
-                                                <a href="javascript:void(0)" @click.prevent="editData(bed)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
-                                                    <font-awesome-icon icon="fa-solid fa-pen-to-square" class="mr-3 h-5 w-5 text-blue-500 group-hover:text-blue-500"/>
-                                                    Edit
-                                                </a>
-                                            </MenuItem>
-                                            <MenuItem v-slot="{ active }">
-                                                <a href="javascript:void(0)" @click.prevent="editData(bed)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
-                                                    <font-awesome-icon icon="fa-solid fa-eye" class="mr-3 h-5 w-5 text-sky-500 group-hover:text-sky-500"/>
-                                                    Details
-                                                </a>
-                                            </MenuItem>
-                                            <MenuItem v-slot="{ active }">
-                                                <a href="javascript:void(0)" @click.prevent="deleteData(bed.id)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
-                                                    <font-awesome-icon icon="fa-solid fa-trash-can" class="mr-3 h-5 w-5 text-red-500 group-hover:text-red-500"/>
-                                                    Delete
-                                                </a>
-                                            </MenuItem>
-                                            </div>
-                                        </MenuItems>
-                                    </transition>
-                                </Menu>
-                            </div>
-                            <h2 class="my-1 font-bold text-lg tracking-tight text-gray-900 ">Bed Number: {{ bed.number }}</h2>
-                            <template v-if="bed.status == 'alloted'" >
-                                <p v-if="bed.bed && bed.bed.patient && bed.bed_allotment.patient.user">
-                                    Patient: <b>{{ bed?.bed_allotment?.patient?.user?.name ?? 'N/A' }}</b>
-                                </p>
-                                <p v-if="bed.bed_allotment && bed.bed_allotment.allotment_time">
-                                    Allotment Time: <b>{{ formateDate(bed?.bed_allotment?.allotment_time, 'MMMM D, YYYY HH:mm') }}</b>
-                                </p>
-                                <p v-if="bed.bed_allotment && bed.bed_allotment.discharge_time">
-                                    Discharge Time: <b>{{ formateDate(bed?.bed_allotment?.discharge_time, 'MMMM D, YYYY HH:mm') }}</b>
-                                </p>
-                            </template>
-
-
-
-
-
-                            <span v-if="bed.status == 'free'" class="text-xs font-semibold px-2 py-1 rounded bg-green-100 text-green-800   capitalize">
-                               Available
-                            </span>
-                        </span>
+                        <template v-for="(bed, k) in bed_types" :key="k">
+                            <SingleBedAllotment :bed="bed"/>
+                        </template>
                     </div>
                 </div>
+
+
+
+
             </span>
         </div>
 
@@ -146,9 +129,10 @@
 <script>
     import CreateBedAllotment from "./Create.vue";
     import EditBedAllotment from "./Edit.vue";
+    import SingleBedAllotment from "./SingleBedAllotment.vue";
     import CardSkeleton from "@/Shared/Skeleton/CardSkeleton.vue";
     import AllotedBedIcon from "@/Shared/Icons/AllotedBedIcon.vue";
-    import FreeBedIcon from "@/Shared/Icons/FreeBedIcon.vue";
+    import AvailableBedIcon from "@/Shared/Icons/AvailableBedIcon.vue";
     import { library } from '@fortawesome/fontawesome-svg-core'
     import { faUserPlus } from '@fortawesome/free-solid-svg-icons'
     library.add(faUserPlus)
@@ -157,9 +141,10 @@
         components: {
             CreateBedAllotment,
             EditBedAllotment,
+            SingleBedAllotment,
             CardSkeleton,
             AllotedBedIcon,
-            FreeBedIcon,
+            AvailableBedIcon,
             faUserPlus,
         },
         props: {
@@ -182,6 +167,7 @@
         },
         data() {
             return {
+                showDetails: false,
                 showCreateDrawer: false,
                 showEditDrawer: false,
                 editBedAllotment: '',

@@ -56,7 +56,7 @@
         </div>
         <div>
              <span class="mr-5"><AllotedBedIcon class="h-12 w-12 inline"/> = Alloted</span>
-             <span><FreeBedIcon class="h-12 w-12 inline"/> = Free</span>
+             <span><AvailableBedIcon class="h-12 w-12 inline"/> = Available</span>
         </div>
 
         <div class="mt-5">
@@ -73,7 +73,7 @@
 
                             <div class="flex flex-wrap justify-between items-start">
                                 <AllotedBedIcon v-if="bed.status == 'alloted'" class="h-16 w-16"/>
-                                <FreeBedIcon v-else class="h-16 w-16"/>
+                                <AvailableBedIcon v-else class="h-16 w-16"/>
 
                                 <Menu as="div" class="relative inline-block text-left">
                                     <div>
@@ -147,7 +147,7 @@
                         <span v-for="bed in bed_floors" :key="bed.id" class="cursor-pointer block p-4 bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100   ">
                             <div class="flex flex-wrap justify-between items-start">
                                 <AllotedBedIcon v-if="bed.status == 'alloted'"/>
-                                <FreeBedIcon v-else />
+                                <AvailableBedIcon v-else />
 
                                 <Menu as="div" class="relative inline-block text-left">
                                     <div>
@@ -211,7 +211,7 @@
     // import EditBed from "./Edit.vue";
     import CardSkeleton from "@/Shared/Skeleton/CardSkeleton.vue";
     import AllotedBedIcon from "@/Shared/Icons/AllotedBedIcon.vue";
-    import FreeBedIcon from "@/Shared/Icons/FreeBedIcon.vue";
+    import AvailableBedIcon from "@/Shared/Icons/AvailableBedIcon.vue";
 
     export default {
         components: {
@@ -219,7 +219,7 @@
             // EditBed,
             CardSkeleton,
             AllotedBedIcon,
-            FreeBedIcon,
+            AvailableBedIcon,
         },
         props: {
             beds:{

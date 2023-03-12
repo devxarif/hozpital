@@ -46,8 +46,8 @@ class GlobalController extends Controller
     {
         $query = Bed::query();
 
-        if ($type == 'free') {
-            $query->where('status', 'free');
+        if ($type == 'available') {
+            $query->where('status', 'available');
         }elseif ($type == 'alloted') {
             $query->where('status', 'alloted');
         }
