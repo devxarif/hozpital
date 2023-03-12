@@ -4,14 +4,30 @@
             <div class="col-span-4 bg-white w-full p-6 rounded-lg border border-gray-8  ">
                 <div class="overflow-hidden bg-white shadow sm:rounded-md">
                     <ul role="list" class="space-y-1 shadow-lg">
-                        <li class="overflow-hidden rounded-md px-3.5 py-3.5 sm:px-6 text-sm border border-gray-100 cursor-pointer" :class="{'bg-blue-500 text-white': currentTab == 'paypal'}" @click="changeTab('paypal')">{{ __('Paypal') }}</li>
-                        <li class="overflow-hidden rounded-md px-3.5 py-3.5 sm:px-6 text-sm border border-gray-100 cursor-pointer" :class="{'bg-blue-500 text-white': currentTab == 'stripe'}" @click="changeTab('stripe')">{{ __('Stripe') }}</li>
-                        <li class="overflow-hidden rounded-md px-3.5 py-3.5 sm:px-6 text-sm border border-gray-100 cursor-pointer" :class="{'bg-blue-500 text-white': currentTab == 'razorpay'}" @click="changeTab('razorpay')">{{ __('Razorpay') }}</li>
-                        <li class="overflow-hidden rounded-md px-3.5 py-3.5 sm:px-6 text-sm border border-gray-100 cursor-pointer" :class="{'bg-blue-500 text-white': currentTab == 'flutterwave'}" @click="changeTab('flutterwave')">{{ __('Flutterwave') }}</li>
-                        <li class="overflow-hidden rounded-md px-3.5 py-3.5 sm:px-6 text-sm border border-gray-100 cursor-pointer" :class="{'bg-blue-500 text-white': currentTab == 'mollie'}" @click="changeTab('mollie')">{{ __('Mollie') }}</li>
-                        <li class="overflow-hidden rounded-md px-3.5 py-3.5 sm:px-6 text-sm border border-gray-100 cursor-pointer" :class="{'bg-blue-500 text-white': currentTab == 'paystack'}"  @click="changeTab('paystack')">{{ __('PayStack') }}</li>
-                        <li class="overflow-hidden rounded-md px-3.5 py-3.5 sm:px-6 text-sm border border-gray-100 cursor-pointer" :class="{'bg-blue-500 text-white': currentTab == 'instamojo'}" @click="changeTab('instamojo')">{{ __('Instamojo') }}</li>
-                        <li class="overflow-hidden rounded-md px-3.5 py-3.5 sm:px-6 text-sm border border-gray-100 cursor-pointer" :class="{'bg-blue-500 text-white': currentTab == 'midtrans'}" @click="changeTab('midtrans')">{{ __('Midtrans') }}</li>
+                        <li class="overflow-hidden rounded-md px-3.5 py-3.5 sm:px-6 text-sm font-medium border border-gray-100 cursor-pointer" :class="{'bg-blue-500 text-white': currentTab == 'paypal'}" @click="changeTab('paypal')">
+                            {{ __('Paypal') }}
+                        </li>
+                        <li class="overflow-hidden rounded-md px-3.5 py-3.5 sm:px-6 text-sm font-medium border border-gray-100 cursor-pointer" :class="{'bg-blue-500 text-white': currentTab == 'stripe'}" @click="changeTab('stripe')">
+                            {{ __('Stripe') }}
+                        </li>
+                        <li class="overflow-hidden rounded-md px-3.5 py-3.5 sm:px-6 text-sm font-medium border border-gray-100 cursor-pointer" :class="{'bg-blue-500 text-white': currentTab == 'razorpay'}" @click="changeTab('razorpay')">
+                            {{ __('Razorpay') }}
+                        </li>
+                        <li class="overflow-hidden rounded-md px-3.5 py-3.5 sm:px-6 text-sm font-medium border border-gray-100 cursor-pointer" :class="{'bg-blue-500 text-white': currentTab == 'flutterwave'}" @click="changeTab('flutterwave')">
+                            {{ __('Flutterwave') }}
+                        </li>
+                        <li class="overflow-hidden rounded-md px-3.5 py-3.5 sm:px-6 text-sm font-medium border border-gray-100 cursor-pointer" :class="{'bg-blue-500 text-white': currentTab == 'mollie'}" @click="changeTab('mollie')">
+                            {{ __('Mollie') }}
+                        </li>
+                        <li class="overflow-hidden rounded-md px-3.5 py-3.5 sm:px-6 text-sm font-medium border border-gray-100 cursor-pointer" :class="{'bg-blue-500 text-white': currentTab == 'paystack'}" @click="changeTab('paystack')">
+                            {{ __('PayStack') }}
+                        </li>
+                        <li class="overflow-hidden rounded-md px-3.5 py-3.5 sm:px-6 text-sm font-medium border border-gray-100 cursor-pointer" :class="{'bg-blue-500 text-white': currentTab == 'instamojo'}" @click="changeTab('instamojo')">
+                            {{ __('Instamojo') }}
+                        </li>
+                        <li class="overflow-hidden rounded-md px-3.5 py-3.5 sm:px-6 text-sm font-medium border border-gray-100 cursor-pointer" :class="{'bg-blue-500 text-white': currentTab == 'midtrans'}" @click="changeTab('midtrans')">
+                            {{ __('Midtrans') }}
+                        </li>
                     </ul>
                 </div>
             </div>

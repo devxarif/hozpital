@@ -1,8 +1,7 @@
 <template>
     <SettingLayout title="SMTP">
-        <div class="grid gap-6 md:grid-cols-1 xl:grid-cols-1 mt-6">
-            <div
-                class="bg-white w-full p-6 rounded-lg border border-gray-8  ">
+        <div class="grid gap-6 md:grid-cols-12 xl:grid-cols-12 mt-6">
+            <div class="col-span-8 bg-white w-full p-6 rounded-lg border border-gray-8  ">
                 <form class="space-y-8 divide-y divide-gray-200" @submit.prevent="saveSetting">
                     <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5">
                         <div class="space-y-6 sm:space-y-5">
@@ -91,10 +90,9 @@
                     </div>
                 </form>
             </div>
-            <div
-                class="bg-white w-full p-6 rounded-lg border border-gray-8   mb-5">
-                <form class="space-y-8 divide-y divide-gray-200" @submit.prevent="testMailSend">
-                    <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5">
+            <div class="col-span-4 bg-white w-full p-6 rounded-lg border border-gray-8 mb-5 h-auto">
+                <form class="divide-y divide-gray-200" @submit.prevent="testMailSend">
+                    <div class="divide-y divide-gray-200 sm:space-y-5">
                         <div class="space-y-6 sm:space-y-5">
                             <div>
                                 <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">Send Test Mail</h2>
@@ -104,26 +102,21 @@
                             </div>
 
                             <div class="border-t sm:border-gray-200 sm:pt-5">
-                                <div class="grid grid-cols-9 gap-6 justify-center  ">
-                                    <div class="col-span-6 sm:col-span-3">
-                                        <Label id="send_email" :name="__('Email Address')" :hasError="testMailForm.errors.type"/>
-                                    </div>
-                                    <div class="col-span-6 sm:col-span-3">
-                                        <BaseInput v-model="testMailForm.email" placeholder="Email Address" id="send_email" :hasError="testMailForm.errors.email"/>
-                                    </div>
-                                    <div class="col-span-6 sm:col-span-3">
-                                        <button :disabled="testMailForm.processing" type="submit"
-                                            class="text-white justify-center flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 font-medium rounded-lg text-md px-5 py-2.5 mb-2   focus:outline-none ">
-                                            <Loading v-if="testMailForm.processing" :messageShow="false" />
-                                            <span v-else>
-                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"  class="inline w-5 h-5 mr-2">
-                                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
-                                                </svg>
-                                                {{ __('Send') }}
-                                            </span>
-                                        </button>
-                                    </div>
+                                <div class="mb-3">
+                                    <Label id="mail_driver" :name="__('Email Address')" :hasError="testMailForm.errors.email"/>
+                                    <BaseInput v-model="testMailForm.email" placeholder="Email Address" id="send_email" :hasError="testMailForm.errors.email"/>
                                 </div>
+
+                                <button :disabled="testMailForm.processing" type="submit"
+                                    class="text-white justify-center flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 font-medium rounded-lg text-md px-5 py-2.5 mb-2   focus:outline-none ">
+                                    <Loading v-if="testMailForm.processing" :messageShow="false" />
+                                    <span v-else>
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"  class="inline w-5 h-5 mr-2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
+                                        </svg>
+                                        {{ __('Send Test Mail') }}
+                                    </span>
+                                </button>
                             </div>
                         </div>
                     </div>
