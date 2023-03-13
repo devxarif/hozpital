@@ -12,14 +12,14 @@ use App\Http\Controllers\Receptionist\BedTypeController;
 use App\Http\Controllers\Receptionist\BloodBankController;
 use App\Http\Controllers\Receptionist\BloodDonationController;
 use App\Http\Controllers\Receptionist\BloodDonorController;
-use App\Http\Controllers\Receptionist\DoctorController;
+// use App\Http\Controllers\Receptionist\DoctorController;
 use App\Http\Controllers\Receptionist\PatientController;
 use Illuminate\Support\Facades\Route;
 
 // Route::middleware(['auth', 'check.admin.role'])->prefix('admin')->group(function () {
 Route::middleware(['auth'])->name('receptionist.')->prefix('receptionist')->group(function () {
     // Doctor Routes
-    Route::get('doctor', [DoctorController::class, 'index'])->name('doctor.index');
+    // Route::get('doctor', [DoctorController::class, 'index'])->name('doctor.index');
 
     // Patient Routes
     Route::get('patient/export/{type}', [PatientController::class, 'export'])->name('patient.export');

@@ -67,10 +67,9 @@
                                     <Label :name="__('Description')" id="admin_role_description" :hasError="form.errors.name"/>
                                     <BaseTextarea v-model="form.description" placeholder="Enter Description" id="admin_role_description" :hasError="form.errors.description"/>
                                 </div>
-                                <div class="mb-4">
+                                <div class="mb-4" v-if="root && root.children">
                                     <Label :name="__('Permissions')" id="admin_name" :hasError="form.errors.name"/>
                                     <x-item :item="root" @change="onChange"></x-item>
-
                                     <table class="w-full text-sm text-left text-gray-500 ">
                                         <tbody>
                                             <tr class="bg-white   border-b" v-for="group in root.children" :key="group">
@@ -83,7 +82,6 @@
                                             </tr>
                                         </tbody>
                                     </table>
-
                                     <ErrorMessage :name="form.errors.role_permissions" />
                                 </div>
                                 <button :disabled="form.processing"  type="submit"
@@ -121,7 +119,10 @@ export default {
         },
         permissions:{
             type: Array,
-        }
+        },
+        role: {
+            type: Object,
+        },
     },
     data() {
         return {
@@ -129,9 +130,9 @@ export default {
             groups: [],
             form: this.$inertia.form({
                 role_permissions: [],
-                name: "",
-                color: "#FF1900",
-                description: "",
+                name: this.role.name,
+                color: this.role.color,
+                description: this.role.description,
             }),
 
             isOpenColorPicker: false,
@@ -156,7 +157,6 @@ export default {
     },
     methods: {
         onChange(node, checked) {
-            console.log(node, checked)
             node.checked = checked;
             this.updateChildren(node, checked);
             this.updateTree();
@@ -168,17 +168,13 @@ export default {
                         // it is all button
                         element.children.forEach((element) => {
                             if (checked) {
-                                // this code for add permission
-                                var check = this.form.role_permissions.includes(
-                                    element.name
-                                );
+                                // permission add
+                                var check = this.form.role_permissions.includes(element.name);
                                 if (!check) {
-                                    this.form.role_permissions.push(
-                                        element.name
-                                    );
+                                    this.form.role_permissions.push(element.name);
                                 }
                             } else {
-                                // this code for remove permission
+                                // permission remove
                                 var pers = this.form.role_permissions;
                                 pers.forEach(function (value, key) {
                                     if (element.name == value) {
@@ -191,15 +187,13 @@ export default {
                     } else {
                         // it is group button
                         if (checked) {
-                            // this code for add permission
-                            var check = this.form.role_permissions.includes(
-                                element.name
-                            );
+                            // permission add
+                            var check = this.form.role_permissions.includes(element.name);
                             if (!check) {
                                 this.form.role_permissions.push(element.name);
                             }
                         } else {
-                            // this code for remove permission
+                            // permission remove
                             var pers = this.form.role_permissions;
                             pers.forEach(function (value, key) {
                                 if (element.name == value) {
@@ -244,7 +238,7 @@ export default {
             }
         },
         saveData() {
-            this.form.post(route("roles.store"), {
+            this.form.put(route("admin.settings.roles.update", this.role.id), {
                 onSuccess: () => {
                     this.form.reset(),
                     this.$emit('close-drawer')
@@ -255,7 +249,28 @@ export default {
             this.form.color = color.hex
         },
     },
+    watch: {
+        role: {
+            handler() {
+                this.form.name = this.role.name
+            },
+            deep: true,
+        },
+        permissions: {
+            handler() {
+                this.form.role_permissions = this.permissions
+            },
+            deep: true,
+        },
+
+
+
+    },
      mounted(){
+        Array.from(this.role.permissions).forEach((element) =>
+            this.form.role_permissions.push(element.name)
+        );
+
         for (const [key, value] of Object.entries(this.permissions)) {
             this.groups.push({
                 id: 2,
@@ -274,10 +289,12 @@ export default {
                     item,
                     id: item.id,
                     name: item.name,
-                    checked: false,
+                    checked: this.form.role_permissions.includes(item.name) ? true :
+                        false,
                 })),
             })),
         };
+        this.updateTree();
     }
 };
 </script>

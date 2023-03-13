@@ -1,35 +1,36 @@
 <?php
 
-use App\Http\Controllers\Admin\AccountantController;
-use App\Http\Controllers\Admin\AnnouncementController;
-use App\Http\Controllers\Admin\BedAllotmentController;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\BedController;
-use App\Http\Controllers\Admin\BedFloorController;
+use App\Http\Controllers\Admin\RoleController;
+use App\Http\Controllers\Admin\EventController;
+use App\Http\Controllers\Admin\NurseController;
+use App\Http\Controllers\Admin\DoctorController;
+use App\Http\Controllers\Admin\GlobalController;
+use App\Http\Controllers\Admin\IncomeController;
 use App\Http\Controllers\Admin\BedTypeController;
+use App\Http\Controllers\Admin\ExpenseController;
+use App\Http\Controllers\Admin\HolidayController;
+use App\Http\Controllers\Admin\PatientController;
+use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\SettingController;
+use App\Http\Controllers\Admin\BedFloorController;
 use App\Http\Controllers\Admin\BloodBankController;
-use App\Http\Controllers\Admin\BloodDonationController;
+use App\Http\Controllers\Admin\LeaveTypeController;
+use App\Http\Controllers\Admin\AccountantController;
 use App\Http\Controllers\Admin\BloodDonorController;
 use App\Http\Controllers\Admin\DepartmentController;
-use App\Http\Controllers\Admin\DoctorController;
-use App\Http\Controllers\Admin\EventController;
-use App\Http\Controllers\Admin\ExpenseCategoryController;
-use App\Http\Controllers\Admin\ExpenseController;
-use App\Http\Controllers\Admin\GlobalController;
-use App\Http\Controllers\Admin\HolidayController;
-use App\Http\Controllers\Admin\IncomeCategoryController;
-use App\Http\Controllers\Admin\IncomeController;
+use App\Http\Controllers\Admin\PharmacistController;
+use App\Http\Controllers\Admin\ManufactureController;
+use App\Http\Controllers\Admin\AnnouncementController;
+use App\Http\Controllers\Admin\BedAllotmentController;
 use App\Http\Controllers\Admin\LaboratoristController;
 use App\Http\Controllers\Admin\LeaveRequestController;
-use App\Http\Controllers\Admin\LeaveTypeController;
-use App\Http\Controllers\Admin\ManufactureController;
-use App\Http\Controllers\Admin\NurseController;
-use App\Http\Controllers\Admin\PatientController;
-use App\Http\Controllers\Admin\PharmacistController;
-use App\Http\Controllers\Admin\ProductCategoryController;
-use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ReceptionistController;
-use App\Http\Controllers\Admin\SettingController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\BloodDonationController;
+use App\Http\Controllers\Admin\IncomeCategoryController;
+use App\Http\Controllers\Admin\ExpenseCategoryController;
+use App\Http\Controllers\Admin\ProductCategoryController;
 
 // Route::middleware(['auth', 'check.admin.role'])->prefix('admin')->group(function () {
 Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function () {
@@ -119,9 +120,6 @@ Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function () 
     // Admins
     // Route::resource('/admins', UserController::class);
 
-    // // Roles & Permission
-    // Route::resource('roles', RoleController::class);
-
     // // Companies
     // Route::resource('/companies', OrganizationController::class);
     // Route::controller(OrganizationController::class)->group(function () {
@@ -188,41 +186,46 @@ Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function () 
     // });
 
     // Configurations & Settings
-    Route::controller(SettingController::class)->prefix('settings')->group(function () {
-        Route::get('/general', 'general')->name('settings.general');
-        Route::post('/general/setting/update', 'generalSettingUpdate')->name('settings.general.update');
+    Route::prefix('settings')->name('settings.')->group(function(){
+        Route::controller(SettingController::class)->prefix('settings')->group(function () {
+            Route::get('/general', 'general')->name('general');
+            Route::post('/general/setting/update', 'generalSettingUpdate')->name('general.update');
 
-        // cms routes
-        Route::get('/cms', 'cms')->name('settings.cms');
-        Route::put('/cms/update', 'cmsUpdate')->name('settings.cms.update');
+            // cms routes
+            Route::get('/cms', 'cms')->name('cms');
+            Route::put('/cms/update', 'cmsUpdate')->name('cms.update');
 
-        // Payment Routes
-        Route::get('/payment', 'payment')->name('settings.payment');
-        Route::get('/payment/data', 'paymentData')->name('settings.payment.data');
-        Route::put('/payment/update', 'paymentDataUpdate')->name('settings.payment.update');
+            // Payment Routes
+            Route::get('/payment', 'payment')->name('payment');
+            Route::get('/payment/data', 'paymentData')->name('payment.data');
+            Route::put('/payment/update', 'paymentDataUpdate')->name('payment.update');
 
-        // Seo route
-        Route::get('/seo', 'seo')->name('settings.seo');
-        Route::put('/seo/update/{seo}', 'seoUpdate')->name('settings.seo.update');
+            // Seo route
+            Route::get('/seo', 'seo')->name('seo');
+            Route::put('/seo/update/{seo}', 'seoUpdate')->name('seo.update');
 
-        // SMTP Routes
-        Route::get('/smtp', 'smtp')->name('settings.smtp');
-        Route::put('/smtp/update', 'smtpUpdate')->name('settings.smtp.update');
-        Route::post('/send/test-email', 'testEmailSend')->name('settings.send.test.email');
+            // SMTP Routes
+            Route::get('/smtp', 'smtp')->name('smtp');
+            Route::put('/smtp/update', 'smtpUpdate')->name('smtp.update');
+            Route::post('/send/test-email', 'testEmailSend')->name('send.test.email');
 
-        // Upgrade application
-        Route::get('/upgrade', 'upgrade')->name('settings.upgrade');
-        Route::post('/upgrade/system', 'upgradeSystem')->name('settings.upgrade.system');
+            // Upgrade application
+            Route::get('/upgrade', 'upgrade')->name('upgrade');
+            Route::post('/upgrade/system', 'upgradeSystem')->name('upgrade.system');
 
-        // Currency Routes
-        Route::prefix('currency')->prefix('currency')->name('settings.')->group(function () {
-            Route::get('/', 'currency')->name('currency');
-            Route::post('/', 'storeCurrency')->name('currency.store');
-            Route::delete('{currency}', 'deleteCurrency')->name('currency.destroy');
-            Route::put('{currency}', 'updateCurrency')->name('currency.update');
-            Route::put('{currency}', 'statusUpdateCurrency')->name('currency.status.update');
-            Route::put('{currency}', 'defaultCurrency')->name('currency.set.default');
+            // Currency Routes
+            Route::prefix('currency')->prefix('currency')->group(function () {
+                Route::get('/', 'currency')->name('currency');
+                Route::post('/', 'storeCurrency')->name('currency.store');
+                Route::delete('{currency}', 'deleteCurrency')->name('currency.destroy');
+                Route::put('{currency}', 'updateCurrency')->name('currency.update');
+                Route::put('{currency}', 'statusUpdateCurrency')->name('currency.status.update');
+                Route::put('{currency}', 'defaultCurrency')->name('currency.set.default');
+            });
         });
+
+        // Roles & Permission
+        Route::resource('roles', RoleController::class);
     });
 });
 

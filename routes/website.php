@@ -25,8 +25,8 @@ Route::controller(WebsiteController::class)->group(function () {
     // Route::get('/blog/{post:slug}', 'blogDetails')->name('website.blog.details');
 });
 
-Route::controller(CartController::class)->group(function () {
-    Route::post('/add/cart', 'addToCart')->name('cart.add');
+// Route::controller(CartController::class)->group(function () {
+    // Route::post('/add/cart', 'addToCart')->name('cart.add');
     // Route::post('/update/cart/quantity', 'updateCart')->name('cart.update.quantity');
     // Route::post('/update/single-cart/quantity', 'updateSingleCart')->name('single.cart.quantity.update');
     // Route::get('/remove/cart/{cart_id}', 'removeFromCart')->name('cart.remove');
@@ -38,4 +38,4 @@ Route::controller(CartController::class)->group(function () {
     // Route::get('/cart', 'cart')->name('cart');
     // Route::post('/coupon/apply', 'couponApply')->name('coupon.apply');
     // Route::post('/coupon/clear', 'couponClear')->name('coupon.clear');
-});
+// });

@@ -47,7 +47,6 @@ class IncomeController extends Controller
         (new CreateIncomeService)->execute($request);
 
         $this->flashSuccess('Income created successfully!');
-
         return back();
     }
 
@@ -61,7 +60,6 @@ class IncomeController extends Controller
         (new UpdateIncomeService)->execute($request, $income);
 
         $this->flashSuccess('Income updated successfully!');
-
         return back();
     }
 
@@ -75,7 +73,6 @@ class IncomeController extends Controller
         $income->delete();
 
         $this->flashSuccess('Income deleted successfully!');
-
         return back();
     }
 }

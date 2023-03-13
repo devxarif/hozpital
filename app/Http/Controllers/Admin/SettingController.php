@@ -3,11 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Setting\SMTPUpdateRequest;
 use App\Mail\Admin\SmtpTestMail;
 use App\Models\Cms;
 use App\Models\Currency;
 use App\Models\Seo;
 use App\Models\Setting;
+use App\Services\Admin\Setting\SendTestMailService;
+use App\Services\Admin\Setting\SMTPService;
 use App\Traits\SettingAble;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -191,41 +194,26 @@ class SettingController extends Controller
         ]);
     }
 
-    public function smtpUpdate(Request $request)
+    public function smtpUpdate(SMTPUpdateRequest $request)
     {
-        $this->validate($request, [
-            'host' => 'required',
-            'port' => 'required',
-            'encryption' => 'required',
-            'from_name' => 'required',
-            'from_address' => 'required',
-            'username' => 'required',
-            'password' => 'required',
-        ]);
+        try {
+            (new SMTPService())->execute($request);
 
-        checkSetEnv('MAIL_HOST', $request->host);
-        checkSetEnv('MAIL_PORT', $request->port);
-        checkSetEnv('MAIL_USERNAME', $request->username);
-        checkSetEnv('MAIL_PASSWORD', $request->password);
-        checkSetEnv('MAIL_ENCRYPTION', $request->encryption);
-        checkSetEnv('MAIL_FROM_NAME', $request->from_name);
-        checkSetEnv('MAIL_FROM_ADDRESS', $request->from_address);
-
-        session()->flash('success', 'SMTP updated successfully');
-
-        return back();
+            session()->flash('success', 'SMTP updated successfully');
+            return back();
+        } catch (\Throwable $th) {
+            return back()->with('error', "Something went wrong. {$th->getMessage()}");
+        }
     }
 
-    public function testEmailSend()
+    public function testEmailSend(Request $request)
     {
-        request()->validate(['email' => ['required', 'email']]);
-
         try {
-            Mail::to(request()->test_email)->send(new SmtpTestMail);
+            (new SendTestMailService())->execute($request);
 
             return back()->with('success', 'Test email sent successfully.');
         } catch (\Throwable $th) {
-            return back()->with('error', 'Invalid email configuration. Mail send failed.');
+            return back()->with('error', "Mail send failed: {$th->getMessage()}");
         }
     }
 

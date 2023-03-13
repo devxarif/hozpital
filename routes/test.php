@@ -1,33 +1,35 @@
 <?php
 
-use App\Exports\PatientExport;
-use App\Http\Controllers\Admin\UpgradeController;
-use App\Http\Controllers\TestController;
-use App\Imports\PatientImport;
-use App\Models\AppointmentSchedule;
+use Carbon\Carbon;
 use App\Models\Bed;
-use App\Models\BedAllotment;
-use App\Models\ContactMessage;
-use App\Models\Department;
-use App\Models\Doctor;
-use App\Models\Employee;
-use App\Models\Holiday;
-use App\Models\Language;
-use App\Models\LeaveBalance;
-use App\Models\LeaveType;
+use App\Models\User;
 use App\Models\Order;
+use App\Models\Doctor;
+use App\Models\Holiday;
 use App\Models\Patient;
 use App\Models\Setting;
-// use Barryvdh\DomPDF\Facade\Pdf;
-use App\Models\User;
-use Carbon\Carbon;
+use App\Models\Employee;
+use App\Models\Language;
 use Carbon\CarbonPeriod;
+use App\Models\LeaveType;
+use App\Models\Department;
+use Illuminate\Support\Str;
+use App\Models\BedAllotment;
+use App\Models\LeaveBalance;
+use App\Exports\PatientExport;
+use App\Imports\PatientImport;
+// use Barryvdh\DomPDF\Facade\Pdf;
+use App\Models\ContactMessage;
 use Illuminate\Support\Benchmark;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Str;
-use Label84\HoursHelper\Facades\HoursHelper;
+use Spatie\Permission\Models\Role;
+use App\Models\AppointmentSchedule;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TestController;
+use Spatie\Permission\Models\Permission;
+use Label84\HoursHelper\Facades\HoursHelper;
+use App\Http\Controllers\Admin\UpgradeController;
 use sirajcse\UniqueIdGenerator\UniqueIdGenerator;
 
 // use Dompdf\Dompdf;
@@ -49,6 +51,17 @@ use sirajcse\UniqueIdGenerator\UniqueIdGenerator;
 //     // return view('test.test');
 //     return view('welcome');
 // })->middleware('set_lang');
+
+Route::get('/test2', function () {
+    $roles = Role::with('permissions')->paginate(10);
+    $permissions = Permission::get()->groupBy('group_name');
+
+    return inertia('Admin/Role/Index', compact('roles', 'permissions'));
+    return inertia('Test/popover');
+    return view('test/test');
+    return view('app');
+
+});
 
 Route::get('/test', function () {
 
@@ -608,12 +621,7 @@ Route::get('/test', function () {
     // return view('test/test');
 })->name('test');
 
-Route::get('/test2', function () {
-    return inertia('Test/popover');
-    return view('test/test');
-    return view('app');
 
-});
 
 // Route::get('/testt', [TestController::class, 'index']);
 
