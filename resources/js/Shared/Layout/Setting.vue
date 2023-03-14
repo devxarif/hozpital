@@ -30,8 +30,8 @@
 
 <script>
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faCog, faMoneyCheck, faEnvelope, faShieldHalved } from '@fortawesome/free-solid-svg-icons'
-library.add(faCog, faMoneyCheck, faEnvelope, faShieldHalved)
+import { faCog, faMoneyCheck, faEnvelope, faShieldHalved, faLanguage, faDollarSign, faScrewdriverWrench, faBell, faBars , faShuffle, faCookieBite, faMedal, faTasks, faRobot, faG, faUpload} from '@fortawesome/free-solid-svg-icons'
+library.add(faCog, faMoneyCheck, faEnvelope, faShieldHalved, faLanguage, faDollarSign, faScrewdriverWrench, faBell, faBars, faShuffle, faCookieBite, faMedal, faTasks, faRobot, faG, faUpload)
 
 export default {
     props:{
@@ -49,9 +49,59 @@ export default {
                     route: 'admin.settings.general'
                 },
                 {
+                    title: 'System',
+                    icon: 'fa-solid fa-screwdriver-wrench',
+                    route: 'admin.settings.general'
+                },
+                {
                     title: 'Payment',
                     icon: 'fa-solid fa-money-check',
                     route: 'admin.settings.payment'
+                },
+                {
+                    title: 'Email Template',
+                    icon: 'fa-solid fa-envelope',
+                    route: 'admin.settings.smtp'
+                },
+                {
+                    title: 'Notification Template',
+                    icon: 'fa-solid fa-bell',
+                    route: 'admin.settings.smtp'
+                },
+                {
+                    title: 'Menus & Pages',
+                    icon: 'fa-solid fa-bars',
+                    route: 'admin.settings.smtp'
+                },
+                {
+                    title: 'Custom CSS & JS',
+                    icon: 'fa-solid fa-shuffle',
+                    route: 'admin.settings.smtp'
+                },
+                {
+                    title: 'Cookies Alert',
+                    icon: 'fa-solid fa-cookie-bite',
+                    route: 'admin.settings.smtp'
+                },
+                {
+                    title: 'SEO',
+                    icon: 'fa-solid fa-medal',
+                    route: 'admin.settings.smtp'
+                },
+                {
+                    title: 'Website CMS',
+                    icon: 'fa-solid fa-tasks',
+                    route: 'admin.settings.smtp'
+                },
+                {
+                    title: 'Recaptcha',
+                    icon: 'fa-solid fa-robot',
+                    route: 'admin.settings.smtp'
+                },
+                {
+                    title: 'Social Login',
+                    icon: 'fa-solid fa-g',
+                    route: 'admin.settings.smtp'
                 },
                 {
                     title: 'SMTP',
@@ -62,7 +112,27 @@ export default {
                     title: 'Roles & Permission',
                     icon: 'fa-solid fa-shield-halved',
                     route: 'admin.settings.roles.index'
-                }
+                },
+                {
+                    title: 'Language',
+                    icon: 'fa-solid fa-language',
+                    route: 'admin.settings.roles.index'
+                },
+                {
+                    title: 'Currency',
+                    icon: 'fa-solid fa-dollar-sign',
+                    route: 'admin.settings.roles.index'
+                },
+                {
+                    title: 'Log',
+                    icon: 'fa-solid fa-dollar-sign',
+                    route: 'admin.settings.roles.index'
+                },
+                {
+                    title: 'Upgrade System',
+                    icon: 'fa-solid fa-upload',
+                    route: 'admin.settings.roles.index'
+                },
             ]
         };
     }
