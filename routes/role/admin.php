@@ -165,18 +165,18 @@ Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function () 
     // // ========================================================================
 
     // // Languages Routes
-    // Route::controller(LanguageController::class)->prefix('setting')->name('languages.')->group(function () {
-    //     Route::get('languages', 'index')->name('index');
-    //     Route::post('languages', 'store')->name('store');
-    //     Route::put('languages/{lang}', 'update')->name('update');
-    //     Route::put('{lang}', 'defaultLanguage')->name('set.default');
-    //     Route::delete('languages/{lang}', 'destroy')->name('destroy');
-    //     Route::get('languages/translation/{lang}', 'translationEdit')->name('translation.edit');
-    //     Route::put('languages/translation/{lang}', 'translationUpdate')->name('translation.update');
-    //     Route::put('languages/status/{lang}', 'statusUpdate')->name('status.update');
-    //     Route::get('languages/translate/single', 'singleTranslate')->name('translate');
-    //     Route::get('languages/translate/all', 'allTranslate')->name('translate.all');
-    // });
+    Route::controller(LanguageController::class)->prefix('setting')->name('languages.')->group(function () {
+        Route::get('languages', 'index')->name('index');
+        Route::post('languages', 'store')->name('store');
+        Route::put('languages/{lang}', 'update')->name('update');
+        Route::put('{lang}', 'defaultLanguage')->name('set.default');
+        Route::delete('languages/{lang}', 'destroy')->name('destroy');
+        Route::get('languages/translation/{lang}', 'translationEdit')->name('translation.edit');
+        Route::put('languages/translation/{lang}', 'translationUpdate')->name('translation.update');
+        Route::put('languages/status/{lang}', 'statusUpdate')->name('status.update');
+        Route::get('languages/translate/single', 'singleTranslate')->name('translate');
+        Route::get('languages/translate/all', 'allTranslate')->name('translate.all');
+    });
 
     // Themes Routes
     // Route::controller(ThemeController::class)->group(function () {

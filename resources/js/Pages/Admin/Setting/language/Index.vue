@@ -56,7 +56,7 @@
                                             </label>
                                         </td>
                                         <td class="d-flex">
-                                            <Link :href="route('languages.translation.edit', language.id)" v-tooltip="__('Translate Language')" class="btn btn-sm  pl-0">
+                                            <Link :href="route('admin.languages.translation.edit', language.id)" v-tooltip="__('Translate Language')" class="btn btn-sm  pl-0">
                                                  <i class="fa-solid fa-cog fa-2x text-secondary"></i>
                                             </Link>
                                             <button @click="editLanguage(language)" v-tooltip="__('Language Edit')" class="btn btn-sm ">
@@ -132,7 +132,6 @@
 
 <script>
 export default {
-    layout: 'Setting',
     props: {
         languages: Array,
         langInfos: Array,
@@ -156,7 +155,7 @@ export default {
             this.isEditMode ? this.updateData() : this.createData();
         },
         createData() {
-            this.form.post(route("languages.store"), {
+            this.form.post(route("admin.languages.store"), {
                 onSuccess: () => this.form.reset(),
             });
         },
@@ -171,7 +170,7 @@ export default {
             this.form.reset();
         },
         updateData() {
-            this.form.put(route("languages.update", this.selectedId), {
+            this.form.put(route("admin.languages.update", this.selectedId), {
                 onSuccess: () => {
                     this.isEditMode = false;
                     this.form.reset();
@@ -189,19 +188,19 @@ export default {
                 confirmButtonText: "Yes, delete it!",
             }).then((result) => {
                 if (result.isConfirmed) {
-                    this.$inertia.delete(route("languages.destroy", id));
+                    this.$inertia.delete(route("admin.languages.destroy", id));
                 }
             });
         },
         languageStatusUpdate(id) {
-            this.$inertia.put(route("languages.status.update", id));
+            this.$inertia.put(route("admin.languages.status.update", id));
         },
         statusChange(event) {
             this.form.status = event.target.checked;
         },
         setDefaultLanguage() {
             this.$inertia.put(
-                route("languages.set.default", this.default_language)
+                route("admin.languages.set.default", this.default_language)
             );
         },
         languageAutoComplete(){

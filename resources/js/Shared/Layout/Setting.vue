@@ -12,28 +12,10 @@
 
         <div class="grid grid-cols-12 gap-3">
             <ol class="col-span-2">
-                <li class="mb-1">
-                    <Link :href="route('admin.settings.general')" class="items-center p-3 flex bg-white border border-gray-200 rounded-lg shadow-sm" :class="route().current('admin.settings.general') ? 'text-blue-500 font-bold':''">
-                        <font-awesome-icon icon="fa-solid fa-cog" class="h-5 w-5 mr-2" :class="route().current('admin.settings.general') ? 'text-blue-500':''"/>
-                        <span>General</span>
-                    </Link>
-                </li>
-                <li class="mb-1">
-                    <Link :href="route('admin.settings.payment')" class="items-center p-3 flex bg-white border border-gray-200 rounded-lg shadow-sm" :class="route().current('admin.settings.payment') ? 'text-blue-500 font-bold':''">
-                        <font-awesome-icon icon="fa-solid fa-money-check" class="h-5 w-5 mr-2" :class="route().current('admin.settings.payment') ? 'text-blue-500':''"/>
-                        <span>Payment</span>
-                    </Link>
-                </li>
-                <li class="mb-1">
-                    <Link :href="route('admin.settings.smtp')" class="items-center p-3 flex bg-white border border-gray-200 rounded-lg shadow-sm" :class="route().current('admin.settings.smtp') ? 'text-blue-500 font-bold':''">
-                        <font-awesome-icon icon="fa-solid fa-envelope" class="h-5 w-5 mr-2" :class="route().current('admin.settings.smtp') ? 'text-blue-500':''"/>
-                        <span>SMTP</span>
-                    </Link>
-                </li>
-                <li class="mb-1">
-                    <Link :href="route('admin.settings.roles.index')" class="items-center p-3 flex bg-white border border-gray-200 rounded-lg shadow-sm" :class="route().current('admin.settings.roles.index') ? 'text-blue-500 font-bold':''">
-                        <font-awesome-icon icon="fa-solid fa-shield-halved" class="h-5 w-5 mr-2" :class="route().current('admin.settings.roles.index') ? 'text-blue-500':''"/>
-                        <span>Roles & Permission</span>
+                <li class="mb-1" v-for="(sidebar, index) in sidebars" :key="index">
+                    <Link :href="route(sidebar.route)" class="items-center p-3 flex bg-white border border-gray-200 rounded-lg shadow-sm" :class="route().current(sidebar.route) ? 'text-blue-500 font-bold':''">
+                        <font-awesome-icon :icon="sidebar.icon" class="h-5 w-5 mr-2" :class="route().current(sidebar.route) ? 'text-blue-500':''"/>
+                        <span>{{ __(sidebar.title) }}</span>
                     </Link>
                 </li>
             </ol>
@@ -60,11 +42,29 @@ export default {
     },
     data() {
         return {
-
+            sidebars: [
+                {
+                    title: 'General',
+                    icon: 'fa-solid fa-cog',
+                    route: 'admin.settings.general'
+                },
+                {
+                    title: 'Payment',
+                    icon: 'fa-solid fa-money-check',
+                    route: 'admin.settings.payment'
+                },
+                {
+                    title: 'SMTP',
+                    icon: 'fa-solid fa-envelope',
+                    route: 'admin.settings.smtp'
+                },
+                {
+                    title: 'Roles & Permission',
+                    icon: 'fa-solid fa-shield-halved',
+                    route: 'admin.settings.roles.index'
+                }
+            ]
         };
-    },
-    methods: {
-
     }
 };
 </script>

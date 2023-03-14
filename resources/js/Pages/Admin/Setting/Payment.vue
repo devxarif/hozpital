@@ -4,57 +4,17 @@
             <div class="hidden sm:block mb-3">
                 <div class="border-b-2 border-gray-200">
                     <nav class="flex space-x-8" aria-label="Tabs">
-                        <Li @click="changeTab('paypal')" :class="['cursor-pointer group inline-flex items-center py-4 px-1 border-b-2 font-medium text-md', currentTab == 'paypal' ? 'border-blue-500 text-blue-600':'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-200' ]">
-                            <span>{{ __('Paypal') }}</span>
-                        </Li>
-                        <Li @click="changeTab('stripe')" :class="['cursor-pointer group inline-flex items-center py-4 px-1 border-b-2 font-medium text-md', currentTab == 'stripe' ? 'border-blue-500 text-blue-600':'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-200' ]">
-                            <span>{{ __('Stripe') }}</span>
-                        </Li>
-                        <Li @click="changeTab('razorpay')" :class="['cursor-pointer group inline-flex items-center py-4 px-1 border-b-2 font-medium text-md', currentTab == 'razorpay' ? 'border-blue-500 text-blue-600':'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-200' ]">
-                            <span>{{ __('Razorpay') }}</span>
-                        </Li>
-                        <Li @click="changeTab('flutterwave')" :class="['cursor-pointer group inline-flex items-center py-4 px-1 border-b-2 font-medium text-md', currentTab == 'flutterwave' ? 'border-blue-500 text-blue-600':'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-200' ]">
-                            <span>{{ __('Flutterwave') }}</span>
-                        </Li>
-                        <Li @click="changeTab('mollie')" :class="['cursor-pointer group inline-flex items-center py-4 px-1 border-b-2 font-medium text-md', currentTab == 'mollie' ? 'border-blue-500 text-blue-600':'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-200' ]">
-                            <span>{{ __('Mollie') }}</span>
-                        </Li>
-                        <Li @click="changeTab('paystack')" :class="['cursor-pointer group inline-flex items-center py-4 px-1 border-b-2 font-medium text-md', currentTab == 'paystack' ? 'border-blue-500 text-blue-600':'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-200' ]">
-                            <span>{{ __('PayStack') }}</span>
-                        </Li>
-                        <Li @click="changeTab('instamojo')" :class="['cursor-pointer group inline-flex items-center py-4 px-1 border-b-2 font-medium text-md', currentTab == 'instamojo' ? 'border-blue-500 text-blue-600':'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-200' ]">
-                            <span>{{ __('Instamojo') }}</span>
-                        </Li>
-                        <Li @click="changeTab('midtrans')" :class="['cursor-pointer group inline-flex items-center py-4 px-1 border-b-2 font-medium text-md', currentTab == 'midtrans' ? 'border-blue-500 text-blue-600':'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-200' ]">
-                            <span>{{ __('Midtrans') }}</span>
-                        </Li>
+                        <li v-for="(payment, index) in payment_nav" :key="index" @click="changeTab(payment.name)" :class="['cursor-pointer group inline-flex items-center py-4 px-1 border-b-2 font-medium text-md', currentTab == payment.name ? 'border-blue-500 text-blue-600':'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-200' ]">
+                            <span>{{ __(payment.title) }}</span>
+                        </li>
                     </nav>
                 </div>
             </div>
-            <div v-if="currentTab == 'paypal'" class="col-span-8 bg-white w-full p-6 rounded-lg border border-gray-8  ">
-                <Paypal :data="paymentData"/>
-            </div>
-            <div v-if="currentTab == 'stripe'" class="col-span-8 bg-white w-full p-6 rounded-lg border border-gray-8  ">
-                <Stripe :data="paymentData"/>
-            </div>
-            <div v-if="currentTab == 'razorpay'" class="col-span-8 bg-white w-full p-6 rounded-lg border border-gray-8  ">
-                <Razorpay :data="paymentData"/>
-            </div>
-            <div v-if="currentTab == 'flutterwave'" class="col-span-8 bg-white w-full p-6 rounded-lg border border-gray-8  ">
-                <Flutterwave :data="paymentData"/>
-            </div>
-            <div v-if="currentTab == 'mollie'" class="col-span-8 bg-white w-full p-6 rounded-lg border border-gray-8  ">
-                <Mollie :data="paymentData"/>
-            </div>
-            <div v-if="currentTab == 'paystack'" class="col-span-8 bg-white w-full p-6 rounded-lg border border-gray-8  ">
-                <Paystack :data="paymentData"/>
-            </div>
-            <div v-if="currentTab == 'instamojo'" class="col-span-8 bg-white w-full p-6 rounded-lg border border-gray-8  ">
-                <Instamojo :data="paymentData"/>
-            </div>
-            <div v-if="currentTab == 'midtrans'" class="col-span-8 bg-white w-full p-6 rounded-lg border border-gray-8  ">
-                <Midtrans :data="paymentData"/>
-            </div>
+            <template v-for="(payment, index) in payment_contents" :key="index">
+                <div v-if="currentTab == payment.name" class="col-span-8 bg-white w-full p-6 rounded-lg border border-gray-8 ">
+                    <component :is="payment.component" :data="paymentData"/>
+                </div>
+            </template>
         </div>
     </SettingLayout>
 </template>
@@ -89,6 +49,84 @@ export default {
         return {
             currentTab: "paypal",
             paymentData: {},
+
+            payment_nav: [
+                {
+                    name: "paypal",
+                    title: "PayPal",
+                },
+                {
+                    name: "stripe",
+                    title: "Stripe",
+                },
+                {
+                    name: "razorpay",
+                    title: "Razorpay",
+                },
+                {
+                    name: "flutterwave",
+                    title: "Flutterwave",
+                },
+                {
+                    name: "mollie",
+                    title: "Mollie",
+                },
+                {
+                    name: "paystack",
+                    title: "PayStack",
+                },
+                {
+                    name: "instamojo",
+                    title: "Instamojo",
+                },
+                {
+                    name: "midtrans",
+                    title: "Midtrans",
+                },
+            ],
+
+            payment_contents: [
+                {
+                    name: "paypal",
+                    title: "PayPal",
+                    component: Paypal,
+                },
+                {
+                    name: "stripe",
+                    title: "Stripe",
+                    component: Stripe,
+                },
+                {
+                    name: "razorpay",
+                    title: "Razorpay",
+                    component: Razorpay,
+                },
+                {
+                    name: "flutterwave",
+                    title: "Flutterwave",
+                    component: Flutterwave,
+                },
+                {
+                    name: "mollie",
+                    title: "Mollie",
+                    component: Mollie,
+                },
+                {
+                    name: "paystack",
+                    title: "PayStack",
+                    component: Paystack,
+                },
+                {
+                    name: "instamojo",
+                    title: "Instamojo",
+                    component: Instamojo,
+                },
+                {
+                    name: "midtrans",
+                    title: "Midtrans",
+                    component: Midtrans,
+                },
+            ],
         };
     },
     methods: {

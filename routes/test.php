@@ -53,6 +53,19 @@ use sirajcse\UniqueIdGenerator\UniqueIdGenerator;
 // })->middleware('set_lang');
 
 Route::get('/test2', function () {
+    $languages = Language::all();
+    $path = base_path('resources/json/languages.json');
+    $langInfos = json_decode(file_get_contents($path), true);
+    $defaultLanguage = Language::where('code', config('kodebazar.default_language'))->value('id');
+
+    return inertia('Admin/Setting/language/Index', [
+        'languages' => $languages,
+        'langInfos' => $langInfos,
+        'defaultLanguage' => $defaultLanguage,
+    ]);
+
+
+
     $roles = Role::with('permissions')->paginate(10);
     $permissions = Permission::get()->groupBy('group_name');
 
