@@ -1,6 +1,6 @@
 <template>
     <SettingLayout title="SMTP">
-        <div class="grid gap-6 md:grid-cols-12 xl:grid-cols-12 mt-6">
+        <div class="grid gap-6 md:grid-cols-12 xl:grid-cols-12">
             <div class="col-span-8 bg-white w-full p-6 rounded-lg border border-gray-8  ">
                 <form class="space-y-8 divide-y divide-gray-200" @submit.prevent="saveSetting">
                     <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5">

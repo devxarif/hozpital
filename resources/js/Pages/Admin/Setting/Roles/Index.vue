@@ -1,6 +1,6 @@
 <template>
     <SettingLayout title="Roles & Permission">
-        <div class="grid gap-6 md:grid-cols-1 xl:grid-cols-1 mt-6">
+        <div class="grid gap-6 md:grid-cols-1 xl:grid-cols-1">
             <div class="bg-white w-full p-6 rounded-lg border border-gray-8  ">
                 <form @submit.prevent="updateData" class="space-y-8 divide-y divide-gray-200">
                     <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5">

@@ -1,34 +1,34 @@
 <template>
-    <SettingLayout title="Application">
-        <div class="grid gap-6 md:grid-cols-1 xl:grid-cols-12 mt-6">
-            <div class="col-span-4 bg-white w-full p-6 rounded-lg border border-gray-8  ">
-                <div class="overflow-hidden bg-white shadow sm:rounded-md">
-                    <ul role="list" class="space-y-1 shadow-lg">
-                        <li class="overflow-hidden rounded-md px-3.5 py-3.5 sm:px-6 text-sm font-medium border border-gray-100 cursor-pointer" :class="{'bg-blue-500 text-white': currentTab == 'paypal'}" @click="changeTab('paypal')">
-                            {{ __('Paypal') }}
-                        </li>
-                        <li class="overflow-hidden rounded-md px-3.5 py-3.5 sm:px-6 text-sm font-medium border border-gray-100 cursor-pointer" :class="{'bg-blue-500 text-white': currentTab == 'stripe'}" @click="changeTab('stripe')">
-                            {{ __('Stripe') }}
-                        </li>
-                        <li class="overflow-hidden rounded-md px-3.5 py-3.5 sm:px-6 text-sm font-medium border border-gray-100 cursor-pointer" :class="{'bg-blue-500 text-white': currentTab == 'razorpay'}" @click="changeTab('razorpay')">
-                            {{ __('Razorpay') }}
-                        </li>
-                        <li class="overflow-hidden rounded-md px-3.5 py-3.5 sm:px-6 text-sm font-medium border border-gray-100 cursor-pointer" :class="{'bg-blue-500 text-white': currentTab == 'flutterwave'}" @click="changeTab('flutterwave')">
-                            {{ __('Flutterwave') }}
-                        </li>
-                        <li class="overflow-hidden rounded-md px-3.5 py-3.5 sm:px-6 text-sm font-medium border border-gray-100 cursor-pointer" :class="{'bg-blue-500 text-white': currentTab == 'mollie'}" @click="changeTab('mollie')">
-                            {{ __('Mollie') }}
-                        </li>
-                        <li class="overflow-hidden rounded-md px-3.5 py-3.5 sm:px-6 text-sm font-medium border border-gray-100 cursor-pointer" :class="{'bg-blue-500 text-white': currentTab == 'paystack'}" @click="changeTab('paystack')">
-                            {{ __('PayStack') }}
-                        </li>
-                        <li class="overflow-hidden rounded-md px-3.5 py-3.5 sm:px-6 text-sm font-medium border border-gray-100 cursor-pointer" :class="{'bg-blue-500 text-white': currentTab == 'instamojo'}" @click="changeTab('instamojo')">
-                            {{ __('Instamojo') }}
-                        </li>
-                        <li class="overflow-hidden rounded-md px-3.5 py-3.5 sm:px-6 text-sm font-medium border border-gray-100 cursor-pointer" :class="{'bg-blue-500 text-white': currentTab == 'midtrans'}" @click="changeTab('midtrans')">
-                            {{ __('Midtrans') }}
-                        </li>
-                    </ul>
+    <SettingLayout title="Payment">
+        <div class="">
+            <div class="hidden sm:block mb-3">
+                <div class="border-b-2 border-gray-200">
+                    <nav class="flex space-x-8" aria-label="Tabs">
+                        <Li @click="changeTab('paypal')" :class="['cursor-pointer group inline-flex items-center py-4 px-1 border-b-2 font-medium text-md', currentTab == 'paypal' ? 'border-blue-500 text-blue-600':'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-200' ]">
+                            <span>{{ __('Paypal') }}</span>
+                        </Li>
+                        <Li @click="changeTab('stripe')" :class="['cursor-pointer group inline-flex items-center py-4 px-1 border-b-2 font-medium text-md', currentTab == 'stripe' ? 'border-blue-500 text-blue-600':'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-200' ]">
+                            <span>{{ __('Stripe') }}</span>
+                        </Li>
+                        <Li @click="changeTab('razorpay')" :class="['cursor-pointer group inline-flex items-center py-4 px-1 border-b-2 font-medium text-md', currentTab == 'razorpay' ? 'border-blue-500 text-blue-600':'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-200' ]">
+                            <span>{{ __('Razorpay') }}</span>
+                        </Li>
+                        <Li @click="changeTab('flutterwave')" :class="['cursor-pointer group inline-flex items-center py-4 px-1 border-b-2 font-medium text-md', currentTab == 'flutterwave' ? 'border-blue-500 text-blue-600':'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-200' ]">
+                            <span>{{ __('Flutterwave') }}</span>
+                        </Li>
+                        <Li @click="changeTab('mollie')" :class="['cursor-pointer group inline-flex items-center py-4 px-1 border-b-2 font-medium text-md', currentTab == 'mollie' ? 'border-blue-500 text-blue-600':'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-200' ]">
+                            <span>{{ __('Mollie') }}</span>
+                        </Li>
+                        <Li @click="changeTab('paystack')" :class="['cursor-pointer group inline-flex items-center py-4 px-1 border-b-2 font-medium text-md', currentTab == 'paystack' ? 'border-blue-500 text-blue-600':'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-200' ]">
+                            <span>{{ __('PayStack') }}</span>
+                        </Li>
+                        <Li @click="changeTab('instamojo')" :class="['cursor-pointer group inline-flex items-center py-4 px-1 border-b-2 font-medium text-md', currentTab == 'instamojo' ? 'border-blue-500 text-blue-600':'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-200' ]">
+                            <span>{{ __('Instamojo') }}</span>
+                        </Li>
+                        <Li @click="changeTab('midtrans')" :class="['cursor-pointer group inline-flex items-center py-4 px-1 border-b-2 font-medium text-md', currentTab == 'midtrans' ? 'border-blue-500 text-blue-600':'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-200' ]">
+                            <span>{{ __('Midtrans') }}</span>
+                        </Li>
+                    </nav>
                 </div>
             </div>
             <div v-if="currentTab == 'paypal'" class="col-span-8 bg-white w-full p-6 rounded-lg border border-gray-8  ">
