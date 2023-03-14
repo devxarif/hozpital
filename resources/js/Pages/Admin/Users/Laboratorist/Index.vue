@@ -199,10 +199,10 @@
                         </div>
                     </td>
                     <td class="p-4 text-sm text-gray-500 break-all">
-                        {{ laboratorist.user.email ?? 'No email entry' }}
+                        {{ laboratorist.user.email ?? '' }}
                     </td>
                     <td class="p-4 text-sm text-gray-500 break-all">
-                        {{ laboratorist.user.phone ?? 'No phone entry'}}
+                        {{ laboratorist.user.phone ?? ''}}
                     </td>
                     <td class="py-4 pl-4 pr-4 text-sm text-gray-500 sm:pr-6">
                         <Menu as="div" class="inline-block text-left">

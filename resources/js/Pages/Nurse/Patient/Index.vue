@@ -158,8 +158,8 @@
                     <h2 class="text-2xl font-bold tracking-tight text-gray-900 ">{{ patient.user?.name ?? '-' }}</h2>
                     <h6 class="my-1 text-sm font-bold tracking-tight text-gray-900 ">{{ patient.user.email ?? '-' }}</h6>
                     <h6 class="my-1 text-sm font-bold tracking-tight text-gray-900 " v-if="patient.phone">{{ patient.phone ?? '-' }}</h6>
-                    <span class="text-xs font-semibold mr-2 px-2.5 py-0.5 rounded bg-green-100 text-green-800   capitalize" v-if="patient.gender">
-                        {{ patient.gender ?? '-' }}
+                    <span class="text-white text-sm font-medium mr-2 px-3 py-2 rounded-full capitalize" :class="patient.gender == 'male' ? 'bg-blue-500':'bg-gray-500'" v-if="patient.gender">
+                        {{ patient.gender ?? '' }}
                     </span>
                 </span>
             </div>
@@ -190,13 +190,15 @@
                         </div>
                     </td>
                     <td class="p-4 text-sm text-gray-500 break-all">
-                        {{ patient.user.email ?? 'No email entry' }}
+                        {{ patient.user.email ?? '' }}
                     </td>
                     <td class="p-4 text-sm text-gray-500 break-all">
-                        {{ patient.user.phone ?? 'No phone entry'}}
+                        {{ patient.phone ?? ''}}
                     </td>
                     <td class="p-4 text-sm text-gray-500 break-all">
-                        {{ patient.user.gender ?? 'No gender entry' }}
+                        <span class="text-white text-sm font-medium mr-2 px-3 py-2 rounded-full capitalize" :class="patient.gender == 'male' ? 'bg-blue-500':'bg-gray-500'">
+                            {{ patient.gender ?? '' }}
+                        </span>
                     </td>
                     <td class="py-4 pl-4 pr-4 text-sm text-gray-500 sm:pr-6">
                         <Menu as="div" class="inline-block text-left">

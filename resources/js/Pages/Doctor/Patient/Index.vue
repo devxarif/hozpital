@@ -190,13 +190,15 @@
                         </div>
                     </td>
                     <td class="p-4 text-sm text-gray-500 break-all">
-                        {{ patient.user.email ?? 'No email entry' }}
+                        {{ patient.user.email ?? '' }}
                     </td>
                     <td class="p-4 text-sm text-gray-500 break-all">
-                        {{ patient.user.phone ?? 'No phone entry'}}
+                        {{ patient.phone ?? ''}}
                     </td>
                     <td class="p-4 text-sm text-gray-500 break-all">
-                        {{ patient.user.gender ?? 'No gender entry' }}
+                        <span class="text-white text-sm font-medium mr-2 px-3 py-2 rounded-full capitalize" :class="patient.gender == 'male' ? 'bg-blue-500':'bg-gray-500'">
+                            {{ patient.gender ?? '' }}
+                        </span>
                     </td>
                     <td class="py-4 pl-4 pr-4 text-sm text-gray-500 sm:pr-6">
                         <Menu as="div" class="inline-block text-left">

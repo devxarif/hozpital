@@ -162,10 +162,10 @@
                         </div>
                     </td>
                     <td class="p-4 text-sm text-gray-500 break-all">
-                        {{ doctor.user.email ?? 'No email entry' }}
+                        {{ doctor.user.email ?? '' }}
                     </td>
                     <td class="p-4 text-sm text-gray-500 break-all">
-                        {{ doctor.department.name ?? 'No phone entry'}}
+                        {{ doctor.department.name ?? ''}}
                     </td>
                     <td class="py-4 pl-4 pr-4 text-sm text-gray-500 sm:pr-6">
                         <Menu as="div" class="inline-block text-left">

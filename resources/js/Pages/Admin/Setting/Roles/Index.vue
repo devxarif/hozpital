@@ -11,7 +11,7 @@
                                     <p class="mt-1 max-w-2xl text-sm text-gray-500">This information will be displayed publicly so be careful what you share.</p>
                                 </div>
                                 <div class="mt-6 sm:mt-5 space-y-6 sm:space-y-5">
-                                    <button @click="showCreateDrawer = true" type="button" class="relative inline-flex items-center rounded-l-md border border-gray-300 bg-blue-600 px-4 py-2.5 text-sm font-medium text-white hover:bg-blue-700 focus:z-10 focus:outline-none focus:ring-1">
+                                    <button @click="showCreateDrawer = true" type="button" class="relative inline-flex items-center rounded-md border border-gray-300 bg-blue-600 px-4 py-2.5 text-sm font-medium text-white hover:bg-blue-700 focus:z-10 focus:outline-none focus:ring-1">
                                         <font-awesome-icon icon="fa-solid fa-plus" class="h-4 w-4 mr-2"/>
                                         {{ __('Add Role') }}
                                     </button>

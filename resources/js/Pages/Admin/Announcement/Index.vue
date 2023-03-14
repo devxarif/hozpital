@@ -127,7 +127,7 @@
                         <tbody class="divide-y divide-gray-200 bg-white">
                             <tr v-for="announcement in announcements.data" :key="announcement.id" class="divide-x divide-gray-200">
                                     <td class="p-4 text-sm text-gray-500 break-all">
-                                        {{ announcement.title ?? 'No title entry' }}
+                                        {{ announcement.title ?? '' }}
                                     </td>
                                     <td class="p-4 text-sm text-gray-500 break-all">
                                         {{ announcement.description }}
