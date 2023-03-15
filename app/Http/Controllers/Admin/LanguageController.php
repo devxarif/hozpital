@@ -16,11 +16,19 @@ class LanguageController extends Controller
     {
         $languages = Language::all();
         $path = base_path('resources/json/languages.json');
-        $langInfos = json_decode(file_get_contents($path), true);
+        $langs = json_decode(file_get_contents($path), true);
+        $langInfos = collect($langs)->map(function ($lang) {
+            return [
+                'name' => $lang['name'],
+                'code' => $lang['code'],
+            ];
+        })->sortBy('name')->values()->all();
         $defaultLanguage = Language::where('language_code', config('kodebazar.default_language'))->value('id');
+        $countries = json_decode(file_get_contents(base_path('resources/json/country.json')), true);
 
         return inertia('Admin/Setting/Language/Index', [
             'languages' => $languages,
+            'countries' => $countries,
             'langInfos' => $langInfos,
             'defaultLanguage' => $defaultLanguage,
         ]);
@@ -31,7 +39,9 @@ class LanguageController extends Controller
         $language = Language::create([
             'name' => $request->name,
             'language_code' => $request->language_code,
+            'country_code' => $request->country_code,
             'status' => $request->status ? 1 : 0,
+            'force_rtl' => $request->force_rtl ? 1 : 0,
         ]);
 
         $baseFile = base_path('resources/lang/en.json');
@@ -40,22 +50,25 @@ class LanguageController extends Controller
 
         session()->flash('success', 'Language added successfully.');
 
-        return redirect()->route('languages.translation.edit', $language->id);
+        return back();
+        // return redirect()->route('languages.translation.edit', $language->id);
     }
 
-    public function update(LanguageUpdateRequest $request, Language $lang)
+    public function update(LanguageUpdateRequest $request, Language $language)
     {
-        $oldFile = $lang->code.'.json';
+        $oldFile = $language->language_code.'.json';
         $oldName = base_path('resources/lang/'.$oldFile);
-        $newFile = strSlug($request->code).'.json';
+        $newFile = strSlug($request->language_code).'.json';
         $newName = base_path('resources/lang/'.$newFile);
 
         rename($oldName, $newName);
 
-        $lang->update([
+        $language->update([
             'name' => $request->name,
-            'code' => $request->code,
+            'language_code' => $request->language_code,
+            'country_code' => $request->country_code,
             'status' => $request->status ? 1 : 0,
+            'force_rtl' => $request->force_rtl ? 1 : 0,
         ]);
 
         session()->flash('success', 'Language updated successfully.');
@@ -65,8 +78,8 @@ class LanguageController extends Controller
 
     public function destroy(Language $language)
     {
-        if (File::exists(base_path('resources/lang/'.$language->code.'.json'))) {
-            File::delete(base_path('resources/lang/'.$language->code.'.json'));
+        if (File::exists(base_path('resources/lang/'.$language->language_code.'.json'))) {
+            File::delete(base_path('resources/lang/'.$language->language_code.'.json'));
         }
 
         $language->delete();
@@ -77,7 +90,7 @@ class LanguageController extends Controller
 
     public function translationEdit(Language $language)
     {
-        $path = base_path('resources/lang/'.$language->code.'.json');
+        $path = base_path('resources/lang/'.$language->language_code.'.json');
         $translations = json_decode(file_get_contents($path), true);
 
         return inertia('Admin/Setting/Language/Translation', [
@@ -88,7 +101,7 @@ class LanguageController extends Controller
 
     public function translationUpdate(Request $request, Language $language)
     {
-        $filePath = base_path('resources/lang/'.$language->code.'.json');
+        $filePath = base_path('resources/lang/'.$language->language_code.'.json');
 
         $data = file_get_contents($filePath);
         $translations = json_decode($data, true);
@@ -139,7 +152,7 @@ class LanguageController extends Controller
     public function allTranslate()
     {
         $language = Language::findOrFail(request('id'));
-        $data = file_get_contents(base_path('resources/lang/'.$language->code.'.json'));
+        $data = file_get_contents(base_path('resources/lang/'.$language->language_code.'.json'));
         $translations = json_decode($data, true);
 
         $afterTrans = [];
@@ -153,9 +166,9 @@ class LanguageController extends Controller
         return response()->json($afterTrans);
     }
 
-    public function defaultLanguage(Language $lang)
+    public function defaultLanguage(Language $language)
     {
-        checkSetEnv('APP_DEFAULT_LANGUAGE', $lang->code);
+        checkSetEnv('APP_DEFAULT_LANGUAGE', $language->language_code);
 
         session()->flash('success', 'Language default set successfully.');
 

@@ -25,7 +25,8 @@ class LanguageCreateRequest extends FormRequest
     {
         return [
             'name' => 'required|unique:languages,name',
-            'code' => 'required|unique:languages,code',
+            'language_code' => 'required|unique:languages,language_code',
+            'country_code' => 'required',
         ];
     }
 }

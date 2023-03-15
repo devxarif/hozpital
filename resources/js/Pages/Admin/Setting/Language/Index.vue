@@ -20,17 +20,13 @@
                                 </div>
                             </div>
 
-
-
-
-
                             <div class="sm:border-t sm:border-gray-200 sm:pt-5">
                                 <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
                                     <template v-for="language in languages" :key="language.id">
                                         <span class="block p-6 bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100">
                                            <div class="flex justify-between">
                                                 <div>
-                                                    <img class="h-10 w-10 rounded-lg" :src="`/assets/img/flags/${language.country_code}.svg`" alt="">
+                                                    <img class="h-10 w-10 rounded-lg" :src="`/assets/img/flags/${language.country_code.toLowerCase()}.svg`" alt="">
                                                     <h2 class="mb-2 text-xl font-bold tracking-tight text-gray-900 ">{{ language.name }} ({{ language.language_code }})</h2>
                                                 </div>
                                                 <div class="text-sm">
@@ -63,18 +59,15 @@
             </div>
         </div>
 
-        <CreateLanguage :show="showCreateDrawer" @close-drawer="showCreateDrawer = false"/>
-        <!--
-        <EditRole v-if="showEditDrawer" :show="showEditDrawer" @close-drawer="showEditDrawer = false" :role="editRole" :permissions="editPermissions"/>
-        <ShowPermissionModal :show="showPermissionDetailsModal" @close-modal="showPermissionDetailsModal = false" :permissions="permissions" :role="role"/> -->
+        <CreateLanguage :show="showCreateDrawer" @close-drawer="showCreateDrawer = false" :langInfos="langInfos" :countries="countries"/>
+        <EditLanguage :show="showEditDrawer" @close-drawer="showEditDrawer = false" :language="editLanguage" :langInfos="langInfos" :countries="countries"/>
     </SettingLayout>
 </template>
 
 <script>
 import SettingLayout from "@/Shared/Layout/Setting.vue";
 import CreateLanguage from "./Create.vue";
-// import EditRole from "./Edit.vue";
-// import ShowPermissionModal from './PermissionModal.vue'
+import EditLanguage from "./Edit.vue";
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faLanguage} from '@fortawesome/free-solid-svg-icons'
 library.add(faLanguage)
@@ -83,11 +76,18 @@ export default {
     components: {
         SettingLayout,
         CreateLanguage,
-        // ShowPermissionModal,
-        // EditRole
+        EditLanguage
     },
     props: {
         languages: {
+            type: Array,
+            required: true,
+        },
+        langInfos: {
+            type: Array,
+            required: true,
+        },
+        countries: {
             type: Array,
             required: true,
         }
@@ -97,56 +97,25 @@ export default {
             showCreateDrawer: false,
             showEditDrawer: false,
             showPermissionDetailsModal: false,
-            editRole: '',
-            editPermissions: '',
-
-            permissions: [],
-            role: [],
-
-            langId: '',
+            editLanguage: '',
         };
     },
     methods: {
-        async editData(id){
-            let response = await axios.get(route('admin.settings.roles.edit', id));
-            console.log(response)
-            this.editRole = response.data.role
-            this.editPermissions = response.data.permissions
+        async editData(language){
+            this.editLanguage = language
             this.showEditDrawer = true
         },
-
         changeStatus(e){
-            console.log(e.target.checked)
-            console.log(e.target.value)
-            // console.log(id)
-
             this.$inertia.post(route('admin.settings.language.status'), {
                 status: e.target.checked,
                 id: e.target.value
             })
-        },
-
-
-
-
-
-        saveData() {
-            this.isEditMode ? this.updateData() : this.createData();
-        },
-        createData() {
-            this.form.post(route("admin.setting.languages.store"), {
-                onSuccess: () => this.form.reset(),
-            });
         },
         editLanguage(language) {
             this.isEditMode = true;
             this.selectedId = language.id;
             this.form.name = language.name;
             this.form.code = language.code;
-        },
-        cancelEdit() {
-            this.isEditMode = false;
-            this.form.reset();
         },
         updateData() {
             this.form.put(route("admin.setting.languages.update", this.selectedId), {
@@ -173,23 +142,7 @@ export default {
         },
         languageStatusUpdate(id) {
             this.$inertia.put(route("admin.setting.languages.status.update", id));
-        },
-        statusChange(event) {
-            this.form.status = event.target.checked;
-        },
-        setDefaultLanguage() {
-            this.$inertia.put(
-                route("admin.setting.languages.set.default", this.default_language)
-            );
-        },
-        languageAutoComplete(){
-            let objects = Object.keys(this.langInfos);
-            for (let i = 0; i < objects.length; i++) {
-                if (this.langInfos[objects[i]]['name'] == this.form.name) {
-                    this.form.code = this.langInfos[objects[i]]['code'];
-                }
-            }
-        },
+        }
     },
 };
 </script>
