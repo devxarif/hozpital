@@ -215,6 +215,7 @@ Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function () 
         Route::resource('roles', RoleController::class);
 
         // Languages
+        Route::get('languages/translation/{language:language_code}', [LanguageController::class, 'translationEdit'])->name('language.translation');
         Route::post('languages/status', [LanguageController::class, 'statusUpdate'])->name('language.status');
         Route::resource('languages', LanguageController::class);
 
