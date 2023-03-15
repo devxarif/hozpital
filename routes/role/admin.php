@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\PatientController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\BedFloorController;
+use App\Http\Controllers\Admin\LanguageController;
 use App\Http\Controllers\Admin\BloodBankController;
 use App\Http\Controllers\Admin\LeaveTypeController;
 use App\Http\Controllers\Admin\AccountantController;
@@ -164,20 +165,6 @@ Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function () 
     // // ===================Setting Routes========================================
     // // ========================================================================
 
-    // // Languages Routes
-    Route::controller(LanguageController::class)->prefix('setting')->name('languages.')->group(function () {
-        Route::get('languages', 'index')->name('index');
-        Route::post('languages', 'store')->name('store');
-        Route::put('languages/{lang}', 'update')->name('update');
-        Route::put('{lang}', 'defaultLanguage')->name('set.default');
-        Route::delete('languages/{lang}', 'destroy')->name('destroy');
-        Route::get('languages/translation/{lang}', 'translationEdit')->name('translation.edit');
-        Route::put('languages/translation/{lang}', 'translationUpdate')->name('translation.update');
-        Route::put('languages/status/{lang}', 'statusUpdate')->name('status.update');
-        Route::get('languages/translate/single', 'singleTranslate')->name('translate');
-        Route::get('languages/translate/all', 'allTranslate')->name('translate.all');
-    });
-
     // Themes Routes
     // Route::controller(ThemeController::class)->group(function () {
     //     Route::get('/setting/theme', 'theme')->name('theme');
@@ -187,7 +174,7 @@ Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function () 
 
     // Configurations & Settings
     Route::prefix('settings')->name('settings.')->group(function(){
-        Route::controller(SettingController::class)->prefix('settings')->group(function () {
+        Route::controller(SettingController::class)->group(function () {
             Route::get('/general', 'general')->name('general');
             Route::post('/general/setting/update', 'generalSettingUpdate')->name('general.update');
 
@@ -226,6 +213,24 @@ Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function () 
 
         // Roles & Permission
         Route::resource('roles', RoleController::class);
+
+        // Languages
+        Route::post('languages/status', [LanguageController::class, 'statusUpdate'])->name('language.status');
+        Route::resource('languages', LanguageController::class);
+
+        // Languages Routes
+        // Route::controller(LanguageController::class)->prefix('setting')->name('languages.')->group(function () {
+        //     Route::get('languages', 'index')->name('index');
+        //     Route::post('languages', 'store')->name('store');
+        //     Route::put('languages/{lang}', 'update')->name('update');
+        //     Route::put('{lang}', 'defaultLanguage')->name('set.default');
+        //     Route::delete('languages/{lang}', 'destroy')->name('destroy');
+        //     Route::get('languages/translation/{lang}', 'translationEdit')->name('translation.edit');
+        //     Route::put('languages/translation/{lang}', 'translationUpdate')->name('translation.update');
+        //     Route::put('languages/status/{lang}', 'statusUpdate')->name('status.update');
+        //     Route::get('languages/translate/single', 'singleTranslate')->name('translate');
+        //     Route::get('languages/translate/all', 'allTranslate')->name('translate.all');
+        // });
     });
 });
 

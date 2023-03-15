@@ -3,7 +3,7 @@
         <aside class="z-20 hidden w-64 overflow-y-auto bg-white  md:block flex-shrink-0">
             <div class="py-4 text-gray-500 ">
                 <a class="flex ml-6 text-lg font-bold text-gray-800 " href="javascript:void(0)">
-                    <img src="https://leaving.devarif.co/admin/img/leaving-dark.png" alt="">
+                    <img src="https://leaving.devarif.co/assets/img/hozpital_red_logo.svg" alt="">
                 </a>
                 <ul class="mt-6">
                     <NavItem title="Dashboard" :href="route('dashboard')" component="Dashboard">

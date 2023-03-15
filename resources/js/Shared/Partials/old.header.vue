@@ -14,7 +14,7 @@
                 <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=white" alt="Your Company">
             </div>
             <a class="flex text-lg font-bold text-gray-800 " href="javascript:void(0)">
-                <img src="https://leaving.devarif.co/admin/img/leaving-dark.png" alt="">
+                <img src="https://leaving.devarif.co/assets/img/hozpital_red_logo.svg" alt="">
             </a>
             <div class="flex justify-center flex-1 lg:mr-32">
                 <div class="relative w-full max-w-xl mr-6 focus-within:text-blue-500">
@@ -49,7 +49,7 @@
                         <li class="flex">
                             <a class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800  "
                                 href="javascript:void(0)">
-                                <img class="object-cover w-6 h-6 mr-2" src="http://offday.test/admin/img/default-user.png" alt="" aria-hidden="true">
+                                <img class="object-cover w-6 h-6 mr-2" src="http://offday.test/assets/img/default-user.png" alt="" aria-hidden="true">
                                 <span class="text-md">Profile</span>
                             </a>
                         </li>

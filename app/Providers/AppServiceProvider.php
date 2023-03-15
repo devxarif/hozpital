@@ -44,7 +44,7 @@ class AppServiceProvider extends ServiceProvider
 
             // Language
             $default_language = config('kodebazar.default_language');
-            $header_languages = Language::where('status', 1)->get(['id', 'name', 'code']);
+            $header_languages = Language::where('status', 1)->get(['id', 'name', 'language_code', 'country_code']);
             view()->share('header_languages', $header_languages);
             view()->share('defaultLanguage', $default_language);
         }

@@ -22,9 +22,9 @@ class SettingSeeder extends Seeder
         $setting->app_copyright = 'Copyright © 2022 Leaving All rights reserved.';
         $setting->app_contact_number = '+880123456789';
         $setting->app_location = 'Dhaka, Bangladesh';
-        $setting->app_dark_logo = 'admin/img/leaving-dark.png';
-        $setting->app_light_logo = 'admin/img/leaving-light.png';
-        $setting->app_favicon = 'admin/img/favicon.png';
+        $setting->app_dark_logo = 'assets/img/hozpital_red_logo.svg';
+        $setting->app_light_logo = 'assets/img/hozpital_logo.svg';
+        $setting->app_favicon = 'assets/img/favicon.png';
 
         // Social link table
         $setting->facebook = 'https://www.facebook.com/Kodebazaar';

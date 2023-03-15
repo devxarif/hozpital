@@ -81,10 +81,10 @@ class DatabaseSeeder extends Seeder
             DiagnosticReportSeeder::class,
 
             // Leave & Holidays
-            CountrySeeder::class,
+            // CountrySeeder::class,
             LeaveTypeSeeder::class,
             LeaveRequestSeeder::class,
-            HolidaySeeder::class,
+            // HolidaySeeder::class,
 
             // Settings
             LanguageSeeder::class,

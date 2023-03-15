@@ -116,7 +116,7 @@ export default {
                 {
                     title: 'Language',
                     icon: 'fa-solid fa-language',
-                    route: 'admin.settings.roles.index'
+                    route: 'admin.settings.languages.index'
                 },
                 {
                     title: 'Currency',

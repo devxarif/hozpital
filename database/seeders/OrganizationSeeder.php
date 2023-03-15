@@ -47,7 +47,7 @@ class OrganizationSeeder extends Seeder
             'name' => 'Ariful Islam',
             'email' => 'owner@mail.com',
             'password' => bcrypt('password'),
-            'avatar' => 'admin/img/default-user.png',
+            'avatar' => 'assets/img/default-user.png',
             'is_opening_setup_complete' => 1,
             'username' => 'owner',
         ]);
@@ -79,7 +79,7 @@ class OrganizationSeeder extends Seeder
             'name' => 'John Smith',
             'email' => 'owner2@mail.com',
             'password' => bcrypt('password'),
-            'avatar' => 'admin/img/default-user.png',
+            'avatar' => 'assets/img/default-user.png',
             'is_opening_setup_complete' => 1,
             'username' => 'owner2',
         ]);
@@ -101,7 +101,7 @@ class OrganizationSeeder extends Seeder
             'name' => 'Clark',
             'email' => 'owner3@mail.com',
             'password' => bcrypt('password'),
-            'avatar' => 'admin/img/default-user.png',
+            'avatar' => 'assets/img/default-user.png',
             'is_opening_setup_complete' => 1,
             'username' => 'owner3',
         ]);

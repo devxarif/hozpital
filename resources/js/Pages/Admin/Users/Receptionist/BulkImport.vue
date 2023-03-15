@@ -26,7 +26,7 @@
 
                     <div class="my-4">
                         <Label :name="__('Example File')"/>
-                        <a href="/admin/dummy/staff_example.xlsx" class="text-white justify-center flex items-center bg-blue-700 hover:bg-blue-800 w-full focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-md px-5 py-2.5 mb-2   focus:outline-none  mt-3">
+                        <a href="/assets/dummy/staff_example.xlsx" class="text-white justify-center flex items-center bg-blue-700 hover:bg-blue-800 w-full focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-md px-5 py-2.5 mb-2   focus:outline-none  mt-3">
                             <span>
                                 <font-awesome-icon icon="fa-solid fa-download" class="h-4 w-4 mr-2"/>
                                 {{ __('Download Example File') }}
@@ -110,7 +110,7 @@ export default {
             this.fileSize = fileSize.toFixed(3)+' MB';
 
             this.form.file = file
-            this.previewDemoFile = '/admin/img/sample_file.png';
+            this.previewDemoFile = '/assets/img/sample_file.png';
         },
         removeFile(){
             this.previewDemoFile = null;

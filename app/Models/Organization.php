@@ -66,7 +66,7 @@ class Organization extends Model
     public function getOrganizationLogoUrlAttribute()
     {
         if (! $this->organization_logo) {
-            return asset('admin/img/default-user.png');
+            return asset('assets/img/default-user.png');
         }
 
         return asset($this->organization_logo);

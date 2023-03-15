@@ -3,7 +3,7 @@
         <!-- Sidebar component, swap this element with another sidebar if you like -->
         <div class="flex flex-grow flex-col overflow-y-auto border-r border-gray-200 bg-white pt-5">
           <div class="flex flex-shrink-0 items-center px-4">
-            <img class="h-8 w-auto" src="admin/img/hozpital_logo.svg" alt="Your Company">
+            <img class="h-8 w-auto" src="assets/img/hozpital_logo.svg" alt="Your Company">
           </div>
           <div class="mt-5 flex flex-grow flex-col">
             <nav class="flex-1 space-y-1 px-2 pb-4">
@@ -29,7 +29,7 @@
         <div class="flex min-h-0 flex-1 flex-col bg-slate-800">
           <div class="flex flex-1 flex-col overflow-y-auto pt-5 pb-4">
             <div class="flex flex-shrink-0 items-center px-4">
-              <img class="h-8 w-auto" src="admin/img/hozpital_logo.svg" alt="Your Company">
+              <img class="h-8 w-auto" src="assets/img/hozpital_logo.svg" alt="Your Company">
             </div>
             <nav class="mt-5 flex-1 space-y-1 px-2">
                 <NavItem title="Dashboard" :href="route('dashboard')" :active="route().current('dashboard')">

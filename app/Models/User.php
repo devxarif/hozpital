@@ -63,7 +63,7 @@ class User extends Authenticatable
     public function getAvatarAttribute($avatar)
     {
         if (! $avatar) {
-            return asset('admin/img/default-user.png');
+            return asset('assets/img/default-user.png');
         }
 
         return asset($avatar);
@@ -72,7 +72,7 @@ class User extends Authenticatable
     public function getAvatarUrlAttribute()
     {
         if (! $this->avatar) {
-            return asset('admin/img/default-user.png');
+            return asset('assets/img/default-user.png');
         }
 
         return asset($this->avatar);

@@ -15,9 +15,11 @@ class CreateLanguagesTable extends Migration
     {
         Schema::create('languages', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
-            $table->string('code')->unique();
-            $table->boolean('status')->default(1);
+            $table->string('name', 60)->unique();
+            $table->string('language_code', 2)->unique();
+            $table->string('country_code', 2);
+            $table->boolean('status')->default(true);
+            $table->boolean('force_rtl')->default(false);
             $table->timestamps();
         });
     }

@@ -24,7 +24,7 @@ class IncomeFactory extends Factory
             'amount' => rand(200, 1000),
             'date' => fake()->dateTime(),
             'description' => fake()->paragraph,
-            'attachment' => 'admin/img/sample.pdf',
+            'attachment' => 'assets/img/sample.pdf',
         ];
     }
 }

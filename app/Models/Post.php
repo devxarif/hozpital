@@ -26,7 +26,7 @@ class Post extends Model
 
     public function getThumbnailAttribute($thumbnail)
     {
-        return $thumbnail ? asset($thumbnail) : asset('admin/img/default.png');
+        return $thumbnail ? asset($thumbnail) : asset('assets/img/default.png');
     }
 
     public function user()

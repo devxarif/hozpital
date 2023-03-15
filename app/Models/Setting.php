@@ -44,7 +44,7 @@ class Setting extends Model
     public function getAppDarkLogoAttribute($value)
     {
         if (is_null($value)) {
-            return asset('admin/img/leaving-dark.png');
+            return asset('assets/img/hozpital_red_logo.svg');
         }
 
         return asset($value);
@@ -53,7 +53,7 @@ class Setting extends Model
     public function getAppLightLogoAttribute($value)
     {
         if (is_null($value)) {
-            return asset('admin/img/leaving-light.png');
+            return asset('assets/img/hozpital_logo.svg');
         }
 
         return asset($value);
@@ -62,7 +62,7 @@ class Setting extends Model
     public function getAppFaviconAttribute($value)
     {
         if (is_null($value)) {
-            return asset('admin/img/favicon.png');
+            return asset('assets/img/favicon.png');
         }
 
         return asset($value);

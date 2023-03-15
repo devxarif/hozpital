@@ -5,6 +5,7 @@ use App\Models\Bed;
 use App\Models\User;
 use App\Models\Order;
 use App\Models\Doctor;
+use App\Models\Country;
 use App\Models\Holiday;
 use App\Models\Patient;
 use App\Models\Setting;
@@ -17,8 +18,8 @@ use Illuminate\Support\Str;
 use App\Models\BedAllotment;
 use App\Models\LeaveBalance;
 use App\Exports\PatientExport;
-use App\Imports\PatientImport;
 // use Barryvdh\DomPDF\Facade\Pdf;
+use App\Imports\PatientImport;
 use App\Models\ContactMessage;
 use Illuminate\Support\Benchmark;
 use Illuminate\Support\Facades\DB;
@@ -78,7 +79,10 @@ Route::get('/test2', function () {
 
 Route::get('/test', function () {
 
+    return 4654;
+    return $bdCountry = Country::where('code', 'bd')->first();
     $type = 'available';
+
     $withoutBed = 24;
 
     $query = Bed::query();
@@ -624,7 +628,7 @@ Route::get('/test', function () {
 
     return auth()->user()->companies;
 
-    return Language::where('status', 1)->get(['id', 'name', 'code']);
+    return Language::where('status', 1)->get(['id', 'name', 'country_code']);
 
     return view('system.app_status');
 

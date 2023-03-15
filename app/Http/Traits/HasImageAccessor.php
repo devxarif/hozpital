@@ -12,6 +12,6 @@ trait HasImageAccessor
      */
     public function getImageAttribute($image)
     {
-        return $image ? asset($image) : asset('admin/img/default.png');
+        return $image ? asset($image) : asset('assets/img/default.png');
     }
 }

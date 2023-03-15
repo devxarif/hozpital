@@ -20,6 +20,6 @@ trait HasUser
      */
     public function getAvatarAttribute($avatar)
     {
-        return $avatar ? asset($avatar) : asset('admin/img/default-user.png');
+        return $avatar ? asset($avatar) : asset('assets/img/default-user.png');
     }
 }
