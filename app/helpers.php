@@ -730,3 +730,25 @@ if (! function_exists('safeDecrypt')) {
         return $output;
     }
 }
+
+if (! function_exists('lang_path')) {
+    /**
+     * Get the path to the language folder.
+     *
+     * @param  string  $path
+     * @return string
+     */
+    function lang_path($path = '')
+    {
+        return app()->langPath($path);
+    }
+}
+
+function admin_url($to = null, $params = null)
+{
+    // Get dashboard prefix
+    $prefix = config('global.dashboard_prefix');
+
+    // Return url
+    return !is_null($to) ? url("$prefix/$to", $params) : url("$prefix");
+}

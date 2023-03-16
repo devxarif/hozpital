@@ -90,8 +90,11 @@ class LanguageController extends Controller
 
     public function translationEdit(Language $language)
     {
+        // return $language;
         $path = base_path('resources/lang/'.$language->language_code.'.json');
         $translations = json_decode(file_get_contents($path), true);
+
+    //    $translations = include lang_path($language->language_code . "/messages.php");
 
         return inertia('Admin/Setting/Language/Translation', [
             'lang' => $language,
@@ -99,8 +102,10 @@ class LanguageController extends Controller
         ]);
     }
 
-    public function translationUpdate(Request $request, Language $language)
+    public function translationUpdate(Request $request)
     {
+        return $request->all();
+
         $filePath = base_path('resources/lang/'.$language->language_code.'.json');
 
         $data = file_get_contents($filePath);

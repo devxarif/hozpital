@@ -215,8 +215,11 @@ Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function () 
         Route::resource('roles', RoleController::class);
 
         // Languages
-        Route::get('languages/translation/{language:language_code}', [LanguageController::class, 'translationEdit'])->name('language.translation');
-        Route::post('languages/status', [LanguageController::class, 'statusUpdate'])->name('language.status');
+        Route::controller(LanguageController::class)->group(function(){
+            Route::get('languages/translation/{language:language_code}', 'translationEdit')->name('language.translation');
+            Route::put('languages/translation/update', 'translationUpdate')->name('language.translation.update');
+            Route::post('languages/status', [LanguageController::class, 'statusUpdate'])->name('language.status');
+        });
         Route::resource('languages', LanguageController::class);
 
         // Languages Routes
@@ -249,7 +252,11 @@ Route::controller(GlobalController::class)->group(function () {
     Route::get('fetch/leaveTypesBalance', 'fetchLeaveTypesBalance')->name('fetch.leaveTypesBalance');
     Route::get('/diff/between/days', 'diffBetweenDays')->name('difference.between.days');
     Route::get('/bed/wise/availablePatients/{bed_id}', 'bedWiseAvailablePatient')->name('bed.availablePatients');
+
+    Route::get('/change/language/{language:language_code}', 'changeLanguage')->name('change.language');
 });
+
+
 
 // Profile & Settings
 // Route::controller(UserController::class)->middleware('auth')->group(function () {

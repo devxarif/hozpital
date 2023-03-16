@@ -188,6 +188,7 @@ return [
         Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
         Darryldecode\Cart\CartServiceProvider::class,
+        October\Rain\Config\ServiceProvider::class,
 
         /*
          * Application Service Providers...

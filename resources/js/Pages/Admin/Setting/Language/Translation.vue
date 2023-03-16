@@ -1,4 +1,5 @@
 <template>
+
     <SettingLayout title="Languages" :sidebar="false">
         <div class="grid gap-6 md:grid-cols-1 xl:grid-cols-1">
             <div class="bg-white w-full p-6 rounded-lg border border-gray-8  ">
@@ -17,6 +18,47 @@
                             </div>
                         </div>
 
+                        {{ __('Sign up as a company') }}
+                        {{ __('Quick Links') }}
+
+
+                        {{ $page.props.locale }}
+
+                        <Menu as="div" class="relative inline-block text-left">
+                            <div>
+                                <MenuButton class="flex items-center rounded-lg text-gray-400 hover:text-gray-600 focus:outline-none">
+                                    <span class="sr-only">Open options</span>
+                                    <button href="javascript:void(0)" class="w-1/2 text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 font-medium inline-flex items-center justify-center rounded-lg text-sm px-3 py-2 text-center sm:w-auto focus:outline-none">
+                                        <svg class="mr-2 h-6 w-6" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                                        Language
+                                    </button>
+                                </MenuButton>
+                            </div>
+
+                            <transition enter-active-class="transition ease-out duration-100" enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100" leave-active-class="transition ease-in duration-75" leave-from-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
+                                <MenuItems class="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                                    <div class="py-1 text-sm">
+                                    <MenuItem v-slot="{ active }">
+                                        <Link :href="route('change.language', 'en')" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
+                                            EN
+                                        </Link>
+                                    </MenuItem>
+                                    <MenuItem v-slot="{ active }">
+                                        <Link :href="route('change.language', 'bn')" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
+                                            BN
+                                        </Link>
+                                    </MenuItem>
+                                    </div>
+                                </MenuItems>
+                            </transition>
+                        </Menu>
+                    <!-- <JetDropdownLink @click="ChangeDic(lang.direction)" :href="route('change.language', lang.code)" :class="$page.props.locale == lang.code ? 'bg-gray-100' : ''">
+                        {{ lang.name }}
+                    </JetDropdownLink> -->
+
+                        <!-- <pre>
+        {{ $page.props.language }}
+    </pre> -->
                         <!-- <Label :name="__('Name')" id="leave_type_name"/> -->
                         <div class="sm:border-t sm:border-gray-200 sm:pt-5">
                             <div class="grid gap-6 md:grid-cols-12 xl:grid-cols-12">
@@ -28,12 +70,11 @@
                                 </div>
                             </div>
                             <div class="grid gap-6 md:grid-cols-12 xl:grid-cols-12" v-for="(translation, key) in translations" :key="key">
-                                <div class="mb-2 col-span-6">
-                                    <BaseInput placeholder="Name" id="leave_type_name" :modelValue="key" :disabled="true"/>
-                                </div>
-                                <div class="mb-2 col-span-6">
-                                    <BaseInput placeholder="Name" id="leave_type_name" v-model="translationsData[key]"/>
-                                </div>
+                                <!-- {{ key }}
+                                <br> -->
+
+
+                               <SingleTranslation :label="key" :value="translations[key]"/>
                             </div>
                             <!-- <tr v-for="(translation, key) in translations" :key="key">
                             <td class="text-capitalize">{{ replace(key,'_',' ') }}</td>
@@ -144,6 +185,7 @@
 
 <script>
 import SettingLayout from "@/Shared/Layout/Setting.vue";
+import SingleTranslation from "./SingleTranslation.vue";
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faArrowLeft} from '@fortawesome/free-solid-svg-icons'
 library.add(faArrowLeft)
@@ -151,7 +193,7 @@ library.add(faArrowLeft)
 export default {
     components: {
         SettingLayout,
-
+        SingleTranslation,
     },
     props: {
         lang: Array,

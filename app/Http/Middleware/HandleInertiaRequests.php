@@ -55,6 +55,7 @@ class HandleInertiaRequests extends Middleware
           // Language
           $data['locale'] = session()->has('current_lang') ? session('current_lang') : app()->getLocale();
           $data['languageList'] = Language::all(['id', 'language_code', 'name','country_code']);
+        //   $data['language'] = include lang_path($data['locale'] . "/messages.php");
           $data['language'] = translations(resource_path('lang/'.$data['locale'].'.json'));
 
           // Notifications

@@ -9,6 +9,7 @@ use App\Models\Country;
 use App\Models\Holiday;
 use App\Models\Patient;
 use App\Models\Setting;
+use Livewire\Component;
 use App\Models\Employee;
 use App\Models\Language;
 use Carbon\CarbonPeriod;
@@ -17,21 +18,29 @@ use App\Models\Department;
 use Illuminate\Support\Str;
 use App\Models\BedAllotment;
 use App\Models\LeaveBalance;
-use App\Exports\PatientExport;
 // use Barryvdh\DomPDF\Facade\Pdf;
+use Livewire\WithPagination;
+use App\Exports\PatientExport;
 use App\Imports\PatientImport;
 use App\Models\ContactMessage;
+use App\Utils\Writer\ArrayWriter;
 use Illuminate\Support\Benchmark;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Role;
 use App\Models\AppointmentSchedule;
+use Illuminate\Pagination\Paginator;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Config;
 use App\Http\Controllers\TestController;
 use Spatie\Permission\Models\Permission;
 use Label84\HoursHelper\Facades\HoursHelper;
+use Illuminate\Pagination\LengthAwarePaginator;
 use App\Http\Controllers\Admin\UpgradeController;
 use sirajcse\UniqueIdGenerator\UniqueIdGenerator;
+use Artesaos\SEOTools\Traits\SEOTools as SEOToolsTrait;
+
 
 // use Dompdf\Dompdf;
 // Route::get('/', function () {
@@ -78,6 +87,141 @@ Route::get('/test2', function () {
 });
 
 Route::get('/test', function () {
+
+    return $items = include lang_path('en' . "/messages.php");
+
+    return translations(resource_path('lang/'.'en'.'.json'));
+
+    // Set data
+    // $writeConfig = new October\Rain\Config\DataWriter\Rewrite;
+    // $writeConfig->toFile(resource_path('lang/en/messages.php'), [
+    //     'Remember Me' => 'Remember Me Remember Me',
+    //     // 'nested.config.item' => 'value',
+    //     // 'arrayItem' => ['Single', 'Level', 'Array', 'Values'],
+    //     // 'numberItem' => 3,
+    //     // 'booleanItem' => true
+    // ]);
+
+
+
+
+
+    $language = '';
+    $data = '';
+    $q = '';
+
+
+    // Get translation
+    $items = include lang_path('en' . "/messages.php");
+
+    // Check if has a query
+    if ($q) {
+
+        // Search in array
+        $items = array_filter($items, function ($item) {
+            if (stripos($item, $this->q) !== false) {
+                return true;
+            }
+            return false;
+        });
+    }
+
+   return  $data = $items;
+
+    $page  = $this->page;
+    $items = $items instanceof Collection ? $items : Collection::make($items);
+    return new LengthAwarePaginator($items->forPage($page, 40), $items->count(), 40, $page, ['path' => admin_url('languages/translate/' . $this->language->id)]);
+
+
+    // try {
+
+    //     // Get language path
+    //     $path             = lang_path($this->language->language_code . "/messages.php");
+
+    //     // Set new writer
+    //     $writer           = new \October\Rain\Config\DataWriter\Rewrite;
+
+    //     // Clear value from any bad characters
+    //     $clean            = str_replace(array('"', "'", ';', '\\'), ' ', $value);
+
+    //     $remove_new_lines = trim(preg_replace('/\s+/', ' ', $clean));
+
+    //     // Update data
+    //     $writer->toFile($path, [
+    //         $key => $remove_new_lines
+    //     ]);
+
+    //     // Success
+    //     $this->dispatchBrowserEvent('alert',[
+    //         "message" => __('messages.t_language_value_updated_successfully'),
+    //     ]);
+
+
+    // } catch (\Throwable $th) {
+    //     throw $th;
+    // }
+
+
+
+
+
+//     /**
+//  * Check when value updated
+//  *
+//  * @param string $value
+//  * @param string $key
+//  * @return void
+//  */
+// public function updatedData($value, $key)
+// {
+//     try {
+
+//         // Get language path
+//         $path             = lang_path($this->language->language_code . "/messages.php");
+
+//         // Set new writer
+//         $writer           = new \October\Rain\Config\DataWriter\Rewrite;
+
+//         // Clear value from any bad characters
+//         $clean            = str_replace(array('"', "'", ';', '\\'), ' ', $value);
+
+//         $remove_new_lines = trim(preg_replace('/\s+/', ' ', $clean));
+
+//         // Update data
+//         $writer->toFile($path, [
+//             $key => $remove_new_lines
+//         ]);
+
+//         // Success
+//         $this->dispatchBrowserEvent('alert',[
+//             "message" => __('messages.t_language_value_updated_successfully'),
+//         ]);
+
+
+//     } catch (\Throwable $th) {
+//         throw $th;
+//     }
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     return 4654;
     return $bdCountry = Country::where('code', 'bd')->first();

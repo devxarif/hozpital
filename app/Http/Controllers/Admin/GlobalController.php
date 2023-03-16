@@ -7,6 +7,7 @@ use App\Models\BedType;
 use App\Models\Country;
 use App\Models\Patient;
 use App\Models\BedFloor;
+use App\Models\Language;
 use App\Models\TeamSize;
 use App\Models\LeaveType;
 use App\Models\BloodDonor;
@@ -198,5 +199,12 @@ class GlobalController extends Controller
         });
 
         return response()->json($leave_types);
+    }
+
+    public function changeLanguage(Language $language){
+        Session()->put('current_lang', $language->language_code);
+        Session()->put('current_dir', $language->force_rtl ? 'rtl' : 'ltr');
+
+        return back();
     }
 }
