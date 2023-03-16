@@ -54,6 +54,13 @@ class SettingController extends Controller
         return back();
     }
 
+    public function system()
+    {
+        $setting = Setting::first();
+
+        return inertia('Admin/Setting/System', compact('setting'));
+    }
+
     public function cms()
     {
         $cms = Cms::first();

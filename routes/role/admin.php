@@ -175,8 +175,13 @@ Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function () 
     // Configurations & Settings
     Route::prefix('settings')->name('settings.')->group(function(){
         Route::controller(SettingController::class)->group(function () {
+            // General Setting
             Route::get('/general', 'general')->name('general');
             Route::post('/general/setting/update', 'generalSettingUpdate')->name('general.update');
+
+            // System Setting
+            Route::get('/system', 'system')->name('system');
+            Route::post('/system/setting/update', 'systemSettingUpdate')->name('system.update');
 
             // cms routes
             Route::get('/cms', 'cms')->name('cms');

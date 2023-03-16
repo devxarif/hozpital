@@ -55,7 +55,7 @@ export default {
                 {
                     title: 'System',
                     icon: 'fa-solid fa-screwdriver-wrench',
-                    route: 'admin.settings.general'
+                    route: 'admin.settings.system'
                 },
                 {
                     title: 'Payment',
