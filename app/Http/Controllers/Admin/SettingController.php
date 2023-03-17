@@ -184,6 +184,26 @@ class SettingController extends Controller
         }
     }
 
+    public function recaptcha()
+    {
+        $recaptcha_setting = setting(['recaptcha_active', 'recaptcha_site_key']);
+
+        return inertia('Admin/Setting/Recaptcha', [
+            'recaptcha_site_key' => $recaptcha_setting->recaptcha_site_key,
+            'recaptcha_active' => $recaptcha_setting->recaptcha_active,
+        ]);
+    }
+
+    public function recaptchaUpdate(Request $request)
+    {
+        Setting::first()->update([
+            'recaptcha_site_key' => $request->recaptcha_site_key,
+            'recaptcha_active' => $request->recaptcha_active,
+        ]);
+
+        return back()->with('success', 'Recaptcha setting updated successfully');
+    }
+
     public function smtp()
     {
         $data = [
@@ -218,7 +238,7 @@ class SettingController extends Controller
         try {
             (new SendTestMailService())->execute($request);
 
-            return back()->with('success', 'Test email sent successfully.');
+            return back()->with('success', 'Test email sent successfully');
         } catch (\Throwable $th) {
             return back()->with('error', "Mail send failed: {$th->getMessage()}");
         }

@@ -81,8 +81,12 @@
                                 </div>
                                 <ErrorMessage :name="form.errors.password" />
                             </div>
+                            <template v-if="recaptcha_site_key && recaptcha_status">
+                                <vue-recaptcha ref="recaptcha" :sitekey="recaptcha_site_key" @verify="verifyRecaptcha" @expired="expiredRecaptcha"  @error="errorRecaptcha" />
+                                <ErrorMessage :name="form.errors.recaptcha" />
+                            </template>
 
-                            <div class="flex items-start mb-4">
+                            <div class="flex items-start my-4">
                                 <div class="text-sm">
                                     <label class="relative inline-flex items-center mb-4 cursor-pointer">
                                         <input v-model="form.remember" type="checkbox" value="1" class="sr-only peer">
@@ -160,6 +164,7 @@
     import FacebookIcon from '@/Shared/Icons/FacebookIcon.vue';
     import TwitterIcon from '@/Shared/Icons/TwitterIcon.vue';
     import LinkedinIcon from '@/Shared/Icons/LinkedinIcon.vue';
+    import { VueRecaptcha } from 'vue-recaptcha';
 
     export default {
         components: {
@@ -169,6 +174,11 @@
             FacebookIcon,
             TwitterIcon,
             LinkedinIcon,
+            VueRecaptcha,
+        },
+        props:{
+            recaptcha_site_key: String,
+            recaptcha_active: Boolean,
         },
         data() {
             return {
@@ -176,12 +186,26 @@
                     username: null,
                     password: null,
                     remember: 0,
+                    recaptcha: false,
                 }),
 
                 passwordFieldType: 'password',
+                recaptcha_site_key: this.recaptcha_site_key,
+                recaptcha_status: this.recaptcha_active,
             };
         },
         methods: {
+            verifyRecaptcha(){
+                this.form.recaptcha = true;
+            },
+            expiredRecaptcha(){
+                this.form.recaptcha = false;
+                this.toastError('Recaptcha Connection Expired');
+            },
+            errorRecaptcha(){
+                this.form.recaptcha = false;
+                this.toastError('Recaptcha Configuration Failed');
+            },
             login() {
                 this.form.post("/login");
             },
@@ -192,6 +216,15 @@
             },
             switchVisibility() {
                 this.passwordFieldType = this.passwordFieldType === "password" ? "text" : "password";
+            },
+            async recaptcha() {
+                // (optional) Wait until recaptcha has been loaded.
+                await this.$recaptchaLoaded()
+
+                // Execute reCAPTCHA with action "login".
+                // const token = await this.$recaptcha('login')
+
+                // Do stuff with the received token.
             }
         },
         computed:{

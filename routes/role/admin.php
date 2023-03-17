@@ -196,6 +196,10 @@ Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function () 
             Route::get('/seo', 'seo')->name('seo');
             Route::put('/seo/update/{seo}', 'seoUpdate')->name('seo.update');
 
+            // Recaptcha route
+            Route::get('/recaptcha', 'recaptcha')->name('recaptcha');
+            Route::put('/recaptcha/update', 'recaptchaUpdate')->name('recaptcha.update');
+
             // SMTP Routes
             Route::get('/smtp', 'smtp')->name('smtp');
             Route::put('/smtp/update', 'smtpUpdate')->name('smtp.update');

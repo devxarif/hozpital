@@ -33,6 +33,11 @@ class SettingSeeder extends Seeder
         $setting->youtube = 'https://www.youtube.com/channel/UCXeJ26hZ-yKza1fc5bPP3YA';
         $setting->linkedin = 'https://www.linkedin.com/';
         $setting->pinterest = 'https://www.pinterest.com/';
+
+        // Google reCaptcha
+        $setting->recaptcha_site_key = "6Lc6aGgfAAAAAP0JZTtfMKjGyQ0M8AQ0JfW5oPlY";
+        $setting->recaptcha_active = true;
+
         $setting->save();
     }
 }

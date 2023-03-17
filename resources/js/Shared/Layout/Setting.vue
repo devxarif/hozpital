@@ -100,7 +100,7 @@ export default {
                 {
                     title: 'Recaptcha',
                     icon: 'fa-solid fa-robot',
-                    route: 'admin.settings.smtp'
+                    route: 'admin.settings.recaptcha'
                 },
                 {
                     title: 'Social Login',

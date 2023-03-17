@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use App\Rules\RecaptchaValidationRule;
 
 class AuthController extends Controller
 {
@@ -14,7 +15,12 @@ class AuthController extends Controller
             return redirect()->route('dashboard');
         }
 
-        return inertia('Auth/Login');
+        $recaptcha_setting = setting(['recaptcha_active', 'recaptcha_site_key']);
+
+        return inertia('Auth/Login', [
+            'recaptcha_site_key' => $recaptcha_setting->recaptcha_site_key,
+            'recaptcha_active' => $recaptcha_setting->recaptcha_active,
+        ]);
     }
 
     public function login(Request $request)
@@ -22,6 +28,7 @@ class AuthController extends Controller
         $request->validate([
             'username' => 'required',
             'password' => 'required',
+            'recaptcha' => setting('recaptcha_active') ? new RecaptchaValidationRule($request->recaptcha) : '',
         ]);
 
         if (filter_var(request()->input('username'), FILTER_VALIDATE_EMAIL)) {
