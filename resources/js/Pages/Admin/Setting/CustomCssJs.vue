@@ -10,10 +10,9 @@
 
                                 <p class="mt-1 max-w-2xl text-sm text-gray-500">This information will be displayed publicly so be careful what you share.</p>
                             </div>
-                            {{ data }}
                             <div class="space-y-6 sm:space-y-5">
                                 <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
-                                    <label for="about" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Header custom style css (before the head end)</label>
+                                    <Label name="Header custom style css (before the head end)" id="custom_css" :hasError="form.errors.custom_css"/>
                                     <div class="mt-1 sm:col-span-2 sm:mt-0">
                                         <codemirror
                                             v-model="form.custom_css"
@@ -28,7 +27,7 @@
                                     </div>
                                 </div>
                                 <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
-                                    <label for="about" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Header custom script (before the head end)</label>
+                                    <Label name="Header custom script (before the head end)" id="custom_header_script" :hasError="form.errors.custom_header_script"/>
                                     <div class="mt-1 sm:col-span-2 sm:mt-0">
                                             <codemirror
                                                 v-model="form.custom_header_script"
@@ -43,7 +42,7 @@
                                     </div>
                                 </div>
                                 <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
-                                    <label for="about" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Footer custom script (before body end)</label>
+                                    <Label name="Footer custom script (before body end)" id="custom_footer_script" :hasError="form.errors.custom_footer_script"/>
                                     <div class="mt-1 sm:col-span-2 sm:mt-0">
                                             <codemirror
                                                 v-model="form.custom_footer_script"

@@ -11,8 +11,7 @@
 
                 <div class="space-y-6 sm:space-y-5">
                     <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
-                        <label for="username"
-                            class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">{{ __('Paypal Mode') }}</label>
+                        <Label name="Paypal Mode" id="paypal_mode" :hasError="form.errors.paypal_mode"/>
                         <div class="mt-1 sm:col-span-2 sm:mt-0">
                             <div class="max-w-lg rounded-md shadow-sm">
                                 <div class="w-full bg-gray-100 p-2 rounded-lg">
@@ -44,9 +43,7 @@
                         </div>
                     </div>
                     <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
-                        <label for="paypal_live_client_id"
-                            class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">{{ __('Client ID') }}
-                            (Live)</label>
+                        <Label name="Client ID (Live)" id="paypal_live_client_id" :hasError="form.errors.paypal_live_client_id"/>
                         <div class="mt-1 sm:col-span-2 sm:mt-0">
                             <div class="max-w-lg rounded-md shadow-sm">
                                 <BaseInput v-model="form.paypal_live_client_id" placeholder="Live Client ID" id="paypal_live_client_id" :hasError="form.errors.name"/>
@@ -55,15 +52,11 @@
                         </div>
                     </div>
 
-
                     <!-- <Label name="Name" id="manufacture_name" :hasError="form.errors.name"/> -->
                     <!-- <BaseInput v-model="form.name" placeholder="Name" id="manufacture_name" :hasError="form.errors.name"/> -->
 
-
                     <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
-                        <label for="username"
-                            class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">{{ __('Client Secret') }}
-                            (Live)</label>
+                        <Label name="Client Secret (Live)" id="paypal_live_client_secret" :hasError="form.errors.paypal_live_client_secret"/>
                         <div class="mt-1 sm:col-span-2 sm:mt-0">
                             <div class="max-w-lg rounded-md shadow-sm">
                                 <input  v-model="form.paypal_live_client_secret" type="text"
@@ -73,9 +66,7 @@
                         </div>
                     </div>
                     <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
-                        <label for="username"
-                            class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">{{ __('Client ID') }}
-                            (Sandbox)</label>
+                        <Label name="Client ID (Sandbox)" id="paypal_sandbox_client_id" :hasError="form.errors.paypal_sandbox_client_id"/>
                         <div class="mt-1 sm:col-span-2 sm:mt-0">
                             <div class="max-w-lg rounded-md shadow-sm">
                                 <input v-model="form.paypal_sandbox_client_id" type="text"
@@ -85,9 +76,7 @@
                         </div>
                     </div>
                     <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
-                        <label for="username"
-                            class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">{{ __('Client Secret') }}
-                            (Sandbox)</label>
+                        <Label name="Client Secret (Sandbox)" id="paypal_sandbox_client_secret" :hasError="form.errors.paypal_sandbox_client_secret"/>
                         <div class="mt-1 sm:col-span-2 sm:mt-0">
                             <div class="max-w-lg rounded-md shadow-sm">
                                 <input v-model="form.paypal_sandbox_client_secret" type="text"
@@ -97,7 +86,7 @@
                         </div>
                     </div>
                     <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
-                        <label for="username" class="block text-sm font-medium leading-6 text-gray-900 sm:pt-1.5">{{ __('Conversion Rate') }}</label>
+                        <Label name="Conversion Rate" id="paypal_conversion_rate" :hasError="form.errors.paypal_conversion_rate"/>
                         <div class="mt-2 sm:col-span-2 sm:mt-0">
                             <div class="flex max-w-lg rounded-md shadow-sm">
                                 <span class="inline-flex items-center rounded-l-md border border-r-0 border-gray-300 px-3 text-gray-500 sm:text-sm">1 USD</span>
@@ -107,8 +96,7 @@
                         </div>
                     </div>
                     <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
-                        <label for="username"
-                            class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">{{ __('Status') }}</label>
+                        <Label name="Status" id="paypal_status" :hasError="form.errors.paypal_active"/>
                         <div class="mt-1 sm:col-span-2 sm:mt-0">
                             <label for="checked-toggle" class="inline-flex relative items-center cursor-pointer">
                                 <input @change="statusChange" v-model="form.paypal_active" type="checkbox" id="checked-toggle"

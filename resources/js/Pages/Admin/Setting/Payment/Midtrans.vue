@@ -11,8 +11,7 @@
 
                 <div class="space-y-6 sm:space-y-5">
                     <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
-                        <label for="username"
-                            class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">{{ __('Midtrans Live Mode') }}</label>
+                        <Label name="Midtrans Live Mode" id="midtrans_mode" :hasError="form.errors.midtrans_mode"/>
                         <div class="mt-1 sm:col-span-2 sm:mt-0">
                             <label for="midtrans_mode" class="inline-flex relative items-center cursor-pointer">
                                 <input @change="modeChange" v-model="form.midtrans_mode" type="checkbox" id="midtrans_mode" class="sr-only peer" :checked="form.midtrans_mode">
@@ -23,8 +22,7 @@
                         </div>
                     </div>
                     <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
-                        <label for="username"
-                            class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">{{ __('Merchant ID') }}</label>
+                        <Label name="Merchant ID" id="midtrans_id" :hasError="form.errors.midtrans_id"/>
                         <div class="mt-1 sm:col-span-2 sm:mt-0">
                             <div class="max-w-lg rounded-md shadow-sm">
                                 <input v-model="form.midtrans_id" type="text"
@@ -34,30 +32,27 @@
                         </div>
                     </div>
                     <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
-                        <label for="username"
-                            class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">{{ __('Client Key') }}</label>
+                        <Label name="Client Key" id="midtrans_key" :hasError="form.errors.midtrans_key"/>
                         <div class="mt-1 sm:col-span-2 sm:mt-0">
                             <div class="max-w-lg rounded-md shadow-sm">
                                 <input v-model="form.midtrans_key" type="text"
-                                    class="block w-full min-w-0 flex-1 rounded-md border-gray-300 sm:text-sm">
+                                class="block w-full min-w-0 flex-1 rounded-md border-gray-300 sm:text-sm">
                                 <ErrorMessage :name="form.errors.midtrans_key" />
                             </div>
                         </div>
                     </div>
                     <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
-                        <label for="username"
-                            class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">{{ __('Secret Key') }}</label>
+                        <Label name="Secret Key" id="midtrans_secret" :hasError="form.errors.midtrans_secret"/>
                         <div class="mt-1 sm:col-span-2 sm:mt-0">
                             <div class="max-w-lg rounded-md shadow-sm">
                                 <input v-model="form.midtrans_secret" type="text"
                                     class="block w-full min-w-0 flex-1 rounded-md border-gray-300 sm:text-sm">
-                                <ErrorMessage :name="form.errors.midtrans_secret" />
+                                    <ErrorMessage :name="form.errors.midtrans_secret" />
+                                </div>
                             </div>
                         </div>
-                    </div>
                     <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
-                        <label for="status"
-                            class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">{{ __('Status') }}</label>
+                        <Label name="Status" id="midtrans_status" :hasError="form.errors.midtrans_active"/>
                         <div class="mt-1 sm:col-span-2 sm:mt-0">
                             <label for="midtrans_status" class="inline-flex relative items-center cursor-pointer">
                                 <input @change="statusChange" v-model="form.midtrans_active" type="checkbox" id="midtrans_status"

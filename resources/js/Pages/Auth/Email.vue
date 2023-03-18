@@ -13,7 +13,7 @@
 
                     <form class="space-y-4 md:space-y-6" @submit.prevent="sendCode">
                         <div>
-                            <label for="username" class="block mb-2 text-sm font-medium text-gray-900 ">Account</label>
+                            <Label name="Account" id="twitter_status" :hasError="form.errors.twitter_active"/>
                             <input v-model="form.username" type="text" id="username" :class="['border sm:text-sm text-gray-900 rounded-lg block w-full p-2.5', form.errors.username ? 'bg-white border-red-600 focus:ring-red-600 focus:border-red-600      ':'bg-white border-gray-300 focus:ring-blue-600 focus:border-blue-600']" placeholder="Username or Email Address">
                             <ErrorMessage :name="form.errors.username" />
                         </div>
