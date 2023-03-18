@@ -159,6 +159,22 @@ class SettingController extends Controller
         return back()->with('success', 'Custom css/js updated successfully');
     }
 
+    public function cookiesAlert()
+    {
+        return inertia('Admin/Setting/CookiesAlert');
+    }
+
+    public function cookiesAlertUpdate(Request $request)
+    {
+        Setting::first()->update([
+            'cookies_alert_active' => $request->cookies_alert_active ?? false,
+            'cookies_alert_message' => $request->cookies_alert_message,
+            'cookies_alert_button_text' => $request->cookies_alert_button_text,
+        ]);
+
+        return back()->with('success', 'Cookies updated successfully');
+    }
+
     public function payment()
     {
         return inertia('Admin/Setting/Payment');

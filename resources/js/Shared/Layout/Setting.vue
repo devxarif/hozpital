@@ -85,7 +85,7 @@ export default {
                 {
                     title: 'Cookies Alert',
                     icon: 'fa-solid fa-cookie-bite',
-                    route: 'admin.settings.smtp'
+                    route: 'admin.settings.cookiesAlert'
                 },
                 {
                     title: 'SEO',

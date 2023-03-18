@@ -12,6 +12,9 @@
     {{-- Preloader  --}}
     <x-preloader />
 
+   {{-- Cookie Alert  --}}
+    <x-cookie-alert />
+
     @inertia
 	@vite('resources/js/app.js')
     <script src="/assets/js/preline/hs-ui.bundle.js"></script>

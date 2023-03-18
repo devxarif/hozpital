@@ -41,6 +41,11 @@ class CreateSettingsTable extends Migration
             $table->longText('custom_header_script')->nullable();
             $table->longText('custom_footer_script')->nullable();
 
+            // Cookies alert
+            $table->boolean('cookies_alert_active')->default(true);
+            $table->string('cookies_alert_message')->nullable();
+            $table->string('cookies_alert_button_text')->nullable();
+
             $table->timestamps();
         });
     }

@@ -204,6 +204,10 @@ Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function () 
             Route::get('/recaptcha', 'recaptcha')->name('recaptcha');
             Route::put('/recaptcha/update', 'recaptchaUpdate')->name('recaptcha.update');
 
+            // Cookies alert route
+            Route::get('/cookiesAlert', 'cookiesAlert')->name('cookiesAlert');
+            Route::put('/cookiesAlert/update', 'cookiesAlertUpdate')->name('cookiesAlert.update');
+
             // Social Login route
             Route::get('/social/login', 'socialLogin')->name('socialLogin');
             Route::get('/social/login/data', 'socialLoginData')->name('socialLogin.data');
