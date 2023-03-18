@@ -14,9 +14,7 @@
                         <Label name="API Key" id="mollie_key" :hasError="form.errors.mollie_key"/>
                         <div class="mt-1 sm:col-span-2 sm:mt-0">
                             <div class="max-w-lg rounded-md shadow-sm">
-                                <input v-model="form.mollie_key" type="text"
-                                    class="block w-full min-w-0 flex-1 rounded-md border-gray-300 sm:text-sm">
-                                <ErrorMessage :name="form.errors.mollie_key" />
+                                <BaseInput v-model="form.mollie_key" placeholder="API Key" id="mollie_key" :hasError="form.errors.mollie_key"/>
                             </div>
                         </div>
                     </div>

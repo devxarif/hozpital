@@ -25,7 +25,8 @@
                                     <Label name="Cookie Accept Button Text" id="cookie_alert_button" :hasError="form.errors.cookies_alert_button_text"/>
                                     <div class="mt-1 sm:col-span-2 sm:mt-0">
                                         <div class="max-w-lg rounded-md shadow-sm">
-                                            <input v-model="form.cookies_alert_button_text" type="text" class="block w-full min-w-0 flex-1 rounded-md border-gray-300 sm:text-sm">
+                                            <Label name="Cookie Button Text" id="cookie_alert_button" :hasError="form.errors.cookies_alert_button_text"/>
+                                            <BaseInput v-model="form.cookies_alert_button_text" placeholder="Cookie Button Text" id="cookie_alert_button" :hasError="form.errors.cookies_alert_button_text"/>
                                             <ErrorMessage :name="form.errors.cookies_alert_button_text" />
                                         </div>
                                     </div>

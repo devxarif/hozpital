@@ -11,10 +11,10 @@
 
                 <div class="space-y-6 sm:space-y-5">
                     <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
-                        <Label name="Publishable key" id="stripe_secret" :hasError="form.errors.stripe_key"/>
+                        <Label name="Publishable key" id="stripe_key" :hasError="form.errors.stripe_key"/>
                         <div class="mt-1 sm:col-span-2 sm:mt-0">
                             <div class="max-w-lg rounded-md shadow-sm">
-                                <input v-model="form.stripe_key" type="text"  class="block w-full min-w-0 flex-1 rounded-md border-gray-300 sm:text-sm">
+                                <BaseInput v-model="form.stripe_key" placeholder="Publishable key" id="stripe_key" :hasError="form.errors.stripe_key"/>
                                 <ErrorMessage :name="form.errors.stripe_key" />
                             </div>
                         </div>
@@ -23,13 +23,13 @@
                         <Label name="Secret key" id="stripe_secret" :hasError="form.errors.stripe_secret"/>
                         <div class="mt-1 sm:col-span-2 sm:mt-0">
                             <div class="max-w-lg rounded-md shadow-sm">
-                                <input v-model="form.stripe_secret" type="text" class="block w-full min-w-0 flex-1 rounded-md border-gray-300 sm:text-sm">
+                                <BaseInput v-model="form.stripe_secret" placeholder="Secret key" id="stripe_secret" :hasError="form.errors.stripe_secret"/>
                                 <ErrorMessage :name="form.errors.stripe_secret" />
                             </div>
                         </div>
                     </div>
                     <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
-                        <Label name="Status" id="stripe_secret" :hasError="form.errors.stripe_active"/>
+                        <Label name="Status" id="stripe_active" :hasError="form.errors.stripe_active"/>
                         <div class="mt-1 sm:col-span-2 sm:mt-0">
                             <label for="checked-toggle" class="inline-flex relative items-center cursor-pointer">
                                 <input @change="statusChange" v-model="form.stripe_active" type="checkbox" id="checked-toggle" class="sr-only peer" :checked="form.stripe_active">

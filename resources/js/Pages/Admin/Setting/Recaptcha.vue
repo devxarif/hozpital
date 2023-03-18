@@ -15,7 +15,7 @@
                                     <Label name="Recaptcha Site key" id="recaptcha_site_key" :hasError="form.errors.recaptcha_site_key"/>
                                     <div class="mt-1 sm:col-span-2 sm:mt-0">
                                         <div class="max-w-lg rounded-md shadow-sm">
-                                            <input v-model="form.recaptcha_site_key" type="text"  class="block w-full min-w-0 flex-1 rounded-md border-gray-300 sm:text-sm">
+                                            <BaseInput v-model="form.recaptcha_site_key" placeholder="Recaptcha Site key" id="recaptcha_site_key" :hasError="form.errors.recaptcha_site_key"/>
                                             <ErrorMessage :name="form.errors.recaptcha_site_key" />
                                         </div>
                                     </div>

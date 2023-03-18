@@ -14,8 +14,7 @@
                         <Label name="API Key" id="im_key" :hasError="form.errors.im_key"/>
                         <div class="mt-1 sm:col-span-2 sm:mt-0">
                             <div class="max-w-lg rounded-md shadow-sm">
-                                <input v-model="form.im_key" type="text"
-                                    class="block w-full min-w-0 flex-1 rounded-md border-gray-300 sm:text-sm">
+                                <BaseInput v-model="form.im_key" placeholder="API Key" id="im_key" :hasError="form.errors.im_key"/>
                                 <ErrorMessage :name="form.errors.im_key" />
                             </div>
                         </div>
@@ -24,8 +23,7 @@
                         <Label name="Auth Token" id="im_secret" :hasError="form.errors.im_secret"/>
                         <div class="mt-1 sm:col-span-2 sm:mt-0">
                             <div class="max-w-lg rounded-md shadow-sm">
-                                <input v-model="form.im_secret"  type="text"
-                                    class="block w-full min-w-0 flex-1 rounded-md border-gray-300 sm:text-sm">
+                                <BaseInput v-model="form.im_secret" placeholder="Auth Token" id="im_secret" :hasError="form.errors.im_secret"/>
                                 <ErrorMessage :name="form.errors.im_secret" />
                             </div>
                         </div>

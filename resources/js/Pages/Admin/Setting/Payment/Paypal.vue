@@ -59,8 +59,7 @@
                         <Label name="Client Secret (Live)" id="paypal_live_client_secret" :hasError="form.errors.paypal_live_client_secret"/>
                         <div class="mt-1 sm:col-span-2 sm:mt-0">
                             <div class="max-w-lg rounded-md shadow-sm">
-                                <input  v-model="form.paypal_live_client_secret" type="text"
-                                    class="block w-full min-w-0 flex-1 rounded-md border-gray-300 sm:text-sm">
+                                <BaseInput v-model="form.paypal_live_client_secret" placeholder="Client Secret (Live)" id="paypal_live_client_secret" :hasError="form.errors.paypal_live_client_secret"/>
                                 <ErrorMessage :name="form.errors.paypal_live_client_secret" />
                             </div>
                         </div>
@@ -69,8 +68,7 @@
                         <Label name="Client ID (Sandbox)" id="paypal_sandbox_client_id" :hasError="form.errors.paypal_sandbox_client_id"/>
                         <div class="mt-1 sm:col-span-2 sm:mt-0">
                             <div class="max-w-lg rounded-md shadow-sm">
-                                <input v-model="form.paypal_sandbox_client_id" type="text"
-                                    class="block w-full min-w-0 flex-1 rounded-md border-gray-300 sm:text-sm">
+                                <BaseInput v-model="form.paypal_sandbox_client_id" placeholder="Client ID (Sandbox)" id="paypal_sandbox_client_id" :hasError="form.errors.paypal_sandbox_client_id"/>
                                 <ErrorMessage :name="form.errors.paypal_sandbox_client_id" />
                             </div>
                         </div>
@@ -79,9 +77,8 @@
                         <Label name="Client Secret (Sandbox)" id="paypal_sandbox_client_secret" :hasError="form.errors.paypal_sandbox_client_secret"/>
                         <div class="mt-1 sm:col-span-2 sm:mt-0">
                             <div class="max-w-lg rounded-md shadow-sm">
-                                <input v-model="form.paypal_sandbox_client_secret" type="text"
-                                    class="block w-full min-w-0 flex-1 rounded-md border-gray-300 sm:text-sm">
-                                 <ErrorMessage :name="form.errors.paypal_sandbox_client_secret" />
+                                <BaseInput v-model="form.paypal_sandbox_client_secret" placeholder="Client Secret (Sandbox)" id="paypal_sandbox_client_secret" :hasError="form.errors.paypal_sandbox_client_secret"/>
+                                <ErrorMessage :name="form.errors.paypal_sandbox_client_secret" />
                             </div>
                         </div>
                     </div>

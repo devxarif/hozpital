@@ -11,21 +11,19 @@
 
                 <div class="space-y-6 sm:space-y-5">
                     <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
-                        <Label name="Public Key" id="paystack_status" :hasError="form.errors.paystack_key"/>
+                        <Label name="Public Key" id="paystack_key" :hasError="form.errors.paystack_key"/>
                         <div class="mt-1 sm:col-span-2 sm:mt-0">
                             <div class="max-w-lg rounded-md shadow-sm">
-                                <input v-model="form.paystack_key" type="text"
-                                    class="block w-full min-w-0 flex-1 rounded-md border-gray-300 sm:text-sm">
+                                <BaseInput v-model="form.paystack_key" placeholder="Public Key" id="paystack_key" :hasError="form.errors.paystack_key"/>
                                 <ErrorMessage :name="form.errors.paystack_key" />
                             </div>
                         </div>
                     </div>
                     <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
-                        <Label name="Secret Key" id="paystack_status" :hasError="form.errors.paystack_secret"/>
+                        <Label name="Secret Key" id="paystack_secret" :hasError="form.errors.paystack_secret"/>
                         <div class="mt-1 sm:col-span-2 sm:mt-0">
                             <div class="max-w-lg rounded-md shadow-sm">
-                                <input v-model="form.paystack_secret" type="text"
-                                    class="block w-full min-w-0 flex-1 rounded-md border-gray-300 sm:text-sm">
+                                <BaseInput v-model="form.paystack_secret" placeholder="Secret Key" id="paystack_secret" :hasError="form.errors.paystack_secret"/>
                                 <ErrorMessage :name="form.errors.paystack_secret" />
                             </div>
                         </div>

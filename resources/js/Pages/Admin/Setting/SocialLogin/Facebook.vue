@@ -14,7 +14,7 @@
                         <Label name="Client ID" id="facebook_id" :hasError="form.errors.facebook_id"/>
                         <div class="mt-1 sm:col-span-2 sm:mt-0">
                             <div class="max-w-lg rounded-md shadow-sm">
-                                <input v-model="form.facebook_id" type="text"  class="block w-full min-w-0 flex-1 rounded-md border-gray-300 sm:text-sm">
+                                <BaseInput v-model="form.facebook_id" placeholder="Client ID" id="facebook_id" :hasError="form.errors.facebook_id"/>
                                 <ErrorMessage :name="form.errors.facebook_id" />
                             </div>
                         </div>
@@ -23,7 +23,7 @@
                         <Label name="Client Secret" id="facebook_secret" :hasError="form.errors.facebook_secret"/>
                         <div class="mt-1 sm:col-span-2 sm:mt-0">
                             <div class="max-w-lg rounded-md shadow-sm">
-                                <input v-model="form.facebook_secret" type="text" class="block w-full min-w-0 flex-1 rounded-md border-gray-300 sm:text-sm">
+                                <BaseInput v-model="form.facebook_secret" placeholder="Client Secret" id="facebook_secret" :hasError="form.errors.facebook_secret"/>
                                 <ErrorMessage :name="form.errors.facebook_secret" />
                             </div>
                         </div>

@@ -13,7 +13,7 @@
             },
             className: {
                 type: String,
-                default: 'text-md p-2.5',
+                default: 'text-sm p-2.5',
             },
             placeholder: {
                 type: String,

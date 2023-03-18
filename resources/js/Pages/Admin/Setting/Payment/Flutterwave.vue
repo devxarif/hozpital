@@ -14,8 +14,7 @@
                         <Label name="Public Key" id="flw_public_key" :hasError="form.errors.flw_public_key"/>
                         <div class="mt-1 sm:col-span-2 sm:mt-0">
                             <div class="max-w-lg rounded-md shadow-sm">
-                                <input v-model="form.flw_public_key" type="text"
-                                    class="block w-full min-w-0 flex-1 rounded-md border-gray-300 sm:text-sm">
+                                <BaseInput v-model="form.flw_public_key" placeholder="Public Key" id="flw_public_key" :hasError="form.errors.flw_public_key"/>
                                 <ErrorMessage :name="form.errors.flw_public_key" />
                             </div>
                         </div>
@@ -24,8 +23,7 @@
                         <Label name="Secret Key" id="flw_secret" :hasError="form.errors.flw_secret"/>
                         <div class="mt-1 sm:col-span-2 sm:mt-0">
                             <div class="max-w-lg rounded-md shadow-sm">
-                                <input v-model="form.flw_secret" type="text"
-                                    class="block w-full min-w-0 flex-1 rounded-md border-gray-300 sm:text-sm">
+                                <BaseInput v-model="form.flw_secret" placeholder="Secret Key" id="flw_secret" :hasError="form.errors.flw_secret"/>
                                 <ErrorMessage :name="form.errors.flw_secret" />
                             </div>
                         </div>
@@ -34,8 +32,7 @@
                         <Label name="Encryption Hash" id="flw_secret_hash" :hasError="form.errors.flw_secret_hash"/>
                         <div class="mt-1 sm:col-span-2 sm:mt-0">
                             <div class="max-w-lg rounded-md shadow-sm">
-                                <input v-model="form.flw_secret_hash" type="text"
-                                    class="block w-full min-w-0 flex-1 rounded-md border-gray-300 sm:text-sm">
+                                <BaseInput v-model="form.flw_secret_hash" placeholder="Encryption Hash" id="flw_secret_hash" :hasError="form.errors.flw_secret_hash"/>
                                 <ErrorMessage :name="form.errors.flw_secret_hash" />
                             </div>
                         </div>

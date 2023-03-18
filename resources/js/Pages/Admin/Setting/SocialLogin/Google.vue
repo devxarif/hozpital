@@ -14,7 +14,7 @@
                         <Label name="Client ID" id="google_id" :hasError="form.errors.google_id"/>
                         <div class="mt-1 sm:col-span-2 sm:mt-0">
                             <div class="max-w-lg rounded-md shadow-sm">
-                                <input v-model="form.google_id" type="text"  class="block w-full min-w-0 flex-1 rounded-md border-gray-300 sm:text-sm">
+                                <BaseInput v-model="form.google_id" placeholder="Client ID" id="google_id" :hasError="form.errors.google_id"/>
                                 <ErrorMessage :name="form.errors.google_id" />
                             </div>
                         </div>
@@ -23,7 +23,7 @@
                         <Label name="Client Secret" id="google_secret" :hasError="form.errors.google_secret"/>
                         <div class="mt-1 sm:col-span-2 sm:mt-0">
                             <div class="max-w-lg rounded-md shadow-sm">
-                                <input v-model="form.google_secret" type="text" class="block w-full min-w-0 flex-1 rounded-md border-gray-300 sm:text-sm">
+                                <BaseInput v-model="form.google_secret" placeholder="Client Secret" id="google_secret" :hasError="form.errors.google_secret"/>
                                 <ErrorMessage :name="form.errors.google_secret" />
                             </div>
                         </div>

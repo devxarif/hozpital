@@ -14,7 +14,7 @@
                         <Label name="Key ID" id="razorpay_key" :hasError="form.errors.razorpay_key"/>
                         <div class="mt-1 sm:col-span-2 sm:mt-0">
                             <div class="max-w-lg rounded-md shadow-sm">
-                                <input v-model="form.razorpay_key" type="text" class="block w-full min-w-0 flex-1 rounded-md border-gray-300 sm:text-sm">
+                                <BaseInput v-model="form.razorpay_key" placeholder="Public Key" id="razorpay_key" :hasError="form.errors.razorpay_key"/>
                                 <ErrorMessage :name="form.errors.razorpay_key" />
                             </div>
                         </div>
@@ -23,8 +23,7 @@
                         <Label name="Key Secret" id="razorpay_secret" :hasError="form.errors.razorpay_secret"/>
                         <div class="mt-1 sm:col-span-2 sm:mt-0">
                             <div class="max-w-lg rounded-md shadow-sm">
-                                <input v-model="form.razorpay_secret" type="text"
-                                    class="block w-full min-w-0 flex-1 rounded-md border-gray-300 sm:text-sm">
+                                <BaseInput v-model="form.razorpay_secret" placeholder="Public Key" id="razorpay_secret" :hasError="form.errors.razorpay_secret"/>
                                 <ErrorMessage :name="form.errors.razorpay_secret" />
                             </div>
                         </div>

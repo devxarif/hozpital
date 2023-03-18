@@ -25,8 +25,7 @@
                         <Label name="Merchant ID" id="midtrans_id" :hasError="form.errors.midtrans_id"/>
                         <div class="mt-1 sm:col-span-2 sm:mt-0">
                             <div class="max-w-lg rounded-md shadow-sm">
-                                <input v-model="form.midtrans_id" type="text"
-                                    class="block w-full min-w-0 flex-1 rounded-md border-gray-300 sm:text-sm">
+                                <BaseInput v-model="form.midtrans_id" placeholder="Merchant ID" id="midtrans_id" :hasError="form.errors.midtrans_id"/>
                                 <ErrorMessage :name="form.errors.midtrans_id" />
                             </div>
                         </div>
@@ -35,8 +34,7 @@
                         <Label name="Client Key" id="midtrans_key" :hasError="form.errors.midtrans_key"/>
                         <div class="mt-1 sm:col-span-2 sm:mt-0">
                             <div class="max-w-lg rounded-md shadow-sm">
-                                <input v-model="form.midtrans_key" type="text"
-                                class="block w-full min-w-0 flex-1 rounded-md border-gray-300 sm:text-sm">
+                                <BaseInput v-model="form.midtrans_key" placeholder="Client Key" id="midtrans_key" :hasError="form.errors.midtrans_key"/>
                                 <ErrorMessage :name="form.errors.midtrans_key" />
                             </div>
                         </div>
@@ -45,8 +43,7 @@
                         <Label name="Secret Key" id="midtrans_secret" :hasError="form.errors.midtrans_secret"/>
                         <div class="mt-1 sm:col-span-2 sm:mt-0">
                             <div class="max-w-lg rounded-md shadow-sm">
-                                <input v-model="form.midtrans_secret" type="text"
-                                    class="block w-full min-w-0 flex-1 rounded-md border-gray-300 sm:text-sm">
+                                <BaseInput v-model="form.midtrans_secret" placeholder="Secret Key" id="midtrans_secret" :hasError="form.errors.midtrans_secret"/>
                                     <ErrorMessage :name="form.errors.midtrans_secret" />
                                 </div>
                             </div>

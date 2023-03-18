@@ -14,25 +14,25 @@
                         <Label name="Client ID" id="linkedin_id" :hasError="form.errors.linkedin_id"/>
                         <div class="mt-1 sm:col-span-2 sm:mt-0">
                             <div class="max-w-lg rounded-md shadow-sm">
-                                <input v-model="form.linkedin_id" type="text"  class="block w-full min-w-0 flex-1 rounded-md border-gray-300 sm:text-sm">
+                                <BaseInput v-model="form.linkedin_id" placeholder="Client ID" id="linkedin_id" :hasError="form.errors.linkedin_id"/>
                                 <ErrorMessage :name="form.errors.linkedin_id" />
                             </div>
                         </div>
                     </div>
                     <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
-                        <Label name="Client ID" id="linkedin_secret" :hasError="form.errors.linkedin_secret"/>
+                        <Label name="Client Secret" id="linkedin_secret" :hasError="form.errors.linkedin_secret"/>
                         <div class="mt-1 sm:col-span-2 sm:mt-0">
                             <div class="max-w-lg rounded-md shadow-sm">
-                                <input v-model="form.linkedin_secret" type="text" class="block w-full min-w-0 flex-1 rounded-md border-gray-300 sm:text-sm">
+                                <BaseInput v-model="form.linkedin_secret" placeholder="Client Secret" id="linkedin_secret" :hasError="form.errors.linkedin_secret"/>
                                 <ErrorMessage :name="form.errors.linkedin_secret" />
                             </div>
                         </div>
                     </div>
                     <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
-                        <Label name="Client ID" id="linkedin_status" :hasError="form.errors.linkedin_active"/>
+                        <Label name="Status" id="linkedin_active" :hasError="form.errors.linkedin_active"/>
                         <div class="mt-1 sm:col-span-2 sm:mt-0">
-                            <label for="checked-toggle" class="inline-flex relative items-center cursor-pointer">
-                                <input @change="statusChange" v-model="form.linkedin_active" type="checkbox" id="checked-toggle" class="sr-only peer" :checked="form.linkedin_active">
+                            <label for="linkedin_status" class="inline-flex relative items-center cursor-pointer">
+                                <input @change="statusChange" v-model="form.linkedin_active" type="checkbox" id="linkedin_status" class="sr-only peer" :checked="form.linkedin_active">
                                 <div
                                     class="w-11 h-6 bg-gray-200 rounded-full peer   peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all  peer-checked:bg-blue-600">
                                 </div>
