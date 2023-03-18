@@ -47,7 +47,7 @@
                                 </div>
                                 <div class="grid grid-cols-2 gap-2">
                                     <div class="mb-4">
-                                        <Label name="Gender')" :hasError="form.errors.gender"/>
+                                        <Label name="Gender" :hasError="form.errors.gender"/>
                                         <div class="flex gap-2">
                                             <label for="donor_male" class="w-full rounded-lg flex items-center pl-4 border border-gray-200    py-3 text-sm font-medium text-gray-700 gap-2">
                                                 <input id="donor_male" value="male" v-model="form.gender" name="gender" type="radio" class="h-4 w-4 border-gray-300 text-blue-600 focus:outline-none">

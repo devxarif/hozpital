@@ -40,7 +40,7 @@
                     </div>
 
                     <div class="my-10">
-                        <Label name="Choose File (.csv, .xlsx, .xls)')" :hasError="form.errors.file" :required="false"/>
+                        <Label name="Choose File (.csv, .xlsx, .xls)" :hasError="form.errors.file" :required="false"/>
                         <div class="flex justify-center items-center w-full" v-if="!previewDemoFile">
                             <label for="dropzone-file" class="flex flex-col justify-center items-center w-full h-60 bg-gray-50 rounded-lg border-2 border-gray-300 border-dashed cursor-pointer   hover:bg-gray-100   ">
                                 <div class="flex flex-col justify-center items-center pt-5 pb-6">

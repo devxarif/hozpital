@@ -60,7 +60,7 @@
                                         <BaseInput v-model="form.phone" placeholder="Phone Number" id="patient_phone" :hasError="form.errors.phone"/>
                                     </div>
                                     <div class="mb-4">
-                                        <Label name="Gender')" :hasError="form.errors.email" :required="false"/>
+                                        <Label name="Gender" :hasError="form.errors.email" :required="false"/>
                                         <div class="flex gap-2">
                                             <label for="patient_male" class="w-full rounded-lg flex items-center pl-4 border border-gray-200   py-3 ml-2 text-sm font-medium text-gray-700 gap-2">
                                                 <input id="patient_male" value="male" v-model="form.gender" name="gender" type="radio" class="h-4 w-4 border-gray-300 text-blue-600 focus:outline-none">

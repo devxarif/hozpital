@@ -31,7 +31,7 @@
                                                 <BaseInput v-model="form.name" placeholder="Name" id="plan_name" :hasError="form.errors.name"/>
                                             </div>
                                             <div class="mb-4">
-                                                <Label name="Plan Type')" :hasError="form.errors.type"/>
+                                                <Label name="Plan Type" :hasError="form.errors.type"/>
                                                 <BaseSelect v-model:value="form.type" :hasError="form.errors.type">
                                                     <option value="paid">{{ __('Paid') }}</option>
                                                     <option value="available">{{ __('Available') }}</option>

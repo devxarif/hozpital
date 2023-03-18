@@ -12,8 +12,7 @@
                             </div>
                             <div class="space-y-6 sm:space-y-5">
                                 <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
-                                    <label for="username"
-                                        class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">{{ __('Recaptcha Site key') }}</label>
+                                    <Label name="Recaptcha Site key" id="recaptcha_site_key" :hasError="form.errors.recaptcha_site_key"/>
                                     <div class="mt-1 sm:col-span-2 sm:mt-0">
                                         <div class="max-w-lg rounded-md shadow-sm">
                                             <input v-model="form.recaptcha_site_key" type="text"  class="block w-full min-w-0 flex-1 rounded-md border-gray-300 sm:text-sm">
@@ -22,8 +21,7 @@
                                     </div>
                                 </div>
                                 <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
-                                    <label for="username"
-                                        class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">{{ __('Status') }}</label>
+                                    <Label name="Status" id="recaptcha_active" :hasError="form.errors.recaptcha_active"/>
                                     <div class="mt-1 sm:col-span-2 sm:mt-0">
                                         <label for="checked-toggle" class="inline-flex relative items-center cursor-pointer">
                                             <input @change="statusChange" v-model="form.recaptcha_active" type="checkbox" id="checked-toggle" class="sr-only peer" :checked="form.recaptcha_active">

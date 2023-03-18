@@ -61,7 +61,7 @@
                                             <ErrorMessage :name="form.errors.color"/>
                                         </div>
                                         <div class="mb-4">
-                                            <Label name="Leave Balance Day')" :hasError="form.errors.type" id="leave_type_balance"/>
+                                            <Label name="Leave Balance Day" :hasError="form.errors.type" id="leave_type_balance"/>
                                             <input type="number" min="1" id="leave_type_balance" class="bg-gray-50 border text-md rounded-lg block w-full p-2.5    border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500    "
                                                 placeholder="Leave Balance" v-model="form.balance">
                                         </div>

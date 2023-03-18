@@ -27,7 +27,7 @@
                                 </div>
                                 <form class="mb-4" @submit.prevent="saveData">
                                     <div class="mb-4">
-                                        <Label name="Create A Leave Request')" :hasError="form.errors.request_for" :required="false"/>
+                                        <Label name="Create A Leave Request" :hasError="form.errors.request_for" :required="false"/>
                                         <div class="w-full bg-gray-200 p-2 rounded-lg">
                                             <div class="account-switcher relative flex after:absolute candidate after:transition-all duration-300 after:rounded-lg">
                                                 <div class="w-full rounded-xl" :class="form.request_for == 'me' ? 'bg-gray-800 text-white shadow':'text-gray-800'">

@@ -6,36 +6,36 @@
         <form @submit.prevent="saveData">
             <div class="mb-3 row">
                 <div class="col-md-6 form-group">
-                    <Label :required="false" :name="__('Facebook')" />
+                    <Label :required="false" :name="Facebook')" />
                     <input v-model="form.facebook" type="text" class="form-control" :class="{'is-invalid':form.errors.facebook}">
                     <ErrorMessage :name="form.errors.facebook" />
                 </div>
                 <div class="col-md-6 form-group">
-                    <Label :required="false" :name="__('Twitter')" />
+                    <Label :required="false" :name="Twitter')" />
                     <input v-model="form.twitter" type="text" class="form-control" :class="{'is-invalid':form.errors.twitter}">
                     <ErrorMessage :name="form.errors.twitter" />
                 </div>
             </div>
             <div class="mb-3 row">
                 <div class="col-md-6 form-group">
-                    <Label :required="false" :name="__('Linkedin')" />
+                    <Label :required="false" :name="Linkedin')" />
                     <input v-model="form.linkedin" type="text" class="form-control" :class="{'is-invalid':form.errors.linkedin}">
                     <ErrorMessage :name="form.errors.linkedin" />
                 </div>
                 <div class="col-md-6 form-group">
-                    <Label :required="false" :name="__('Youtube')" />
+                    <Label :required="false" :name="Youtube')" />
                     <input v-model="form.youtube" type="text" class="form-control" :class="{'is-invalid':form.errors.youtube}">
                     <ErrorMessage :name="form.errors.youtube" />
                 </div>
             </div>
             <div class="mb-3 row">
                 <div class="col-md-6 form-group">
-                    <Label :required="false" :name="__('Instagram')" />
+                    <Label :required="false" :name="Instagram')" />
                     <input v-model="form.instagram" type="text" class="form-control" :class="{'is-invalid':form.errors.instagram}">
                     <ErrorMessage :name="form.errors.instagram" />
                 </div>
                 <div class="col-md-6 form-group">
-                    <Label :required="false" :name="__('Pinterest')" />
+                    <Label :required="false" :name="Pinterest')" />
                     <input v-model="form.pinterest" type="text" class="form-control" :class="{'is-invalid':form.errors.pinterest}">
                     <ErrorMessage :name="form.errors.pinterest" />
                 </div>
