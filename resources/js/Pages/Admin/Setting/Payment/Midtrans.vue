@@ -12,35 +12,14 @@
                 <div class="space-y-6 sm:space-y-5">
                     <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
                         <label for="username"
-                            class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">{{ __('Midtrans Mode') }}</label>
+                            class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">{{ __('Midtrans Live Mode') }}</label>
                         <div class="mt-1 sm:col-span-2 sm:mt-0">
-                            <div class="max-w-lg rounded-md shadow-sm">
-                                <div class="w-full bg-gray-100 p-2 rounded-lg">
-                                    <div
-                                        class="account-switcher relative flex after:absolute candidate after:transition-all duration-300 after:rounded-lg">
-                                        <div class="w-full rounded-xl"
-                                            :class="form.request_for == 'me' ? 'bg-blue-500 text-white shadow-md ':'text-gray-800'">
-                                            <input type="radio" id="radio1" name="radio" class="hidden" checked>
-                                            <label for="radio1"
-                                                class="relative z-50 rounded-md transition-all duration-300 w-full py-2 gap-2 flex items-center justify-center cursor-pointer"
-                                                @click="changeLeaveRequestFor('me')">
-                                                <UserIcon class="h-5 w-5" />
-                                                <span>Live</span>
-                                            </label>
-                                        </div>
-                                        <div class="w-full rounded-xl"
-                                            :class="form.request_for == 'others' ? 'bg-blue-500 text-white shadow-md ':'text-gray-800'">
-                                            <input type="radio" id="radio2" name="radio" class="hidden">
-                                            <label for="radio2"
-                                                class="relative z-50 rounded-md transition-all duration-300 flex w-full py-2 gap-2 items-center justify-center cursor-pointer"
-                                                @click="changeLeaveRequestFor('others')">
-                                                <UsersIcon class="h-5 w-5" />
-                                                <span>Sandbox</span>
-                                            </label>
-                                        </div>
-                                    </div>
+                            <label for="midtrans_mode" class="inline-flex relative items-center cursor-pointer">
+                                <input @change="modeChange" v-model="form.midtrans_mode" type="checkbox" id="midtrans_mode" class="sr-only peer" :checked="form.midtrans_mode">
+                                <div
+                                    class="w-11 h-6 bg-gray-200 rounded-full peer   peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all  peer-checked:bg-blue-600">
                                 </div>
-                            </div>
+                            </label>
                         </div>
                     </div>
                     <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
@@ -77,11 +56,11 @@
                         </div>
                     </div>
                     <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
-                        <label for="username"
+                        <label for="status"
                             class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">{{ __('Status') }}</label>
                         <div class="mt-1 sm:col-span-2 sm:mt-0">
-                            <label for="checked-toggle" class="inline-flex relative items-center cursor-pointer">
-                                <input @change="statusChange" v-model="form.midtrans_active" type="checkbox" id="checked-toggle"
+                            <label for="midtrans_status" class="inline-flex relative items-center cursor-pointer">
+                                <input @change="statusChange" v-model="form.midtrans_active" type="checkbox" id="midtrans_status"
                                     class="sr-only peer" :checked="form.midtrans_active">
                                 <div
                                     class="w-11 h-6 bg-gray-200 rounded-full peer   peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all  peer-checked:bg-blue-600">
@@ -122,8 +101,8 @@ export default {
                 midtrans_id: this.data.midtrans_id,
                 midtrans_key: this.data.midtrans_key,
                 midtrans_secret: this.data.midtrans_secret,
-                midtrans_active: this.data.midtrans_active ? 1 : 0,
-                midtrans_mode: this.data.midtrans_mode ? 1 : 0,
+                midtrans_active: this.data.midtrans_active ? true : false,
+                midtrans_mode: this.data.midtrans_mode ? true : false,
                 provider: "midtrans",
             }),
         };
@@ -131,18 +110,20 @@ export default {
     methods: {
         statusChange(event) {
             if (event.target.checked == true) {
-                this.form.midtrans_active = 1;
+                this.form.midtrans_active = true;
             } else {
-                this.form.midtrans_active = 0;
+                this.form.midtrans_active = false;
+            }
+        },
+        modeChange(event) {
+            if (event.target.checked == true) {
+                this.form.midtrans_mode = true;
+            } else {
+                this.form.midtrans_mode = false;
             }
         },
         updateData() {
             this.form.put(route("admin.settings.payment.update"));
-        },
-        changeModeType(type) {
-            if (type != this.form.midtrans_mode) {
-                this.form.midtrans_mode = type;
-            }
         }
     },
     watch: {
@@ -151,9 +132,8 @@ export default {
                 this.form.midtrans_id = this.data.midtrans_id;
                 this.form.midtrans_key = this.data.midtrans_key;
                 this.form.midtrans_secret = this.data.midtrans_secret;
-                this.form.midtrans_key_live = this.data.midtrans_key;
-                this.form.midtrans_secret_live = this.data.midtrans_secret;
-                this.form.midtrans_active = this.data.midtrans_active ? 1 : 0;
+                this.form.midtrans_active = this.data.midtrans_active ? true : false;
+                this.form.midtrans_mode = this.data.midtrans_mode ? true : false;
             },
             deep: true,
         },

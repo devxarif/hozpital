@@ -1,21 +1,17 @@
 <?php
-/**
- * PayPal Setting & API Credentials
- * Created by Raza Mehdi <srmk@outlook.com>.
- */
 
 return [
-    'active' => env('PAYPAL_ACTIVE', 'false'),
-    'mode' => env('PAYPAL_MODE', 'sandbox'), // Can only be 'sandbox' Or 'live'. If empty or invalid, 'live' will be used.
+    'active' => true,
+    'mode' => 'sandbox', // Can only be 'sandbox' Or 'live'. If empty or invalid, 'live' will be used.
     'sandbox' => [
-        'client_id' => env('PAYPAL_SANDBOX_CLIENT_ID', ''),
-        'client_secret' => env('PAYPAL_SANDBOX_CLIENT_SECRET', ''),
-        'app_id' => 'APP-80W284485P519543T',
+        'client_id' => 'Aa5dMaGzSheN82k47r5ZzdlbhGZavLnybxbcjBiKuQAM-2l27ANG7w3PHlzLwi2aNeyT7uCgPGTCrblg',
+        'client_secret' => 'EE3hQ9KwbPOQ_PNZUjZ_prJgHc0NKVgWcV7qgZkGgm0oPB9M0XcmsixnC8g-PmAG8i46L_6YMRR1hs8O',
+        'app_id' => '', // APP-80W284485P519543T
     ],
     'live' => [
-        'client_id' => env('PAYPAL_LIVE_CLIENT_ID', ''),
-        'client_secret' => env('PAYPAL_LIVE_CLIENT_SECRET', ''),
-        'app_id' => env('PAYPAL_LIVE_APP_ID', ''),
+        'client_id' => '',
+        'client_secret' => '',
+        'app_id' => '',
     ],
 
     'payment_action' => env('PAYPAL_PAYMENT_ACTION', 'Sale'), // Can only be 'Sale', 'Authorization' or 'Order'

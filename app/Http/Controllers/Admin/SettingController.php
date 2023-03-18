@@ -2,22 +2,24 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\Setting\SMTPUpdateRequest;
-use App\Mail\Admin\SmtpTestMail;
+use ZipArchive;
 use App\Models\Cms;
-use App\Models\Currency;
 use App\Models\Seo;
 use App\Models\Setting;
-use App\Services\Admin\Setting\SocialLogin\FetchSocialProviderDataService;
-use App\Services\Admin\Setting\SendTestMailService;
-use App\Services\Admin\Setting\SMTPService;
-use App\Services\Admin\Setting\SocialLogin\UpdateSocialProviderDataService;
+use App\Models\Currency;
 use App\Traits\SettingAble;
 use Illuminate\Http\Request;
+use App\Mail\Admin\SmtpTestMail;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
-use ZipArchive;
+use App\Services\Admin\Setting\SMTPService;
+use App\Services\Admin\Setting\SendTestMailService;
+use App\Http\Requests\Admin\Setting\SMTPUpdateRequest;
+use App\Services\Admin\Setting\Payment\FetchPaymentProviderDataService;
+use App\Services\Admin\Setting\Payment\UpdatePaymentProviderDataService;
+use App\Services\Admin\Setting\SocialLogin\FetchSocialProviderDataService;
+use App\Services\Admin\Setting\SocialLogin\UpdateSocialProviderDataService;
 
 class SettingController extends Controller
 {
@@ -182,22 +184,14 @@ class SettingController extends Controller
 
     public function paymentData(Request $request)
     {
-        return $this->getPaymentData($request->provider);
+        return (new FetchPaymentProviderDataService)->execute($request->provider);
     }
 
     public function paymentDataUpdate(Request $request)
     {
-        $update = $this->updatePaymentData($request);
+        (new UpdatePaymentProviderDataService)->execute($request);
 
-        if ($update) {
-            session()->flash('success', 'Payment data updated successfully');
-
-            return back();
-        } else {
-            session()->flash('error', 'Something went wrong');
-
-            return back();
-        }
+        return back()->with('success', 'Payment data updated successfully');
     }
 
     public function seo()
