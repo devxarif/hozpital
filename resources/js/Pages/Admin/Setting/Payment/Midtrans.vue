@@ -14,7 +14,7 @@
                         <label for="username"
                             class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">{{ __('Midtrans Mode') }}</label>
                         <div class="mt-1 sm:col-span-2 sm:mt-0">
-                            <div class="flex max-w-lg rounded-md shadow-sm">
+                            <div class="max-w-lg rounded-md shadow-sm">
                                 <div class="w-full bg-gray-100 p-2 rounded-lg">
                                     <div
                                         class="account-switcher relative flex after:absolute candidate after:transition-all duration-300 after:rounded-lg">
@@ -47,7 +47,7 @@
                         <label for="username"
                             class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">{{ __('Merchant ID') }}</label>
                         <div class="mt-1 sm:col-span-2 sm:mt-0">
-                            <div class="flex max-w-lg rounded-md shadow-sm">
+                            <div class="max-w-lg rounded-md shadow-sm">
                                 <input v-model="form.midtrans_id" type="text"
                                     class="block w-full min-w-0 flex-1 rounded-md border-gray-300 sm:text-sm">
                                 <ErrorMessage :name="form.errors.midtrans_id" />
@@ -58,7 +58,7 @@
                         <label for="username"
                             class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">{{ __('Client Key') }}</label>
                         <div class="mt-1 sm:col-span-2 sm:mt-0">
-                            <div class="flex max-w-lg rounded-md shadow-sm">
+                            <div class="max-w-lg rounded-md shadow-sm">
                                 <input v-model="form.midtrans_key" type="text"
                                     class="block w-full min-w-0 flex-1 rounded-md border-gray-300 sm:text-sm">
                                 <ErrorMessage :name="form.errors.midtrans_key" />
@@ -69,7 +69,7 @@
                         <label for="username"
                             class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">{{ __('Secret Key') }}</label>
                         <div class="mt-1 sm:col-span-2 sm:mt-0">
-                            <div class="flex max-w-lg rounded-md shadow-sm">
+                            <div class="max-w-lg rounded-md shadow-sm">
                                 <input v-model="form.midtrans_secret" type="text"
                                     class="block w-full min-w-0 flex-1 rounded-md border-gray-300 sm:text-sm">
                                 <ErrorMessage :name="form.errors.midtrans_secret" />

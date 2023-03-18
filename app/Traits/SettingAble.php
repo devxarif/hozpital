@@ -80,24 +80,6 @@ trait SettingAble
     {
         switch ($data->provider) {
             case 'paypal':
-                // if ($data->paypal_mode == 1) {
-                //     $this->validate($data, [
-                //         'paypal_live_client_id' => 'required',
-                //         'paypal_live_client_secret' => 'required',
-                //     ], [
-                //         'paypal_live_client_id.required' => 'The paypal client id field is required',
-                //         'paypal_live_client_secret.required' => 'The paypal client Secret field is required',
-                //     ]);
-                // } else {
-                //     $this->validate($data, [
-                //         'paypal_sandbox_client_id' => 'required',
-                //         'paypal_sandbox_client_secret' => 'required',
-                //     ], [
-                //         'paypal_sandbox_client_id.required' => 'The paypal client id field is required',
-                //         'paypal_sandbox_client_secret.required' => 'The paypal client Secret field is required',
-                //     ]);
-                // }
-
                 checkSetEnv('PAYPAL_LIVE_CLIENT_ID', $data->paypal_live_client_id);
                 checkSetEnv('PAYPAL_LIVE_CLIENT_SECRET', $data->paypal_live_client_secret);
                 checkSetEnv('PAYPAL_SANDBOX_CLIENT_ID', $data->paypal_sandbox_client_id);

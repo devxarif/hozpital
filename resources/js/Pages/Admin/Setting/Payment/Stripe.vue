@@ -14,7 +14,7 @@
                         <label for="username"
                             class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">{{ __('Publishable key') }}</label>
                         <div class="mt-1 sm:col-span-2 sm:mt-0">
-                            <div class="flex max-w-lg rounded-md shadow-sm">
+                            <div class="max-w-lg rounded-md shadow-sm">
                                 <input v-model="form.stripe_key" type="text"  class="block w-full min-w-0 flex-1 rounded-md border-gray-300 sm:text-sm">
                                 <ErrorMessage :name="form.errors.stripe_key" />
                             </div>
@@ -24,7 +24,7 @@
                         <label for="username"
                             class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">{{ __('Secret key') }}</label>
                         <div class="mt-1 sm:col-span-2 sm:mt-0">
-                            <div class="flex max-w-lg rounded-md shadow-sm">
+                            <div class="max-w-lg rounded-md shadow-sm">
                                 <input v-model="form.stripe_secret" type="text" class="block w-full min-w-0 flex-1 rounded-md border-gray-300 sm:text-sm">
                                 <ErrorMessage :name="form.errors.stripe_secret" />
                             </div>

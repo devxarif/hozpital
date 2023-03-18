@@ -3,7 +3,7 @@
         <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5">
             <div class="space-y-6 sm:space-y-5">
                 <div>
-                    <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">Instamojo Payment</h2>
+                    <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">Linkedin Login</h2>
 
                     <p class="mt-1 max-w-2xl text-sm text-gray-500">This information will be displayed publicly so be
                         careful what you share.</p>
@@ -12,23 +12,21 @@
                 <div class="space-y-6 sm:space-y-5">
                     <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
                         <label for="username"
-                            class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">{{ __('API Key') }}</label>
+                            class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">{{ __('Client ID') }}</label>
                         <div class="mt-1 sm:col-span-2 sm:mt-0">
                             <div class="max-w-lg rounded-md shadow-sm">
-                                <input v-model="form.im_key" type="text"
-                                    class="block w-full min-w-0 flex-1 rounded-md border-gray-300 sm:text-sm">
-                                <ErrorMessage :name="form.errors.im_key" />
+                                <input v-model="form.linkedin_id" type="text"  class="block w-full min-w-0 flex-1 rounded-md border-gray-300 sm:text-sm">
+                                <ErrorMessage :name="form.errors.linkedin_id" />
                             </div>
                         </div>
                     </div>
                     <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
                         <label for="username"
-                            class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">{{ __('Auth Token') }}</label>
+                            class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">{{ __('Client Secret') }}</label>
                         <div class="mt-1 sm:col-span-2 sm:mt-0">
                             <div class="max-w-lg rounded-md shadow-sm">
-                                <input v-model="form.im_secret"  type="text"
-                                    class="block w-full min-w-0 flex-1 rounded-md border-gray-300 sm:text-sm">
-                                <ErrorMessage :name="form.errors.im_secret" />
+                                <input v-model="form.linkedin_secret" type="text" class="block w-full min-w-0 flex-1 rounded-md border-gray-300 sm:text-sm">
+                                <ErrorMessage :name="form.errors.linkedin_secret" />
                             </div>
                         </div>
                     </div>
@@ -37,8 +35,7 @@
                             class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">{{ __('Status') }}</label>
                         <div class="mt-1 sm:col-span-2 sm:mt-0">
                             <label for="checked-toggle" class="inline-flex relative items-center cursor-pointer">
-                                <input @change="statusChange" v-model="form.im_active" type="checkbox" id="checked-toggle"
-                                    class="sr-only peer" :checked="form.im_active">
+                                <input @change="statusChange" v-model="form.linkedin_active" type="checkbox" id="checked-toggle" class="sr-only peer" :checked="form.linkedin_active">
                                 <div
                                     class="w-11 h-6 bg-gray-200 rounded-full peer   peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all  peer-checked:bg-blue-600">
                                 </div>
@@ -75,31 +72,33 @@ export default {
     data() {
         return {
             form: this.$inertia.form({
-                im_key: this.data.im_key,
-                im_secret: this.data.im_secret,
-                im_active: this.data.im_active ? 1 : 0,
-                provider: "instamojo",
+                linkedin_id: this.data.linkedin_id,
+                linkedin_secret: this.data.linkedin_secret,
+                linkedin_active: this.data.linkedin_active ? true: false,
+                provider: "linkedin",
             }),
         };
     },
     methods: {
         statusChange(event) {
             if (event.target.checked == true) {
-                this.form.im_active = 1;
+                this.form.linkedin_active = true;
             } else {
-                this.form.im_active = 0;
+                this.form.linkedin_active = false;
             }
         },
         updateData() {
-            this.form.put(route("admin.settings.payment.update"));
+            this.form.put(route("admin.settings.socialLogin.update"), {
+                preserveScroll: true
+            });
         },
     },
     watch: {
         data: {
             handler() {
-                this.form.im_key = this.data.im_key;
-                this.form.im_secret = this.data.im_secret;
-                this.form.im_active = this.data.im_active ? 1 : 0;
+                this.form.linkedin_id = this.data.linkedin_id;
+                this.form.linkedin_secret = this.data.linkedin_secret;
+                this.form.linkedin_active = this.data.linkedin_active ? true: false;
             },
             deep: true,
         },

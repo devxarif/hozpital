@@ -1,28 +1,29 @@
 <?php
 
-use AmrShawky\Currency;
-use App\Mail\Organization\InviteSendMail;
-use App\Models\Employee;
-use App\Models\Holiday;
-use App\Models\Invite;
-use App\Models\Organization;
-use App\Models\Seo;
-use App\Models\Setting;
-use App\Models\Theme;
-use App\Models\WorkingDay;
 use Carbon\Carbon;
+use App\Models\Seo;
+use App\Models\Theme;
+use App\Models\Invite;
+use AmrShawky\Currency;
+use App\Models\Holiday;
+use App\Models\Setting;
+use App\Models\Employee;
 use Carbon\CarbonPeriod;
-use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Artisan;
-use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Mail;
+use App\Models\WorkingDay;
 use Illuminate\Support\Str;
 use msztorc\LaravelEnv\Env;
+use App\Models\Organization;
 use Nexmo\Client as NexmoClient;
-use sirajcse\UniqueIdGenerator\UniqueIdGenerator;
-use Stichoza\GoogleTranslate\GoogleTranslate;
-use Twilio\Rest\Client as TwilioClient;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Mail;
 use Vonage\Client\Credentials\Basic;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Artisan;
+use Twilio\Rest\Client as TwilioClient;
+use App\Mail\Organization\InviteSendMail;
+use Stichoza\GoogleTranslate\GoogleTranslate;
+use sirajcse\UniqueIdGenerator\UniqueIdGenerator;
 
 if (! function_exists('uploadFileToPublic')) {
     function uploadFileToPublic(string $path, $file)
@@ -403,6 +404,26 @@ if (! function_exists('checkSetEnv')) {
     {
         if ((env($key) != $value)) {
             setEnv($key, $value);
+        }
+    }
+}
+
+if (! function_exists('setConfig')) {
+    function setConfig($key, $value)
+    {
+        Config::write($key, $value);
+
+        if (file_exists(App::getCachedConfigPath())) {
+            Artisan::call('config:cache');
+        }
+    }
+}
+
+if (! function_exists('checkSetConfig')) {
+    function checkSetConfig($key, $value)
+    {
+        if ((config($key) != $value)) {
+            setConfig($key, $value);
         }
     }
 }

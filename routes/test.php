@@ -40,6 +40,7 @@ use Illuminate\Pagination\LengthAwarePaginator;
 use App\Http\Controllers\Admin\UpgradeController;
 use sirajcse\UniqueIdGenerator\UniqueIdGenerator;
 use Artesaos\SEOTools\Traits\SEOTools as SEOToolsTrait;
+use App\Services\Admin\Setting\SocialLogin\FetchSocialProviderDataService;
 
 
 // use Dompdf\Dompdf;
@@ -87,6 +88,20 @@ Route::get('/test2', function () {
 });
 
 Route::get('/test', function () {
+
+    $provider = 'linkedin';
+    return (new FetchSocialProviderDataService)->execute($provider);
+
+
+    setConfig('services.demo.active', 'tssrue');
+    // checkSetConfig('services.demo.active', 'asdadasd');
+
+    return config('services.demo.active');
+    // Config::write('services.demo.client_id', 'updatedclientid');
+    return config('services.demo.client_id');
+    return config('services.demo.client_secret');
+
+
 
     return $items = include lang_path('en' . "/messages.php");
 

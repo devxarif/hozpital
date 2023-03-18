@@ -105,7 +105,7 @@ export default {
                 {
                     title: 'Social Login',
                     icon: 'fa-solid fa-g',
-                    route: 'admin.settings.smtp'
+                    route: 'admin.settings.socialLogin'
                 },
                 {
                     title: 'SMTP',

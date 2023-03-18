@@ -1,21 +1,19 @@
 <template>
     <SettingLayout title="Payment">
-        <div class="">
-            <div class="hidden sm:block mb-3">
-                <div class="border-b-2 border-gray-200">
-                    <nav class="flex space-x-8" aria-label="Tabs">
-                        <li v-for="(payment, index) in payment_nav" :key="index" @click="changeTab(payment.name)" :class="['cursor-pointer group inline-flex items-center py-4 px-1 border-b-2 font-medium text-md', currentTab == payment.name ? 'border-blue-500 text-blue-600':'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-200' ]">
-                            <span>{{ __(payment.title) }}</span>
-                        </li>
-                    </nav>
-                </div>
+        <div class="hidden sm:block mb-3">
+            <div class="border-b-2 border-gray-200">
+                <nav class="flex space-x-8" aria-label="Tabs">
+                    <li v-for="(payment, index) in payment_nav" :key="index" @click="changeTab(payment.name)" :class="['cursor-pointer group inline-flex items-center py-4 px-1 border-b-2 font-medium text-md', currentTab == payment.name ? 'border-blue-500 text-blue-600':'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-200' ]">
+                        <span>{{ __(payment.title) }}</span>
+                    </li>
+                </nav>
             </div>
-            <template v-for="(payment, index) in payment_contents" :key="index">
-                <div v-if="currentTab == payment.name" class="col-span-8 bg-white w-full p-6 rounded-lg border border-gray-8 ">
-                    <component :is="payment.component" :data="paymentData"/>
-                </div>
-            </template>
         </div>
+        <template v-for="(payment, index) in payment_contents" :key="index">
+            <div v-if="currentTab == payment.name" class="col-span-8 bg-white w-full p-6 rounded-lg border border-gray-8 ">
+                <component :is="payment.component" :data="paymentData"/>
+            </div>
+        </template>
     </SettingLayout>
 </template>
 

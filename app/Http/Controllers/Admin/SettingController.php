@@ -9,8 +9,10 @@ use App\Models\Cms;
 use App\Models\Currency;
 use App\Models\Seo;
 use App\Models\Setting;
+use App\Services\Admin\Setting\SocialLogin\FetchSocialProviderDataService;
 use App\Services\Admin\Setting\SendTestMailService;
 use App\Services\Admin\Setting\SMTPService;
+use App\Services\Admin\Setting\SocialLogin\UpdateSocialProviderDataService;
 use App\Traits\SettingAble;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -202,6 +204,23 @@ class SettingController extends Controller
         ]);
 
         return back()->with('success', 'Recaptcha setting updated successfully');
+    }
+
+    public function socialLogin()
+    {
+        return inertia('Admin/Setting/SocialLogin');
+    }
+
+    public function socialLoginData(Request $request)
+    {
+        return (new FetchSocialProviderDataService)->execute($request->provider);
+    }
+
+    public function socialLoginUpdate(Request $request)
+    {
+        (new UpdateSocialProviderDataService)->execute($request);
+
+        return back()->with('success', 'Social login configuration updated successfully');
     }
 
     public function smtp()

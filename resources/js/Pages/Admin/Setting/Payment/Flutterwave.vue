@@ -14,7 +14,7 @@
                         <label for="username"
                             class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">{{ __('Public Key') }}</label>
                         <div class="mt-1 sm:col-span-2 sm:mt-0">
-                            <div class="flex max-w-lg rounded-md shadow-sm">
+                            <div class="max-w-lg rounded-md shadow-sm">
                                 <input v-model="form.flw_public_key" type="text"
                                     class="block w-full min-w-0 flex-1 rounded-md border-gray-300 sm:text-sm">
                                 <ErrorMessage :name="form.errors.flw_public_key" />
@@ -25,7 +25,7 @@
                         <label for="username"
                             class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">{{ __('Secret Key') }}</label>
                         <div class="mt-1 sm:col-span-2 sm:mt-0">
-                            <div class="flex max-w-lg rounded-md shadow-sm">
+                            <div class="max-w-lg rounded-md shadow-sm">
                                 <input v-model="form.flw_secret" type="text"
                                     class="block w-full min-w-0 flex-1 rounded-md border-gray-300 sm:text-sm">
                                 <ErrorMessage :name="form.errors.flw_secret" />
@@ -36,7 +36,7 @@
                         <label for="username"
                             class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">{{ __('Encryption Hash') }}</label>
                         <div class="mt-1 sm:col-span-2 sm:mt-0">
-                            <div class="flex max-w-lg rounded-md shadow-sm">
+                            <div class="max-w-lg rounded-md shadow-sm">
                                 <input v-model="form.flw_secret_hash" type="text"
                                     class="block w-full min-w-0 flex-1 rounded-md border-gray-300 sm:text-sm">
                                 <ErrorMessage :name="form.errors.flw_secret_hash" />

@@ -200,6 +200,12 @@ Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function () 
             Route::get('/recaptcha', 'recaptcha')->name('recaptcha');
             Route::put('/recaptcha/update', 'recaptchaUpdate')->name('recaptcha.update');
 
+            // Social Login route
+             // Payment Routes
+             Route::get('/social/login', 'socialLogin')->name('socialLogin');
+             Route::get('/social/login/data', 'socialLoginData')->name('socialLogin.data');
+             Route::put('/social/login/update', 'socialLoginUpdate')->name('socialLogin.update');
+
             // SMTP Routes
             Route::get('/smtp', 'smtp')->name('smtp');
             Route::put('/smtp/update', 'smtpUpdate')->name('smtp.update');
