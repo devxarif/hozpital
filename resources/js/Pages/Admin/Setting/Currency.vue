@@ -90,7 +90,7 @@
                 <div class="card-body">
                         <form @submit.prevent="saveData">
                         <div class="mb-3">
-                            <Label :name="__('Name')"/>
+                            <Label name="__('Name')"/>
                                 <select class="form-control" :class="{'is-invalid':form.errors.name}" v-model="form.name" @change="currencyAutoComplete">
                                 <option value="" class="d-none">{{ __('Select One') }}</option>
                                 <option v-for="(currency,key) in currencyInfos" :key="key" :value="currency['name']">{{ currency['name'] }}</option>
@@ -98,7 +98,7 @@
                             <ErrorMessage :name="form.errors.name" />
                         </div>
                         <div class="mb-3">
-                            <Label :name="__('Code')"/>
+                            <Label name="__('Code')"/>
                                 <select class="form-control" :class="{'is-invalid':form.errors.code}" v-model="form.code">
                                 <option value="" class="d-none">{{ __('Select One') }}</option>
                                 <option v-for="(currency,key) in currencyInfos" :key="key" :value="currency['code']">{{ currency['code'] }}</option>
@@ -106,7 +106,7 @@
                             <ErrorMessage :name="form.errors.code" />
                         </div>
                         <div class="mb-3">
-                            <Label :name="__('Symbol')"/>
+                            <Label name="__('Symbol')"/>
                                 <select class="form-control" :class="{'is-invalid':form.errors.symbol}" v-model="form.symbol">
                                 <option value="" class="d-none">{{ __('Select One') }}</option>
                                 <option v-for="(currency,key) in currencyInfos" :key="key" :value="currency['symbol_native']">{{ currency['symbol_native'] }}</option>
@@ -114,7 +114,7 @@
                             <ErrorMessage :name="form.errors.symbol" />
                         </div>
                         <div class="mb-3">
-                            <Label :name="__('Symbol Position')"/>
+                            <Label name="__('Symbol Position')"/>
                             <select class="form-control" :class="{'is-invalid':form.errors.symbol_position}" v-model="form.symbol_position">
                                 <option value="left">{{ __('Left') }}</option>
                                 <option value="left">{{ __('Right') }}</option>
@@ -122,7 +122,7 @@
                             <ErrorMessage :name="form.errors.symbol_position" />
                         </div>
                         <div class="mb-3">
-                            <Label :name="__('Status')" :required="false"/> <br>
+                            <Label name="__('Status')" :required="false"/> <br>
                             <label class="switch ">
                                 <input @change="statusChange" v-model="form.status" type="checkbox" class="success toggle-switch" checked>
                                 <span class="slider round"></span>

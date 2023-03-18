@@ -27,7 +27,7 @@
                                 </div>
                                 <form class="mb-4" @submit.prevent="saveData">
                                     <div class="mb-2">
-                                        <Label :name="__('Product Type')" id="productCategory_name" :hasError="form.errors.name"/>
+                                        <Label name="Product Type" id="productCategory_name" :hasError="form.errors.name"/>
                                         <div class="w-full bg-gray-200 p-2 rounded-lg">
                                             <div class="account-switcher relative flex after:absolute candidate after:transition-all duration-300 after:rounded-lg">
                                                 <div class="w-full rounded-xl" :class="form.type == 'medicine' ? 'bg-gray-800 text-white shadow':'text-gray-800'">
@@ -46,12 +46,12 @@
                                         </div>
                                     </div>
                                     <div class="mb-4">
-                                        <Label :name="__('Name')" id="productCategory_name" :hasError="form.errors.name"/>
+                                        <Label name="Name" id="productCategory_name" :hasError="form.errors.name"/>
                                         <BaseInput v-model="form.name" placeholder="Name" id="productCategory_name" :hasError="form.errors.name"/>
                                     </div>
                                     <div class="grid grid-cols-2 gap-2">
                                         <div class="mb-4">
-                                            <Label :name="__('Category')" id="product_category" :hasError="form.errors.product_category"/>
+                                            <Label name="Category" id="product_category" :hasError="form.errors.product_category"/>
                                             <Multiselect id="product_category" :close-on-select="true" :can-clear="true"
                                             :searchable="true" v-model="form.product_category" :create-option="false"
                                             placeholder="Select Category" :options="product_categories.map(item => ({
@@ -60,7 +60,7 @@
                                             <ErrorMessage :name="form.errors.product_category"/>
                                         </div>
                                         <div class="mb-4">
-                                            <Label :name="__('Manufacture')" id="manufacture" :hasError="form.errors.manufacture"/>
+                                            <Label name="Manufacture" id="manufacture" :hasError="form.errors.manufacture"/>
                                             <Multiselect id="manufacture" :close-on-select="true" :can-clear="true"
                                             :searchable="true" v-model="form.manufacture" :create-option="false"
                                             placeholder="Select Manufacture" :options="manufactures.map(item => ({
@@ -71,7 +71,7 @@
                                     </div>
                                     <div class="grid grid-cols-2 gap-2">
                                         <div class="mb-4">
-                                            <Label :name="__('Buying Price')" id="buying_price" :hasError="form.errors.buying_price" :required="false"/>
+                                            <Label name="Buying Price" id="buying_price" :hasError="form.errors.buying_price" :required="false"/>
 
                                             <div class="relative mt-1 rounded-md shadow-sm">
                                                 <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
@@ -87,7 +87,7 @@
                                             <ErrorMessage :name="form.errors.buying_price"/>
                                         </div>
                                         <div class="mb-4">
-                                            <Label :name="__('Selling Price')" id="selling_price" :hasError="form.errors.selling_price"/>
+                                            <Label name="Selling Price" id="selling_price" :hasError="form.errors.selling_price"/>
                                             <div class="relative mt-1 rounded-md shadow-sm">
                                                 <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
                                                     <span class="text-gray-500 sm:text-sm">$</span>
@@ -104,18 +104,18 @@
                                     </div>
                                     <div class="grid grid-cols-2 gap-2">
                                         <div class="mb-4">
-                                            <Label :name="__('Quantity')" id="quantity" :hasError="form.errors.quantity"/>
+                                            <Label name="Quantity" id="quantity" :hasError="form.errors.quantity"/>
                                             <BaseInput v-model="form.quantity" placeholder="Quantity" id="quantity" :hasError="form.errors.quantity" type="number" />
                                         </div>
                                         <div class="mb-4">
-                                            <Label :name="__('Expired Date')" id="expire_date" :hasError="form.errors.expire_date" :required="false"/>
+                                            <Label name="Expired Date" id="expire_date" :hasError="form.errors.expire_date" :required="false"/>
                                             <Datepicker v-model="form.expire_date" :enableTimePicker="false" class="border-none bg-gray-50 border text-sm rounded-lg block w-full p-1    border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500    "
                                                 @update:modelValue="handleExpiredDate" :placeholder="__('Select Date')" :default-value="new Date()" />
                                             <ErrorMessage :name="form.errors.expire_date"/>
                                         </div>
                                     </div>
                                     <div class="mb-4">
-                                        <Label :name="__('Thumnail')" id="productCategory_image" :hasError="form.errors.image" :required="false"/>
+                                        <Label name="Thumnail" id="productCategory_image" :hasError="form.errors.image" :required="false"/>
                                         <div class="flex justify-center items-center w-full" v-if="!previewImage">
                                             <label for="dropzone-file" class="flex flex-col justify-center items-center w-full h-40 bg-gray-50 rounded-lg border-2 border-gray-300 border-dashed cursor-pointer   hover:bg-gray-100   ">
                                                 <div class="flex flex-col justify-center items-center pt-5 pb-6">
@@ -135,11 +135,11 @@
                                         <ErrorMessage :name="form.errors.image"/>
                                     </div>
                                     <div class="mb-4">
-                                        <Label :name="__('Short Description')" id="short_description" :hasError="form.errors.short_description" :required="false"/>
+                                        <Label name="Short Description" id="short_description" :hasError="form.errors.short_description" :required="false"/>
                                         <BaseTextarea v-model="form.short_description" placeholder="Short Description" id="short_description" :hasError="form.errors.short_description"/>
                                     </div>
                                     <div class="mb-4">
-                                        <Label :name="__('Description')" id="productCategory_description" :hasError="form.errors.description" :required="false"/>
+                                        <Label name="Description" id="productCategory_description" :hasError="form.errors.description" :required="false"/>
                                         <QuillEditor theme="snow" v-model:content="form.description" contentType="html" class="h-60 rounded-md"/>
                                     </div>
                                     <button :disabled="form.processing"  type="submit"

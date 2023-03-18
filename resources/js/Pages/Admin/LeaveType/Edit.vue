@@ -27,12 +27,12 @@
                                 </div>
                                 <form class="mb-4" @submit.prevent="saveData">
                                     <div class="mb-4">
-                                        <Label :name="__('Name')" id="leave_type_name" :hasError="form.errors.name"/>
+                                        <Label name="Name" id="leave_type_name" :hasError="form.errors.name"/>
                                         <BaseInput v-model="form.name" placeholder="Name" id="leave_type_name" :hasError="form.errors.name"/>
                                     </div>
                                     <div class="grid grid-cols-2 gap-4">
                                             <div class="mb-4">
-                                                <Label :name="__('Calendar Color')" id="leave_type_color" :hasError="form.errors.color"/>
+                                                <Label name="Calendar Color" id="leave_type_color" :hasError="form.errors.color"/>
                                                 <div class="flex items-center">
                                                     <BaseInput v-model="form.color" placeholder="Select Color" id="leave_type_color"/>
                                                     <div class="relative ml-3">
@@ -62,7 +62,7 @@
                                                 <ErrorMessage :name="form.errors.color"/>
                                             </div>
                                             <div class="mb-4">
-                                                <Label :name="__('Leave Balance Day')" :hasError="form.errors.type" id="leave_type_balance"/>
+                                                <Label name="Leave Balance Day')" :hasError="form.errors.type" id="leave_type_balance"/>
                                                 <input type="number" min="1" id="leave_type_balance" class="bg-gray-50 border text-md rounded-lg block w-full p-2.5    border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500    "
                                                     placeholder="Leave Balance" v-model="form.balance">
                                             </div>
@@ -70,7 +70,7 @@
 
                                     <div class="grid grid-cols-2 gap-4">
                                         <div class="mb-4">
-                                            <Label :name="__('Status')" id="plan_max_teams" :hasError="form.errors.status"/>
+                                            <Label name="Status" id="plan_max_teams" :hasError="form.errors.status"/>
                                             <label for="checked-toggle" class="inline-flex relative items-center cursor-pointer">
                                                 <input v-model="form.status" @change="statusChange" type="checkbox" id="checked-toggle" class="sr-only peer" checked>
                                                 <div class="w-11 h-6 bg-gray-200 rounded-full peer   peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all  peer-checked:bg-blue-600"></div>

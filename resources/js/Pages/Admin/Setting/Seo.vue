@@ -65,17 +65,17 @@
                                  <form @submit.prevent="saveData">
                                     <div class="mb-3 row">
                                         <div class="form-group col-md-12">
-                                            <Label :name="__('Title')" for="title"/>
+                                            <Label name="__('Title')" for="title"/>
                                             <input v-model="form.title" type="text" class="form-control" :class="{'is-invalid':form.errors.title}" id="title" :placeholder="__('Name')">
                                             <ErrorMessage :name="form.errors.title"/>
                                         </div>
                                         <div class="form-group col-md-12">
-                                            <Label :name="__('Keywords')" for="email"/>
+                                            <Label name="__('Keywords')" for="email"/>
                                             <input v-model="form.keywords" type="text" class="form-control" :class="{'is-invalid':form.errors.keywords}" id="title" :placeholder="__('Keywords')">
                                             <ErrorMessage :name="form.errors.keywords"/>
                                         </div>
                                         <div class="form-group col-md-12">
-                                            <Label :name="__('Description')" for="email"/>
+                                            <Label name="__('Description')" for="email"/>
                                             <textarea v-model="form.description" class="form-control" rows="5" :class="{'is-invalid':form.errors.description}" :placeholder="__('Description')"></textarea>
                                             <ErrorMessage :name="form.errors.description"/>
                                         </div>

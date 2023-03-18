@@ -188,13 +188,13 @@
                                 <div class="modal-body">
                                     <div class="row">
                                         <div class="col-md-12 mb-3">
-                                            <Label :name="__('Question')" />
+                                            <Label name="Question')" />
                                             <input v-model="form.question" type="text" class="form-control"
                                                 :class="{'is-invalid':form.errors.question}" id="name">
                                             <ErrorMessage :name="form.errors.question" />
                                         </div>
                                         <div class="col-md-12">
-                                            <Label :name="__('Answer')" />
+                                            <Label name="Answer')" />
                                             <textarea rows="10" v-model="form.answer" class="form-control"
                                                 :class="{'is-invalid':form.errors.answer}" ></textarea>
                                             <ErrorMessage :name="form.errors.answer" />

@@ -27,27 +27,27 @@
                             <form class="mb-4" @submit.prevent="saveData">
                                 <div class="grid grid-cols-2 gap-2">
                                     <div class="mb-4">
-                                        <Label :name="__('Name')" id="donor_name" :hasError="form.errors.name"/>
+                                        <Label name="Name" id="donor_name" :hasError="form.errors.name"/>
                                         <BaseInput v-model="form.name" placeholder="Name" id="donor_name" :hasError="form.errors.name"/>
                                     </div>
                                     <div class="mb-4">
-                                        <Label :name="__('Email')" id="donor_email" :hasError="form.errors.email"/>
+                                        <Label name="Email" id="donor_email" :hasError="form.errors.email"/>
                                         <BaseInput v-model="form.email" placeholder="Email" id="donor_email" :hasError="form.errors.email"/>
                                     </div>
                                 </div>
                                 <div class="grid grid-cols-2 gap-2">
                                     <div class="mb-4">
-                                        <Label :name="__('Phone Number')" id="donor_phone" :hasError="form.errors.phone"/>
+                                        <Label name="Phone Number" id="donor_phone" :hasError="form.errors.phone"/>
                                         <BaseInput v-model="form.phone" placeholder="Phone Number" id="donor_phone" :hasError="form.errors.phone"/>
                                     </div>
                                     <div class="mb-4">
-                                        <Label :name="__('Age')" id="donor_age" :hasError="form.errors.age" :required="false"/>
+                                        <Label name="Age" id="donor_age" :hasError="form.errors.age" :required="false"/>
                                         <BaseInput v-model="form.age" placeholder="Age" id="donor_age" :hasError="form.errors.age" type="number" />
                                     </div>
                                 </div>
                                 <div class="grid grid-cols-2 gap-2">
                                     <div class="mb-4">
-                                        <Label :name="__('Gender')" :hasError="form.errors.gender"/>
+                                        <Label name="Gender')" :hasError="form.errors.gender"/>
                                         <div class="flex gap-2">
                                             <label for="donor_male" class="w-full rounded-lg flex items-center pl-4 border border-gray-200    py-3 text-sm font-medium text-gray-700 gap-2">
                                                 <input id="donor_male" value="male" v-model="form.gender" name="gender" type="radio" class="h-4 w-4 border-gray-300 text-blue-600 focus:outline-none">
@@ -60,7 +60,7 @@
                                         </div>
                                     </div>
                                     <div class="mb-4">
-                                        <Label :name="__('Blood Group')" id="donor_blood_group" :hasError="form.errors.blood_group"/>
+                                        <Label name="Blood Group" id="donor_blood_group" :hasError="form.errors.blood_group"/>
                                         <BaseSelect v-model:value="form.blood_group" :hasError="form.errors.blood_group" class="w-3/2" id="donor_blood_group" :showMessage="false">
                                             <option value="" hidden>{{ __('Select Blood Group') }}</option>
                                             <option :selected="form.blood_group == 'A+'" value="A+">A+</option>
@@ -75,7 +75,7 @@
                                     </div>
                                 </div>
                                 <div class="mb-4">
-                                    <Label :name="__('Address')" id="donor_address" :hasError="form.errors.address" :required="false"/>
+                                    <Label name="Address" id="donor_address" :hasError="form.errors.address" :required="false"/>
                                     <BaseTextarea v-model="form.address" placeholder="Address" id="donor_address" :hasError="form.errors.address"/>
                                 </div>
                                 <button :disabled="form.processing"  type="submit"

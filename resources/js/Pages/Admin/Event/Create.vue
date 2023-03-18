@@ -26,11 +26,11 @@
                             </div>
                             <form class="mb-4" @submit.prevent="saveData">
                                 <div class="mb-4">
-                                    <Label :name="__('Title')" id="event_title" :hasError="form.errors.title"/>
+                                    <Label name="Title" id="event_title" :hasError="form.errors.title"/>
                                     <BaseInput v-model="form.title" placeholder="Title" id="event_title" :hasError="form.errors.title"/>
                                 </div>
                                 <div class="mb-4">
-                                    <Label :name="__('Calendar Color')" id="leave_type_color" :hasError="form.errors.color"/>
+                                    <Label name="Calendar Color" id="leave_type_color" :hasError="form.errors.color"/>
                                     <div class="flex items-center">
                                         <BaseInput v-model="form.color" placeholder="Select Color" id="leave_type_color"/>
                                         <div class="relative ml-3">
@@ -62,13 +62,13 @@
 
                                 <div class="grid grid-cols-2 gap-2">
                                     <div class="mb-4">
-                                        <Label :name="__('Start Date')" id="start_date" :hasError="form.errors.start"/>
+                                        <Label name="Start Date" id="start_date" :hasError="form.errors.start"/>
                                         <Datepicker v-model="form.start" :enableTimePicker="false" class="border-none bg-gray-50 border text-md rounded-lg block w-full p-1    border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500    "
                                             @update:modelValue="handleStartDate" :placeholder="__('Select Date')" :default-value="new Date()" />
                                         <ErrorMessage :name="form.errors.start"/>
                                     </div>
                                     <div class="mb-4">
-                                        <Label :name="__('End Date')" id="end_date" :hasError="form.errors.end"/>
+                                        <Label name="End Date" id="end_date" :hasError="form.errors.end"/>
                                         <Datepicker v-model="form.end" :enableTimePicker="false" class="border-none bg-gray-50 border text-md rounded-lg block w-full p-1    border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500    "
                                             @update:modelValue="handleEndDate" :placeholder="__('Select Date')" :default-value="new Date()" />
                                         <ErrorMessage :name="form.errors.end"/>

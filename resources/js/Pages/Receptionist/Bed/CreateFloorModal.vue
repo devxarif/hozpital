@@ -10,11 +10,11 @@
                 <h3 class="mb-4 text-xl font-medium text-gray-900 ">Floor Create</h3>
                 <form class="mb-4" @submit.prevent="saveData">
                     <div class="mb-4">
-                        <Label :name="__('Name')" id="department_name" :hasError="form.errors.name"/>
+                        <Label name="Name" id="department_name" :hasError="form.errors.name"/>
                         <BaseInput v-model="form.name" placeholder="Name" id="department_name" :hasError="form.errors.name"/>
                     </div>
                     <div class="mb-4">
-                        <Label :name="__('Description')" id="department_description" :hasError="form.errors.description" :required="false"/>
+                        <Label name="Description" id="department_description" :hasError="form.errors.description" :required="false"/>
                         <BaseTextarea v-model="form.description" placeholder="Description" id="department_description" :hasError="form.errors.description"/>
                     </div>
                     <button :disabled="form.processing"  type="submit"

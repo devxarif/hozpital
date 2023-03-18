@@ -27,12 +27,12 @@
                                 </div>
                                 <form class="mb-4" @submit.prevent="saveData">
                                 <div class="mb-4">
-                                    <Label :name="__('Blood Group')" id="blood_bank_name" :hasError="form.errors.blood_group"/>
+                                    <Label name="Blood Group" id="blood_bank_name" :hasError="form.errors.blood_group"/>
                                     <BaseInput :disabled="true" v-model="form.blood_group" placeholder="Name" id="blood_bank_name" :hasError="form.errors.blood_group"/>
                                     <span class="text-red-500 text-sm">Note: You cannot update the blood group field</span>
                                 </div>
                                 <div class="mb-4">
-                                    <Label :name="__('Bags')" id="blood_bank_bags" :hasError="form.errors.bags" :required="false"/>
+                                    <Label name="Bags" id="blood_bank_bags" :hasError="form.errors.bags" :required="false"/>
                                     <BaseTextarea v-model="form.bags" placeholder="Bags" id="blood_bank_bags" :hasError="form.errors.bags"/>
                                 </div>
                                 <button :disabled="form.processing"  type="submit"

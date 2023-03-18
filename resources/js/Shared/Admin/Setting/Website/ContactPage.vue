@@ -3,12 +3,12 @@
         <div class="card-body">
             <form @submit.prevent="updateData">
                 <div class="form-group">
-                    <Label :name="__('Contact Title')" />
+                    <Label name="Contact Title')" />
                     <input v-model="form.contact_title" type="text" class="form-control" :class="{'is-invalid':form.errors.contact_title}">
                     <ErrorMessage :name="form.errors.contact_title" />
                 </div>
                 <div class="form-group">
-                    <Label :name="__('Contact Subtitle')" />
+                    <Label name="Contact Subtitle')" />
                     <input v-model="form.contact_subtitle" type="text" class="form-control" :class="{'is-invalid':form.errors.contact_subtitle}">
                     <ErrorMessage :name="form.errors.contact_subtitle" />
                 </div>

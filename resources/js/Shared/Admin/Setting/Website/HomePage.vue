@@ -3,51 +3,51 @@
         <div class="card-body">
             <form @submit.prevent="updateData">
                 <div class="form-group">
-                    <Label :name="__('Banner Title')" />
+                    <Label name="Banner Title')" />
                     <input v-model="form.home_banner_title" type="text" class="form-control" :class="{'is-invalid':form.errors.home_banner_title}">
                     <ErrorMessage :name="form.errors.home_banner_title" />
                 </div>
                 <div class="form-group">
-                    <Label :name="__('Banner Description')" />
+                    <Label name="Banner Description')" />
                     <textarea v-model="form.home_banner_description" class="form-control" :class="{'is-invalid':form.errors.home_banner_description}" rows="4"></textarea>
                     <ErrorMessage :name="form.errors.home_banner_description" />
                 </div>
                 <div class="form-group row">
                     <div class="col-md-6">
-                        <Label :name="__('Banner Button Text')" />
+                        <Label name="Banner Button Text')" />
                         <input v-model="form.home_banner_button_text" type="text" class="form-control" :class="{'is-invalid':form.errors.home_banner_button_text}">
                         <ErrorMessage :name="form.errors.home_banner_button_text" />
                     </div>
                     <div class="col-md-6">
-                        <Label :name="__('Banner Button Url')" />
+                        <Label name="Banner Button Url')" />
                         <input v-model="form.home_banner_button_url" type="text" class="form-control" :class="{'is-invalid':form.errors.home_banner_button_url}">
                         <ErrorMessage :name="form.errors.home_banner_button_url" />
                     </div>
                 </div>
                 <div class="form-group row">
                     <div class="col-md-6">
-                        <Label :name="__('Banner Button 2 Text')" />
+                        <Label name="Banner Button 2 Text')" />
                         <input v-model="form.home_banner_button2_text" type="text" class="form-control" :class="{'is-invalid':form.errors.home_banner_button2_text}">
                         <ErrorMessage :name="form.errors.home_banner_button2_text" />
                     </div>
                     <div class="col-md-6">
-                        <Label :name="__('Banner Button 2 Url')" />
+                        <Label name="Banner Button 2 Url')" />
                         <input v-model="form.home_banner_button2_url" type="text" class="form-control" :class="{'is-invalid':form.errors.home_banner_button2_url}">
                         <ErrorMessage :name="form.errors.home_banner_button2_url" />
                     </div>
                 </div>
                  <div class="form-group">
-                    <Label :name="__('Feature Title')" />
+                    <Label name="Feature Title')" />
                     <input v-model="form.home_feature_title" type="text" class="form-control" :class="{'is-invalid':form.errors.home_feature_title}">
                     <ErrorMessage :name="form.errors.home_feature_title" />
                 </div>
                 <div class="form-group">
-                    <Label :name="__('Feature Subtitle')" />
+                    <Label name="Feature Subtitle')" />
                     <input v-model="form.home_feature_subtitle" type="text" class="form-control" :class="{'is-invalid':form.errors.home_feature_subtitle}">
                     <ErrorMessage :name="form.errors.home_feature_subtitle" />
                 </div>
                 <div class="form-group">
-                    <Label :name="__('Feature Description')" />
+                    <Label name="Feature Description')" />
                     <textarea v-model="form.home_feature_description" class="form-control" :class="{'is-invalid':form.errors.home_feature_description}" rows="4"></textarea>
                     <ErrorMessage :name="form.errors.home_feature_description" />
                 </div>

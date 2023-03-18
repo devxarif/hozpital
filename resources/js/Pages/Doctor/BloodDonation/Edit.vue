@@ -27,14 +27,14 @@
                                 </div>
                                 <form class="mb-4" @submit.prevent="saveData">
                                     <div class="mb-4">
-                                        <Label :name="__('Blood Donor')" id="donor_blood_donor" :hasError="form.errors.name"/>
+                                        <Label name="Blood Donor" id="donor_blood_donor" :hasError="form.errors.name"/>
                                         <BaseSelect v-model:value="form.blood_donor" :hasError="form.errors.blood_donor" class="w-3/2" id="donor_blood_donor" :showMessage="false">
                                             <option value="" hidden>{{ __('Select Blood Donor') }}</option>
                                             <option :selected="donor.id == form.blood_donor" :value="donor.id" v-for="donor in donors" :key="donor.id">{{ donor.name }} - {{ donor.blood_group }}</option>
                                         </BaseSelect>
                                     </div>
                                     <div class="mb-4">
-                                        <Label :name="__('Bags')" id="donor_bags" :hasError="form.errors.bags"/>
+                                        <Label name="Bags" id="donor_bags" :hasError="form.errors.bags"/>
                                         <BaseInput v-model="form.bags" placeholder="Bags" id="donor_bags" :hasError="form.errors.bags" type="number"/>
                                     </div>
                                     <button :disabled="form.processing"  type="submit"

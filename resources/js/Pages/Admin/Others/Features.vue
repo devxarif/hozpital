@@ -188,13 +188,13 @@
                 <div class="card-body">
                     <form @submit.prevent="saveData">
                         <div class="mb-3">
-                            <Label :name="__('Title')" for="name" />
+                            <Label name="Title')" for="name" />
                             <input v-model="form.title" type="text" class="form-control"
                                 :class="{'is-invalid':form.errors.title}" id="name" :placeholder="__('Title')">
                             <ErrorMessage :name="form.errors.title" />
                         </div>
                         <div class="mb-3">
-                            <Label :name="__('Description')" />
+                            <Label name="Description')" />
                             <textarea v-model="form.description" rows="6" class="form-control"  :class="{'is-invalid':form.errors.description}"></textarea>
                             <ErrorMessage :name="form.errors.description"/>
                         </div>

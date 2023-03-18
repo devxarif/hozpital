@@ -28,7 +28,7 @@
 
                                 <form class="mb-4" @submit.prevent="saveData">
                                     <div class="mb-4">
-                                        <Label :name="__('Select Bed Type')" id="bed_type" :hasError="form.errors.bed_type"/>
+                                        <Label name="Select Bed Type" id="bed_type" :hasError="form.errors.bed_type"/>
                                         <div class="grid grid-cols-3 gap-3 mx-auto">
                                             <div class="relative" v-for="bed_type in bed_types" :key="bed_type.id">
                                                 <input :checked="bed_type.id == form.bed_type" @change="bedTypeChange" class="sr-only peer" type="radio" :value="bed_type.id" :id="bed_type.slug" v-model="form.bed_type">
@@ -44,7 +44,7 @@
                                     </div>
                                     <div class="grid grid-cols-2 gap-2">
                                         <div class="mb-4">
-                                            <Label :name="__('Floor')" id="bed_floor" :hasError="form.errors.floor"/>
+                                            <Label name="Floor" id="bed_floor" :hasError="form.errors.floor"/>
                                             <Multiselect id="bed_floor" :close-on-select="true" :can-clear="true"
                                         :searchable="true" v-model="form.floor" :create-option="false"
                                         placeholder="Select Floor" :options="floors.map(item => ({
@@ -53,17 +53,17 @@
                                             <ErrorMessage :name="form.errors.floor"/>
                                         </div>
                                         <div class="mb-4">
-                                            <Label :name="__('Bed Number')" id="bed_number" :hasError="form.errors.number"/>
+                                            <Label name="Bed Number" id="bed_number" :hasError="form.errors.number"/>
                                             <BaseInput v-model="form.number" placeholder="Number" id="bed_number" :hasError="form.errors.number"/>
                                         </div>
                                     </div>
                                     <div class="grid grid-cols-2 gap-2">
                                         <div class="mb-4">
-                                            <Label :name="__('Charge')+' ($)'" id="bed_charge" :hasError="form.errors.charge" :required="false" />
+                                            <Label name="Charge ($)" id="bed_charge" :hasError="form.errors.charge" :required="false" />
                                             <BaseInput v-model="form.charge" placeholder="Bed Charge" id="bed_charge" :hasError="form.errors.charge"/>
                                         </div>
                                         <div class="mb-4">
-                                            <Label :name="__('Status')" :hasError="form.errors.status" :required="false"/>
+                                            <Label name="Status" :hasError="form.errors.status" :required="false"/>
                                             <div class="flex gap-2">
                                                 <label for="patient_male" class="w-full rounded-lg flex items-center pl-4 border border-gray-200  py-3 ml-2 text-sm font-medium text-gray-700 gap-2 focus:outline-none">
                                                     <input id="patient_male" value="alloted" v-model="form.status" name="status" type="radio" class="h-4 w-4 border-gray-300 text-blue-600 focus:outline-none">
@@ -77,7 +77,7 @@
                                         </div>
                                     </div>
                                     <div class="mb-4">
-                                        <Label :name="__('Description')" id="bed_description" :hasError="form.errors.description" :required="false"/>
+                                        <Label name="Description" id="bed_description" :hasError="form.errors.description" :required="false"/>
                                         <BaseTextarea v-model="form.description" placeholder="Description" id="bed_description" :hasError="form.errors.description"/>
                                     </div>
                                     <button :disabled="form.processing"  type="submit"

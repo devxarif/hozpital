@@ -26,11 +26,11 @@
                             </div>
                             <form class="mb-4" @submit.prevent="saveData">
                                 <div class="mb-4">
-                                    <Label :name="__('Title')" id="announcement_name" :hasError="form.errors.title"/>
+                                    <Label name="Title" id="announcement_name" :hasError="form.errors.title"/>
                                     <BaseInput v-model="form.title" placeholder="Name" id="announcement_name" :hasError="form.errors.title"/>
                                 </div>
                                 <div class="mb-4">
-                                    <Label :name="__('Type')" :hasError="form.errors.type" :required="false"/>
+                                    <Label name="Type" :hasError="form.errors.type" :required="false"/>
                                     <div class="flex gap-2">
                                         <label for="announcement_public" class="w-full rounded-lg flex items-center pl-4 border border-gray-200    py-3 text-sm font-medium text-gray-700 gap-2">
                                             <input id="announcement_public" value="public" v-model="form.type" type="radio" class="h-4 w-4 border-gray-300 text-blue-600 focus:outline-none">
@@ -43,7 +43,7 @@
                                     </div>
                                 </div>
                                 <div class="mb-4">
-                                    <Label :name="__('Description')" id="announcement_description" :hasError="form.errors.description" :required="false"/>
+                                    <Label name="Description" id="announcement_description" :hasError="form.errors.description" :required="false"/>
                                     <BaseTextarea v-model="form.description" placeholder="Description" id="announcement_description" :hasError="form.errors.description"/>
                                 </div>
                                 <button :disabled="form.processing"  type="submit"

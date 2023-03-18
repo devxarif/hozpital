@@ -3,12 +3,12 @@
         <div class="card-body">
             <form @submit.prevent="updateData">
                 <div class="form-group">
-                    <Label :name="__('Pricing Plan Title')" />
+                    <Label name="Pricing Plan Title')" />
                     <input v-model="form.pricing_plan_title" type="text" class="form-control" :class="{'is-invalid':form.errors.pricing_plan_title}">
                     <ErrorMessage :name="form.errors.pricing_plan_title" />
                 </div>
                 <div class="form-group">
-                    <Label :name="__('Pricing Plan Description')" />
+                    <Label name="Pricing Plan Description')" />
                     <textarea v-model="form.pricing_plan_description" class="form-control" :class="{'is-invalid':form.errors.pricing_plan_description}" rows="4"></textarea>
                     <ErrorMessage :name="form.errors.pricing_plan_description" />
                 </div>

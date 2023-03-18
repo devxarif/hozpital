@@ -196,26 +196,26 @@
                                 <div class="modal-body">
                                     <div class="row">
                                         <div class="col-md-12 mb-3">
-                                            <Label :name="__('Name')" />
+                                            <Label name="Name')" />
                                             <input v-model="form.name" type="text" class="form-control"
                                                 :class="{'is-invalid':form.errors.name}" id="name">
                                             <ErrorMessage :name="form.errors.name" />
                                         </div>
                                         <div class="col-md-12 mb-3">
-                                            <Label :name="__('Position')" />
+                                            <Label name="Position')" />
                                             <input v-model="form.position" type="text" class="form-control"
                                                 :class="{'is-invalid':form.errors.position}" id="name">
                                             <ErrorMessage :name="form.errors.position" />
                                         </div>
                                         <div class="col-md-12 mb-3">
-                                            <Label :name="__('Description')" />
+                                            <Label name="Description')" />
                                             <textarea rows="5" v-model="form.description" class="form-control"
                                                 :class="{'is-invalid':form.errors.description}" ></textarea>
                                             <ErrorMessage :name="form.errors.description" />
                                         </div>
                                         <div class="col-lg-6">
-                                            <Label :name="__('Avatar')" v-if="!editMode"/>
-                                            <Label :name="__('Change Avatar')" v-else :required="false"/>
+                                            <Label name="Avatar')" v-if="!editMode"/>
+                                            <Label name="Change Avatar')" v-else :required="false"/>
                                             <input accept="image/jpeg, image/jpg/ image/png" class="form-control border-0 p-0" type="file" @input="form.avatar = $event.target.files[0]" :class="{'is-invalid':form.errors.avatar}"/>
                                             <ErrorMessage :name="form.errors.avatar"/>
                                         </div>

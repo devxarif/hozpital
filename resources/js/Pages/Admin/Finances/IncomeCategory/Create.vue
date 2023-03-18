@@ -26,11 +26,11 @@
                             </div>
                             <form class="mb-4" @submit.prevent="saveData">
                                 <div class="mb-4">
-                                    <Label :name="__('Name')" id="income_category_name" :hasError="form.errors.name"/>
+                                    <Label name="Name" id="income_category_name" :hasError="form.errors.name"/>
                                     <BaseInput v-model="form.name" placeholder="Name" id="income_category_name" :hasError="form.errors.name"/>
                                 </div>
                                 <div class="mb-4">
-                                    <Label :name="__('Description')" id="income_category_description" :hasError="form.errors.description" :required="false"/>
+                                    <Label name="Description" id="income_category_description" :hasError="form.errors.description" :required="false"/>
                                     <BaseTextarea v-model="form.description" placeholder="Description" id="income_category_description" :hasError="form.errors.description"/>
                                 </div>
                                 <button :disabled="form.processing"  type="submit"

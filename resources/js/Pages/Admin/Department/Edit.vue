@@ -27,15 +27,15 @@
                                 </div>
                                 <form class="mb-4" @submit.prevent="saveData">
                                 <div class="mb-4">
-                                    <Label :name="__('Name')" id="department_name" :hasError="form.errors.name"/>
+                                    <Label name="Name" id="department_name" :hasError="form.errors.name"/>
                                     <BaseInput v-model="form.name" placeholder="Name" id="department_name" :hasError="form.errors.name"/>
                                 </div>
                                 <div class="mb-4">
-                                    <Label :name="__('Description')" id="department_description" :hasError="form.errors.description" :required="false"/>
+                                    <Label name="Description" id="department_description" :hasError="form.errors.description" :required="false"/>
                                     <BaseTextarea v-model="form.description" placeholder="Description" id="department_description" :hasError="form.errors.description"/>
                                 </div>
                                 <div class="mb-4">
-                                    <Label :name="__('Image')" id="department_image" :hasError="form.errors.image" :required="false"/>
+                                    <Label name="Image" id="department_image" :hasError="form.errors.image" :required="false"/>
                                     <div class="flex justify-center items-center w-full" v-if="!previewImage">
                                         <label for="dropzone-file" class="flex flex-col justify-center items-center w-full h-60 bg-gray-50 rounded-lg border-2 border-gray-300 border-dashed cursor-pointer   hover:bg-gray-100   ">
                                             <div class="flex flex-col justify-center items-center pt-5 pb-6">

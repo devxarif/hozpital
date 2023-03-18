@@ -25,7 +25,7 @@
                     </div>
 
                     <div class="my-4">
-                        <Label :name="__('Example File')"/>
+                        <Label name="Example File')"/>
                         <a href="/assets/dummy/staff_example.xlsx" class="text-white justify-center flex items-center bg-blue-700 hover:bg-blue-800 w-full focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-md px-5 py-2.5 mb-2   focus:outline-none  mt-3">
                             <span>
                                 <font-awesome-icon icon="fa-solid fa-download" class="h-4 w-4 mr-2"/>
@@ -40,7 +40,7 @@
                     </div>
 
                     <div class="my-10">
-                        <Label :name="__('Choose File (.csv, .xlsx, .xls)')" :hasError="form.errors.file" :required="false"/>
+                        <Label name="Choose File (.csv, .xlsx, .xls)')" :hasError="form.errors.file" :required="false"/>
                         <div class="flex justify-center items-center w-full" v-if="!previewDemoFile">
                             <label for="dropzone-file" class="flex flex-col justify-center items-center w-full h-60 bg-gray-50 rounded-lg border-2 border-gray-300 border-dashed cursor-pointer   hover:bg-gray-100   ">
                                 <div class="flex flex-col justify-center items-center pt-5 pb-6">

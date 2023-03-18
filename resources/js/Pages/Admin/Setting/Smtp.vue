@@ -16,7 +16,7 @@
                             <div class="space-y-6 sm:space-y-5 border-t sm:border-gray-200 sm:pt-5">
                                 <div class="grid grid-cols-6 gap-6">
                                     <div class="col-span-6 sm:col-span-3">
-                                        <Label :name="__('Mail Driver')" :hasError="form.errors.type"/>
+                                        <Label name="Mail Driver')" :hasError="form.errors.type"/>
                                         <BaseInput  modelValue="smtp" :disabled="true"/>
                                     </div>
                                     <div class="col-span-6 sm:col-span-3">
@@ -26,7 +26,7 @@
                                 </div>
                                 <div class="grid grid-cols-6 gap-6">
                                     <div class="col-span-6 sm:col-span-3">
-                                        <Label :name="__('Mail Port')" :hasError="form.errors.port"/>
+                                        <Label name="Mail Port')" :hasError="form.errors.port"/>
                                         <Multiselect :close-on-select="true" :can-clear="true"
                                         :searchable="true" v-model="form.port" :create-option="false"
                                         placeholder="Select Mail Port" :options="[
@@ -37,7 +37,7 @@
                                         ]"  />
                                     </div>
                                     <div class="col-span-6 sm:col-span-3">
-                                        <Label :name="__('Mail Encryption')" :hasError="form.errors.host"/>
+                                        <Label name="Mail Encryption')" :hasError="form.errors.host"/>
                                         <div class="flex gap-2">
                                             <label for="tls" class="w-full rounded-lg flex items-center pl-4 border border-gray-200  py-3 text-sm font-medium text-gray-700 gap-2">
                                                 <input id="tls" value="tls" v-model="form.encryption" type="radio" class="h-4 w-4 border-gray-300 text-blue-600 focus:outline-none">

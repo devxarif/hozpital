@@ -26,19 +26,19 @@
                             </div>
                             <form class="mb-4" @submit.prevent="updateData">
                                 <div class="mb-4">
-                                    <Label :name="__('Name')" id="admin_name" :hasError="form.errors.name"/>
+                                    <Label name="Name" id="admin_name" :hasError="form.errors.name"/>
                                     <BaseInput v-model="form.name" placeholder="Name" id="admin_name" :hasError="form.errors.name"/>
                                 </div>
                                 <div class="mb-4">
-                                    <Label :name="__('Email Address')" id="admin_email" :hasError="form.errors.email"/>
+                                    <Label name="Email Address" id="admin_email" :hasError="form.errors.email"/>
                                     <BaseInput v-model="form.email" placeholder="Email" id="admin_email" :hasError="form.errors.email"/>
                                 </div>
                                 <div class="mb-4">
-                                    <Label :name="__('Change Password')" id="admin_password" :hasError="form.errors.password"/>
+                                    <Label name="Change Password" id="admin_password" :hasError="form.errors.password"/>
                                     <BaseInput type="password" v-model="form.password" placeholder="Password" id="admin_password" :hasError="form.errors.password"/>
                                 </div>
                                 <div class="mb-4">
-                                    <Label :name="__('Avatar')" id="plan_name" :hasError="form.errors.avatar"/>
+                                    <Label name="Avatar" id="plan_name" :hasError="form.errors.avatar"/>
                                     <div class="flex justify-center items-center w-full" v-if="!previewImage">
                                         <label for="dropzone-file" class="flex flex-col justify-center items-center w-full h-60 bg-gray-50 rounded-lg border-2 border-gray-300 border-dashed cursor-pointer   hover:bg-gray-100   ">
                                             <div class="flex flex-col justify-center items-center pt-5 pb-6">
@@ -93,22 +93,22 @@
                     <div class="col-lg-6">
                         <form @submit.prevent="updateData">
                         <div class="mb-3">
-                            <Label :name="__('Name')" for="name"/>
+                            <Label name="Name')" for="name"/>
                             <input v-model="form.name" type="text" class="form-control" :class="{'is-invalid':form.errors.name}" id="name" :placeholder="__('Name')">
                             <ErrorMessage :name="form.errors.name"/>
                         </div>
                         <div class="mb-3">
-                            <Label :name="__('Email address')" for="email"/>
+                            <Label name="Email address')" for="email"/>
                             <input v-model="form.email" type="email" class="form-control" :class="{'is-invalid':form.errors.email}" id="email" :placeholder="__('Email address')">
                             <ErrorMessage :name="form.errors.email"/>
                         </div>
                         <div class="mb-3">
-                            <Label :name="__('Change Password')" :required="false" for="password"/>
+                            <Label name="Change Password')" :required="false" for="password"/>
                             <input v-model="form.password" type="password" class="form-control" :class="{'is-invalid':form.errors.password}" id="password"  :placeholder="__('Password')">
                             <ErrorMessage :name="form.errors.password"/>
                         </div>
                         <div class="mb-3">
-                            <Label :name="__('Change Avatar')" :required="false"/>
+                            <Label name="Change Avatar')" :required="false"/>
                             <input accept="image/jpeg, image/jpg/ image/png" class="form-control border-0 p-0" type="file" @input="form.avatar = $event.target.files[0]" :class="{'is-invalid':form.errors.avatar}"/>
                             <ErrorMessage :name="form.errors.avatar"/>
                         </div>

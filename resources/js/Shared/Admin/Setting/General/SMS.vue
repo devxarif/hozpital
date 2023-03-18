@@ -5,24 +5,24 @@
         <hr>
         <form @submit.prevent="saveData('twilio')">
             <div class="form-group">
-                <Label :name="__('Twilio Secret')" />
+                <Label name="__('Twilio Secret')" />
                 <input v-model="twilioForm.twilio_secret" type="text" class="form-control" :class="{'is-invalid':twilioForm.errors.twilio_secret}">
                 <ErrorMessage :name="twilioForm.errors.twilio_secret" />
             </div>
             <div class="form-group">
-                <Label :name="__('Twilio Token')" />
+                <Label name="__('Twilio Token')" />
                 <input v-model="twilioForm.twilio_token" type="text" class="form-control" :class="{'is-invalid':twilioForm.errors.twilio_token}">
                 <ErrorMessage :name="twilioForm.errors.twilio_token" />
             </div>
             <div class="form-group">
-                <Label :name="__('Twilio From Number')">
+                <Label name="__('Twilio From Number')">
                     <InfoTip :title="__('Type without + sign')" />
                 </Label>
                 <input v-model="twilioForm.twilio_from" type="text" class="form-control" :class="{'is-invalid':twilioForm.errors.twilio_from}">
                 <ErrorMessage :name="twilioForm.errors.twilio_from" />
             </div>
             <div class="form-group">
-                <Label :name="__('Twilio Status')" />
+                <Label name="__('Twilio Status')" />
                 <div>
                     <label class="switch ">
                         <input v-model="twilioForm.twilio_active" type="checkbox" class="success toggle-switch" :checked="twilioForm.twilio_active">
@@ -46,22 +46,22 @@
         <hr>
         <form @submit.prevent="saveData('vonage')">
             <div class="form-group">
-                <Label :name="__('Vonage Key')" />
+                <Label name="__('Vonage Key')" />
                 <input v-model="vonageForm.vonage_key" type="text" class="form-control" :class="{'is-invalid':vonageForm.errors.vonage_key}">
                 <ErrorMessage :name="vonageForm.errors.vonage_key" />
             </div>
             <div class="form-group">
-                <Label :name="__('Vonage Secret')" />
+                <Label name="__('Vonage Secret')" />
                 <input v-model="vonageForm.vonage_secret" type="text" class="form-control" :class="{'is-invalid':vonageForm.errors.vonage_secret}">
                 <ErrorMessage :name="vonageForm.errors.vonage_secret" />
             </div>
             <div class="form-group">
-                <Label :name="__('Vonage From Name')" />
+                <Label name="__('Vonage From Name')" />
                 <input v-model="vonageForm.vonage_from_name" type="text" class="form-control" :class="{'is-invalid':vonageForm.errors.vonage_from_name}">
                 <ErrorMessage :name="vonageForm.errors.vonage_from_name" />
             </div>
                 <div class="form-group">
-                <Label :name="__('Vonage Status')" />
+                <Label name="__('Vonage Status')" />
                 <div>
                     <label class="switch ">
                         <input v-model="vonageForm.vonage_active" type="checkbox" class="success toggle-switch" :checked="vonageForm.vonage_active">

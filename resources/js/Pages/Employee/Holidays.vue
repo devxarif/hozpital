@@ -155,7 +155,7 @@
                                 <div class="modal-body">
                                     <div class="mb-3 row">
                                         <div class="col-md-12">
-                                            <Label :name="__('Title')" />
+                                            <Label name="Title')" />
                                             <input v-model="form.title" type="text" class="form-control"
                                                 :class="{'is-invalid':form.errors.title}" id="name">
                                             <ErrorMessage :name="form.errors.title" />
@@ -163,13 +163,13 @@
                                     </div>
                                     <div class="mb-3 row">
                                         <div class="col-md-6">
-                                            <Label :name="__('Start Date')" />
+                                            <Label name="Start Date')" />
                                             <Datepicker v-model="form.start" :enableTimePicker="false"
                                                 @update:modelValue="handleStartDate" :class="{'is-invalid':form.errors.start}"/>
                                             <ErrorMessage :name="form.errors.start"/>
                                         </div>
                                         <div class="col-md-6">
-                                            <Label :name="__('End Date')" />
+                                            <Label name="End Date')" />
                                             <Datepicker v-model="form.end" :enableTimePicker="false"
                                                 @update:modelValue="handleEndDate" :class="{'is-invalid':form.errors.end}"/>
                                             <ErrorMessage :name="form.errors.end"/>
@@ -177,7 +177,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <div class="col-md-12">
-                                            <Label :name="__('Note')"/>
+                                            <Label name="Note')"/>
                                             <textarea v-model="form.note" rows="5" class="form-control"
                                                 :class="{'is-invalid':form.errors.note}">
                                             </textarea>

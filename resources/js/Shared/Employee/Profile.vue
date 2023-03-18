@@ -29,7 +29,7 @@
                     <hr>
                      <form class="form-horizontal" autocomplete="off" @submit.prevent="profileUpdate">
                         <div class="form-group position-relative">
-                            <Label :name="__('Avatar')"/>
+                            <Label name="Avatar')"/>
                             <img :src="previewImage" alt="image" class="d-block ui-w-100 rounded-circle" id="image">
                             <div class="profile-edit font-weight-bold" v-tooltip="__('Edit')">
                                 <a href="" @click.prevent="$refs.profileimage.click()">
@@ -43,19 +43,19 @@
                             onchange="document.getElementById('image').src = window.URL.createObjectURL(this.files[0])">
                         </div>
                         <div class="form-group">
-                            <Label :name="__('Name')"/>
+                            <Label name="Name')"/>
                             <input v-model="form.name" type="text" class="form-control" :class="{'is-invalid':form.errors.name}"
                                 placeholder="Enter New Name">
                             <ErrorMessage :name="form.errors.name"/>
                         </div>
                         <div class="form-group">
-                            <Label :name="__('Email')"/>
+                            <Label name="Email')"/>
                             <input v-model="form.email" type="email"
                                 class="form-control " placeholder="Enter New Email" :class="{'is-invalid':form.errors.email}">
                             <ErrorMessage :name="form.errors.email"/>
                         </div>
                         <div class="form-group">
-                            <Label :name="__('Phone Number')" :required="false"/>
+                            <Label name="Phone Number')" :required="false"/>
                             <vue-tel-input v-model="form.phone" mode="international"/>
                             <ErrorMessage :name="form.errors.email"/>
                         </div>

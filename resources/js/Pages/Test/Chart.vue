@@ -3,7 +3,7 @@
         <h1>Role Permission</h1>
 
         <div class="mb-4">
-            <Label :name="__('Calendar Color')" id="leave_type_color"/>
+            <Label name="Calendar Color" id="leave_type_color"/>
 
             <div class="ml-3 mt-5">
                 <div class="flex items-center">

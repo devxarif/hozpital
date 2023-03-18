@@ -27,7 +27,7 @@
                                 </div>
                                 <form class="mb-4" @submit.prevent="saveData">
                                     <div class="mb-4">
-                                        <Label :name="__('Create A Leave Request')" :hasError="form.errors.request_for" :required="false"/>
+                                        <Label name="Create A Leave Request')" :hasError="form.errors.request_for" :required="false"/>
                                         <div class="w-full bg-gray-200 p-2 rounded-lg">
                                             <div class="account-switcher relative flex after:absolute candidate after:transition-all duration-300 after:rounded-lg">
                                                 <div class="w-full rounded-xl" :class="form.request_for == 'me' ? 'bg-gray-800 text-white shadow':'text-gray-800'">
@@ -48,7 +48,7 @@
                                         </div>
                                     </div>
                                     <div class="mb-4" v-show="form.request_for == 'others'">
-                                        <Label :name="__('Staff')" id="admin_leave_request" :hasError="form.errors.user"/>
+                                        <Label name="Staff" id="admin_leave_request" :hasError="form.errors.user"/>
                                         <div class="flex items-center">
                                             <Multiselect @change="changeUser" id="admin_leave_request" :close-on-select="true" :can-clear="true"
                                             :searchable="true" v-model="form.user" :create-option="false"
@@ -60,7 +60,7 @@
                                     </div>
                                     <template v-if="form.request_for == 'others' && form.user">
                                         <div class="mb-4">
-                                            <Label :name="__('Select Leave Type')" id="leave_type" :hasError="form.errors.leave_type"/>
+                                            <Label name="Select Leave Type" id="leave_type" :hasError="form.errors.leave_type"/>
                                             <div class="grid grid-cols-4 gap-2 mx-auto">
                                                 <div class="relative" v-for="(leave_type_balance, index) in leave_types_balances" :key="index">
                                                     <input @change="leaveTypeChange" class="sr-only peer" type="radio" :value="leave_type_balance.leave_type_id" :id="leave_type_balance?.leave_type?.slug || 'leave_type_me'" v-model="form.leave_type">
@@ -80,7 +80,7 @@
                                     </template>
                                     <template v-if="form.request_for == 'me' && leave_types_balances.length">
                                         <div class="mb-4">
-                                            <Label :name="__('Select Leave Type')" id="leave_type" :hasError="form.errors.leave_type"/>
+                                            <Label name="Select Leave Type" id="leave_type" :hasError="form.errors.leave_type"/>
                                             <div class="grid grid-cols-4 gap-2 mx-auto">
                                                 <div class="relative" v-for="(leave_type_balance, index) in leave_types_balances" :key="index">
                                                     <input @change="leaveTypeChange" class="sr-only peer" type="radio" :value="leave_type_balance.leave_type_id" :id="leave_type_balance?.leave_type?.slug || 'leave_type_others'" v-model="form.leave_type">
@@ -100,7 +100,7 @@
                                     </template>
                                     <div class="grid grid-cols-2 gap-2">
                                         <div class="mb-4">
-                                            <Label :name="__('Start Date')" id="start_date" :hasError="form.errors.start"/>
+                                            <Label name="Start Date" id="start_date" :hasError="form.errors.start"/>
                                             <Datepicker v-model="form.start" :enableTimePicker="false" class="border-none bg-gray-50 border text-md rounded-lg block w-full p-1    border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500    "
                                                 @update:modelValue="handleStartDate" :placeholder="__('Select Date')" :default-value="new Date()" />
                                             <ErrorMessage :name="form.errors.start"/>
@@ -109,19 +109,19 @@
                                             </template>
                                         </div>
                                         <div class="mb-4">
-                                            <Label :name="__('End Date')" id="end_date" :hasError="form.errors.end"/>
+                                            <Label name="End Date" id="end_date" :hasError="form.errors.end"/>
                                             <Datepicker v-model="form.end" :enableTimePicker="false" class="border-none bg-gray-50 border text-md rounded-lg block w-full p-1    border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500    "
                                                 @update:modelValue="handleEndDate" :placeholder="__('Select Date')" :default-value="new Date()" />
                                             <ErrorMessage :name="form.errors.end"/>
                                         </div>
                                     </div>
                                     <div class="mb-4">
-                                        <Label :name="__('Reason')" id="leave_reason" :hasError="form.errors.reason" :required="false"/>
+                                        <Label name="Reason" id="leave_reason" :hasError="form.errors.reason" :required="false"/>
                                         <BaseTextarea v-model="form.reason" placeholder="Reason" id="leave_reason" :hasError="form.errors.description"/>
                                         <ErrorMessage :name="form.errors.reason"/>
                                     </div>
                                     <div class="mb-4">
-                                        <Label :name="__('Status')" :hasError="form.errors.status" :required="false"/>
+                                        <Label name="Status" :hasError="form.errors.status" :required="false"/>
                                         <div class="flex gap-2">
                                             <label for="status_pending" class="w-full rounded-lg flex items-center pl-4 border border-gray-200  py-3 text-sm font-medium text-gray-700 gap-2">
                                                 <input id="status_pending" value="pending" v-model="form.status" type="radio" class="h-4 w-4 border-gray-300 text-blue-600 focus:outline-none">

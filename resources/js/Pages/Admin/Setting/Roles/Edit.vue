@@ -28,11 +28,11 @@
                                 <div class="mb-4">
                                     <div class="grid grid-cols-2 gap-4">
                                         <div>
-                                            <Label :name="__('Name')" id="admin_name" :hasError="form.errors.name"/>
+                                            <Label name="Name" id="admin_name" :hasError="form.errors.name"/>
                                             <BaseInput v-model="form.name" placeholder="Enter Name" id="admin_name" :hasError="form.errors.name"/>
                                         </div>
                                         <div>
-                                            <Label :name="__('Color')" id="admin_color" :hasError="form.errors.color"/>
+                                            <Label name="Color" id="admin_color" :hasError="form.errors.color"/>
                                             <div class="flex items-center">
                                                 <BaseInput :className="form.errors.color ? 'border-red-600':''" v-model="form.color" placeholder="Select Color" id="leave_type_color"/>
                                                 <div class="relative ml-3">
@@ -64,11 +64,11 @@
                                     </div>
                                 </div>
                                 <div class="mb-4">
-                                    <Label :name="__('Description')" id="admin_role_description" :hasError="form.errors.name"/>
+                                    <Label name="Description" id="admin_role_description" :hasError="form.errors.name"/>
                                     <BaseTextarea v-model="form.description" placeholder="Enter Description" id="admin_role_description" :hasError="form.errors.description"/>
                                 </div>
                                 <div class="mb-4" v-if="root && root.children">
-                                    <Label :name="__('Permissions')" id="admin_name" :hasError="form.errors.name"/>
+                                    <Label name="Permissions" id="admin_name" :hasError="form.errors.name"/>
                                     <x-item :item="root" @change="onChange"></x-item>
                                     <table class="w-full text-sm text-left text-gray-500 ">
                                         <tbody>

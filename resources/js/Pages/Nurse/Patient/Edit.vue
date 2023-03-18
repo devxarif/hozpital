@@ -27,11 +27,11 @@
                             <form class="mb-4" @submit.prevent="saveData">
                                 <div class="grid grid-cols-3 gap-2">
                                     <div class="mb-4">
-                                        <Label :name="__('Name')" id="patient_name" :hasError="form.errors.name"/>
+                                        <Label name="Name" id="patient_name" :hasError="form.errors.name"/>
                                         <BaseInput v-model="form.name" placeholder="Name" id="patient_name" :hasError="form.errors.name"/>
                                     </div>
                                     <div class="mb-4">
-                                        <Label :name="__('Email')" id="patient_email" :hasError="form.errors.email"/>
+                                        <Label name="Email" id="patient_email" :hasError="form.errors.email"/>
                                         <BaseInput v-model="form.email" placeholder="Email Address" id="patient_email" :hasError="form.errors.email"/>
                                     </div>
                                     <div class="mb-4">
@@ -56,11 +56,11 @@
                                 </div>
                                 <div class="grid grid-cols-2 gap-2">
                                     <div class="mb-4">
-                                        <Label :name="__('Phone')" id="patient_phone" :hasError="form.errors.phone" :required="false"/>
+                                        <Label name="Phone" id="patient_phone" :hasError="form.errors.phone" :required="false"/>
                                         <BaseInput v-model="form.phone" placeholder="Phone Number" id="patient_phone" :hasError="form.errors.phone"/>
                                     </div>
                                     <div class="mb-4">
-                                        <Label :name="__('Gender')" :hasError="form.errors.email" :required="false"/>
+                                        <Label name="Gender')" :hasError="form.errors.email" :required="false"/>
                                         <div class="flex gap-2">
                                             <label for="patient_male" class="w-full rounded-lg flex items-center pl-4 border border-gray-200    py-3 ml-2 text-sm font-medium text-gray-700 gap-2">
                                                 <input id="patient_male" value="male" v-model="form.gender" name="gender" type="radio" class="h-4 w-4 border-gray-300 text-blue-600 focus:outline-none">
@@ -75,7 +75,7 @@
                                 </div>
                                 <div class="grid grid-cols-3 gap-2">
                                     <div class="mb-4">
-                                        <Label :name="__('Birth Date')" id="patient_age" :hasError="form.errors.age" :required="false"/>
+                                        <Label name="Birth Date" id="patient_age" :hasError="form.errors.age" :required="false"/>
                                         <!-- <BaseInput v-model="form.age" placeholder="Age" id="patient_age" :hasError="form.errors.age"/> -->
                                         <Datepicker v-model="form.birth_date" :enableTimePicker="false" class="bg-gray-50 border text-md rounded-lg block w-full p-1   "
                                             @update:modelValue="handleCustomDate" :class="{'is-invalid': form.errors.birth_date}" :placeholder="__('Select Date')" :default-value="new Date()"
@@ -83,11 +83,11 @@
                                         <!-- <span v-if="errors.birth_date" class="invalid-feedback">{{ errors.birth_date && errors.birth_date[0] }}</span> -->
                                     </div>
                                     <div class="mb-4">
-                                        <Label :name="__('Age')" id="patient_age" :hasError="form.errors.age" :required="false"/>
+                                        <Label name="Age" id="patient_age" :hasError="form.errors.age" :required="false"/>
                                         <BaseInput v-model="form.age" placeholder="Age" id="patient_age" :hasError="form.errors.age"/>
                                     </div>
                                     <div class="mb-4">
-                                        <Label :name="__('Blood Group')" id="patient_blood_group" :hasError="form.errors.blood_group" :required="false"/>
+                                        <Label name="Blood Group" id="patient_blood_group" :hasError="form.errors.blood_group" :required="false"/>
                                         <BaseSelect v-model:value="form.blood_group" :hasError="form.errors.blood_group" class="w-3/2" id="patient_blood_group" :showMessage="false">
                                             <option value="" hidden>{{ __('Select Blood Group') }}</option>
                                             <option :selected="form.blood_group == 'A+'" value="A+">A+</option>
@@ -102,11 +102,11 @@
                                     </div>
                                 </div>
                                 <div class="mb-4">
-                                    <Label :name="__('Address')" id="patient_address" :hasError="form.errors.address" :required="false"/>
+                                    <Label name="Address" id="patient_address" :hasError="form.errors.address" :required="false"/>
                                     <BaseTextarea v-model="form.address" placeholder="Address" id="patient_address" :hasError="form.errors.address"/>
                                 </div>
                                 <div class="mb-4">
-                                    <Label :name="__('Image')" id="patient_create_image" :hasError="form.errors.image" :required="false"/>
+                                    <Label name="Image" id="patient_create_image" :hasError="form.errors.image" :required="false"/>
                                     <div class="flex justify-center items-center w-full" v-if="!previewImage">
                                         <label for="dropzone-file" class="flex flex-col justify-center items-center w-full h-60 bg-gray-50 rounded-lg border-2 border-gray-300 border-dashed cursor-pointer   hover:bg-gray-100   ">
                                             <div class="flex flex-col justify-center items-center pt-5 pb-6">

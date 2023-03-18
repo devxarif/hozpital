@@ -26,11 +26,11 @@
                             <form class="mb-4" @submit.prevent="saveData">
                                 <div class="grid grid-cols-2 gap-2">
                                     <div class="mb-4">
-                                        <Label :name="__('Name')" id="laboratorist_name" :hasError="form.errors.name"/>
+                                        <Label name="Name" id="laboratorist_name" :hasError="form.errors.name"/>
                                         <BaseInput v-model="form.name" placeholder="Name" id="laboratorist_name" :hasError="form.errors.name"/>
                                     </div>
                                     <div class="mb-4">
-                                        <Label :name="__('Email')" id="laboratorist_email" :hasError="form.errors.email"/>
+                                        <Label name="Email" id="laboratorist_email" :hasError="form.errors.email"/>
                                         <BaseInput v-model="form.email" placeholder="Email Address" id="laboratorist_email" :hasError="form.errors.email"/>
                                     </div>
                                 </div>
@@ -51,7 +51,7 @@
                                     </div>
                                 </div>
                                 <div class="mb-4">
-                                    <Label :name="__('Image')" id="laboratorist_create_image" :hasError="form.errors.image" :required="false"/>
+                                    <Label name="Image" id="laboratorist_create_image" :hasError="form.errors.image" :required="false"/>
                                     <div class="flex justify-center items-center w-full" v-if="!previewImage">
                                         <label for="dropzone-file" class="flex flex-col justify-center items-center w-full h-60 bg-gray-50 rounded-lg border-2 border-gray-300 border-dashed cursor-pointer   hover:bg-gray-100   ">
                                             <div class="flex flex-col justify-center items-center pt-5 pb-6">

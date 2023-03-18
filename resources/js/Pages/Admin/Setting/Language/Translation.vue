@@ -59,7 +59,7 @@
                         <!-- <pre>
         {{ $page.props.language }}
     </pre> -->
-                        <!-- <Label :name="__('Name')" id="leave_type_name"/> -->
+                        <!-- <Label name="Name" id="leave_type_name"/> -->
                         <div class="sm:border-t sm:border-gray-200 sm:pt-5">
                             <div class="grid gap-6 md:grid-cols-12 xl:grid-cols-12">
                                 <div class="mb-2 col-span-6">

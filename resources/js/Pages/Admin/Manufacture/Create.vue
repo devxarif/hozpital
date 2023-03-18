@@ -26,23 +26,23 @@
                             </div>
                             <form class="mb-4" @submit.prevent="saveData">
                                 <div class="mb-4">
-                                    <Label :name="__('Name')" id="manufacture_name" :hasError="form.errors.name"/>
+                                    <Label name="Name" id="manufacture_name" :hasError="form.errors.name"/>
                                     <BaseInput v-model="form.name" placeholder="Name" id="manufacture_name" :hasError="form.errors.name"/>
                                 </div>
                                 <div class="mb-4">
-                                    <Label :name="__('Email')" id="manufacture_email" :hasError="form.errors.email"/>
+                                    <Label name="Email" id="manufacture_email" :hasError="form.errors.email"/>
                                     <BaseInput v-model="form.email" placeholder="Email" id="manufacture_email" :hasError="form.errors.email"/>
                                 </div>
                                 <div class="mb-4">
-                                    <Label :name="__('Phone Number')" id="manufacture_phone" :hasError="form.errors.phone"/>
+                                    <Label name="Phone Number" id="manufacture_phone" :hasError="form.errors.phone"/>
                                     <BaseInput v-model="form.phone" placeholder="Phone Number" id="manufacture_phone" :hasError="form.errors.phone"/>
                                 </div>
                                 <div class="mb-4">
-                                    <Label :name="__('Note')" id="manufacture_note" :hasError="form.errors.note" :required="false"/>
+                                    <Label name="Note" id="manufacture_note" :hasError="form.errors.note" :required="false"/>
                                     <BaseTextarea v-model="form.note" placeholder="Note" id="manufacture_note" :hasError="form.errors.note"/>
                                 </div>
                                 <div class="mb-4">
-                                    <Label :name="__('Address')" id="manufacture_address" :hasError="form.errors.address" :required="false"/>
+                                    <Label name="Address" id="manufacture_address" :hasError="form.errors.address" :required="false"/>
                                     <BaseTextarea v-model="form.address" placeholder="Address" id="manufacture_address" :hasError="form.errors.address"/>
                                 </div>
                                 <button :disabled="form.processing"  type="submit"

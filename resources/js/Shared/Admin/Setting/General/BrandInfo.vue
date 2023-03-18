@@ -6,37 +6,37 @@
     <form @submit.prevent="saveData">
         <div class="mb-3 row">
             <div class="col-md-6 form-group">
-                <Label :name="__('App Name')" />
+                <Label name="App Name')" />
                 <input v-model="form.app_name" type="text" class="form-control"
                     :class="{'is-invalid':form.errors.app_name}">
                 <ErrorMessage :name="form.errors.app_name" />
             </div>
             <div class="col-md-6 form-group">
-                <Label :name="__('App Email')" />
+                <Label name="App Email')" />
                 <input v-model="form.app_email" type="text" class="form-control"
                     :class="{'is-invalid':form.errors.app_email}">
                 <ErrorMessage :name="form.errors.app_email" />
             </div>
             <div class="col-md-6 form-group">
-                <Label :name="__('App Contact Number')" />
+                <Label name="App Contact Number')" />
                 <input v-model="form.app_contact_number" type="text" class="form-control"
                     :class="{'is-invalid':form.errors.app_contact_number}">
                 <ErrorMessage :name="form.errors.app_contact_number" />
             </div>
             <div class="col-md-6 form-group">
-                <Label :name="__('App Copyright')" />
+                <Label name="App Copyright')" />
                 <input v-model="form.app_copyright" type="text" class="form-control"
                     :class="{'is-invalid':form.errors.app_copyright}">
                 <ErrorMessage :name="form.errors.app_copyright" />
             </div>
             <div class="col-md-12 form-group">
-                <Label :name="__('App Location')" />
+                <Label name="App Location')" />
                 <textarea v-model="form.app_location" rows="5" class="form-control"
                     :class="{'is-invalid':form.errors.app_location}"></textarea>
                 <ErrorMessage :name="form.errors.app_location" />
             </div>
             <div class="col-md-4 form-group">
-                <Label :name="__('App Dark Logo')" :required="false">
+                <Label name="App Dark Logo')" :required="false">
                     <InfoTip :title="__('Recommended Size') +' - 155 x 55'"/>
                 </Label> <br>
                 <input accept="image/jpeg, image/jpg/ image/png, image/svg" type="file"
@@ -45,31 +45,31 @@
                     :class="{'is-invalid':form.errors.app_dark_logo}">
                 <ErrorMessage :name="form.errors.app_dark_logo" />
                 <div class="mt-4 bg-light">
-                    <Label :name="__('Preview')" :required="false" /> <br>
+                    <Label name="Preview')" :required="false" /> <br>
                     <img :src="app_dark_logo_preview" alt="logo" height="50" width="150" class="object-cover-fit">
                 </div>
             </div>
             <div class="col-md-4 form-group">
-                <Label :name="__('App Light Logo')" :required="false" >
+                <Label name="App Light Logo')" :required="false" >
                     <InfoTip :title="__('Recommended Size') +' - 155 x 55'"/>
                 </Label> <br>
                 <input accept="image/jpeg, image/jpg/ image/png, image/svg" type="file" @change="onLightLogoChange"
                     :class="{'is-invalid':form.errors.app_light_logo}">
                     <ErrorMessage :name="form.errors.app_light_logo" />
                     <div class="mt-4">
-                    <Label :name="__('Preview')" :required="false" /> <br>
+                    <Label name="Preview')" :required="false" /> <br>
                     <img :src="app_light_logo_preview" alt="logo" height="50" width="150" class="object-cover-fit bg-dark">
                 </div>
             </div>
             <div class="col-md-4 form-group">
-                <Label :name="__('App Favicon')" :required="false">
+                <Label name="App Favicon')" :required="false">
                     <InfoTip :title="__('Recommended Size') +' - 32 x 32'"/>
                 </Label> <br>
                 <input accept="image/jpeg, image/jpg/ image/png, image/svg" type="file" @change="onFaviconChange"
                     :class="{'is-invalid':form.errors.app_favicon}">
                 <ErrorMessage :name="form.errors.app_favicon" />
                 <div class="mt-4">
-                    <Label :name="__('Preview')" :required="false" /> <br>
+                    <Label name="Preview')" :required="false" /> <br>
                     <img :src="app_favicon_preview" alt="logo" height="32" width="32" class="object-cover-fit">
                 </div>
             </div>

@@ -27,11 +27,11 @@
                                     <form class="mb-4" @submit.prevent="createData">
                                         <div class="grid grid-cols-2 gap-4">
                                             <div class="mb-4">
-                                                <Label :name="__('Name')" id="plan_name" :hasError="form.errors.name"/>
+                                                <Label name="Name" id="plan_name" :hasError="form.errors.name"/>
                                                 <BaseInput v-model="form.name" placeholder="Name" id="plan_name" :hasError="form.errors.name"/>
                                             </div>
                                             <div class="mb-4">
-                                                <Label :name="__('Plan Type')" :hasError="form.errors.type"/>
+                                                <Label name="Plan Type')" :hasError="form.errors.type"/>
                                                 <BaseSelect v-model:value="form.type" :hasError="form.errors.type">
                                                     <option value="paid">{{ __('Paid') }}</option>
                                                     <option value="available">{{ __('Available') }}</option>
@@ -41,21 +41,21 @@
 
                                         <div class="grid grid-cols-2 gap-4">
                                             <div class="mb-4">
-                                                <Label :name="__('Employee Adding Type')" id="plan_employee_adding_type" :hasError="form.errors.is_limited_employee"/>
+                                                <Label name="Employee Adding Type" id="plan_employee_adding_type" :hasError="form.errors.is_limited_employee"/>
                                                 <BaseSelect v-model:value="form.is_limited_employee" id="plan_employee_adding_type" :hasError="form.errors.is_limited_employee">
                                                     <option value="1">{{ __('Limited Employee') }}</option>
                                                     <option value="0">{{ __('Unlimited Employee') }}</option>
                                                 </BaseSelect>
                                             </div>
                                             <div class="mb-4">
-                                                <Label :name="__('Max Employees')" id="plan_max_employees" :hasError="form.errors.max_employees"/>
+                                                <Label name="Max Employees" id="plan_max_employees" :hasError="form.errors.max_employees"/>
                                                 <BaseInput v-model="form.max_employees" placeholder="Price" id="plan_max_employees" :hasError="form.errors.max_employees"/>
                                             </div>
                                         </div>
 
                                         <div class="grid grid-cols-2 gap-4">
                                             <div class="mb-4">
-                                                <Label :name="__('Status')" id="plan_max_teams" :hasError="form.errors.status"/>
+                                                <Label name="Status" id="plan_max_teams" :hasError="form.errors.status"/>
                                                 <label for="checked-toggle" class="inline-flex relative items-center cursor-pointer">
                                                     <input checked @change="statusChange" type="checkbox" id="checked-toggle" class="sr-only peer">
                                                     <div class="w-11 h-6 bg-gray-200 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>

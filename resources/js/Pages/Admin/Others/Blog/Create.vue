@@ -17,23 +17,23 @@
                         <form @submit.prevent="createData">
                         <div class="mb-3 row">
                            <div class="col-md-6">
-                                <Label :name="__('Name')"/>
+                                <Label name="Name')"/>
                                 <input v-model="form.title" type="text" class="form-control" :class="{'is-invalid':form.errors.title}" id="name">
                                 <ErrorMessage :name="form.errors.title"/>
                             </div>
                             <div class="col-lg-6">
-                                <Label :name="__('Thumbnail')" :required="false"/>
+                                <Label name="Thumbnail')" :required="false"/>
                                 <input accept="image/jpeg, image/jpg/ image/png" class="form-control border-0 p-0" type="file" @input="form.thumbnail = $event.target.files[0]" :class="{'is-invalid':form.errors.thumbnail}"/>
                                 <ErrorMessage :name="form.errors.thumbnail"/>
                             </div>
                         </div>
                         <div class="mb-3">
-                            <Label :name="__('Short Description')" />
+                            <Label name="Short Description')" />
                             <textarea class="form-control" v-model="form.short_description" :class="{'is-invalid':form.errors.short_description}" rows="5"></textarea>
                             <ErrorMessage :name="form.errors.short_description" />
                         </div>
                         <div class="mb-3">
-                            <Label :name="__('Long Description')" />
+                            <Label name="Long Description')" />
                              <QuillEditor theme="snow" v-model:content="form.long_description" contentType="html" class="h-250"/>
                             <ErrorMessage :name="form.errors.long_description" />
                         </div>

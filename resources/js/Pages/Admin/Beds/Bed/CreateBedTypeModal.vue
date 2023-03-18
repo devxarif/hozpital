@@ -10,11 +10,11 @@
                 <h3 class="mb-4 text-xl font-medium text-gray-900 ">Bed Type Create</h3>
                 <form class="mb-4" @submit.prevent="saveData">
                     <div class="mb-4">
-                        <Label :name="__('Name')" id="bed_type_name" :hasError="form.errors.name"/>
+                        <Label name="Name" id="bed_type_name" :hasError="form.errors.name"/>
                         <BaseInput v-model="form.name" placeholder="Name" id="bed_type_name" :hasError="form.errors.name"/>
                     </div>
                     <div class="mb-4">
-                        <Label :name="__('Description')" id="bed_type_description" :hasError="form.errors.description" :required="false"/>
+                        <Label name="Description" id="bed_type_description" :hasError="form.errors.description" :required="false"/>
                         <BaseTextarea v-model="form.description" placeholder="Description" id="bed_type_description" :hasError="form.errors.description"/>
                     </div>
                     <button :disabled="form.processing"  type="submit"

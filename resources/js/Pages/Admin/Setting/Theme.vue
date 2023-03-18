@@ -14,49 +14,49 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <Label :name="__('Primary Color')" />
+                                    <Label name="Primary Color')" />
                                     <input v-model="form.primary_color" type="color" class="form-control"
                                         id="name">
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                <Label :name="__('Hover Color')" />
+                                <Label name="Hover Color')" />
                                 <input v-model="form.hover_color" type="color" class="form-control"
                                     id="name">
                                     </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                <Label :name="__('Secondary Color')" />
+                                <Label name="Secondary Color')" />
                                 <input v-model="form.secondary_color" type="color" class="form-control"
                                     id="name">
                                     </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                <Label :name="__('Success Color')" />
+                                <Label name="Success Color')" />
                                 <input v-model="form.success_color" type="color" class="form-control"
                                     id="name">
                                     </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                <Label :name="__('Info Color')" />
+                                <Label name="Info Color')" />
                                 <input v-model="form.info_color" type="color" class="form-control"
                                     id="name">
                                     </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                <Label :name="__('Warning Color')" />
+                                <Label name="Warning Color')" />
                                 <input v-model="form.warning_color" type="color" class="form-control"
                                     id="name">
                                     </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                <Label :name="__('Danger Color')" />
+                                <Label name="Danger Color')" />
                                 <input v-model="form.danger_color" type="color" class="form-control"
                                     id="name">
                                     </div>
@@ -85,28 +85,28 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <Label :name="__('Primary Color')" />
+                                    <Label name="Primary Color')" />
                                     <input v-model="websiteForm.website_primary_color" type="color" class="form-control"
                                         id="name">
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                <Label :name="__('Secondary Color')" />
+                                <Label name="Secondary Color')" />
                                 <input v-model="websiteForm.website_secondary_color" type="color" class="form-control"
                                     id="name">
                                     </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <Label :name="__('Body Text Color')" />
+                                    <Label name="Body Text Color')" />
                                     <input v-model="websiteForm.website_body_text_color" type="color" class="form-control"
                                         id="name">
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                <Label :name="__('Body Heading Color')" />
+                                <Label name="Body Heading Color')" />
                                 <input v-model="websiteForm.website_heading_text_color" type="color" class="form-control"
                                     id="name">
                                     </div>

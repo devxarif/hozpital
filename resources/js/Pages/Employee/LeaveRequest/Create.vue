@@ -26,7 +26,7 @@
                                 </div>
                                 <form class="mb-4" @submit.prevent="createData">
                                     <div class="mb-4">
-                                        <Label :name="__('Leave Type')" id="plan_name" :hasError="form.errors.name"/>
+                                        <Label name="Leave Type" id="plan_name" :hasError="form.errors.name"/>
                                         <div class="grid grid-cols-4 gap-3 mx-auto" v-if="leaveTypeLoading">
                                             <div role="status" class="animate-pulse" v-for="i in 3" :key="i">
                                                 <label class="flex p-5 bg-white border border-gray-300 rounded-lg cursor-pointer focus:outline-none hover:bg-gray-50 peer-checked:ring-blue-500 peer-checked:ring-2 peer-checked:border-transparent flex-col peer-checked:shadow-xl">
@@ -59,12 +59,12 @@
                                     </div>
                                     <div class="grid grid-cols-2 gap-4">
                                         <div class="mb-4">
-                                            <Label :name="__('Start Date')" id="request_start" :hasError="form.errors.start"/>
+                                            <Label name="Start Date" id="request_start" :hasError="form.errors.start"/>
                                             <Datepicker v-model="form.start" :enableTimePicker="false" @update:modelValue="handleStartDate" :class="{'border-red-600':form.errors.start}"/>
                                             <ErrorMessage :name="form.errors.start"/>
                                         </div>
                                         <div class="mb-4">
-                                            <Label :name="__('End Date')" id="request_end" :hasError="form.errors.end"/>
+                                            <Label name="End Date" id="request_end" :hasError="form.errors.end"/>
                                             <Datepicker v-model="form.end" :enableTimePicker="false" @update:modelValue="handleEndDate" :class="{'border-red-600':form.errors.end}"/>
                                             <ErrorMessage :name="form.errors.end"/>
                                         </div>
@@ -74,7 +74,7 @@
                                     </template>
                                     <div class="grid grid-cols-1 gap-4">
                                         <div class="mb-4">
-                                            <Label :name="__('Reason')" id="reason" :hasError="form.errors.reason"/>
+                                            <Label name="Reason" id="reason" :hasError="form.errors.reason"/>
                                             <BaseTextarea v-model="form.reason" placeholder="Reason" id="reason" :hasError="form.errors.reason"/>
                                         </div>
                                     </div>
@@ -130,7 +130,7 @@
                        <form @submit.prevent="createData">
                        <div class="mb-3 row">
                             <div class="col-md-6">
-                                <Label :name="__('Employee')" />
+                                <Label name="Employee')" />
                                <select v-model="form.employee_id" id="company" class="form-control"
                                    :class="{'border-red-600':form.errors.employee_id}">
                                    <option value="" class="d-none">{{ __('Select Employee') }}</option>
@@ -141,7 +141,7 @@
                                <ErrorMessage :name="form.errors.employee_id" />
                            </div>
                            <div class="col-md-6">
-                                <Label :name="__('Leave Type')" />
+                                <Label name="Leave Type')" />
                                <select @change="checkLeaveTypeBalance" v-model="form.leave_type_id" id="company" class="form-control" :disabled="!form.employee_id"
                                    :class="{'border-red-600':form.errors.leave_type_id}">
                                    <option value="" class="d-none">{{ __('Select Leave Type') }}</option>
@@ -157,13 +157,13 @@
                        </div>
                         <div class="mb-3 row">
                            <div class="col-md-6">
-                               <Label :name="__('Start Date')" />
+                               <Label name="Start Date')" />
                                <Datepicker v-model="form.start" :enableTimePicker="false"
                                    @update:modelValue="handleStartDate" :class="{'border-red-600':form.errors.start}"/>
                                <ErrorMessage :name="form.errors.start"/>
                            </div>
                            <div class="col-md-6">
-                               <Label :name="__('End Date')" />
+                               <Label name="End Date')" />
                                <Datepicker v-model="form.end" :enableTimePicker="false"
                                    @update:modelValue="handleEndDate" :class="{'border-red-600':form.errors.end}"/>
                                <ErrorMessage :name="form.errors.end"/>
@@ -174,14 +174,14 @@
                        </div>
                        <div class="mb-3 row">
                            <div class="col-lg-12">
-                               <Label :name="__('Reason')" :required="false" />
+                               <Label name="Reason')" :required="false" />
                                <textarea class="form-control" v-model="form.reason" :class="{'border-red-600':form.errors.reason}" rows="5"></textarea>
                                <ErrorMessage :name="form.errors.reason" />
                            </div>
                        </div>
                        <div class="mb-3 row">
                            <div class="col-lg-6">
-                               <Label :name="__('Status')" :required="false"/> <br>
+                               <Label name="Status" :required="false"/> <br>
                                <div class="form-check form-check-inline">
                                    <input v-model="form.status" class="form-check-input" type="radio" name="inlineRadioOptions"
                                        id="pending" value="pending">

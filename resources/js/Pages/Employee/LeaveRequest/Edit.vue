@@ -26,7 +26,7 @@
                                 </div>
                                 <form class="mb-4" @submit.prevent="saveData">
                                     <div class="mb-4">
-                                        <Label :name="__('Leave Type')" id="plan_name" :hasError="form.errors.name"/>
+                                        <Label name="Leave Type" id="plan_name" :hasError="form.errors.name"/>
                                         <div class="grid grid-cols-4 gap-3 mx-auto" v-if="leaveTypeLoading">
                                             <div role="status" class="animate-pulse" v-for="i in 3" :key="i">
                                                 <label class="flex p-5 bg-white border border-gray-300 rounded-lg cursor-pointer focus:outline-none hover:bg-gray-50 peer-checked:ring-blue-500 peer-checked:ring-2 peer-checked:border-transparent flex-col peer-checked:shadow-xl">
@@ -59,12 +59,12 @@
                                     </div>
                                     <div class="grid grid-cols-2 gap-4">
                                         <div class="mb-4">
-                                            <Label :name="__('Start Date')" id="request_start" :hasError="form.errors.start"/>
+                                            <Label name="Start Date" id="request_start" :hasError="form.errors.start"/>
                                             <Datepicker v-model="form.start" :enableTimePicker="false" @update:modelValue="handleStartDate" :class="{'border-red-600':form.errors.start}"/>
                                             <ErrorMessage :name="form.errors.start"/>
                                         </div>
                                         <div class="mb-4">
-                                            <Label :name="__('End Date')" id="request_end" :hasError="form.errors.end"/>
+                                            <Label name="End Date" id="request_end" :hasError="form.errors.end"/>
                                             <Datepicker v-model="form.end" :enableTimePicker="false" @update:modelValue="handleEndDate" :class="{'border-red-600':form.errors.end}"/>
                                             <ErrorMessage :name="form.errors.end"/>
                                         </div>
@@ -74,7 +74,7 @@
                                     </template>
                                     <div class="grid grid-cols-1 gap-4">
                                         <div class="mb-4">
-                                            <Label :name="__('Reason')" id="reason" :hasError="form.errors.reason"/>
+                                            <Label name="Reason" id="reason" :hasError="form.errors.reason"/>
                                             <BaseTextarea v-model="form.reason" placeholder="Reason" id="reason" :hasError="form.errors.reason"/>
                                         </div>
                                     </div>
@@ -128,13 +128,13 @@
                             </div>
                             <div class="mb-3 row">
                                 <div class="col-md-6">
-                                    <Label :name="__('Start Date')" />
+                                    <Label name="Start Date')" />
                                     <Datepicker v-model="form.start" :enableTimePicker="false"
                                         @update:modelValue="handleStartDate" :class="{'is-invalid':form.errors.start}"/>
                                     <ErrorMessage :name="form.errors.start"/>
                                 </div>
                                 <div class="col-md-6">
-                                    <Label :name="__('End Date')" />
+                                    <Label name="End Date')" />
                                     <Datepicker v-model="form.end" :enableTimePicker="false"
                                         @update:modelValue="handleEndDate" :class="{'is-invalid':form.errors.end}"/>
                                     <ErrorMessage :name="form.errors.end"/>
@@ -145,7 +145,7 @@
                             </div>
                             <div class="mb-3 row">
                                 <div class="col-lg-12">
-                                    <Label :name="__('Reason')" />
+                                    <Label name="Reason')" />
                                     <textarea class="form-control" v-model="form.reason" :class="{'is-invalid':form.errors.reason}" rows="5"></textarea>
                                     <ErrorMessage :name="form.errors.reason" />
                                 </div>

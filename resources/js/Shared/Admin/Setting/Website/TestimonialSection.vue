@@ -3,17 +3,17 @@
         <div class="card-body">
             <form @submit.prevent="updateData">
                 <div class="form-group">
-                    <Label :name="__('Testimonial Title')" />
+                    <Label name="Testimonial Title')" />
                     <input v-model="form.testimonial_title" type="text" class="form-control" :class="{'is-invalid':form.errors.testimonial_title}">
                     <ErrorMessage :name="form.errors.testimonial_title" />
                 </div>
                 <div class="form-group">
-                    <Label :name="__('Testimonial Subtitle')" />
+                    <Label name="Testimonial Subtitle')" />
                     <input v-model="form.testimonial_subtitle" type="text" class="form-control" :class="{'is-invalid':form.errors.testimonial_subtitle}">
                     <ErrorMessage :name="form.errors.testimonial_subtitle" />
                 </div>
                 <div class="form-group">
-                    <Label :name="__('Testimonial Description')" />
+                    <Label name="Testimonial Description')" />
                      <textarea v-model="form.testimonial_description" class="form-control" :class="{'is-invalid':form.errors.testimonial_description}" rows="4"></textarea>
                     <ErrorMessage :name="form.errors.testimonial_description" />
                 </div>

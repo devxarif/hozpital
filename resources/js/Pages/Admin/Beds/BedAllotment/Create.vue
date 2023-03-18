@@ -26,7 +26,7 @@
                             </div>
                             <form class="mb-4" @submit.prevent="saveData">
                                 <div class="mb-4">
-                                    <Label :name="__('Available Beds')" id="bed_create" :hasError="form.errors.bed" className="flex mb-2 text-sm font-medium gap-1">
+                                    <Label name="Available Beds" id="bed_create" :hasError="form.errors.bed" className="flex mb-2 text-sm font-medium gap-1">
                                         <InfoIcon className="w-4 h-4" v-tooltip="'Floor - Bed Type - Bed Number - Charge'"/>
                                     </Label>
                                     <div class="flex items-center">
@@ -60,20 +60,20 @@
                                 </div>
                                 <div class="grid grid-cols-2 gap-2">
                                     <div class="mb-4">
-                                        <Label :name="__('Allotment Time')" id="start_date" :hasError="form.errors.allotment_time"/>
+                                        <Label name="Allotment Time" id="start_date" :hasError="form.errors.allotment_time"/>
                                         <Datepicker v-model="form.allotment_time" :enableTimePicker="true" class="border-none bg-gray-50 border text-md rounded-lg block w-full p-1 border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500    "
                                             @update:modelValue="handleStartDate" :placeholder="__('Select Allotment Time')" :default-value="new Date()" />
                                         <ErrorMessage :name="form.errors.allotment_time"/>
                                     </div>
                                     <div class="mb-4">
-                                        <Label :name="__('Discharge TIme')" id="end_date" :hasError="form.errors.discharge_time" :required="false"/>
+                                        <Label name="Discharge TIme" id="end_date" :hasError="form.errors.discharge_time" :required="false"/>
                                         <Datepicker v-model="form.discharge_time" :enableTimePicker="true" class="border-none bg-gray-50 border text-md rounded-lg block w-full p-1    border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500    "
                                             @update:modelValue="handleEndDate" :placeholder="__('Select Discharge Time')" :default-value="new Date()" />
                                         <ErrorMessage :name="form.errors.discharge_time"/>
                                     </div>
                                 </div>
                                 <div class="mb-4">
-                                    <Label :name="__('Description')" id="bed_allotment_description" :hasError="form.errors.description" :required="false"/>
+                                    <Label name="Description" id="bed_allotment_description" :hasError="form.errors.description" :required="false"/>
                                     <BaseTextarea v-model="form.description" placeholder="Description" id="bed_allotment_description" :hasError="form.errors.description"/>
                                 </div>
                                 <button :disabled="form.processing"  type="submit"

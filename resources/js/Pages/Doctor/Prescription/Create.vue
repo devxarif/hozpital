@@ -27,7 +27,7 @@
                             <form class="mb-4" @submit.prevent="saveData">
                                 <div class="grid grid-cols-2 gap-2">
                                     <div class="mb-4">
-                                        <Label :name="__('Patient')" id="prescription_name" :hasError="form.errors.name"/>
+                                        <Label name="Patient" id="prescription_name" :hasError="form.errors.name"/>
                                         <div class="flex items-center">
                                             <Multiselect id="doctor_patient" :close-on-select="true" :can-clear="true"
                                             :searchable="true" v-model="form.patient" :create-option="false"
@@ -41,7 +41,7 @@
                                         <ErrorMessage :name="form.errors.patient"/>
                                     </div>
                                     <div class="mb-4">
-                                        <Label :name="__('Date')" id="income_date" :hasError="form.errors.date"/>
+                                        <Label name="Date" id="income_date" :hasError="form.errors.date"/>
                                         <Datepicker v-model="form.date" :enableTimePicker="false" class="border-none bg-gray-50 border text-md rounded-lg block w-full p-1    border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500    "
                                             @update:modelValue="handleDate" :placeholder="__('Select Date')" :default-value="new Date()" />
                                         <ErrorMessage :name="form.errors.date"/>
@@ -49,7 +49,7 @@
                                 </div>
 
                                 <div>
-                                    <Label :name="__('Medicine')" id="prescription_note" :hasError="form.errors.case" :required="false"/>
+                                    <Label name="Medicine" id="prescription_note" :hasError="form.errors.case" :required="false"/>
                                     <div class="grid grid-cols-12 gap-4" v-for="(medicine, index) in form.medicines" :key="index">
                                         <div class="mb-4 col-span-4">
                                             <div class="rounded-md border border-gray-300 px-3 py-2 shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600">
@@ -81,16 +81,16 @@
                                 </div>
                                 <div class="grid grid-cols-2 gap-2">
                                     <div class="mb-4">
-                                        <Label :name="__('Case')" id="prescription_note" :hasError="form.errors.case" :required="false"/>
+                                        <Label name="Case" id="prescription_note" :hasError="form.errors.case" :required="false"/>
                                         <QuillEditor theme="snow" v-model:content="form.case" contentType="html" class="h-40 rounded-md"/>
                                     </div>
                                     <div class="mb-4">
-                                        <Label :name="__('Note')" id="prescription_note" :hasError="form.errors.note" :required="false"/>
+                                        <Label name="Note" id="prescription_note" :hasError="form.errors.note" :required="false"/>
                                         <QuillEditor theme="snow" v-model:content="form.note" contentType="html" class="h-40 rounded-md"/>
                                     </div>
                                 </div>
                                 <div class="mb-4">
-                                    <Label :name="__('Advice')" id="prescription_note" :hasError="form.errors.advice" :required="false"/>
+                                    <Label name="Advice" id="prescription_note" :hasError="form.errors.advice" :required="false"/>
                                     <QuillEditor theme="snow" v-model:content="form.advice" contentType="html" class="h-60 rounded-md"/>
                                 </div>
                                 <button :disabled="form.processing"  type="submit"

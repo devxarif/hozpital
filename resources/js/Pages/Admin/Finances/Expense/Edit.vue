@@ -27,7 +27,7 @@
                                 </div>
                                 <form class="mb-4" @submit.prevent="saveData">
                                     <div class="mb-4">
-                                        <Label :name="__('Expense Category')" id="expense_category_name" :hasError="form.errors.expense_category"/>
+                                        <Label name="Expense Category" id="expense_category_name" :hasError="form.errors.expense_category"/>
                                         <div class="flex items-center">
                                             <Multiselect id="admin_expense_category" :close-on-select="true" :can-clear="true"
                                             :searchable="true" v-model="form.expense_category" :create-option="false"
@@ -42,32 +42,32 @@
                                     </div>
                                     <div class="grid grid-cols-2 gap-2">
                                         <div class="mb-4">
-                                            <Label :name="__('Title')" id="expense_name" :hasError="form.errors.title"/>
+                                            <Label name="Title" id="expense_name" :hasError="form.errors.title"/>
                                             <BaseInput v-model="form.title" placeholder="Title" id="expense_name" :hasError="form.errors.title"/>
                                         </div>
                                         <div class="mb-4">
-                                            <Label :name="__('Invoice Number')" id="expense_invoice_number" :hasError="form.errors.invoice_number" :required="false"/>
+                                            <Label name="Invoice Number" id="expense_invoice_number" :hasError="form.errors.invoice_number" :required="false"/>
                                             <BaseInput v-model="form.invoice_number" placeholder="Invoice Number" id="expense_invoice_number" :hasError="form.errors.invoice_number"/>
                                         </div>
                                     </div>
                                     <div class="grid grid-cols-2 gap-2">
                                         <div class="mb-4">
-                                            <Label :name="__('Amount')" id="expense_amount" :hasError="form.errors.amount"/>
+                                            <Label name="Amount" id="expense_amount" :hasError="form.errors.amount"/>
                                             <BaseInput v-model="form.amount" placeholder="Amount" id="expense_amount" :hasError="form.errors.amount"/>
                                         </div>
                                         <div class="mb-4">
-                                            <Label :name="__('Date')" id="expense_date" :hasError="form.errors.date" :required="false"/>
+                                            <Label name="Date" id="expense_date" :hasError="form.errors.date" :required="false"/>
                                             <Datepicker v-model="form.date" :enableTimePicker="false" class="border-none bg-gray-50 border text-md rounded-lg block w-full p-1    border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500    "
                                                 @update:modelValue="handleDate" :placeholder="__('Select Date')" :default-value="new Date()" />
                                             <ErrorMessage :name="form.errors.date"/>
                                         </div>
                                     </div>
                                     <div class="mb-4">
-                                        <Label :name="__('Description')" id="expense_description" :hasError="form.errors.description" :required="false"/>
+                                        <Label name="Description" id="expense_description" :hasError="form.errors.description" :required="false"/>
                                         <BaseTextarea v-model="form.description" placeholder="Description" id="expense_description" :hasError="form.errors.description"/>
                                     </div>
                                     <div class="mb-4">
-                                        <Label :name="__('Attachment')" id="attachment_image" :hasError="form.errors.attachment" :required="false"/>
+                                        <Label name="Attachment" id="attachment_image" :hasError="form.errors.attachment" :required="false"/>
                                         <BaseInput v-model="form.attachment" @change="onFileChange" className="text-sm p-0" placeholder="Name" id="expense_amount" :hasError="form.errors.attachment" type="file"/>
                                         <ErrorMessage :name="form.errors.attachment"/>
                                     </div>
