@@ -84,6 +84,7 @@
         methods: {
             saveData() {
                 this.form.post(route("admin.announcement.store"), {
+                    preserveScroll: true,
                     onSuccess: () => {
                         this.form.reset(),
                         this.$emit('close-drawer')

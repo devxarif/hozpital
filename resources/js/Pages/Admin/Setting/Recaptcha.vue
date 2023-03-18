@@ -106,7 +106,17 @@ export default {
     },
     methods: {
         updateData() {
-            this.form.put(route("admin.settings.recaptcha.update"));
+            this.form.put(route("admin.settings.recaptcha.update"), {
+                preserveScroll: true,
+                onSuccess: () => {
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 1000);
+                },
+                onError: () => {
+                    this.toastError('Recaptcha Configuration Failed');
+                },
+            });
         },
         verifyRecaptcha(){
             this.toastSuccess('Recaptcha Configuration Verified Successfully');

@@ -100,6 +100,7 @@ export default {
     methods: {
         saveData() {
             this.form.post(route("admin.announcement.update", this.announcement.id), {
+                preserveScroll: true,
                 onSuccess: () => {
                     this.form.reset(),
                     this.$emit('close-drawer')

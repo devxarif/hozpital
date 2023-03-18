@@ -156,10 +156,13 @@
         },
         methods: {
             saveSetting() {
-                this.form.put(route("admin.settings.smtp.update"));
+                this.form.put(route("admin.settings.smtp.update"), {
+                    preserveScroll: true,
+                });
             },
             testMailSend() {
                 this.testMailForm.post(route("admin.settings.send.test.email"), {
+                    preserveScroll: true,
                     onSuccess: () => {
                         this.form.reset();
                     },
