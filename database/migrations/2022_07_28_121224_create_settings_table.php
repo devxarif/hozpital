@@ -36,6 +36,11 @@ class CreateSettingsTable extends Migration
             $table->string('recaptcha_site_key')->nullable();
             $table->boolean('recaptcha_active')->default(false);
 
+            // Custom CSS & JS
+            $table->longText('custom_css')->nullable();
+            $table->longText('custom_header_script')->nullable();
+            $table->longText('custom_footer_script')->nullable();
+
             $table->timestamps();
         });
     }

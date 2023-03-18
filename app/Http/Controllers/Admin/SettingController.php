@@ -137,6 +137,28 @@ class SettingController extends Controller
         return back();
     }
 
+    public function customCssJs()
+    {
+        $data = setting(['custom_css', 'custom_header_script','custom_footer_script']);
+
+        return inertia('Admin/Setting/CustomCssJs', [
+            'custom_css' => $data->custom_css,
+            'custom_header_script' => $data->custom_header_script,
+            'custom_footer_script' => $data->custom_footer_script,
+        ]);
+    }
+
+    public function customCssJsUpdate(Request $request)
+    {
+        Setting::first()->update([
+            'custom_css' => $request->custom_css,
+            'custom_header_script' => $request->custom_header_script,
+            'custom_footer_script' => $request->custom_footer_script,
+        ]);
+
+        return back()->with('success', 'Custom css/js updated successfully');
+    }
+
     public function payment()
     {
         return inertia('Admin/Setting/Payment');

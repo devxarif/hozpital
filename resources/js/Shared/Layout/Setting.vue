@@ -80,7 +80,7 @@ export default {
                 {
                     title: 'Custom CSS & JS',
                     icon: 'fa-solid fa-shuffle',
-                    route: 'admin.settings.smtp'
+                    route: 'admin.settings.customCssJs'
                 },
                 {
                     title: 'Cookies Alert',

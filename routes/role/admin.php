@@ -196,15 +196,18 @@ Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function () 
             Route::get('/seo', 'seo')->name('seo');
             Route::put('/seo/update/{seo}', 'seoUpdate')->name('seo.update');
 
+            // CustomCssJs route
+            Route::get('/customCssJs', 'customCssJs')->name('customCssJs');
+            Route::put('/customCssJs/update', 'customCssJsUpdate')->name('customCssJs.update');
+
             // Recaptcha route
             Route::get('/recaptcha', 'recaptcha')->name('recaptcha');
             Route::put('/recaptcha/update', 'recaptchaUpdate')->name('recaptcha.update');
 
             // Social Login route
-             // Payment Routes
-             Route::get('/social/login', 'socialLogin')->name('socialLogin');
-             Route::get('/social/login/data', 'socialLoginData')->name('socialLogin.data');
-             Route::put('/social/login/update', 'socialLoginUpdate')->name('socialLogin.update');
+            Route::get('/social/login', 'socialLogin')->name('socialLogin');
+            Route::get('/social/login/data', 'socialLoginData')->name('socialLogin.data');
+            Route::put('/social/login/update', 'socialLoginUpdate')->name('socialLogin.update');
 
             // SMTP Routes
             Route::get('/smtp', 'smtp')->name('smtp');
