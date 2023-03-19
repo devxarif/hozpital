@@ -38,6 +38,17 @@
                         </div>
                     </div>
                     <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
+                        <Label name="Conversion Rate" id="flw_conversion_rate" :hasError="form.errors.flw_conversion_rate"/>
+                        <div class="mt-2 sm:col-span-2 sm:mt-0">
+                            <div class="flex max-w-lg rounded-md shadow-sm">
+                                <span class="inline-flex items-center rounded-l-md border border-r-0 border-gray-300 p-2.5 text-gray-500 sm:text-sm">1 USD</span>
+                                <input type="text" id="username" autocomplete="off" class="block w-full min-w-0 flex-1 border-0 p-2.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6" v-model="form.flw_conversion_rate">
+                                <span class="inline-flex items-center rounded-r-md border border-l-0 border-gray-300 p-2.5 text-gray-500 sm:text-sm">NGN</span>
+                            </div>
+                            <ErrorMessage :name="form.errors.flw_conversion_rate" />
+                        </div>
+                    </div>
+                    <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
                         <Label name="Status" id="flw_status" :hasError="form.errors.flw_active"/>
                         <div class="mt-1 sm:col-span-2 sm:mt-0">
                             <label for="checked-toggle" class="inline-flex relative items-center cursor-pointer">
@@ -83,6 +94,7 @@ export default {
                 flw_public_key: this.data.flw_public_key,
                 flw_secret: this.data.flw_secret,
                 flw_secret_hash: this.data.flw_secret_hash,
+                flw_conversion_rate: this.data.flw_conversion_rate,
                 flw_active: this.data.flw_active ? 1 : 0,
                 provider: "flutterwave",
             }),
@@ -106,6 +118,7 @@ export default {
                 this.form.flw_public_key = this.data.flw_public_key;
                 this.form.flw_secret = this.data.flw_secret;
                 this.form.flw_secret_hash = this.data.flw_secret_hash;
+                this.form.flw_conversion_rate = this.data.flw_conversion_rate;
                 this.form.flw_active = this.data.flw_active ? 1 : 0;
             },
             deep: true,

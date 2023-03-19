@@ -19,7 +19,7 @@ return [
 
     'razorpay_key' => 'rzp_test_V7zKmP7nti57DU',
     'razorpay_secret' => '3cbGRKMlwixOtuLXXdaHkrfn',
-    'razorpay_conversion_rate' => 82.54,
+    'razorpay_conversion_rate' => '82.1',
     'razorpay_active' => true,
 
     'flw_public_key' => 'FLWPUBK_TEST-098b99f9b47a66c7cc6417f026ffd0f3-X',

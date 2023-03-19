@@ -29,6 +29,17 @@
                         </div>
                     </div>
                     <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
+                        <Label name="Conversion Rate" id="razorpay_conversion_rate" :hasError="form.errors.razorpay_conversion_rate"/>
+                        <div class="mt-2 sm:col-span-2 sm:mt-0">
+                            <div class="flex max-w-lg rounded-md shadow-sm">
+                                <span class="inline-flex items-center rounded-l-md border border-r-0 border-gray-300 p-2.5 text-gray-500 sm:text-sm">1 USD</span>
+                                <input type="text" id="username" autocomplete="off" class="block w-full min-w-0 flex-1 border-0 p-2.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6" v-model="form.razorpay_conversion_rate">
+                                <span class="inline-flex items-center rounded-r-md border border-l-0 border-gray-300 p-2.5 text-gray-500 sm:text-sm">INR</span>
+                            </div>
+                            <ErrorMessage :name="form.errors.razorpay_conversion_rate" />
+                        </div>
+                    </div>
+                    <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
                         <Label name="Status" id="razorpay_status" :hasError="form.errors.razorpay_active"/>
                         <div class="mt-1 sm:col-span-2 sm:mt-0">
                             <label for="checked-toggle" class="inline-flex relative items-center cursor-pointer">
@@ -72,6 +83,7 @@ export default {
             form: this.$inertia.form({
                 razorpay_key: this.data.razorpay_key,
                 razorpay_secret: this.data.razorpay_secret,
+                razorpay_conversion_rate: this.data.razorpay_conversion_rate,
                 razorpay_active: this.data.razorpay_active ? 1 : 0,
                 provider: "razorpay",
             }),
@@ -94,6 +106,7 @@ export default {
             handler() {
                 this.form.razorpay_key = this.data.razorpay_key;
                 this.form.razorpay_secret = this.data.razorpay_secret;
+                this.form.razorpay_conversion_rate = this.data.razorpay_conversion_rate;
                 this.form.razorpay_active = this.data.razorpay_active ? 1 : 0;
             },
             deep: true,

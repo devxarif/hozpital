@@ -112,7 +112,7 @@
                 <div class="mt-6 text-center text-sm text-gray-500">
                     <p>
                         or
-                        <a href="{{ route('website.products') }}" class="font-medium text-indigo-600 hover:text-indigo-500">
+                        <a href="{{ route('website.products') }}" class="font-medium text-blue-600 hover:text-blue-500">
                             Browse Products
                             <span aria-hidden="true"> →</span>
                         </a>

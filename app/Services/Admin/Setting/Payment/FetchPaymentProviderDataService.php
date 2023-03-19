@@ -40,7 +40,7 @@ class FetchPaymentProviderDataService
                     'flw_secret' => config('kodebazar.flw_secret'),
                     'flw_secret_hash' => config('kodebazar.flw_secret_hash'),
                     'flw_active' => config('kodebazar.flw_active'),
-                    'flq_conversion_rate' => config('kodebazar.flw_conversion_rate'),
+                    'flw_conversion_rate' => config('kodebazar.flw_conversion_rate'),
                 ];
                 break;
             case 'mollie':

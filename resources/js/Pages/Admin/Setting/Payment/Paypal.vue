@@ -86,10 +86,11 @@
                         <Label name="Conversion Rate" id="paypal_conversion_rate" :hasError="form.errors.paypal_conversion_rate"/>
                         <div class="mt-2 sm:col-span-2 sm:mt-0">
                             <div class="flex max-w-lg rounded-md shadow-sm">
-                                <span class="inline-flex items-center rounded-l-md border border-r-0 border-gray-300 px-3 text-gray-500 sm:text-sm">1 USD</span>
-                                <input type="text" id="username" autocomplete="off" class="block w-full min-w-0 flex-1 border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" v-model="form.paypal_conversion_rate">
-                                <span class="inline-flex items-center rounded-r-md border border-l-0 border-gray-300 px-3 text-gray-500 sm:text-sm">USD</span>
+                                <span class="inline-flex items-center rounded-l-md border border-r-0 border-gray-300 p-2.5 text-gray-500 sm:text-sm">1 USD</span>
+                                <input type="text" id="username" autocomplete="off" class="block w-full min-w-0 flex-1 border-0 p-2.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6" v-model="form.paypal_conversion_rate">
+                                <span class="inline-flex items-center rounded-r-md border border-l-0 border-gray-300 p-2.5 text-gray-500 sm:text-sm">USD</span>
                             </div>
+                            <ErrorMessage :name="form.errors.paypal_conversion_rate" />
                         </div>
                     </div>
                     <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
@@ -183,6 +184,7 @@ export default {
                     this.data.paypal_sandbox_client_secret;
                 this.form.paypal_active = this.data.paypal_active ? 1 : 0;
                 this.form.paypal_mode = this.data.paypal_mode;
+                this.form.paypal_conversion_rate = this.data.paypal_conversion_rate;
             },
             deep: true,
         },

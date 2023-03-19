@@ -19,6 +19,17 @@
                         </div>
                     </div>
                     <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
+                        <Label name="Conversion Rate" id="mollie_conversion_rate" :hasError="form.errors.mollie_conversion_rate"/>
+                        <div class="mt-2 sm:col-span-2 sm:mt-0">
+                            <div class="flex max-w-lg rounded-md shadow-sm">
+                                <span class="inline-flex items-center rounded-l-md border border-r-0 border-gray-300 p-2.5 text-gray-500 sm:text-sm">1 USD</span>
+                                <input type="text" id="username" autocomplete="off" class="block w-full min-w-0 flex-1 border-0 p-2.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6" v-model="form.mollie_conversion_rate">
+                                <span class="inline-flex items-center rounded-r-md border border-l-0 border-gray-300 p-2.5 text-gray-500 sm:text-sm">EUR</span>
+                            </div>
+                            <ErrorMessage :name="form.errors.mollie_conversion_rate" />
+                        </div>
+                    </div>
+                    <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
                         <Label name="Status" id="mollie_status" :hasError="form.errors.mollie_active"/>
                         <div class="mt-1 sm:col-span-2 sm:mt-0">
                             <label for="checked-toggle" class="inline-flex relative items-center cursor-pointer">
@@ -61,6 +72,7 @@ export default {
         return {
             form: this.$inertia.form({
                 mollie_key: this.data.mollie_key,
+                mollie_conversion_rate: this.data.mollie_conversion_rate,
                 mollie_active: this.data.mollie_active ? 1 : 0,
                 provider: "mollie",
             }),
@@ -82,6 +94,7 @@ export default {
         data: {
             handler() {
                 this.form.mollie_key = this.data.mollie_key;
+                this.form.mollie_conversion_rate = this.data.mollie_conversion_rate;
                 this.form.mollie_active = this.data.mollie_active ? 1 : 0;
             },
             deep: true,

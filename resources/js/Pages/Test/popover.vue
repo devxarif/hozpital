@@ -108,8 +108,8 @@
                                             <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
                                         </svg>
                                     </div>
-                                    <input id="link" class="pr-24 text-gray-600 bg-gray-100 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-12 text-sm border-gray-300 rounded border" value="https://alphad.co/Q4XY3HWXN95" />
-                                    <button class="absolute right-0 top-0 transition duration-150 ease-in-out hover:bg-indigo-600 focus:outline-none bg-indigo-700 rounded-r text-white px-5 h-10 text-sm">Copy</button>
+                                    <input id="link" class="pr-24 text-gray-600 bg-gray-100 focus:outline-none focus:border focus:border-blue-700 font-normal w-full h-10 flex items-center pl-12 text-sm border-gray-300 rounded border" value="https://alphad.co/Q4XY3HWXN95" />
+                                    <button class="absolute right-0 top-0 transition duration-150 ease-in-out hover:bg-blue-600 focus:outline-none bg-blue-700 rounded-r text-white px-5 h-10 text-sm">Copy</button>
                                 </div>
                             </div>
                         </div>

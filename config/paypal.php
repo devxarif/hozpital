@@ -3,7 +3,7 @@
 return [
     'active' => true,
     'mode' => 'sandbox', // Can only be 'sandbox' Or 'live'. If empty or invalid, 'live' will be used.
-    'paypal_conversion_rate' => 1,
+    'paypal_conversion_rate' => '1',
     'sandbox' => [
         'client_id' => 'Aa5dMaGzSheN82k47r5ZzdlbhGZavLnybxbcjBiKuQAM-2l27ANG7w3PHlzLwi2aNeyT7uCgPGTCrblg',
         'client_secret' => 'EE3hQ9KwbPOQ_PNZUjZ_prJgHc0NKVgWcV7qgZkGgm0oPB9M0XcmsixnC8g-PmAG8i46L_6YMRR1hs8O',

@@ -44,10 +44,21 @@
                         <div class="mt-1 sm:col-span-2 sm:mt-0">
                             <div class="max-w-lg rounded-md shadow-sm">
                                 <BaseInput v-model="form.midtrans_secret" placeholder="Secret Key" id="midtrans_secret" :hasError="form.errors.midtrans_secret"/>
-                                    <ErrorMessage :name="form.errors.midtrans_secret" />
-                                </div>
+                                <ErrorMessage :name="form.errors.midtrans_secret" />
                             </div>
                         </div>
+                    </div>
+                    <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
+                        <Label name="Conversion Rate" id="midtrans_conversion_rate" :hasError="form.errors.midtrans_conversion_rate"/>
+                        <div class="mt-2 sm:col-span-2 sm:mt-0">
+                            <div class="flex max-w-lg rounded-md shadow-sm">
+                                <span class="inline-flex items-center rounded-l-md border border-r-0 border-gray-300 p-2.5 text-gray-500 sm:text-sm">1 USD</span>
+                                <input type="text" id="username" autocomplete="off" class="block w-full min-w-0 flex-1 border-0 p-2.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6" v-model="form.midtrans_conversion_rate">
+                                <span class="inline-flex items-center rounded-r-md border border-l-0 border-gray-300 p-2.5 text-gray-500 sm:text-sm">IDR</span>
+                            </div>
+                            <ErrorMessage :name="form.errors.midtrans_conversion_rate" />
+                        </div>
+                    </div>
                     <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
                         <Label name="Status" id="midtrans_status" :hasError="form.errors.midtrans_active"/>
                         <div class="mt-1 sm:col-span-2 sm:mt-0">
@@ -93,6 +104,7 @@ export default {
                 midtrans_id: this.data.midtrans_id,
                 midtrans_key: this.data.midtrans_key,
                 midtrans_secret: this.data.midtrans_secret,
+                midtrans_conversion_rate: this.data.midtrans_conversion_rate,
                 midtrans_active: this.data.midtrans_active ? true : false,
                 midtrans_mode: this.data.midtrans_mode ? true : false,
                 provider: "midtrans",
@@ -124,6 +136,7 @@ export default {
                 this.form.midtrans_id = this.data.midtrans_id;
                 this.form.midtrans_key = this.data.midtrans_key;
                 this.form.midtrans_secret = this.data.midtrans_secret;
+                this.form.midtrans_conversion_rate = this.data.midtrans_conversion_rate;
                 this.form.midtrans_active = this.data.midtrans_active ? true : false;
                 this.form.midtrans_mode = this.data.midtrans_mode ? true : false;
             },
