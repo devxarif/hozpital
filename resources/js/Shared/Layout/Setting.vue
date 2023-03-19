@@ -38,8 +38,8 @@
 
 <script>
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faCog, faMoneyCheck, faEnvelope, faShieldHalved, faLanguage, faDollarSign, faScrewdriverWrench, faBell, faBars , faShuffle, faCookieBite, faMedal, faTasks, faRobot, faG, faUpload, faHistory} from '@fortawesome/free-solid-svg-icons'
-library.add(faCog, faMoneyCheck, faEnvelope, faShieldHalved, faLanguage, faDollarSign, faScrewdriverWrench, faBell, faBars, faShuffle, faCookieBite, faMedal, faTasks, faRobot, faG, faUpload, faHistory)
+import { faCog, faMoneyCheck, faEnvelope, faShieldHalved, faLanguage, faDollarSign, faScrewdriverWrench, faBell, faBars , faShuffle, faCookieBite, faMedal, faTasks, faRobot, faG, faUpload, faHistory, faInfo} from '@fortawesome/free-solid-svg-icons'
+library.add(faCog, faMoneyCheck, faEnvelope, faShieldHalved, faLanguage, faDollarSign, faScrewdriverWrench, faBell, faBars, faShuffle, faCookieBite, faMedal, faTasks, faRobot, faG, faUpload, faHistory, faInfo)
 
 export default {
     props:{
@@ -144,6 +144,11 @@ export default {
                     title: 'Upgrade System',
                     icon: 'fa-solid fa-upload',
                     route: 'admin.settings.roles.index'
+                },
+                {
+                    title: 'System Info',
+                    icon: 'fa-solid fa-info',
+                    route: 'admin.settings.systemInfo'
                 },
             ]
         };

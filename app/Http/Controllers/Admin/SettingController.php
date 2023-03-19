@@ -14,6 +14,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use App\Services\Admin\Setting\SMTPService;
+use App\Services\Admin\Setting\SystemInfoService;
 use App\Services\Admin\Setting\SendTestMailService;
 use App\Http\Requests\Admin\Setting\SMTPUpdateRequest;
 use App\Services\Admin\Setting\Payment\FetchPaymentProviderDataService;
@@ -63,6 +64,13 @@ class SettingController extends Controller
         $setting = Setting::first();
 
         return inertia('Admin/Setting/System', compact('setting'));
+    }
+
+    public function systemInfo()
+    {
+        $data['data'] = (new SystemInfoService)->execute();
+
+        return inertia('Admin/Setting/SystemInfo', $data);
     }
 
     public function cms()

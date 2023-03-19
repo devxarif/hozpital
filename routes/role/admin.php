@@ -182,6 +182,7 @@ Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function () 
             // System Setting
             Route::get('/system', 'system')->name('system');
             Route::post('/system/setting/update', 'systemSettingUpdate')->name('system.update');
+            Route::get('/system/info', 'systemInfo')->name('systemInfo');
 
             // cms routes
             Route::get('/cms', 'cms')->name('cms');

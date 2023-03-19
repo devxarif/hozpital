@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'app_version' => env('APP_VERSION', '1.0.0'),
+    'app_version' =>  '1.0.0',
 
     'google_api' => env('GOOGLE_API_KEY', 'AIzaSyAUPpqerpKmENrKzgpr_pzcmiSKE58cA7k'),
 
@@ -64,4 +64,8 @@ return [
     'vonage_secret' => env('VONAGE_SECRET'),
     'vonage_from_name' => env('VONAGE_FROM_NAME'),
     'vonage_active' => env('VONAGE_ACTIVE'),
+
+    // System Information
+    'minimum_php_version' => 8.1,
+    'minimum_mysql_version' => '5.6+',
 ];
