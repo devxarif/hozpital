@@ -23,7 +23,7 @@
                                             :tab-size="2"
                                             :extensions="extensions"
                                         />
-                                        <p class="mt-3">Write css styles without style tag like,&nbsp;<code class="text-red-500"> body {background: red}</code></p>
+                                        <p class="mt-3">Write css styles without &lt;style&gt; tag like,&nbsp;<code class="text-red-500"> body {background: red}</code></p>
                                     </div>
                                 </div>
                                 <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
@@ -38,7 +38,7 @@
                                                 :tab-size="2"
                                                 :extensions="extensions"
                                             />
-                                        <p class="mt-3">Write javascript code without script tag like,&nbsp;<code class="text-red-500"> console.log('something')</code></p>
+                                        <p class="mt-3">Write javascript code without &lt;script&gt; tag like,&nbsp;<code class="text-red-500"> console.log('something')</code></p>
                                     </div>
                                 </div>
                                 <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
@@ -53,10 +53,9 @@
                                                 :tab-size="2"
                                                 :extensions="extensions"
                                             />
-                                            <p class="mt-3">Write javascript code without script tag like,&nbsp;<code class="text-red-500"> console.log('something')</code></p>
+                                            <p class="mt-3">Write javascript code without &lt;script&gt; tag like,&nbsp;<code class="text-red-500"> console.log('something')</code></p>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
