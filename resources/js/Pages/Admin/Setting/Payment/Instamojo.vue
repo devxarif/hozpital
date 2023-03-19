@@ -15,7 +15,6 @@
                         <div class="mt-1 sm:col-span-2 sm:mt-0">
                             <div class="max-w-lg rounded-md shadow-sm">
                                 <BaseInput v-model="form.im_key" placeholder="API Key" id="im_key" :hasError="form.errors.im_key"/>
-                                <ErrorMessage :name="form.errors.im_key" />
                             </div>
                         </div>
                     </div>
@@ -24,7 +23,6 @@
                         <div class="mt-1 sm:col-span-2 sm:mt-0">
                             <div class="max-w-lg rounded-md shadow-sm">
                                 <BaseInput v-model="form.im_secret" placeholder="Auth Token" id="im_secret" :hasError="form.errors.im_secret"/>
-                                <ErrorMessage :name="form.errors.im_secret" />
                             </div>
                         </div>
                     </div>

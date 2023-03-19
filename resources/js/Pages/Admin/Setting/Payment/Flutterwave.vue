@@ -4,7 +4,6 @@
             <div class="space-y-6 sm:space-y-5">
                 <div>
                     <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">Flutterwave Payment</h2>
-
                     <p class="mt-1 max-w-2xl text-sm text-gray-500">This information will be displayed publicly so be
                         careful what you share.</p>
                 </div>
@@ -15,7 +14,6 @@
                         <div class="mt-1 sm:col-span-2 sm:mt-0">
                             <div class="max-w-lg rounded-md shadow-sm">
                                 <BaseInput v-model="form.flw_public_key" placeholder="Public Key" id="flw_public_key" :hasError="form.errors.flw_public_key"/>
-                                <ErrorMessage :name="form.errors.flw_public_key" />
                             </div>
                         </div>
                     </div>
@@ -24,7 +22,6 @@
                         <div class="mt-1 sm:col-span-2 sm:mt-0">
                             <div class="max-w-lg rounded-md shadow-sm">
                                 <BaseInput v-model="form.flw_secret" placeholder="Secret Key" id="flw_secret" :hasError="form.errors.flw_secret"/>
-                                <ErrorMessage :name="form.errors.flw_secret" />
                             </div>
                         </div>
                     </div>
@@ -33,7 +30,6 @@
                         <div class="mt-1 sm:col-span-2 sm:mt-0">
                             <div class="max-w-lg rounded-md shadow-sm">
                                 <BaseInput v-model="form.flw_secret_hash" placeholder="Encryption Hash" id="flw_secret_hash" :hasError="form.errors.flw_secret_hash"/>
-                                <ErrorMessage :name="form.errors.flw_secret_hash" />
                             </div>
                         </div>
                     </div>

@@ -15,7 +15,6 @@
                         <div class="mt-1 sm:col-span-2 sm:mt-0">
                             <div class="max-w-lg rounded-md shadow-sm">
                                 <BaseInput v-model="form.linkedin_id" placeholder="Client ID" id="linkedin_id" :hasError="form.errors.linkedin_id"/>
-                                <ErrorMessage :name="form.errors.linkedin_id" />
                             </div>
                         </div>
                     </div>
@@ -24,7 +23,6 @@
                         <div class="mt-1 sm:col-span-2 sm:mt-0">
                             <div class="max-w-lg rounded-md shadow-sm">
                                 <BaseInput v-model="form.linkedin_secret" placeholder="Client Secret" id="linkedin_secret" :hasError="form.errors.linkedin_secret"/>
-                                <ErrorMessage :name="form.errors.linkedin_secret" />
                             </div>
                         </div>
                     </div>

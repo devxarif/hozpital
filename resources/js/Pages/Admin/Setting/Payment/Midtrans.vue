@@ -26,7 +26,6 @@
                         <div class="mt-1 sm:col-span-2 sm:mt-0">
                             <div class="max-w-lg rounded-md shadow-sm">
                                 <BaseInput v-model="form.midtrans_id" placeholder="Merchant ID" id="midtrans_id" :hasError="form.errors.midtrans_id"/>
-                                <ErrorMessage :name="form.errors.midtrans_id" />
                             </div>
                         </div>
                     </div>
@@ -35,7 +34,6 @@
                         <div class="mt-1 sm:col-span-2 sm:mt-0">
                             <div class="max-w-lg rounded-md shadow-sm">
                                 <BaseInput v-model="form.midtrans_key" placeholder="Client Key" id="midtrans_key" :hasError="form.errors.midtrans_key"/>
-                                <ErrorMessage :name="form.errors.midtrans_key" />
                             </div>
                         </div>
                     </div>
@@ -44,7 +42,6 @@
                         <div class="mt-1 sm:col-span-2 sm:mt-0">
                             <div class="max-w-lg rounded-md shadow-sm">
                                 <BaseInput v-model="form.midtrans_secret" placeholder="Secret Key" id="midtrans_secret" :hasError="form.errors.midtrans_secret"/>
-                                <ErrorMessage :name="form.errors.midtrans_secret" />
                             </div>
                         </div>
                     </div>

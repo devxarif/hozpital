@@ -15,7 +15,6 @@
                         <div class="mt-1 sm:col-span-2 sm:mt-0">
                             <div class="max-w-lg rounded-md shadow-sm">
                                 <BaseInput v-model="form.twitter_id" placeholder="Client ID" id="twitter_id" :hasError="form.errors.twitter_id"/>
-                                <ErrorMessage :name="form.errors.twitter_id" />
                             </div>
                         </div>
                     </div>
@@ -24,7 +23,6 @@
                         <div class="mt-1 sm:col-span-2 sm:mt-0">
                             <div class="max-w-lg rounded-md shadow-sm">
                                 <BaseInput v-model="form.twitter_secret" placeholder="Name" id="twitter_secret" :hasError="form.errors.twitter_secret"/>
-                                <ErrorMessage :name="form.errors.twitter_secret" />
                             </div>
                         </div>
                     </div>

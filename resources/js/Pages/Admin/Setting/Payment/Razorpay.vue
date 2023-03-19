@@ -15,7 +15,6 @@
                         <div class="mt-1 sm:col-span-2 sm:mt-0">
                             <div class="max-w-lg rounded-md shadow-sm">
                                 <BaseInput v-model="form.razorpay_key" placeholder="Public Key" id="razorpay_key" :hasError="form.errors.razorpay_key"/>
-                                <ErrorMessage :name="form.errors.razorpay_key" />
                             </div>
                         </div>
                     </div>
@@ -24,7 +23,6 @@
                         <div class="mt-1 sm:col-span-2 sm:mt-0">
                             <div class="max-w-lg rounded-md shadow-sm">
                                 <BaseInput v-model="form.razorpay_secret" placeholder="Public Key" id="razorpay_secret" :hasError="form.errors.razorpay_secret"/>
-                                <ErrorMessage :name="form.errors.razorpay_secret" />
                             </div>
                         </div>
                     </div>

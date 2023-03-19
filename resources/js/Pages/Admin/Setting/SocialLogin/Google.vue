@@ -15,7 +15,6 @@
                         <div class="mt-1 sm:col-span-2 sm:mt-0">
                             <div class="max-w-lg rounded-md shadow-sm">
                                 <BaseInput v-model="form.google_id" placeholder="Client ID" id="google_id" :hasError="form.errors.google_id"/>
-                                <ErrorMessage :name="form.errors.google_id" />
                             </div>
                         </div>
                     </div>
@@ -24,7 +23,6 @@
                         <div class="mt-1 sm:col-span-2 sm:mt-0">
                             <div class="max-w-lg rounded-md shadow-sm">
                                 <BaseInput v-model="form.google_secret" placeholder="Client Secret" id="google_secret" :hasError="form.errors.google_secret"/>
-                                <ErrorMessage :name="form.errors.google_secret" />
                             </div>
                         </div>
                     </div>

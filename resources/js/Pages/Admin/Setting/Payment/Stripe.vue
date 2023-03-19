@@ -15,7 +15,6 @@
                         <div class="mt-1 sm:col-span-2 sm:mt-0">
                             <div class="max-w-lg rounded-md shadow-sm">
                                 <BaseInput v-model="form.stripe_key" placeholder="Publishable key" id="stripe_key" :hasError="form.errors.stripe_key"/>
-                                <ErrorMessage :name="form.errors.stripe_key" />
                             </div>
                         </div>
                     </div>
@@ -24,7 +23,6 @@
                         <div class="mt-1 sm:col-span-2 sm:mt-0">
                             <div class="max-w-lg rounded-md shadow-sm">
                                 <BaseInput v-model="form.stripe_secret" placeholder="Secret key" id="stripe_secret" :hasError="form.errors.stripe_secret"/>
-                                <ErrorMessage :name="form.errors.stripe_secret" />
                             </div>
                         </div>
                     </div>
