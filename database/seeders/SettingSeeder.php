@@ -34,10 +34,6 @@ class SettingSeeder extends Seeder
         $setting->linkedin = 'https://www.linkedin.com/';
         $setting->pinterest = 'https://www.pinterest.com/';
 
-        // Google reCaptcha
-        $setting->recaptcha_site_key = "6Lc6aGgfAAAAAP0JZTtfMKjGyQ0M8AQ0JfW5oPlY";
-        $setting->recaptcha_active = true;
-
         // Cookies alert
         $setting->cookies_alert_active = true;
         $setting->cookies_alert_message = 'This website uses cookies to ensure you get the best experience on our website.';

@@ -32,10 +32,6 @@ class CreateSettingsTable extends Migration
             $table->string('linkedin')->nullable();
             $table->string('pinterest')->nullable();
 
-            // Google reCaptcha
-            $table->string('recaptcha_site_key')->nullable();
-            $table->boolean('recaptcha_active')->default(false);
-
             // Custom CSS & JS
             $table->longText('custom_css')->nullable();
             $table->longText('custom_header_script')->nullable();

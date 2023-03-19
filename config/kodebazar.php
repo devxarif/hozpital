@@ -50,6 +50,10 @@ return [
     'im_conversion_rate' => 82.54,
     'im_active' => false,
 
+    // Recaptcha
+    'recaptcha_site_key' => '6Lc6aGgfAAAAAP0JZTtfMKjGyQ0M8AQ0JfW5oPlY',
+    'recaptcha_active' => false,
+
     // SMS Provider
     'twilio_secret' => env('TWILIO_SID'),
     'twilio_token' => env('TWILIO_TOKEN'),

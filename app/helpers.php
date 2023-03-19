@@ -413,9 +413,9 @@ if (! function_exists('setConfig')) {
     {
         Config::write($key, $value);
 
-        if (file_exists(App::getCachedConfigPath())) {
-            Artisan::call('config:cache');
-        }
+        // if (file_exists(App::getCachedConfigPath())) {
+        //     Artisan::call('config:cache');
+        // }
     }
 }
 

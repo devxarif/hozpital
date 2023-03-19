@@ -15,11 +15,9 @@ class AuthController extends Controller
             return redirect()->route('dashboard');
         }
 
-        $recaptcha_setting = setting(['recaptcha_active', 'recaptcha_site_key']);
-
         return inertia('Auth/Login', [
-            'recaptcha_site_key' => $recaptcha_setting->recaptcha_site_key,
-            'recaptcha_active' => $recaptcha_setting->recaptcha_active,
+            'recaptcha_site_key' => config('kodebazar.recaptcha_site_key'),
+            'recaptcha_active' => config('kodebazar.recaptcha_active'),
         ]);
     }
 
