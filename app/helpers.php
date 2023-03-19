@@ -765,6 +765,7 @@ if (! function_exists('lang_path')) {
     }
 }
 
+if (! function_exists('lang_path')) {
 function admin_url($to = null, $params = null)
 {
     // Get dashboard prefix
@@ -772,4 +773,5 @@ function admin_url($to = null, $params = null)
 
     // Return url
     return !is_null($to) ? url("$prefix/$to", $params) : url("$prefix");
+}
 }

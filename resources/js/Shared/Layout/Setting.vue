@@ -13,10 +13,18 @@
         <div class="grid grid-cols-12 gap-3">
             <ol v-if="sidebar" class="col-span-2">
                 <li class="mb-1" v-for="(sidebar, index) in sidebars" :key="index">
-                    <Link :href="route(sidebar.route)" class="items-center p-3 flex bg-white border border-gray-200 rounded-lg shadow-sm" :class="route().current(sidebar.route) ? 'text-blue-500 font-bold':''">
-                        <font-awesome-icon :icon="sidebar.icon" class="h-5 w-5 mr-2" :class="route().current(sidebar.route) ? 'text-blue-500':''"/>
-                        <span>{{ __(sidebar.title) }}</span>
-                    </Link>
+                    <template v-if="sidebar.route">
+                        <Link :href="route(sidebar.route)" class="items-center p-3 flex bg-white border border-gray-200 rounded-lg shadow-sm" :class="route().current(sidebar.route) ? 'text-blue-500 font-bold':''">
+                            <font-awesome-icon :icon="sidebar.icon" class="h-5 w-5 mr-2" :class="route().current(sidebar.route) ? 'text-blue-500':''"/>
+                            <span>{{ __(sidebar.title) }}</span>
+                        </Link>
+                    </template>
+                    <template v-else>
+                        <a :href="sidebar.link" target="_blank" class="items-center p-3 flex bg-white border border-gray-200 rounded-lg shadow-sm">
+                            <font-awesome-icon :icon="sidebar.icon" class="h-5 w-5 mr-2"/>
+                            <span>{{ __(sidebar.title) }}</span>
+                        </a>
+                    </template>
                 </li>
             </ol>
 
@@ -30,8 +38,8 @@
 
 <script>
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faCog, faMoneyCheck, faEnvelope, faShieldHalved, faLanguage, faDollarSign, faScrewdriverWrench, faBell, faBars , faShuffle, faCookieBite, faMedal, faTasks, faRobot, faG, faUpload} from '@fortawesome/free-solid-svg-icons'
-library.add(faCog, faMoneyCheck, faEnvelope, faShieldHalved, faLanguage, faDollarSign, faScrewdriverWrench, faBell, faBars, faShuffle, faCookieBite, faMedal, faTasks, faRobot, faG, faUpload)
+import { faCog, faMoneyCheck, faEnvelope, faShieldHalved, faLanguage, faDollarSign, faScrewdriverWrench, faBell, faBars , faShuffle, faCookieBite, faMedal, faTasks, faRobot, faG, faUpload, faHistory} from '@fortawesome/free-solid-svg-icons'
+library.add(faCog, faMoneyCheck, faEnvelope, faShieldHalved, faLanguage, faDollarSign, faScrewdriverWrench, faBell, faBars, faShuffle, faCookieBite, faMedal, faTasks, faRobot, faG, faUpload, faHistory)
 
 export default {
     props:{
@@ -128,9 +136,9 @@ export default {
                     route: 'admin.settings.roles.index'
                 },
                 {
-                    title: 'Log',
-                    icon: 'fa-solid fa-dollar-sign',
-                    route: 'admin.settings.roles.index'
+                    title: 'Log Viewer',
+                    icon: 'fa-solid fa-history',
+                    link: '/log-viewer'
                 },
                 {
                     title: 'Upgrade System',
