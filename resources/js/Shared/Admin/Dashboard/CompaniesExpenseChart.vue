@@ -35,10 +35,7 @@ export default {
         apexchart: VueApexCharts,
     },
     props:{
-        data: {
-            type: Object,
-            required: true,
-        },
+        data: Object,
     },
     data() {
         return {

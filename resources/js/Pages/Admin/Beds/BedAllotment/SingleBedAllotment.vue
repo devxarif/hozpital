@@ -125,10 +125,7 @@ import AvailableBedIcon from "@/Shared/Icons/AvailableBedIcon.vue";
 
 export default {
     props:{
-        bed: {
-            type: Object,
-            required: true
-        }
+        bed: Object,
     },
     components:{
         AllotedBedIcon,

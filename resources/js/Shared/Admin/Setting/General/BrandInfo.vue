@@ -40,13 +40,27 @@
                     <InfoTip :title="__('Recommended Size') +' - 155 x 55'"/>
                 </Label> <br>
                 <input accept="image/jpeg, image/jpg/ image/png, image/svg" type="file"
-                @change="onLogoChange"
+                @change="onDarkLogoChange"
 
-                    :class="{'is-invalid':form.errors.app_logo}">
-                <ErrorMessage :name="form.errors.app_logo" />
+                    :class="{'is-invalid':form.errors.app_dark_logo}">
+                <ErrorMessage :name="form.errors.app_dark_logo" />
                 <div class="mt-4 bg-light">
                     <Label name="Preview')" :required="false" /> <br>
-                    <img :src="app_logo_preview" alt="logo" height="50" width="150" class="object-cover-fit">
+                    <img :src="app_dark_logo_preview" alt="logo" height="50" width="150" class="object-cover-fit">
+                </div>
+            </div>
+            <div class="col-md-4 form-group">
+                <Label name="App Dark Logo')" :required="false">
+                    <InfoTip :title="__('Recommended Size') +' - 155 x 55'"/>
+                </Label> <br>
+                <input accept="image/jpeg, image/jpg/ image/png, image/svg" type="file"
+                @change="onLightLogoChange"
+
+                    :class="{'is-invalid':form.errors.app_light_logo}">
+                <ErrorMessage :name="form.errors.app_light_logo" />
+                <div class="mt-4 bg-light">
+                    <Label name="Preview')" :required="false" /> <br>
+                    <img :src="app_light_logo_preview" alt="logo" height="50" width="150" class="object-cover-fit">
                 </div>
             </div>
             <div class="col-md-4 form-group">
@@ -86,12 +100,15 @@ export default {
                 app_contact_number: this.setting.app_contact_number,
                 app_copyright: this.setting.app_copyright,
                 app_location: this.setting.app_location,
-                app_logo: "",
+                app_dark_logo: "",
+                app_light_logo: "",
                 app_favicon: "",
                 type: "brand_info",
             }),
 
-            app_logo_preview: this.setting.app_logo,
+
+            app_dark_logo_preview: this.setting.app_dark_logo,
+            app_light_logo_preview: this.setting.app_light_logo,
             app_favicon_preview: this.setting.app_favicon,
         };
     },
@@ -99,10 +116,15 @@ export default {
         saveData() {
             this.form.post(route("settings.general.update"));
         },
-        onLogoChange(e) {
+        onDarkLogoChange(e) {
             const file = e.target.files[0];
-            this.app_logo_preview = URL.createObjectURL(file);
-            this.form.app_logo = file;
+            this.app_dark_logo_preview = URL.createObjectURL(file);
+            this.form.app_dark_logo = file;
+        },
+        onLightLogoChange(e) {
+            const file = e.target.files[0];
+            this.app_light_logo_preview = URL.createObjectURL(file);
+            this.form.app_light_logo = file;
         },
         onFaviconChange(e) {
             const file = e.target.files[0];
@@ -118,7 +140,8 @@ export default {
                 this.app_contact_number = this.setting.app_contact_number;
                 this.app_copyright = this.setting.app_copyright;
                 this.app_location = this.setting.app_location;
-                this.app_logo_preview = this.setting.app_logo;
+                this.app_dark_logo_preview = this.setting.app_dark_logo;
+                this.app_light_logo_preview = this.setting.app_light_logo;
                 this.app_favicon_preview = this.setting.app_favicon;
             },
             deep: true,

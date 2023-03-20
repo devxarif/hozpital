@@ -79,7 +79,7 @@ class HandleInertiaRequests extends Middleware
           $data['app_version'] = config('kodebazar.app_version');
 
           // Settings
-          $data['setting'] = auth()->check() ? Setting::first() : [];
+          $data['setting'] = Setting::first();
 
           return array_merge(parent::share($request), $data);
     }

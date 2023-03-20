@@ -1,9 +1,9 @@
 <template>
     <section class="bg-gray-100 ">
         <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-            <a class="flex justify-center items-center mb-4 font-semibold lg:mb-4" href="/login">
-                <img alt="app logo" src="/assets/img/hozpital_red_logo.svg" class="h-20 w-auto">
-            </a>
+            <Link class="flex justify-center items-center mb-4 font-semibold lg:mb-4" :href="route('login')">
+                <img alt="app logo" :src="$page.props.setting.app_dark_logo" class="h-20 w-auto">
+            </Link>
             <div class="w-full bg-white rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0  ">
                 <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
                     <h1 class="text-2xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl ">

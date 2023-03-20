@@ -28,9 +28,7 @@
         <!-- Sidebar component, swap this element with another sidebar if you like -->
         <div class="flex min-h-0 flex-1 flex-col bg-gray-800">
           <div class="flex flex-1 flex-col overflow-y-auto pt-5 pb-4">
-            <div class="flex flex-shrink-0 items-center px-4">
-              <img class="h-8 w-auto" src="/assets/img/hozpital_logo.svg" alt="Your Company">
-            </div>
+            <AppLogo/>
             <nav class="mt-5 flex-1 space-y-1 px-2">
 
                 <a href="javascript:void(0)" class="bg-gray-900 text-white group flex items-center px-2 py-2 text-sm font-medium rounded-md" x-state:on="Current" x-state:off="Default" x-state-description="Current: &quot;bg-gray-900 text-white&quot;, Default: &quot;text-gray-300 hover:bg-gray-700 hover:text-white&quot;">
@@ -123,7 +121,7 @@
       TransitionChild,
       TransitionRoot,
     } from '@headlessui/vue'
-
+    import AppLogo from '@/Shared/Partials/Sidebar/AppLogo.vue'
   export default {
       components: {
           Dialog,
@@ -134,6 +132,7 @@
           MenuItems,
           TransitionChild,
           TransitionRoot,
+          AppLogo,
       },
       data(){
           return {

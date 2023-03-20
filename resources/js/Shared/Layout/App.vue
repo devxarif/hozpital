@@ -182,10 +182,7 @@
 
     export default {
         props:{
-            title: {
-                type: String,
-                default: ""
-            }
+            title: String,
         },
         components: {
             Header,

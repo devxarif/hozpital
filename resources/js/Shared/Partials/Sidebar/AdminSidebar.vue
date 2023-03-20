@@ -4,9 +4,7 @@
     <div class="hidden md:fixed md:inset-y-0 md:flex md:w-64 md:flex-col">
       <div class="flex min-h-0 flex-1 flex-col bg-slate-800">
         <div class="flex flex-1 flex-col overflow-y-auto pt-5 pb-4">
-          <div class="flex flex-shrink-0 items-center px-4">
-            <img class="h-16 w-full" src="/assets/img/hozpital_logo.svg" alt="Your Company">
-          </div>
+          <AppLogo />
           <nav class="mt-5 flex-1 space-y-1 px-2">
                 <NavItem title="Dashboard" :href="route('dashboard')" :active="route().current('dashboard')">
                     <template v-slot:icon>
@@ -229,13 +227,14 @@
     library.add(faHome, faCircle)
 
     import HomeIcon from '@/Shared/Icons/HomeIcon.vue'
-
+    import AppLogo from '@/Shared/Partials/Sidebar/AppLogo.vue'
 
 export default {
     components: {
         faCircle,
         faHome,
         FontAwesomeIcon,
+        AppLogo,
 
         HomeIcon,
 

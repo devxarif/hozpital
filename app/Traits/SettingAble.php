@@ -49,10 +49,16 @@ trait SettingAble
         $data['app_copyright'] = $request->app_copyright;
         $data['app_location'] = $request->app_location;
 
-        if ($request->hasFile('app_logo') && $request->file('app_logo')->isValid()) {
-            $request->validate(['app_logo' => 'image|mimes:jpeg,png,jpg']);
-            $url = uploadFileToPublic('app_logo', $request->app_logo);
-            $data['app_logo'] = $url;
+        if ($request->hasFile('app_dark_logo') && $request->file('app_dark_logo')->isValid()) {
+            $request->validate(['app_dark_logo' => 'image|mimes:jpeg,png,jpg']);
+            $url = uploadFileToPublic('app_dark_logo', $request->app_dark_logo);
+            $data['app_dark_logo'] = $url;
+        }
+
+        if ($request->hasFile('app_light_logo') && $request->file('app_light_logo')->isValid()) {
+            $request->validate(['app_light_logo' => 'image|mimes:jpeg,png,jpg']);
+            $url = uploadFileToPublic('app_light_logo', $request->app_light_logo);
+            $data['app_light_logo'] = $url;
         }
 
         if ($request->hasFile('app_favicon') && $request->file('app_favicon')->isValid()) {

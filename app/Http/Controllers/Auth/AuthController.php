@@ -26,7 +26,7 @@ class AuthController extends Controller
         $request->validate([
             'username' => 'required',
             'password' => 'required',
-            'recaptcha' => setting('recaptcha_active') ? new RecaptchaValidationRule($request->recaptcha) : '',
+            'recaptcha' => config('kodebazar.recaptcha_active') ? new RecaptchaValidationRule($request->recaptcha) : '',
         ]);
 
         if (filter_var(request()->input('username'), FILTER_VALIDATE_EMAIL)) {

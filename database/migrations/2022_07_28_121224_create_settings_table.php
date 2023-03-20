@@ -20,7 +20,8 @@ class CreateSettingsTable extends Migration
             $table->string('app_copyright')->nullable();
             $table->string('app_contact_number')->nullable();
             $table->string('app_location')->nullable();
-            $table->string('app_logo')->nullable();
+            $table->string('app_dark_logo')->nullable();
+            $table->string('app_light_logo')->nullable();
             $table->string('app_favicon')->nullable();
 
             // social links

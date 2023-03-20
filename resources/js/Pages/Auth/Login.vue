@@ -2,9 +2,9 @@
     <div class="flex flex-col min-h-screen bg-white ">
         <main class="bg-gray-50">
             <div class="flex flex-col justify-center items-center py-8 px-6 mx-auto md:h-screen">
-                <a class="flex justify-center items-center mb-4 font-semibold lg:mb-4" href="/login">
-                    <img alt="app logo" src="/assets/img/hozpital_red_logo.svg" class="h-20 w-auto">
-                </a>
+                <Link class="flex justify-center items-center mb-4 font-semibold lg:mb-4" :href="route('login')">
+                    <img alt="app logo" :src="$page.props.setting.app_dark_logo" class="h-20 w-auto">
+                </Link>
                 <div class="justify-center items-center w-full bg-white rounded-lg shadow lg:flex md:mt-0 lg:max-w-screen-sm xl:p-0 ">
                     <div class="p-6 w-full sm:p-8 lg:p-10">
                         <h1 class="mb-3 text-2xl font-bold text-gray-900 lg:text-3xl">

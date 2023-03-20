@@ -11,12 +11,14 @@ use App\Traits\SettingAble;
 use Illuminate\Http\Request;
 use App\Mail\Admin\SmtpTestMail;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Setting\GeneralSettingUpdateRequest;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use App\Services\Admin\Setting\SMTPService;
 use App\Services\Admin\Setting\SystemInfoService;
 use App\Services\Admin\Setting\SendTestMailService;
 use App\Http\Requests\Admin\Setting\SMTPUpdateRequest;
+use App\Services\Admin\Setting\GeneralSettingUpdateService;
 use App\Services\Admin\Setting\Payment\FetchPaymentProviderDataService;
 use App\Services\Admin\Setting\Payment\UpdatePaymentProviderDataService;
 use App\Services\Admin\Setting\SocialLogin\FetchSocialProviderDataService;
@@ -36,27 +38,29 @@ class SettingController extends Controller
 
     public function generalSettingUpdate(Request $request)
     {
-        switch ($request->type) {
-            case 'brand_info':
-                $this->updateBrandInfo($request);
-                break;
-            case 'social_media':
-                $this->updateSocialMedia($request);
-                break;
-            case 'sms':
-                $this->updateSmsSetting($request);
-                break;
+        (new GeneralSettingUpdateService())->execute($request);
 
-            default:
-                session()->flash('error', 'Something went wrong!');
-
-                return back();
-                break;
-        }
-
-        session()->flash('success', 'Setting updated successfully!');
-
+        session()->flash('success', 'General Setting updated successfully!');
         return back();
+        // switch ($request->type) {
+        //     case 'brand_info':
+        //         $this->updateBrandInfo($request);
+        //         break;
+        //     case 'social_media':
+        //         $this->updateSocialMedia($request);
+        //         break;
+        //     case 'sms':
+        //         $this->updateSmsSetting($request);
+        //         break;
+
+        //     default:
+        //         session()->flash('error', 'Something went wrong!');
+
+        //         return back();
+        //         break;
+        // }
+
+
     }
 
     public function system()

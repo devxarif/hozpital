@@ -71,8 +71,7 @@
                     <div class="flex items-center justify-between py-6 md:justify-start md:space-x-10">
                         <div class="flex justify-start lg:w-0 lg:flex-1">
                             <a href="{{ route('website.home') }}">
-                                <span class="sr-only">Your Company</span>
-                                <img class="h-14 w-auto" src="{{ asset('assets/img/hozpital_red_logo.svg') }}" alt="">
+                                <img class="h-14 w-auto" src="{{ $setting->app_dark_logo }}" alt="app_logo">
                             </a>
                         </div>
                         <div class="-my-2 -mr-2 md:hidden">
@@ -235,7 +234,7 @@
                   </svg>
                 </a>
               </div>
-              <p class="mt-10 text-center text-xs leading-5 text-gray-500">&copy; 2020 Your Company, Inc. All rights reserved.</p>
+              <p class="mt-10 text-center text-xs leading-5 text-gray-500">{{ $setting->app_copyright }}</p>
             </div>
           </footer>
 

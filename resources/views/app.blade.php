@@ -7,6 +7,7 @@
     @routes
 	@vite('resources/css/app.css')
     <link rel="stylesheet" href="{{ asset('assets/css/tailwind.output.css') }}">
+    <link rel="icon" type="image/*" href="{{ $setting->app_favicon }}" id="favicon">
 </head>
 <body class="antialiased bg-slate-50">
     {{-- Preloader  --}}

@@ -46,7 +46,7 @@
       </main>
       <footer class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="border-t border-gray-200 py-12 text-center md:flex md:justify-between">
-          <p class="text-base text-gray-400">&copy; Your Company, Inc. All rights reserved.</p>
+          <p class="text-base text-gray-400">{{ $page.props.setting.app_copyright }}</p>
           <div class="mt-6 flex justify-center space-x-8 md:mt-0">
             <a v-for="(item, itemIdx) in social" :key="itemIdx" :href="item.href" class="inline-flex text-gray-400 hover:text-gray-500">
               <span class="sr-only">{{ item.name }}</span>

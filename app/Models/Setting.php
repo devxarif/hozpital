@@ -41,10 +41,19 @@ class Setting extends Model
         return config('kodebazar.currency_symbol_position', 'left');
     }
 
-    public function getAppLogoAttribute($value)
+    public function getAppDarkLogoAttribute($value)
     {
         if (is_null($value)) {
             return asset('assets/img/hozpital_red_logo.svg');
+        }
+
+        return asset($value);
+    }
+
+    public function getAppLightLogoAttribute($value)
+    {
+        if (is_null($value)) {
+            return asset('assets/img/hozpital_logo.svg');
         }
 
         return asset($value);
