@@ -13,11 +13,11 @@ class SystemInfoService
 
         // System Information
         $current_php_version = phpversion();
-        $minimum_php_version = config('kodebazar.minimum_php_version');
+        $minimum_php_version = 8.1;
         $matched_php_requirement = version_compare($current_php_version, $minimum_php_version, '>=');
 
         $current_mysql_version = \DB::select('select version()')[0]->{'version()'};
-        $minimum_mysql_version = config('kodebazar.minimum_mysql_version');
+        $minimum_mysql_version = '5.6+';
         $matched_mysql_requirement = version_compare($current_mysql_version, $minimum_mysql_version, '>=');
 
         $memory_limit = ini_get('memory_limit');

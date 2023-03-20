@@ -89,6 +89,47 @@ Route::get('/test2', function () {
 
 Route::get('/test', function () {
 
+
+
+
+    $currency_decimal_places = config('kodebazar.currency_decimal_places');
+    $currency_decimal_separator = config('kodebazar.currency_decimal_separator');
+    $currency_thousand_separator = config('kodebazar.currency_thousand_separator');
+    // $app_currency_format = config('kodebazar.currency_format');
+
+    $amount = 123456789123456789;
+
+    return number_format($amount, $currency_decimal_places, $currency_decimal_separator, $currency_thousand_separator);
+
+    $format = [
+        number_format($amount, $currency_decimal_places, $currency_decimal_separator, $currency_thousand_separator),
+        number_format($amount),
+        number_format($amount, $currency_decimal_places, $currency_decimal_separator, $currency_thousand_separator),
+        number_format($amount, $currency_decimal_places, '.', $currency_thousand_separator),
+        number_format($amount, $currency_decimal_places, $currency_decimal_separator, $currency_thousand_separator),
+    ];
+    // $format = [
+    //     '12345678.00' => number_format($amount, 0, '.', ''),
+    //     '12,345,678.00' => number_format($amount),
+    //     '1,23,45,678.00' => number_format($amount, 2, '.', ','),
+    //     '12.345.678.00' => number_format($amount, 2, '.', '.'),
+    //     '12.345.678,00' => number_format($amount, 2, ',', '.'),
+    // ];
+
+    return $format;
+    // return $format[$app_currency_format];
+
+
+
+
+    checkSetConfig('kodebazar.time_format', 'h:i A');
+
+    return config('kodebazar.date_format');
+
+
+
+    return "m/d/Y (".formatTime(now(), 'm/d/Y').')';
+
     $provider = 'linkedin';
     return (new FetchSocialProviderDataService)->execute($provider);
 

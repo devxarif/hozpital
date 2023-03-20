@@ -7,11 +7,9 @@
                         <div class="space-y-6 sm:space-y-5">
                             <div>
                                 <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">Basic Setting</h2>
-
                                 <p class="mt-1 max-w-2xl text-sm text-gray-500">This information will be displayed
                                     publicly so be careful what you share.</p>
                             </div>
-
                             <div class="space-y-6 sm:space-y-5">
                                 <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
                                     <Label name="Hospital Name" id="app_name" :hasError="form.errors.app_name" />
@@ -84,12 +82,9 @@
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
-
                     </div>
-
                     <div class="pt-5">
                         <div class="flex justify-end">
                             <button :disabled="form.processing" type="submit"

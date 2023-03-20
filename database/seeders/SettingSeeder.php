@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Setting;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class SettingSeeder extends Seeder
 {
@@ -40,5 +41,16 @@ class SettingSeeder extends Seeder
         $setting->cookies_alert_button_text = 'Got it';
 
         $setting->save();
+
+        // Timezone table
+        $path = base_path('resources/json/timezones.json');
+        $timezones = json_decode(file_get_contents($path), true);
+
+        foreach ($timezones as $zone) {
+            DB::table('timezones')->insert([
+                'value' => $zone['value'],
+                'label' => $zone['label']
+            ]);
+        }
     }
 }

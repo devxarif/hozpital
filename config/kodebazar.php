@@ -66,7 +66,18 @@ return [
     'vonage_from_name' => env('VONAGE_FROM_NAME'),
     'vonage_active' => env('VONAGE_ACTIVE'),
 
-    // System Information
-    'minimum_php_version' => 8.1,
-    'minimum_mysql_version' => '5.6+',
+    // System Setting
+    'default_language' => 'en',
+    'timezone' => 'UTC',
+    'date_format' => 'Y F, d',
+    'time_format' => 'h:i A',
+    'currency_thousand_separator' => ' ',
+    'currency_decimal_separator' => '',
+    'currency_decimal_places' => '2',
+    'rows_per_page' => 20,
+    'start_day_of_week' => 0,
+    // 'default_currency' => 'USD',
+    // 'default_currency_symbol' => '$',
+    // 'default_currency_symbol_position' => 'left',
+
 ];
