@@ -18,7 +18,7 @@ class CmsSeeder extends Seeder
 
         // Home Page
         $cms->home_banner_title = 'Leave Management System (SAAS)';
-        $cms->home_banner_description = 'Leaving - Leave Management System SPA (SAAS) is a web application that helps you to manage your organization leaves.';
+        $cms->home_banner_description = 'Hozpital - Leave Management System SPA (SAAS) is a web application that helps you to manage your organization leaves.';
         $cms->home_banner_button_text = 'Get Started';
         $cms->home_banner_button2_text = ' Learn More';
         // $cms->home_banner_button_url = route('register');
@@ -33,7 +33,7 @@ class CmsSeeder extends Seeder
         $cms->about_title = 'About Us';
         $cms->about_subtitle = 'We are a team of developers';
         $cms->about_image = 'website/images/about/about-image.svg';
-        $cms->about_description = 'Leaving - Leave Management System SPA (SAAS) is a web application that helps you to manage your organization leaves. It is organized and lightweight speed in a way that it is easy to use and easy to manage for your employees.
+        $cms->about_description = 'Hozpital - Leave Management System SPA (SAAS) is a web application that helps you to manage your organization leaves. It is organized and lightweight speed in a way that it is easy to use and easy to manage for your employees.
         <br>
         <br>
         Manage your organization leaves, holidays easily and efficiently. It allows you to country holidays, sick leave, maternity leave, paternity leave, etc. We also have multiple payment options that you can choose from. You can also choose to pay your leaves online.';

@@ -19,7 +19,7 @@ class TestimonialSeeder extends Seeder
                 'name' => 'Ariful Islam Arif',
                 'position' => 'Software Engineer',
                 'avatar' => asset('website/images/testimonial/image.png'),
-                'description' => 'Sincerely, I am very grateful to the technical support that helps the Leaving application to work properly when there are some situations that the buyer cannot solve',
+                'description' => 'Sincerely, I am very grateful to the technical support that helps the Hozpital application to work properly when there are some situations that the buyer cannot solve',
             ],
             [
                 'name' => 'Zakir Hossen',

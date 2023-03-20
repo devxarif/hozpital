@@ -252,7 +252,7 @@ return [
         | When using the "illuminate" caching driver, it will automatically use
         | your default cache store. However if you prefer to have the cell
         | cache on a separate store, you can configure the store name here.
-        | You can use any store defined in your cache config. When leaving
+        | You can use any store defined in your cache config. When Hozpital
         | at "null" it will use the default store.
         |
         */

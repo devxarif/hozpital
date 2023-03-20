@@ -66,6 +66,11 @@ export default {
                     route: 'admin.settings.system'
                 },
                 {
+                    title: 'Website CMS',
+                    icon: 'fa-solid fa-tasks',
+                    route: 'admin.settings.smtp'
+                },
+                {
                     title: 'Payment',
                     icon: 'fa-solid fa-money-check',
                     route: 'admin.settings.payment'
@@ -98,11 +103,6 @@ export default {
                 {
                     title: 'SEO',
                     icon: 'fa-solid fa-medal',
-                    route: 'admin.settings.smtp'
-                },
-                {
-                    title: 'Website CMS',
-                    icon: 'fa-solid fa-tasks',
                     route: 'admin.settings.smtp'
                 },
                 {
