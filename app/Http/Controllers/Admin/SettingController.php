@@ -234,6 +234,7 @@ class SettingController extends Controller
     {
         return inertia('Admin/Setting/Recaptcha', [
             'recaptcha_site_key' => config('kodebazar.recaptcha_site_key'),
+            'recaptcha_secret_key' => config('kodebazar.recaptcha_secret_key'),
             'recaptcha_active' => config('kodebazar.recaptcha_active'),
         ]);
     }
@@ -241,6 +242,7 @@ class SettingController extends Controller
     public function recaptchaUpdate(Request $request)
     {
         checkSetConfig('kodebazar.recaptcha_site_key', $request->recaptcha_site_key);
+        checkSetConfig('kodebazar.recaptcha_secret_key', $request->recaptcha_secret_key);
         setConfig('kodebazar.recaptcha_active', $request->recaptcha_active ? true : false);
 
         return back()->with('success', 'Recaptcha setting updated successfully');

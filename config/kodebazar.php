@@ -52,6 +52,7 @@ return [
 
     // Recaptcha
     'recaptcha_site_key' => '6Lc6aGgfAAAAAP0JZTtfMKjGyQ0M8AQ0JfW5oPlY',
+    'recaptcha_secret_key' => '6Lc6aGgfAAAAALl6s7fISbuHujjCQtdSqclz0gla',
     'recaptcha_active' => false,
 
     // SMS Provider

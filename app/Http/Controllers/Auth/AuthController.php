@@ -17,6 +17,7 @@ class AuthController extends Controller
 
         return inertia('Auth/Login', [
             'recaptcha_site_key' => config('kodebazar.recaptcha_site_key'),
+            'recaptcha_secret_key' => config('kodebazar.recaptcha_secret_key'),
             'recaptcha_active' => config('kodebazar.recaptcha_active'),
         ]);
     }

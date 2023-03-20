@@ -21,6 +21,15 @@
                                     </div>
                                 </div>
                                 <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
+                                    <Label name="Recaptcha Secret key" id="recaptcha_secret_key" :hasError="form.errors.recaptcha_secret_key"/>
+                                    <div class="mt-1 sm:col-span-2 sm:mt-0">
+                                        <div class="max-w-lg rounded-md shadow-sm">
+                                            <BaseInput v-model="form.recaptcha_secret_key" placeholder="Recaptcha Site key" id="recaptcha_secret_key" :hasError="form.errors.recaptcha_secret_key"/>
+                                            <ErrorMessage :name="form.errors.recaptcha_secret_key" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
                                     <Label name="Status" id="recaptcha_active" :hasError="form.errors.recaptcha_active"/>
                                     <div class="mt-1 sm:col-span-2 sm:mt-0">
                                         <label for="checked-toggle" class="inline-flex relative items-center cursor-pointer">
@@ -92,12 +101,14 @@ export default {
     },
     props: {
         recaptcha_site_key: String,
+        recaptcha_secret_key: String,
         recaptcha_active: Boolean,
     },
     data() {
         return {
             form: this.$inertia.form({
                 recaptcha_site_key: this.recaptcha_site_key,
+                recaptcha_secret_key: this.recaptcha_secret_key,
                 recaptcha_active: this.recaptcha_active ? true : false,
             }),
         };

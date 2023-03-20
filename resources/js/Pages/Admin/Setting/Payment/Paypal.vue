@@ -61,7 +61,7 @@
                     </div>
                     <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
                         <Label name="Client ID (Sandbox)" id="paypal_sandbox_client_id" :hasError="form.errors.paypal_sandbox_client_id"/>
-                        <div class="mt-1 sm:col-span-2 sm:mt-0"></div>
+                        <div class="mt-1 sm:col-span-2 sm:mt-0">
                             <div class="max-w-lg rounded-md shadow-sm">
                                 <BaseInput v-model="form.paypal_sandbox_client_id" placeholder="Client ID (Sandbox)" id="paypal_sandbox_client_id" :hasError="form.errors.paypal_sandbox_client_id"/>
                             </div>
