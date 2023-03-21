@@ -24,7 +24,7 @@ class UpdateSystemSettingDataService
         checkSetConfig('kodebazar.time_format', $request->time_format);
         checkSetConfig('kodebazar.decimal_places', $request->decimal_places);
 
-
+        // Saving decimal and thousand separator
         $thousand_separator = $request->thousand_separator;
         $decimal_separator = $request->decimal_separator;
 
