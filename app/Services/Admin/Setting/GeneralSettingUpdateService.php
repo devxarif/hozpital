@@ -35,7 +35,7 @@ class GeneralSettingUpdateService
         }
 
         if ($request->hasFile('app_favicon') && $request->file('app_favicon')->isValid()) {
-            $request->validate(['app_favicon' => 'image|mimes:png,jpg']);
+            $request->validate(['app_favicon' => 'image|mimes:png,svg']);
             $url = uploadFileToPublic('app_favicon', $request->app_favicon);
             $data['app_favicon'] = $url;
         }

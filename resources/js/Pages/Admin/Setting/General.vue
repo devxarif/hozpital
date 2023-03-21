@@ -36,7 +36,8 @@
                                                 class="ml-5 rounded-md border border-gray-300 bg-white py-2 px-3 text-sm font-medium leading-4 text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">Change</button>
                                         </div>
                                         <ErrorMessage :name="form.errors.app_dark_logo" />
-                                        <small>Recommended Size - 150 x 55, accept only jpeg, jpg, png & svg format</small>
+                                        <small class="block">Recommended Size - 150 x 55</small>
+                                        <small>Accept format only jpeg, jpg, png & svg </small>
                                     </div>
                                 </div>
                                 <div class="sm:grid sm:grid-cols-3 sm:items-center sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
@@ -55,7 +56,8 @@
                                                 class="ml-5 rounded-md border border-gray-300 bg-white py-2 px-3 text-sm font-medium leading-4 text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">Change</button>
                                         </div>
                                         <ErrorMessage :name="form.errors.app_light_logo" />
-                                        <small>Recommended Size - 150 x 55, accept only jpeg, jpg, png & svg format</small>
+                                        <small class="block">Recommended Size - 150 x 55</small>
+                                        <small>Accept format only jpeg, jpg, png & svg </small>
                                     </div>
                                 </div>
                                 <div class="sm:grid sm:grid-cols-3 sm:items-center sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
@@ -70,7 +72,8 @@
                                             <button @click="$refs.favicon.click()" type="button" class="ml-5 rounded-md border border-gray-300 bg-white py-2 px-3 text-sm font-medium leading-4 text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">Change</button>
                                         </div>
                                         <ErrorMessage :name="form.errors.app_favicon" />
-                                        <small>Recommended Size - 32 x 32, accept only png & svg format</small>
+                                        <small class="block">Recommended Size - 32 x 32</small>
+                                        <small>Accept format only png & svg </small>
                                     </div>
                                 </div>
                                 <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
@@ -135,10 +138,12 @@
             saveData() {
                 this.form.post(route("admin.settings.general.update"), {
                     preserveScroll: true,
+                    onSuccess: () => {
+                        if (this.form.app_favicon) {
+                            window.location.reload();
+                        }
+                    },
                 });
-
-                // var href = document.getElementById('favicon').href;
-                document.getElementById('favicon').src = this.app_favicon_preview;
             },
             onDarkLogoChange(e) {
                 const file = e.target.files[0];

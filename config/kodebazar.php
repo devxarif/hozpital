@@ -67,17 +67,12 @@ return [
     'vonage_active' => env('VONAGE_ACTIVE'),
 
     // System Setting
-    'default_language' => 'en',
-    'timezone' => 'UTC',
-    'date_format' => 'Y F, d',
+    'rows_per_page' => 30,
+    'start_day_of_week' => 1,
+    'default_language' => 'bn',
+    'date_format' => 'd F, Y',
     'time_format' => 'h:i A',
-    'currency_thousand_separator' => ' ',
-    'currency_decimal_separator' => '',
-    'currency_decimal_places' => '2',
-    'rows_per_page' => 20,
-    'start_day_of_week' => 0,
-    // 'default_currency' => 'USD',
-    // 'default_currency_symbol' => '$',
-    // 'default_currency_symbol_position' => 'left',
-
+    'thousand_separator' => ' ',
+    'decimal_separator' => ' ',
+    'decimal_places' => 2,
 ];

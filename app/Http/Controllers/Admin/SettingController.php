@@ -9,8 +9,6 @@ use App\Models\Setting;
 use App\Models\Currency;
 use App\Traits\SettingAble;
 use Illuminate\Http\Request;
-use App\Mail\Admin\SmtpTestMail;
-use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use App\Services\Admin\Setting\SMTPService;
@@ -19,6 +17,7 @@ use App\Services\Admin\Setting\SendTestMailService;
 use App\Http\Requests\Admin\Setting\SMTPUpdateRequest;
 use App\Services\Admin\Setting\GeneralSettingUpdateService;
 use App\Services\Admin\Setting\System\FetchSystemSettingDataService;
+use App\Services\Admin\Setting\System\UpdateSystemSettingDataService;
 use App\Services\Admin\Setting\Payment\FetchPaymentProviderDataService;
 use App\Services\Admin\Setting\Payment\UpdatePaymentProviderDataService;
 use App\Services\Admin\Setting\SocialLogin\FetchSocialProviderDataService;
@@ -49,6 +48,14 @@ class SettingController extends Controller
         $data = (new FetchSystemSettingDataService)->execute();
 
         return inertia('Admin/Setting/System', compact('data'));
+    }
+
+    public function systemSettingUpdate(Request $request)
+    {
+        (new UpdateSystemSettingDataService)->execute($request);
+
+        $this->flashSuccess('System Setting updated successfully!');
+        return back();
     }
 
     public function systemInfo()

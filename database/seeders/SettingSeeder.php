@@ -25,7 +25,7 @@ class SettingSeeder extends Seeder
         $setting->app_location = 'Dhaka, Bangladesh';
         $setting->app_dark_logo = 'assets/img/hozpital_red_logo.svg';
         $setting->app_light_logo = 'assets/img/hozpital_logo.svg';
-        $setting->app_favicon = 'assets/img/favicon.png';
+        $setting->app_favicon = 'assets/img/favicon.svg';
 
         // Social link table
         $setting->facebook = 'https://www.facebook.com/Kodebazaar';

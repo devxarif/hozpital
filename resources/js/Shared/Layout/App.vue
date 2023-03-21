@@ -2,7 +2,7 @@
     <Head :title="__(title)" v-if="title" />
 
     <div class="min-h-full">
-        <div class="relative z-40 lg:hidden" role="dialog" aria-modal="true">
+        <div class="relative z-40 lg:hidden hidden" role="dialog" aria-modal="true">
             <div class="fixed inset-0 bg-gray-600 bg-opacity-75"></div>
             <div class="fixed inset-0 z-40 flex">
                 <div class="relative flex w-full max-w-xs flex-1 flex-col bg-cyan-700 pt-5 pb-4">
@@ -18,8 +18,8 @@
                     </div>
 
                     <div class="flex flex-shrink-0 items-center px-4">
-                        <!-- <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=cyan&shade=300"
-                            alt="Easywire logo"> -->
+                        <img class="h-12 w-auto" :src="$page.props.setting.app_dark_logo"
+                            alt="app_logo">
                     </div>
 
                     <nav class="mt-5 h-full flex-shrink-0 divide-y divide-cyan-800 overflow-y-auto"
@@ -38,7 +38,6 @@
                                 </svg>
                                 Home
                             </a>
-
                             <a href="javascript:void(0)"
                                 class="text-white hover:text-white hover:bg-gray-600 group flex items-center px-2 py-2 text-base font-medium rounded-md">
                                 <svg class="mr-4 h-6 w-6 flex-shrink-0 text-white" xmlns="http://www.w3.org/2000/svg"
@@ -49,19 +48,6 @@
                                 </svg>
                                 History
                             </a>
-                        </div>
-                        <div class="mt-6 pt-6">
-                            <div class="space-y-1 px-2">
-                                <a href="javascript:void(0)"
-                                    class="group flex items-center rounded-md px-2 py-2 text-base font-medium text-white hover:bg-gray-600 hover:text-white">
-                                    <svg class="mr-4 h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                        viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M4.5 12a7.5 7.5 0 0015 0m-15 0a7.5 7.5 0 1115 0m-15 0H3m16.5 0H21m-1.5 0H12m-8.457 3.077l1.41-.513m14.095-5.13l1.41-.513M5.106 17.785l1.15-.964m11.49-9.642l1.149-.964M7.501 19.795l.75-1.3m7.5-12.99l.75-1.3m-6.063 16.658l.26-1.477m2.605-14.772l.26-1.477m0 17.726l-.26-1.477M10.698 4.614l-.26-1.477M16.5 19.794l-.75-1.299M7.5 4.205L12 12m6.894 5.785l-1.149-.964M6.256 7.178l-1.15-.964m15.352 8.864l-1.41-.513M4.954 9.435l-1.41-.514M12.002 12l-3.75 6.495" />
-                                    </svg>
-                                    Settings
-                                </a>
-                            </div>
                         </div>
                     </nav>
                 </div>

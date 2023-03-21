@@ -62,7 +62,7 @@ class Setting extends Model
     public function getAppFaviconAttribute($value)
     {
         if (is_null($value)) {
-            return asset('assets/img/favicon.png');
+            return asset('assets/img/favicon.svg');
         }
 
         return asset($value);

@@ -2,7 +2,8 @@
     <SettingLayout title="General">
         <div class="grid gap-6 md:grid-cols-1 xl:grid-cols-1">
             <div class="bg-white w-full p-6 rounded-lg border border-gray-8  ">
-                <form @submit.prevent="updateData" class="space-y-8 divide-y divide-gray-200">
+                {{ form }}
+                <form @submit.prevent="saveData" class="space-y-8 divide-y divide-gray-200">
                     <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5">
                         <div class="space-y-6 sm:space-y-5">
                             <div>
@@ -90,6 +91,45 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
+                                    <Label name="Decimal Places" id="decimal_places" :hasError="form.errors.app_name" />
+                                    <div class="mt-1 sm:col-span-2 sm:mt-0">
+                                        <div class="max-w-lg rounded-md shadow-sm">
+                                            <Multiselect id="decimal_places" :close-on-select="true" :can-clear="true"
+                                            :searchable="true" v-model="form.decimal_places" :create-option="false"
+                                            placeholder="Select Decimal Places" :options="data.decimal_places_options.map(item => ({
+                                                value: item.value, label: item.label
+                                            }))"  />
+                                            <ErrorMessage :name="form.errors.decimal_places"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
+                                    <Label name="Decimal Separator" id="decimal_separator" :hasError="form.errors.app_name" />
+                                    <div class="mt-1 sm:col-span-2 sm:mt-0">
+                                        <div class="max-w-lg rounded-md shadow-sm">
+                                            <Multiselect id="decimal_separator" :close-on-select="true" :can-clear="true"
+                                            :searchable="true" v-model="form.decimal_separator" :create-option="false"
+                                            placeholder="Select Decimal Separator" :options="data.decimal_separator_options.map(item => ({
+                                                value: item.value, label: item.label
+                                            }))"  />
+                                            <ErrorMessage :name="form.errors.decimal_separator"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
+                                    <Label name="Thousand Separator" id="thousand_separator" :hasError="form.errors.app_name" />
+                                    <div class="mt-1 sm:col-span-2 sm:mt-0">
+                                        <div class="max-w-lg rounded-md shadow-sm">
+                                            <Multiselect id="thousand_separator" :close-on-select="true" :can-clear="true"
+                                            :searchable="true" v-model="form.thousand_separator" :create-option="false"
+                                            placeholder="Select Thousand Separator" :options="data.thousand_separator_options.map(item => ({
+                                                value: item.value, label: item.label
+                                            }))"  />
+                                            <ErrorMessage :name="form.errors.thousand_separator"/>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
@@ -135,7 +175,9 @@ export default {
                 timezone: this.data.timezone,
                 date_format: this.data.date_format,
                 time_format: this.data.time_format,
-                // currency_thousand_separator: '',
+                thousand_separator: this.data.thousand_separator,
+                decimal_separator: this.data.decimal_separator,
+                decimal_places: this.data.decimal_places,
             }),
 
             all_time_formats: [
@@ -146,7 +188,7 @@ export default {
             // 'default_language' => 'en',
             // 'timezone' => config('app.timezone'),
             // 'date_format' => 'd-m-Y',
-            // 'currency_thousand_separator' => ',',
+            // 'thousand_separator' => ',',
 
     //         '' => 'en',
     // '' => 'UTC',
@@ -157,7 +199,16 @@ export default {
         };
     },
     methods: {
-
+        saveData() {
+            this.form.post(route("admin.settings.system.update"), {
+                preserveScroll: true,
+                onSuccess: () => {
+                    if (this.form.app_favicon) {
+                        window.location.reload();
+                    }
+                },
+            });
+        },
     },
     mounted() {
 

@@ -4,7 +4,7 @@
                 <div class="flex-shrink-0 flex justify-center">
                     <a href="/" class="inline-flex">
                         <span class="sr-only">Cartify</span>
-                        <img class="h-12 w-auto" src="https://demo.cartify.dev/img/favicon.png" alt="Cartify">
+                        <img class="h-12 w-auto" src="https://demo.cartify.dev/img/favicon.svg" alt="Cartify">
                     </a>
                 </div>
                 <div class="py-16">

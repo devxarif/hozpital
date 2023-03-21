@@ -88,25 +88,90 @@ Route::get('/test2', function () {
 });
 
 Route::get('/test', function () {
-
-
-
-
-    $currency_decimal_places = config('kodebazar.currency_decimal_places');
-    $currency_decimal_separator = config('kodebazar.currency_decimal_separator');
-    $currency_thousand_separator = config('kodebazar.currency_thousand_separator');
+    $decimal_places = config('kodebazar.decimal_places');
+    $decimal_separator = config('kodebazar.decimal_separator');
+    $thousand_separator = config('kodebazar.thousand_separator');
     // $app_currency_format = config('kodebazar.currency_format');
+
+    // return [
+    //     $decimal_places,
+    //     $decimal_separator,
+    //     $thousand_separator,
+    // ];
 
     $amount = 123456789123456789;
 
-    return number_format($amount, $currency_decimal_places, $currency_decimal_separator, $currency_thousand_separator);
+    return $format = [
+        '12345678.00' => number_format($amount, 0, '.', ''),
+        '12,345,678.00' => number_format($amount),
+        '1,23,45,678.00' => number_format($amount, 2, '.', ','),
+        '12.345.678.00' => number_format($amount, 2, '.', '.'),
+        '12.345.678,00' => number_format($amount, 2, ',', '.'),
+    ];
+
+
+    checkSetConfig('kodebazar.thousand_separator', '\'');
+
+    return config('kodebazar.decimal_places');
+
+    $decimal_places_options = [
+        ['label' => 'No Decimal (1)', 'value' => 0],
+        ['label' => '2 Places (1.00)', 'value' => 2],
+        ['label' => '3 Places (1.000)', 'value' => 3],
+        ['label' => '4 Places (1.0000)', 'value' => 4],
+        ['label' => '5 Places (1.00000)', 'value' => 5],
+        ['label' => '6 Places (1.000000)', 'value' => 6],
+        ['label' => '7 Places (1.0000000)', 'value' => 7],
+        ['label' => '8 Places (1.00000000)', 'value' => 8],
+    ];
+
+    $thousand_separator_options = [
+        ['label' => 'No Separator (1234)', 'value' => ''],
+        ['label' => 'Comma (1,234)', 'value' => ','],
+        ['label' => 'Dot (1.234)', 'value' => '.'],
+        ['label' => 'Space (1 234)', 'value' => ' '],
+        ['label' => 'Apostrophe (1\'234)', 'value' => '\''],
+    ];
+
+    $decimal_separator_options = [
+        ['label' => 'No Separator (1234)', 'value' => ''],
+        ['label' => 'Comma (1,234)', 'value' => ','],
+        ['label' => 'Dot (1.234)', 'value' => '.'],
+        ['label' => 'Space (1 234)', 'value' => ' '],
+        ['label' => 'Apostrophe (1\'234)', 'value' => '\''],
+    ];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    $amount = 123456789123456789;
+
+    return number_format($amount, $decimal_places, $decimal_separator, $thousand_separator);
 
     $format = [
-        number_format($amount, $currency_decimal_places, $currency_decimal_separator, $currency_thousand_separator),
+        number_format($amount, $decimal_places, $decimal_separator, $thousand_separator),
         number_format($amount),
-        number_format($amount, $currency_decimal_places, $currency_decimal_separator, $currency_thousand_separator),
-        number_format($amount, $currency_decimal_places, '.', $currency_thousand_separator),
-        number_format($amount, $currency_decimal_places, $currency_decimal_separator, $currency_thousand_separator),
+        number_format($amount, $decimal_places, $decimal_separator, $thousand_separator),
+        number_format($amount, $decimal_places, '.', $thousand_separator),
+        number_format($amount, $decimal_places, $decimal_separator, $thousand_separator),
     ];
     // $format = [
     //     '12345678.00' => number_format($amount, 0, '.', ''),
