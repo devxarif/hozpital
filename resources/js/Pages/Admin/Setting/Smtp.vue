@@ -13,61 +13,85 @@
                                     publicly so be careful what you share.</p>
                             </div>
 
-                            <div class="space-y-6 sm:space-y-5 border-t sm:border-gray-200 sm:pt-5">
-                                <div class="grid grid-cols-6 gap-6">
-                                    <div class="col-span-6 sm:col-span-3">
-                                        <Label name="Mail Driver" :hasError="form.errors.type"/>
-                                        <BaseInput  modelValue="smtp" :disabled="true"/>
-                                    </div>
-                                    <div class="col-span-6 sm:col-span-3">
-                                        <Label id="mail_driver" name="Mail Driver" :hasError="form.errors.host"/>
-                                        <BaseInput v-model="form.host" placeholder="Title" id="mail_driver" :hasError="form.errors.host"/>
-                                    </div>
-                                </div>
-                                <div class="grid grid-cols-6 gap-6">
-                                    <div class="col-span-6 sm:col-span-3">
-                                        <Label name="Mail Port" :hasError="form.errors.port"/>
-                                        <Multiselect :close-on-select="true" :can-clear="true"
-                                        :searchable="true" v-model="form.port" :create-option="false"
-                                        placeholder="Select Mail Port" :options="[
-                                            {label: 587, value: 587},
-                                            {label: 465, value: 465},
-                                            {label: 25, value: 25},
-                                            {label: 2525, value: 2525},
-                                        ]"  />
-                                    </div>
-                                    <div class="col-span-6 sm:col-span-3">
-                                        <Label name="Mail Encryption" :hasError="form.errors.host"/>
-                                        <div class="flex gap-2">
-                                            <label for="tls" class="w-full rounded-lg flex items-center pl-4 border border-gray-200  py-3 text-sm font-medium text-gray-700 gap-2">
-                                                <input id="tls" value="tls" v-model="form.encryption" type="radio" class="h-4 w-4 border-gray-300 text-blue-600 focus:outline-none">
-                                                <span>{{ __('TLS') }}</span>
-                                            </label>
-                                            <label for="ssl" class="w-full rounded-lg flex items-center pl-4 border border-gray-200  py-3 text-sm font-medium text-gray-700 gap-2">
-                                                <input id="ssl" value="ssl" v-model="form.encryption" type="radio" class="h-4 w-4 border-gray-300 text-blue-600 focus:outline-none">
-                                                <span>{{ __('SSL') }}</span>
-                                            </label>
+                            <div class="space-y-6 sm:space-y-5">
+                                <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
+                                    <Label name="Mail Driver" :hasError="form.errors.type"/>
+                                    <div class="mt-1 sm:col-span-2 sm:mt-0">
+                                        <div class="max-w-lg rounded-md shadow-sm">
+                                            <BaseInput  modelValue="smtp" :disabled="true"/>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="grid grid-cols-6 gap-6">
-                                    <div class="col-span-6 sm:col-span-3">
-                                        <Label id="mail_username" name="Mail Username" :hasError="form.errors.username"/>
-                                        <BaseInput v-model="form.username" placeholder="Title" id="mail_username" :hasError="form.errors.username"/>
-                                    </div>
-                                    <div class="col-span-6 sm:col-span-3">
-                                        <Label id="mail_password" name="Mail Password" :hasError="form.errors.username"/>
-                                        <BaseInput v-model="form.username" placeholder="Title" id="mail_password" :hasError="form.errors.username"/>
+                                <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
+                                    <Label id="mail_driver" name="Mail Driver" :hasError="form.errors.host"/>
+                                    <div class="mt-1 sm:col-span-2 sm:mt-0">
+                                        <div class="max-w-lg rounded-md shadow-sm">
+                                            <BaseInput v-model="form.host" placeholder="Title" id="mail_driver" :hasError="form.errors.host"/>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="grid grid-cols-6 gap-6">
-                                    <div class="col-span-6 sm:col-span-3">
-                                        <Label id="mail_from_address" name="Mail From Address" :hasError="form.errors.from_address"/>
-                                        <BaseInput v-model="form.from_address" placeholder="Title" id="mail_from_address" :hasError="form.errors.from_address"/>
+                                <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
+                                    <Label name="Mail Port" :hasError="form.errors.port"/>
+                                    <div class="mt-1 sm:col-span-2 sm:mt-0">
+                                        <div class="max-w-lg rounded-md shadow-sm">
+                                            <Multiselect :close-on-select="true" :can-clear="true"
+                                                :searchable="true" v-model="form.port" :create-option="false"
+                                                placeholder="Select Mail Port" :options="[
+                                                    {label: 587, value: 587},
+                                                    {label: 465, value: 465},
+                                                    {label: 25, value: 25},
+                                                    {label: 2525, value: 2525},
+                                                ]"  />
+                                        </div>
                                     </div>
-                                    <div class="col-span-6 sm:col-span-3">
-                                        <Label id="mail_from_name" name="Mail From Name" :hasError="form.errors.from_name"/>
-                                        <BaseInput v-model="form.from_name" placeholder="Title" id="mail_from_name" :hasError="form.errors.from_name"/>
+                                </div>
+                                <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
+                                    <Label name="Mail Encryption" :hasError="form.errors.host"/>
+                                    <div class="mt-1 sm:col-span-2 sm:mt-0">
+                                        <div class="max-w-lg rounded-md shadow-sm">
+                                            <div class="flex gap-2">
+                                                <label for="tls" class="w-full rounded-lg flex items-center pl-4 border border-gray-200  py-3 text-sm font-medium text-gray-700 gap-2">
+                                                    <input id="tls" value="tls" v-model="form.encryption" type="radio" class="h-4 w-4 border-gray-300 text-blue-600 focus:outline-none">
+                                                    <span>{{ __('TLS') }}</span>
+                                                </label>
+                                                <label for="ssl" class="w-full rounded-lg flex items-center pl-4 border border-gray-200  py-3 text-sm font-medium text-gray-700 gap-2">
+                                                    <input id="ssl" value="ssl" v-model="form.encryption" type="radio" class="h-4 w-4 border-gray-300 text-blue-600 focus:outline-none">
+                                                    <span>{{ __('SSL') }}</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
+                                    <Label id="mail_username" name="Mail Username" :hasError="form.errors.username"/>
+                                    <div class="mt-1 sm:col-span-2 sm:mt-0">
+                                        <div class="max-w-lg rounded-md shadow-sm">
+                                            <BaseInput v-model="form.username" placeholder="Title" id="mail_username" :hasError="form.errors.username"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
+                                    <Label id="mail_password" name="Mail Password" :hasError="form.errors.username"/>
+                                    <div class="mt-1 sm:col-span-2 sm:mt-0">
+                                        <div class="max-w-lg rounded-md shadow-sm">
+                                            <BaseInput v-model="form.username" placeholder="Title" id="mail_password" :hasError="form.errors.username"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
+                                    <Label id="mail_from_address" name="Mail From Address" :hasError="form.errors.from_address"/>
+                                    <div class="mt-1 sm:col-span-2 sm:mt-0">
+                                        <div class="max-w-lg rounded-md shadow-sm">
+                                            <BaseInput v-model="form.from_address" placeholder="Title" id="mail_from_address" :hasError="form.errors.from_address"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
+                                    <Label id="mail_from_name" name="Mail From Name" :hasError="form.errors.from_name"/>
+                                    <div class="mt-1 sm:col-span-2 sm:mt-0">
+                                        <div class="max-w-lg rounded-md shadow-sm">
+                                            <BaseInput v-model="form.from_name" placeholder="Title" id="mail_from_name" :hasError="form.errors.from_name"/>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
