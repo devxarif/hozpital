@@ -1,5 +1,5 @@
 <template>
-    <Link preserve-scroll :href="href" :class="['group flex items-center px-3 py-2.5 text-sm font-medium rounded-lg', active ? 'bg-blue-500 text-white hover:bg-blue-500':'text-gray-300 hover:bg-gray-700 hover:text-white']">
+    <Link preserve-scroll :href="href" :class="['group flex items-center p-2.5 text-sm font-medium rounded-lg', active ? 'bg-blue-500 text-white hover:bg-blue-500':'text-gray-300 hover:bg-gray-700 hover:text-white']">
         <slot name="icon"/>
         {{ title }}
     </Link>

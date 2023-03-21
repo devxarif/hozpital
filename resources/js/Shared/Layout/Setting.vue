@@ -11,17 +11,23 @@
         </div>
 
         <div class="grid grid-cols-12 gap-3">
-            <ol v-if="sidebar" class="col-span-2">
+            <ol v-if="sidebar" class="col-span-2 text-sm font-medium">
+                <!-- <li class="mb-1">
+                    <Link href="#" class="items-center p-3 flex bg-white border border-gray-200 rounded-lg shadow-sm" :class="route().current(sidebar.route) ? 'bg-blue-500 text-white':''">
+                        <font-awesome-icon icon="fa-solid fa-cog" class="h-4 w-4 mr-2" :class="route().current(sidebar.route) ? 'bg-blue-500 text-white':''"/>
+                        <span>Demo</span>
+                    </Link>
+                </li> -->
                 <li class="mb-1" v-for="(sidebar, index) in sidebars" :key="index">
                     <template v-if="sidebar.route">
-                        <Link :href="route(sidebar.route)" class="items-center p-3 flex bg-white border border-gray-200 rounded-lg shadow-sm" :class="route().current(sidebar.route) ? 'text-blue-500 font-bold':''">
-                            <font-awesome-icon :icon="sidebar.icon" class="h-5 w-5 mr-2" :class="route().current(sidebar.route) ? 'text-blue-500':''"/>
+                        <Link :href="route(sidebar.route)" class="items-center p-2.5 flex bg-white border border-gray-200 rounded-lg" :class="route().current(sidebar.route) ? 'bg-blue-500 text-white shadow-sm':''">
+                            <font-awesome-icon :icon="sidebar.icon" class="h-4 w-4 mr-2" :class="route().current(sidebar.route) ? 'bg-blue-500 text-white':''"/>
                             <span>{{ __(sidebar.title) }}</span>
                         </Link>
                     </template>
                     <template v-else>
-                        <a :href="sidebar.link" target="_blank" class="items-center p-3 flex bg-white border border-gray-200 rounded-lg shadow-sm">
-                            <font-awesome-icon :icon="sidebar.icon" class="h-5 w-5 mr-2"/>
+                        <a :href="sidebar.link" target="_blank" class="items-center p-2.5 flex bg-white border border-gray-200 rounded-lg">
+                            <font-awesome-icon :icon="sidebar.icon" class="h-4 w-4 mr-2"/>
                             <span>{{ __(sidebar.title) }}</span>
                         </a>
                     </template>
