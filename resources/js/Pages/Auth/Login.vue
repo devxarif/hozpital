@@ -1,4 +1,6 @@
 <template>
+    <Head :title="__('Login')"/>
+
     <div class="flex flex-col min-h-screen bg-white ">
         <main class="bg-gray-50">
             <div class="flex flex-col justify-center items-center py-8 px-6 mx-auto md:h-screen">
