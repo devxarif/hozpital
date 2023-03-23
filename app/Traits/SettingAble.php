@@ -9,30 +9,6 @@ use App\Models\Setting;
 
 trait SettingAble
 {
-    public function getSeo()
-    {
-        $seo = Seo::all();
-
-        return $seo;
-    }
-
-    public function updateSeoContent($request, $seo)
-    {
-        $request->validate([
-            'title' => 'required',
-            'description' => 'required',
-            'keywords' => 'required',
-        ]);
-
-        $seo->update([
-            'title' => $request->title,
-            'description' => $request->description,
-            'keywords' => $request->keywords,
-        ]);
-
-        return true;
-    }
-
     public function updateBrandInfo($request)
     {
         $request->validate([

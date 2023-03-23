@@ -14,7 +14,9 @@ use Illuminate\Support\Facades\Storage;
 use App\Services\Admin\Setting\SMTPService;
 use App\Services\Admin\Setting\SystemInfoService;
 use App\Services\Admin\Setting\SendTestMailService;
+use App\Http\Requests\Admin\Setting\SeoContentUpdate;
 use App\Http\Requests\Admin\Setting\SMTPUpdateRequest;
+use App\Services\Admin\Setting\SeoContentUpdateService;
 use App\Services\Admin\Setting\GeneralSettingUpdateService;
 use App\Services\Admin\Setting\System\FetchSystemSettingDataService;
 use App\Services\Admin\Setting\System\UpdateSystemSettingDataService;
@@ -196,26 +198,19 @@ class SettingController extends Controller
 
     public function seo()
     {
-        $seo_data = $this->getSeo();
+        $seo_data = Seo::all();
 
-        return inertia('Admin/Setting/Seo', [
+        return inertia('Admin/Setting/SEO/Index', [
             'seo_data' => $seo_data,
         ]);
     }
 
-    public function seoUpdate(Request $request, Seo $seo)
+    public function seoUpdate(SeoContentUpdate $request, Seo $seo)
     {
-        $seo_data = $this->updateSeoContent($request, $seo);
+        (new SeoContentUpdateService)->execute($request, $seo);
 
-        if ($seo_data) {
-            session()->flash('success', 'Seo content updated successfully');
-
-            return back();
-        } else {
-            session()->flash('error', 'Something went wrong');
-
-            return back();
-        }
+        $this->flashSuccess('Seo content updated successfully');
+        return back();
     }
 
     public function recaptcha()

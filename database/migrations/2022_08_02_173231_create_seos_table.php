@@ -18,6 +18,7 @@ class CreateSeosTable extends Migration
             $table->string('page_name');
             $table->string('page_slug');
             $table->string('title');
+            $table->string('image')->nullable();
             $table->text('description');
             $table->text('keywords');
             $table->timestamps();

@@ -109,7 +109,7 @@ export default {
                 {
                     title: 'SEO',
                     icon: 'fa-solid fa-medal',
-                    route: 'admin.settings.smtp'
+                    route: 'admin.settings.seo'
                 },
                 {
                     title: 'Recaptcha',
