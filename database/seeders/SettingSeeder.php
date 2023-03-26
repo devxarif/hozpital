@@ -40,6 +40,19 @@ class SettingSeeder extends Seeder
         $setting->cookies_alert_message = 'This website uses cookies to ensure you get the best experience on our website.';
         $setting->cookies_alert_button_text = 'Got it';
 
+        // Custom css/js
+        $setting->custom_footer_script = "(function () {var options = {
+            whatsapp: '+8801681729831',
+            call_to_action: 'Quick Support',
+            button_color: '#FF6550',
+            position: 'right',
+        };
+        var proto = 'https:', host = 'getbutton.io', url = proto + '//static.' + host;
+        var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = url + '/widget-send-button/js/init.js';
+        s.onload = function () { WhWidgetSendButton.init(host, proto, options); };
+        var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
+        })()";
+
         $setting->save();
 
         // Timezone table

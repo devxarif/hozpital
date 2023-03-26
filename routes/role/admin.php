@@ -219,9 +219,6 @@ Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function () 
             Route::put('/smtp/update', 'smtpUpdate')->name('smtp.update');
             Route::post('/send/test-email', 'testEmailSend')->name('send.test.email');
 
-            // Logs application
-            Route::get('/logs', 'logs')->name('logs');
-
             // Upgrade application
             Route::get('/upgrade', 'upgrade')->name('upgrade');
             Route::post('/upgrade/system', 'upgradeSystem')->name('upgrade.system');

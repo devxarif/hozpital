@@ -288,11 +288,6 @@ class SettingController extends Controller
         }
     }
 
-    public function logs()
-    {
-        return redirect('/log-viewer');
-    }
-
     public function upgrade()
     {
         return inertia('Admin/Setting/Upgrade');
