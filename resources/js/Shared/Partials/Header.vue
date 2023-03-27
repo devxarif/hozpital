@@ -61,6 +61,7 @@
                         </transition>
                     </Menu>
 
+
                     <li class="relative">
                         <button class="relative align-middle rounded-md focus:outline-none focus:shadow-outline-blue"
                             @click="toggleNotificationsMenu = !toggleNotificationsMenu">
@@ -88,7 +89,7 @@
                             </div>
                             <div class="py-1">
                             <MenuItem v-slot="{ active }">
-                                <a href="javascript:void(0)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm']">Profile</a>
+                                <Link :href="route('user.profile')" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm']">Profile</Link>
                             </MenuItem>
                             <MenuItem v-slot="{ active }">
                                 <a href="javascript:void(0)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm']">Settings</a>

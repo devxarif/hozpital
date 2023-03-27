@@ -164,17 +164,18 @@ class UserController extends Controller
 
     public function profile()
     {
-        $user = auth()->user();
-        $role = $user->role;
-        $data['user'] = $user;
+        // return 123;
+        // $user = auth()->user();
+        // $role = $user->role;
+        // $data['user'] = $user;
 
-        if ($role == 'owner') {
-            $data['countries'] = Country::all(['id', 'name']);
-        }elseif($role == 'employee') {
-            $data['user'] = $user->load('employee');
-        }
+        // if ($role == 'owner') {
+        //     $data['countries'] = Country::all(['id', 'name']);
+        // }elseif($role == 'employee') {
+        //     $data['user'] = $user->load('employee');
+        // }
 
-        return inertia('Profile', $data);
+        return inertia('Profile');
     }
 
     public function profileUpdate(Request $request)

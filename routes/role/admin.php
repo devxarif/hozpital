@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\BedController;
 use App\Http\Controllers\Admin\RoleController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\Admin\NurseController;
 use App\Http\Controllers\Admin\DoctorController;
@@ -282,12 +283,12 @@ Route::controller(GlobalController::class)->group(function () {
 
 
 // Profile & Settings
-// Route::controller(UserController::class)->middleware('auth')->group(function () {
-//     Route::get('/profile', 'profile')->name('user.profile');
-//     Route::post('/profile/update', 'profileUpdate')->name('user.profile.update');
-//     Route::post('/password/update', 'passwordUpdate')->name('user.password.update');
-//     Route::delete('/account/delete', 'accountDelete')->name('user.account.delete');
-// });
+Route::controller(UserController::class)->middleware('auth')->group(function () {
+    Route::get('/profile', 'profile')->name('user.profile');
+    Route::post('/profile/update', 'profileUpdate')->name('user.profile.update');
+    Route::post('/password/update', 'passwordUpdate')->name('user.password.update');
+    Route::delete('/account/delete', 'accountDelete')->name('user.account.delete');
+});
 
 // Route::controller(GlobalController::class)->group(function () {
 //     Route::get('/diff/between/days', 'diffBetweenDays')->name('difference.between.days');
