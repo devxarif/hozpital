@@ -26,7 +26,7 @@ class ProductCategoryController extends Controller
             $query->whereLike('name', $request->keyword);
         }
 
-        $product_categories = $query->latest()->paginate(20)->withQueryString();
+        $product_categories = $query->latest()->paginate(config('kodebazar.rows_per_page'))->withQueryString();
 
         return inertia('Admin/ProductCategory/Index', [
             'product_categories' => $product_categories,

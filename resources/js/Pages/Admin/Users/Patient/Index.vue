@@ -163,7 +163,8 @@
                     </span>
                 </span>
             </div>
-            <Pagination :data="patients" v-if="patients && patients.data.length && patients.total > 20" class="mt-5"/>
+
+            <Pagination :data="patients" v-if="patients && patients.data.length && patients.total > app_setting.rows_per_page" class="mt-5"/>
        </template>
 
         <!-- Table View  -->

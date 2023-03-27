@@ -25,7 +25,7 @@ class ExpenseCategoryController extends Controller
             $query->whereLike('name', $request->keyword);
         }
 
-        $expense_categories = $query->latest()->paginate(20)->withQueryString();
+        $expense_categories = $query->latest()->paginate(config('kodebazar.rows_per_page'))->withQueryString();
 
         return inertia('Admin/Finances/ExpenseCategory/Index', [
             'expense_categories' => $expense_categories,

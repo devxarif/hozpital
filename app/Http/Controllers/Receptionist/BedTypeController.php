@@ -19,7 +19,7 @@ class BedTypeController extends Controller
      */
     public function index(Request $request)
     {
-        $bed_types = BedType::latest()->paginate(20)->withQueryString();
+        $bed_types = BedType::latest()->paginate(config('kodebazar.rows_per_page'))->withQueryString();
 
         return inertia('Receptionist/BedType/Index', [
             'bed_types' => $bed_types,

@@ -23,7 +23,7 @@ class AnnouncementController extends Controller
             $query->whereType($request->type);
         }
 
-        $data['announcements'] = $query->latest()->paginate(20)->withQueryString();
+        $data['announcements'] = $query->latest()->paginate(config('kodebazar.rows_per_page'))->withQueryString();
         $data['filter'] = $request;
 
         $announcements = Announcement::all();

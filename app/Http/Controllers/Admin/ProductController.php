@@ -37,7 +37,7 @@ class ProductController extends Controller
                 $query->where('product_category_id', $product_category);
             })
             ->latest()
-            ->paginate(20)
+            ->paginate(config('kodebazar.rows_per_page'))
             ->withQueryString();
 
         return inertia('Admin/Product/Index', [

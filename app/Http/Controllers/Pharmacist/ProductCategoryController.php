@@ -19,7 +19,7 @@ class ProductCategoryController extends Controller
      */
     public function index()
     {
-        $product_categories = ProductCategory::latest()->paginate(20);
+        $product_categories = ProductCategory::latest()->paginate(config('kodebazar.rows_per_page'));
 
         return inertia('Pharmacist/ProductCategory/Index', compact('product_categories'));
     }

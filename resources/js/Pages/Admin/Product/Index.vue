@@ -178,7 +178,7 @@
                         <p v-if="product.selling_price"><b>Selling Price:</b> {{ product.selling_price }}</p>
                     </div>
                     <p v-if="product.quantity"><b>Quantity:</b> {{ product.quantity }}</p>
-                    <p v-if="product.expire_date"><b>Expire Date:</b> {{ formateDate(product.expire_date) }}</p>
+                    <p v-if="product.expire_date"><b>Expire Date:</b> {{ formatTime(product.expire_date) }}</p>
                     <div class="mt-5">
                         <span :class="product.type == 'medicine' ? 'bg-green-500':'bg-cyan-500'" class="text-white text-sm font-medium mr-2 px-3 py-2 rounded-full   capitalize">
                             {{ product.type }}
@@ -186,7 +186,7 @@
                     </div>
                </span>
            </div>
-           <Pagination :data="products" v-if="products && products.data.length && products.total > 20" class="my-5"/>
+           <Pagination :data="products" v-if="products && products.data.length && products.total > app_setting.rows_per_page" class="my-5"/>
        </template>
 
         <!-- Table View  -->
@@ -227,7 +227,7 @@
                         </span>
                     </td>
                     <td class="p-4 text-sm text-gray-500 break-all">
-                        {{ formateDate(product.expire_date) }}
+                        {{ formatTime(product.expire_date) }}
                     </td>
 
 
@@ -237,7 +237,7 @@
                         <p v-if="product.selling_price"><b>Selling Price:</b> {{ product.selling_price }}</p>
                     </div>
                     <p v-if="product.quantity"><b>Quantity:</b> {{ product.quantity }}</p>
-                    <p v-if="product.expire_date"><b>Expire Date:</b> {{ formateDate(product.expire_date) }}</p>
+                    <p v-if="product.expire_date"><b>Expire Date:</b> {{ formatTime(product.expire_date) }}</p>
                     <div class="mt-5">
                         <span :class="product.type == 'medicine' ? 'bg-green-500':'bg-cyan-500'" class="text-white text-sm font-medium mr-2 px-3 py-2 rounded-full   capitalize">
                             {{ product.type }}

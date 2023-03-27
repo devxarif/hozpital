@@ -39,7 +39,7 @@ class LeaveRequestController extends Controller
                 $query->where('leave_type_id', $leave_type);
             })
             ->latest()
-            ->paginate(20)
+            ->paginate(config('kodebazar.rows_per_page'))
             ->withQueryString();
 
         $leave_types = LeaveType::latest()->get(['id', 'name']);

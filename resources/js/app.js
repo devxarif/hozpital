@@ -116,6 +116,11 @@ createInertiaApp({
                 ClearFilter,
                 dayjs
             },
+            data(){
+                return {
+                    app_setting: this.$page.props?.setting,
+                }
+            },
             methods:{
                 route: window.route,
                 __(key, replace = {}) {
@@ -129,7 +134,7 @@ createInertiaApp({
 
                     return translation
                 },
-                formateDate(date, format = 'MMMM D, YYYY') {
+                formatTime(date, format = 'MMMM D, YYYY') {
                     return dayjs(date).format(format);
                 },
                 timeFromNow(date) {

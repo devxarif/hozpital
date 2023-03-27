@@ -156,7 +156,7 @@
                 });
             },
             handleStartDate(startDate) {
-                const formatTime = this.formateDate(startDate, "YYYY-MM-DD HH:mm");
+                const formatTime = this.formatTime(startDate, "YYYY-MM-DD HH:mm");
 
                 if(this.form.discharge_time){
                     let dateCheck = this.checkDateValidity(formatTime, this.form.discharge_time);
@@ -170,7 +170,7 @@
                 this.form.allotment_time = formatTime;
             },
             handleEndDate(endDate) {
-                const formatTime = this.formateDate(endDate, "YYYY-MM-DD HH:mm");
+                const formatTime = this.formatTime(endDate, "YYYY-MM-DD HH:mm");
 
                 if(this.form.allotment_time){
                     let dateCheck = this.checkDateValidity(this.form.allotment_time, formatTime);

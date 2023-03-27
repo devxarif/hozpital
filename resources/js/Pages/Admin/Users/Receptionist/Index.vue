@@ -160,7 +160,7 @@
                 </span>
             </div>
 
-            <Pagination :data="receptionists" v-if="receptionists && receptionists.data.length && receptionists.total > 20" class="mt-5"/>
+            <Pagination :data="receptionists" v-if="receptionists && receptionists.data.length && receptionists.total > app_setting.rows_per_page" class="mt-5"/>
        </template>
 
         <!-- Table View  -->

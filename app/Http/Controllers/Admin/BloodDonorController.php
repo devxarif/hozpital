@@ -31,7 +31,7 @@ class BloodDonorController extends Controller
             $query->whereLike(['blood_group'], $request->blood_group);
         }
 
-        $blood_donors = $query->latest()->paginate(20)->withQueryString();
+        $blood_donors = $query->latest()->paginate(config('kodebazar.rows_per_page'))->withQueryString();
 
         return inertia('Admin/Bloods/BloodDonor/Index', [
             'blood_donors' => $blood_donors,

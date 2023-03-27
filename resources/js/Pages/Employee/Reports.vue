@@ -140,7 +140,7 @@ export default {
     },
     methods: {
         handleCustomDate(date) {
-            const formatTime = this.formateDate(date, "YYYY-MM-DD");
+            const formatTime = this.formatTime(date, "YYYY-MM-DD");
             this.form.custom_date = formatTime;
         },
         handleCustomRangeDate(date) {
@@ -154,8 +154,8 @@ export default {
                 this.errors.custom_end_date = null;
             }
 
-            this.form.custom_start_date = this.formateDate(startDate, "YYYY-MM-DD")
-            this.form.custom_end_date = this.formateDate(startDate, "YYYY-MM-DD")
+            this.form.custom_start_date = this.formatTime(startDate, "YYYY-MM-DD")
+            this.form.custom_end_date = this.formatTime(startDate, "YYYY-MM-DD")
         },
         async getReport(){
             try {
@@ -187,10 +187,10 @@ export default {
             }
         },
         startDate(date) {
-            return this.formateDate(date, "DD MMM, YYYY");
+            return this.formatTime(date, "DD MMM, YYYY");
         },
         endDate(date) {
-            return this.formateDate(date, "DD MMM, YYYY");
+            return this.formatTime(date, "DD MMM, YYYY");
         },
     },
     watch:{

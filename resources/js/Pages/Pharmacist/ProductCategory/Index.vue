@@ -146,7 +146,7 @@
                    </p>
                </span>
            </div>
-           <Pagination :data="product_categories" v-if="product_categories && product_categories.data.length && product_categories.total > 20" class="my-5"/>
+           <Pagination :data="product_categories" v-if="product_categories && product_categories.data.length && product_categories.total > app_setting.rows_per_page" class="my-5"/>
        </template>
 
        <NothingFound v-else>

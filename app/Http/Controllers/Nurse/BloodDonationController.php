@@ -18,7 +18,7 @@ class BloodDonationController extends Controller
      */
     public function index(Request $request)
     {
-        $blood_donations = BloodDonation::with('bloodDonor')->latest()->paginate(20)->withQueryString();
+        $blood_donations = BloodDonation::with('bloodDonor')->latest()->paginate(config('kodebazar.rows_per_page'))->withQueryString();
 
         return inertia('Nurse/BloodDonation/Index', [
             'blood_donations' => $blood_donations,

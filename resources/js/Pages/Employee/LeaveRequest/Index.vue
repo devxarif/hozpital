@@ -408,14 +408,14 @@ export default {
             }
         },
         startDate(Date) {
-            return this.formateDate(date, "DD MMM, YYYY");
+            return this.formatTime(date, "DD MMM, YYYY");
         },
         endDate(Date) {
-            return this.formateDate(date, "DD MMM, YYYY");
+            return this.formatTime(date, "DD MMM, YYYY");
         },
         requestFor(startDate, endDate) {
-            const start = this.formateDate(startDate, "DD MMM, YYYY");
-            const end = this.formateDate(endDate, "DD MMM, YYYY");
+            const start = this.formatTime(startDate, "DD MMM, YYYY");
+            const end = this.formatTime(endDate, "DD MMM, YYYY");
 
             return `${start} - ${end}`;
         },

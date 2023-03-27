@@ -35,52 +35,45 @@ class HandleInertiaRequests extends Middleware
      */
     public function share(Request $request): array
     {
-          // Authenticate user
-          $data['authenticatedUser'] = currentUser();
-          if (auth()->check() && currentUser()->role == 'employee') {
-              $data['employeeOrganization'] = auth()->user()->employee->organization;
-          }
-          if (auth()->check() && currentUser()->role == 'owner') {
-              $data['currentOrganization'] = currentOrganization();
-              $data['ownerOrganization'] = auth()->user()->organization;
-          }
+        // Authenticate user
+        $data['authenticatedUser'] = currentUser();
+        if (auth()->check() && currentUser()->role == 'employee') {
+            $data['employeeOrganization'] = auth()->user()->employee->organization;
+        }
+        if (auth()->check() && currentUser()->role == 'owner') {
+            $data['currentOrganization'] = currentOrganization();
+            $data['ownerOrganization'] = auth()->user()->organization;
+        }
 
-          // Flash messages
-          $data['flash'] = [
-              'success' => session('success'),
-              'error' => session('error'),
-              'warning' => session('warning'),
-          ];
+        // Flash messages
+        $data['flash'] = [
+            'success' => session('success'),
+            'error' => session('error'),
+            'warning' => session('warning'),
+        ];
 
-          // Language
-          $data['locale'] = session()->has('current_lang') ? session('current_lang') : app()->getLocale();
-          $data['languageList'] = Language::all(['id', 'language_code', 'name','country_code']);
-        //   $data['language'] = include lang_path($data['locale'] . "/messages.php");
-          $data['language'] = translations(resource_path('lang/'.$data['locale'].'.json'));
+        // Language
+        $data['locale'] = session()->has('current_lang') ? session('current_lang') : app()->getLocale();
+        $data['languageList'] = Language::all(['id', 'language_code', 'name','country_code']);
+        // $data['language'] = include lang_path($data['locale'] . "/messages.php");
+        $data['language'] = translations(resource_path('lang/'.$data['locale'].'.json'));
 
-          // Notifications
-          $data['notifications'] = auth()->check() ? auth()->user()->notifications->take(5) : [];
-          $data['unreadNotificationsCount'] = auth()->check() ? auth()->user()->unreadNotifications->count() : 0;
+        // Notifications
+        $data['notifications'] = auth()->check() ? auth()->user()->notifications->take(5) : [];
+        $data['unreadNotificationsCount'] = auth()->check() ? auth()->user()->unreadNotifications->count() : 0;
 
-          // Subscription
-          if (auth()->check() && auth()->user()->role == 'owner' && auth()->user()->current_organization_id) {
-              session()->forget('current_subscription');
-              if (! session()->has('current_subscription')) {
-                  storeOrganizationCurrentSubscription();
-              }
+        // Env variables
+        $data['current_currency'] = config('kodebazar.currency');
+        $data['current_currency_symbol'] = config('kodebazar.currency_symbol');
+        $data['currency_symbol_position'] = config('kodebazar.currency_symbol_position');
+        $data['app_version'] = config('kodebazar.app_version');
 
-              $data['current_subscription'] = session('current_subscription');
-          }
+        // Settings
+        $data['setting'] = Setting::first();
 
-          // Env variables
-          $data['current_currency'] = config('kodebazar.currency');
-          $data['current_currency_symbol'] = config('kodebazar.currency_symbol');
-          $data['currency_symbol_position'] = config('kodebazar.currency_symbol_position');
-          $data['app_version'] = config('kodebazar.app_version');
 
-          // Settings
-          $data['setting'] = Setting::first();
 
-          return array_merge(parent::share($request), $data);
+
+        return array_merge(parent::share($request), $data);
     }
 }

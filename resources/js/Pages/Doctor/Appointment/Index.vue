@@ -204,7 +204,7 @@
                </span>
            </div>
 
-           <Pagination :data="appointments" v-if="appointments && appointments.data.length && appointments.total > 20" class="mt-5"/>
+           <Pagination :data="appointments" v-if="appointments && appointments.data.length && appointments.total > app_setting.rows_per_page" class="mt-5"/>
        </template>
 
         <!-- Table View  -->

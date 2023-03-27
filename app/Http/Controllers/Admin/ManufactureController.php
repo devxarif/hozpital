@@ -24,7 +24,7 @@ class ManufactureController extends Controller
             $query->whereLike(['name', 'phone', 'email'], $request->keyword);
         }
 
-        $manufactures = $query->latest()->paginate(20)->withQueryString();
+        $manufactures = $query->latest()->paginate(config('kodebazar.rows_per_page'))->withQueryString();
 
         return inertia('Admin/Manufacture/Index', [
             'manufactures' => $manufactures,

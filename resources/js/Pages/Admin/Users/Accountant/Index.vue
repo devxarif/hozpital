@@ -156,7 +156,7 @@
                     <h6 class="my-1 text-sm font-bold tracking-tight text-gray-900 ">{{ accountant.user.email ?? '-' }}</h6>
                 </span>
             </div>
-            <Pagination :data="accountants" v-if="accountants && accountants.data.length && accountants.total > 20" class="mt-5"/>
+            <Pagination :data="accountants" v-if="accountants && accountants.data.length && accountants.total > app_setting.rows_per_page" class="mt-5"/>
         </template>
 
         <!-- Table View  -->

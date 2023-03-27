@@ -105,7 +105,7 @@
                    </p>
                </span>
            </div>
-           <Pagination :data="announcements" v-if="announcements && announcements.data.length && announcements.total > 20" class="mt-5"/>
+           <Pagination :data="announcements" v-if="announcements && announcements.data.length && announcements.total > app_setting.rows_per_page" class="mt-5"/>
        </template>
 
         <!-- Table View  -->
@@ -178,7 +178,7 @@
                         </tbody>
                     </table>
                     <Pagination :data="announcements"
-                        v-if="announcements && announcements.data.length && announcements.total > 20" class="mt-5" />
+                        v-if="announcements && announcements.data.length && announcements.total > app_setting.rows_per_page" class="mt-5" />
                 </div>
             </div>
         </div>

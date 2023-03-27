@@ -125,7 +125,7 @@ export default {
             });
         },
         handleDate(date) {
-            const formatTime = this.formateDate(date, "YYYY-MM-DD");
+            const formatTime = this.formatTime(date, "YYYY-MM-DD");
             this.form.date = formatTime;
         },
         async loadIncomeCategories(){

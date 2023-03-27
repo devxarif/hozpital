@@ -2202,14 +2202,14 @@
                 }
             },
             startDate(Date) {
-                return this.formateDate(Date, "DD MMM, YYYY");
+                return this.formatTime(Date, "DD MMM, YYYY");
             },
             endDate(Date) {
-                return  this.formateDate(Date, "DD MMM, YYYY");
+                return  this.formatTime(Date, "DD MMM, YYYY");
             },
             requestFor(startDate, endDate) {
-                const start =  this.formateDate(startDate, "DD MMM, YYYY");
-                const end =  this.formateDate(endDate, "DD MMM, YYYY");
+                const start =  this.formatTime(startDate, "DD MMM, YYYY");
+                const end =  this.formatTime(endDate, "DD MMM, YYYY");
 
                 return `${start} - ${end}`;
             },

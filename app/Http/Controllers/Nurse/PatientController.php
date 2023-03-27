@@ -23,7 +23,7 @@ class PatientController extends Controller
      */
     public function index(Request $request)
     {
-        $patients = Patient::with('user:id,name,email')->latest()->paginate(20)->withQueryString();
+        $patients = Patient::with('user:id,name,email')->latest()->paginate(config('kodebazar.rows_per_page'))->withQueryString();
 
         return inertia('Nurse/Patient/Index', [
             'patients' => $patients,

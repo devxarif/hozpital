@@ -159,7 +159,7 @@
                    </p>
                </span>
            </div>
-           <Pagination :data="incomes" v-if="incomes && incomes.data.length && incomes.total > 20" class="mt-5"/>
+           <Pagination :data="incomes" v-if="incomes && incomes.data.length && incomes.total > app_setting.rows_per_page" class="mt-5"/>
        </template>
 
         <!-- Table View  -->

@@ -130,7 +130,7 @@
                    </p>
                </span>
            </div>
-           <Pagination :data="income_categories" v-if="income_categories && income_categories.data.length && income_categories.total > 20" class="mt-5"/>
+           <Pagination :data="income_categories" v-if="income_categories && income_categories.data.length && income_categories.total > app_setting.rows_per_page" class="mt-5"/>
        </template>
 
        <NothingFound v-else>

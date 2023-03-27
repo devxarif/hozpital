@@ -25,7 +25,7 @@ class IncomeCategoryController extends Controller
             $query->whereLike('name', $request->keyword);
         }
 
-        $income_categories = $query->latest()->paginate(20)->withQueryString();
+        $income_categories = $query->latest()->paginate(config('kodebazar.rows_per_page'))->withQueryString();
 
         return inertia('Admin/Finances/IncomeCategory/Index', [
             'income_categories' => $income_categories,

@@ -27,7 +27,7 @@ class DoctorController extends Controller
             });
         }
 
-        $doctors = $query->with('user:id,name,email', 'department:id,name')->latest()->paginate(20)->withQueryString();
+        $doctors = $query->with('user:id,name,email', 'department:id,name')->latest()->paginate(config('kodebazar.rows_per_page'))->withQueryString();
 
         return inertia('Nurse/Doctor/Index', [
             'doctors' => $doctors,

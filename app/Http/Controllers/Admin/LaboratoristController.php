@@ -29,7 +29,7 @@ class LaboratoristController extends Controller
             $query->whereLike(['user.name', 'user.email'], $request->keyword);
         }
 
-        $laboratorists = $query->with('user:id,name,email')->latest()->paginate(20)->withQueryString();
+        $laboratorists = $query->with('user:id,name,email')->latest()->paginate(config('kodebazar.rows_per_page'))->withQueryString();
 
         return inertia('Admin/Users/Laboratorist/Index', [
             'laboratorists' => $laboratorists,

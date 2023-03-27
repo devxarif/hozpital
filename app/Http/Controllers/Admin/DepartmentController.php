@@ -26,7 +26,7 @@ class DepartmentController extends Controller
             $query->whereLike('name', $request->keyword);
         }
 
-        $departments = $query->latest()->paginate(20)->withQueryString();
+        $departments = $query->latest()->paginate(config('kodebazar.rows_per_page'))->withQueryString();
 
         return inertia('Admin/Department/Index', [
             'departments' => $departments,

@@ -142,7 +142,7 @@
                    </p>
                </span>
            </div>
-           <Pagination :data="departments" v-if="departments && departments.data.length && departments.total > 20" class="mt-5"/>
+           <Pagination :data="departments" v-if="departments && departments.data.length && departments.total > app_setting.rows_per_page" class="mt-5"/>
        </template>
 
         <!-- Table View  -->

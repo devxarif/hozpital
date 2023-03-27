@@ -42,7 +42,7 @@ class BedController extends Controller
             });
         }
 
-        $data['beds'] = $query->with('bedType:id,name', 'floor:id,name')->latest()->paginate(20)->withQueryString();
+        $data['beds'] = $query->with('bedType:id,name', 'floor:id,name')->latest()->paginate(config('kodebazar.rows_per_page'))->withQueryString();
         $data['bed_types'] = BedType::withCount('beds')->latest()->get(['id', 'name', 'slug']);
         $data['filter'] = $request;
         $data['total_bed_count'] = Bed::count();
@@ -113,9 +113,9 @@ class BedController extends Controller
     {
         if ($request->type && $request->type != 'all') {
             $type = BedType::whereSlug($request->type)->firstOrFail();
-            $beds = $type->beds()->with('bedType:id,name')->latest()->paginate(20)->withQueryString();
+            $beds = $type->beds()->with('bedType:id,name')->latest()->paginate(config('kodebazar.rows_per_page'))->withQueryString();
         } else {
-            $beds = Bed::with('bedType:id,name')->latest()->paginate(20)->withQueryString();
+            $beds = Bed::with('bedType:id,name')->latest()->paginate(config('kodebazar.rows_per_page'))->withQueryString();
         }
 
         return $beds;

@@ -26,7 +26,7 @@ class AccountantController extends Controller
             $query->whereLike(['user.name', 'user.email'], $request->keyword);
         }
 
-        $accountants = $query->with('user:id,name,email')->latest()->paginate(20)->withQueryString();
+        $accountants = $query->with('user:id,name,email')->latest()->paginate(config('kodebazar.rows_per_page'))->withQueryString();
 
         return inertia('Admin/Users/Accountant/Index', [
             'accountants' => $accountants,

@@ -151,7 +151,7 @@
                    </div>
                    <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">{{ leave_request?.leave_type?.name ?? '-' }}</h2>
                    <h2 class="mb-2 text-xl font-bold tracking-tight text-gray-900 ">{{ leave_request.days }} {{ pluralize(leave_request.days, 'Day') }}</h2>
-                   <p>{{ formateDate(leave_request.start, 'MMMM D') }} - {{ formateDate(leave_request.end, 'MMMM D YYYY') }}</p>
+                   <p>{{ formatTime(leave_request.start, 'MMMM D') }} - {{ formatTime(leave_request.end, 'MMMM D YYYY') }}</p>
                     <div class="mt-5">
                         <template v-if="leave_request.status == 'pending'">
                             <div class="flex gap-3 text-white">
@@ -178,7 +178,7 @@
                     </div>
                </span>
             </div>
-           <Pagination :data="leave_requests" v-if="leave_requests && leave_requests.data.length && leave_requests.total > 20" class="mt-5"/>
+           <Pagination :data="leave_requests" v-if="leave_requests && leave_requests.data.length && leave_requests.total > app_setting.rows_per_page" class="mt-5"/>
        </template>
 
          <!-- Table View  -->
@@ -240,7 +240,7 @@
                     </td>
                     <td class="p-4 text-sm text-gray-500 break-all">
                         <h2 class="mb-2 text-xl font-bold tracking-tight text-gray-900 ">{{ leave_request.days }} {{ pluralize(leave_request.days, 'Day') }}</h2>
-                        <p>{{ formateDate(leave_request.start, 'MMMM D') }} - {{ formateDate(leave_request.end, 'MMMM D YYYY') }}</p>
+                        <p>{{ formatTime(leave_request.start, 'MMMM D') }} - {{ formatTime(leave_request.end, 'MMMM D YYYY') }}</p>
                     </td>
                     <td class="p-4 text-sm text-gray-500 break-all">
                         <span class="capitalize text-white text-sm font-medium mr-2 px-3 py-2 rounded-full" :class="leave_request.status == 'pending' ? 'bg-yellow-500':(leave_request.status == 'approved' ? 'bg-green-500':'bg-red-500')">

@@ -171,7 +171,7 @@ class WebsiteController extends Controller
 
     //     $posts = Post::select('id', 'title', 'slug', 'thumbnail', 'short_description')
     //         ->latest()
-    //         ->paginate(20)->withQueryString();
+    //         ->paginate(config('kodebazar.rows_per_page'))->withQueryString();
 
     //     return view('website.blog', compact('posts'));
     // }

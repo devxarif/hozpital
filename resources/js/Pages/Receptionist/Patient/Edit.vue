@@ -244,7 +244,7 @@ export default {
             return text + '@mail.com';
         },
         handleCustomDate(date) {
-            const formatTime = this.formateDate(date, "YYYY-MM-DD");
+            const formatTime = this.formatTime(date, "YYYY-MM-DD");
             this.form.birth_date = formatTime;
         },
         disabledAfterToday(date) {

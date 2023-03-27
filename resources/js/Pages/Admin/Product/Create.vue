@@ -214,7 +214,7 @@ export default {
             });
         },
         handleExpiredDate(date) {
-            const formatTime = this.formateDate(date, "YYYY-MM-DD");
+            const formatTime = this.formatTime(date, "YYYY-MM-DD");
             this.form.expire_date = formatTime;
         },
         changeProductType(type) {

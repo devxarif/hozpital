@@ -28,7 +28,7 @@ class ExpenseController extends Controller
             $query->where('expense_category_id', $request->category);
         }
 
-        $expenses = $query->with('expenseCategory:id,name')->latest()->paginate(20)->withQueryString();
+        $expenses = $query->with('expenseCategory:id,name')->latest()->paginate(config('kodebazar.rows_per_page'))->withQueryString();
 
         return inertia('Admin/Finances/Expense/Index', [
             'expenses' => $expenses,

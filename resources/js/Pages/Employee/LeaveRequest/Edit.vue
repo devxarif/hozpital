@@ -266,7 +266,7 @@ export default {
         },
 
         handleStartDate(startDate) {
-            const formatTime = this.formateDate(startDate, "YYYY-MM-DD");
+            const formatTime = this.formatTime(startDate, "YYYY-MM-DD");
 
             if(this.form.end){
                 let dateCheck = this.checkDateValidity(formatTime, this.form.end);
@@ -280,7 +280,7 @@ export default {
             this.form.start = formatTime;
         },
         handleEndDate(endDate) {
-            const formatTime = this.formateDate(startDate, "YYYY-MM-DD");
+            const formatTime = this.formatTime(startDate, "YYYY-MM-DD");
 
             if(this.form.start){
                 let dateCheck = this.checkDateValidity(this.form.start, formatTime);

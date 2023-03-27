@@ -154,11 +154,11 @@ export default {
             this.form.color = color.hex
         },
         handleStartDate(date) {
-            const formatTime = this.formateDate(date, "YYYY-MM-DD");
+            const formatTime = this.formatTime(date, "YYYY-MM-DD");
             this.form.start = formatTime;
         },
         handleEndDate(date) {
-            const formatTime = this.formateDate(date, "YYYY-MM-DD");
+            const formatTime = this.formatTime(date, "YYYY-MM-DD");
             this.form.end = formatTime;
         },
     },

@@ -125,7 +125,7 @@ export default {
             this.form.slots[this.index].end = time.hours + ':' + time.minutes
 
             // this.time = time.hours + ':' + time.minutes
-            // const formatTime = this.formateDate(date, "YYYY-MM-DD");
+            // const formatTime = this.formatTime(date, "YYYY-MM-DD");
             // this.form.start = formatTime;
         },
         addMore() {

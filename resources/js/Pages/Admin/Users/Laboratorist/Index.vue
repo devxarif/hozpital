@@ -173,7 +173,7 @@
                     <h6 class="my-1 text-sm font-bold tracking-tight text-gray-900 ">{{ laboratorist.user.email ?? '-' }}</h6>
                 </span>
             </div>
-            <Pagination :data="laboratorists" v-if="laboratorists && laboratorists.data.length && laboratorists.total > 20" class="mt-5"/>
+            <Pagination :data="laboratorists" v-if="laboratorists && laboratorists.data.length && laboratorists.total > app_setting.rows_per_page" class="mt-5"/>
        </template>
 
         <!-- Table View  -->

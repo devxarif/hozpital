@@ -172,7 +172,7 @@
                     </p>
                 </span>
             </div>
-            <Pagination :data="beds" v-if="beds && beds.data.length && beds.total > 20" class="mt-5"/>
+            <Pagination :data="beds" v-if="beds && beds.data.length && beds.total > app_setting.rows_per_page" class="mt-5"/>
         </template>
 
         <NothingFound v-else/>

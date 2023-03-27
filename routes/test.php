@@ -88,6 +88,19 @@ Route::get('/test2', function () {
 });
 
 Route::get('/test', function () {
+
+    return config('kodebazar.rows_per_page');
+    // paginate(20)
+
+
+    return $setting = Setting::first();
+
+    $obj_merged = (object) array_merge((array) $setting, (array) $setting2);
+
+    return $obj_merged;
+
+
+
     $decimal_places = config('kodebazar.decimal_places');
     $decimal_separator = config('kodebazar.decimal_separator');
     $thousand_separator = config('kodebazar.thousand_separator');

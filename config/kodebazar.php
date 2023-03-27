@@ -67,12 +67,12 @@ return [
     'vonage_active' => env('VONAGE_ACTIVE'),
 
     // System Setting
-    'rows_per_page' => 30,
+    'rows_per_page' => 20,
     'start_day_of_week' => 1,
     'default_language' => 'bn',
     'date_format' => 'd F, Y',
-    'time_format' => 'h:i A',
-    'thousand_separator' => ' ',
-    'decimal_separator' => ' ',
-    'decimal_places' => 2,
+    'time_format' => 'H:i',
+    'thousand_separator' => '',
+    'decimal_separator' => '',
+    'decimal_places' => 0,
 ];

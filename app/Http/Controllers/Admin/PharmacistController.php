@@ -29,7 +29,7 @@ class PharmacistController extends Controller
             $query->whereLike(['user.name', 'user.email'], $request->keyword);
         }
 
-        $pharmacists = $query->with('user:id,name,email')->latest()->paginate(20)->withQueryString();
+        $pharmacists = $query->with('user:id,name,email')->latest()->paginate(config('kodebazar.rows_per_page'))->withQueryString();
 
         return inertia('Admin/Users/Pharmacist/Index', [
             'pharmacists' => $pharmacists,

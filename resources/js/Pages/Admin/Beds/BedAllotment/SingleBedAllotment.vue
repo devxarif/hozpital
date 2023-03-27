@@ -65,10 +65,10 @@
                 Patient: <b>{{ bed?.bed_allotment?.patient?.user?.name ?? 'N/A' }}</b>
             </p>
             <p v-if="bed.bed_allotment && bed.bed_allotment.allotment_time">
-                Allotment Time: <b>{{ formateDate(bed?.bed_allotment?.allotment_time, 'MMMM D, YYYY HH:mm') }}</b>
+                Allotment Time: <b>{{ formatTime(bed?.bed_allotment?.allotment_time, 'MMMM D, YYYY HH:mm') }}</b>
             </p>
             <p v-if="bed.bed_allotment && bed.bed_allotment.discharge_time">
-                Discharge Time: <b>{{ formateDate(bed?.bed_allotment?.discharge_time, 'MMMM D, YYYY HH:mm') }}</b>
+                Discharge Time: <b>{{ formatTime(bed?.bed_allotment?.discharge_time, 'MMMM D, YYYY HH:mm') }}</b>
             </p>
         </template>
 

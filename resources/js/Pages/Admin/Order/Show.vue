@@ -10,7 +10,7 @@
                             <h5>{{ __('Order Id') }}: <b>#{{ order.order_id }}</b></h5>
                             <h5>{{ __('Transaction ID') }}: <b>{{ order.transaction_id }}</b></h5>
                             <p class="">
-                                {{ formateDate(order.created_at, 'MMMM D, YYYY, HH:mm') }} <br>
+                                {{ formatTime(order.created_at, 'MMMM D, YYYY, HH:mm') }} <br>
                             </p>
                         </div>
                         <div>

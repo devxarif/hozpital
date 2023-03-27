@@ -30,7 +30,7 @@ class LeaveTypeController extends Controller
             $query->whereLike(['name'], $request->keyword);
         }
 
-        $leave_types = $query->latest()->paginate(20)->withQueryString();
+        $leave_types = $query->latest()->paginate(config('kodebazar.rows_per_page'))->withQueryString();
 
         return inertia('Admin/LeaveType/Index', [
             'leave_types' => $leave_types,

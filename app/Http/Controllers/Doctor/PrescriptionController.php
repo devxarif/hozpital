@@ -19,7 +19,7 @@ class PrescriptionController extends Controller
      */
     public function index(Request $request)
     {
-        $prescriptions = Prescription::currentDoctor()->with('medicines', 'patient:id,user_id', 'patient.user:id,name')->latest()->paginate(20);
+        $prescriptions = Prescription::currentDoctor()->with('medicines', 'patient:id,user_id', 'patient.user:id,name')->latest()->paginate(config('kodebazar.rows_per_page'));
 
         return inertia('Doctor/Prescription/Index', [
             'prescriptions' => $prescriptions,
@@ -38,7 +38,7 @@ class PrescriptionController extends Controller
             $query->whereLike(['blood_group'], $request->blood_group);
         }
 
-        $blood_donors = $query->latest()->paginate(20)->withQueryString();
+        $blood_donors = $query->latest()->paginate(config('kodebazar.rows_per_page'))->withQueryString();
 
         return inertia('Doctor/BloodDonor/Index', [
             'blood_donors' => $blood_donors,

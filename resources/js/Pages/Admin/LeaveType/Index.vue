@@ -131,7 +131,7 @@
                     </span>
                </span>
            </div>
-           <Pagination :data="leave_types" v-if="leave_types && leave_types.data.length && leave_types.total > 20" class="mt-5"/>
+           <Pagination :data="leave_types" v-if="leave_types && leave_types.data.length && leave_types.total > app_setting.rows_per_page" class="mt-5"/>
        </template>
 
        <NothingFound v-else>

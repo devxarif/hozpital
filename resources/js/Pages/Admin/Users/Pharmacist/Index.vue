@@ -158,7 +158,7 @@
                     <h6 class="my-1 text-sm font-bold tracking-tight text-gray-900 ">{{ pharmacist.user.email ?? '-' }}</h6>
                 </span>
             </div>
-            <Pagination :data="pharmacists" v-if="pharmacists && pharmacists.data.length && pharmacists.total > 20" class="mt-5"/>
+            <Pagination :data="pharmacists" v-if="pharmacists && pharmacists.data.length && pharmacists.total > app_setting.rows_per_page" class="mt-5"/>
        </template>
 
         <!-- Table View  -->
