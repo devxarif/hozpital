@@ -119,6 +119,7 @@ createInertiaApp({
             data(){
                 return {
                     app_setting: this.$page.props?.setting,
+                    start_day_of_week: this.$page.props?.setting?.start_day_of_week || 0,
                 }
             },
             methods:{
@@ -134,8 +135,38 @@ createInertiaApp({
 
                     return translation
                 },
-                formatTime(date, format = 'MMMM D, YYYY') {
-                    return dayjs(date).format(format);
+                formatTime(date, format = null, concat = null) {
+                    var date_format = 'MMMM D, YYYY';
+
+                    if (!format) {
+                        let app_format = this.app_setting?.date_format || date_format;
+
+                        let date_format_rules = {
+                            'm/d/Y':'MM/DD/YYYY',
+                            'd/m/Y':'DD/MM/YYYY',
+                            'Y/m/d':'YYYY/MM/DD',
+                            'Y/d/m':'YYYY/DD/MM',
+                            'm-d-Y':'MM-DD-YYYY',
+                            'd-m-Y':'DD-MM-YYYY',
+                            'Y-m-d':'YYYY-MM-DD',
+                            'Y-d-m':'YYYY-DD-MM',
+                            'd M, Y':'DD MMM, YYYY',
+                            'M d, Y':'MMM DD, YYYY',
+                            'Y M, d':'YYYY MMM, DD',
+                            'd F, Y':'DD MMMM, YYYY',
+                            'Y F, d':'YYYY MMMM, DD',
+                        };
+
+                        var date_format = date_format_rules[app_format];
+                    }else{
+                        var date_format = format;
+                    }
+
+                    if (concat) {
+                        var date_format = date_format+' '+concat;
+                    }
+
+                    return dayjs(date).format(date_format) ?? date;
                 },
                 timeFromNow(date) {
                     return dayjs(date).fromNow();

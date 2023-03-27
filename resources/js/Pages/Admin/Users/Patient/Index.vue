@@ -1,6 +1,6 @@
 <template>
     <AppLayout title="Patient">
-
+        <!-- {{ app_setting.start_day_of_week }} -->
         <!-- Header Part  -->
         <Breadcrumb>
             <BreadcrumbLink title="Patient"/>

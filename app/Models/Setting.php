@@ -10,7 +10,7 @@ class Setting extends Model
     use HasFactory;
 
     protected $appends = ['app_name', 'app_default_language', 'app_timezone', 'app_currency', 'app_currency_symbol',
-    'app_currency_symbol_position', 'rows_per_page', 'default_language', 'date_format', 'time_format', 'thousand_separator', 'decimal_separator', 'decimal_places'];
+    'app_currency_symbol_position', 'rows_per_page', 'default_language', 'date_format', 'time_format', 'thousand_separator', 'decimal_separator', 'decimal_places','start_day_of_week'];
 
     public function getAppNameAttribute()
     {
@@ -102,6 +102,11 @@ class Setting extends Model
     public function getDecimalPlacesAttribute()
     {
         return config('kodebazar.decimal_places', 0);
+    }
+
+    public function getStartDayOfWeekAttribute()
+    {
+        return config('kodebazar.start_day_of_week', 1);
     }
 }
 

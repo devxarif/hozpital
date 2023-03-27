@@ -89,6 +89,22 @@ Route::get('/test2', function () {
 
 Route::get('/test', function () {
 
+    return [
+       "m/d/Y (".formatTime(now(), 'm/d/Y').')',
+       "d/m/Y (".formatTime(now(), 'd/m/Y').')',
+       "Y/m/d (".formatTime(now(), 'Y/m/d').')',
+       "Y/d/m (".formatTime(now(), 'Y/d/m').')',
+       "m-d-Y (".formatTime(now(), 'm-d-Y').')',
+       "d-m-Y (".formatTime(now(), 'd-m-Y').')',
+       "Y-m-d (".formatTime(now(), 'Y-m-d').')',
+       "Y-d-m (".formatTime(now(), 'Y-d-m').')',
+       "d M, Y (".formatTime(now(), 'd M, Y').')',
+       "M d, Y (".formatTime(now(), 'M d, Y').')',
+       "Y M, d (".formatTime(now(), 'Y M, d').')',
+       "d F, Y (".formatTime(now(), 'd F, Y').')',
+       "Y F, d (".formatTime(now(), 'Y F, d').')',
+    ];
+
     return config('kodebazar.rows_per_page');
     // paginate(20)
 

@@ -150,6 +150,7 @@ export default {
                     center: 'title',
                     right: 'dayGridMonth,dayGridWeek,listMonth'
                 },
+                firstDay: this.$page.props?.setting?.start_day_of_week || 0,
                 events: this.holidays,
                 selectable: true,
                 editable: true,
