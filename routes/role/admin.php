@@ -285,6 +285,7 @@ Route::controller(GlobalController::class)->group(function () {
 // Profile & Settings
 Route::controller(UserController::class)->middleware('auth')->group(function () {
     Route::get('/profile', 'profile')->name('user.profile');
+    Route::get('/setting', 'setting')->name('user.profile.setting');
     Route::post('/profile/update', 'profileUpdate')->name('user.profile.update');
     Route::post('/password/update', 'passwordUpdate')->name('user.password.update');
     Route::delete('/account/delete', 'accountDelete')->name('user.account.delete');

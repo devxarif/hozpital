@@ -119,7 +119,7 @@ createInertiaApp({
             data(){
                 return {
                     app_setting: this.$page.props?.setting,
-                    start_day_of_week: this.$page.props?.setting?.start_day_of_week || 0,
+                    auth_user: this.$page.props?.authenticatedUser,
                 }
             },
             methods:{

@@ -249,7 +249,7 @@ export default {
             leaveTypeBalance: {},
             showLeaveTypeBalance: false,
             diffBetweenDays: 0,
-            auth_user: this.$page.props.authenticatedUser,
+            user: this.$page.props.authenticatedUser,
             leave_types: [],
 
 
@@ -267,7 +267,7 @@ export default {
         },
         async loadData(){
             this.leaveTypeLoading = true;
-            let response = await axios.get(route('fetch.company.leaveTypes', this.auth_user.employee.organization_id));
+            let response = await axios.get(route('fetch.company.leaveTypes', this.user.employee.organization_id));
 
             this.leave_types = response.data
 
@@ -349,7 +349,7 @@ export default {
                         params: {
                             start: this.form.start,
                             end: this.form.end,
-                            organization_id: this.auth_user.employee.organization_id,
+                            organization_id: this.user.employee.organization_id,
                         },
                     }
                 );

@@ -76,7 +76,7 @@
                     <!-- Profile  -->
                     <Menu as="div" class="relative inline-block text-left">
                         <div>
-                        <MenuButton class="inline-flex w-full justify-center rounded-md px-4 py-2 text-sm font-medium text-gray-700 focus:outline-none">
+                        <MenuButton class="inline-flex w-full justify-center rounded-md px-4 py-2 text-md font-medium text-gray-700 focus:outline-none">
                             <img class="object-cover w-10 h-10 rounded-full" :src="role == 'owner' ? currentOrganization.organization_logo: $page.props.authenticatedUser.avatar_url" alt="" aria-hidden="true" />
                         </MenuButton>
                         </div>
@@ -89,22 +89,39 @@
                             </div>
                             <div class="py-1">
                             <MenuItem v-slot="{ active }">
-                                <Link :href="route('user.profile')" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm']">Profile</Link>
+                                <Link :href="route('user.profile')" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm']">
+                                    <font-awesome-icon icon="fa-solid fa-user" class="h-4 w-4 mr-2 text-gray-500"/>
+                                    Profile
+                                </Link>
                             </MenuItem>
                             <MenuItem v-slot="{ active }">
-                                <a href="javascript:void(0)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm']">Settings</a>
+                                <Link :href="route('user.profile.setting')" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm']">
+                                    <font-awesome-icon icon="fa-solid fa-cog" class="h-4 w-4 mr-2 text-gray-500"/>
+                                    Settings
+                                </Link>
+                            </MenuItem>
+                            <MenuItem v-slot="{ active }">
+                                <a @click.prevent="togglePasswordMenu = true" href="javascript:void(0)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm']">
+                                    <font-awesome-icon icon="fa-solid fa-lock" class="h-4 w-4 mr-2 text-gray-500"/>
+                                    Change Password
+                                </a>
                             </MenuItem>
                             </div>
                             <div class="py-1">
                                 <MenuItem v-slot="{ active }">
-                                <Link href="/logout" method="post" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block w-full px-4 py-2 text-left text-sm']">Sign out</Link>
+                                <Link href="/logout" method="post" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block w-full px-4 py-2 text-left text-sm']">
+                                    <font-awesome-icon icon="fa-solid fa-sign-out" class="h-4 w-4 mr-2 text-gray-500"/>
+                                    Sign out
+                                </Link>
                                 </MenuItem>
                             </div>
                         </MenuItems>
                         </transition>
                     </Menu>
-                </ul>
 
+                    <!-- Change Password -->
+                    <ChangePassword :show="togglePasswordMenu"  @close-drawer="togglePasswordMenu = false"/>
+                </ul>
               </div>
             </div>
           </div>
@@ -112,35 +129,40 @@
 </template>
 
 <script>
-    import { Bars3BottomLeftIcon } from '@heroicons/vue/24/outline'
-    import { MagnifyingGlassIcon } from '@heroicons/vue/20/solid'
-    import Notification from './HeaderItems/Notification.vue'
+import { Bars3BottomLeftIcon } from '@heroicons/vue/24/outline'
+import { MagnifyingGlassIcon } from '@heroicons/vue/20/solid'
+import Notification from './HeaderItems/Notification.vue'
+import ChangePassword from './HeaderItems/ChangePassword.vue'
 
-    export default {
-        components:{
-            Bars3BottomLeftIcon,
-            MagnifyingGlassIcon,
-            Notification
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faCog, faLock, faUser, faSignOut} from '@fortawesome/free-solid-svg-icons'
+library.add(faCog, faLock, faUser, faSignOut)
+
+export default {
+    components:{
+        Bars3BottomLeftIcon,
+        MagnifyingGlassIcon,
+        Notification,
+        ChangePassword
+    },
+    data() {
+        return {
+            toggleNotificationsMenu: false,
+            togglePasswordMenu: false,
+            role: this.$page.props.authenticatedUser.role,
+            currentOrganization: this.$page.props.currentOrganization,
+
+            showToggleSidebar: false
+        };
+    },
+    methods: {
+        toggleSideMenu(){
+            alert()
         },
-        data() {
-            return {
-                toggleNotificationsMenu: false,
-                role: this.$page.props.authenticatedUser.role,
-                currentOrganization: this.$page.props.currentOrganization,
-
-                showToggleSidebar: false
-            };
-        },
-        methods: {
-            toggleSideMenu(){
-                alert()
-            },
-            toggleSidebarMenu(type){
-                console.log(type)
-
-                this.showToggleSidebar = !this.showToggleSidebar
-                this.$emit('updateSidebar', this.showToggleSidebar)
-            }
+        toggleSidebarMenu(type){
+            this.showToggleSidebar = !this.showToggleSidebar
+            this.$emit('updateSidebar', this.showToggleSidebar)
         }
     }
+}
 </script>

@@ -16,6 +16,78 @@ class UserController extends Controller
 {
     use HasCountry;
 
+    public function profile()
+    {
+        // return 123;
+        // $user = auth()->user();
+        // $role = $user->role;
+        // $data['user'] = $user;
+
+        // if ($role == 'owner') {
+        //     $data['countries'] = Country::all(['id', 'name']);
+        // }elseif($role == 'employee') {
+        //     $data['user'] = $user->load('employee');
+        // }
+
+        return inertia('Profile');
+    }
+
+    public function setting()
+    {
+        return inertia('ProfileSetting');
+    }
+
+    public function passwordUpdate(ProfileUpdateRequest $request)
+    {
+        $request->validate([
+            'current_password' => ['required', new MatchOldPassword],
+            'password' => ['required'],
+            'password_confirmation' => ['required', 'same:password'],
+        ]);
+
+        auth()->user()->update([
+            'password' => bcrypt($request->password),
+        ]);
+
+        $this->flashSuccess('Password changed successfully!');
+        return back();
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     /**
      * Display a listing of the resource.
      *
@@ -162,22 +234,6 @@ class UserController extends Controller
         return back();
     }
 
-    public function profile()
-    {
-        // return 123;
-        // $user = auth()->user();
-        // $role = $user->role;
-        // $data['user'] = $user;
-
-        // if ($role == 'owner') {
-        //     $data['countries'] = Country::all(['id', 'name']);
-        // }elseif($role == 'employee') {
-        //     $data['user'] = $user->load('employee');
-        // }
-
-        return inertia('Profile');
-    }
-
     public function profileUpdate(Request $request)
     {
         $user = auth()->user();
@@ -210,22 +266,7 @@ class UserController extends Controller
         return back();
     }
 
-    public function passwordUpdate(ProfileUpdateRequest $request)
-    {
-        $request->validate([
-            'current_password' => ['required', new MatchOldPassword],
-            'password' => ['required'],
-            'password_confirmation' => ['required', 'same:password'],
-        ]);
 
-        auth()->user()->update([
-            'password' => bcrypt($request->password),
-        ]);
-
-        session()->flash('success', 'Password changed successfully!');
-
-        return back();
-    }
 
     public function accountDelete()
     {

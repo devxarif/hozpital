@@ -62,7 +62,7 @@
                             <Link :href="route('admins.edit',user.id)" v-tooltip="'Edit'" class="btn pl-0">
                                 <EditIcon/>
                             </Link>
-                            <button @click="deleteData(user.id)" v-tooltip="'Delete'" class="btn" v-if="user.id != auth_user.id">
+                            <button @click="deleteData(user.id)" v-tooltip="'Delete'" class="btn" v-if="user.id != user.id">
                                 <DeleteIcon/>
                             </button>
                         </div>
@@ -81,7 +81,7 @@
         },
         data(){
             return {
-                auth_user: this.$page.props.authenticatedUser
+                user: this.$page.props.authenticatedUser
             }
         },
         methods: {
