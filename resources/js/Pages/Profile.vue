@@ -154,7 +154,7 @@
                                                                     class="h-4 w-4 bg-danger-500 border border-white rounded-full text-[10px] flex items-center justify-center text-white">1</span>
                                                             </div>
                                                         </div>
-                                                    </div>>
+                                                    </div>
                                                 </div>
                                             </div> -->
                                         </div>

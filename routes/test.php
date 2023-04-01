@@ -19,6 +19,7 @@ use Illuminate\Support\Str;
 use App\Models\BedAllotment;
 use App\Models\LeaveBalance;
 // use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Http\Request;
 use Livewire\WithPagination;
 use App\Exports\PatientExport;
 use App\Imports\PatientImport;
@@ -88,6 +89,11 @@ Route::get('/test2', function () {
 });
 
 Route::get('/test', function () {
+
+    return request()->userAgent();
+    return request()->ip();
+
+    return request()->header('User-Agent');
 
     return [
        "m/d/Y (".formatTime(now(), 'm/d/Y').')',

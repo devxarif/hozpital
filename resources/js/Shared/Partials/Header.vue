@@ -97,7 +97,7 @@
                             <MenuItem v-slot="{ active }">
                                 <Link :href="route('user.profile.setting')" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm']">
                                     <font-awesome-icon icon="fa-solid fa-cog" class="h-4 w-4 mr-2 text-gray-500"/>
-                                    Settings
+                                    Profile Setting
                                 </Link>
                             </MenuItem>
                             <MenuItem v-slot="{ active }">
