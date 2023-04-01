@@ -16,14 +16,17 @@ use Carbon\CarbonPeriod;
 use App\Models\LeaveType;
 use App\Models\Department;
 use Illuminate\Support\Str;
+use Jenssegers\Agent\Agent;
+use App\Events\LoginHistory;
+// use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\BedAllotment;
 use App\Models\LeaveBalance;
-// use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Livewire\WithPagination;
 use App\Exports\PatientExport;
 use App\Imports\PatientImport;
 use App\Models\ContactMessage;
+use App\Models\UserLoginActivity;
 use App\Utils\Writer\ArrayWriter;
 use Illuminate\Support\Benchmark;
 use Illuminate\Support\Collection;
@@ -36,6 +39,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Config;
 use App\Http\Controllers\TestController;
 use Spatie\Permission\Models\Permission;
+use Stevebauman\Location\Facades\Location;
 use Label84\HoursHelper\Facades\HoursHelper;
 use Illuminate\Pagination\LengthAwarePaginator;
 use App\Http\Controllers\Admin\UpgradeController;
@@ -89,6 +93,148 @@ Route::get('/test2', function () {
 });
 
 Route::get('/test', function () {
+
+    // event(new LoginHistory('facebook'));
+    return UserLoginActivity::latest()->get();
+
+    $agent = new Agent();
+    $platform = $agent->platform();
+    $browser = $agent->browser();
+
+    $ip = request()->ip();
+    // $ip = '103.102.27.0'; // Bangladesh
+    // $ip = '105.179.161.212'; // Mauritius
+    // $ip = '197.246.60.160'; // Egypt
+    // $ip = '107.29.65.61'; // United States"
+    // $ip = '46.39.160.0'; // Czech Republic
+    // $ip = "94.112.58.11"; // Czechia
+
+
+    $currentUserInfo = Location::get($ip);
+    if ($currentUserInfo) {
+        $location = "{$currentUserInfo->cityName}, $currentUserInfo->countryName ($ip)";
+    }else {
+        $location = "Unknown";
+    }
+
+    $data = UserLoginActivity::create([
+        'device' => $agent->device(),
+        'platform' => $platform.' '.$agent->version($platform),
+        'browser' => $browser.' '.$agent->version($browser),
+        'ip_address' => $ip,
+        // 'ip_address' => \Request::ip(),
+        'location' => $location,
+        'login_type' => 'email', // email, google, facebook, github, twitter
+        'user_id' => auth()->id(),
+    ]);
+
+    $data2 = DB::table('user_login_activities')->insert([
+        'device' => $agent->device(),
+        'platform' => $platform.' '.$agent->version($platform),
+        'browser' => $browser.' '.$agent->version($browser),
+        'ip_address' => $ip,
+        // 'ip_address' => \Request::ip(),
+        'location' => $location,
+        'login_type' => 'email', // email, google, facebook, github, twitter
+        'user_id' => auth()->id(),
+        'created_at' => now(),
+        'updated_at' => now(),
+    ]);
+
+
+    return Benchmark::measure([
+        'ORM' => fn() => $data,
+        'Query Builder' => fn() => $data2,
+      ], 3);
+
+
+
+
+
+
+
+
+    $ip = request()->ip();
+    // $ip = '103.102.27.0'; // Bangladesh
+    // $ip = '105.179.161.212'; // Mauritius
+    // $ip = '197.246.60.160'; // Egypt
+    // $ip = '107.29.65.61'; // United States"
+    // $ip = '46.39.160.0'; // Czech Republic
+    // $ip = "94.112.58.11"; // Czechia
+
+
+    $currentUserInfo = Location::get($ip);
+    if ($currentUserInfo) {
+        $location = "{$currentUserInfo->cityName}, $currentUserInfo->countryName ($ip)";
+    }else {
+        $location = "Unknown";
+    }
+
+
+    return $location ?? 'Unknown';
+
+    // return  $location ;
+    // return [
+    //     "IP" => $currentUserInfo->ip,
+    //     "Country Name" => $currentUserInfo->countryName,
+    //     "Country Code" => $currentUserInfo->countryCode,
+    //     "Region Code" => $currentUserInfo->regionCode,
+    //     "Region Name" => $currentUserInfo->regionName,
+    //     "City Name" => $currentUserInfo->cityName,
+    //     "Zip Code" => $currentUserInfo->zipCode,
+    //     "Latitude" => $currentUserInfo->latitude,
+    //     "Longitude" => $currentUserInfo->longitude,
+    // ];
+
+
+
+
+
+
+    $agent = new Agent();
+     $platform = $agent->platform();
+    // Ubuntu, Windows, OS X, ...
+    $browser = $agent->browser();
+    // Chrome, IE, Safari, Firefox, ...
+
+    return [
+        'device' => $agent->device(),
+        'platform' => $platform.' '.$agent->version($platform),
+        'browser' => $browser.' '.$agent->version($browser),
+        'ip_address' => $ip,
+        // 'ip_address' => \Request::ip(),
+        'location' => $location,
+        'login_type' => 'email', // email, google, facebook, github, twitter
+        'user_id' => auth()->id(),
+    ];
+
+
+
+    // $table->string('device');
+    // $table->string('platform');
+    // $table->string('browser');
+    // $table->string('ip_address');
+    // $table->string('location');
+    // $table->string('login_type');
+    // $table->string('user_id');
+
+
+
+    $this->userLoginActivity->create([
+        'platform' => $agent->version($platform),
+        'browser' => $agent->version($browser),
+        'device' => $agent->device(),
+        'ip_address' => \Request::ip(),
+        'user_id' => null,
+        'user_email' => $email,
+        'user_activity' => $user_activity
+    ]);
+
+
+
+
+
+
 
     return request()->userAgent();
     return request()->ip();

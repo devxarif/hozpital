@@ -33,6 +33,7 @@ use App\Http\Controllers\Admin\BloodDonationController;
 use App\Http\Controllers\Admin\IncomeCategoryController;
 use App\Http\Controllers\Admin\ExpenseCategoryController;
 use App\Http\Controllers\Admin\ProductCategoryController;
+use App\Http\Controllers\UserProfileController;
 
 // Route::middleware(['auth', 'check.admin.role'])->prefix('admin')->group(function () {
 Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function () {
@@ -285,9 +286,13 @@ Route::controller(GlobalController::class)->group(function () {
 // Profile & Settings
 Route::controller(UserController::class)->middleware('auth')->group(function () {
     Route::get('/profile', 'profile')->name('user.profile');
-    Route::get('/setting', 'setting')->name('user.profile.setting');
     Route::post('/profile/update', 'profileUpdate')->name('user.profile.update');
     Route::post('/password/update', 'passwordUpdate')->name('user.password.update');
+});
+
+Route::controller(UserProfileController::class)->prefix('profile')->middleware('auth')->group(function () {
+    Route::get('/setting', 'setting')->name('user.profile.setting');
+    Route::get('/security', 'security')->name('user.profile.security');
     Route::delete('/account/delete', 'accountDelete')->name('user.account.delete');
 });
 

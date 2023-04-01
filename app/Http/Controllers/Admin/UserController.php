@@ -32,11 +32,6 @@ class UserController extends Controller
         return inertia('Profile');
     }
 
-    public function setting()
-    {
-        return inertia('ProfileSetting');
-    }
-
     public function passwordUpdate(ProfileUpdateRequest $request)
     {
         $request->validate([

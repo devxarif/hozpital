@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Events\LoginHistory;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -40,8 +41,9 @@ class AuthController extends Controller
         if (Auth::attempt([$type => $request->username, 'password' => $request->password], $remember)) {
             $request->session()->regenerate();
 
-            session()->flash('success', 'Logged in successfully!');
+            event(new LoginHistory('email'));
 
+            session()->flash('success', 'Logged in successfully!');
             return redirect()->intended('/dashboard');
         }
 

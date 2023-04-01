@@ -189,6 +189,8 @@ return [
         Maatwebsite\Excel\ExcelServiceProvider::class,
         Darryldecode\Cart\CartServiceProvider::class,
         October\Rain\Config\ServiceProvider::class,
+        Jenssegers\Agent\AgentServiceProvider::class,
+        Stevebauman\Location\LocationServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -221,7 +223,8 @@ return [
         'JsonLd' => Artesaos\SEOTools\Facades\JsonLd::class,
         'JsonLdMulti' => Artesaos\SEOTools\Facades\JsonLdMulti::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
-        'Cart' => Darryldecode\Cart\Facades\CartFacade::class
+        'Cart' => Darryldecode\Cart\Facades\CartFacade::class,
+        'Agent' => Jenssegers\Agent\Facades\Agent::class,
     ])->toArray(),
 
 ];

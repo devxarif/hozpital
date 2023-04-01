@@ -35,6 +35,7 @@
     </AppLayout>
 </template>
 
+<!-- <script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="296b26bf-fd4e-497a-b724-1f0d15271a4f";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script> -->
 
 <script>
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -58,12 +59,12 @@ export default {
                 {
                     title: 'Personal Information',
                     icon: 'fa-solid fa-cog',
-                    route: 'admin.settings.general'
+                    route: 'user.profile.setting'
                 },
                 {
                     title: 'Security',
                     icon: 'fa-solid fa-lock',
-                    route: 'admin.settings.general'
+                    route: 'user.profile.security'
                 },
                 {
                     title: 'Notification',
@@ -71,9 +72,14 @@ export default {
                     route: 'admin.settings.general'
                 },
                 {
-                    title: 'Activity',
+                    title: 'Social logins',
                     icon: 'fa-solid fa-bell',
                     route: 'admin.settings.general'
+                },
+                {
+                    title: 'Account Activity',
+                    icon: 'fa-solid fa-bars',
+                    route: 'user.profile.security'
                 },
                 // {
                 //     title: 'System',
