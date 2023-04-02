@@ -16,6 +16,7 @@ use App\Services\Admin\Setting\SystemInfoService;
 use App\Services\Admin\Setting\SendTestMailService;
 use App\Http\Requests\Admin\Setting\SeoContentUpdate;
 use App\Http\Requests\Admin\Setting\SMTPUpdateRequest;
+use App\Models\UserLoginActivity;
 use App\Services\Admin\Setting\SeoContentUpdateService;
 use App\Services\Admin\Setting\GeneralSettingUpdateService;
 use App\Services\Admin\Setting\System\FetchSystemSettingDataService;
@@ -65,6 +66,15 @@ class SettingController extends Controller
         $data['data'] = (new SystemInfoService)->execute();
 
         return inertia('Admin/Setting/SystemInfo', $data);
+    }
+
+    public function loginActivity()
+    {
+        // return 123;
+        // $data['data'] = (new SystemInfoService)->execute();
+        $activities = UserLoginActivity::with('user:id,name,email,role')->latest()->paginate(config('kodebazar.rows_per_page'));
+
+        return inertia('Admin/Setting/LoginActivity', compact('activities'));
     }
 
     public function cms()

@@ -147,6 +147,11 @@ export default {
                     link: '/log-viewer'
                 },
                 {
+                    title: 'User Login Activity',
+                    icon: 'fa-solid fa-bars',
+                    route: 'admin.settings.loginActivity'
+                },
+                {
                     title: 'Upgrade System',
                     icon: 'fa-solid fa-upload',
                     route: 'admin.settings.roles.index'

@@ -94,7 +94,7 @@ Route::get('/test2', function () {
 
 Route::get('/test', function () {
 
-    // event(new LoginHistory('facebook'));
+    event(new LoginHistory('email'));
     return UserLoginActivity::latest()->get();
 
     $agent = new Agent();

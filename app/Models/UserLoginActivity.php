@@ -18,4 +18,9 @@ class UserLoginActivity extends Model
         'user_email',
         'user_activity'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

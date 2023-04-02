@@ -46,7 +46,7 @@ class StoreUserLoginHistory
         if ($currentUserInfo) {
             $location = "{$currentUserInfo->cityName}, $currentUserInfo->countryName ($ip)";
         }else {
-            $location = "Unknown";
+            $location = "Unknown" . " ($ip)";
         }
 
         // UserLoginActivity::create([

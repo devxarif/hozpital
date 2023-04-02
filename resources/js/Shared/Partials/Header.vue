@@ -156,9 +156,6 @@ export default {
         };
     },
     methods: {
-        toggleSideMenu(){
-            alert()
-        },
         toggleSidebarMenu(type){
             this.showToggleSidebar = !this.showToggleSidebar
             this.$emit('updateSidebar', this.showToggleSidebar)

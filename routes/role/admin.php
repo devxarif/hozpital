@@ -185,6 +185,7 @@ Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function () 
             Route::get('/system', 'system')->name('system');
             Route::post('/system/setting/update', 'systemSettingUpdate')->name('system.update');
             Route::get('/system/info', 'systemInfo')->name('systemInfo');
+            Route::get('/user/login/activity', 'loginActivity')->name('loginActivity');
 
             // cms routes
             Route::get('/cms', 'cms')->name('cms');
@@ -285,12 +286,12 @@ Route::controller(GlobalController::class)->group(function () {
 
 // Profile & Settings
 Route::controller(UserController::class)->middleware('auth')->group(function () {
-    Route::get('/profile', 'profile')->name('user.profile');
     Route::post('/profile/update', 'profileUpdate')->name('user.profile.update');
-    Route::post('/password/update', 'passwordUpdate')->name('user.password.update');
 });
 
 Route::controller(UserProfileController::class)->prefix('profile')->middleware('auth')->group(function () {
+    Route::get('/', 'profile')->name('user.profile');
+    Route::post('/password/update', 'passwordUpdate')->name('user.password.update');
     Route::get('/setting', 'setting')->name('user.profile.setting');
     Route::get('/security', 'security')->name('user.profile.security');
     Route::delete('/account/delete', 'accountDelete')->name('user.account.delete');
