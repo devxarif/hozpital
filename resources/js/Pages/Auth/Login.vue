@@ -1,12 +1,20 @@
 <template>
     <Head :title="__('Login')"/>
 
+
     <div class="flex flex-col min-h-screen bg-white ">
         <main class="bg-gray-50">
             <div class="flex flex-col justify-center items-center py-8 px-6 mx-auto md:h-screen">
                 <Link class="flex justify-center items-center mb-4 font-semibold lg:mb-4" :href="route('login')">
                     <img alt="app logo" :src="$page.props.setting.app_dark_logo" class="h-20 w-auto">
                 </Link>
+                <div v-if="$page.props.flash.error" class="flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-200 dark:bg-gray-800 dark:text-red-400" role="alert">
+                    <svg aria-hidden="true" class="flex-shrink-0 inline w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
+                    <span class="sr-only">Info</span>
+                    <div>
+                        {{ $page.props.flash.error }}
+                    </div>
+                </div>
                 <div class="justify-center items-center w-full bg-white rounded-lg shadow lg:flex md:mt-0 lg:max-w-screen-sm xl:p-0 ">
                     <div class="p-6 w-full sm:p-8 lg:p-10">
                         <h1 class="mb-3 text-2xl font-bold text-gray-900 lg:text-3xl">
@@ -21,30 +29,26 @@
 
                             <div class="mt-1 grid grid-cols-4 gap-2">
                                 <div>
-                                    <a href="javascript:void(0)"
-                                        class="inline-flex w-full justify-center rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium text-gray-500 shadow-sm hover:bg-gray-50">
+                                    <a href="javascript:void(0)" @click.prevent="linkSocialLogin('google')" class="inline-flex w-full justify-center rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium text-gray-500 shadow-sm hover:bg-gray-50">
                                         <span class="sr-only">Sign in with Google</span>
                                         <GoogleIcon/>
                                     </a>
                                 </div>
                                 <div>
-                                    <a href="javascript:void(0)"
-                                        class="inline-flex w-full justify-center rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium text-gray-500 shadow-sm hover:bg-gray-50">
+                                    <a href="javascript:void(0)" @click.prevent="linkSocialLogin('facebook')" class="inline-flex w-full justify-center rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium text-gray-500 shadow-sm hover:bg-gray-50">
                                         <span class="sr-only">Sign in with Facebook</span>
                                         <FacebookIcon/>
                                     </a>
                                 </div>
 
                                 <div>
-                                    <a href="javascript:void(0)"
-                                        class="inline-flex w-full justify-center rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium text-gray-500 shadow-sm hover:bg-gray-50">
+                                    <a href="javascript:void(0)" @click.prevent="linkSocialLogin('twitter')" class="inline-flex w-full justify-center rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium text-gray-500 shadow-sm hover:bg-gray-50">
                                         <span class="sr-only">Sign in with Twitter</span>
                                         <TwitterIcon/>
                                     </a>
                                 </div>
                                 <div>
-                                    <a href="javascript:void(0)"
-                                        class="inline-flex w-full justify-center rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium text-gray-500 shadow-sm hover:bg-gray-50">
+                                    <a href="javascript:void(0)" @click.prevent="linkSocialLogin('linkedin')" class="inline-flex w-full justify-center rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium text-gray-500 shadow-sm hover:bg-gray-50">
                                         <span class="sr-only">Sign in with Linkedin</span>
                                         <LinkedinIcon/>
                                     </a>
@@ -219,20 +223,16 @@
             switchVisibility() {
                 this.passwordFieldType = this.passwordFieldType === "password" ? "text" : "password";
             },
+            linkSocialLogin(provider) {
+                window.location.href = `/auth/${provider}/redirect`;
+            },
             async recaptcha() {
-                // (optional) Wait until recaptcha has been loaded.
                 await this.$recaptchaLoaded()
-
-                // Execute reCAPTCHA with action "login".
-                // const token = await this.$recaptcha('login')
-
-                // Do stuff with the received token.
             }
         },
         computed:{
             nullField(){
                 return !this.form.username || !this.form.password;
-                return true;
             }
         },
         watch: {

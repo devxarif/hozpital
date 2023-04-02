@@ -39,12 +39,12 @@
                                 </div>
                             </div>
                             <div class="absolute top-2 right-3">
-                                <button type="submit" class="text-white justify-center flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 font-medium rounded-lg text-md px-5 py-3 mb-2 focus:outline-none mt-3">
+                                <Link :href="route('user.profile.setting')" class="text-white justify-center flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 font-medium rounded-lg text-md px-5 py-3 mb-2 focus:outline-none mt-3">
                                     <font-awesome-icon icon="fa-solid fa-solid fa-cog" class="h-5 w-5 mr-2 text-white"/>
                                     <span>
                                         Go to Settings
                                     </span>
-                                </button>
+                                </Link>
                             </div>
                             <div class="profile-info-500 md:flex justify-start md:text-start text-center gap-12 mr-12">
                                 <div>

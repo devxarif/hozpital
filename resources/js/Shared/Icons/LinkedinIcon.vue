@@ -1,5 +1,5 @@
 <template>
-    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 48 48"
+    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" :width="width" :height="height" viewBox="0 0 48 48"
         style=" fill:#000000;">
         <path fill="#0078d4"
             d="M42,37c0,2.762-2.238,5-5,5H11c-2.761,0-5-2.238-5-5V11c0-2.762,2.239-5,5-5h26c2.762,0,5,2.238,5,5V37z">
@@ -15,3 +15,18 @@
         </path>
     </svg>
 </template>
+
+<script>
+export default {
+    props: {
+        height: {
+            type: String,
+            default: '20px',
+        },
+        width: {
+            type: String,
+            default: '20px',
+        },
+    },
+}
+</script>

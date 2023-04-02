@@ -295,6 +295,9 @@ Route::controller(UserProfileController::class)->prefix('profile')->middleware('
     Route::get('/setting', 'setting')->name('user.profile.setting');
     Route::get('/security', 'security')->name('user.profile.security');
     Route::delete('/account/delete', 'accountDelete')->name('user.account.delete');
+
+    Route::get('/social/login', 'socialLogin')->name('user.profile.socialLogin');
+    Route::post('/social/login/unlink', 'socialLoginUnlink')->name('user.profile.socialLogin.unlink');
 });
 
 // Route::controller(GlobalController::class)->group(function () {

@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Events\LoginHistory;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Str;
 use Laravel\Socialite\Facades\Socialite;
 
 class SocialLoginController extends Controller
@@ -27,50 +26,41 @@ class SocialLoginController extends Controller
         }
 
         $socialiteUserId = $socialiteUser->getId();
-        $socialiteUserName = $socialiteUser->getName();
-        $socialiteUseremail = $socialiteUser->getEmail();
+        $authenticated = auth()->check();
 
-        return [
-            'user_id' => $socialiteUserId,
-            'user_name' => $socialiteUserName,
-            'user_email' => $socialiteUseremail,
-        ];
+        if($authenticated){
+            $auth_user = auth()->user();
 
-        // $user = User::where([
-        //     'provider' => $provider,
-        //     'provider_id' =>  $socialiteUserId,
-        // ])->first();
+            if (empty($auth_user->provider) && empty($auth_user->provider_id)) {
+                $auth_user->update([
+                    'provider' => $provider,
+                    'provider_id' => $socialiteUserId,
+                ]);
 
-        // if (!$user) {
+                $this->flashSuccess('Social account connected successfully!');
+                return redirect()->route('user.profile.socialLogin');
+            }
 
-        //     $validator = Validator::make(
-        //         ['email' => $socialiteUseremail],
-        //         ['email' => ['unique:users,email']],
-        //         ['email.unique' => 'Couldn\'t login. Maybe you used a different login method?'],
-        //     );
+            $this->flashError('You already have a social account connected. Please disconnect it first.');
+            return redirect()->route('user.profile.socialLogin');
+        }
 
-        //     if ($validator->fails()) {
-        //         return redirect()->route('login')->withErrors($validator);
-        //     }
+        if(!$authenticated){
+            $user = User::where([
+                'provider' => $provider,
+                'provider_id' =>  $socialiteUserId,
+            ])->first();
 
-        //     $user = User::create([
-        //         'name' => $socialiteUserName,
-        //         'email' => $socialiteUseremail,
-        //         'username' => Str::slug($socialiteUserName) . '_' . Str::random(5),
-        //         'provider' => $provider,
-        //         'provider_id' =>  $socialiteUserId,
-        //         'role' => session('social_user') == 'candidate' ? 'candidate' : 'company',
-        //         'email_verified_at' => now(),
-        //     ]);
+            if (!$user) {
+                $this->flashError('No user found with this social account. Please login with your email and password first. Then connect your social account from your profile setting page');
+                return to_route('login');
+            }
 
-        //     $admins = Admin::all();
-        //     foreach ($admins as $admin) {
-        //         $admin->notify(new NewUserRegisteredNotification($admin, $user));
-        //     }
-        // }
+            Auth::login($user);
 
-        // Auth::guard('user')->login($user);
-
-        // return redirect()->route('user.dashboard');
+            event(new LoginHistory($provider));
+            session()->flash('success', 'Logged in successfully!');
+            return redirect()->route('dashboard');
+        }
     }
 }

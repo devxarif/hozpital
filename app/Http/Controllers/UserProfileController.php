@@ -24,7 +24,7 @@ class UserProfileController extends Controller
 
         $activities = UserLoginActivity::where('user_id', auth()->id())->latest()->paginate(10);
 
-        return inertia('Profile', compact('activities'));
+        return inertia('UserProfile/Profile', compact('activities'));
     }
 
     public function passwordUpdate(ProfileUpdateRequest $request)
@@ -51,5 +51,21 @@ class UserProfileController extends Controller
     public function security()
     {
         return inertia('UserProfile/Security');
+    }
+
+    public function socialLogin()
+    {
+        return inertia('UserProfile/SocialLogin');
+    }
+
+    public function socialLoginUnlink()
+    {
+        auth()->user()->update([
+            'provider' => null,
+            'provider_id' => null,
+        ]);
+
+        $this->flashSuccess('Social account disconnected successfully!');
+        return back();
     }
 }

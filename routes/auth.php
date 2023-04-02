@@ -17,8 +17,8 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::controller(SocialLoginController::class)->group(function () {
-    Route::get('/auth/{provider}/callback', 'callback')->where('provider', 'google|facebook|github|twitter|linkedin');
-    Route::get('/auth/{provider}/redirect', 'redirect')->where('provider', 'google|facebook|github|twitter|linkedin')->name('social.login');
+    Route::get('/auth/{provider}/callback', 'callback')->name('social.callback');
+    Route::get('/auth/{provider}/redirect', 'redirect')->name('social.login');
 });
 
 Route::controller(ForgetPasswordController::class)->group(function () {
