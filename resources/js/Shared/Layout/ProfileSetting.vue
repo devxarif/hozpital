@@ -69,7 +69,7 @@ export default {
                 {
                     title: 'Notification',
                     icon: 'fa-solid fa-bell',
-                    route: 'admin.settings.general'
+                    route: 'user.profile.notification'
                 },
                 {
                     title: 'Social logins',

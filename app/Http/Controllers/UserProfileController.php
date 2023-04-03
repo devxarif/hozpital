@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Rules\MatchOldPassword;
-use App\Http\Requests\ProfileUpdateRequest;
 use App\Models\UserLoginActivity;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\ProfileUpdateRequest;
 
 class UserProfileController extends Controller
 {
@@ -39,6 +40,8 @@ class UserProfileController extends Controller
             'password' => bcrypt($request->password),
         ]);
 
+        Auth::logoutOtherDevices($request->password);
+
         $this->flashSuccess('Password changed successfully!');
         return back();
     }
@@ -51,6 +54,11 @@ class UserProfileController extends Controller
     public function security()
     {
         return inertia('UserProfile/Security');
+    }
+
+    public function notification()
+    {
+        return inertia('UserProfile/Notification');
     }
 
     public function socialLogin()

@@ -296,6 +296,8 @@ Route::controller(UserProfileController::class)->prefix('profile')->middleware('
     Route::get('/security', 'security')->name('user.profile.security');
     Route::delete('/account/delete', 'accountDelete')->name('user.account.delete');
 
+    Route::get('/notification', 'notification')->name('user.profile.notification');
+
     Route::get('/social/login', 'socialLogin')->name('user.profile.socialLogin');
     Route::post('/social/login/unlink', 'socialLoginUnlink')->name('user.profile.socialLogin.unlink');
 });

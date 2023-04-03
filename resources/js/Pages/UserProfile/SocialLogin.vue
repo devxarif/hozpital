@@ -43,30 +43,24 @@
                                     </span>
                                 </div>
                                 <div>
-                                    <!-- <button disabled @click.prevent="linkSocialLogin('google')" type="button" class="text-white justify-center flex items-center bg-blue-500 hover:bg-blue-600 focus:ring-4 font-medium rounded-lg text-md px-5 py-2.5 mb-2 focus:outline-none mt-3 disabled:opacity-50 disabled:cursor-not-allowed">
-                                        <span>
-                                            {{ auth_user.provider == 'google' ? __('Unlink') : __('Link') }}
-                                        </span>
-                                    </button> -->
-
                                     <template v-if="!auth_user.provider">
                                         <button @click.prevent="linkSocialLogin('google')" type="button" class="text-white justify-center flex items-center bg-blue-500 hover:bg-blue-600 focus:ring-4 font-medium rounded-lg text-md px-5 py-2.5 mb-2 focus:outline-none  mt-3">
                                             <span>
-                                                {{ __('Link') }}
+                                                {{ __('Connect') }}
                                             </span>
                                         </button>
                                     </template>
                                     <template v-else-if="auth_user.provider && auth_user.provider != 'google'">
                                         <button disabled type="button" class="text-white justify-center flex items-center bg-blue-700 font-medium rounded-lg text-md px-5 py-2.5 mb-2 focus:outline-none mt-3 disabled:opacity-50 disabled:cursor-not-allowed">
                                             <span>
-                                                {{ __('Link') }}
+                                                {{ __('Connect') }}
                                             </span>
                                         </button>
                                     </template>
                                     <template v-else>
                                         <button @click.prevent="linkSocialLogin('google')" type="button" class="text-white justify-center flex items-center bg-red-500 hover:bg-red-600 focus:ring-4 font-medium rounded-lg text-md px-5 py-2.5 mb-2 focus:outline-none  mt-3">
                                             <span>
-                                                {{ __('Unlink') }}
+                                                {{ __('Disconnect') }}
                                             </span>
                                         </button>
                                     </template>
@@ -93,21 +87,21 @@
                                     <template v-if="!auth_user.provider">
                                         <button @click.prevent="linkSocialLogin('facebook')" type="button" class="text-white justify-center flex items-center bg-blue-500 hover:bg-blue-600 focus:ring-4 font-medium rounded-lg text-md px-5 py-2.5 mb-2 focus:outline-none  mt-3">
                                             <span>
-                                                {{ __('Link') }}
+                                                {{ __('Connect') }}
                                             </span>
                                         </button>
                                     </template>
                                     <template v-else-if="auth_user.provider && auth_user.provider != 'facebook'">
                                         <button disabled type="button" class="text-white justify-center flex items-center bg-blue-700 font-medium rounded-lg text-md px-5 py-2.5 mb-2 focus:outline-none mt-3 disabled:opacity-50 disabled:cursor-not-allowed">
                                             <span>
-                                                {{ __('Link') }}
+                                                {{ __('Connect') }}
                                             </span>
                                         </button>
                                     </template>
                                     <template v-else>
                                         <button @click.prevent="linkSocialLogin('facebook')" type="button" class="text-white justify-center flex items-center bg-red-500 hover:bg-red-600 focus:ring-4 font-medium rounded-lg text-md px-5 py-2.5 mb-2 focus:outline-none  mt-3">
                                             <span>
-                                                {{ __('Unlink') }}
+                                                {{ __('Disconnect') }}
                                             </span>
                                         </button>
                                     </template>
@@ -132,21 +126,21 @@
                                     <template v-if="!auth_user.provider">
                                         <button @click.prevent="linkSocialLogin('twitter')" type="button" class="text-white justify-center flex items-center bg-blue-500 hover:bg-blue-600 focus:ring-4 font-medium rounded-lg text-md px-5 py-2.5 mb-2 focus:outline-none  mt-3">
                                             <span>
-                                                {{ __('Link') }}
+                                                {{ __('Connect') }}
                                             </span>
                                         </button>
                                     </template>
                                     <template v-else-if="auth_user.provider && auth_user.provider != 'twitter'">
                                         <button disabled type="button" class="text-white justify-center flex items-center bg-blue-700 font-medium rounded-lg text-md px-5 py-2.5 mb-2 focus:outline-none mt-3 disabled:opacity-50 disabled:cursor-not-allowed">
                                             <span>
-                                                {{ __('Link') }}
+                                                {{ __('Connect') }}
                                             </span>
                                         </button>
                                     </template>
                                     <template v-else>
                                         <button @click.prevent="linkSocialLogin('twitter')" type="button" class="text-white justify-center flex items-center bg-red-500 hover:bg-red-600 focus:ring-4 font-medium rounded-lg text-md px-5 py-2.5 mb-2 focus:outline-none  mt-3">
                                             <span>
-                                                {{ __('Unlink') }}
+                                                {{ __('Disconnect') }}
                                             </span>
                                         </button>
                                     </template>
@@ -171,21 +165,21 @@
                                     <template v-if="!auth_user.provider">
                                         <button @click.prevent="linkSocialLogin('linkedin')" type="button" class="text-white justify-center flex items-center bg-blue-500 hover:bg-blue-600 focus:ring-4 font-medium rounded-lg text-md px-5 py-2.5 mb-2 focus:outline-none  mt-3">
                                             <span>
-                                                {{ __('Link') }}
+                                                {{ __('Connect') }}
                                             </span>
                                         </button>
                                     </template>
                                     <template v-else-if="auth_user.provider && auth_user.provider != 'linkedin'">
                                         <button disabled type="button" class="text-white justify-center flex items-center bg-blue-700 font-medium rounded-lg text-md px-5 py-2.5 mb-2 focus:outline-none mt-3 disabled:opacity-50 disabled:cursor-not-allowed">
                                             <span>
-                                                {{ __('Link') }}
+                                                {{ __('Connect') }}
                                             </span>
                                         </button>
                                     </template>
                                     <template v-else>
                                         <button @click.prevent="linkSocialLogin('linkedin')" type="button" class="text-white justify-center flex items-center bg-red-500 hover:bg-red-600 focus:ring-4 font-medium rounded-lg text-md px-5 py-2.5 mb-2 focus:outline-none  mt-3">
                                             <span>
-                                                {{ __('Unlink') }}
+                                                {{ __('Disconnect') }}
                                             </span>
                                         </button>
                                     </template>
