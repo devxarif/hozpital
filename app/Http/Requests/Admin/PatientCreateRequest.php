@@ -29,7 +29,7 @@ class PatientCreateRequest extends FormRequest
             'password' => 'required|min:4',
             'avatar' => 'nullable|image|mimes:png,jpg,jpeg,svg|max:5120',
             'address' => 'nullable',
-            'phone' => 'nullable',
+            'phone' => 'nullable|max:20',
             'gender' => 'nullable',
             'birth_date' => 'nullable',
             'age' => 'nullable|numeric',

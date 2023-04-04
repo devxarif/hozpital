@@ -17,7 +17,6 @@ return new class extends Migration
         Schema::create('laboratorists', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
-            $table->string('avatar')->nullable();
             $table->string('address')->nullable();
             $table->string('phone', 15)->nullable();
             $table->timestamps();

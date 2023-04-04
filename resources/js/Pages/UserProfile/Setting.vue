@@ -15,7 +15,7 @@
                                     <Label name="Name" id="app_name" :hasError="form.errors.app_name" />
                                     <div class="mt-1 sm:col-span-2 sm:mt-0">
                                         <div class="max-w-lg rounded-md shadow-sm">
-                                            <BaseInput v-model="form.app_name" placeholder="Hospital Name"
+                                            <BaseInput v-model="form.app_name" placeholder="Name"
                                                 id="app_name" :hasError="form.errors.app_name" />
                                         </div>
                                     </div>

@@ -2,17 +2,18 @@
 
 namespace App\Http\Controllers\Receptionist;
 
+use App\Models\Patient;
+use Illuminate\Http\Request;
 use App\Exports\PatientExport;
+use App\Imports\PatientImport;
 use App\Http\Controllers\Controller;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Requests\Admin\PatientCreateRequest;
 use App\Http\Requests\Admin\PatientUpdateRequest;
-use App\Imports\PatientImport;
-use App\Models\Patient;
+use App\Services\Admin\Patient\FetchPatientService;
 use App\Services\Admin\Patient\CreatePatientService;
 use App\Services\Admin\Patient\DeletePatientService;
 use App\Services\Admin\Patient\UpdatePatientService;
-use Illuminate\Http\Request;
-use Maatwebsite\Excel\Facades\Excel;
 
 class PatientController extends Controller
 {
@@ -23,12 +24,9 @@ class PatientController extends Controller
      */
     public function index(Request $request)
     {
-        $patients = Patient::with('user:id,name,email')->latest()->paginate(config('kodebazar.rows_per_page'))->withQueryString();
+        $data = (new FetchPatientService)->execute($request);
 
-        return inertia('Receptionist/Patient/Index', [
-            'patients' => $patients,
-            'filter' => $request,
-        ]);
+        return inertia('Receptionist/Patient/Index', $data);
     }
 
     /**

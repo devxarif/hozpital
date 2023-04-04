@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\HasOne;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Support\Facades\DB;
+use App\Models\ContactInfo;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
@@ -43,6 +44,16 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    protected static function booted()
+    {
+        static::created(function ($user) {
+            $user->contactInfo()->create([
+                'address' => null,
+                'phone' => null,
+            ]);
+        });
+    }
 
     /**
      * Interact with the user's username.
@@ -132,6 +143,11 @@ class User extends Authenticatable
         return $this->where('role', '!=', 'patient');
     }
 
+    public function admin(): HasOne
+    {
+        return $this->hasOne(Admin::class, 'user_id');
+    }
+
     public function doctor(): HasOne
     {
         return $this->hasOne(Doctor::class);
@@ -170,5 +186,10 @@ class User extends Authenticatable
     public function holidays()
     {
         return $this->hasManyThrough(Holiday::class, Organization::class);
+    }
+
+    public function contactInfo()
+    {
+        return $this->hasOne(ContactInfo::class);
     }
 }

@@ -23,7 +23,6 @@
                                     </button>
                                 </div>
                             </div>
-
                             <form class="mb-4" @submit.prevent="saveData">
                                 <div class="grid grid-cols-3 gap-2">
                                     <div class="mb-4">
@@ -170,7 +169,8 @@ export default {
             handler() {
                 this.form.name = this.patient.user?.name ?? ''
                 this.form.email = this.patient.user?.email ?? ''
-                this.form.address = this.patient?.address ?? ''
+                this.form.phone = this.patient?.user?.contact_info?.phone ?? ''
+                this.form.address = this.patient?.user?.contact_info?.address ?? ''
                 this.form.gender = this.patient?.gender ?? 'male'
                 this.form.birth_date = this.patient?.birth_date ?? '',
                 this.form.age = this.patient?.age ?? '',
@@ -188,7 +188,8 @@ export default {
                 email: this.patient.user?.email ?? '',
                 password: "",
                 avatar: '',
-                address: this.patient?.address ?? '',
+                phone: this.patient?.user?.contact_info?.phone ?? '',
+                address: this.patient?.user?.contact_info?.address ?? '',
                 gender: this.patient?.gender ?? 'male',
                 birth_date: this.patient?.birth_date ?? '',
                 age: this.patient?.age ?? '',

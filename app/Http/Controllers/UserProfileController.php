@@ -7,6 +7,7 @@ use App\Rules\MatchOldPassword;
 use App\Models\UserLoginActivity;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\Admin;
 
 class UserProfileController extends Controller
 {
@@ -48,6 +49,13 @@ class UserProfileController extends Controller
 
     public function setting()
     {
+        // return Admin::all();
+        return $user = auth()->user();
+        $role = $user->role;
+        $data['user'] = $user;
+
+        return $user->load('admin');
+
         return inertia('UserProfile/Setting');
     }
 

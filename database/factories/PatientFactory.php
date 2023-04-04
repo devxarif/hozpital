@@ -25,10 +25,12 @@ class PatientFactory extends Factory
             'role' => 'patient',
         ]);
 
+
+
         return [
             'user_id' => $user->id,
-            'address' => fake()->paragraph,
-            'phone' => fake()->phoneNumber,
+            // 'address' => fake()->paragraph,
+            // 'phone' => fake()->phoneNumber,
             'birth_date' => fake()->date(),
             'age' => rand(10, 50),
             'gender' => Arr::random(['male', 'female']),

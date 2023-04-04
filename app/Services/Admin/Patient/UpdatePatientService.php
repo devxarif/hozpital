@@ -11,8 +11,6 @@ class UpdatePatientService
         $this->UpdateUser($request, $patient);
 
         $patient->update([
-            'address' => $request->address ?? null,
-            'phone' => $request->phone ?? null,
             'gender' => $request->gender ?? null,
             'birth_date' => $request->birth_date ?? null,
             'age' => $request->age ?? null,
@@ -23,6 +21,11 @@ class UpdatePatientService
             $url = uploadFileToPublic('patient/avatar', $request->avatar);
             $patient->update(['avatar' => $url]);
         }
+
+        $patient->user->contactInfo()->update([
+            'address' => $request->address ?? null,
+            'phone' => $request->phone ?? null,
+        ]);
 
         return $patient;
     }

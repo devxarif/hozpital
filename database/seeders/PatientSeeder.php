@@ -15,15 +15,11 @@ class PatientSeeder extends Seeder
      */
     public function run()
     {
-        $user = User::create([
+        User::create([
             'name' => 'Patient',
             'email' => 'patient@mail.com',
             'password' => bcrypt('password'),
             'role' => 'patient',
-        ]);
-
-        $user->patient()->create([
-            'avatar' => null,
         ]);
 
         Patient::factory(20)->create();

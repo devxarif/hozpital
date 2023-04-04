@@ -17,7 +17,6 @@ return new class extends Migration
         Schema::create('nurses', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
-            $table->string('avatar')->nullable();
             $table->text('address')->nullable();
             $table->string('phone', 15)->nullable();
             $table->timestamps();

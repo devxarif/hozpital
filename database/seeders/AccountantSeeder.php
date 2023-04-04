@@ -15,15 +15,11 @@ class AccountantSeeder extends Seeder
      */
     public function run()
     {
-        $user = User::create([
+        User::create([
             'name' => 'Accountant',
             'email' => 'accountant@mail.com',
             'password' => bcrypt('password'),
             'role' => 'accountant',
-        ]);
-
-        $user->accountant()->create([
-            'avatar' => null,
         ]);
 
         Accountant::factory(20)->create();

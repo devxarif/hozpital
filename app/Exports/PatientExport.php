@@ -11,7 +11,7 @@ class PatientExport implements FromCollection, WithHeadings
 {
     public function collection()
     {
-        return PatientExportResource::collection(Patient::with('user:id,name,email')->get());
+        return PatientExportResource::collection(Patient::with('user:id,name,email', 'user.contactInfo')->get());
     }
 
     public function headings(): array

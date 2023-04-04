@@ -15,15 +15,11 @@ class PharmacistSeeder extends Seeder
      */
     public function run()
     {
-        $user = User::create([
+        User::create([
             'name' => 'Pharmacist',
             'email' => 'pharmacist@mail.com',
             'password' => bcrypt('password'),
             'role' => 'pharmacist',
-        ]);
-
-        $user->pharmacist()->create([
-            'avatar' => null,
         ]);
 
         Pharmacist::factory(20)->create();

@@ -19,7 +19,6 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
             $table->foreignIdFor(Department::class)->constrained()->cascadeOnDelete();
-            $table->string('avatar')->nullable();
             $table->timestamps();
         });
     }

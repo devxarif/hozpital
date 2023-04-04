@@ -194,7 +194,7 @@
                         {{ patient.user.email ?? '' }}
                     </td>
                     <td class="p-4 text-sm text-gray-500 break-all">
-                        {{ patient.phone ?? ''}}
+                        {{ patient.user.contact_info.phone ?? ''}}
                     </td>
                     <td class="p-4 text-sm text-gray-500 break-all">
                         <span class="text-white text-sm font-medium mr-2 px-3 py-2 rounded-full capitalize" :class="patient.gender == 'male' ? 'bg-blue-500':'bg-gray-500'">

@@ -17,13 +17,15 @@ class CreatePatientService
 
         $patient = $user->patient()->create([
             'avatar' => $url ?? null,
-            'address' => $request->address ?? null,
-            'phone' => $request->phone ?? null,
             'gender' => $request->gender ?? null,
             'birth_date' => $request->birth_date ?? null,
             'age' => $request->age ?? null,
             'blood_group' => $request->blood_group ?? null,
+        ]);
 
+        $user->contactInfo()->updateOrCreate([
+            'address' => $request->address ?? null,
+            'phone' => $request->phone ?? null,
         ]);
 
         return $patient;

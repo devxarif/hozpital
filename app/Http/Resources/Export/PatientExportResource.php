@@ -11,12 +11,12 @@ class PatientExportResource extends JsonResource
         return [
             'Name' => $this->user->name ?? 'No Name',
             'Email' => $this->user->email ?? 'No Email',
-            'Phone' => $this->phone ?? 'No Phone',
             'Gender' => $this->gender ?? 'No Gender',
             'Blood Group' => $this->blood_group ?? 'No Blood Group',
             'Age' => $this->age ?? 'No Age',
             'Birth Date' => $this->birth_date ?? 'No Birth Date',
-            'Address' => $this->address ?? 'No Address',
+            'Phone' => $this->user->contactInfo->phone ?? 'No Phone',
+            'Address' => $this->user->contactInfo->address ?? 'No Address',
         ];
     }
 }
