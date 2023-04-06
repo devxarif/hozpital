@@ -17,8 +17,6 @@ return new class extends Migration
         Schema::create('receptionists', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
-            $table->string('address')->nullable();
-            $table->string('phone', 15)->nullable();
             $table->timestamps();
         });
     }

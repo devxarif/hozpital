@@ -155,7 +155,7 @@ class User extends Authenticatable
 
     public function patient(): HasOne
     {
-        return $this->hasOne(Patient::class);
+        return $this->hasOne(Patient::class, 'user_id');
     }
 
     public function nurse(): HasOne

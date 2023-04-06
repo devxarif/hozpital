@@ -6,7 +6,7 @@
                     <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5">
                         <div class="space-y-6 sm:space-y-5">
                             <div>
-                                <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">Personal information</h2>
+                                <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">Personal information</h2>
                                 <p class="mt-1 max-w-2xl text-sm text-gray-500">This information will be displayed
                                     publicly so be careful what you share.</p>
                             </div>
@@ -39,39 +39,50 @@
                                     </div>
                                 </div>
                                 <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
-                                    <Label name="Phone Number" id="username" :hasError="form.errors.username" />
+                                    <Label name="Phone Number" id="phone" :hasError="form.errors.phone" />
                                     <div class="mt-1 sm:col-span-2 sm:mt-0">
                                         <div class="max-w-lg rounded-md shadow-sm">
-                                            <BaseInput v-model="form.username" placeholder="Phone Number"
-                                                id="username" :hasError="form.errors.username" />
+                                            <BaseInput v-model="form.phone" placeholder="Phone Number"
+                                                id="phone" :hasError="form.errors.phone" />
                                         </div>
                                     </div>
                                 </div>
                                 <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
-                                    <Label name="Address" id="username" :hasError="form.errors.username" />
+                                    <Label name="Address" id="address" :hasError="form.errors.address" />
                                     <div class="mt-1 sm:col-span-2 sm:mt-0">
                                         <div class="max-w-lg rounded-md shadow-sm">
-                                            <BaseTextarea v-model="form.address" placeholder="Address" id="bed_description" :hasError="form.errors.address"/>
+                                            <BaseTextarea v-model="form.address" placeholder="Address" id="address" :hasError="form.errors.address"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
+                                    <Label name="Department" id="department" :hasError="form.errors.department" />
+                                    <div class="mt-1 sm:col-span-2 sm:mt-0">
+                                        <div class="max-w-lg rounded-md shadow-sm">
+                                            <Multiselect id="admin_doctor_department" :close-on-select="true" :can-clear="true"
+                                            :searchable="true" v-model="form.department" :create-option="false"
+                                            placeholder="Select Department" :options="departments.map(item => ({
+                                                value: item.id, label: item.name
+                                            }))"  />
+                                            <ErrorMessage :name="form.errors.department"/>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="sm:grid sm:grid-cols-3 sm:items-center sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
                                     <div>
-                                        <Label name="Profile" id="logo" :hasError="form.errors.logo" />
-                                        <small class="-mt-2 block text-gray-500">For White Background Logo</small>
+                                        <Label name="Profile Image" id="logo" :hasError="form.errors.avatar" />
                                     </div>
                                     <div class="mt-1 sm:col-span-2 sm:mt-0">
-                                        <input ref="dark_logo" @change="onDarkLogoChange"  accept="image/jpeg, image/jpg, image/png, image/svg+xml" type="file" hidden>
+                                        <input ref="avatar" @change="onAvatarChange"  accept="image/jpeg, image/jpg, image/png, image/svg+xml" type="file" hidden>
                                         <div class="flex items-center">
                                             <span class="text-center h-24 w-40 overflow-hidden rounded-md bg-gray-100">
-                                                <img class="mx-auto h-20 w-full" :src="app_dark_logo_preview"
-                                                    alt="Your Company">
+                                                <img class="mx-auto h-20 w-full object-cover" :src="avatar_preview"
+                                                    alt="Your avatar">
                                             </span>
-                                            <button @click="$refs.dark_logo.click()" type="button"
+                                            <button @click="$refs.avatar.click()" type="button"
                                                 class="ml-5 rounded-md border border-gray-300 bg-white py-2 px-3 text-sm font-medium leading-4 text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">Change</button>
                                         </div>
-                                        <ErrorMessage :name="form.errors.app_dark_logo" />
-                                        <small class="block">Recommended Size - 150 x 55</small>
+                                        <ErrorMessage :name="form.errors.avatar" />
                                         <small>Accept format only jpeg, jpg, png & svg </small>
                                     </div>
                                 </div>
@@ -104,7 +115,8 @@ import ProfileSettingLayout from "@/Shared/Layout/ProfileSetting.vue";
 
 export default {
     props:{
-        user: Object,
+        data: Object,
+        departments: Array,
     },
     components: {
         ProfileSettingLayout,
@@ -112,16 +124,21 @@ export default {
     data() {
         return {
             form: this.$inertia.form({
-                app_name: 'as',
-                app_dark_logo: '',
+                name: this.data?.name ?? '',
+                email: this.data?.email ?? '',
+                username: this.data?.username ?? '',
+                avatar: '',
+                phone: this.data?.contact_info?.phone ?? '',
+                address: this.data?.contact_info?.address ?? '',
+                department: this.data?.doctor?.department_id ?? '',
             }),
 
-            app_dark_logo_preview: 'fsd',
+            avatar_preview: this.data.avatar_url,
         };
     },
     methods: {
         saveData() {
-            this.form.post(route("admin.settings.general.update"), {
+            this.form.post(route("user.profile.setting.update"), {
                 preserveScroll: true,
                 onSuccess: () => {
                     if (this.form.app_favicon) {
@@ -130,10 +147,10 @@ export default {
                 },
             });
         },
-        onDarkLogoChange(e) {
+        onAvatarChange(e) {
             const file = e.target.files[0];
-            this.app_dark_logo_preview = URL.createObjectURL(file);
-            this.form.app_dark_logo = file;
+            this.avatar_preview = URL.createObjectURL(file);
+            this.form.avatar = file;
         },
     }
 };

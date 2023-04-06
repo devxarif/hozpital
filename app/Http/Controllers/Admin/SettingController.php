@@ -70,8 +70,6 @@ class SettingController extends Controller
 
     public function loginActivity()
     {
-        // return 123;
-        // $data['data'] = (new SystemInfoService)->execute();
         $activities = UserLoginActivity::with('user:id,name,email,role')->latest()->paginate(config('kodebazar.rows_per_page'));
 
         return inertia('Admin/Setting/LoginActivity', compact('activities'));

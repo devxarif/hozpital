@@ -293,6 +293,7 @@ Route::controller(UserProfileController::class)->prefix('profile')->middleware('
     Route::get('/', 'profile')->name('user.profile');
     Route::post('/password/update', 'passwordUpdate')->name('user.password.update');
     Route::get('/setting', 'setting')->name('user.profile.setting');
+    Route::post('/setting/update', 'settingUpdate')->name('user.profile.setting.update');
     Route::get('/security', 'security')->name('user.profile.security');
     Route::delete('/account/delete', 'accountDelete')->name('user.account.delete');
 

@@ -143,7 +143,7 @@
                                                 <template v-slot:body>
                                                     <tr v-for="activity in activities.data" :key="activity.id" class="divide-x divide-gray-200">
                                                         <td class="p-4 text-sm text-gray-500 break-all">
-                                                            {{ formatTime(activity.created_at) }}
+                                                            {{ formatTime(activity.created_at,null, 'hh:mm A') }}
                                                         </td>
                                                         <td class="p-4 text-sm text-gray-500 break-all">
                                                             {{ activity.device }}

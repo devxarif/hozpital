@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Admin;
+use App\Models\Department;
 use Illuminate\Http\Request;
 use App\Rules\MatchOldPassword;
 use App\Models\UserLoginActivity;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\ProfileUpdateRequest;
-use App\Models\Admin;
 
 class UserProfileController extends Controller
 {
@@ -49,14 +50,70 @@ class UserProfileController extends Controller
 
     public function setting()
     {
-        // return Admin::all();
-        return $user = auth()->user();
+        $user = auth()->user();
         $role = $user->role;
-        $data['user'] = $user;
 
-        return $user->load('admin');
+        if ($role == 'patient') {
+            $data = $user->load('patient', 'contactInfo');
 
-        return inertia('UserProfile/Setting');
+            return inertia('UserProfile/Role/PatientSetting', compact('data'));
+        }elseif ($role == 'doctor') {
+            $data = $user->load('doctor', 'contactInfo');
+            $departments = Department::all(['id', 'name']);
+
+            return inertia('UserProfile/Role/DoctorSetting', compact('data', 'departments'));
+        }else{
+            $data = $user->load('contactInfo');
+
+            return inertia('UserProfile/Role/StaffSetting', compact('data'));
+        }
+    }
+
+    public function settingUpdate(Request $request)
+    {
+        $user = auth()->user();
+        $role = $user->role;
+
+        $request->validate([
+            'name' => 'required',
+            'username' => "required|unique:users,username,{$user->id}",
+            'email' => "required|unique:users,email,{$user->id}",
+        ]);
+
+        $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'username' => $request->username,
+        ]);
+
+        if ($request->hasFile('avatar') && $request->file('avatar')->isValid()) {
+            $request->validate(['avatar' => 'image|mimes:jpeg,png,jpg,svg|max:5120']);
+            $url = uploadFileToPublic('avatar', $request->avatar);
+            $user->update(['avatar' => $url]);
+        }
+
+        $user->contactInfo()->update([
+            'address' => $request->address,
+            'phone' => $request->phone,
+        ]);
+
+        if ($role == 'patient') {
+            $user->patient()->update([
+                'gender' => $request->gender ?? null,
+                'birth_date' => $request->birth_date ?? null,
+                'age' => $request->age ?? null,
+                'blood_group' => $request->blood_group ?? null,
+            ]);
+
+        }elseif ($role == 'doctor') {
+            $request->validate(['department' => 'required']);
+            $user->doctor()->update([
+                'department_id' => $request->department ?? null,
+            ]);
+        }
+
+        $this->flashSuccess('Profile updated successfully!');
+        return back();
     }
 
     public function security()
