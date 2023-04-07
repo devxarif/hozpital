@@ -26,7 +26,7 @@
                                     <Label id="mail_driver" name="Mail Driver" :hasError="form.errors.host"/>
                                     <div class="mt-1 sm:col-span-2 sm:mt-0">
                                         <div class="max-w-lg rounded-md shadow-sm">
-                                            <BaseInput v-model="form.host" placeholder="Title" id="mail_driver" :hasError="form.errors.host"/>
+                                            <BaseInput v-model="form.host" placeholder="Host Name" id="mail_driver" :hasError="form.errors.host"/>
                                         </div>
                                     </div>
                                 </div>
@@ -71,10 +71,10 @@
                                     </div>
                                 </div>
                                 <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
-                                    <Label id="mail_password" name="Mail Password" :hasError="form.errors.username"/>
+                                    <Label id="mail_password" name="Mail Password" :hasError="form.errors.password"/>
                                     <div class="mt-1 sm:col-span-2 sm:mt-0">
                                         <div class="max-w-lg rounded-md shadow-sm">
-                                            <BaseInput v-model="form.username" placeholder="Title" id="mail_password" :hasError="form.errors.username"/>
+                                            <BaseInput v-model="form.password" placeholder="Password" id="mail_password" :hasError="form.errors.password"/>
                                         </div>
                                     </div>
                                 </div>
@@ -82,7 +82,7 @@
                                     <Label id="mail_from_address" name="Mail From Address" :hasError="form.errors.from_address"/>
                                     <div class="mt-1 sm:col-span-2 sm:mt-0">
                                         <div class="max-w-lg rounded-md shadow-sm">
-                                            <BaseInput v-model="form.from_address" placeholder="Title" id="mail_from_address" :hasError="form.errors.from_address"/>
+                                            <BaseInput v-model="form.from_address" placeholder="From Address" id="mail_from_address" :hasError="form.errors.from_address"/>
                                         </div>
                                     </div>
                                 </div>
@@ -90,7 +90,7 @@
                                     <Label id="mail_from_name" name="Mail From Name" :hasError="form.errors.from_name"/>
                                     <div class="mt-1 sm:col-span-2 sm:mt-0">
                                         <div class="max-w-lg rounded-md shadow-sm">
-                                            <BaseInput v-model="form.from_name" placeholder="Title" id="mail_from_name" :hasError="form.errors.from_name"/>
+                                            <BaseInput v-model="form.from_name" placeholder="From Name" id="mail_from_name" :hasError="form.errors.from_name"/>
                                         </div>
                                     </div>
                                 </div>
