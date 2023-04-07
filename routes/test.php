@@ -43,10 +43,11 @@ use Stevebauman\Location\Facades\Location;
 use Label84\HoursHelper\Facades\HoursHelper;
 use Illuminate\Pagination\LengthAwarePaginator;
 use App\Http\Controllers\Admin\UpgradeController;
+use App\Mail\Staff\SendNewUserCredential;
 use sirajcse\UniqueIdGenerator\UniqueIdGenerator;
 use Artesaos\SEOTools\Traits\SEOTools as SEOToolsTrait;
 use App\Services\Admin\Setting\SocialLogin\FetchSocialProviderDataService;
-
+use Illuminate\Support\Facades\Mail;
 
 // use Dompdf\Dompdf;
 // Route::get('/', function () {
@@ -68,6 +69,12 @@ use App\Services\Admin\Setting\SocialLogin\FetchSocialProviderDataService;
 //     return view('welcome');
 // })->middleware('set_lang');
 
+Route::get('preview-notification', function () {
+    $markdown = new \Illuminate\Mail\Markdown(view(), config('mail.markdown'));
+    // $data = "Your data to be use in blade file";
+    return $markdown->render("mails.staff.send-new-user-credential");
+});
+
 Route::get('/test2', function () {
     $languages = Language::all();
     $path = base_path('resources/json/languages.json');
@@ -80,8 +87,6 @@ Route::get('/test2', function () {
         'defaultLanguage' => $defaultLanguage,
     ]);
 
-
-
     $roles = Role::with('permissions')->paginate(10);
     $permissions = Permission::get()->groupBy('group_name');
 
@@ -93,6 +98,10 @@ Route::get('/test2', function () {
 });
 
 Route::get('/test', function () {
+
+    Mail::to('arif@gmail.com')->send(new SendNewUserCredential());
+
+    return 'ok';
 
     event(new LoginHistory('email'));
     return UserLoginActivity::latest()->get();
