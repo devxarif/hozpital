@@ -25,9 +25,8 @@ class OrderFactory extends Factory
             'amount' => rand(100, 1000),
             'currency_symbol' => fake()->randomElement(['$', '₦', '₹', '€', '£']),
             'usd_amount' => rand(100, 1000),
-            'expired_date' => fake()->dateTimeBetween('now', '+1 year'),
-            'plan_id' => Plan::inRandomOrder()->value('id'),
-            'organization_id' => Organization::inRandomOrder()->value('id'),
+            'payment_status' => fake()->randomElement(['paid', 'unpaid']),
+            'order_status' => fake()->randomElement(['pending', 'confirmed','on_the_way', 'delivered', 'cancelled', 'refunded']),
         ];
     }
 }

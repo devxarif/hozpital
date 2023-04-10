@@ -1,5 +1,5 @@
 <template>
-    <SettingLayout title="General">
+    <SettingLayout title="System">
         <div class="grid gap-6 md:grid-cols-1 xl:grid-cols-1">
             <div class="bg-white w-full p-6 rounded-lg border border-gray-8  ">
                 <form @submit.prevent="saveData" class="space-y-8 divide-y divide-gray-200">
@@ -7,10 +7,43 @@
                         <div class="space-y-6 sm:space-y-5">
                             <div>
                                 <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">System Setting</h2>
-
                                 <p class="mt-1 max-w-2xl text-sm text-gray-500">This information will be displayed publicly so be careful what you share.</p>
                             </div>
 
+                            <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
+                                <Label name="Default Language" id="default_language" :hasError="form.errors.app_name" />
+                                <div class="mt-1 sm:col-span-2 sm:mt-0">
+                                    <div class="max-w-lg rounded-md shadow-sm">
+                                        <Multiselect id="default_language" :close-on-select="true" :can-clear="true"
+                                        :searchable="true" v-model="form.default_language" :create-option="false"
+                                        placeholder="Select Default Language" :options="data.languages.map(item => ({
+                                            value: item.language_code, label: item.name
+                                        }))"  />
+                                        <ErrorMessage :name="form.errors.default_language"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
+                                <Label name="Default Currency" id="default_currency" :hasError="form.errors.app_name" />
+                                <div class="mt-1 sm:col-span-2 sm:mt-0">
+                                    <div class="max-w-lg rounded-md shadow-sm">
+                                        <Multiselect id="default_currency" :close-on-select="true" :can-clear="true"
+                                        :searchable="true" v-model="form.default_currency" :create-option="false"
+                                        placeholder="Select Default Currency" :options="data.currencies.map(item => ({
+                                            value: item, label: item
+                                        }))"  />
+                                        <ErrorMessage :name="form.errors.default_currency"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
+                                <Label name="Currency Symbol" id="currency_symbol" :hasError="form.errors.app_name" />
+                                <div class="mt-1 sm:col-span-2 sm:mt-0">
+                                    <div class="max-w-lg rounded-md shadow-sm">
+                                        <BaseInput v-model="form.currency_symbol" placeholder="Currency Symbol: eg - $" id="currency_symbol" :hasError="form.errors.currency_symbol"/>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="space-y-6 sm:space-y-5">
                                 <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
                                     <Label name="Rows Per Page" id="rows_per_page" :hasError="form.errors.rows_per_page" />
@@ -18,7 +51,7 @@
                                         <div class="max-w-lg rounded-md shadow-sm">
                                             <Multiselect id="rows_per_page" :close-on-select="true" :can-clear="true"
                                             :searchable="true" v-model="form.rows_per_page" :create-option="false"
-                                            placeholder="Select Default Language" :options="data.all_rows_per_page.map(item => ({
+                                            placeholder="Select Rows Per Page" :options="data.all_rows_per_page.map(item => ({
                                                 value: item.value, label: item.label
                                             }))"  />
                                             <ErrorMessage :name="form.errors.rows_per_page"/>
@@ -31,26 +64,14 @@
                                         <div class="max-w-lg rounded-md shadow-sm">
                                             <Multiselect id="start_day_of_week" :close-on-select="true" :can-clear="true"
                                             :searchable="true" v-model="form.start_day_of_week" :create-option="false"
-                                            placeholder="Select Default Language" :options="data.week_days.map(item => ({
+                                            placeholder="Select Start Day of Week" :options="data.week_days.map(item => ({
                                                 value: item.value, label: item.label
                                             }))"  />
                                             <ErrorMessage :name="form.errors.start_day_of_week"/>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
-                                    <Label name="Default Language" id="default_language" :hasError="form.errors.app_name" />
-                                    <div class="mt-1 sm:col-span-2 sm:mt-0">
-                                        <div class="max-w-lg rounded-md shadow-sm">
-                                            <Multiselect id="default_language" :close-on-select="true" :can-clear="true"
-                                            :searchable="true" v-model="form.default_language" :create-option="false"
-                                            placeholder="Select Default Language" :options="data.languages.map(item => ({
-                                                value: item.language_code, label: item.name
-                                            }))"  />
-                                            <ErrorMessage :name="form.errors.default_language"/>
-                                        </div>
-                                    </div>
-                                </div>
+
                                 <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
                                     <Label name="Timezone" id="timezone" :hasError="form.errors.app_name" />
                                     <div class="mt-1 sm:col-span-2 sm:mt-0">
@@ -83,7 +104,7 @@
                                         <div class="max-w-lg rounded-md shadow-sm">
                                             <Multiselect id="time_format" :close-on-select="true" :can-clear="true"
                                             :searchable="true" v-model="form.time_format" :create-option="false"
-                                            placeholder="Select Date Format" :options="all_time_formats.map(item => ({
+                                            placeholder="Select Time Format" :options="all_time_formats.map(item => ({
                                                 value: item.value, label: item.label
                                             }))"  />
                                             <ErrorMessage :name="form.errors.time_format"/>
@@ -171,6 +192,8 @@ export default {
                 rows_per_page: this.data.rows_per_page,
                 start_day_of_week: this.data.start_day_of_week,
                 default_language: this.data.default_language,
+                default_currency: this.data.default_currency,
+                currency_symbol: this.data.currency_symbol,
                 timezone: this.data.timezone,
                 date_format: this.data.date_format,
                 time_format: this.data.time_format,
@@ -183,18 +206,6 @@ export default {
                 { value: 'h:i A', label: '12 Hour' },
                 { value: 'H:i', label: '24 Hour' },
             ],
-
-            // 'default_language' => 'en',
-            // 'timezone' => config('app.timezone'),
-            // 'date_format' => 'd-m-Y',
-            // 'thousand_separator' => ',',
-
-    //         '' => 'en',
-    // '' => 'UTC',
-    // '' => 'd-m-Y',
-    // '' => ',',
-
-
         };
     },
     methods: {

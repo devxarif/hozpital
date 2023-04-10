@@ -61,6 +61,8 @@ Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function () 
     Route::resource('receptionist', ReceptionistController::class);
 
     // Pharmacist Routes
+    Route::get('pharmacy/dashboard', [PharmacistController::class, 'dashboard'])->name('pharmacy.dashboard');
+    Route::get('pharmacy/order', [PharmacistController::class, 'order'])->name('pharmacy.order');
     Route::get('pharmacist/export/{type}', [PharmacistController::class, 'export'])->name('pharmacist.export');
     Route::post('pharmacist/import', [PharmacistController::class, 'import'])->name('pharmacist.import');
     Route::resource('pharmacist', PharmacistController::class);
@@ -281,8 +283,6 @@ Route::controller(GlobalController::class)->group(function () {
 
     Route::get('/change/language/{language:language_code}', 'changeLanguage')->name('change.language');
 });
-
-
 
 // Profile & Settings
 Route::controller(UserController::class)->middleware('auth')->group(function () {

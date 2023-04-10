@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Database\Seeders\OrderSeeder;
 
 
 class DatabaseSeeder extends Seeder
@@ -66,6 +67,7 @@ class DatabaseSeeder extends Seeder
             ExpenseSeeder::class,
             IncomeCategorySeeder::class,
             IncomeSeeder::class,
+            OrderSeeder::class,
 
             // Product & prescription
             ManufactureSeeder::class,
@@ -91,7 +93,6 @@ class DatabaseSeeder extends Seeder
             CurrencySeeder::class,
             SettingSeeder::class,
             SeoSeeder::class,
-
 
             // Others
             EventSeeder::class,

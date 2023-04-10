@@ -48,14 +48,15 @@
                 </DropdownMenu>
 
                 <!-- Pharmacy  -->
-                <DropdownMenu title="Pharmacy" :active="route().current('admin.product.index') || route().current('admin.productCategory.index') || route().current('admin.manufacture.index')">
+                <DropdownMenu title="Pharmacy" :active="route().current('admin.product.index') || route().current('admin.productCategory.index') || route().current('admin.manufacture.index') || route().current('admin.pharmacy.dashboard')">
                     <template v-slot:icon>
                         <svg xmlns="http://www.w3.org/2000/svg" class="ionicon mr-3 flex-shrink-0 h-6 w-6" viewBox="0 0 512 512"><title>Medkit</title><rect x="32" y="112" width="448" height="352" rx="48" ry="48" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="32"/><path d="M144 112V80a32 32 0 0132-32h160a32 32 0 0132 32v32M256 208v160M336 288H176" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/></svg>
                     </template>
+                    <DropdownMenuItem title="Dashboard" :href="route('admin.pharmacy.dashboard')" :active="route().current('admin.pharmacy.dashboard')"/>
                     <DropdownMenuItem title="Product List" :href="route('admin.product.index')" :active="route().current('admin.product.index')"/>
                     <DropdownMenuItem title="Product Category List" :href="route('admin.productCategory.index')" :active="route().current('admin.productCategory.index')"/>
                     <DropdownMenuItem title="Manufacture List" :href="route('admin.manufacture.index')" :active="route().current('admin.manufacture.index')"/>
-                    <DropdownMenuItem title="Order List" href="/" :active="false"/>
+                    <DropdownMenuItem title="Order List" :href="route('admin.pharmacy.order')" :active="route().current('admin.pharmacy.order')"/>
                 </DropdownMenu>
 
                 <!-- Bed  -->

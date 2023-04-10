@@ -22,7 +22,7 @@ class CreateOrdersTable extends Migration
             $table->string('currency_symbol')->default('$');
             $table->string('usd_amount')->default('0');
             $table->enum('payment_status', ['paid', 'unpaid'])->default('unpaid');
-            $table->string('expired_date')->nullable();
+            $table->enum('order_status', ['pending', 'confirmed','on_the_way', 'delivered', 'cancelled', 'refunded'])->default('pending');
             $table->timestamps();
         });
     }

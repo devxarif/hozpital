@@ -30,6 +30,8 @@ class FetchSystemSettingDataService
             'rows_per_page' => config('kodebazar.rows_per_page'),
             'start_day_of_week' => config('kodebazar.start_day_of_week'),
             'default_language' => config('kodebazar.default_language'),
+            'default_currency' => config('kodebazar.default_currency'),
+            'currency_symbol' => config('kodebazar.currency_symbol'),
             'timezone' => config('app.timezone'),
             'date_format' => config('kodebazar.date_format'),
             'time_format' => config('kodebazar.time_format'),
@@ -38,6 +40,7 @@ class FetchSystemSettingDataService
             'decimal_places' => config('kodebazar.decimal_places'),
 
             'languages' => Language::all(['id', 'name', 'language_code']),
+            'currencies' => $this->currencies(),
             'all_timezones' => DB::table('timezones')->get(),
             'all_date_formats' => $this->date_formats(),
             'all_rows_per_page' => $this->rows_per_page(),
@@ -45,6 +48,12 @@ class FetchSystemSettingDataService
             'decimal_places_options' => $this->decimal_places_options(),
             'thousand_separator_options' => $this->thousand_separator_options(),
             'decimal_separator_options' => $this->decimal_separator_options(),
+        ];
+    }
+
+    public function currencies(){
+        return [
+            "AED","AFN","ALL","AMD","ANG","AOA","ARS","AUD","AWG","AZN","BAM","BAM","BDT","BGN","BHD","BIF","BMD","BND","BOB","BOV","BRL","BSD","BTN","BWP","BYN","BYR","BZD","CAD","CDF","CHE","CHF","CHW","CLF","CLP","CNY","COP","COU","CRC","CUC","CUP","CVE","CZK","DJF","DKK","DOP","DZD","EGP","ERN","ETB","EUR","FJD","FKP","GBP","GEL","GHS","GIP","GMD","GNF","GTQ","GYD","HKD","HNL","HRK","HTG","HUF","IDR","ILS","INR","IQD","IRR","ISK","JMD","JOD","JPY","KES","KGS","KHR","KMF","KPW","KRW","KWD","KYD","KZT","LAK","LBP","LKR","LRD","LSL","LYD","MAD","MDL","MGA","MKD","MMK","MNT","MOP","MRO","MUR","MVR","MWK","MXN","MXV","MYR","MZN","NAD","NGN","NIO","NOK","NPR","NZD","OMR","PAB","PEN","PGK","PHP","PKR","PLN","PYG","QAR","RON","RSD","RUB","RWF","SAR","SBD","SCR","SDG","SEK","SGD","SHP","SLL","SOS","SRD","SSP","STD","SVC","SYP","SZL","THB","TJS","TMT","TND","TOP","TRY","TTD","TWD","TZS","UAH","UGX","USD","USN","UYI","UYU","UZS","VEF","VND","VUV","WST","XAF","XAG","XAU","XBA","XBB","XBC","XBD","XCD","XDR","XOF","XPD","XPF","XPT","XSU","XTS","XUA","XXX","YER","ZAR","ZMW","ZWL"
         ];
     }
 

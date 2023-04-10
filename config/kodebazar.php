@@ -5,12 +5,6 @@ return [
 
     'google_api' => env('GOOGLE_API_KEY', 'AIzaSyAUPpqerpKmENrKzgpr_pzcmiSKE58cA7k'),
 
-    'default_language' => env('APP_DEFAULT_LANGUAGE'),
-    'timezone' => env('APP_TIMEZONE'),
-    'currency' => env('APP_CURRENCY'),
-    'currency_symbol' => env('APP_CURRENCY_SYMBOL'),
-    'currency_symbol_position' => env('APP_CURRENCY_SYMBOL_POSITION'),
-
     // Payment Provider
     'stripe_key' => 'pk_test_51JAbnoDHsbz9CBNMjbDtUrA8pfBWkC9yvXqzFQYHeEJokRKFvpAedEruhqCxJhzqOflDi0KH1E020J5kitkMWV4q00fl2LBk6p',
     'stripe_secret' => 'sk_test_51JAbnoDHsbz9CBNM3FjZDwFH9rC3sr8q06vu9dDS0cjzY0o7a0VnC5KbcED1YUAEcryuro0xkDUKq8rKqVi1R9SX00idI7OL7i',
@@ -69,7 +63,9 @@ return [
     // System Setting
     'rows_per_page' => 20,
     'start_day_of_week' => 5,
-    'default_language' => 'bn',
+    'default_language' => 'en',
+    'default_currency' => 'USN',
+    'currency_symbol' => '$',
     'date_format' => 'd F, Y',
     'time_format' => 'H:i',
     'thousand_separator' => '',

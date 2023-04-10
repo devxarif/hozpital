@@ -76,6 +76,8 @@ Route::get('preview-notification', function () {
 });
 
 Route::get('/test2', function () {
+    return Order::all();
+
     $languages = Language::all();
     $path = base_path('resources/json/languages.json');
     $langInfos = json_decode(file_get_contents($path), true);

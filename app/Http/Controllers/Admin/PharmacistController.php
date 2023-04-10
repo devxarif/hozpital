@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\PharmacistCreateRequest;
 use App\Http\Requests\Admin\PharmacistUpdateRequest;
 use App\Imports\PharmacistImport;
+use App\Models\Order;
 use App\Models\Pharmacist;
 use App\Services\Admin\Pharmacist\CreatePharmacistService;
 use App\Services\Admin\Pharmacist\DeletePharmacistService;
@@ -16,6 +17,44 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class PharmacistController extends Controller
 {
+    /**
+     * Display a dashboard of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function dashboard(Request $request)
+    {
+        return inertia('Pharmacist/Dashboard');
+    }
+
+    /**
+     * Display a order of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function order(Request $request)
+    {
+        // $orders = Order::latest()->paginate(config('kodebazar.rows_per_page'))->withQueryString();
+
+        $query = Order::query();
+
+        if($request->has('type') && $request->filled('type') && $request->type != 'all') {
+            $query->whereType($request->type);
+        }
+
+        $data['announcements'] = $query->latest()->paginate(config('kodebazar.rows_per_page'))->withQueryString();
+        $data['filter'] = $request;
+
+        return $orders = Order::all();
+        $data['pending_orders_count'] = $orders->where('type', 'pending')->count();
+        $data['processing_orders_count'] = $orders->where('type', 'processing')->count();
+        $data['processing_orders_count'] = $orders->where('type', 'processing')->count();
+        $data['total_orders_count'] = $orders->count();
+
+
+        return inertia('Pharmacist/Order', compact('orders'));
+    }
+
     /**
      * Display a listing of the resource.
      *

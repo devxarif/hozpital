@@ -10,15 +10,21 @@ class UpdateSystemSettingDataService
             'rows_per_page' => 'required',
             'start_day_of_week' => 'required',
             'default_language' => 'required',
+            'default_currency' => 'required',
+            'currency_symbol' => 'required|max:5',
             'timezone' => 'required',
             'date_format' => 'required',
             'time_format' => 'required',
             'decimal_places' => 'required'
         ]);
 
+        //
+
         checkSetConfig('kodebazar.rows_per_page', $request->rows_per_page);
         checkSetConfig('kodebazar.start_day_of_week', $request->start_day_of_week);
         checkSetConfig('kodebazar.default_language', $request->default_language);
+        checkSetConfig('kodebazar.default_currency', $request->default_currency);
+        checkSetConfig('kodebazar.currency_symbol', $request->currency_symbol);
         checkSetConfig('app.timezone', $request->timezone);
         checkSetConfig('kodebazar.date_format', $request->date_format);
         checkSetConfig('kodebazar.time_format', $request->time_format);
