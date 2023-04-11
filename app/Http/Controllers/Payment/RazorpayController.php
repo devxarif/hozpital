@@ -15,12 +15,12 @@ class RazorpayController extends Controller
     {
         $plan = session('plan');
         $converted_amount = currencyConversion($plan->price);
-        $amount = currencyConversion($plan->price, null, 'INR', 1);
+        $amount = currencyConversion($plan->price, null, 'USD', 1);
 
         session(['order_payment' => [
             'payment_provider' => 'razorpay',
             'amount' => $amount,
-            'currency_symbol' => '₹',
+            'currency' => 'USD',
             'usd_amount' => $converted_amount,
         ]]);
 

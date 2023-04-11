@@ -24,7 +24,7 @@ class PaystackController extends Controller
         session(['order_payment' => [
             'payment_provider' => 'paystack',
             'amount' => $amount,
-            'currency_symbol' => '₦',
+            'currency' => 'ZAR',
             'usd_amount' => $converted_amount,
         ]]);
 

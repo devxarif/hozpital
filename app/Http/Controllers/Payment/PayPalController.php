@@ -24,7 +24,7 @@ class PayPalController extends Controller
         session(['order_payment' => [
             'payment_provider' => 'paypal',
             'amount' => $converted_amount,
-            'currency_symbol' => '$',
+            'currency' => 'USD',
             'usd_amount' => $converted_amount,
         ]]);
 

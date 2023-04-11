@@ -41,7 +41,7 @@ trait PaymentAble
             'payment_status' => 'paid',
             'amount' => $order_amount['amount'],
             'usd_amount' => $order_amount['usd_amount'],
-            'currency_symbol' => $order_amount['currency_symbol'],
+            'currency' => $order_amount['currency'],
             'payment_provider' => $order_amount['payment_provider'],
         ]);
 
@@ -103,7 +103,7 @@ trait PaymentAble
             'payment_status' => 'paid',
             'amount' => 0,
             'usd_amount' => 0,
-            'currency_symbol' => config('kodebazar.currency_symbol'),
+            'currency' => config('kodebazar.currency'),
             'payment_provider' => 'none',
         ]);
 

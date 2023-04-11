@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('transaction_id')->nullable();
             $table->enum('payment_provider', ['flutterwave', 'mollie', 'midtrans', 'paypal', 'paystack', 'razorpay', 'sslcommerz', 'stripe', 'instamojo', 'offline', 'none']);
             $table->string('amount')->default('0');
-            $table->string('currency_symbol')->default('$');
+            $table->string('currency')->default('$');
             $table->string('usd_amount')->default('0');
             $table->enum('payment_status', ['paid', 'unpaid'])->default('unpaid');
             $table->string('expired_date')->nullable();

@@ -19,7 +19,7 @@ class InstamojoController extends Controller
         session(['order_payment' => [
             'payment_provider' => 'instamojo',
             'amount' => $amount,
-            'currency_symbol' => '₹',
+            'currency' => 'IDR',
             'usd_amount' => $converted_amount,
         ]]);
 

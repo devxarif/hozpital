@@ -30,7 +30,7 @@ class MollieController extends Controller
         session(['order_payment' => [
             'payment_provider' => 'mollie',
             'amount' => $amount,
-            'currency_symbol' => '€',
+            'currency' => 'EUR',
             'usd_amount' => $converted_amount,
         ]]);
 

@@ -20,7 +20,7 @@ class MidtransController extends Controller
         session(['order_payment' => [
             'payment_provider' => 'midtrans',
             'amount' => session('midtrans_amount'),
-            'currency_symbol' => 'Rp',
+            'currency' => 'INR',
             'usd_amount' => $converted_amount,
         ]]);
 

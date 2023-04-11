@@ -9,14 +9,11 @@ class Order extends Model
 {
     use HasFactory;
 
-    public function plan()
-    {
-        return $this->belongsTo(Plan::class, 'plan_id');
-    }
+    protected $guarded = [];
 
-    public function organization()
+    public function user()
     {
-        return $this->belongsTo(Organization::class, 'organization_id');
+        return $this->belongsTo(User::class);
     }
 
     public function scopeThisWeek($query)

@@ -25,7 +25,7 @@ class FlutterwaveController extends Controller
         session(['order_payment' => [
             'payment_provider' => 'flutterwave',
             'amount' => $amount,
-            'currency_symbol' => '₦',
+            'currency' => 'NGN',
             'usd_amount' => $converted_amount,
         ]]);
 

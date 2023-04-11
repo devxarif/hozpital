@@ -63,16 +63,10 @@ class HandleInertiaRequests extends Middleware
         $data['unreadNotificationsCount'] = auth()->check() ? auth()->user()->unreadNotifications->count() : 0;
 
         // Env variables
-        $data['current_currency'] = config('kodebazar.currency');
-        $data['current_currency_symbol'] = config('kodebazar.currency_symbol');
-        $data['currency_symbol_position'] = config('kodebazar.currency_symbol_position');
         $data['app_version'] = config('kodebazar.app_version');
 
         // Settings
         $data['setting'] = Setting::first();
-
-
-
 
         return array_merge(parent::share($request), $data);
     }

@@ -64,7 +64,7 @@ return [
     'rows_per_page' => 20,
     'start_day_of_week' => 5,
     'default_language' => 'en',
-    'default_currency' => 'USN',
+    'default_currency' => 'USD',
     'currency_symbol' => '$',
     'date_format' => 'd F, Y',
     'time_format' => 'H:i',

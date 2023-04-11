@@ -44,7 +44,7 @@ class OrderController extends Controller
             'organization_logo' => $order->organization->organization_logo,
             'organization_logo_url' => $order->organization->organization_logo_url,
             'organization_id' => $order->organization->id,
-            'currency_symbol' => $order->currency_symbol,
+            'currency' => $order->currency,
             'amount' => $order->amount,
             'payment_provider' => $order->payment_provider,
             'plan' => $order->plan,

@@ -110,7 +110,7 @@ trait HasAdmin
 
     public function adminRecentOrders()
     {
-        return Order::select('id', 'order_id', 'amount', 'currency_symbol', 'plan_id', 'organization_id')
+        return Order::select('id', 'order_id', 'amount', 'currency', 'plan_id', 'organization_id')
         ->with('organization.user:id,name', 'plan:id,name')
         ->latest()
         ->limit(5)
@@ -119,7 +119,7 @@ trait HasAdmin
             'id' => $order->id,
             'order_id' => $order->order_id,
             'company' => $order->company->user,
-            'amount' => $order->currency_symbol.' '.$order->amount,
+            'amount' => $order->currency.' '.$order->amount,
             'plan' => $order->plan->name,
         ]);
     }

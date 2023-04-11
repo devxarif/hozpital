@@ -80,7 +80,7 @@ class OrganizationController extends Controller
                 'id' => $order->id,
                 'order_id' => $search ? preg_replace('/('.$search.')/i', "<b class='bg-warning'>$1</b>", $order->order_id) : $order->order_id,
                 'transaction_id' => $search ? preg_replace('/('.$search.')/i', "<b class='bg-warning'>$1</b>", $order->transaction_id) : $order->transaction_id,
-                'currency_symbol' => $order->currency_symbol,
+                'currency' => $order->currency,
                 'amount' => $order->amount,
                 'payment_provider' => $order->payment_provider,
                 'plan' => $order->plan,

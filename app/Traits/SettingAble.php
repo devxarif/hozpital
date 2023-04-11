@@ -220,13 +220,6 @@ trait SettingAble
         }
     }
 
-    public function setDefaultCurrency($currency)
-    {
-        checkSetEnv('APP_CURRENCY', $currency->code);
-        checkSetEnv('APP_CURRENCY_SYMBOL', $currency->symbol);
-        checkSetEnv('APP_CURRENCY_SYMBOL_POSITION', $currency->symbol_position);
-    }
-
     public function getSmsSetting()
     {
         $data['twilio_secret'] = config('kodebazar.twilio_secret');

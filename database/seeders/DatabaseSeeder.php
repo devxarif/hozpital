@@ -90,7 +90,6 @@ class DatabaseSeeder extends Seeder
 
             // Settings
             LanguageSeeder::class,
-            CurrencySeeder::class,
             SettingSeeder::class,
             SeoSeeder::class,
 

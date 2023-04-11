@@ -34,25 +34,36 @@ class PharmacistController extends Controller
      */
     public function order(Request $request)
     {
-        // $orders = Order::latest()->paginate(config('kodebazar.rows_per_page'))->withQueryString();
-
         $query = Order::query();
 
         if($request->has('type') && $request->filled('type') && $request->type != 'all') {
-            $query->whereType($request->type);
+            $query->whereOrderStatus($request->type);
         }
 
-        $data['announcements'] = $query->latest()->paginate(config('kodebazar.rows_per_page'))->withQueryString();
+        $data['orders'] = $query->with('user')->latest()->paginate(config('kodebazar.rows_per_page'))->withQueryString();
         $data['filter'] = $request;
 
-        return $orders = Order::all();
-        $data['pending_orders_count'] = $orders->where('type', 'pending')->count();
-        $data['processing_orders_count'] = $orders->where('type', 'processing')->count();
-        $data['processing_orders_count'] = $orders->where('type', 'processing')->count();
+        $orders = Order::all();
+        $data['pending_orders_count'] = $orders->where('order_status', 'pending')->count();
+        $data['confirmed_orders_count'] = $orders->where('order_status', 'confirmed')->count();
+        $data['on_the_way_orders_count'] = $orders->where('order_status', 'on_the_way')->count();
+        $data['delivered_orders_count'] = $orders->where('order_status', 'delivered')->count();
+        $data['cancelled_orders_count'] = $orders->where('order_status', 'cancelled')->count();
+        $data['refunded_orders_count'] = $orders->where('order_status', 'refunded')->count();
         $data['total_orders_count'] = $orders->count();
+        $data['filter_by_date'] = [
+            ['label' => "Today". " (".now()->format('d-m-Y').")",'value' => 'today'],
+            ['label' => 'Yesterday'. " (".now()->subDay()->format('d-m-Y').")",'value' => 'yesterday'],
+            ['label' => 'This Week'. " (".now()->startOfWeek()->format('d-m-Y')." to ".now()->endOfWeek()->format('d-m-Y').")",'value' => 'this_week'],
+            ['label' => 'Last Week'. " (".now()->subWeek()->startOfWeek()->format('d-m-Y')." to ".now()->subWeek()->endOfWeek()->format('d-m-Y').")",'value' => 'last_week'],
+            ['label' => 'This Month'. " (".now()->startOfMonth()->format('d-m-Y')." to ".now()->endOfMonth()->format('d-m-Y').")",'value' => 'this_month'],
+            ['label' => 'Last Month' . " (".now()->subMonth()->startOfMonth()->format('d-m-Y')." to ".now()->subMonth()->endOfMonth()->format('d-m-Y').")",'value' => 'last_month'],
+            ['label' => 'Last 6 Month' . " (".now()->subMonth(6)->format('d-m-Y')." to ".now()->format('d-m-Y').")",'value' => 'last_6_month'],
+            ['label' => 'This Year' . " (".now()->startOfYear()->format('d-m-Y')." to ".now()->endOfYear()->format('d-m-Y').")",'value' => 'this_year'],
+            ['label' => 'Last Year' . " (".now()->subYear()->format('d-m-Y')." to ".now()->format('d-m-Y').")",'value' => 'last_year']
+        ];
 
-
-        return inertia('Pharmacist/Order', compact('orders'));
+        return inertia('Pharmacist/Order', $data);
     }
 
     /**
