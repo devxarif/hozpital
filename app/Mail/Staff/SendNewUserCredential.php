@@ -13,14 +13,16 @@ class SendNewUserCredential extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
 
+    public $data;
+
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($mailData)
     {
-        //
+        $this->data = $mailData;
     }
 
     /**
@@ -43,7 +45,7 @@ class SendNewUserCredential extends Mailable implements ShouldQueue
     public function content()
     {
         return new Content(
-            markdown: 'mails.staff.send-new-user-credential',
+            view: 'app',
         );
     }
 

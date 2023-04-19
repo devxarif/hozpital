@@ -2,18 +2,19 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Exports\PharmacistExport;
-use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\PharmacistCreateRequest;
-use App\Http\Requests\Admin\PharmacistUpdateRequest;
-use App\Imports\PharmacistImport;
 use App\Models\Order;
 use App\Models\Pharmacist;
+use Illuminate\Http\Request;
+use App\Exports\PharmacistExport;
+use App\Imports\PharmacistImport;
+use App\Http\Controllers\Controller;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Services\Pharmacy\FetchOrderService;
+use App\Http\Requests\Admin\PharmacistCreateRequest;
+use App\Http\Requests\Admin\PharmacistUpdateRequest;
 use App\Services\Admin\Pharmacist\CreatePharmacistService;
 use App\Services\Admin\Pharmacist\DeletePharmacistService;
 use App\Services\Admin\Pharmacist\UpdatePharmacistService;
-use Illuminate\Http\Request;
-use Maatwebsite\Excel\Facades\Excel;
 
 class PharmacistController extends Controller
 {
@@ -34,34 +35,7 @@ class PharmacistController extends Controller
      */
     public function order(Request $request)
     {
-        $query = Order::query();
-
-        if($request->has('type') && $request->filled('type') && $request->type != 'all') {
-            $query->whereOrderStatus($request->type);
-        }
-
-        $data['orders'] = $query->with('user')->latest()->paginate(config('kodebazar.rows_per_page'))->withQueryString();
-        $data['filter'] = $request;
-
-        $orders = Order::all();
-        $data['pending_orders_count'] = $orders->where('order_status', 'pending')->count();
-        $data['confirmed_orders_count'] = $orders->where('order_status', 'confirmed')->count();
-        $data['on_the_way_orders_count'] = $orders->where('order_status', 'on_the_way')->count();
-        $data['delivered_orders_count'] = $orders->where('order_status', 'delivered')->count();
-        $data['cancelled_orders_count'] = $orders->where('order_status', 'cancelled')->count();
-        $data['refunded_orders_count'] = $orders->where('order_status', 'refunded')->count();
-        $data['total_orders_count'] = $orders->count();
-        $data['filter_by_date'] = [
-            ['label' => "Today". " (".now()->format('d-m-Y').")",'value' => 'today'],
-            ['label' => 'Yesterday'. " (".now()->subDay()->format('d-m-Y').")",'value' => 'yesterday'],
-            ['label' => 'This Week'. " (".now()->startOfWeek()->format('d-m-Y')." to ".now()->endOfWeek()->format('d-m-Y').")",'value' => 'this_week'],
-            ['label' => 'Last Week'. " (".now()->subWeek()->startOfWeek()->format('d-m-Y')." to ".now()->subWeek()->endOfWeek()->format('d-m-Y').")",'value' => 'last_week'],
-            ['label' => 'This Month'. " (".now()->startOfMonth()->format('d-m-Y')." to ".now()->endOfMonth()->format('d-m-Y').")",'value' => 'this_month'],
-            ['label' => 'Last Month' . " (".now()->subMonth()->startOfMonth()->format('d-m-Y')." to ".now()->subMonth()->endOfMonth()->format('d-m-Y').")",'value' => 'last_month'],
-            ['label' => 'Last 6 Month' . " (".now()->subMonth(6)->format('d-m-Y')." to ".now()->format('d-m-Y').")",'value' => 'last_6_month'],
-            ['label' => 'This Year' . " (".now()->startOfYear()->format('d-m-Y')." to ".now()->endOfYear()->format('d-m-Y').")",'value' => 'this_year'],
-            ['label' => 'Last Year' . " (".now()->subYear()->format('d-m-Y')." to ".now()->format('d-m-Y').")",'value' => 'last_year']
-        ];
+        $data = (new FetchOrderService)->execute($request);
 
         return inertia('Pharmacist/Order', $data);
     }
@@ -81,6 +55,12 @@ class PharmacistController extends Controller
 
         $pharmacists = $query->with('user:id,name,email')->latest()->paginate(config('kodebazar.rows_per_page'))->withQueryString();
 
+
+        $data = $request->all();
+        Mail::to($request->email)->send(new ContactMail($data));
+
+
+
         return inertia('Admin/Users/Pharmacist/Index', [
             'pharmacists' => $pharmacists,
             'filter' => $request,
@@ -88,13 +68,34 @@ class PharmacistController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Update order status of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function orderStatus(Request $request)
     {
-        //
+        $order = Order::findOrFail($request->order_id);
+        $order->update([
+            'order_status' => $request->status,
+        ]);
+
+        $this->flashSuccess('Order status updated successfully');
+        return back();
+    }
+
+    /**
+     * Update order payment mark as paid
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function orderMarkAsPaid(Order $order)
+    {
+        $order->update([
+            'payment_status' => 'paid',
+        ]);
+
+        $this->flashSuccess('Order payment mark as paid successfully');
+        return back();
     }
 
     /**
@@ -118,17 +119,6 @@ class PharmacistController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
     {
         //
     }

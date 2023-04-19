@@ -16,6 +16,16 @@ class Order extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function scopeToday($query)
+    {
+        return $query->whereDate('created_at', '>', now()->today());
+    }
+
+    public function scopeYesterday($query)
+    {
+        return $query->whereDate('created_at', '>', now()->subDay());
+    }
+
     public function scopeThisWeek($query)
     {
         return $query->whereBetween('created_at', [now()->startOfWeek(), now()->endOfWeek()]);

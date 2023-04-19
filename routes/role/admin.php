@@ -61,8 +61,10 @@ Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function () 
     Route::resource('receptionist', ReceptionistController::class);
 
     // Pharmacist Routes
-    Route::get('pharmacy/dashboard', [PharmacistController::class, 'dashboard'])->name('pharmacy.dashboard');
     Route::get('pharmacy/order', [PharmacistController::class, 'order'])->name('pharmacy.order');
+    Route::put('pharmacy/order/status', [PharmacistController::class, 'orderStatus'])->name('pharmacy.order.status');
+    Route::post('pharmacy/order/mark-paid/{order}', [PharmacistController::class, 'orderMarkAsPaid'])->name('pharmacy.order.mark-as-paid');
+    Route::get('pharmacy/dashboard', [PharmacistController::class, 'dashboard'])->name('pharmacy.dashboard');
     Route::get('pharmacist/export/{type}', [PharmacistController::class, 'export'])->name('pharmacist.export');
     Route::post('pharmacist/import', [PharmacistController::class, 'import'])->name('pharmacist.import');
     Route::resource('pharmacist', PharmacistController::class);

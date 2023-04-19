@@ -12,7 +12,7 @@
             </h2>
             <div class="flex items-center space-x-2 sm:space-x-3 ml-auto">
                 <!-- Clear Filter -->
-                <ClearFilter v-if="filter.keyword && filter.keyword.length"  :href="route('pharmacist.product.index')"/>
+                <ClearFilter v-if="showClearFilter"  :href="route('admin.pharmacy.order')"/>
 
                 <BaseButton @click="toggleFilter" class="text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 px-3 py-2">
                     <svg class="mr-2 h-6 w-6" stroke="currentColor" fill="none" stroke-width="0" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"></path></svg>
@@ -68,7 +68,7 @@
                     <label for="order_payment_status" class="block text-sm font-medium text-gray-700">{{ __('Payment Status') }}</label>
                     <div class="mt-1">
                         <Multiselect id="order_payment_status" :close-on-select="true" :can-clear="false"
-                            :searchable="true" v-model="filterForm.product_category" :create-option="false"
+                            :searchable="true" v-model="filterForm.payment_status" :create-option="false"
                             placeholder="Payment Status" :options="[
                                 {value: 'paid', label: 'Paid'},
                                 {value: 'unpaid', label: 'Unpaid'},
@@ -79,7 +79,7 @@
                     <label for="order_user_role" class="block text-sm font-medium text-gray-700">{{ __('User Role') }}</label>
                     <div class="mt-1">
                         <Multiselect id="order_user_role" :close-on-select="true" :can-clear="false"
-                            :searchable="true" v-model="filterForm.product_category" :create-option="false"
+                            :searchable="true" v-model="filterForm.role" :create-option="false"
                             placeholder="User Role" :options="[
                                 {value: 'patient', label: 'Patient'},
                                 {value: 'doctor', label: 'Doctor'},
@@ -93,13 +93,30 @@
                     </div>
                 </div>
                 <div class="col-span-3">
-                    <label for="pharmacist_product_category" class="block text-sm font-medium text-gray-700">{{ __('Date') }}</label>
+                    <label for="pharmacist_product_category" class="block text-sm font-medium text-gray-700">{{ __('Filter Date') }}</label>
                     <div class="mt-1">
                         <Multiselect id="pharmacist_product_category" :close-on-select="true" :can-clear="false"
-                            :searchable="true" v-model="filterForm.product_category" :create-option="false"
+                            :searchable="true" v-model="filterForm.date_type" :create-option="false"
                             placeholder="Filter by date" :options="filter_by_date.map(item => ({
                                 value: item.value, label: item.label
                             }))"  />
+                    </div>
+                </div>
+                <div class="col-span-2" v-if="showSingleDate">
+                    <label for="order_payment_status" class="block text-sm font-medium text-gray-700">{{ __('Select Custom Date') }}</label>
+                    <div class="mt-1">
+                        <Datepicker v-model="filterForm.custom_date" :enableTimePicker="false"
+                            @update:modelValue="handleCustomDate" :class="{'is-invalid':errors.custom_date}" :placeholder="__('Select Date')" />
+                        <span v-if="errors.custom_date" class="text-red-500 text-sm">{{ errors.custom_date && errors.custom_date[0] }}</span>
+                    </div>
+                </div>
+                <div class="col-span-2" v-if="showDateRange">
+                    <label class="block text-sm font-medium text-gray-700">{{ __('Select Custom Range') }}</label>
+                    <div class="mt-1">
+                        <Datepicker v-model="filterForm.custom_date_range" :enableTimePicker="false"
+                            @update:modelValue="handleCustomRangeDate" :class="{'is-invalid':errors.custom_start_date || errors.custom_end_date}" :placeholder="__('Select Date Range')" range multiCalendars />
+                        <span v-if="errors.custom_start_date" class="text-red-500 text-sm">This field is required</span>
+                        <span v-else-if="errors.custom_end_date" class="text-red-500 text-sm">The end date selection is not correct</span>
                     </div>
                 </div>
                 <div class="col-span-3">
@@ -115,45 +132,45 @@
             <div class="mb-5">
                 <div class="border-b border-gray-200">
                     <nav class="-mb-px flex space-x-8">
-                        <button type="button" @click="changeTab('all')" :class="['whitespace-nowrap flex py-4 px-1 border-b-2 font-medium text-sm focus:outline-none', currentTab == 'all' ? 'border-blue-500 text-blue-600':'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-200' ]">
+                        <button type="button" @click="changeTab('all')" :class="['whitespace-nowrap flex py-4 px-1 border-b-2 font-medium text-sm focus:outline-none', filterForm.type == 'all' ? 'border-blue-500 text-blue-600':'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-200' ]">
                             All
-                            <span class="hidden ml-3 py-0.5 px-2.5 rounded-full text-xs font-medium md:inline-block" :class="currentTab == 'all' ? 'bg-blue-100 text-blue-600':'bg-gray-100 text-gray-900'">
+                            <span class="hidden ml-3 py-0.5 px-2.5 rounded-full text-xs font-medium md:inline-block" :class="filterForm.type == 'all' ? 'bg-blue-100 text-blue-600':'bg-gray-100 text-gray-900'">
                                 {{ total_orders_count }}
                             </span>
                         </button>
-                        <button type="button" @click="changeTab('pending')" :class="['whitespace-nowrap flex py-4 px-1 border-b-2 font-medium text-sm focus:outline-none', currentTab == 'pending' ? 'border-blue-500 text-blue-600':'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-200' ]">
+                        <button type="button" @click="changeTab('pending')" :class="['whitespace-nowrap flex py-4 px-1 border-b-2 font-medium text-sm focus:outline-none', filterForm.type == 'pending' ? 'border-blue-500 text-blue-600':'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-200' ]">
                             Pending
-                            <span class="hidden ml-3 py-0.5 px-2.5 rounded-full text-xs font-medium md:inline-block" :class="currentTab == 'public' ? 'bg-blue-100 text-blue-600':'bg-gray-100 text-gray-900'">
+                            <span class="hidden ml-3 py-0.5 px-2.5 rounded-full text-xs font-medium md:inline-block" :class="filterForm.type == 'public' ? 'bg-blue-100 text-blue-600':'bg-gray-100 text-gray-900'">
                                 {{ pending_orders_count }}
                             </span>
                         </button>
-                        <button type="button" @click="changeTab('confirmed')" :class="['whitespace-nowrap flex py-4 px-1 border-b-2 font-medium text-sm focus:outline-none', currentTab == '' ? 'border-blue-500 text-blue-600':'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-200' ]">
+                        <button type="button" @click="changeTab('confirmed')" :class="['whitespace-nowrap flex py-4 px-1 border-b-2 font-medium text-sm focus:outline-none', filterForm.type == 'confirmed' ? 'border-blue-500 text-blue-600':'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-200' ]">
                             Confirmed
-                            <span class="hidden ml-3 py-0.5 px-2.5 rounded-full text-xs font-medium md:inline-block" :class="currentTab == 'confirmed' ? 'bg-blue-100 text-blue-600':'bg-gray-100 text-gray-900'">
+                            <span class="hidden ml-3 py-0.5 px-2.5 rounded-full text-xs font-medium md:inline-block" :class="filterForm.type == 'confirmed' ? 'bg-blue-100 text-blue-600':'bg-gray-100 text-gray-900'">
                                 {{ confirmed_orders_count }}
                             </span>
                         </button>
-                        <button type="button" @click="changeTab('on_the_way')" :class="['whitespace-nowrap flex py-4 px-1 border-b-2 font-medium text-sm focus:outline-none', currentTab == 'on_the_way' ? 'border-blue-500 text-blue-600':'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-200' ]">
+                        <button type="button" @click="changeTab('on_the_way')" :class="['whitespace-nowrap flex py-4 px-1 border-b-2 font-medium text-sm focus:outline-none', filterForm.type == 'on_the_way' ? 'border-blue-500 text-blue-600':'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-200' ]">
                             On the way
-                            <span class="hidden ml-3 py-0.5 px-2.5 rounded-full text-xs font-medium md:inline-block" :class="currentTab == 'on_the_way' ? 'bg-blue-100 text-blue-600':'bg-gray-100 text-gray-900'">
+                            <span class="hidden ml-3 py-0.5 px-2.5 rounded-full text-xs font-medium md:inline-block" :class="filterForm.type == 'on_the_way' ? 'bg-blue-100 text-blue-600':'bg-gray-100 text-gray-900'">
                                 {{ on_the_way_orders_count }}
                             </span>
                         </button>
-                        <button type="button" @click="changeTab('delivered')" :class="['whitespace-nowrap flex py-4 px-1 border-b-2 font-medium text-sm focus:outline-none', currentTab == 'delivered' ? 'border-blue-500 text-blue-600':'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-200' ]">
+                        <button type="button" @click="changeTab('delivered')" :class="['whitespace-nowrap flex py-4 px-1 border-b-2 font-medium text-sm focus:outline-none', filterForm.type == 'delivered' ? 'border-blue-500 text-blue-600':'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-200' ]">
                             Delivered
-                            <span class="hidden ml-3 py-0.5 px-2.5 rounded-full text-xs font-medium md:inline-block" :class="currentTab == 'delivered' ? 'bg-blue-100 text-blue-600':'bg-gray-100 text-gray-900'">
+                            <span class="hidden ml-3 py-0.5 px-2.5 rounded-full text-xs font-medium md:inline-block" :class="filterForm.type == 'delivered' ? 'bg-blue-100 text-blue-600':'bg-gray-100 text-gray-900'">
                                 {{ delivered_orders_count }}
                             </span>
                         </button>
-                        <button type="button" @click="changeTab('cancelled')" :class="['whitespace-nowrap flex py-4 px-1 border-b-2 font-medium text-sm focus:outline-none', currentTab == 'cancelled' ? 'border-blue-500 text-blue-600':'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-200' ]">
+                        <button type="button" @click="changeTab('cancelled')" :class="['whitespace-nowrap flex py-4 px-1 border-b-2 font-medium text-sm focus:outline-none', filterForm.type == 'cancelled' ? 'border-blue-500 text-blue-600':'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-200' ]">
                             Cancelled
-                            <span class="hidden ml-3 py-0.5 px-2.5 rounded-full text-xs font-medium md:inline-block" :class="currentTab == 'cancelled' ? 'bg-blue-100 text-blue-600':'bg-gray-100 text-gray-900'">
+                            <span class="hidden ml-3 py-0.5 px-2.5 rounded-full text-xs font-medium md:inline-block" :class="filterForm.type == 'cancelled' ? 'bg-blue-100 text-blue-600':'bg-gray-100 text-gray-900'">
                                 {{ cancelled_orders_count }}
                             </span>
                         </button>
-                        <button type="button" @click="changeTab('refunded')" :class="['whitespace-nowrap flex py-4 px-1 border-b-2 font-medium text-sm focus:outline-none', currentTab == 'refunded' ? 'border-blue-500 text-blue-600':'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-200' ]">
+                        <button type="button" @click="changeTab('refunded')" :class="['whitespace-nowrap flex py-4 px-1 border-b-2 font-medium text-sm focus:outline-none', filterForm.type == 'refunded' ? 'border-blue-500 text-blue-600':'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-200' ]">
                             Refunded
-                            <span class="hidden ml-3 py-0.5 px-2.5 rounded-full text-xs font-medium md:inline-block" :class="currentTab == 'refunded' ? 'bg-blue-100 text-blue-600':'bg-gray-100 text-gray-900'">
+                            <span class="hidden ml-3 py-0.5 px-2.5 rounded-full text-xs font-medium md:inline-block" :class="filterForm.type == 'refunded' ? 'bg-blue-100 text-blue-600':'bg-gray-100 text-gray-900'">
                                 {{ refunded_orders_count }}
                             </span>
                         </button>
@@ -177,6 +194,7 @@
                                 <th class="px-4 py-3.5 text-left text-sm font-semibold text-gray-900">User</th>
                                 <th class="px-4 py-3.5 text-left text-sm font-semibold text-gray-900">Order Date</th>
                                 <th class="px-4 py-3.5 text-left text-sm font-semibold text-gray-900">Amount</th>
+                                <th class="px-4 py-3.5 text-left text-sm font-semibold text-gray-900">Created At</th>
                                 <th class="px-4 py-3.5 text-left text-sm font-semibold text-gray-900">Order Status</th>
                                 <th width="80px" class="py-3.5 pl-4 pr-4 text-left text-sm font-semibold text-gray-900 sm:pr-6">
                                     Action
@@ -204,22 +222,19 @@
                                         <p><b>Payment Provider:</b><span class="capitalize ml-2">{{ order.payment_provider }}</span></p>
                                         <p>
                                             <b>Payment Status:</b>
-                                            <span class="ml-2 text-md font-bold leading-tight text-green-500 rounded-full">
-                                                Paid
+                                            <span class="ml-2 text-md font-bold leading-tight rounded-full capitalize" :class="order.payment_status == 'paid' ? 'text-green-500':'text-red-500'">
+                                                {{ order.payment_status }}
                                             </span>
-                                            <a href="#" class="text-gray-500 underline ml-2">
+                                            <a v-if="order.payment_status != 'paid'" href="javascript:void(0)" @click="markAsPaid(order.id)" class="text-gray-500 underline ml-2">
                                                 Mark as paid
                                             </a>
                                         </p>
-
-                                        <!-- <p v-if="product.product_category && product.product_category.name"><b>Category:</b> {{ product.product_category.name }}</p>
-                                        <div class="flex justify-between">
-                                            <p v-if="product.buying_price"><b>Buying Price:</b> {{ product.buying_price }}</p>
-                                            <p v-if="product.selling_price"><b>Selling Price:</b> {{ product.selling_price }}</p>
-                                        </div> -->
                                     </td>
                                     <td class="p-4 text-sm text-gray-500 break-all">
                                         {{ order.amount ?? '' }} {{ order.currency ?? '' }}
+                                    </td>
+                                    <td class="p-4 text-sm text-gray-500 break-all">
+                                        {{ formatTime(order.created_at) }}
                                     </td>
                                     <td class="p-4 text-sm text-gray-500 break-all">
                                         <span :class="getOrderBg(order.order_status)" class="text-white text-sm font-medium mr-2 px-3 py-2 rounded-full   capitalize">
@@ -239,7 +254,7 @@
                                                 <MenuItems class="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                                                     <div class="py-1 text-sm">
                                                     <MenuItem v-slot="{ active }">
-                                                        <a href="javascript:void(0)" @click.prevent="editData(order)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
+                                                        <a href="javascript:void(0)" @click.prevent="changeOrderStatus(order)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
                                                             <font-awesome-icon icon="fa-solid fa-pen-to-square" class="mr-3 h-5 w-5 text-blue-500 group-hover:text-blue-500"/>
                                                             Change Order Status
                                                         </a>
@@ -250,12 +265,6 @@
                                                             Details
                                                         </a>
                                                     </MenuItem>
-                                                    <MenuItem v-slot="{ active }">
-                                                        <a href="javascript:void(0)" @click.prevent="deleteData(order.id)" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'group flex items-center px-4 py-2']">
-                                                            <font-awesome-icon icon="fa-solid fa-trash-can" class="mr-3 h-5 w-5 text-red-500 group-hover:text-red-500"/>
-                                                            Delete
-                                                        </a>
-                                                    </MenuItem>
                                                     </div>
                                                 </MenuItems>
                                             </transition>
@@ -264,23 +273,26 @@
                             </tr>
                         </tbody>
                     </table>
-                    <Pagination :data="orders"
-                        v-if="orders && orders.data.length && orders.total > app_setting.rows_per_page" class="mt-5" />
+                    <Pagination :data="orders" v-if="orders && orders.data.length && orders.total > app_setting.rows_per_page" />
                 </div>
             </div>
         </div>
         </div>
 
        <NothingFound v-else/>
+
+       <ChangeOrderStatus :show="showChangeOrderStatus" @close-modal="showChangeOrderStatus = false" :order="order"/>
     </AppLayout>
 </template>
 
 <script>
 import CardSkeleton from "@/Shared/Skeleton/CardSkeleton.vue";
+import ChangeOrderStatus from './ChangeOrderStatusModal.vue'
 
 export default {
     components: {
         CardSkeleton,
+        ChangeOrderStatus,
     },
     props: {
         orders:{
@@ -326,53 +338,68 @@ export default {
     },
     data() {
         return {
-            showCreateDrawer: false,
-            showEditDrawer: false,
-            editAnnouncement: '',
+            showChangeOrderStatus: false,
+            order: '',
+
+            showSingleDate: this.filter.date_type == 'custom_date' ? true : false,
+            showDateRange: this.filter.date_type == 'custom_range_date' ? true : false,
 
             showFilter: false,
             loading: false,
 
-            currentTab: this.filter.type || "all",
-
             filterForm: this.$inertia.form({
                 keyword: this.filter.keyword,
+                payment_status: this.filter.payment_status,
+                role: this.filter.role,
+                date_type: this.filter.date_type,
+                custom_date: this.filter.custom_date,
+                custom_start_date: this.filter.custom_start_date,
+                custom_end_date: this.filter.custom_end_date,
+                type: this.filter.type || "all"
             }),
+            errors: {},
         }
     },
     methods: {
-        deleteData(id) {
-            this.$swal({
-                title: "Are you sure?",
-                text: "You won't be able to revert this!",
-                icon: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#3085d6",
-                cancelButtonColor: "#d33",
-                confirmButtonText: "Yes, delete it!",
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    this.$inertia.delete(route("admin.announcement.destroy", id));
-                }
-            });
-        },
-        editData(announcement){
-            this.showEditDrawer = true
-            this.editAnnouncement = announcement
-        },
         async changeTab(tab) {
-            this.currentTab = tab;
-            this.$inertia.get(route("admin.pharmacy.order"), {
-                type: this.currentTab
-            });
+            this.filterForm.type = tab;
+
+            this.loading = true
+            this.filterForm.get(route('admin.pharmacy.order'), {
+                onSuccess: () => {
+                    this.loading = false
+                },
+                onError: () => {
+                    this.loading = false
+                    alert('Something went wrong')
+                },
+            })
         },
         toggleFilter() {
             this.showFilter = !this.showFilter;
             localStorage.setItem("admin_pharmacist_order", this.showFilter);
         },
+        handleCustomDate(date) {
+            const formatTime = this.formatTime(date, "YYYY-MM-DD");
+            this.filterForm.custom_date = formatTime;
+        },
+        handleCustomRangeDate(date) {
+            const array_date = Object.keys(date);
+            const startDate = date[array_date[0]];
+            const endDate = date[array_date[1]];
+
+            if (!endDate) {
+                this.errors.custom_end_date = ['The end date selection is not correct'];
+            } else {
+                this.errors.custom_end_date = null;
+            }
+
+            this.filterForm.custom_start_date = this.formatTime(startDate, "YYYY-MM-DD")
+            this.filterForm.custom_end_date = this.formatTime(startDate, "YYYY-MM-DD")
+        },
         filterData(){
             this.loading = true
-            this.filterForm.get(route('pharmacist.product.index'), {
+            this.filterForm.get(route('admin.pharmacy.order'), {
                 onSuccess: () => {
                     this.loading = false
                 },
@@ -402,6 +429,44 @@ export default {
                 case "refunded":
                     return "bg-red-500";
                     break;
+            }
+        },
+        changeOrderStatus(order){
+            this.order = order
+            this.showChangeOrderStatus = true
+        },
+        markAsPaid(order_id){
+            this.$swal({
+                title: "Are you sure?",
+                text: "You want to mark this order as paid?",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, mark it!",
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    this.$inertia.post(route("admin.pharmacy.order.mark-as-paid", order_id));
+                }
+            });
+        },
+    },
+    computed:{
+        showClearFilter(){
+            return this.filter.keyword || this.filter.payment_status || this.filter.role || this.filter.date_type || this.filter.custom_date || this.filter.custom_start_date || this.filter.custom_end_date
+        }
+    },
+    watch:{
+        "filterForm.date_type": function(val){
+            if (val == 'custom_date') {
+                this.showSingleDate = true;
+                this.showDateRange = false;
+            }else if(val == 'custom_range_date'){
+                this.showSingleDate = false;
+                this.showDateRange = true;
+            }else{
+                this.showSingleDate = false;
+                this.showDateRange = false;
             }
         },
     },
