@@ -3,6 +3,7 @@
 namespace App\Services\Admin\Setting;
 
 use PhpInfo;
+use Illuminate\Foundation\Application;
 
 class SystemInfoService
 {
@@ -15,6 +16,7 @@ class SystemInfoService
         $current_php_version = phpversion();
         $minimum_php_version = 8.1;
         $matched_php_requirement = version_compare($current_php_version, $minimum_php_version, '>=');
+        $current_laravel_version = Application::VERSION;
 
         $current_mysql_version = \DB::select('select version()')[0]->{'version()'};
         $minimum_mysql_version = '5.6+';
@@ -68,6 +70,7 @@ class SystemInfoService
             'current_php_version' => $current_php_version,
             'minimum_php_version' => $minimum_php_version,
             'matched_php_requirement' => $matched_php_requirement,
+            'current_laravel_version' => $current_laravel_version,
             'current_mysql_version' => $current_mysql_version,
             'minimum_mysql_version' => $minimum_mysql_version,
             'matched_mysql_requirement' => $matched_mysql_requirement,

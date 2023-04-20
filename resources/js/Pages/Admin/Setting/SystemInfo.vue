@@ -12,11 +12,6 @@
                         <div class="space-y-6 sm:space-y-5 sm:border-t sm:border-gray-200">
                             <div class="inline-block min-w-full py-2 align-middle">
                                 <table class="min-w-full divide-y divide-gray-300">
-                                    <!-- <thead>
-                                        <tr>
-                                            <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">Name</th>
-                                        </tr>
-                                    </thead> -->
                                     <tbody class="divide-y divide-gray-200 bg-white">
                                         <tr>
                                             <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">Current Version</td>
@@ -57,12 +52,25 @@
                                     </thead>
                                     <tbody class="divide-y divide-gray-200 bg-white">
                                         <tr>
-                                            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">Php version</td>
+                                            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">PHP version</td>
                                             <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                                                 {{ data.current_php_version }}
                                             </td>
                                             <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                                                 {{ data.minimum_php_version }}
+                                            </td>
+                                            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                                                <font-awesome-icon v-if="data.matched_php_requirement" icon="fa-solid fa-check-circle" class="h-6 w-6 text-green-500"/>
+                                                <font-awesome-icon v-else icon="fa-solid fa-xmark-circle" class="h-6 w-6 text-red-500"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">Laravel version</td>
+                                            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                                                {{ data.current_laravel_version }}
+                                            </td>
+                                            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                                                -
                                             </td>
                                             <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                                                 <font-awesome-icon v-if="data.matched_php_requirement" icon="fa-solid fa-check-circle" class="h-6 w-6 text-green-500"/>

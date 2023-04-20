@@ -64,7 +64,7 @@
                         </MenuItems>
                     </transition>
                 </Menu>
-                <BaseButton  :href="route('admin.expenseCategory.index')" class="text-white bg-green-600 hover:bg-green-700 px-4 py-2.5">
+                <BaseButton as="link" :href="route('admin.expenseCategory.index')" class="text-white bg-green-600 hover:bg-green-700 px-4 py-2.5">
                     <font-awesome-icon icon="fa-solid fa-plus" class="h-4 w-4 mr-2"/>
                    {{ __('Expense Category') }}
                 </BaseButton>

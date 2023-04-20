@@ -55,7 +55,7 @@
                         </MenuItems>
                     </transition>
                 </Menu>
-                <BaseButton  :href="route('admin.expense.index')" class="text-white bg-green-500 hover:bg-green-700 px-4 py-2.5">
+                <BaseButton as="link" :href="route('admin.expense.index')" class="text-white bg-green-500 hover:bg-green-700 px-4 py-2.5">
                     <font-awesome-icon icon="fa-solid fa-plus" class="h-4 w-4 mr-2"/>
                     {{ __('Expense List') }}
                 </BaseButton>
