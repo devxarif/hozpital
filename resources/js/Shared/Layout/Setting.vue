@@ -137,11 +137,6 @@ export default {
                     route: 'admin.settings.languages.index'
                 },
                 {
-                    title: 'Currency',
-                    icon: 'fa-solid fa-dollar-sign',
-                    route: 'admin.settings.roles.index'
-                },
-                {
                     title: 'Log Viewer',
                     icon: 'fa-solid fa-history',
                     link: '/log-viewer'
