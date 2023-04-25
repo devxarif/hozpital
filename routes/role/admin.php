@@ -32,6 +32,7 @@ use App\Http\Controllers\Admin\ReceptionistController;
 use App\Http\Controllers\Admin\BloodDonationController;
 use App\Http\Controllers\Admin\IncomeCategoryController;
 use App\Http\Controllers\Admin\ExpenseCategoryController;
+use App\Http\Controllers\Admin\BillingController;
 use App\Http\Controllers\Admin\ProductCategoryController;
 use App\Http\Controllers\UserProfileController;
 
@@ -118,6 +119,7 @@ Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function () 
     Route::resource('expense', ExpenseController::class);
     Route::resource('expenseCategory', ExpenseCategoryController::class);
 
+    Route::resource('billing', BillingController::class);
     // Route::resource('doctor', DoctorController::class)->withoutMiddleware('auth');
 
     // =========================================================================

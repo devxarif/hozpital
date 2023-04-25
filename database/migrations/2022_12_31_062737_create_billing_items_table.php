@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Invoice;
+use App\Models\Billing;
 use App\Models\Product;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -15,13 +15,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('invoice_items', function (Blueprint $table) {
+        Schema::create('billing_items', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Invoice::class)->constrained()->cascadeOnDelete();
-            $table->foreignIdFor(Product::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(Billing::class)->constrained()->cascadeOnDelete();
             $table->integer('qty');
+            $table->float('price');
             $table->float('amount');
-            $table->text('description');
             $table->timestamps();
         });
     }
@@ -33,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('invoice_items');
+        Schema::dropIfExists('billing_items');
     }
 };

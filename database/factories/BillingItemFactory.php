@@ -4,10 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\InvoiceItem>
- */
-class InvoiceItemFactory extends Factory
+class BillingItemFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -16,8 +13,14 @@ class InvoiceItemFactory extends Factory
      */
     public function definition()
     {
+        $qty = rand(1, 10);
+        $price = rand(200, 400);
+        $amount = $qty * $price;
+
         return [
-            //
+            'qty' => $qty,
+            'price' => $price,
+            'amount' => $amount,
         ];
     }
 }

@@ -112,7 +112,7 @@
                     <DropdownMenuItem title="Income List" :href="route('admin.income.index')" :active="route().current('admin.income.index')"/>
                     <DropdownMenuItem title="Expense List" :href="route('admin.expense.index')" :active="route().current('admin.expense.index')"/>
                     <DropdownMenuItem title="Transaction List" href="/" :active="false"/>
-                    <DropdownMenuItem title="Invoice List" href="/" :active="false"/>
+                    <DropdownMenuItem title="Billing List" :href="route('admin.billing.index')" :active="route().current('admin.billing.index')"/>
                 </DropdownMenu>
                 <NavItem title="Report" :href="route('dashboard')" :active="false">
                     <template v-slot:icon>

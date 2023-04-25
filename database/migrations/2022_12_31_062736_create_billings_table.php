@@ -14,14 +14,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('invoices', function (Blueprint $table) {
+        Schema::create('billings', function (Blueprint $table) {
             $table->id();
             $table->string('invoice_number');
             $table->foreignIdFor(Patient::class)->nullable()->constrained()->cascadeOnDelete();
             $table->string('title');
             $table->date('date');
-            $table->enum('status', ['paid', 'unpaid']);
-            $table->float('vat_percentage')->nullable();
+            $table->enum('status', ['paid', 'pending']);
+            $table->integer('discount_percentage')->nullable();
+            $table->float('sub_total')->nullable();
             $table->float('total_amount')->nullable();
             $table->float('discount_amount')->nullable();
             $table->timestamps();

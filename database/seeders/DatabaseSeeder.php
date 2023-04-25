@@ -62,7 +62,7 @@ class DatabaseSeeder extends Seeder
             BloodDonationSeeder::class,
 
             // Payment
-            InvoiceSeeder::class,
+            BillingSeeder::class,
             ExpenseCategorySeeder::class,
             ExpenseSeeder::class,
             IncomeCategorySeeder::class,
