@@ -13,7 +13,16 @@
                     <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
                         <Label name="Paypal Mode" id="paypal_mode" :hasError="form.errors.paypal_mode"/>
                         <div class="mt-1 sm:col-span-2 sm:mt-0">
+
                             <div class="max-w-lg rounded-md shadow-sm">
+                                <!-- <div class="flex-0">
+                                    <div class="border border-slate-200 rounded p-2 flex items-center">
+                                        <span @click="changeModeType('live')" class="flex-1 px-3 py-2.5 transition-all duration-150 rounded cursor-pointer font-bold" :class="form.paypal_mode == 'live' ? 'bg-blue-500 text-white text-md':'text-normal'">{{ __('Live') }}</span>
+                                        <span @click="changeModeType('sandbox')" class="flex-1 px-3 py-2.5 rounded transition-all duration-150 cursor-pointer font-bold" :class="form.paypal_mode == 'sandbox' ? 'bg-blue-500 text-white text-md':'text-normal'">{{ __('Sandbox') }}</span>
+                                    </div>
+                                </div> -->
+
+
                                 <div class="w-full bg-gray-100 p-2 rounded-lg">
                                     <div
                                         class="account-switcher relative flex after:absolute candidate after:transition-all duration-300 after:rounded-lg">
@@ -21,7 +30,7 @@
                                             :class="form.paypal_mode == 'live' ? 'bg-blue-500 text-white shadow-md ':'text-gray-800'">
                                             <input type="radio" id="radio1" name="radio" class="hidden" checked>
                                             <label for="radio1"
-                                                class="relative z-50 rounded-md transition-all duration-300 w-full py-2 gap-2 flex items-center justify-center cursor-pointer"
+                                                class="relative z-50 transition-all duration-300 w-full py-2 gap-2 flex items-center justify-center cursor-pointer"
                                                 @click="changeModeType('live')">
                                                 <UserIcon class="h-5 w-5" />
                                                 <span>Live</span>
@@ -31,7 +40,7 @@
                                             :class="form.paypal_mode == 'sandbox' ? 'bg-blue-500 text-white shadow-md ':'text-gray-800'">
                                             <input type="radio" id="radio2" name="radio" class="hidden">
                                             <label for="radio2"
-                                                class="relative z-50 rounded-md transition-all duration-300 flex w-full py-2 gap-2 items-center justify-center cursor-pointer"
+                                                class="relative z-50 transition-all duration-300 flex w-full py-2 gap-2 items-center justify-center cursor-pointer"
                                                 @click="changeModeType('sandbox')">
                                                 <UsersIcon class="h-5 w-5" />
                                                 <span>Sandbox</span>
@@ -79,9 +88,9 @@
                         <Label name="Conversion Rate" id="paypal_conversion_rate" :hasError="form.errors.paypal_conversion_rate"/>
                         <div class="mt-2 sm:col-span-2 sm:mt-0">
                             <div class="flex max-w-lg rounded-md shadow-sm">
-                                <span class="inline-flex items-center rounded-l-md border border-r-0 border-gray-300 p-2.5 text-gray-500 sm:text-sm">1 USD</span>
-                                <input type="text" id="username" autocomplete="off" class="block w-full min-w-0 flex-1 border-0 p-2.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6" v-model="form.paypal_conversion_rate">
-                                <span class="inline-flex items-center rounded-r-md border border-l-0 border-gray-300 p-2.5 text-gray-500 sm:text-sm">USD</span>
+                                <span class="inline-flex items-center rounded-l-md border border-r-0 border-gray-300 p-2.5 text-gray-500 text-md">1 USD</span>
+                                <input type="text" id="username" autocomplete="off" class="block w-full min-w-0 flex-1 border-0 p-2.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 text-md sm:leading-6" v-model="form.paypal_conversion_rate">
+                                <span class="inline-flex items-center rounded-r-md border border-l-0 border-gray-300 p-2.5 text-gray-500 text-md">USD</span>
                             </div>
                             <ErrorMessage :name="form.errors.paypal_conversion_rate" />
                         </div>

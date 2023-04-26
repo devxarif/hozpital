@@ -66,6 +66,7 @@ return [
     'default_language' => 'en',
     'default_currency' => 'USD',
     'currency_symbol' => '$',
+    'currency_position' => 'left',
     'date_format' => 'd F, Y',
     'time_format' => 'H:i',
     'thousand_separator' => '',

@@ -93,4 +93,19 @@ class BillingController extends Controller
     {
         //
     }
+
+    /**
+     * Update billing payment mark as paid
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function billMarkAsPaid(Billing $billing)
+    {
+        $billing->update([
+            'status' => 'paid',
+        ]);
+
+        $this->flashSuccess('Bill payment mark as paid successfully');
+        return back();
+    }
 }

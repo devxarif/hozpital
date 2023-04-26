@@ -12,6 +12,7 @@ class UpdateSystemSettingDataService
             'default_language' => 'required',
             'default_currency' => 'required',
             'currency_symbol' => 'required|max:5',
+            'currency_position' => 'required|max:5',
             'timezone' => 'required',
             'date_format' => 'required',
             'time_format' => 'required',
@@ -25,6 +26,7 @@ class UpdateSystemSettingDataService
         checkSetConfig('kodebazar.default_language', $request->default_language);
         checkSetConfig('kodebazar.default_currency', $request->default_currency);
         checkSetConfig('kodebazar.currency_symbol', $request->currency_symbol);
+        checkSetConfig('kodebazar.currency_position', $request->currency_position);
         checkSetConfig('app.timezone', $request->timezone);
         checkSetConfig('kodebazar.date_format', $request->date_format);
         checkSetConfig('kodebazar.time_format', $request->time_format);

@@ -120,7 +120,8 @@ Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function () 
     Route::resource('expenseCategory', ExpenseCategoryController::class);
 
     Route::resource('billing', BillingController::class);
-    // Route::resource('doctor', DoctorController::class)->withoutMiddleware('auth');
+    Route::post('billing/mark-paid/{billing}', [BillingController::class, 'billMarkAsPaid'])->name('billing.mark-as-paid');
+
 
     // =========================================================================
     // ===================Users Routes========================================

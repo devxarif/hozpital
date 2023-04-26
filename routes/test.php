@@ -3,6 +3,7 @@
 use Carbon\Carbon;
 use App\Models\Bed;
 use App\Models\User;
+use NumberFormatter;
 use App\Models\Order;
 use App\Models\Doctor;
 use App\Models\Country;
@@ -18,7 +19,6 @@ use App\Models\Department;
 use Illuminate\Support\Str;
 use Jenssegers\Agent\Agent;
 use App\Events\LoginHistory;
-// use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\BedAllotment;
 use App\Models\LeaveBalance;
 use Illuminate\Http\Request;
@@ -34,20 +34,21 @@ use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Role;
 use App\Models\AppointmentSchedule;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Mail;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Config;
 use App\Http\Controllers\TestController;
 use Spatie\Permission\Models\Permission;
+use App\Mail\Staff\SendNewUserCredential;
 use Stevebauman\Location\Facades\Location;
 use Label84\HoursHelper\Facades\HoursHelper;
 use Illuminate\Pagination\LengthAwarePaginator;
 use App\Http\Controllers\Admin\UpgradeController;
-use App\Mail\Staff\SendNewUserCredential;
 use sirajcse\UniqueIdGenerator\UniqueIdGenerator;
 use Artesaos\SEOTools\Traits\SEOTools as SEOToolsTrait;
 use App\Services\Admin\Setting\SocialLogin\FetchSocialProviderDataService;
-use Illuminate\Support\Facades\Mail;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 // use Dompdf\Dompdf;
 // Route::get('/', function () {
@@ -76,6 +77,18 @@ Route::get('preview-notification', function () {
 });
 
 Route::get('/test2', function () {
+
+
+    // $pdf = Pdf::loadView('invoice.billing-invoice');
+    // return $pdf->stream();
+    // return $pdf->download('invoice.pdf');
+
+    return view('invoice.billing-invoice');
+
+    $f = new NumberFormatter("en", NumberFormatter::SPELLOUT);
+    return $f->format(1432);
+
+
     return Order::all();
 
     $languages = Language::all();

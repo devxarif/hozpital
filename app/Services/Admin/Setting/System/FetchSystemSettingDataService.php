@@ -32,6 +32,7 @@ class FetchSystemSettingDataService
             'default_language' => config('kodebazar.default_language'),
             'default_currency' => config('kodebazar.default_currency'),
             'currency_symbol' => config('kodebazar.currency_symbol'),
+            'currency_position' => config('kodebazar.currency_position'),
             'timezone' => config('app.timezone'),
             'date_format' => config('kodebazar.date_format'),
             'time_format' => config('kodebazar.time_format'),

@@ -171,6 +171,16 @@ createInertiaApp({
                 timeFromNow(date) {
                     return dayjs(date).fromNow();
                 },
+                currencyFormat(amount) {
+                    let app_currency_symbol = this.app_setting?.app_currency_symbol || '$'
+                    let app_currency_position = this.app_setting?.app_currency_position || 'left'
+
+                    if (app_currency_position == 'left') {
+                        return app_currency_symbol+' '+amount;
+                    }else{
+                        return amount+' '+app_currency_symbol;
+                    }
+                },
                 toastSuccess(message = 'Action completed successfully') {
                     this.$toast.success(message);
                 },

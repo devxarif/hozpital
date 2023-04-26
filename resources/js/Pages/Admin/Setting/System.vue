@@ -10,8 +10,10 @@
                                 <p class="mt-1 max-w-2xl text-sm text-gray-500">This information will be displayed publicly so be careful what you share.</p>
                             </div>
 
+                            {{ this.app_setting }}
+
                             <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
-                                <Label name="Default Language" id="default_language" :hasError="form.errors.app_name" />
+                                <Label name="Default Language" id="default_language" :hasError="form.errors.default_language" />
                                 <div class="mt-1 sm:col-span-2 sm:mt-0">
                                     <div class="max-w-lg rounded-md shadow-sm">
                                         <Multiselect id="default_language" :close-on-select="true" :can-clear="true"
@@ -24,7 +26,7 @@
                                 </div>
                             </div>
                             <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
-                                <Label name="Default Currency" id="default_currency" :hasError="form.errors.app_name" />
+                                <Label name="Default Currency" id="default_currency" :hasError="form.errors.default_currency" />
                                 <div class="mt-1 sm:col-span-2 sm:mt-0">
                                     <div class="max-w-lg rounded-md shadow-sm">
                                         <Multiselect id="default_currency" :close-on-select="true" :can-clear="true"
@@ -37,10 +39,27 @@
                                 </div>
                             </div>
                             <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
-                                <Label name="Currency Symbol" id="currency_symbol" :hasError="form.errors.app_name" />
+                                <Label name="Currency Symbol" id="currency_symbol" :hasError="form.errors.currency_symbol" />
                                 <div class="mt-1 sm:col-span-2 sm:mt-0">
                                     <div class="max-w-lg rounded-md shadow-sm">
                                         <BaseInput v-model="form.currency_symbol" placeholder="Currency Symbol: eg - $" id="currency_symbol" :hasError="form.errors.currency_symbol"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
+                                <Label name="Currency Symbol" id="currency_position" :hasError="form.errors.currency_position" />
+                                <div class="mt-1 sm:col-span-2 sm:mt-0">
+                                    <div class="max-w-lg rounded-md shadow-sm">
+                                        <div class="flex gap-2">
+                                            <label for="left_position" class="w-full rounded-lg flex items-center pl-4 border border-gray-200  py-3 text-sm font-medium text-gray-700 gap-2">
+                                                <input id="left_position" value="left" v-model="form.currency_position" type="radio" class="h-4 w-4 border-gray-300 text-blue-600 focus:outline-none">
+                                                <span>{{ __('Left') }}</span>
+                                            </label>
+                                            <label for="right_position" class="w-full rounded-lg flex items-center pl-4 border border-gray-200  py-3 text-sm font-medium text-gray-700 gap-2">
+                                                <input id="right_position" value="right" v-model="form.currency_position" type="radio" class="h-4 w-4 border-gray-300 text-blue-600 focus:outline-none">
+                                                <span>{{ __('Right') }}</span>
+                                            </label>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -73,7 +92,7 @@
                                 </div>
 
                                 <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
-                                    <Label name="Timezone" id="timezone" :hasError="form.errors.app_name" />
+                                    <Label name="Timezone" id="timezone" :hasError="form.errors.timezone" />
                                     <div class="mt-1 sm:col-span-2 sm:mt-0">
                                         <div class="max-w-lg rounded-md shadow-sm">
                                             <Multiselect id="timezone" :close-on-select="true" :can-clear="true"
@@ -86,7 +105,7 @@
                                     </div>
                                 </div>
                                 <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
-                                    <Label name="Date Format" id="date_format" :hasError="form.errors.app_name" />
+                                    <Label name="Date Format" id="date_format" :hasError="form.errors.date_format" />
                                     <div class="mt-1 sm:col-span-2 sm:mt-0">
                                         <div class="max-w-lg rounded-md shadow-sm">
                                             <Multiselect id="date_format" :close-on-select="true" :can-clear="true"
@@ -99,7 +118,7 @@
                                     </div>
                                 </div>
                                 <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
-                                    <Label name="Time Format" id="time_format" :hasError="form.errors.app_name" />
+                                    <Label name="Time Format" id="time_format" :hasError="form.errors.time_format" />
                                     <div class="mt-1 sm:col-span-2 sm:mt-0">
                                         <div class="max-w-lg rounded-md shadow-sm">
                                             <Multiselect id="time_format" :close-on-select="true" :can-clear="true"
@@ -112,7 +131,7 @@
                                     </div>
                                 </div>
                                 <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
-                                    <Label name="Decimal Places" id="decimal_places" :hasError="form.errors.app_name" />
+                                    <Label name="Decimal Places" id="decimal_places" :hasError="form.errors.decimal_places" />
                                     <div class="mt-1 sm:col-span-2 sm:mt-0">
                                         <div class="max-w-lg rounded-md shadow-sm">
                                             <Multiselect id="decimal_places" :close-on-select="true" :can-clear="true"
@@ -125,7 +144,7 @@
                                     </div>
                                 </div>
                                 <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
-                                    <Label name="Decimal Separator" id="decimal_separator" :hasError="form.errors.app_name" />
+                                    <Label name="Decimal Separator" id="decimal_separator" :hasError="form.errors.decimal_separator" />
                                     <div class="mt-1 sm:col-span-2 sm:mt-0">
                                         <div class="max-w-lg rounded-md shadow-sm">
                                             <Multiselect id="decimal_separator" :close-on-select="true" :can-clear="true"
@@ -138,7 +157,7 @@
                                     </div>
                                 </div>
                                 <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
-                                    <Label name="Thousand Separator" id="thousand_separator" :hasError="form.errors.app_name" />
+                                    <Label name="Thousand Separator" id="thousand_separator" :hasError="form.errors.thousand_separator" />
                                     <div class="mt-1 sm:col-span-2 sm:mt-0">
                                         <div class="max-w-lg rounded-md shadow-sm">
                                             <Multiselect id="thousand_separator" :close-on-select="true" :can-clear="true"
@@ -194,6 +213,7 @@ export default {
                 default_language: this.data.default_language,
                 default_currency: this.data.default_currency,
                 currency_symbol: this.data.currency_symbol,
+                currency_position: this.data.currency_position,
                 timezone: this.data.timezone,
                 date_format: this.data.date_format,
                 time_format: this.data.time_format,

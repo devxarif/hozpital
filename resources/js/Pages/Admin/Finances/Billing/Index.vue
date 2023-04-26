@@ -20,7 +20,6 @@
                         <GridIcon/>
                     </button>
                 </div>
-
                 <!-- Clear Filter -->
                 <ClearFilter v-if="filter.keyword && filter.keyword.length"  :href="route('admin.income.index')"/>
 
@@ -188,32 +187,20 @@
                         </div>
                     </td>
                     <td class="p-4 text-sm text-gray-500 break-all">
-                        <p><b>Sub Total:</b><span class="capitalize ml-2">{{ billing.sub_total }}</span></p>
-                        <p><b>Discount Amount:</b><span class="capitalize ml-2">{{ billing.discount_amount }} ({{ billing.discount_percentage }} %)</span></p>
-                        <p><b>Total:</b><span class="capitalize ml-2">{{ billing.total_amount }}</span></p>
-                        <!-- <p>
-                            <b>Payment Status:</b>
-                            <span class="ml-2 text-md font-bold leading-tight rounded-full capitalize" :class="order.payment_status == 'paid' ? 'text-green-500':'text-red-500'">
-                                {{ order.payment_status }}
-                            </span>
-                            <a v-if="order.payment_status != 'paid'" href="javascript:void(0)" @click="markAsPaid(order.id)" class="text-gray-500 underline ml-2">
-                                Mark as paid
-                            </a>
-                        </p> -->
-
-                        <!-- $table->enum('status', ['paid', 'pending']);
-            $table->integer('discount_percentage')->nullable();
-            $table->float('sub_total')->nullable();
-            $table->float('total_amount')->nullable();
-            $table->float('discount_amount')->nullable(); -->
-
-                        <!-- {{ billing.amount }} -->
+                        <p><b>Sub Total:</b><span class="capitalize ml-2">{{ currencyFormat(billing.sub_total) }}</span></p>
+                        <p><b>Discount Amount:</b><span class="capitalize ml-2">{{ currencyFormat(billing.discount_amount) }} ({{ billing.discount_percentage }} %)</span></p>
+                        <p><b>Total:</b><span class="capitalize ml-2">{{ currencyFormat(billing.total_amount) }}</span></p>
                     </td>
                     <td class="p-4 text-sm text-gray-500 break-all">
-                        {{ billing.date }}
+                        {{ formatTime(billing.date) }}
                     </td>
                     <td class="p-4 text-sm text-gray-500 break-all">
-                        <a href="" class="underline cursor-pointer">{{ __('Download') }}</a>
+                        <span :class="billing.status == 'paid' ? 'bg-green-500':'bg-yellow-500'" class="text-white text-sm font-medium mr-2 px-3 py-2 rounded-full   capitalize">
+                            {{ billing.status }}
+                        </span>
+                        <a v-if="billing.status != 'paid'" href="javascript:void(0)" @click="markAsPaid(billing.id)" class="block text-gray-500 underline mt-2">
+                            Mark as paid
+                        </a>
                     </td>
                     <td class="py-4 pl-4 pr-4 text-sm text-gray-500 sm:pr-6">
                         <Menu as="div" class="inline-block text-left">
@@ -325,6 +312,21 @@ export default {
         editData(income){
             this.showEditDrawer = true
             this.editIncome = income
+        },
+        markAsPaid(bill_id){
+            this.$swal({
+                title: "Are you sure?",
+                text: "You want to mark this bill as paid?",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, mark it!",
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    this.$inertia.post(route("admin.billing.mark-as-paid", bill_id));
+                }
+            });
         },
         filterData(){
             this.loading = true
