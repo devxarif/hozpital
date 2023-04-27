@@ -16,16 +16,81 @@ class BillingController extends Controller
     public function index(Request $request)
     {
         $query = Billing::query();
+
         if($request->has('keyword') && $request->filled('keyword')) {
             $query->whereLike(['invoice_number', 'title'], $request->keyword);
         }
 
-        $billings = $query->with('patient:id,user_id','patient.user:id,name')->latest()->paginate(config('kodebazar.rows_per_page'))->withQueryString();
+        if($request->has('keyword') && $request->filled('keyword')) {
+            $query->whereLike('invoice_number', $request->keyword);
+        }
 
-        return inertia('Admin/Finances/Billing/Index', [
-            'billings' => $billings,
-            'filter' => $request,
-        ]);
+        if($request->has('payment_status') && $request->filled('payment_status')) {
+            $query->where('status', $request->payment_status);
+        }
+
+        switch ($request->date_type) {
+            case 'today':
+                $query->today();
+            case 'yesterday':
+                $query->yesterday();
+            case 'this_week':
+                $query->thisWeek();
+                break;
+            case 'last_week':
+                $query->lastWeek();
+                break;
+            case 'this_month':
+                $query->thisMonth();
+                break;
+            case 'last_month':
+                $query->lastMonth();
+                break;
+            case 'last_6_month':
+                $query->last6Month();
+                break;
+            case 'this_year':
+                $query->thisYear();
+                break;
+            case 'last_year':
+                $query->lastYear();
+                break;
+            case 'custom_date':
+                $request->validate([
+                    'custom_date' => 'required',
+                ]);
+
+                $query->customDate($request->custom_date);
+                break;
+            case 'custom_range_date':
+                $request->validate([
+                    'custom_start_date' => 'required',
+                    'custom_end_date' => 'required',
+                ]);
+
+                $query->customRangeDate($request->custom_start_date, $request->custom_end_date);
+                break;
+        }
+
+        $data['filter_by_date'] = [
+            ['label' => "Today". " (".now()->format('d-m-Y').")",'value' => 'today'],
+            ['label' => 'Yesterday'. " (".now()->subDay()->format('d-m-Y').")",'value' => 'yesterday'],
+            ['label' => 'This Week'. " (".now()->startOfWeek()->format('d-m-Y')." to ".now()->endOfWeek()->format('d-m-Y').")",'value' => 'this_week'],
+            ['label' => 'Last Week'. " (".now()->subWeek()->startOfWeek()->format('d-m-Y')." to ".now()->subWeek()->endOfWeek()->format('d-m-Y').")",'value' => 'last_week'],
+            ['label' => 'This Month'. " (".now()->startOfMonth()->format('d-m-Y')." to ".now()->endOfMonth()->format('d-m-Y').")",'value' => 'this_month'],
+            ['label' => 'Last Month' . " (".now()->subMonth()->startOfMonth()->format('d-m-Y')." to ".now()->subMonth()->endOfMonth()->format('d-m-Y').")",'value' => 'last_month'],
+            ['label' => 'Last 6 Month' . " (".now()->subMonth(6)->format('d-m-Y')." to ".now()->format('d-m-Y').")",'value' => 'last_6_month'],
+            ['label' => 'This Year' . " (".now()->startOfYear()->format('d-m-Y')." to ".now()->endOfYear()->format('d-m-Y').")",'value' => 'this_year'],
+            ['label' => 'Last Year' . " (".now()->subYear()->format('d-m-Y')." to ".now()->format('d-m-Y').")",'value' => 'last_year'],
+            ['label' => 'Custom Date','value' => 'custom_date'],
+            ['label' => 'Custom Range Date','value' => 'custom_range_date']
+        ];
+
+        $data['billings'] = $query->with('patient:id,user_id','patient.user:id,name,email')->latest()->paginate(config('kodebazar.rows_per_page'))->withQueryString();
+
+        $data['filter'] = $request;
+
+        return inertia('Admin/Finances/Billing/Index', $data);
     }
 
     /**

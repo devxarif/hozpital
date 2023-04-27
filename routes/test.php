@@ -3,7 +3,6 @@
 use Carbon\Carbon;
 use App\Models\Bed;
 use App\Models\User;
-use NumberFormatter;
 use App\Models\Order;
 use App\Models\Doctor;
 use App\Models\Country;
@@ -85,8 +84,8 @@ Route::get('/test2', function () {
 
     return view('invoice.billing-invoice');
 
-    $f = new NumberFormatter("en", NumberFormatter::SPELLOUT);
-    return $f->format(1432);
+    // $f = new NumberFormatter("en", NumberFormatter::SPELLOUT);
+    // return $f->format(1432);
 
 
     return Order::all();
