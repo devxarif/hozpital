@@ -23,6 +23,10 @@ class WebsiteController extends Controller
 
     public function home()
     {
+        // return view('website.layout.app');
+        return view('website.pages.home');
+
+
         $data['departments'] = Department::withCount('doctors')->latest('doctors_count')->take(6)->get();
 
         return view('website.pages.home', $data);

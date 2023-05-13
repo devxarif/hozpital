@@ -1,68 +1,247 @@
 @extends('website.layout.app')
 
-@section('main')
-<div class="relative bg-white py-16 sm:py-24">
-    <div class="text-center">
-        <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Who We Are</h2>
-        <p class="mx-auto mt-3 max-w-2xl text-xl text-gray-500 sm:mt-4">We have all the professional specialists in our hospital</p>
-      </div>
-    <div class="lg:mx-auto lg:grid lg:max-w-7xl lg:grid-cols-2 lg:items-start lg:gap-24 lg:px-8">
-      <div class="sm:py-16 lg:py-0">
-        <div class="relative mx-auto max-w-lg px-6 sm:max-w-3xl lg:max-w-none lg:px-0 lg:py-20">
-          <!-- Testimonial card-->
-          <div class="relative overflow-hidden rounded-2xl pt-64 pb-10 shadow-xl">
-            <img class="absolute inset-0 h-full w-full object-cover" src="https://media.istockphoto.com/id/512278456/photo/group-of-doctors-at-the-hospital.jpg?s=170667a&w=0&k=20&c=XKMi1xsHzVJ8JJzQZfGYJooqBJitZT0MDs4W4usP4eg=" alt="">
-            {{-- <div class="absolute inset-0 mix-blend-multiply"></div>
-            <div class="absolute inset-0 bg-gradient-to-t opacity-90"></div> --}}
+@section('content')
+<section class="page-title bg-1">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="block text-center">
+            <span class="text-white">About Us</span>
+            <h1 class="text-capitalize mb-5 text-lg">About Us</h1>
 
-          </div>
-        </div>
-      </div>
-
-      <div class="relative mx-auto max-w-md px-6 sm:max-w-3xl lg:px-0">
-        <!-- Content area -->
-        <div class="pt-12 sm:pt-16 lg:pt-20">
-          <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">On a mission to empower teams</h2>
-          <div class="mt-6 space-y-6 text-gray-500">
-            <p class="text-lg">Sagittis scelerisque nulla cursus in enim consectetur quam. Dictum urna sed consectetur neque tristique pellentesque. Blandit amet, sed aenean erat arcu morbi. Cursus faucibus nunc nisl netus morbi vel porttitor vitae ut. Amet vitae fames senectus vitae.</p>
-            <p class="text-base leading-7">Sollicitudin tristique eros erat odio sed vitae, consequat turpis elementum. Lorem nibh vel, eget pretium arcu vitae. Eros eu viverra donec ut volutpat donec laoreet quam urna. Sollicitudin tristique eros erat odio sed vitae, consequat turpis elementum. Lorem nibh vel, eget pretium arcu vitae. Eros eu viverra donec ut volutpat donec laoreet quam urna.</p>
-            <p class="text-base leading-7">Rhoncus nisl, libero egestas diam fermentum dui. At quis tincidunt vel ultricies. Vulputate aliquet velit faucibus semper. Pellentesque in venenatis vestibulum consectetur nibh id. In id ut tempus egestas. Enim sit aliquam nec, a. Morbi enim fermentum lacus in. Viverra.</p>
-          </div>
-        </div>
-
-        <!-- Stats section -->
-        <div class="mt-10">
-          <dl class="grid grid-cols-2 gap-x-4 gap-y-8">
-            <div class="border-t-2 border-gray-100 pt-6">
-              <dt class="text-base font-medium text-gray-500">Founded</dt>
-              <dd class="text-3xl font-bold tracking-tight text-gray-900">2021</dd>
-            </div>
-
-            <div class="border-t-2 border-gray-100 pt-6">
-              <dt class="text-base font-medium text-gray-500">Employees</dt>
-              <dd class="text-3xl font-bold tracking-tight text-gray-900">5</dd>
-            </div>
-
-            <div class="border-t-2 border-gray-100 pt-6">
-              <dt class="text-base font-medium text-gray-500">Beta Users</dt>
-              <dd class="text-3xl font-bold tracking-tight text-gray-900">521</dd>
-            </div>
-
-            <div class="border-t-2 border-gray-100 pt-6">
-              <dt class="text-base font-medium text-gray-500">Raised</dt>
-              <dd class="text-3xl font-bold tracking-tight text-gray-900">$25M</dd>
-            </div>
-          </dl>
-          <div class="mt-10">
-            <a href="javascript:void(0)" class="text-base font-medium text-blue-600">
-              Learn more about how we're changing the world
-              <span aria-hidden="true"> &rarr;</span>
-            </a>
+            <!-- <ul class="list-inline breadcumb-nav">
+              <li class="list-inline-item"><a href="index.html" class="text-white">Home</a></li>
+              <li class="list-inline-item"><span class="text-white">/</span></li>
+              <li class="list-inline-item"><a href="#" class="text-white-50">About Us</a></li>
+            </ul> -->
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 
+  <section class="section about-page">
+      <div class="container">
+          <div class="row">
+              <div class="col-lg-4">
+                  <h2 class="title-color">Personal care for your healthy living</h2>
+              </div>
+              <div class="col-lg-8">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt, quod laborum alias. Vitae dolorum, officia sit! Saepe ullam facere at, consequatur incidunt, quae esse, quis ut reprehenderit dignissimos, libero delectus.</p>
+                  <img src="{{ asset('assets') }}/images/about/sign.png" alt="" class="img-fluid">
+              </div>
+          </div>
+      </div>
+  </section>
 
+  <section class="fetaure-page ">
+      <div class="container">
+          <div class="row">
+              <div class="col-lg-3 col-md-6">
+                  <div class="about-block-item mb-5 mb-lg-0">
+                      <img src="{{ asset('assets') }}/images/about/about-1.jpg" alt="" class="img-fluid w-100">
+                      <h4 class="mt-3">Healthcare for Kids</h4>
+                      <p>Voluptate aperiam esse possimus maxime repellendus, nihil quod accusantium .</p>
+                  </div>
+              </div>
+              <div class="col-lg-3 col-md-6">
+                  <div class="about-block-item mb-5 mb-lg-0">
+                      <img src="{{ asset('assets') }}/images/about/about-2.jpg" alt="" class="img-fluid w-100">
+                      <h4 class="mt-3">Medical Counseling</h4>
+                      <p>Voluptate aperiam esse possimus maxime repellendus, nihil quod accusantium .</p>
+                  </div>
+              </div>
+              <div class="col-lg-3 col-md-6">
+                  <div class="about-block-item mb-5 mb-lg-0">
+                      <img src="{{ asset('assets') }}/images/about/about-3.jpg" alt="" class="img-fluid w-100">
+                      <h4 class="mt-3">Modern Equipments</h4>
+                      <p>Voluptate aperiam esse possimus maxime repellendus, nihil quod accusantium .</p>
+                  </div>
+              </div>
+              <div class="col-lg-3 col-md-6">
+                  <div class="about-block-item">
+                      <img src="{{ asset('assets') }}/images/about/about-4.jpg" alt="" class="img-fluid w-100">
+                      <h4 class="mt-3">Qualified Doctors</h4>
+                      <p>Voluptate aperiam esse possimus maxime repellendus, nihil quod accusantium .</p>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+  <section class="section awards">
+      <div class="container">
+          <div class="row align-items-center">
+              <div class="col-lg-4">
+                  <h2 class="title-color">Our Doctors achievements </h2>
+                  <div class="divider mt-4 mb-5 mb-lg-0"></div>
+              </div>
+              <div class="col-lg-8">
+                  <div class="row">
+                      <div class="col-lg-4 col-md-6 col-sm-6">
+                          <div class="award-img">
+                              <img src="{{ asset('assets') }}/images/about/3.png" alt="" class="img-fluid">
+                          </div>
+                      </div>
+                      <div class="col-lg-4 col-md-6 col-sm-6">
+                          <div class="award-img">
+                              <img src="{{ asset('assets') }}/images/about/4.png" alt="" class="img-fluid">
+                          </div>
+                      </div>
+                      <div class="col-lg-4 col-md-6 col-sm-6">
+                          <div class="award-img">
+                              <img src="{{ asset('assets') }}/images/about/1.png" alt="" class="img-fluid">
+                          </div>
+                      </div>
+                      <div class="col-lg-4 col-md-6 col-sm-6">
+                          <div class="award-img">
+                              <img src="{{ asset('assets') }}/images/about/2.png" alt="" class="img-fluid">
+                          </div>
+                      </div>
+                      <div class="col-lg-4 col-md-6 col-sm-6">
+                          <div class="award-img">
+                              <img src="{{ asset('assets') }}/images/about/5.png" alt="" class="img-fluid">
+                          </div>
+                      </div>
+                      <div class="col-lg-4 col-md-6 col-sm-6">
+                          <div class="award-img">
+                              <img src="{{ asset('assets') }}/images/about/6.png" alt="" class="img-fluid">
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+
+  <section class="section team">
+      <div class="container">
+          <div class="row justify-content-center">
+              <div class="col-lg-6">
+                  <div class="section-title text-center">
+                      <h2 class="mb-4">Meet Our Specialist</h2>
+                      <div class="divider mx-auto my-4"></div>
+                      <p>Today’s users expect effortless experiences. Don’t let essential people and processes stay stuck in the past. Speed it up, skip the hassles</p>
+                  </div>
+              </div>
+          </div>
+
+          <div class="row">
+              <div class="col-lg-3 col-md-6 col-sm-6">
+                  <div class="team-block mb-5 mb-lg-0">
+                      <img src="{{ asset('assets') }}/images/team/1.jpg" alt="" class="img-fluid w-100">
+
+                      <div class="content">
+                          <h4 class="mt-4 mb-0"><a href="doctor-single.html">John Marshal</a></h4>
+                          <p>Internist, Emergency Physician</p>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="col-lg-3 col-md-6 col-sm-6">
+                  <div class="team-block mb-5 mb-lg-0">
+                      <img src="{{ asset('assets') }}/images/team/2.jpg" alt="" class="img-fluid w-100">
+
+                      <div class="content">
+                          <h4 class="mt-4 mb-0"><a href="doctor-single.html">Marshal Root</a></h4>
+                          <p>Surgeon, Сardiologist</p>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="col-lg-3 col-md-6 col-sm-6">
+                  <div class="team-block mb-5 mb-lg-0">
+                      <img src="{{ asset('assets') }}/images/team/3.jpg" alt="" class="img-fluid w-100">
+
+                      <div class="content">
+                          <h4 class="mt-4 mb-0"><a href="doctor-single.html">Siamon john</a></h4>
+                          <p>Internist, General Practitioner</p>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-6">
+                  <div class="team-block">
+                      <img src="{{ asset('assets') }}/images/team/4.jpg" alt="" class="img-fluid w-100">
+
+                      <div class="content">
+                          <h4 class="mt-4 mb-0"><a href="doctor-single.html">Rishat Ahmed</a></h4>
+                          <p>Orthopedic Surgeon</p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+
+  <section class="section testimonial">
+      <div class="container">
+          <div class="row">
+              <div class="col-lg-6 offset-lg-6">
+                  <div class="section-title">
+                      <h2 class="mb-4">What they say about us</h2>
+                      <div class="divider  my-4"></div>
+                  </div>
+              </div>
+          </div>
+          <div class="row align-items-center">
+              <div class="col-lg-6 testimonial-wrap offset-lg-6">
+                  <div class="testimonial-block">
+                      <div class="client-info ">
+                          <h4>Amazing service!</h4>
+                          <span>John Partho</span>
+                      </div>
+                      <p>
+                          They provide great service facilty consectetur adipisicing elit. Itaque rem, praesentium, iure, ipsum magnam deleniti a vel eos adipisci suscipit fugit placeat. Quibusdam laboriosam eveniet nostrum nemo commodi numquam quod.
+                      </p>
+                      <i class="icofont-quote-right"></i>
+
+                  </div>
+
+                  <div class="testimonial-block">
+                      <div class="client-info">
+                          <h4>Expert doctors!</h4>
+                          <span>Mullar Sarth</span>
+                      </div>
+                      <p>
+                          They provide great service facilty consectetur adipisicing elit. Itaque rem, praesentium, iure, ipsum magnam deleniti a vel eos adipisci suscipit fugit placeat. Quibusdam laboriosam eveniet nostrum nemo commodi numquam quod.
+                      </p>
+                      <i class="icofont-quote-right"></i>
+                  </div>
+
+                  <div class="testimonial-block">
+                      <div class="client-info">
+                          <h4>Good Support!</h4>
+                          <span>Kolis Mullar</span>
+                      </div>
+                      <p>
+                          They provide great service facilty consectetur adipisicing elit. Itaque rem, praesentium, iure, ipsum magnam deleniti a vel eos adipisci suscipit fugit placeat. Quibusdam laboriosam eveniet nostrum nemo commodi numquam quod.
+                      </p>
+                      <i class="icofont-quote-right"></i>
+                  </div>
+
+                  <div class="testimonial-block">
+                      <div class="client-info">
+                          <h4>Nice Environment!</h4>
+                          <span>Partho Sarothi</span>
+                      </div>
+                      <p>
+                          They provide great service facilty consectetur adipisicing elit. Itaque rem, praesentium, iure, ipsum magnam deleniti a vel eos adipisci suscipit fugit placeat. Quibusdam laboriosam eveniet nostrum nemo commodi numquam quod.
+                      </p>
+                      <i class="icofont-quote-right"></i>
+                  </div>
+
+                  <div class="testimonial-block">
+                      <div class="client-info">
+                          <h4>Modern Service!</h4>
+                          <span>Kolis Mullar</span>
+                      </div>
+                      <p>
+                          They provide great service facilty consectetur adipisicing elit. Itaque rem, praesentium, iure, ipsum magnam deleniti a vel eos adipisci suscipit fugit placeat. Quibusdam laboriosam eveniet nostrum nemo commodi numquam quod.
+                      </p>
+                      <i class="icofont-quote-right"></i>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
 @endsection
