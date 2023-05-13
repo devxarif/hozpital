@@ -1,6 +1,6 @@
 @extends('website.layout.app')
 
-@section('main')
+@section('content')
 <div class="relative bg-white py-16 sm:py-24">
     <div class="text-center">
         <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Who We Are</h2>

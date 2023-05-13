@@ -7,17 +7,24 @@ Route::controller(WebsiteController::class)->group(function () {
     Route::get('/', 'home')->name('website.home');
     Route::get('/about', 'about')->name('website.about');
     Route::get('/contact', 'contact')->name('website.contact');
+    Route::get('/services', 'services')->name('website.services');
+    Route::get('/news', 'news')->name('website.news');
+    Route::get('/news/slug', 'newsDetails')->name('website.news.details');
+    Route::get('/departments', 'department')->name('website.department');
+    Route::get('/departments/slug', 'departmentDetails')->name('website.department.details');
+    Route::get('/doctors', 'doctor')->name('website.doctor');
+    Route::get('/doctors/name', 'doctorDetails')->name('website.doctor.details');
+    Route::get('/appointment', 'appointment')->name('website.appointment');
+    Route::get('/appointment-confirm', 'appointmentConfirm')->name('website.appointment.confirm');
+
     Route::get('/terms-conditions', 'termsCondition')->name('website.terms');
     Route::get('/privacy-policy', 'privacyPolicy')->name('website.policy');
-    Route::get('/departments', 'department')->name('website.department');
-    Route::get('/doctors', 'doctor')->name('website.doctor');
     Route::get('/products', 'products')->name('website.products');
     Route::get('/product/{product:slug}', 'productDetails')->name('website.product.details');
     Route::get('/bags', 'bags')->name('website.bag');
     Route::get('/checkout', 'checkout')->name('website.checkout');
     Route::get('/shipping', 'shipping')->name('website.shipping');
     Route::get('/payment', 'payment')->name('website.payment');
-    Route::get('/appointment', 'appointment')->name('website.appointment');
     // Route::get('/pricing', 'pricing')->name('website.pricing');
     // Route::get('/plan/{plan:slug}', 'planDetails')->name('website.plan.details');
     // Route::get('/contact', 'contact')->name('website.contact');

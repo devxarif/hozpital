@@ -1,6 +1,6 @@
 @extends('website.layout.app')
 
-@section('main')
+@section('content')
      <!-- Hero Sections -->
      <div class="lg:relative">
         <div class="mx-auto w-full max-w-7xl pt-16 pb-20 text-center lg:py-48 lg:text-left">

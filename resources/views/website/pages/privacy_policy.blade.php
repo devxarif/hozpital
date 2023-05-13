@@ -1,6 +1,6 @@
 @extends('website.layout.app')
 
-@section('main')
+@section('content')
 <div class="-mt-[5.75rem] pt-[5.75rem]"><img src="/img/beams-basic.png" alt=""
         class="absolute top-0 left-1/2 -ml-[39rem] w-[113.125rem] max-w-none">
     <div class="px-4 sm:px-6 lg:px-8">

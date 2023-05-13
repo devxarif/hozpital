@@ -1,6 +1,6 @@
 @extends('website.layout.app')
 
-@section('main')
+@section('content')
 <div class="bg-white">
     <div class="mx-auto max-w-7xl py-12 px-6 lg:px-8 lg:py-24">
       <div class="space-y-12">

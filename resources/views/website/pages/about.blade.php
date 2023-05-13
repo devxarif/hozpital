@@ -10,11 +10,11 @@
             <span class="text-white">About Us</span>
             <h1 class="text-capitalize mb-5 text-lg">About Us</h1>
 
-            <!-- <ul class="list-inline breadcumb-nav">
-              <li class="list-inline-item"><a href="index.html" class="text-white">Home</a></li>
+            <ul class="list-inline breadcumb-nav">
+              <li class="list-inline-item"><a href="{{ route('website.home') }}" class="text-white">Home</a></li>
               <li class="list-inline-item"><span class="text-white">/</span></li>
               <li class="list-inline-item"><a href="#" class="text-white-50">About Us</a></li>
-            </ul> -->
+            </ul>
           </div>
         </div>
       </div>
@@ -132,7 +132,7 @@
                       <img src="{{ asset('assets') }}/images/team/1.jpg" alt="" class="img-fluid w-100">
 
                       <div class="content">
-                          <h4 class="mt-4 mb-0"><a href="doctor-single.html">John Marshal</a></h4>
+                          <h4 class="mt-4 mb-0"><a href="{{ route('website.doctor.details', 'username') }}">John Marshal</a></h4>
                           <p>Internist, Emergency Physician</p>
                       </div>
                   </div>
@@ -143,7 +143,7 @@
                       <img src="{{ asset('assets') }}/images/team/2.jpg" alt="" class="img-fluid w-100">
 
                       <div class="content">
-                          <h4 class="mt-4 mb-0"><a href="doctor-single.html">Marshal Root</a></h4>
+                          <h4 class="mt-4 mb-0"><a href="{{ route('website.doctor.details', 'username') }}">Marshal Root</a></h4>
                           <p>Surgeon, Сardiologist</p>
                       </div>
                   </div>
@@ -154,7 +154,7 @@
                       <img src="{{ asset('assets') }}/images/team/3.jpg" alt="" class="img-fluid w-100">
 
                       <div class="content">
-                          <h4 class="mt-4 mb-0"><a href="doctor-single.html">Siamon john</a></h4>
+                          <h4 class="mt-4 mb-0"><a href="{{ route('website.doctor.details', 'username') }}">Siamon john</a></h4>
                           <p>Internist, General Practitioner</p>
                       </div>
                   </div>
@@ -164,7 +164,7 @@
                       <img src="{{ asset('assets') }}/images/team/4.jpg" alt="" class="img-fluid w-100">
 
                       <div class="content">
-                          <h4 class="mt-4 mb-0"><a href="doctor-single.html">Rishat Ahmed</a></h4>
+                          <h4 class="mt-4 mb-0"><a href="{{ route('website.doctor.details', 'username') }}">Rishat Ahmed</a></h4>
                           <p>Orthopedic Surgeon</p>
                       </div>
                   </div>

@@ -14,7 +14,7 @@
                     <p class="mb-4 pr-5">A repudiandae ipsam labore ipsa voluptatum quidem quae laudantium quisquam
                         aperiam maiores sunt fugit, deserunt rem suscipit placeat.</p>
                     <div class="btn-container ">
-                        <a href="appoinment.html" target="_blank"
+                        <a href="{{ route('website.appointment') }}" target="_blank"
                             class="btn btn-main-2 btn-icon btn-round-full">Make appoinment <i
                                 class="icofont-simple-right ml-2  "></i></a>
                     </div>
@@ -36,7 +36,7 @@
                         <h4 class="mb-3">Online Appoinment</h4>
                         <p class="mb-4">Get ALl time support for emergency.We have introduced the principle of
                             family medicine.</p>
-                        <a href="appoinment.html" class="btn btn-main btn-round-full">Make a appoinment</a>
+                        <a href="{{ route('website.appointment') }}" class="btn btn-main btn-round-full">Make a appoinment</a>
                     </div>
 
                     <div class="feature-item mb-5 mb-lg-0">
@@ -88,7 +88,7 @@
                     <p class="mt-4 mb-5">We provide best leading medicle service Nulla perferendis veniam deleniti
                         ipsum officia dolores repellat laudantium obcaecati neque.</p>
 
-                    <a href="service.html" class="btn btn-main-2 btn-round-full btn-icon">Services<i
+                    <a href="{{ route('website.service') }}" class="btn btn-main-2 btn-round-full btn-icon">Services<i
                             class="icofont-simple-right ml-3"></i></a>
                 </div>
             </div>
@@ -302,7 +302,7 @@
                                 placeholder="Your Message"></textarea>
                         </div>
 
-                        <a class="btn btn-main btn-round-full" href="appoinment.html">Make Appoinment <i
+                        <a class="btn btn-main btn-round-full" href="{{ route('website.appointment') }}">Make Appoinment <i
                                 class="icofont-simple-right ml-2  "></i></a>
                     </form>
                 </div>

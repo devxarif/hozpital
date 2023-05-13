@@ -23,7 +23,6 @@ class WebsiteController extends Controller
 
     public function home()
     {
-        // return view('website.layout.app');
         return view('website.pages.home');
 
 
@@ -44,33 +43,26 @@ class WebsiteController extends Controller
     public function about()
     {
         return view('website.pages.about');
+    }
 
-         //     $content = metaContent('about');
-    //     $this->seo()->setTitle($content->title);
-    //     $this->seo()->setDescription($content->description);
-    //     SEOMeta::setKeywords($content->keywords);
-    //     $this->seo()->opengraph()->setUrl(url()->current());
-    //     $this->seo()->opengraph()->addProperty('type', 'website');
-    //     $this->seo()->twitter()->setSite(url()->current());
-    //     $this->seo()->jsonLd()->setType('Website');
+    public function services()
+    {
+        return view('website.pages.services');
+    }
 
-    //     $testimonials = Testimonial::all();
+    public function news()
+    {
+        return view('website.pages.news');
+    }
 
-    //     return view('website.about', compact('testimonials'));
+    public function newsDetails()
+    {
+        return view('website.pages.news-details');
     }
 
     public function contact()
     {
         return view('website.pages.contact');
-
-        // $content = metaContent('contact');
-        // $this->seo()->setTitle($content->title);
-        // $this->seo()->setDescription($content->description);
-        // SEOMeta::setKeywords($content->keywords);
-        // $this->seo()->opengraph()->setUrl(url()->current());
-        // $this->seo()->opengraph()->addProperty('type', 'website');
-        // $this->seo()->twitter()->setSite(url()->current());
-        // $this->seo()->jsonLd()->setType('Website');
     }
 
     public function department()
@@ -78,9 +70,19 @@ class WebsiteController extends Controller
         return view('website.pages.department');
     }
 
+    public function departmentDetails()
+    {
+        return view('website.pages.department-details');
+    }
+
     public function doctor()
     {
         return view('website.pages.doctor');
+    }
+
+    public function doctorDetails()
+    {
+        return view('website.pages.doctor-details');
     }
 
     public function products()
@@ -89,22 +91,6 @@ class WebsiteController extends Controller
         $data['categorises'] = ProductCategory::select('id','name')->get();
 
         return view('website.pages.products', $data);
-
-        $content = metaContent('home');
-        $this->seo()->setTitle($content->title);
-        $this->seo()->setDescription($content->description);
-        SEOMeta::setKeywords($content->keywords);
-        $this->seo()->opengraph()->setUrl(url()->current());
-        $this->seo()->opengraph()->addProperty('type', 'website');
-        $this->seo()->twitter()->setSite(url()->current());
-        $this->seo()->jsonLd()->setType('Website');
-
-        $faqs = Faq::all();
-        $features = Feature::all();
-        $testimonials = Testimonial::all();
-        $plans = Plan::with('planFeatures')->whereStatus(1)->get();
-
-        return view('website.home', compact('faqs', 'features', 'testimonials', 'plans'));
     }
 
     public function productDetails(Product $product)
@@ -244,43 +230,21 @@ class WebsiteController extends Controller
 
     public function privacyPolicy()
     {
-        // $content = metaContent('privacy-policy');
-        // $this->seo()->setTitle($content->title);
-        // $this->seo()->setDescription($content->description);
-        // SEOMeta::setKeywords($content->keywords);
-        // $this->seo()->opengraph()->setUrl(url()->current());
-        // $this->seo()->opengraph()->addProperty('type', 'website');
-        // $this->seo()->twitter()->setSite(url()->current());
-        // $this->seo()->jsonLd()->setType('Website');
-
         return view('website.pages.privacy_policy');
     }
 
     public function termsCondition()
     {
-        // $content = metaContent('terms-conditions');
-        // $this->seo()->setTitle($content->title);
-        // $this->seo()->setDescription($content->description);
-        // SEOMeta::setKeywords($content->keywords);
-        // $this->seo()->opengraph()->setUrl(url()->current());
-        // $this->seo()->opengraph()->addProperty('type', 'website');
-        // $this->seo()->twitter()->setSite(url()->current());
-        // $this->seo()->jsonLd()->setType('Website');
-
         return view('website.pages.terms_condition');
     }
 
     public function appointment()
     {
-        // $content = metaContent('terms-conditions');
-        // $this->seo()->setTitle($content->title);
-        // $this->seo()->setDescription($content->description);
-        // SEOMeta::setKeywords($content->keywords);
-        // $this->seo()->opengraph()->setUrl(url()->current());
-        // $this->seo()->opengraph()->addProperty('type', 'website');
-        // $this->seo()->twitter()->setSite(url()->current());
-        // $this->seo()->jsonLd()->setType('Website');
-
         return view('website.pages.appointment');
+    }
+
+    public function appointmentConfirm()
+    {
+        return view('website.pages.appointment-confirmation');
     }
 }
