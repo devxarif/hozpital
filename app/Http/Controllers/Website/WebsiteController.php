@@ -35,13 +35,6 @@ class WebsiteController extends Controller
         $this->seo()->opengraph()->addProperty('type', 'website');
         $this->seo()->twitter()->setSite(url()->current());
         $this->seo()->jsonLd()->setType('Website');
-
-        $faqs = Faq::all();
-        $features = Feature::all();
-        $testimonials = Testimonial::all();
-        $plans = Plan::with('planFeatures')->whereStatus(1)->get();
-
-        return view('website.home', compact('faqs', 'features', 'testimonials', 'plans'));
     }
 
     public function about()
