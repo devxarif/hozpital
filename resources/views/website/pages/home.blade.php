@@ -88,7 +88,7 @@
                     <p class="mt-4 mb-5">We provide best leading medicle service Nulla perferendis veniam deleniti
                         ipsum officia dolores repellat laudantium obcaecati neque.</p>
 
-                    <a href="{{ route('website.service') }}" class="btn btn-main-2 btn-round-full btn-icon">Services<i
+                    <a href="{{ route('website.services') }}" class="btn btn-main-2 btn-round-full btn-icon">Services<i
                             class="icofont-simple-right ml-3"></i></a>
                 </div>
             </div>

@@ -16,9 +16,10 @@ Route::controller(WebsiteController::class)->group(function () {
     Route::get('/doctors/name', 'doctorDetails')->name('website.doctor.details');
     Route::get('/appointment', 'appointment')->name('website.appointment');
     Route::get('/appointment-confirm', 'appointmentConfirm')->name('website.appointment.confirm');
-
     Route::get('/terms-conditions', 'termsCondition')->name('website.terms');
     Route::get('/privacy-policy', 'privacyPolicy')->name('website.policy');
+    Route::get('/faq', 'faq')->name('website.policy');
+
     Route::get('/products', 'products')->name('website.products');
     Route::get('/product/{product:slug}', 'productDetails')->name('website.product.details');
     Route::get('/bags', 'bags')->name('website.bag');

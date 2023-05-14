@@ -230,12 +230,12 @@ class WebsiteController extends Controller
 
     public function privacyPolicy()
     {
-        return view('website.pages.privacy_policy');
+        return view('website.pages.privacy-policy');
     }
 
     public function termsCondition()
     {
-        return view('website.pages.terms_condition');
+        return view('website.pages.terms-condition');
     }
 
     public function appointment()

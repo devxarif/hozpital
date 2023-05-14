@@ -17,9 +17,34 @@
 
     <!-- Links -->
     @include('website.partials.links')
+
+    <style>
+       .pbmit-cart {
+            position: fixed;
+            right: 0;
+            z-index: 6669992;
+            font-size: 10px !important;
+            letter-spacing: .11em;
+            display: block;
+            height: 43px;
+            width: 43px;
+            line-height: 43px;
+            text-align: center;
+            top: calc(70% - 25px);
+            background-color: #e12454;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 
 <body id="top">
+    <div class="pbmit-cart">
+        <a href="https://pbminfotech.com/purchase/?product=30204043" target="_blank">
+            <img src="https://doctery-demo.pbminfotech.com/wp-content/plugins/pbminfotech-theme-dock/images/cart-icon.png" alt="PBMI INFOTECH">
+        </a>
+    </div>
+
     <!-- Header -->
     @include('website.partials.header')
 
