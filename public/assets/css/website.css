@@ -1,0 +1,26 @@
+#cb-cookie-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+    border-radius: 0;
+    display: none;
+}
+
+.cart-item {
+    position: fixed;
+    right: 0;
+    z-index: 6669992;
+    font-size: 10px !important;
+    letter-spacing: .11em;
+    display: block;
+    height: 43px;
+    width: 43px;
+    line-height: 43px;
+    text-align: center;
+    top: calc(70% - 25px);
+    background-color: #e12454;
+    border-radius: 5px;
+    cursor: pointer;
+}

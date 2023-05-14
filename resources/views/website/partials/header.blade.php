@@ -16,6 +16,10 @@
                             <span>Call Now : </span>
                             <span class="h4">823-4565-13456</span>
                         </a>
+                        <span class="mx-2">|</span>
+                        <a href="#">
+                            <span class="h5">Login</span>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -58,14 +62,61 @@
 
             <div class="collapse navbar-collapse" id="navbarmain">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active"><a class="nav-link" href="{{ route('website.home') }}">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ route('website.about') }}">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ route('website.services') }}">Services</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ route('website.department') }}">Departments</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ route('website.doctor') }}">Doctors</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ route('website.news') }}">News</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ route('website.contact') }}">Contact</a></li>
-                    {{-- <li class="nav-item"><a class="nav-link" href="{{ route('website.appointment') }}">Appointment</a></li> --}}
+                    <li class="nav-item {{ isActive('website.home') }}"><a class="nav-link" href="{{ route('website.home') }}">Home</a></li>
+                    <li class="nav-item {{ isActive('website.about') }}"><a class="nav-link" href="{{ route('website.about') }}">About</a></li>
+                    <li class="nav-item {{ isActive('website.products') }}"><a class="nav-link" href="{{ route('website.products') }}">Pharmacy</a></li>
+                    <li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="{{ route('website.services') }}" id="dropdown02" data-toggle="dropdown"
+							aria-haspopup="true" aria-expanded="false">Services <i class="icofont-thin-down"></i></a>
+						<ul class="dropdown-menu" aria-labelledby="dropdown02">
+							<li><a class="dropdown-item" href="department.html">Departments</a></li>
+							<li><a class="dropdown-item" href="department-single.html">Department Single</a></li>
+
+							<li class="dropdown dropdown-submenu dropright">
+								<a class="dropdown-item dropdown-toggle" href="#!" id="dropdown0301" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sub Menu</a>
+
+								<ul class="dropdown-menu" aria-labelledby="dropdown0301">
+									<li><a class="dropdown-item" href="index.html">Submenu 01</a></li>
+									<li><a class="dropdown-item" href="index.html">Submenu 02</a></li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+                    <li class="nav-item dropdown {{ isActive('website.department') }}">
+						<a class="nav-link dropdown-toggle" href="{{ route('website.department') }}" id="dropdown02" data-toggle="dropdown"
+							aria-haspopup="true" aria-expanded="false">Departments <i class="icofont-thin-down"></i></a>
+						<ul class="dropdown-menu" aria-labelledby="dropdown02">
+							<li><a class="dropdown-item" href="department.html">Departments</a></li>
+							<li><a class="dropdown-item" href="department-single.html">Department Single</a></li>
+
+							<li class="dropdown dropdown-submenu dropright">
+								<a class="dropdown-item dropdown-toggle" href="#!" id="dropdown0301" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sub Menu</a>
+
+								<ul class="dropdown-menu" aria-labelledby="dropdown0301">
+									<li><a class="dropdown-item" href="index.html">Submenu 01</a></li>
+									<li><a class="dropdown-item" href="index.html">Submenu 02</a></li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+                    {{-- <li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="{{ route('website.doctor') }}" id="dropdown02" data-toggle="dropdown"
+							aria-haspopup="true" aria-expanded="false">Doctors <i class="icofont-thin-down"></i></a>
+						<ul class="dropdown-menu" aria-labelledby="dropdown02">
+							<li><a class="dropdown-item" href="department.html">Departments</a></li>
+							<li><a class="dropdown-item" href="department-single.html">Department Single</a></li>
+
+							<li class="dropdown dropdown-submenu dropright">
+								<a class="dropdown-item dropdown-toggle" href="#!" id="dropdown0301" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sub Menu</a>
+
+								<ul class="dropdown-menu" aria-labelledby="dropdown0301">
+									<li><a class="dropdown-item" href="index.html">Submenu 01</a></li>
+									<li><a class="dropdown-item" href="index.html">Submenu 02</a></li>
+								</ul>
+							</li>
+						</ul>
+					</li> --}}
+                    <li class="nav-item {{ isActive('website.news') }}"><a class="nav-link" href="{{ route('website.news') }}">News</a></li>
                 </ul>
 
                 <a href="{{ route('website.appointment') }}" class="btn btn-main-2 btn-round-full mx-2">
@@ -76,3 +127,10 @@
         </div>
     </nav>
 </header>
+
+{{-- Cart Item  --}}
+<div class="cart-item">
+    <a href="#" target="_blank">
+        <img src="{{ asset('assets/images/cart-icon.png') }}" alt="cart icon">
+    </a>
+</div>

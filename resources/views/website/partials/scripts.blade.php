@@ -10,11 +10,10 @@
 <!-- Main Script -->
 <script src="{{ asset('assets') }}/js/script.js"></script>
 
-{{-- Cookie Alert  --}}
-<x-cookie-alert />
-
 {{-- Custom JS --}}
 <script>
 {!! $setting->custom_footer_script !!}
 </script>
+
 @yield('script')
+@stack('website_script')

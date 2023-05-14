@@ -8,6 +8,7 @@ Route::controller(WebsiteController::class)->group(function () {
     Route::get('/about', 'about')->name('website.about');
     Route::get('/contact', 'contact')->name('website.contact');
     Route::get('/services', 'services')->name('website.services');
+    Route::get('/services/slug', 'serviceDetails')->name('website.service.details');
     Route::get('/news', 'news')->name('website.news');
     Route::get('/news/slug', 'newsDetails')->name('website.news.details');
     Route::get('/departments', 'department')->name('website.department');

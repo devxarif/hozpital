@@ -31,6 +31,7 @@
                       <div class="content">
                           <h4 class="mt-4 mb-2 title-color">Child care</h4>
                           <p class="mb-4">Saepe nulla praesentium eaque omnis perferendis a doloremque.</p>
+                        <a href="{{ route('website.service.details') }}" class="read-more">Learn More  <i class="icofont-simple-right ml-2"></i></a>
                       </div>
                   </div>
               </div>
@@ -41,6 +42,7 @@
                       <div class="content">
                           <h4 class="mt-4 mb-2  title-color">Personal Care</h4>
                           <p class="mb-4">Saepe nulla praesentium eaque omnis perferendis a doloremque.</p>
+                        <a href="{{ route('website.service.details') }}" class="read-more">Learn More  <i class="icofont-simple-right ml-2"></i></a>
                       </div>
                   </div>
               </div>
@@ -51,6 +53,7 @@
                       <div class="content">
                           <h4 class="mt-4 mb-2 title-color">CT scan</h4>
                           <p class="mb-4">Saepe nulla praesentium eaque omnis perferendis a doloremque.</p>
+                        <a href="{{ route('website.service.details') }}" class="read-more">Learn More  <i class="icofont-simple-right ml-2"></i></a>
                       </div>
                   </div>
               </div>
@@ -62,6 +65,7 @@
                       <div class="content">
                           <h4 class="mt-4 mb-2 title-color">Joint replacement</h4>
                           <p class="mb-4">Saepe nulla praesentium eaque omnis perferendis a doloremque.</p>
+                        <a href="{{ route('website.service.details') }}" class="read-more">Learn More  <i class="icofont-simple-right ml-2"></i></a>
                       </div>
                   </div>
               </div>
@@ -72,6 +76,7 @@
                       <div class="content">
                           <h4 class="mt-4 mb-2 title-color">Examination & Diagnosis</h4>
                           <p class="mb-4">Saepe nulla praesentium eaque omnis perferendis a doloremque.</p>
+                        <a href="{{ route('website.service.details') }}" class="read-more">Learn More  <i class="icofont-simple-right ml-2"></i></a>
                       </div>
                   </div>
               </div>
@@ -82,6 +87,7 @@
                       <div class="content">
                           <h4 class="mt-4 mb-2 title-color">Alzheimer's disease</h4>
                           <p class="mb-4">Saepe nulla praesentium eaque omnis perferendis a doloremque.</p>
+                        <a href="{{ route('website.service.details') }}" class="read-more">Learn More  <i class="icofont-simple-right ml-2"></i></a>
                       </div>
                   </div>
               </div>

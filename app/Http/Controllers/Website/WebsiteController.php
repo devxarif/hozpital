@@ -50,6 +50,11 @@ class WebsiteController extends Controller
         return view('website.pages.services');
     }
 
+    public function serviceDetails()
+    {
+        return view('website.pages.service-details');
+    }
+
     public function news()
     {
         return view('website.pages.news');

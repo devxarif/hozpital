@@ -764,46 +764,56 @@ function admin_url($to = null, $params = null)
  *
  * @return string
  */
-function formatCurrency($currencyValue)
-{
-    $isIndianCur = getCurrencySymbol() == '₹';
-    $amountValue = $currencyValue;
-    $precision = 2;
 
-    if ($amountValue < 900) {
-        // 0 - 900
-        $numberFormat = number_format($amountValue, $precision);
-        $suffix = '';
-    } else {
-        if ($amountValue < 900000) {
-            // 0.9k-850k
-            $numberFormat = number_format($amountValue / 1000, $precision);
-            $suffix = 'K';
+ if (! function_exists('formatCurrency')) {
+    function formatCurrency($currencyValue)
+    {
+        $isIndianCur = getCurrencySymbol() == '₹';
+        $amountValue = $currencyValue;
+        $precision = 2;
+
+        if ($amountValue < 900) {
+            // 0 - 900
+            $numberFormat = number_format($amountValue, $precision);
+            $suffix = '';
         } else {
-            if ($amountValue < 900000000) {
-                // 0.9m-850m
-                $numberFormat = number_format($amountValue / 1000000, $precision);
-                $suffix = 'M';
+            if ($amountValue < 900000) {
+                // 0.9k-850k
+                $numberFormat = number_format($amountValue / 1000, $precision);
+                $suffix = 'K';
             } else {
-                if ($amountValue < 900000000000) {
-                    // 0.9b-850b
-                    $numberFormat = number_format($amountValue / 1000000000, $precision);
-                    $suffix = 'B';
+                if ($amountValue < 900000000) {
+                    // 0.9m-850m
+                    $numberFormat = number_format($amountValue / 1000000, $precision);
+                    $suffix = 'M';
                 } else {
-                    // 0.9t+
-                    $numberFormat = number_format($amountValue / 1000000000000, $precision);
-                    $suffix = 'T';
+                    if ($amountValue < 900000000000) {
+                        // 0.9b-850b
+                        $numberFormat = number_format($amountValue / 1000000000, $precision);
+                        $suffix = 'B';
+                    } else {
+                        // 0.9t+
+                        $numberFormat = number_format($amountValue / 1000000000000, $precision);
+                        $suffix = 'T';
+                    }
                 }
             }
         }
-    }
 
-    // Remove unecessary zeroes after decimal. "1.0" -> "1"; "1.00" -> "1"
-    // Intentionally does not affect partials, eg "1.50" -> "1.50"
-    if ($precision > 0) {
-        $dotZero = '.'.str_repeat('0', $precision);
-        $numberFormat = str_replace($dotZero, '', $numberFormat);
-    }
+        // Remove unecessary zeroes after decimal. "1.0" -> "1"; "1.00" -> "1"
+        // Intentionally does not affect partials, eg "1.50" -> "1.50"
+        if ($precision > 0) {
+            $dotZero = '.'.str_repeat('0', $precision);
+            $numberFormat = str_replace($dotZero, '', $numberFormat);
+        }
 
-    return $numberFormat.$suffix;
+        return $numberFormat.$suffix;
+    }
+}
+
+if (! function_exists('isActive')) {
+    function isActive($routeName, $class = 'active')
+    {
+        return request()->routeIs($routeName) ? $class : '';
+    }
 }
