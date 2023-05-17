@@ -4,7 +4,7 @@
             <div class="col-lg-4 mr-auto col-sm-6">
                 <div class="widget mb-5 mb-lg-0">
                     <div class="logo mb-4">
-                        <img src="{{ asset('assets') }}/images/logo.png" alt="" class="img-fluid">
+                        <img src="{{ $setting->app_dark_logo }}" alt="" class="img-fluid">
                     </div>
                     <p>Tempora dolorem voluptatum nam vero assumenda voluptate, facilis ad eos obcaecati tenetur
                         veritatis eveniet distinctio possimus.</p>

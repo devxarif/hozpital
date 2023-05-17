@@ -817,3 +817,17 @@ if (! function_exists('isActive')) {
         return request()->routeIs($routeName) ? $class : '';
     }
 }
+
+if (! function_exists('currencyFormat')) {
+    function currencyFormat($amount )
+    {
+        $currency_symbol = config('kodebazar.currency_symbol');
+        $currency_position = config('kodebazar.currency_position');
+
+        if ($currency_position == 'left') {
+            return $currency_symbol.' '.$amount;
+        }else{
+            return $amount.' '.$currency_symbol;
+        }
+    }
+}

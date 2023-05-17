@@ -17,8 +17,8 @@
                             <span class="h4">823-4565-13456</span>
                         </a>
                         <span class="mx-2">|</span>
-                        <a href="#">
-                            <span class="h5">Login</span>
+                        <a href="{{ route('login') }}">
+                            <span class="h6">Login/Register</span>
                         </a>
                     </div>
                 </div>
@@ -28,7 +28,7 @@
     <nav class="navbar navbar-expand-lg navigation" id="navbar">
         <div class="container">
             <a class="navbar-brand" href="{{ route('website.home') }}">
-                <img src="{{ asset('assets') }}/images/logo.png" alt="" class="img-fluid">
+                <img src="{{ $setting->app_dark_logo }}" alt="" class="img-fluid">
             </a>
 
             <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarmain"
@@ -119,7 +119,7 @@
                     <li class="nav-item {{ isActive('website.news') }}"><a class="nav-link" href="{{ route('website.news') }}">News</a></li>
                 </ul>
 
-                <a href="{{ route('website.appointment') }}" class="btn btn-main-2 btn-round-full mx-2">
+                <a href="{{ route('website.appointment') }}" class="btn btn-main-2 ml-5">
                     Get appoinment
                     <i class="icofont-simple-right  ml-2"></i>
                 </a>

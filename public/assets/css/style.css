@@ -1035,6 +1035,18 @@ a:focus {
   background: #223a66;
   color: #fff;
 }
+.nav-not-selectable {
+  color: #6F8BA4;
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  background: #eee;
+  text-align: center;
+  padding-top: 13px;
+  font-weight: 600;
+  margin-right: 10px;
+}
 
 .comment-area .comment-thumb {
   margin-right: 20px;

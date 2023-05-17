@@ -10,3 +10,6 @@
   <!-- Main Stylesheet -->
   <link rel="stylesheet" href="{{ asset('assets') }}/css/style.css">
   <link rel="stylesheet" href="{{ asset('assets') }}/css/website.css">
+
+  @yield('links')
+    @stack('website_links')
