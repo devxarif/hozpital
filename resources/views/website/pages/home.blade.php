@@ -140,7 +140,7 @@
         <div class="row justify-content-center">
             <div class="col-lg-7 text-center">
                 <div class="section-title">
-                    <h2>Award winning patient care</h2>
+                    <h2>Emergency care services</h2>
                     <div class="divider mx-auto my-4"></div>
                     <p>Lets know moreel necessitatibus dolor asperiores illum possimus sint voluptates incidunt
                         molestias nostrum laudantium. Maiores porro cumque quaerat.</p>
@@ -149,80 +149,21 @@
         </div>
 
         <div class="row">
-            <div class="col-lg-4 col-md-6 col-sm-6">
-                <div class="service-item mb-4">
-                    <div class="icon d-flex align-items-center">
-                        <i class="icofont-laboratory text-lg"></i>
-                        <h4 class="mt-3 mb-3">Laboratory services</h4>
-                    </div>
-
-                    <div class="content">
-                        <p class="mb-4">Saepe nulla praesentium eaque omnis perferendis a doloremque.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 col-sm-6">
-                <div class="service-item mb-4">
-                    <div class="icon d-flex align-items-center">
-                        <i class="icofont-heart-beat-alt text-lg"></i>
-                        <h4 class="mt-3 mb-3">Heart Disease</h4>
-                    </div>
-                    <div class="content">
-                        <p class="mb-4">Saepe nulla praesentium eaque omnis perferendis a doloremque.</p>
+            @foreach ($services as $service)
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="service-item mb-4">
+                        <div class="icon d-flex align-items-center">
+                            <img height="70px" width="55px" class="object-contain" src="{{ $service->image_url }}" alt="">
+                            <h4 class="mt-3 mb-3">{{ $service->name }}</h4>
+                        </div>
+                        <div class="content">
+                            <p class="mb-4">
+                                {{ Str::limit($service->short_description, 100, '...') }}
+                            </p>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 col-sm-6">
-                <div class="service-item mb-4">
-                    <div class="icon d-flex align-items-center">
-                        <i class="icofont-tooth text-lg"></i>
-                        <h4 class="mt-3 mb-3">Dental Care</h4>
-                    </div>
-                    <div class="content">
-                        <p class="mb-4">Saepe nulla praesentium eaque omnis perferendis a doloremque.</p>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="col-lg-4 col-md-6 col-sm-6">
-                <div class="service-item mb-4">
-                    <div class="icon d-flex align-items-center">
-                        <i class="icofont-crutch text-lg"></i>
-                        <h4 class="mt-3 mb-3">Body Surgery</h4>
-                    </div>
-
-                    <div class="content">
-                        <p class="mb-4">Saepe nulla praesentium eaque omnis perferendis a doloremque.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 col-sm-6">
-                <div class="service-item mb-4">
-                    <div class="icon d-flex align-items-center">
-                        <i class="icofont-brain-alt text-lg"></i>
-                        <h4 class="mt-3 mb-3">Neurology Sargery</h4>
-                    </div>
-                    <div class="content">
-                        <p class="mb-4">Saepe nulla praesentium eaque omnis perferendis a doloremque.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 col-sm-6">
-                <div class="service-item mb-4">
-                    <div class="icon d-flex align-items-center">
-                        <i class="icofont-dna-alt-1 text-lg"></i>
-                        <h4 class="mt-3 mb-3">Gynecology</h4>
-                    </div>
-                    <div class="content">
-                        <p class="mb-4">Saepe nulla praesentium eaque omnis perferendis a doloremque.</p>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </section>
@@ -330,88 +271,23 @@
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-12 testimonial-wrap-2">
-                <div class="testimonial-block style-2  gray-bg">
-                    <i class="icofont-quote-right"></i>
+                @foreach ($testimonials as $testimonial)
+                    <div class="testimonial-block style-2  gray-bg">
+                        <i class="icofont-quote-right"></i>
 
-                    <div class="testimonial-thumb">
-                        <img src="{{ asset('assets') }}/images/team/test-thumb1.jpg" alt="" class="img-fluid">
+                        <div class="testimonial-thumb">
+                            <img src="{{ $testimonial->image_url }}" alt="" class="img-fluid">
+                        </div>
+
+                        <div class="client-info ">
+                            <h4>{{ $testimonial->name }}</h4>
+                            <span>{{ $testimonial->position }}</span>
+                            <p>
+                                {{ $testimonial->description }}
+                            </p>
+                        </div>
                     </div>
-
-                    <div class="client-info ">
-                        <h4>Amazing service!</h4>
-                        <span>John Partho</span>
-                        <p>
-                            They provide great service facilty consectetur adipisicing elit. Itaque rem,
-                            praesentium, iure, ipsum magnam deleniti a vel eos adipisci suscipit fugit placeat.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="testimonial-block style-2  gray-bg">
-                    <div class="testimonial-thumb">
-                        <img src="{{ asset('assets') }}/images/team/test-thumb2.jpg" alt="" class="img-fluid">
-                    </div>
-
-                    <div class="client-info">
-                        <h4>Expert doctors!</h4>
-                        <span>Mullar Sarth</span>
-                        <p>
-                            They provide great service facilty consectetur adipisicing elit. Itaque rem,
-                            praesentium, iure, ipsum magnam deleniti a vel eos adipisci suscipit fugit placeat.
-                        </p>
-                    </div>
-
-                    <i class="icofont-quote-right"></i>
-                </div>
-
-                <div class="testimonial-block style-2  gray-bg">
-                    <div class="testimonial-thumb">
-                        <img src="{{ asset('assets') }}/images/team/test-thumb3.jpg" alt="" class="img-fluid">
-                    </div>
-
-                    <div class="client-info">
-                        <h4>Good Support!</h4>
-                        <span>Kolis Mullar</span>
-                        <p>
-                            They provide great service facilty consectetur adipisicing elit. Itaque rem,
-                            praesentium, iure, ipsum magnam deleniti a vel eos adipisci suscipit fugit placeat.
-                        </p>
-                    </div>
-
-                    <i class="icofont-quote-right"></i>
-                </div>
-
-                <div class="testimonial-block style-2  gray-bg">
-                    <div class="testimonial-thumb">
-                        <img src="{{ asset('assets') }}/images/team/test-thumb4.jpg" alt="" class="img-fluid">
-                    </div>
-
-                    <div class="client-info">
-                        <h4>Nice Environment!</h4>
-                        <span>Partho Sarothi</span>
-                        <p class="mt-4">
-                            They provide great service facilty consectetur adipisicing elit. Itaque rem,
-                            praesentium, iure, ipsum magnam deleniti a vel eos adipisci suscipit fugit placeat.
-                        </p>
-                    </div>
-                    <i class="icofont-quote-right"></i>
-                </div>
-
-                <div class="testimonial-block style-2  gray-bg">
-                    <div class="testimonial-thumb">
-                        <img src="{{ asset('assets') }}/images/team/test-thumb1.jpg" alt="" class="img-fluid">
-                    </div>
-
-                    <div class="client-info">
-                        <h4>Modern Service!</h4>
-                        <span>Kolis Mullar</span>
-                        <p>
-                            They provide great service facilty consectetur adipisicing elit. Itaque rem,
-                            praesentium, iure, ipsum magnam deleniti a vel eos adipisci suscipit fugit placeat.
-                        </p>
-                    </div>
-                    <i class="icofont-quote-right"></i>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>
@@ -432,56 +308,13 @@
 
     <div class="container">
         <div class="row clients-logo">
-            <div class="col-lg-2">
-                <div class="client-thumb">
-                    <img src="{{ asset('assets') }}/images/about/1.png" alt="" class="img-fluid">
+            @foreach ($partners as $partner)
+                <div class="col-lg-2">
+                    <div class="client-thumb">
+                        <img src="{{ $partner->image_url }}" alt="" class="img-fluid">
+                    </div>
                 </div>
-            </div>
-            <div class="col-lg-2">
-                <div class="client-thumb">
-                    <img src="{{ asset('assets') }}/images/about/2.png" alt="" class="img-fluid">
-                </div>
-            </div>
-            <div class="col-lg-2">
-                <div class="client-thumb">
-                    <img src="{{ asset('assets') }}/images/about/3.png" alt="" class="img-fluid">
-                </div>
-            </div>
-            <div class="col-lg-2">
-                <div class="client-thumb">
-                    <img src="{{ asset('assets') }}/images/about/4.png" alt="" class="img-fluid">
-                </div>
-            </div>
-            <div class="col-lg-2">
-                <div class="client-thumb">
-                    <img src="{{ asset('assets') }}/images/about/5.png" alt="" class="img-fluid">
-                </div>
-            </div>
-            <div class="col-lg-2">
-                <div class="client-thumb">
-                    <img src="{{ asset('assets') }}/images/about/6.png" alt="" class="img-fluid">
-                </div>
-            </div>
-            <div class="col-lg-2">
-                <div class="client-thumb">
-                    <img src="{{ asset('assets') }}/images/about/3.png" alt="" class="img-fluid">
-                </div>
-            </div>
-            <div class="col-lg-2">
-                <div class="client-thumb">
-                    <img src="{{ asset('assets') }}/images/about/4.png" alt="" class="img-fluid">
-                </div>
-            </div>
-            <div class="col-lg-2">
-                <div class="client-thumb">
-                    <img src="{{ asset('assets') }}/images/about/5.png" alt="" class="img-fluid">
-                </div>
-            </div>
-            <div class="col-lg-2">
-                <div class="client-thumb">
-                    <img src="{{ asset('assets') }}/images/about/6.png" alt="" class="img-fluid">
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </section>

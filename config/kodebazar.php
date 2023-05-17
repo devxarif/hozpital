@@ -1,8 +1,6 @@
 <?php
 
 return [
-    'app_version' =>  '1.0.0',
-
     'google_api' => env('GOOGLE_API_KEY', 'AIzaSyAUPpqerpKmENrKzgpr_pzcmiSKE58cA7k'),
 
     // Payment Provider

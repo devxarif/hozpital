@@ -2,19 +2,21 @@
 
 namespace App\Http\Controllers\Website;
 
-use App\Http\Controllers\Controller;
-use App\Models\Department;
 use App\Models\Faq;
-use App\Models\Feature;
+use App\Models\Seo;
 use App\Models\Plan;
 use App\Models\Post;
+use App\Models\Feature;
+use App\Models\Partner;
 use App\Models\Product;
-use App\Models\ProductCategory;
-use App\Models\Seo;
+use App\Models\Service;
+use App\Models\Department;
 use App\Models\Testimonial;
-use App\Services\Midtrans\CreateSnapTokenService;
 use App\Traits\PaymentAble;
+use App\Models\ProductCategory;
+use App\Http\Controllers\Controller;
 use Artesaos\SEOTools\Facades\SEOMeta;
+use App\Services\Midtrans\CreateSnapTokenService;
 use Artesaos\SEOTools\Traits\SEOTools as SEOToolsTrait;
 
 class WebsiteController extends Controller
@@ -23,7 +25,12 @@ class WebsiteController extends Controller
 
     public function home()
     {
-        return view('website.pages.home');
+        $data['services'] = Service::take(6)->get();
+        $data['testimonials'] = Testimonial::latest()->get();
+        $data['partners'] = Partner::latest()->get();
+
+
+        return view('website.pages.home', $data);
 
 
         $data['departments'] = Department::withCount('doctors')->latest('doctors_count')->take(6)->get();

@@ -4,6 +4,9 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Database\Seeders\OrderSeeder;
+use Database\Seeders\PartnerSeeder;
+use Database\Seeders\ServiceSeeder;
+use Database\Seeders\TestimonialSeeder;
 
 
 class DatabaseSeeder extends Seeder
@@ -96,6 +99,9 @@ class DatabaseSeeder extends Seeder
             // Others
             EventSeeder::class,
             AnnouncementSeeder::class,
+            ServiceSeeder::class,
+            TestimonialSeeder::class,
+            PartnerSeeder::class
             // AmbulanceSeeder::class,
             // AppointmentSeeder::class,
         ]);

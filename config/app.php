@@ -228,4 +228,5 @@ return [
         'Agent' => Jenssegers\Agent\Facades\Agent::class,
     ])->toArray(),
 
+    'app_version' => '1.0.0',
 ];

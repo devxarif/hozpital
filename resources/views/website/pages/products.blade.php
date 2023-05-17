@@ -100,7 +100,7 @@
                             <p>Showing {{ $products->firstItem() }} - {{ $products->lastItem() }} of {{ $products->total() }} results</p>
                             <select class="form-select form-control" aria-label="Default select example">
                                 <option selected="">Default</option>
-                                <option value="1">Price (Low > High)</option>
+                                <option value="">Price (Low > High)</option>
                                 <option value="1">Price (High > Low)</option>
                             </select>
                         </div>
