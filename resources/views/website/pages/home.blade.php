@@ -280,8 +280,8 @@
                         </div>
 
                         <div class="client-info ">
-                            <h4>{{ $testimonial->name }}</h4>
-                            <span>{{ $testimonial->position }}</span>
+                            <h4>{{ $testimonial->title }}</h4>
+                            <span>{{ $testimonial->name }}</span>
                             <p>
                                 {{ $testimonial->description }}
                             </p>

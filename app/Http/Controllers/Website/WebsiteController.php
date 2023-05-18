@@ -49,7 +49,9 @@ class WebsiteController extends Controller
 
     public function about()
     {
-        return view('website.pages.about');
+        $data['testimonials'] = Testimonial::latest()->get();
+
+        return view('website.pages.about', $data);
     }
 
     public function services()
