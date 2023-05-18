@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->text("short_description");
             $table->longText("description");
+            $table->boolean('show_in_header')->default(false);
             $table->timestamps();
         });
     }

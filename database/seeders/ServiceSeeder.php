@@ -21,36 +21,42 @@ class ServiceSeeder extends Seeder
                 'image' => 'assets/images/service/flask.png',
                 'short_description' => fake()->sentence(20),
                 'description' => fake()->paragraph(50),
+                'show_in_header' => true,
             ],
             [
                 'name' => 'Heart Disease',
                 'image' => 'assets/images/service/heart-attack.png',
                 'short_description' => fake()->sentence(20),
                 'description' => fake()->paragraph(50),
+                'show_in_header' => true,
             ],
             [
                 'name' => 'Dental Care',
                 'image' => 'assets/images/service/tooth.png',
                 'short_description' => fake()->sentence(20),
                 'description' => fake()->paragraph(50),
+                'show_in_header' => true,
             ],
             [
                 'name' => 'Body Surgery',
                 'image' => 'assets/images/service/bariatric-surgery.png',
                 'short_description' => fake()->sentence(20),
                 'description' => fake()->paragraph(50),
+                'show_in_header' => true,
             ],
             [
                 'name' => 'Neurology Surgery',
                 'image' => 'assets/images/service/brain-surgery.png',
                 'short_description' => fake()->sentence(20),
                 'description' => fake()->paragraph(50),
+                'show_in_header' => true,
             ],
             [
                 'name' => 'Eye Surgery',
                 'image' => 'assets/images/service/eye-surgery.png',
                 'short_description' => fake()->sentence(20),
                 'description' => fake()->paragraph(50),
+                'show_in_header' => true,
             ],
 
         ];

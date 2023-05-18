@@ -18,7 +18,9 @@ class DepartmentFactory extends Factory
     {
         return [
             'name' => fake()->name,
-            'description' => fake()->sentence,
+            'short_description' => fake()->sentence,
+            'description' => fake()->paragraph(50),
+            'show_in_header' => fake()->boolean,
         ];
     }
 }

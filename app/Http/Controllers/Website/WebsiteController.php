@@ -56,12 +56,14 @@ class WebsiteController extends Controller
 
     public function services()
     {
-        return view('website.pages.services');
+        $services = Service::latest()->get();
+
+        return view('website.pages.services', compact('services'));
     }
 
-    public function serviceDetails()
+    public function serviceDetails(Service $service)
     {
-        return view('website.pages.service-details');
+        return view('website.pages.service-details', compact('service'));
     }
 
     public function news()
@@ -81,12 +83,14 @@ class WebsiteController extends Controller
 
     public function department()
     {
-        return view('website.pages.department');
+        $departments = Department::latest()->get();
+
+        return view('website.pages.department', compact('departments'));
     }
 
-    public function departmentDetails()
+    public function departmentDetails(Department $department)
     {
-        return view('website.pages.department-details');
+        return view('website.pages.department-details', compact('department'));
     }
 
     public function doctor()

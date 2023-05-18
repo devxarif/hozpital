@@ -17,8 +17,10 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('slug');
-            $table->text('description')->nullable();
+            $table->text('short_description')->nullable();
+            $table->longText('description')->nullable();
             $table->string('image')->nullable();
+            $table->boolean('show_in_header')->default(false);
             $table->timestamps();
         });
     }

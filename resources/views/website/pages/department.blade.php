@@ -37,72 +37,20 @@
           </div>
 
           <div class="row">
+            @foreach ($departments as $department)
               <div class="col-lg-4 col-md-6 ">
                   <div class="department-block mb-5">
-                      <img src="{{ asset('assets') }}/images/service/service-1.jpg" alt="" class="img-fluid w-100">
+                      <img src="{{ $department->image_url }}" alt="" class="img-fluid w-100">
                       <div class="content">
-                          <h4 class="mt-4 mb-2 title-color">Opthomology</h4>
-                          <p class="mb-4">Saepe nulla praesentium eaque omnis perferendis a doloremque.</p>
-                          <a href="{{ route('website.department.details') }}" class="read-more">Learn More  <i class="icofont-simple-right ml-2"></i></a>
+                          <h4 class="mt-4 mb-2 title-color">{{ $department->name }}</h4>
+                          <p class="mb-4">
+                            {{ Str::limit($department->short_description, 100, '...') }}
+                          </p>
+                          <a href="{{ route('website.department.details', $department->slug) }}" class="read-more">Learn More  <i class="icofont-simple-right ml-2"></i></a>
                       </div>
                   </div>
               </div>
-
-              <div class="col-lg-4 col-md-6">
-                  <div class="department-block mb-5">
-                      <img src="{{ asset('assets') }}/images/service/service-2.jpg" alt="" class="img-fluid w-100">
-                      <div class="content">
-                          <h4 class="mt-4 mb-2  title-color">Cardiology</h4>
-                          <p class="mb-4">Saepe nulla praesentium eaque omnis perferendis a doloremque.</p>
-                          <a href="{{ route('website.department.details') }}" class="read-more">Learn More <i class="icofont-simple-right ml-2"></i></a>
-                      </div>
-                  </div>
-              </div>
-
-              <div class="col-lg-4 col-md-6">
-                  <div class="department-block mb-5">
-                      <img src="{{ asset('assets') }}/images/service/service-3.jpg" alt="" class="img-fluid w-100">
-                      <div class="content">
-                          <h4 class="mt-4 mb-2 title-color">Dental Care</h4>
-                          <p class="mb-4">Saepe nulla praesentium eaque omnis perferendis a doloremque.</p>
-                          <a href="{{ route('website.department.details') }}" class="read-more">Learn More <i class="icofont-simple-right ml-2"></i></a>
-                      </div>
-                  </div>
-              </div>
-
-
-              <div class="col-lg-4 col-md-6 ">
-                  <div class="department-block  mb-5 mb-lg-0">
-                      <img src="{{ asset('assets') }}/images/service/service-4.jpg" alt="" class="img-fluid w-100">
-                      <div class="content">
-                          <h4 class="mt-4 mb-2 title-color">Child Care</h4>
-                          <p class="mb-4">Saepe nulla praesentium eaque omnis perferendis a doloremque.</p>
-                          <a href="{{ route('website.department.details') }}" class="read-more">Learn More <i class="icofont-simple-right ml-2"></i></a>
-                      </div>
-                  </div>
-              </div>
-
-              <div class="col-lg-4 col-md-6">
-                  <div class="department-block mb-5 mb-lg-0">
-                      <img src="{{ asset('assets') }}/images/service/service-6.jpg" alt="" class="img-fluid w-100">
-                      <div class="content">
-                          <h4 class="mt-4 mb-2 title-color">Pulmology</h4>
-                          <p class="mb-4">Saepe nulla praesentium eaque omnis perferendis a doloremque.</p>
-                          <a href="{{ route('website.department.details') }}" class="read-more">Learn More <i class="icofont-simple-right ml-2"></i></a>
-                      </div>
-                  </div>
-              </div>
-
-              <div class="col-lg-4 col-md-6">
-                  <div class="department-block mb-5 mb-lg-0">
-                      <img src="{{ asset('assets') }}/images/service/service-8.jpg" alt="" class="img-fluid w-100">
-                      <div class="content">
-                          <h4 class="mt-4 mb-2 title-color">Gynecology</h4>
-                          <p class="mb-4">Saepe nulla praesentium eaque omnis perferendis a doloremque.</p>
-                          <a href="{{ route('website.department.details') }}" class="read-more">Learn More <i class="icofont-simple-right ml-2"></i></a>
-                      </div>
-                  </div>
-              </div>
+            @endforeach
           </div>
       </div>
   </section>

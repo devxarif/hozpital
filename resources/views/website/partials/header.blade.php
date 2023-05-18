@@ -35,31 +35,6 @@
                 aria-controls="navbarmain" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="icofont-navigation-menu"></span>
             </button>
-
-            {{-- <a href="{{ route('website.home') }}" class="{{ request()->routeIs('website.home') ? 'text-blue-500':'text-gray-500' }} text-base font-medium hover:text-gray-900">Home</a>
-            <a href="{{ route('website.products') }}" class="{{ request()->routeIs('website.products') ? 'text-blue-500':'text-gray-500' }} text-base font-medium text-gray-500 hover:text-gray-900">Pharmacy & Store</a>
-            <a href="{{ route('website.department') }}" class="{{ request()->routeIs('website.department') ? 'text-blue-500':'text-gray-500' }} text-base font-medium text-gray-500 hover:text-gray-900">Departments</a>
-            <a href="{{ route('website.doctor') }}" class="{{ request()->routeIs('website.doctor') ? 'text-blue-500':'text-gray-500' }} text-base font-medium text-gray-500 hover:text-gray-900">Doctors</a> --}}
-
-            {{-- <div class="pb-6">
-                <a href="{{ route('website.home') }}" class="text-sm leading-6 text-gray-600 hover:text-gray-900">Home</a>
-            </div>
-            <div class="pb-6">
-                <a href="{{ route('website.about') }}" class="text-sm leading-6 text-gray-600 hover:text-gray-900">About</a>
-            </div>
-            <div class="pb-6">
-                <a href="{{ route('website.products') }}" class="text-sm leading-6 text-gray-600 hover:text-gray-900">Pharmacy & Store</a>
-            </div>
-            <div class="pb-6">
-                <a href="{{ route('website.policy') }}" class="text-sm leading-6 text-gray-600 hover:text-gray-900">Privacy Policy</a>
-            </div>
-            <div class="pb-6">
-                <a href="{{ route('website.terms') }}" class="text-sm leading-6 text-gray-600 hover:text-gray-900">Terms & Condition</a>
-            </div>
-            <div class="pb-6">
-                <a href="{{ route('website.contact') }}" class="text-sm leading-6 text-gray-600 hover:text-gray-900">Contact</a>
-            </div> --}}
-
             <div class="collapse navbar-collapse" id="navbarmain">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item {{ isActive('website.home') }}"><a class="nav-link" href="{{ route('website.home') }}">Home</a></li>
@@ -69,34 +44,20 @@
 						<a class="nav-link dropdown-toggle" href="{{ route('website.services') }}" id="dropdown02" data-toggle="dropdown"
 							aria-haspopup="true" aria-expanded="false">Services <i class="icofont-thin-down"></i></a>
 						<ul class="dropdown-menu" aria-labelledby="dropdown02">
-							<li><a class="dropdown-item" href="department.html">Departments</a></li>
-							<li><a class="dropdown-item" href="department-single.html">Department Single</a></li>
-
-							<li class="dropdown dropdown-submenu dropright">
-								<a class="dropdown-item dropdown-toggle" href="#!" id="dropdown0301" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sub Menu</a>
-
-								<ul class="dropdown-menu" aria-labelledby="dropdown0301">
-									<li><a class="dropdown-item" href="index.html">Submenu 01</a></li>
-									<li><a class="dropdown-item" href="index.html">Submenu 02</a></li>
-								</ul>
-							</li>
+                            @foreach ($services as $service)
+							<li><a class="dropdown-item" href="{{ route('website.service.details', $service->slug) }}">{{ $service->name }}</a></li>
+                            @endforeach
+							<li><a class="dropdown-item" href="{{ route('website.services') }}">View All</a></li>
 						</ul>
 					</li>
                     <li class="nav-item dropdown {{ isActive('website.department') }}">
 						<a class="nav-link dropdown-toggle" href="{{ route('website.department') }}" id="dropdown02" data-toggle="dropdown"
 							aria-haspopup="true" aria-expanded="false">Departments <i class="icofont-thin-down"></i></a>
 						<ul class="dropdown-menu" aria-labelledby="dropdown02">
-							<li><a class="dropdown-item" href="department.html">Departments</a></li>
-							<li><a class="dropdown-item" href="department-single.html">Department Single</a></li>
-
-							<li class="dropdown dropdown-submenu dropright">
-								<a class="dropdown-item dropdown-toggle" href="#!" id="dropdown0301" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sub Menu</a>
-
-								<ul class="dropdown-menu" aria-labelledby="dropdown0301">
-									<li><a class="dropdown-item" href="index.html">Submenu 01</a></li>
-									<li><a class="dropdown-item" href="index.html">Submenu 02</a></li>
-								</ul>
-							</li>
+                            @foreach ($departments as $department)
+							<li><a class="dropdown-item" href="{{ route('website.department.details', $department->slug) }}">{{ $department->name }}</a></li>
+                            @endforeach
+							<li><a class="dropdown-item" href="{{ route('website.department') }}">View All</a></li>
 						</ul>
 					</li>
                     {{-- <li class="nav-item dropdown">

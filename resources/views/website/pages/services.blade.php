@@ -10,11 +10,11 @@
             <span class="text-white">Our services</span>
             <h1 class="text-capitalize mb-5 text-lg">What We Do</h1>
 
-            <!-- <ul class="list-inline breadcumb-nav">
+            <ul class="list-inline breadcumb-nav">
               <li class="list-inline-item"><a href="{{ route('website.home') }}" class="text-white">Home</a></li>
               <li class="list-inline-item"><span class="text-white">/</span></li>
               <li class="list-inline-item"><a href="#" class="text-white-50">Our services</a></li>
-            </ul> -->
+            </ul>
           </div>
         </div>
       </div>
@@ -25,72 +25,20 @@
   <section class="section service-2">
       <div class="container">
           <div class="row">
-              <div class="col-lg-4 col-md-6 col-sm-6">
-                  <div class="service-block mb-5">
-                      <img src="{{ asset('assets') }}/images/service/service-1.jpg" alt="" class="img-fluid">
-                      <div class="content">
-                          <h4 class="mt-4 mb-2 title-color">Child care</h4>
-                          <p class="mb-4">Saepe nulla praesentium eaque omnis perferendis a doloremque.</p>
-                        <a href="{{ route('website.service.details') }}" class="read-more">Learn More  <i class="icofont-simple-right ml-2"></i></a>
-                      </div>
-                  </div>
-              </div>
-
-              <div class="col-lg-4 col-md-6 col-sm-6">
-                  <div class="service-block mb-5">
-                      <img src="{{ asset('assets') }}/images/service/service-2.jpg" alt="" class="img-fluid">
-                      <div class="content">
-                          <h4 class="mt-4 mb-2  title-color">Personal Care</h4>
-                          <p class="mb-4">Saepe nulla praesentium eaque omnis perferendis a doloremque.</p>
-                        <a href="{{ route('website.service.details') }}" class="read-more">Learn More  <i class="icofont-simple-right ml-2"></i></a>
-                      </div>
-                  </div>
-              </div>
-
-              <div class="col-lg-4 col-md-6 col-sm-6">
-                  <div class="service-block mb-5">
-                      <img src="{{ asset('assets') }}/images/service/service-3.jpg" alt="" class="img-fluid">
-                      <div class="content">
-                          <h4 class="mt-4 mb-2 title-color">CT scan</h4>
-                          <p class="mb-4">Saepe nulla praesentium eaque omnis perferendis a doloremque.</p>
-                        <a href="{{ route('website.service.details') }}" class="read-more">Learn More  <i class="icofont-simple-right ml-2"></i></a>
-                      </div>
-                  </div>
-              </div>
-
-
-              <div class="col-lg-4 col-md-6 col-sm-6">
-                  <div class="service-block mb-5 mb-lg-0">
-                      <img src="{{ asset('assets') }}/images/service/service-4.jpg" alt="" class="img-fluid">
-                      <div class="content">
-                          <h4 class="mt-4 mb-2 title-color">Joint replacement</h4>
-                          <p class="mb-4">Saepe nulla praesentium eaque omnis perferendis a doloremque.</p>
-                        <a href="{{ route('website.service.details') }}" class="read-more">Learn More  <i class="icofont-simple-right ml-2"></i></a>
-                      </div>
-                  </div>
-              </div>
-
-              <div class="col-lg-4 col-md-6 col-sm-6">
-                  <div class="service-block mb-5 mb-lg-0">
-                      <img src="{{ asset('assets') }}/images/service/service-6.jpg" alt="" class="img-fluid">
-                      <div class="content">
-                          <h4 class="mt-4 mb-2 title-color">Examination & Diagnosis</h4>
-                          <p class="mb-4">Saepe nulla praesentium eaque omnis perferendis a doloremque.</p>
-                        <a href="{{ route('website.service.details') }}" class="read-more">Learn More  <i class="icofont-simple-right ml-2"></i></a>
-                      </div>
-                  </div>
-              </div>
-
-              <div class="col-lg-4 col-md-6 col-sm-6">
-                  <div class="service-block mb-5 mb-lg-0">
-                      <img src="{{ asset('assets') }}/images/service/service-8.jpg" alt="" class="img-fluid">
-                      <div class="content">
-                          <h4 class="mt-4 mb-2 title-color">Alzheimer's disease</h4>
-                          <p class="mb-4">Saepe nulla praesentium eaque omnis perferendis a doloremque.</p>
-                        <a href="{{ route('website.service.details') }}" class="read-more">Learn More  <i class="icofont-simple-right ml-2"></i></a>
-                      </div>
-                  </div>
-              </div>
+                @foreach ($services as $service)
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="service-block mb-5">
+                            <img height="120px" width="120px" src="{{ $service->image_url }}" alt="" class="object-contain" >
+                            <div class="content">
+                                <h4 class="mt-4 mb-2 title-color">{{ $service->name }}</h4>
+                                <p class="mb-4">
+                                    {{ Str::limit($service->short_description, 100, '...') }}
+                                </p>
+                            <a href="{{ route('website.service.details', $service->slug) }}" class="read-more">Learn More  <i class="icofont-simple-right ml-2"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
           </div>
       </div>
   </section>
