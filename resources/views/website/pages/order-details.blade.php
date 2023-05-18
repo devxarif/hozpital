@@ -1,6 +1,6 @@
 @extends('website.layout.app')
 
-@section('main')
+@section('content')
 <div class="max-w-3xl mx-auto py-16 px-4 sm:px-6 sm:py-24 lg:px-8 lg:py-32">
     <div class="lg:col-start-2">
         <h1 class="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl">Thanks for shopping with us!</h1>

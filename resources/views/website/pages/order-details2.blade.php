@@ -1,6 +1,6 @@
 @extends('website.layout.app')
 
-@section('main')
+@section('content')
 <main class="mx-auto max-w-2xl pt-8 pb-24 sm:px-6 sm:pt-16 lg:max-w-7xl lg:px-8">
     <div class="space-y-2 px-4 sm:flex sm:items-baseline sm:justify-between sm:space-y-0 sm:px-0">
         <div class="flex sm:items-baseline sm:space-x-4">

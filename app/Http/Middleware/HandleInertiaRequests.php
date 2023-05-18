@@ -63,7 +63,7 @@ class HandleInertiaRequests extends Middleware
         $data['unreadNotificationsCount'] = auth()->check() ? auth()->user()->unreadNotifications->count() : 0;
 
         // Env variables
-        $data['app_version'] = config('kodebazar.app_version');
+        $data['app_version'] = config('app.app_version');
 
         // Settings
         $data['setting'] = Setting::first();

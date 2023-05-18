@@ -10,7 +10,7 @@ class SystemInfoService
     public function execute()
     {
         // Application Information
-        $app_version = config('kodebazar.app_version');
+        $app_version = config('app.app_version');
 
         // System Information
         $current_php_version = phpversion();

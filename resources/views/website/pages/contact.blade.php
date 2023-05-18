@@ -1,92 +1,120 @@
 @extends('website.layout.app')
 
-@section('main')
-<!--
-  This example requires some changes to your config:
+@section('content')
 
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-    ],
-  }
-  ```
--->
-<div class="relative bg-white">
-    <div class="absolute inset-0">
-      <div class="absolute inset-y-0 left-0 w-1/2 bg-gray-50"></div>
-    </div>
-    <div class="relative mx-auto max-w-7xl lg:grid lg:grid-cols-5">
-      <div class="bg-gray-50 py-16 px-6 lg:col-span-2 lg:px-8 lg:py-24 xl:pr-12">
-        <div class="mx-auto max-w-lg">
-          <h2 class="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">Get in touch</h2>
-          <p class="mt-3 text-lg leading-6 text-gray-500">Nullam risus blandit ac aliquam justo ipsum. Quam mauris volutpat massa dictumst amet. Sapien tortor lacus arcu.</p>
-          <dl class="mt-8 text-base text-gray-500">
-            <div>
-              <dt class="sr-only">Postal address</dt>
-              <dd>
-                <p>742 Evergreen Terrace</p>
-                <p>Springfield, OR 12345</p>
-              </dd>
-            </div>
-            <div class="mt-6">
-              <dt class="sr-only">Phone number</dt>
-              <dd class="flex">
-                <!-- Heroicon name: outline/phone -->
-                <svg class="h-6 w-6 flex-shrink-0 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
-                </svg>
-                <span class="ml-3">+1 (555) 123-4567</span>
-              </dd>
-            </div>
-            <div class="mt-3">
-              <dt class="sr-only">Email</dt>
-              <dd class="flex">
-                <!-- Heroicon name: outline/envelope -->
-                <svg class="h-6 w-6 flex-shrink-0 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
-                </svg>
-                <span class="ml-3">support@example.com</span>
-              </dd>
-            </div>
-          </dl>
-          <p class="mt-6 text-base text-gray-500">
-            Looking for careers?
-            <a href="javascript:void(0)" class="font-medium text-gray-700 underline">View all job openings</a>.
-          </p>
+<section class="page-title bg-1">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="block text-center">
+            <span class="text-white">Contact Us</span>
+            <h1 class="text-capitalize mb-5 text-lg">Get in Touch</h1>
+
+            <!-- <ul class="list-inline breadcumb-nav">
+              <li class="list-inline-item"><a href="{{ route('website.home') }}" class="text-white">Home</a></li>
+              <li class="list-inline-item"><span class="text-white">/</span></li>
+              <li class="list-inline-item"><a href="#" class="text-white-50">Contact Us</a></li>
+            </ul> -->
+          </div>
         </div>
       </div>
-      <div class="bg-white py-16 px-6 lg:col-span-3 lg:py-24 lg:px-8 xl:pl-12">
-        <div class="mx-auto max-w-lg lg:max-w-none">
-          <form action="#" method="POST" class="grid grid-cols-1 gap-y-6">
-            <div>
-              <label for="full-name" class="sr-only">Full name</label>
-              <input type="text" name="full-name" id="full-name" autocomplete="name" class="block w-full rounded-md border-gray-300 py-3 px-4 placeholder-gray-500 shadow-sm focus:border-blue-500 focus:ring-blue-500" placeholder="Full name">
+    </div>
+  </section>
+  <!-- contact form start -->
+
+  <section class="section contact-info pb-0">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 col-md-6">
+          <div class="contact-block mb-4 mb-lg-0">
+            <i class="icofont-live-support"></i>
+            <h5>Call Us</h5>
+            +823-4565-13456
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="contact-block mb-4 mb-lg-0">
+            <i class="icofont-support-faq"></i>
+            <h5>Email Us</h5>
+            contact@mail.com
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-12">
+          <div class="contact-block mb-4 mb-lg-0">
+            <i class="icofont-location-pin"></i>
+            <h5>Location</h5>
+            North Main Street,Brooklyn Australia
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact-form-wrap section">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-6">
+          <div class="section-title text-center">
+            <h2 class="text-md mb-2">Contact us</h2>
+            <div class="divider mx-auto my-4"></div>
+            <p class="mb-5">Laboriosam exercitationem molestias beatae eos pariatur, similique, excepturi mollitia sit
+              perferendis maiores ratione aliquam?</p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+          <form id="contact-form" class="contact__form " method="post" action="mail.php">
+            <!-- form message -->
+            <div class="row">
+              <div class="col-12">
+                <div class="alert alert-success contact__msg" style="display: none" role="alert">
+                  Your message was sent successfully.
+                </div>
+              </div>
             </div>
-            <div>
-              <label for="email" class="sr-only">Email</label>
-              <input id="email" name="email" type="email" autocomplete="email" class="block w-full rounded-md border-gray-300 py-3 px-4 placeholder-gray-500 shadow-sm focus:border-blue-500 focus:ring-blue-500" placeholder="Email">
+
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <input name="name" id="name" type="text" class="form-control" placeholder="Your Full Name">
+                </div>
+              </div>
+
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <input name="email" id="email" type="email" class="form-control" placeholder="Your Email Address" required>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <input name="subject" id="subject" type="text" class="form-control" placeholder="Your Query Topic" required>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <input name="phone" id="phone" type="text" class="form-control" placeholder="Your Phone Number" required>
+                </div>
+              </div>
             </div>
-            <div>
-              <label for="phone" class="sr-only">Phone</label>
-              <input type="text" name="phone" id="phone" autocomplete="tel" class="block w-full rounded-md border-gray-300 py-3 px-4 placeholder-gray-500 shadow-sm focus:border-blue-500 focus:ring-blue-500" placeholder="Phone">
+
+            <div class="form-group-2 mb-4">
+              <textarea name="message" id="message" class="form-control" rows="8" placeholder="Your Message" required></textarea>
             </div>
+
             <div>
-              <label for="message" class="sr-only">Message</label>
-              <textarea id="message" name="message" rows="4" class="block w-full rounded-md border-gray-300 py-3 px-4 placeholder-gray-500 shadow-sm focus:border-blue-500 focus:ring-blue-500" placeholder="Message"></textarea>
-            </div>
-            <div>
-              <button type="submit" class="inline-flex justify-center rounded-md border border-transparent bg-blue-600 py-3 px-6 text-base font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">Submit</button>
+              <input class="btn btn-main btn-round-full" name="submit" type="submit" value="Send Messege"></input>
             </div>
           </form>
         </div>
       </div>
     </div>
+  </section>
+
+
+  <div class="google-map ">
+      <div id="map" data-latitude="40.712776" data-longitude="-74.005974" data-marker="images/marker.png"></div>
   </div>
-
-
 
 @endsection

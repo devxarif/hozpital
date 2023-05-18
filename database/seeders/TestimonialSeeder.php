@@ -16,23 +16,29 @@ class TestimonialSeeder extends Seeder
     {
         $testimonials = [
             [
-                'name' => 'Ariful Islam Arif',
-                'position' => 'Software Engineer',
-                'avatar' => asset('website/images/testimonial/image.png'),
-                'description' => 'Sincerely, I am very grateful to the technical support that helps the Hozpital application to work properly when there are some situations that the buyer cannot solve',
+                'name' => 'John Doe',
+                'title' => 'Friendly Environment',
+                'image' => 'assets/images/team/img-1.jpg',
+                'description' => 'Sincerely, I am very grateful to the technical support and friendly environment that I found in this hospital. I was able to recover very quickly. Thank you very much to all the staff.',
             ],
             [
-                'name' => 'Zakir Hossen',
-                'position' => 'Businessman',
-                'avatar' => asset('website/images/testimonial/image2.png'),
-                'description' => 'They are Excellent in all their services. Very organized developers. And the application is very excellent with constant updates, improvements and great support.',
+                'name' => 'Nargis Parveen',
+                'title' => "Amazing Service",
+                'image' => 'assets/images/team/img-2.jpg',
+                'description' => 'They are Excellent in all their services. Very organized doctors. I am very happy with the service. I recommend it to everyone.',
             ],
             [
-                'name' => 'Mohammad Ali',
-                'position' => 'Product Manager',
-                'avatar' => asset('website/images/testimonial/image3.jpg'),
-                'description' => 'Their support is very fast and they try to solve all your issues. Also the application is very good with simple user friendly admin panel. Wish you all the best, please keep the good work',
+                'name' => 'Roman Monroe',
+                'title' => 'Great Support',
+                'image' => 'assets/images/team/img-3.jpg',
+                'description' => 'Their treatment is very good. I am very happy with the service. I recommend it to everyone.',
             ],
+            [
+                'name' => 'Ahmed Ali',
+                'title' => 'Highly Recommended',
+                'image' => 'assets/images/team/img-4.jpg',
+                'description' => 'I am very happy with the service. I recommend it to everyone.',
+            ]
         ];
 
         foreach ($testimonials as $testimonial) {

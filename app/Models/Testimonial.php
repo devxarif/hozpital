@@ -2,22 +2,22 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Http\Traits\HasImageAppend;
+use App\Http\Traits\Sluggable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Testimonial extends Model
 {
-    use HasFactory;
+    use HasFactory, HasImageAppend;
 
     protected $fillable = [
+        'title',
         'name',
-        'position',
-        'avatar',
+        'image',
         'description',
     ];
 
-    public function getAvatarAttribute($avatar)
-    {
-        return $avatar ? asset($avatar) : asset('assets/img/default-user.png');
-    }
+    protected $appends = ['image_url'];
+
 }

@@ -1,6 +1,6 @@
 @extends('website.layout.app')
 
-@section('main')
+@section('content')
 <div class="relative grid grid-cols-1 gap-x-16 max-w-7xl mx-auto lg:px-8 lg:grid-cols-2 mt-20">
     <h1 class="sr-only">Checkout</h1>
 
