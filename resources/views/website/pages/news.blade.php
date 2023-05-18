@@ -11,11 +11,11 @@
                     <span class="text-white">Our News</span>
                     <h1 class="text-capitalize mb-5 text-lg">News articles</h1>
 
-                    <!-- <ul class="list-inline breadcumb-nav">
-              <li class="list-inline-item"><a href="{{ route('website.home') }}" class="text-white">Home</a></li>
-              <li class="list-inline-item"><span class="text-white">/</span></li>
-              <li class="list-inline-item"><a href="#" class="text-white-50">Our blog</a></li>
-            </ul> -->
+                    <ul class="list-inline breadcumb-nav">
+                        <li class="list-inline-item"><a href="{{ route('website.home') }}" class="text-white">Home</a></li>
+                        <li class="list-inline-item"><span class="text-white">/</span></li>
+                        <li class="list-inline-item"><a href="#" class="text-white-50">News</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -27,89 +27,38 @@
         <div class="row">
             <div class="col-lg-8">
                 <div class="row">
-                    <div class="col-lg-12 col-md-12 mb-5">
-                        <div class="blog-item">
-                            <div class="blog-thumb">
-                                <img src="{{ asset('assets') }}/images/blog/blog-1.jpg" alt="" class="img-fluid ">
-                            </div>
-
-                            <div class="blog-item-content">
-                                <div class="blog-item-meta mb-3 mt-4">
-                                    <span class="text-muted text-capitalize mr-3"><i class="icofont-comment mr-2"></i>5
-                                        Comments</span>
-                                    <span class="text-black text-capitalize mr-3"><i class="icofont-calendar mr-1"></i>
-                                        28th January</span>
+                    @foreach ($news_collection as $news)
+                        <div class="col-lg-12 col-md-12 mb-5">
+                            <div class="blog-item">
+                                <div class="blog-thumb">
+                                    <img src="{{ asset('assets') }}/images/blog/blog-1.jpg" alt="" class="img-fluid ">
                                 </div>
 
-                                <h2 class="mt-3 mb-3"><a href="{{ route('website.news.details') }}">Choose quality
-                                        service over cheap service all type of things</a></h2>
+                                <div class="blog-item-content">
+                                    <div class="blog-item-meta mb-3 mt-4">
+                                        <span class="text-muted text-capitalize mr-3"><i class="icofont-comment mr-2"></i>5
+                                            Comments</span>
+                                        <span class="text-black text-capitalize mr-3"><i class="icofont-calendar mr-1"></i>
+                                            28th January</span>
+                                    </div>
 
-                                <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis
-                                    aliquid architecto facere commodi cupiditate omnis voluptatibus inventore atque
-                                    velit cum rem id assumenda quam recusandae ipsam ea porro, dicta ad.</p>
+                                    <h2 class="mt-3 mb-3">
+                                        <a href="{{ route('website.news.details', $news->slug) }}">
+                                            {{ $news->name }}
+                                        </a>
+                                    </h2>
 
-                                <a href="{{ route('website.news.details') }}"
-                                    class="btn btn-main btn-icon btn-round-full">Read More <i
-                                        class="icofont-simple-right ml-2  "></i></a>
-                            </div>
-                        </div>
-                    </div>
+                                    <p class="mb-4">
+                                        {{ $news->short_description }}
+                                    </p>
 
-                    <div class="col-lg-12 col-md-12 mb-5">
-                        <div class="blog-item">
-                            <div class="blog-thumb">
-                                <img src="{{ asset('assets') }}/images/blog/blog-2.jpg" alt="" class="img-fluid">
-                            </div>
-
-                            <div class="blog-item-content">
-                                <div class="blog-item-meta mb-3 mt-4">
-                                    <span class="text-muted text-capitalize mr-3"><i class="icofont-comment mr-2"></i>5
-                                        Comments</span>
-                                    <span class="text-black text-capitalize mr-3"><i class="icofont-calendar mr-1"></i>
-                                        28th January</span>
+                                    <a href="{{ route('website.news.details', $news->slug) }}"
+                                        class="btn btn-main btn-icon btn-round-full">Read More <i
+                                            class="icofont-simple-right ml-2"></i></a>
                                 </div>
-
-                                <h2 class="mt-3 mb-3"><a href="{{ route('website.news.details') }}">All test cost 25% in
-                                        always in our laboratory</a></h2>
-
-                                <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis
-                                    aliquid architecto facere commodi cupiditate omnis voluptatibus inventore atque
-                                    velit cum rem id assumenda quam recusandae ipsam ea porro, dicta ad.</p>
-
-                                <a href="{{ route('website.news.details') }}"
-                                    class="btn btn-main btn-icon btn-round-full">Read More <i
-                                        class="icofont-simple-right ml-2  "></i></a>
                             </div>
                         </div>
-                    </div>
-
-
-                    <div class="col-lg-12 col-md-12 mb-5">
-                        <div class="blog-item">
-                            <div class="blog-thumb">
-                                <img src="{{ asset('assets') }}/images/blog/blog-4.jpg" alt="" class="img-fluid">
-                            </div>
-
-                            <div class="blog-item-content">
-                                <div class="blog-item-meta mb-3 mt-4">
-                                    <span class="text-muted text-capitalize mr-3"><i class="icofont-comment mr-2"></i>5
-                                        Comments</span>
-                                    <span class="text-black text-capitalize mr-3"><i class="icofont-calendar mr-1"></i>
-                                        28th January</span>
-                                </div>
-                                <h2 class="mt-3 mb-3"><a href="{{ route('website.news.details') }}">Get Free consulation
-                                        from our special surgeon and doctors</a></h2>
-
-                                <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis
-                                    aliquid architecto facere commodi cupiditate omnis voluptatibus inventore atque
-                                    velit cum rem id assumenda quam recusandae ipsam ea porro, dicta ad.</p>
-
-                                <a href="{{ route('website.news.details') }}"
-                                    class="btn btn-main btn-icon btn-round-full">Read More <i
-                                        class="icofont-simple-right ml-2  "></i></a>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
 
                     <div class="col-lg-12 col-md-12">
                         <nav class="pagination py-2 d-inline-block">

@@ -10,7 +10,7 @@ Route::controller(WebsiteController::class)->group(function () {
     Route::get('/services', 'services')->name('website.services');
     Route::get('/services/{service:slug}', 'serviceDetails')->name('website.service.details');
     Route::get('/news', 'news')->name('website.news');
-    Route::get('/news/slug', 'newsDetails')->name('website.news.details');
+    Route::get('/news/{news:slug}', 'newsDetails')->name('website.news.details');
     Route::get('/departments', 'department')->name('website.department');
     Route::get('/departments/{department:slug}', 'departmentDetails')->name('website.department.details');
     Route::get('/doctors', 'doctor')->name('website.doctor');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Website;
 
 use App\Models\Faq;
 use App\Models\Seo;
+use App\Models\News;
 use App\Models\Plan;
 use App\Models\Post;
 use App\Models\Feature;
@@ -68,12 +69,16 @@ class WebsiteController extends Controller
 
     public function news()
     {
-        return view('website.pages.news');
+        $news_collection = News::latest()->paginate(5);
+
+        return view('website.pages.news', compact('news_collection'));
     }
 
-    public function newsDetails()
+    public function newsDetails(News $news)
     {
-        return view('website.pages.news-details');
+        $news->load('category:id,name');
+
+        return view('website.pages.news-details', compact('news'));
     }
 
     public function contact()

@@ -9,13 +9,15 @@
         <div class="col-md-12">
           <div class="block text-center">
             <span class="text-white">News details</span>
-            <h1 class="text-capitalize mb-5 text-lg">News Single</h1>
+            <h1 class="text-capitalize mb-5 text-lg">{{ $news->name }}</h1>
 
-            <!-- <ul class="list-inline breadcumb-nav">
+            <ul class="list-inline breadcumb-nav">
               <li class="list-inline-item"><a href="{{ route('website.home') }}" class="text-white">Home</a></li>
               <li class="list-inline-item"><span class="text-white">/</span></li>
-              <li class="list-inline-item"><a href="#" class="text-white-50">News details</a></li>
-            </ul> -->
+              <li class="list-inline-item"><a href="{{ route('website.news') }}" class="text-white">News</a></li>
+              <li class="list-inline-item"><span class="text-white">/</span></li>
+              <li class="list-inline-item"><a href="#" class="text-white-50">{{ $news->name }}</a></li>
+            </ul>
           </div>
         </div>
       </div>
@@ -33,34 +35,17 @@
 
               <div class="blog-item-content mt-5">
                   <div class="blog-item-meta mb-3">
-                      <span class="text-color-2 text-capitalize mr-3"><i class="icofont-book-mark mr-2"></i> Equipment</span>
+                      <span class="text-color-2 text-capitalize mr-3"><i class="icofont-book-mark mr-2"></i>{{ $news->category->name }}</span>
                       <span class="text-muted text-capitalize mr-3"><i class="icofont-comment mr-2"></i>5 Comments</span>
-                      <span class="text-black text-capitalize mr-3"><i class="icofont-calendar mr-2"></i> 28th January 2019</span>
+                      {{-- <span class="text-black text-capitalize mr-3"><i class="icofont-calendar mr-2"></i> 28th January 2019</span> --}}
+                      <span class="text-black text-capitalize mr-3"><i class="icofont-calendar mr-2"></i> {{ formatTime($news->created_at, 'd M Y') }}</span>
                   </div>
 
-                  <h2 class="mb-4 text-md"><a href="{{ route('website.news.details') }}">Healthy environment to care with modern equipment</a></h2>
+                  <h2 class="mb-4 text-md">
+                    {{ $news->name }}
+                  </h2>
 
-                  <p class="lead mb-4">Non illo quas blanditiis repellendus laboriosam minima animi. Consectetur accusantium
-                      pariatur repudiandae!</p>
-
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus natus, consectetur? Illum libero vel nihil
-                      nisi quae, voluptatem, sapiente necessitatibus distinctio voluptates, iusto qui. Laboriosam autem, nam
-                      voluptate in beatae. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae iure officia nihil nemo,
-                      repudiandae itaque similique praesentium non aut nesciunt facere nulla, sequi sunt nam temporibus atque earum,
-                      ratione, labore.</p>
-
-                  <blockquote class="quote">
-                      A brand for a company is like a reputation for a person. You earn reputation by trying to do hard things well.
-                  </blockquote>
-
-
-                  <p class="lead mb-4 font-weight-normal text-black">The same is true as we experience the emotional sensation of
-                      stress from our first instances of social rejection ridicule. We quickly learn to fear and thus automatically.
-                  </p>
-
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste, rerum beatae repellat tenetur incidunt
-                      quisquam libero dolores laudantium. Nesciunt quis itaque quidem, voluptatem autem eos animi laborum iusto
-                      expedita sapiente.</p>
+                  {!! $news->description !!}
 
                   <div class="mt-5 clearfix">
                       <ul class="float-left list-inline tag-option">

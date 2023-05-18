@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\NewsCategory;
 use App\Http\Traits\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -17,4 +18,9 @@ class News extends Model
         'short_description',
         'long_description',
     ];
+
+    public function category()
+    {
+        return $this->belongsTo(NewsCategory::class, 'news_category_id');
+    }
 }
