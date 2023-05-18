@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Database\Seeders\NewsSeeder;
 use Database\Seeders\OrderSeeder;
 use Database\Seeders\PartnerSeeder;
 use Database\Seeders\ServiceSeeder;
@@ -101,7 +102,9 @@ class DatabaseSeeder extends Seeder
             AnnouncementSeeder::class,
             ServiceSeeder::class,
             TestimonialSeeder::class,
-            PartnerSeeder::class
+            PartnerSeeder::class,
+            NewsCategorySeeder::class,
+            NewsSeeder::class,
             // AmbulanceSeeder::class,
             // AppointmentSeeder::class,
         ]);
