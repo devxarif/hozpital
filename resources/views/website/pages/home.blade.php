@@ -1,5 +1,7 @@
 @extends('website.layout.app')
 
+@section('title', 'Home')
+
 @section('content')
  <!-- Slider Start -->
  <section class="banner">

@@ -1,5 +1,7 @@
 @extends('website.layout.app')
 
+@section('title', 'Appointment Confirmation')
+
 @section('content')
 <section class="section confirmation">
     <div class="container">

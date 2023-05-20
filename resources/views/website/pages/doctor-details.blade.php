@@ -1,7 +1,8 @@
 @extends('website.layout.app')
 
-@section('content')
+@section('title', 'Doctor Details')
 
+@section('content')
 <section class="page-title bg-1">
     <div class="overlay"></div>
     <div class="container">

@@ -5,7 +5,7 @@
 <head>
     <!-- Page Title -->
     <meta charset="utf-8">
-    <title>Novena- Health Care &amp; Medical template</title>
+    <title>@yield('title') - {{ config('app.name') }}</title>
 
     <!-- Mobile Specific Metas -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
