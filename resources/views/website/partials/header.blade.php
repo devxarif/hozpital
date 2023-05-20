@@ -54,7 +54,7 @@
 						<a class="nav-link dropdown-toggle" href="{{ route('website.department') }}" id="dropdown02" data-toggle="dropdown"
 							aria-haspopup="true" aria-expanded="false">Departments <i class="icofont-thin-down"></i></a>
 						<ul class="dropdown-menu" aria-labelledby="dropdown02">
-                            @foreach ($departments as $department)
+                            @foreach ($header_departments as $department)
 							<li><a class="dropdown-item" href="{{ route('website.department.details', $department->slug) }}">{{ $department->name }}</a></li>
                             @endforeach
 							<li><a class="dropdown-item" href="{{ route('website.department') }}">View All</a></li>

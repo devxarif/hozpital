@@ -41,12 +41,12 @@ class SettingSeeder extends Seeder
         $setting->cookies_alert_button_text = 'Got it';
 
         // Custom css/js
-        $setting->custom_footer_script = "var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-        (function(){ var s1=document.createElement('script'),s0=document.getElementsByTagName('script')[0]; s1.async=true;s1.src='https://embed.tawk.to/6429338a4247f20fefe955d7/1gt0f2mdb';
-        s1.charset='UTF-8';
-        s1.setAttribute('crossorigin','*');
-        s0.parentNode.insertBefore(s1,s0);
-        })();";
+        // $setting->custom_footer_script = "var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        // (function(){ var s1=document.createElement('script'),s0=document.getElementsByTagName('script')[0]; s1.async=true;s1.src='https://embed.tawk.to/6429338a4247f20fefe955d7/1gt0f2mdb';
+        // s1.charset='UTF-8';
+        // s1.setAttribute('crossorigin','*');
+        // s0.parentNode.insertBefore(s1,s0);
+        // })();";
         // $setting->custom_footer_script = "(function () {var options = {
         //     whatsapp: '+8801681729831',
         //     call_to_action: 'Quick Support',

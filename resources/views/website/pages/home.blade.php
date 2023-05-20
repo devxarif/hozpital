@@ -142,7 +142,7 @@
         <div class="row justify-content-center">
             <div class="col-lg-7 text-center">
                 <div class="section-title">
-                    <h2>Emergency care services</h2>
+                    <h2>Care services</h2>
                     <div class="divider mx-auto my-4"></div>
                     <p>Lets know moreel necessitatibus dolor asperiores illum possimus sint voluptates incidunt
                         molestias nostrum laudantium. Maiores porro cumque quaerat.</p>

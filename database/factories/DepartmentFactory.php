@@ -21,6 +21,7 @@ class DepartmentFactory extends Factory
             'short_description' => fake()->sentence,
             'description' => fake()->paragraph(50),
             'show_in_header' => fake()->boolean,
+            'show_in_footer' => fake()->boolean,
         ];
     }
 }

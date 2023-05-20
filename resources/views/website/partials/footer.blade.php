@@ -27,13 +27,10 @@
                 <div class="widget mb-5 mb-lg-0">
                     <h4 class="text-capitalize mb-3">Department</h4>
                     <div class="divider mb-4"></div>
-
                     <ul class="list-unstyled footer-menu lh-35">
-                        <li><a href="#!">Surgery </a></li>
-                        <li><a href="#!">Wome's Health</a></li>
-                        <li><a href="#!">Radiology</a></li>
-                        <li><a href="#!">Cardioc</a></li>
-                        <li><a href="#!">Medicine</a></li>
+                        @foreach ($footer_departments as $department)
+                        <li><a href="{{ route('website.department.details', $department->slug) }}">{{ $department->name }}</a></li>
+                        @endforeach
                     </ul>
                 </div>
             </div>

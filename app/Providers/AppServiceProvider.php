@@ -51,7 +51,8 @@ class AppServiceProvider extends ServiceProvider
             $services = Service::where('show_in_header',true)->get(['id','name', 'slug']);
 
             // Departments
-            $departments = Department::where('show_in_header',true)->get(['id','name', 'slug']);
+            $departments = Department::all(['id','name', 'slug', 'show_in_header', 'show_in_footer']);
+            // $departments = Department::where('show_in_header',true)->get(['id','name', 'slug']);
 
             // View Share
             view()->share('setting', $setting);
@@ -59,7 +60,8 @@ class AppServiceProvider extends ServiceProvider
             view()->share('header_languages', $header_languages);
             view()->share('defaultLanguage', $default_language);
             view()->share('services', $services);
-            view()->share('departments', $departments);
+            view()->share('header_departments', $departments->where('show_in_header',true));
+            view()->share('footer_departments', $departments->where('show_in_footer',true));
         }
     }
 }

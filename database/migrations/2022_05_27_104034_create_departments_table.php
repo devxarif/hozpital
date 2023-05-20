@@ -21,6 +21,7 @@ return new class extends Migration
             $table->longText('description')->nullable();
             $table->string('image')->nullable();
             $table->boolean('show_in_header')->default(false);
+            $table->boolean('show_in_footer')->default(false);
             $table->timestamps();
         });
     }
