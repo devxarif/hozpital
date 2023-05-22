@@ -74,7 +74,7 @@ export default {
                 {
                     title: 'Website CMS',
                     icon: 'fa-solid fa-tasks',
-                    route: 'admin.settings.smtp'
+                    route: 'admin.settings.cms'
                 },
                 {
                     title: 'Payment',

@@ -51,6 +51,8 @@ class WebsiteController extends Controller
     public function about()
     {
         $data['testimonials'] = Testimonial::latest()->get();
+        $data['services'] = Service::latest()->get();
+        $data['partners'] = Partner::latest()->get();
 
         return view('website.pages.about', $data);
     }

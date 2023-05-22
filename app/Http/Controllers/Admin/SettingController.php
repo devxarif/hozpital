@@ -77,9 +77,10 @@ class SettingController extends Controller
 
     public function cms()
     {
-        $cms = Cms::first();
+        // return 6465;
+        // $cms = Cms::first();
 
-        return inertia('Admin/Setting/Cms', compact('cms'));
+        return inertia('Admin/Setting/Cms/Index');
     }
 
     public function cmsUpdate(Request $request)
