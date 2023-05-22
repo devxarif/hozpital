@@ -112,15 +112,15 @@ input[type=email]:focus, input[type=password]:focus, input[type=text]:focus, inp
   border-color: #223a66;
 }
 .btn-main:hover {
-  background: #e12454;
-  border-color: #e12454;
+  background: #E74424;
+  border-color: #E74424;
   color: #fff;
 }
 
 .btn-main-2 {
-  background: #e12454;
+  background: #E74424;
   color: #fff;
-  border-color: #e12454;
+  border-color: #E74424;
 }
 .btn-main-2:hover {
   background: #223a66;
@@ -282,7 +282,7 @@ a {
 }
 
 a:focus, a:hover {
-  color: #e12454;
+  color: #E74424;
   text-decoration: none;
 }
 
@@ -365,7 +365,7 @@ a:focus {
 }
 #navbarmain .nav-link:hover,
 #navbarmain .active .nav-link {
-  color: #e12454;
+  color: #E74424;
 }
 
 .dropdown-toggle::after {
@@ -408,7 +408,7 @@ a:focus {
 .navigation .dropdown-menu {
   padding: 0px;
   border: 0px;
-  border-top: 5px solid #e12454;
+  border-top: 5px solid #E74424;
   background: #fff;
   border-radius: 0px;
 }
@@ -459,7 +459,7 @@ a:focus {
 .navigation .dropdown-item.active,
 .navigation .dropdown-item:hover {
   background: rgba(225, 36, 84, 0.05);
-  color: #e12454;
+  color: #E74424;
 }
 .navigation button:focus {
   outline: 0;
@@ -498,7 +498,7 @@ a:focus {
   position: relative;
   overflow: hidden;
   background: #fff;
-  background: url("../images/bg/slider-bg-1.jpg") no-repeat;
+  background-repeat: no-repeat;
   background-size: cover;
   min-height: 550px;
 }
@@ -522,13 +522,13 @@ a:focus {
 }
 
 .text-color-2 {
-  color: #e12454;
+  color: #E74424;
 }
 
 .divider {
   width: 40px;
   height: 5px;
-  background: #e12454;
+  background: #E74424;
 }
 
 @media (max-width: 480px) {
@@ -690,7 +690,7 @@ a:focus {
   margin-bottom: 10px;
 }
 .service i {
-  color: #e12454;
+  color: #E74424;
 }
 .service h4 {
   padding-left: 20px;
@@ -718,7 +718,7 @@ a:focus {
   margin-bottom: 10px;
 }
 .department-service li i {
-  color: #e12454;
+  color: #E74424;
 }
 
 .doctors .btn-group .btn {
@@ -732,7 +732,7 @@ a:focus {
 .doctors .btn-group .btn.active {
   box-shadow: none !important;
   border-color: transparent;
-  background: #e12454;
+  background: #E74424;
   color: #fff;
 }
 .doctors .btn-group .btn.focus {
@@ -742,13 +742,13 @@ a:focus {
 .doctors .btn-group .btn:focus {
   box-shadow: none !important;
   border-color: transparent;
-  background: #e12454;
+  background: #E74424;
   color: #fff;
 }
 .doctors .btn-group .btn:hover {
   box-shadow: none !important;
   border-color: transparent;
-  background: #e12454;
+  background: #E74424;
   color: #fff;
 }
 .doctors .btn-group > .btn-group:not(:last-child) > .btn, .doctors .btn-group > .btn:not(:last-child):not(.dropdown-toggle), .doctors .btn-group > .btn:not(:first-child) {
@@ -780,7 +780,7 @@ a:focus {
 }
 .doctor-info li i {
   margin-right: 20px;
-  color: #e12454;
+  color: #E74424;
 }
 
 .read-more {
@@ -918,7 +918,7 @@ a:focus {
 }
 .testimonial-block.style-2 i {
   bottom: -20px;
-  color: #e12454;
+  color: #E74424;
   opacity: 0.3;
 }
 
@@ -1005,7 +1005,7 @@ a:focus {
   font-size: 50px;
   margin-bottom: 15px;
   display: inline-block;
-  color: #e12454;
+  color: #E74424;
 }
 
 .blog-item-content h2 {
@@ -1069,7 +1069,7 @@ a:focus {
   color: #223a66;
   padding: 40px;
   font-style: italic;
-  border-left: 5px solid #e12454;
+  border-left: 5px solid #E74424;
   margin: 25px 0px;
 }
 
@@ -1251,7 +1251,7 @@ a:focus {
   bottom: 0px;
   width: 35px;
   height: 3px;
-  background: #e12454;
+  background: #E74424;
 }
 .sidebar-widget.latest-post .media img {
   border-radius: 7px;
@@ -1346,7 +1346,7 @@ a:focus {
   color: #6F8BA4;
 }
 .widget .footer-menu a:hover {
-  color: #e12454;
+  color: #E74424;
 }
 
 .footer-contact-block span {
@@ -1377,7 +1377,7 @@ a:focus {
   margin-bottom: 18px;
 }
 .widget-contact h6 i {
-  color: #e12454;
+  color: #E74424;
 }
 
 .subscribe {
@@ -1425,7 +1425,7 @@ a:focus {
   }
 }
 .backtop:hover {
-  background-color: #e12454;
+  background-color: #E74424;
 }
 .backtop i {
   color: #fff;

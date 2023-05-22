@@ -43,8 +43,6 @@
                     <ul class="list-unstyled footer-menu lh-35">
                         <li><a href="{{ route('website.terms') }}">Terms & Conditions</a></li>
                         <li><a href="{{ route('website.policy') }}">Privacy Policy</a></li>
-                        <li><a href="#!">Company Support </a></li>
-                        <li><a href="#!">FAQuestions</a></li>
                         <li><a href="{{ route('website.contact') }}">Contact</a></li>
                     </ul>
                 </div>

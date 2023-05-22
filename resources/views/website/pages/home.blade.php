@@ -4,7 +4,8 @@
 
 @section('content')
  <!-- Slider Start -->
- <section class="banner">
+ <section class="banner"  style="background-image: url('{{ asset('assets/images/bg/slider-bg-1.jpg') }}')">
+ {{-- <section class="banner"  style="background-image: url('{{ asset('/img/{{ $property->property_image }}') }}')"> --}}
     <div class="container">
         <div class="row">
             <div class="col-lg-6 col-md-12 col-xl-7">
@@ -71,8 +72,6 @@
         </div>
     </div>
 </section>
-
-
 <section class="section about">
     <div class="container">
         <div class="row align-items-center">

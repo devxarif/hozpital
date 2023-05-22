@@ -17,17 +17,36 @@ class CmsSeeder extends Seeder
         $cms = new Cms;
 
         // Home Page
-        $cms->home_banner_title = 'Leave Management System (SAAS)';
-        $cms->home_banner_description = 'Hozpital - Leave Management System SPA (SAAS) is a web application that helps you to manage your organization leaves.';
-        $cms->home_banner_button_text = 'Get Started';
-        $cms->home_banner_button2_text = ' Learn More';
-        // $cms->home_banner_button_url = route('register');
-        // $cms->home_banner_button2_url = route('website.about');
-        $cms->home_banner_button_url = '/';
-        $cms->home_banner_button2_url = '/';
-        $cms->home_feature_title = 'Features';
-        $cms->home_feature_subtitle = 'Main Features of';
-        $cms->home_feature_description = 'We have a lot of features that you can use to manage your organization leaves. But the most important features are the following';
+        $cms->home_banner_title = 'Our Strength Is Your Well-Being';
+        $cms->home_banner_subtitle = 'ENTIRE HOSPITAL SOLUTION';
+        $cms->home_banner_description = 'A repudiandae ipsam labore ipsa voluptatum quidem quae laudantium quisquam aperiam maiores sunt fugit, deserunt rem suscipit placeat.';
+        $cms->home_banner_button_text = 'Learn More';
+        $cms->home_banner_button2_text = 'Contact Us';
+        $cms->home_banner_button_url = route('website.about');
+        $cms->home_banner_button2_url = route('website.contact');
+        $cms->home_banner_bg_image = 'assets/images/bg/home-banner.jpg';
+
+        $cms->home_about_title = 'Personal care & healthy living';
+        $cms->home_about_description = 'We provide best leading medicle service Nulla perferendis veniam deleniti ipsum officia dolores repellat laudantium obcaecati neque.';
+        $cms->home_about_button_text = 'Services';
+        $cms->home_about_button_url = route('website.services');
+        $cms->home_about_image = 'assets/images/about/img-1.jpg';
+        $cms->home_about_image2 = 'assets/images/about/img-2.jpg';
+        $cms->home_about_image3 = 'assets/images/about/img-3.jpg';
+
+        $cms->home_counter_bg_image = 'Services';
+        $cms->home_counter_title = 'Happy Patients';
+        $cms->home_counter_subtitle = 'k';
+        $cms->home_counter_count = 'Services';
+        $cms->home_counter2_title = 'Services';
+        $cms->home_counter2_subtitle = 'Services';
+        $cms->home_counter2_count = 'Services';
+        $cms->home_counter3_title = 'Services';
+        $cms->home_counter3_subtitle = 'Services';
+        $cms->home_counter3_count = 'Services';
+        $cms->home_counter4_title = 'Services';
+        $cms->home_counter4_subtitle = 'Services';
+        $cms->home_counter4_count = 'Services';
 
         // About Page
         $cms->about_title = 'About Us';

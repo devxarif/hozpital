@@ -105,6 +105,7 @@ class DatabaseSeeder extends Seeder
             PartnerSeeder::class,
             NewsCategorySeeder::class,
             NewsSeeder::class,
+            CmsSeeder::class,
             // AmbulanceSeeder::class,
             // AppointmentSeeder::class,
         ]);

@@ -26,6 +26,15 @@
 
   <section class="section service-2">
       <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="section-title text-center">
+                    <h2 class="mb-4">Our Services</h2>
+                    <div class="divider mx-auto my-4"></div>
+                    <p>Today’s users expect effortless experiences. Don’t let essential people and processes stay stuck in the past. Speed it up, skip the hassles</p>
+                </div>
+            </div>
+        </div>
           <div class="row">
                 @foreach ($services as $service)
                     <div class="col-lg-4 col-md-6 col-sm-6">
@@ -41,19 +50,6 @@
                         </div>
                     </div>
                 @endforeach
-          </div>
-      </div>
-  </section>
-  <section class="section cta-page">
-      <div class="container">
-          <div class="row">
-              <div class="col-lg-7">
-                  <div class="cta-content">
-                      <div class="divider mb-4"></div>
-                      <h2 class="mb-5 text-lg">We are pleased to offer you the <span class="title-color">chance to have the healthy</span></h2>
-                      <a href="{{ route('website.appointment') }}" class="btn btn-main-2 btn-round-full">Get appoinment<i class="icofont-simple-right  ml-2"></i></a>
-                  </div>
-              </div>
           </div>
       </div>
   </section>
