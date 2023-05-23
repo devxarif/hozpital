@@ -187,3 +187,11 @@
       </div>
   </section>
 @endsection
+
+@section('links')
+<style>
+    .testimonial:before {
+        background: url("{{ asset('assets/images/bg/about-testimonial.jpg') }}") no-repeat 50% 50%;
+    }
+</style>
+@endsection

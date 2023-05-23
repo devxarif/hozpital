@@ -4,8 +4,7 @@
 
 @section('content')
  <!-- Slider Start -->
- <section class="banner"  style="background-image: url('{{ asset('assets/images/bg/slider-bg-1.jpg') }}')">
- {{-- <section class="banner"  style="background-image: url('{{ asset('/img/{{ $property->property_image }}') }}')"> --}}
+ <section class="banner" style="background-image: url('{{ asset('assets/images/bg/home-banner.jpg') }}')">
     <div class="container">
         <div class="row">
             <div class="col-lg-6 col-md-12 col-xl-7">
@@ -99,9 +98,10 @@
         </div>
     </div>
 </section>
+
 <section class="cta-section ">
     <div class="container">
-        <div class="cta position-relative">
+        <div class="cta position-relative" style="background-image: url('{{ asset('assets/images/bg/counter-bg.jpg') }}')">
             <div class="row">
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="counter-stat">

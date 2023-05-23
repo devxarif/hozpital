@@ -812,7 +812,7 @@ a:focus {
   }
 }
 .cta {
-  background: url("../images/bg/bg-4.jpg") no-repeat 50% 50%;
+  background-repeat: no-repeat;
   background-size: cover;
   position: relative;
 }
@@ -859,7 +859,8 @@ a:focus {
   left: 0px;
   position: absolute;
   content: "";
-  background: url("../images/bg/bg-2.jpg") no-repeat 50% 50%;
+  /* background-repeat: no-repeat;
+  background-position: center center; */
 }
 .testimonial .slick-dots {
   text-align: left;

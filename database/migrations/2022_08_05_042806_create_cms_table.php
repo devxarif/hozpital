@@ -37,17 +37,17 @@ class CreateCmsTable extends Migration
             $table->boolean('home_about_status')->default(1);
 
             $table->string('home_counter_bg_image')->nullable();
-            $table->string('home_counter_title')->nullable();
-            $table->string('home_counter_subtitle')->nullable();
+            $table->string('home_counter_name')->nullable();
+            $table->string('home_counter_shortname')->nullable();
             $table->string('home_counter_count')->nullable();
-            $table->string('home_counter2_title')->nullable();
-            $table->string('home_counter2_subtitle')->nullable();
+            $table->string('home_counter2_name')->nullable();
+            $table->string('home_counter2_shortname')->nullable();
             $table->string('home_counter2_count')->nullable();
-            $table->string('home_counter3_title')->nullable();
-            $table->string('home_counter3_subtitle')->nullable();
+            $table->string('home_counter3_name')->nullable();
+            $table->string('home_counter3_shortname')->nullable();
             $table->string('home_counter3_count')->nullable();
-            $table->string('home_counter4_title')->nullable();
-            $table->string('home_counter4_subtitle')->nullable();
+            $table->string('home_counter4_name')->nullable();
+            $table->string('home_counter4_shortname')->nullable();
             $table->string('home_counter4_count')->nullable();
             $table->boolean('home_counter_status')->default(1);
 
