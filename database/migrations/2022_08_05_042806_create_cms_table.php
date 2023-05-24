@@ -110,6 +110,10 @@ class CreateCmsTable extends Migration
             $table->longText('terms_description')->nullable();
             $table->longText('privacy_description')->nullable();
 
+            // Others
+            $table->string('emergency_number')->nullable();
+
+
             $table->timestamps();
         });
     }
