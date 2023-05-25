@@ -19,7 +19,7 @@ class CreateCmsTable extends Migration
             // Home page
             $table->string('home_banner_title')->nullable();
             $table->string('home_banner_subtitle')->nullable();
-            $table->string('home_banner_description')->nullable();
+            $table->text('home_banner_description')->nullable();
             $table->string('home_banner_button_text')->nullable();
             $table->string('home_banner_button2_text')->nullable();
             $table->string('home_banner_button_url')->nullable();
@@ -28,7 +28,7 @@ class CreateCmsTable extends Migration
             $table->boolean('home_banner_status')->default(1);
 
             $table->string('home_about_title')->nullable();
-            $table->string('home_about_description')->nullable();
+            $table->text('home_about_description')->nullable();
             $table->string('home_about_button_text')->nullable();
             $table->string('home_about_button_url')->nullable();
             $table->string('home_about_image')->nullable();
@@ -52,39 +52,39 @@ class CreateCmsTable extends Migration
             $table->boolean('home_counter_status')->default(1);
 
             $table->string('home_service_title')->nullable();
-            $table->string('home_service_description')->nullable();
+            $table->text('home_service_description')->nullable();
             $table->boolean('home_service_status')->default(1);
 
             $table->string('home_appointment_title')->nullable();
-            $table->string('home_appointment_description')->nullable();
+            $table->text('home_appointment_description')->nullable();
             $table->string('home_appointment_image')->nullable();
             $table->string('home_appointment_contact')->nullable();
             $table->boolean('home_appointment_status')->default(1);
 
             $table->string('home_testimonial_title')->nullable();
-            $table->string('home_testimonial_description')->nullable();
+            $table->text('home_testimonial_description')->nullable();
             $table->boolean('home_testimonial_status')->default(1);
 
             $table->string('home_partner_title')->nullable();
-            $table->string('home_partner_description')->nullable();
+            $table->text('home_partner_description')->nullable();
             $table->boolean('home_partner_status')->default(1);
 
             // About page
             $table->string('about_title')->nullable();
-            $table->string('about_description')->nullable();
+            $table->text('about_description')->nullable();
             $table->string('about_image')->nullable();
             $table->string('about_image2')->nullable();
             $table->string('about_image3')->nullable();
             $table->string('about_status')->default(1);
 
             $table->string('about_service_title')->nullable();
-            $table->string('about_service_description')->nullable();
+            $table->text('about_service_description')->nullable();
             $table->string('about_service_status')->default(1);
 
             $table->string('about_partner_title')->nullable();
             $table->string('about_partner_status')->default(1);
             $table->string('about_meet_specialist_title')->nullable();
-            $table->string('about_meet_specialist_description')->nullable();
+            $table->text('about_meet_specialist_description')->nullable();
             $table->string('about_meet_specialist_status')->default(1);
             $table->string('about_testimonial_title')->nullable();
             $table->string('about_testimonial_image')->nullable();
@@ -92,15 +92,19 @@ class CreateCmsTable extends Migration
 
             // Service page
             $table->string('service_title')->nullable();
-            $table->string('service_description')->nullable();
+            $table->text('service_description')->nullable();
 
             // Department page
             $table->string('department_title')->nullable();
-            $table->string('department_description')->nullable();
+            $table->text('department_description')->nullable();
+
+            // Appointment page
+            $table->string('appointment_title')->nullable();
+            $table->text('appointment_description')->nullable();
 
             // Contact page
             $table->string('contact_title')->nullable();
-            $table->string('contact_description')->nullable();
+            $table->text('contact_description')->nullable();
             $table->mediumText('contact_map_location')->nullable();
             $table->string('contact_number')->nullable();
             $table->string('contact_email')->nullable();

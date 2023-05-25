@@ -79,7 +79,6 @@ class CmsSeeder extends Seeder
         $cms->about_testimonial_title = 'What they say about us';
         $cms->about_testimonial_image = 'assets/images/bg/about-testimonial.jpg';
 
-
         // Service page
         $cms->service_title = 'Our Services';
         $cms->service_description = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt, quod laborum alias. Vitae dolorum, officia sit! Saepe ullam facere at, consequatur incidunt, quae esse, quis ut reprehenderit dignissimos, libero delectus.';
@@ -87,6 +86,10 @@ class CmsSeeder extends Seeder
         // Department page
         $cms->department_title = 'Our Departments';
         $cms->department_description = 'Lets know moreel necessitatibus dolor asperiores illum possimus sint voluptates incidunt molestias nostrum laudantium. Maiores porro cumque quaerat.';
+
+        // Appointment page
+        $cms->appointment_title = 'Book an appoinment';
+        $cms->appointment_description = 'Mollitia dicta commodi est recusandae iste, natus eum asperiores corrupti qui velit . Iste dolorum atque similique praesentium soluta.';
 
         // Contact page
         $cms->contact_title = 'Contact us';
