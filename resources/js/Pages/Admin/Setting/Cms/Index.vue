@@ -1,26 +1,5 @@
 <template>
     <SettingLayout title="Payment">
-        <!-- <div class="hidden sm:block mb-3">
-            <div class="border-b-2 border-gray-200">
-                <nav class="flex space-x-8" aria-label="Tabs">
-                    <li @click="changeTab('section')" :class="['cursor-pointer group inline-flex items-center py-4 px-1 border-b-2 font-medium text-md', currentTab == 'section' ? 'border-blue-500 text-blue-600':'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-200' ]">
-                        <span>Website Sections</span>
-                    </li>
-                    <li @click="changeTab('service')" :class="['cursor-pointer group inline-flex items-center py-4 px-1 border-b-2 font-medium text-md', currentTab == 'service' ? 'border-blue-500 text-blue-600':'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-200' ]">
-                        <span>Services</span>
-                    </li>
-                    <li @click="changeTab('testimonial')" :class="['cursor-pointer group inline-flex items-center py-4 px-1 border-b-2 font-medium text-md', currentTab == 'testimonial' ? 'border-blue-500 text-blue-600':'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-200' ]">
-                        <span>Testimonial</span>
-                    </li>
-                    <li @click="changeTab('partners')" :class="['cursor-pointer group inline-flex items-center py-4 px-1 border-b-2 font-medium text-md', currentTab == 'partners' ? 'border-blue-500 text-blue-600':'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-200' ]">
-                        <span>Partners</span>
-                    </li>
-                    <li @click="changeTab('news')" :class="['cursor-pointer group inline-flex items-center py-4 px-1 border-b-2 font-medium text-md', currentTab == 'news' ? 'border-blue-500 text-blue-600':'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-200' ]">
-                        <span>News</span>
-                    </li>
-                </nav>
-            </div>
-        </div> -->
         <div class="hidden sm:block mb-3">
             <div class="border-b-2 border-gray-200">
                 <nav class="flex space-x-8" aria-label="Tabs">
@@ -41,7 +20,8 @@
 <script>
 import SettingLayout from "@/Shared/Layout/Setting.vue";
 import { UserIcon, UsersIcon } from '@heroicons/vue/24/outline'
-import Service from './Service.vue';
+import Service from './Services/Index.vue';
+import Testimonial from './Testimonial.vue';
 // import Section from './Section.vue';
 
 export default {
@@ -92,7 +72,7 @@ export default {
                 {
                     name: "testimonial",
                     title: "Testimonial",
-                     component: Service,
+                     component: Testimonial,
                 },
                 {
                     name: "partners",
@@ -112,12 +92,12 @@ export default {
             localStorage.setItem("websiteCurrentTab", tab);
             this.currentTab = tab;
             let response = await axios.get(
-                route("admin.settings.payment.data", {
+                route("admin.settings.website.content", {
                     provider: tab,
                 })
             );
 
-            // this.websiteData = response.data;
+            this.websiteData = response.data;
         },
     },
     mounted() {

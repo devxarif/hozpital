@@ -197,6 +197,7 @@ Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function () 
             // cms routes
             Route::get('/cms', 'cms')->name('cms');
             Route::put('/cms/update', 'cmsUpdate')->name('cms.update');
+            Route::get('/website/content/fetch', 'websiteContentFetch')->name('website.content');
 
             // Payment Routes
             Route::get('/payment', 'payment')->name('payment');

@@ -113,6 +113,8 @@ Route::get('/test2', function () {
 
 Route::get('/test', function () {
 
+    // ray(['test' => 'test']);
+    return 'ok';
     Mail::to('arif@gmail.com')->send(new SendNewUserCredential());
 
     return 'ok';
