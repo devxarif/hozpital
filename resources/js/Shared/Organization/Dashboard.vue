@@ -1756,7 +1756,7 @@
                                             <tr
                                                 class="bg-white border-b border-dashed  ">
                                                 <td class="p-3 text-sm font-medium whitespace-nowrap ">
-                                                    <img src="assets/images/logos/chrome.png" alt=""
+                                                    <img src="/assets/images/logos/chrome.png" alt=""
                                                         class="mr-2 h-5 inline-block">Chrome
                                                 </td>
                                                 <td
@@ -1776,7 +1776,7 @@
                                             <tr
                                                 class="bg-white border-b border-dashed  ">
                                                 <td class="p-3 text-sm font-medium whitespace-nowrap ">
-                                                    <img src="assets/images/logos/in-explorer.png" alt=""
+                                                    <img src="/assets/images/logos/in-explorer.png" alt=""
                                                         class="mr-2 h-5 inline-block">Explorer
                                                 </td>
                                                 <td
@@ -1796,7 +1796,7 @@
                                             <tr
                                                 class="bg-white border-b border-dashed  ">
                                                 <td class="p-3 text-sm font-medium whitespace-nowrap ">
-                                                    <img src="assets/images/logos/safari.png" alt=""
+                                                    <img src="/assets/images/logos/safari.png" alt=""
                                                         class="mr-2 h-5 inline-block">Safari
                                                 </td>
                                                 <td
@@ -1816,7 +1816,7 @@
                                             <tr
                                                 class="bg-white border-b border-dashed  ">
                                                 <td class="p-3 text-sm font-medium whitespace-nowrap ">
-                                                    <img src="assets/images/logos/mozilla.png" alt=""
+                                                    <img src="/assets/images/logos/mozilla.png" alt=""
                                                         class="mr-2 h-5 inline-block">Mozilla
                                                 </td>
                                                 <td
@@ -1835,7 +1835,7 @@
                                             <!-- 5 -->
                                             <tr class="bg-white ">
                                                 <td class="p-3 text-sm font-medium whitespace-nowrap ">
-                                                    <img src="assets/images/logos/opera.png" alt=""
+                                                    <img src="/assets/images/logos/opera.png" alt=""
                                                         class="mr-2 h-5 inline-block">Opera
                                                 </td>
                                                 <td

@@ -2,6 +2,7 @@
 
 use Carbon\Carbon;
 use App\Models\Bed;
+use App\Models\News;
 use App\Models\User;
 use App\Models\Order;
 use App\Models\Doctor;
@@ -25,6 +26,7 @@ use Livewire\WithPagination;
 use App\Exports\PatientExport;
 use App\Imports\PatientImport;
 use App\Models\ContactMessage;
+use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\UserLoginActivity;
 use App\Utils\Writer\ArrayWriter;
 use Illuminate\Support\Benchmark;
@@ -40,6 +42,7 @@ use Illuminate\Support\Facades\Config;
 use App\Http\Controllers\TestController;
 use Spatie\Permission\Models\Permission;
 use App\Mail\Staff\SendNewUserCredential;
+use RyanChandler\Comments\Models\Comment;
 use Stevebauman\Location\Facades\Location;
 use Label84\HoursHelper\Facades\HoursHelper;
 use Illuminate\Pagination\LengthAwarePaginator;
@@ -47,7 +50,6 @@ use App\Http\Controllers\Admin\UpgradeController;
 use sirajcse\UniqueIdGenerator\UniqueIdGenerator;
 use Artesaos\SEOTools\Traits\SEOTools as SEOToolsTrait;
 use App\Services\Admin\Setting\SocialLogin\FetchSocialProviderDataService;
-use Barryvdh\DomPDF\Facade\Pdf;
 
 // use Dompdf\Dompdf;
 // Route::get('/', function () {
@@ -76,6 +78,9 @@ Route::get('preview-notification', function () {
 });
 
 Route::get('/test2', function () {
+
+    setConfig('app.hello', 'http://domain.com');
+    return config('app.hello');
 
 
     // $pdf = Pdf::loadView('invoice.billing-invoice');
@@ -112,6 +117,16 @@ Route::get('/test2', function () {
 });
 
 Route::get('/test', function () {
+
+    $post = News::first();
+
+    // $post->comment('Hello, world!');
+    // $post->comment('Hello, world!', user: User::first());
+    $post->comment('Thanks for commenting!',  user: User::first(), parent: Comment::find(2));
+
+
+    return $post->comments;
+
 
     Mail::to('arif@gmail.com')->send(new SendNewUserCredential());
 

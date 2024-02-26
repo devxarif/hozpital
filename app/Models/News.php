@@ -6,10 +6,11 @@ use App\Models\NewsCategory;
 use App\Http\Traits\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use RyanChandler\Comments\Concerns\HasComments;
 
 class News extends Model
 {
-    use HasFactory, Sluggable;
+    use HasFactory, Sluggable, HasComments;
 
     protected $fillable = [
         'news_category_id',
