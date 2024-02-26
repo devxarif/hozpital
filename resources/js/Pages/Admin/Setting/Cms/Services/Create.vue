@@ -9,7 +9,7 @@
                         <div class="flex-1 overflow-y-auto py-6 px-4 sm:px-6">
                             <div class="flex items-start justify-between rtl:flex-row-reverse mb-5">
                                 <h2 class="text-2xl tracking-wide font-bold text-gray-900">
-                                    {{ __('Patient Create') }}
+                                    {{ __('Service Create') }}
                                 </h2>
                                 <div class="ml-3 flex h-7 items-center">
                                     <button type="button" class="-m-2 p-2 text-gray-400 hover:text-gray-500 focus:outline-none"
@@ -26,13 +26,13 @@
                             <form class="mb-4" @submit.prevent="saveData">
                                 <div class="grid grid-cols-2 gap-5">
                                     <div class="mb-4">
-                                        <Label name="Name" id="patient_name" :hasError="form.errors.name"/>
-                                        <BaseInput v-model="form.name" placeholder="Name" id="patient_name" :hasError="form.errors.name"/>
+                                        <Label name="Name" id="service_name" :hasError="form.errors.name"/>
+                                        <BaseInput v-model="form.name" placeholder="Name" id="service_name" :hasError="form.errors.name"/>
                                     </div>
                                     <div class="mb-4">
-                                    <Label name="Display on header" id="plan_max_teams" :hasError="form.errors.status"/>
+                                    <Label name="Display on header" id="plan_max_teams" :hasError="form.errors.show_on_header"/>
                                     <label for="checked-toggle" class="inline-flex relative items-center cursor-pointer">
-                                        <input v-model="form.status" @change="statusChange" type="checkbox" id="checked-toggle" class="sr-only peer" checked>
+                                        <input v-model="form.show_on_header" @change="statusChange" type="checkbox" id="checked-toggle" class="sr-only peer" checked>
                                         <div class="w-11 h-6 bg-gray-200 rounded-full peer   peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all  peer-checked:bg-blue-600"></div>
                                     </label>
                                 </div>
@@ -40,11 +40,11 @@
 
 
                                 <div class="mb-4">
-                                    <Label name="Address" id="patient_address" :hasError="form.errors.address" :required="false"/>
-                                    <BaseTextarea v-model="form.address" placeholder="Address" id="patient_address" :hasError="form.errors.address"/>
+                                    <Label name="Short Description" id="short_description" :hasError="form.errors.short_description" :required="false"/>
+                                    <BaseTextarea v-model="form.short_description" placeholder="Write short description" id="short_description" :hasError="form.errors.short_description"/>
                                 </div>
                                 <div class="mb-4">
-                                    <Label name="Image" id="patient_create_image" :hasError="form.errors.image" :required="false"/>
+                                    <Label name="Image" id="service_create_image" :hasError="form.errors.image" :required="false"/>
                                     <div class="flex justify-center items-center w-full" v-if="!previewImage">
                                         <label for="dropzone-file" class="flex flex-col justify-center items-center w-full h-60 bg-gray-50 rounded-lg border-2 border-gray-300 border-dashed cursor-pointer   hover:bg-gray-100   ">
                                             <div class="flex flex-col justify-center items-center pt-5 pb-6">
@@ -67,6 +67,7 @@
                                 <div class="mb-4">
                                     <Label name="Description" id="productCategory_description" :hasError="form.errors.description" :required="false"/>
                                     <QuillEditor theme="snow" v-model:content="form.description" contentType="html" class="h-60 rounded-md"/>
+                                    <ErrorMessage :name="form.errors.description"/>
                                 </div>
                                 <button :disabled="form.processing"  type="submit"
                                     class="text-white justify-center flex items-center bg-blue-700 hover:bg-blue-800 w-full focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-md px-5 py-2.5 mb-2   focus:outline-none  mt-3">
@@ -110,32 +111,12 @@ export default {
     },
     data() {
         return {
-            // form: this.$inertia.form({
-            //     type: 'medicine',
-            //     product_category: '',
-            //     manufacture: '',
-            //     buying_price: 0,
-            //     selling_price: 0,
-            //     quantity: 0,
-            //     expire_date: '',
-            //     name: '',
-            //     description: "",
-            //     short_description: "",
-            //     image: '',
-            // }),
             form: this.$inertia.form({
                 name: '',
-                email: "",
-                password: "",
-                address: "",
-                avatar: '',
-                gender: 'male',
-                birth_date: '',
-                age: '',
-                blood_group: 'A+',
-
-                status: true,
+                short_description: "",
                 description: "",
+                image: '',
+                show_on_header: true,
             }),
 
             previewImage: null,
@@ -145,15 +126,15 @@ export default {
     methods: {
         onFileChange(e) {
             const file = e.target.files[0];
-            this.form.avatar = file
+            this.form.image = file
             this.previewImage = URL.createObjectURL(file);
         },
         removeImage(){
             this.previewImage = null;
-            this.form.avatar = null
+            this.form.image = null
         },
         saveData() {
-            this.form.post(route("admin.patient.store"), {
+            this.form.post(route("admin.settings.services.store"), {
                 onSuccess: () => {
                     this.form.reset(),
                     this.removeImage()
@@ -162,40 +143,8 @@ export default {
             });
         },
         statusChange(event) {
-            this.form.status = event.target.checked;
-        },
-        switchVisibility() {
-            this.passwordFieldType = this.passwordFieldType === "password" ? "text" : "password";
-        },
-        generatePassword(){
-            this.form.password = null
-            var chars = "0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            var passwordLength = 12;
-
-            for (var i = 0; i <= passwordLength; i++) {
-                var randomNumber = Math.floor(Math.random() * chars.length);
-                this.form.password += chars.substring(randomNumber, randomNumber +1);
-            }
-        },
-        generateEmail(){
-            var text = "";
-            var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-
-            for( var i=0; i < 15; i++ )
-                text += possible.charAt(Math.floor(Math.random() * possible.length));
-
-            return text + '@mail.com';
-        },
-        handleCustomDate(date) {
-            const formatTime = this.formatTime(date, "YYYY-MM-DD");
-            this.form.birth_date = formatTime;
-        },
-        disabledAfterToday(date) {
-            console.log(date)
-            const today = new Date();
-            // today.setHours(0, 0, 0, 0);
-            return date > today
-        },
+            this.form.show_on_header = event.target.checked;
+        }
     },
     mounted() {
         this.checkPagePermission('admin')

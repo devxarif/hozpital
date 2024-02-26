@@ -33,6 +33,7 @@ use App\Http\Controllers\Admin\BloodDonationController;
 use App\Http\Controllers\Admin\IncomeCategoryController;
 use App\Http\Controllers\Admin\ExpenseCategoryController;
 use App\Http\Controllers\Admin\BillingController;
+use App\Http\Controllers\Admin\CMSController;
 use App\Http\Controllers\Admin\ProductCategoryController;
 use App\Http\Controllers\UserProfileController;
 
@@ -244,6 +245,9 @@ Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function () 
                 Route::put('{currency}', 'defaultCurrency')->name('currency.set.default');
             });
         });
+
+        // Cms setting update
+        Route::resource('services', CMSController::class);
 
         // Roles & Permission
         Route::resource('roles', RoleController::class);
