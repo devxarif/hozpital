@@ -17,9 +17,15 @@
                             <span class="h4">823-4565-13456</span>
                         </a>
                         <span class="mx-2">|</span>
-                        <a href="{{ route('login') }}">
-                            <span class="h6">Login/Register</span>
-                        </a>
+                        @if (auth()->check())
+                            <a href="/dashboard">
+                                <span>Dashboard</span>
+                            </a>
+                        @else
+                            <a href="{{ route('login') }}">
+                                <span class="h6">Login/Register</span>
+                            </a>
+                        @endif
                     </div>
                 </div>
             </div>

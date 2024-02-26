@@ -17,6 +17,7 @@ use App\Services\Admin\Setting\SendTestMailService;
 use App\Http\Requests\Admin\Setting\SeoContentUpdate;
 use App\Http\Requests\Admin\Setting\SMTPUpdateRequest;
 use App\Models\UserLoginActivity;
+use App\Services\Admin\Setting\FetchWebsiteContentService;
 use App\Services\Admin\Setting\SeoContentUpdateService;
 use App\Services\Admin\Setting\GeneralSettingUpdateService;
 use App\Services\Admin\Setting\System\FetchSystemSettingDataService;
@@ -77,7 +78,6 @@ class SettingController extends Controller
 
     public function cms()
     {
-        // return 6465;
         // $cms = Cms::first();
 
         return inertia('Admin/Setting/Cms/Index');
@@ -96,6 +96,13 @@ class SettingController extends Controller
 
             return back();
         }
+    }
+
+    public function websiteContentFetch(Request $request)
+    {
+        $content = (new FetchWebsiteContentService)->fetch($request->provider);
+
+        return $content;
     }
 
     public function currency()

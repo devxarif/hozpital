@@ -128,6 +128,8 @@ Route::get('/test', function () {
     return $post->comments;
 
 
+    // ray(['test' => 'test']);
+    return 'ok';
     Mail::to('arif@gmail.com')->send(new SendNewUserCredential());
 
     return 'ok';

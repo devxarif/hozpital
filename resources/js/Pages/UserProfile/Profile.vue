@@ -19,12 +19,12 @@
                                             class="md:w-[186px] w-[140px] md:ml-0 md:mr-0 ml-auto mr-auto md:mb-0 mb-4 rounded-full border-4 border-slate-400 relative">
                                             <img :src="auth_user.avatar_url" alt=""
                                                 class="object-cover rounded-full h-full w-full">
-                                            <a href="/app/profile-setting"
+                                            <!-- <a href="/app/profile-setting"
                                                 class="absolute right-2 h-8 w-8 bg-slate-50 text-slate-600 rounded-full flex flex-col items-center justify-center bottom-0 shadow-md">
                                                 <span>
                                                     <font-awesome-icon icon="fa-solid fa-edit" class="h-4 w-4 text-gray-500"/>
                                                 </span>
-                                            </a>
+                                            </a> -->
 
                                         </div>
                                     </div>
